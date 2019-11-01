@@ -1,6 +1,34 @@
-from sympy import symbols, true, false, Or, And
+from sympy import symbols
 from tqdm import tqdm
-import numpy as np
+
+def print_input_data_statistics(name, positive_input_clauses, negative_input_clauses, target_class, negation, load_top_k, switch_signs):
+    print()
+    print("Input Data Statistics:")
+    print("\tDataset Name \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t: " + name + "\n")
+
+    if switch_signs:
+        pos_sign = " -ve"
+        neg_sign = " +ve"
+    else:
+        pos_sign = " +ve"
+        neg_sign = " -ve"
+
+    print("\tClass\tSign\t%age\tFrequency")
+    n = len(positive_input_clauses) + len(negative_input_clauses)
+    print("\t" + str(target_class[0]) +
+          "\t\t" + pos_sign+
+          "\t" + str(round(len(positive_input_clauses)*100/n)) +
+          "%\t\t" + str(len(positive_input_clauses)))
+    print("\t" + str(target_class[1]) + "\t\t" + neg_sign +
+          "\t" + str(round(len(negative_input_clauses) * 100 / n)) +
+          "%\t\t" + str(len(negative_input_clauses)))
+    print()
+    print("\tAdd absent variables as negative literals in the partial assignments \t: " + str(negation))
+    if not(bool(load_top_k)):
+        print("\tLoad top-k negative partial assignments \t\t\t\t\t\t\t\t: " + str(bool(load_top_k)))
+    else:
+        print("\tNumber of negative partial assignments loaded from the top of the file \t: " + str(load_top_k))
+    print()
 
 def load_animal_taxonomy():
     a = symbols('a')
@@ -18,14 +46,6 @@ def load_animal_taxonomy():
     m = symbols('m')
     n = symbols('n')
 
-    # c1 = {b, ~c, d, e, f, ~g, h, ~i, j, ~k}
-    # c2 = {b, c, ~d, e, f, g, ~h, ~i, j, l, ~m, ~n}
-    # c3 = {b, c, ~d, e, f, g, ~h, ~i, j, ~l, m, ~n}
-    # c4 = {~b, c, d, e, f, ~g, h, i, j, ~k}
-    # c5 = {b, c, ~d, e, f, ~g, h, ~i, j}
-    # c6 = {b, ~c, d, e, f, ~g, h, i, j, k, l, ~m}
-    # c7 = {b, c, d, ~e, f, ~g, h, i, j, k, ~l, m}
-
     c1 = frozenset([b, ~c, d, e, f, ~g, h, ~i, j, ~k])
     c2 = frozenset([b, c, ~d, e, f, g, ~h, ~i, j, l, ~m, ~n])
     c3 = frozenset([b, c, ~d, e, f, g, ~h, ~i, j, ~l, m, ~n])
@@ -38,7 +58,8 @@ def load_animal_taxonomy():
 
     return input_clauses
 
-def load_mushroom(negation=True, load_top_k=None):
+
+def load_mushroom(negation=True, load_top_k=None, switch_signs=False):
     # schema = "e/p b/c/x/f/k/s f/g/y/s n/b/c/g/r/p/u/e/w/y t/f a/l/c/y/f/m/n/p/s a/d/f/n c/w/d b/n k/n/b/h/g/r/o/p/u/e/w/y e/t b/c/u/e/z/r f/y/k/s f/y/k/s n/b/c/g/o/p/e/w/y n/b/c/g/o/p/e/w/y p/u n/o/w/y n/o/t c/e/f/l/n/p/s/z k/n/b/h/r/o/u/w/y a/c/n/s/v/y g/l/m/p/u/w/d"
     # schema_list = []
     # var_dict = {}
@@ -69,7 +90,9 @@ def load_mushroom(negation=True, load_top_k=None):
     f = open("./Data/mushroom_cp4im.txt", "r")
     positive_input_clauses = set()
     negative_input_clauses = set()
-    for line in tqdm(f):
+    pbar = tqdm(f, total=8124)
+    pbar.set_description("Reading input file")
+    for line in pbar:
         row = str(line)[:-1].split(" ")
 
         clause = set()
@@ -89,23 +112,28 @@ def load_mushroom(negation=True, load_top_k=None):
 
         # print(clause)
 
-        if row[-1] == '1':
+        if (not(switch_signs) and row[-1] == '0') or (switch_signs and row[-1] == '1'):
             negative_input_clauses.add(frozenset(clause))
             if load_top_k and len(negative_input_clauses) == load_top_k:
                 # Top k negative clauses have been loaded already
                 break
-        elif row[-1] == '0':
+        elif (not(switch_signs) and row[-1] == '1') or (switch_signs and row[-1] == '0'):
             positive_input_clauses.add(frozenset(clause))
+
+    print_input_data_statistics("Mushroom", positive_input_clauses, negative_input_clauses, ['0', '1'],
+                                negation, load_top_k, switch_signs)
 
     return (positive_input_clauses, negative_input_clauses)
 
 
-def load_ionosphere(negation=True, load_top_k=None):
+def load_ionosphere(negation=True, load_top_k=None, switch_signs=False):
 
     f = open("./Data/ionosphere.D157.N351.C2.num", "r")
     positive_input_clauses = set()
     negative_input_clauses = set()
-    for line in tqdm(f):
+    pbar = tqdm(f, total=351)
+    pbar.set_description("Reading input file")
+    for line in pbar:
         row = str(line)[:-1].split(" ")
 
         clause = set()
@@ -115,23 +143,28 @@ def load_ionosphere(negation=True, load_top_k=None):
             elif negation:
                 clause.add(symbols('v' + str(j)))
 
-        if row[-1] == '157':
+        if (not(switch_signs) and row[-1] == '156') or (switch_signs and row[-1] == '157'):
             negative_input_clauses.add(frozenset(clause))
             if load_top_k and len(negative_input_clauses) == load_top_k:
                 # Top k negative clauses have been loaded already
                 break
-        elif row[-1] == '156':
+        elif (not(switch_signs) and row[-1] == '157') or (switch_signs and row[-1] == '156'):
             positive_input_clauses.add(frozenset(clause))
+
+    print_input_data_statistics("Ionosphere", positive_input_clauses, negative_input_clauses, ['156', '157'],
+                                negation, load_top_k, switch_signs)
 
     return (positive_input_clauses, negative_input_clauses)
 
 
-def load_adult(negation=True, load_top_k=None):
+def load_adult(negation=True, load_top_k=None, switch_signs=False):
 
     f = open("./Data/adult.D97.N48842.C2.num", "r")
     positive_input_clauses = set()
     negative_input_clauses = set()
-    for line in tqdm(f):
+    pbar = tqdm(f, total=48842)
+    pbar.set_description("Reading input file")
+    for line in pbar:
         row = str(line)[:-1].split(" ")
 
         clause = set()
@@ -141,13 +174,16 @@ def load_adult(negation=True, load_top_k=None):
             elif negation:
                 clause.add(symbols('v' + str(j)))
 
-        if row[-1] == '96':
+        if (not(switch_signs) and row[-1] == '96') or (switch_signs and row[-1] == '97'):
             negative_input_clauses.add(frozenset(clause))
             if load_top_k and len(negative_input_clauses) == load_top_k:
                 # Top k negative clauses have been loaded already
                 break
-        elif row[-1] == '97':
+        elif (not(switch_signs) and row[-1] == '97') or (switch_signs and row[-1] == '96'):
             positive_input_clauses.add(frozenset(clause))
+
+    print_input_data_statistics("Adult", positive_input_clauses, negative_input_clauses, ['96','97'],
+                                negation, load_top_k, switch_signs)
 
     return (positive_input_clauses, negative_input_clauses)
 
@@ -409,7 +445,7 @@ def insert_clause(theory, clause_length, overlap_matrix, clause):
 def mistle(theory):
 
     input_length = get_literal_length(theory)
-    print("\nInput Theory: Literal Length = " + str(input_length) + "\t; Number of clauses = " + str(
+    print("\nInput Theory:\n\tLiteral Length = " + str(input_length) + "\n\tNumber of clauses = " + str(
         len(theory)))
 
 
@@ -423,8 +459,8 @@ def mistle(theory):
 
     overlap_size = None
     compression_counter = 0
-    pbar = tqdm(total = int(1.1 * len(theory)))
-
+    pbar = tqdm(total = int(1.1 * len(theory) + 100))
+    pbar.set_description("Compressing Clauses")
     while True:
         prev_overlap_size = overlap_size
         max_overlap_indices, overlap_size = select_clauses_2(theory, clause_length, prev_overlap_size)
@@ -454,17 +490,17 @@ def mistle(theory):
 
     global new_var_counter
     output_length = get_literal_length(theory)
-    print("\nResultant Theory: Literal Length = " + str(output_length) +
-          ";\t Number of clauses = " + str(len(theory)) +
-          ";\t Number of invented predicates = " + str(new_var_counter - 1) +
-          ";\t % Compression = " + str(output_length * 100/input_length) + "%")
+    print("\nResultant Theory:\n\tLiteral Length = " + str(output_length) +
+          "\n\tNumber of clauses = " + str(len(theory)) +
+          "\n\tNumber of invented predicates = " + str(new_var_counter - 1) +
+          "\n\t% Compression = " + str(round(output_length * 100/input_length, 2)) + "%")
     # print_2d(theory)
 
     return theory
 
 # input_clauses = load_animal_taxonomy()
 # _, input_clauses = load_mushroom(negation = True, load_top_k = None)
-# _, input_clauses = load_mushroom(negation = False, load_top_k = None)
+_, input_clauses = load_mushroom(negation = False, load_top_k = 1000)
 _, input_clauses = load_adult(negation = False, load_top_k = None)
-# _, input_clauses = load_ionosphere(negation = False, load_top_k = None)
-theory = mistle(input_clauses)
+_, input_clauses = load_ionosphere(negation = True, load_top_k = None, switch_signs=True)
+# theory = mistle(input_clauses)
