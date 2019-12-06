@@ -1,4 +1,3 @@
-from sympy import symbols
 from tqdm import tqdm
 import math
 from collections import Counter
@@ -60,35 +59,72 @@ def print_input_data_statistics(
 
 
 def load_animal_taxonomy():
-    a = symbols("a")
-    b = symbols("b")
-    c = symbols("c")
-    d = symbols("d")
-    e = symbols("e")
-    f = symbols("f")
-    g = symbols("g")
-    h = symbols("h")
-    i = symbols("i")
-    j = symbols("j")
-    k = symbols("k")
-    l = symbols("l")
-    m = symbols("m")
-    n = symbols("n")
+    a = 0
+    b = 1
+    c = 2
+    d = 3
+    e = 4
+    f = 5
+    g = 6
+    h = 7
+    i = 8
+    j = 9
+    k = 10
+    l = 11
+    m = 12
+    n = 13
 
-    p1 = frozenset([a, b, ~c, ~d, ~e, ~f, g, ~h, i, j])
-    p2 = frozenset([a, ~b, ~c, ~d, ~e, f, g, ~h, i, j])
-    p3 = frozenset([a, ~b, c, ~d, ~e, ~f, g, ~h, i, j, ~l, m])
-    p4 = frozenset([a, ~b, c, ~d, ~e, ~f, g, ~h, i, j, l, ~m])
+    global new_var_counter
+    new_var_counter = 14
+
+    p1 = frozenset([a, b, -1 * c, -1 * d, -1 * e, -1 * f, g, -1 * h, i, j])
+    p2 = frozenset([a, -1 * b, -1 * c, -1 * d, -1 * e, f, g, -1 * h, i, j])
+    p3 = frozenset([a, -1 * b, c, -1 * d, -1 * e, -1 * f, g, -1 * h, i, j, -1 * l, m])
+    p4 = frozenset([a, -1 * b, c, -1 * d, -1 * e, -1 * f, g, -1 * h, i, j, l, -1 * m])
 
     positives = {p1, p2, p3, p4}
 
-    n1 = frozenset([~b, c, ~d, ~e, ~f, g, ~h, i, ~j, k])
-    n2 = frozenset([~b, ~c, d, ~e, ~f, ~g, h, i, ~j, ~l, m, n])
-    n3 = frozenset([~b, ~c, d, ~e, ~f, ~g, h, i, ~j, l, ~m, n])
-    n4 = frozenset([b, ~c, ~d, ~e, ~f, g, ~h, ~i, ~j, k])
-    n5 = frozenset([~b, ~c, d, ~e, ~f, g, ~h, i, ~j])
-    n6 = frozenset([~b, c, ~d, ~e, ~f, g, ~h, ~i, ~j, ~k, ~l, m])
-    n7 = frozenset([~b, ~c, ~d, e, ~f, g, ~h, ~i, ~j, ~k, l, ~m])
+    n1 = frozenset([-1 * b, c, -1 * d, -1 * e, -1 * f, g, -1 * h, i, -1 * j, k])
+    n2 = frozenset(
+        [-1 * b, -1 * c, d, -1 * e, -1 * f, -1 * g, h, i, -1 * j, -1 * l, m, n]
+    )
+    n3 = frozenset(
+        [-1 * b, -1 * c, d, -1 * e, -1 * f, -1 * g, h, i, -1 * j, l, -1 * m, n]
+    )
+    n4 = frozenset([b, -1 * c, -1 * d, -1 * e, -1 * f, g, -1 * h, -1 * i, -1 * j, k])
+    n5 = frozenset([-1 * b, -1 * c, d, -1 * e, -1 * f, g, -1 * h, i, -1 * j])
+    n6 = frozenset(
+        [
+            -1 * b,
+            c,
+            -1 * d,
+            -1 * e,
+            -1 * f,
+            g,
+            -1 * h,
+            -1 * i,
+            -1 * j,
+            -1 * k,
+            -1 * l,
+            m,
+        ]
+    )
+    n7 = frozenset(
+        [
+            -1 * b,
+            -1 * c,
+            -1 * d,
+            e,
+            -1 * f,
+            g,
+            -1 * h,
+            -1 * i,
+            -1 * j,
+            -1 * k,
+            l,
+            -1 * m,
+        ]
+    )
 
     negatives = {n1, n2, n3, n4, n5, n6, n7}
 
@@ -125,9 +161,9 @@ def load_dataset(
         partial_assignmemnt = set()
         for j in var_range:
             if str(j) in row[:-1]:
-                partial_assignmemnt.add(symbols("v" + str(j)))
+                partial_assignmemnt.add(j)
             elif negation:
-                partial_assignmemnt.add(~symbols("v" + str(j)))
+                partial_assignmemnt.add(-1 * j)
 
         if (not (switch_signs) and row[-1] == target_class[0]) or (
             switch_signs and row[-1] == target_class[1]
@@ -174,7 +210,6 @@ def load_dataset(
 
 
 def load_adult(negation=False, load_top_k=None, switch_signs=False):
-
     return load_dataset(
         "adult.D97.N48842.C2.num",
         48842,
@@ -187,7 +222,6 @@ def load_adult(negation=False, load_top_k=None, switch_signs=False):
 
 
 def load_breast(negation=False, load_top_k=None, switch_signs=False):
-
     return load_dataset(
         "breast.D20.N699.C2.num",
         699,
@@ -200,7 +234,6 @@ def load_breast(negation=False, load_top_k=None, switch_signs=False):
 
 
 def load_chess(negation=False, load_top_k=None, switch_signs=False):
-
     return load_dataset(
         "chess.txt",
         699,
@@ -213,7 +246,6 @@ def load_chess(negation=False, load_top_k=None, switch_signs=False):
 
 
 def load_ionosphere(negation=False, load_top_k=None, switch_signs=False):
-
     return load_dataset(
         "ionosphere.D157.N351.C2.num",
         351,
@@ -226,79 +258,6 @@ def load_ionosphere(negation=False, load_top_k=None, switch_signs=False):
 
 
 def load_mushroom(negation=False, load_top_k=None, switch_signs=False):
-    # schema = "e/p b/c/x/f/k/s f/g/y/s n/b/c/g/r/p/u/e/w/y t/f a/l/c/y/f/m/n/p/s a/d/f/n c/w/d b/n k/n/b/h/g/r/o/p/u/e/w/y e/t b/c/u/e/z/r f/y/k/s f/y/k/s n/b/c/g/o/p/e/w/y n/b/c/g/o/p/e/w/y p/u n/o/w/y n/o/t c/e/f/l/n/p/s/z k/n/b/h/r/o/u/w/y a/c/n/s/v/y g/l/m/p/u/w/d"
-    # schema_list = []
-    # var_dict = {}
-    # var_counter = 0
-    # for i, options in enumerate(schema.split(" ")[1:]):
-    #     option_list = options.split('/')
-    #     schema_list.append(len(option_list))
-    #
-    #     var_list = []
-    #     for j in range(len(option_list)):
-    #         var_list.append(str(var_counter+j))
-    #     var_counter += len(option_list)
-    #
-    #     var_dict[i+1] = var_list
-    #
-    # class_dict = {}
-    # var_counter = 0
-    # for i, schema in enumerate(schema_list):
-    #     for j in range(schema):
-    #         class_dict[str(var_counter+j)] = i+1
-    #     var_counter += schema
-    #
-    # print(schema_list)
-    # print(var_dict)
-    # print(class_dict)
-
-    # f = open("./Data/mushroom.D90.N8124.C2.num", "r")
-
-    # f = open("./Data/mushroom_cp4im.txt", "r")
-    # positive_input_clauses = set()
-    # negative_input_clauses = set()
-    # pbar = tqdm(f, total=8124)
-    # pbar.set_description("Reading input file")
-    # for line in pbar:
-    #     row = str(line)[:-1].split(" ")
-    #
-    #     clause = set()
-    #     for j in range(117):
-    #         if str(j) in row:
-    #             clause.add(~symbols("v" + str(j)))
-    #         elif negation:
-    #             clause.add(symbols("v" + str(j)))
-    #
-    #     # for var in row[:-1]:
-    #     #     clause.append(Term('v'+str(var)))
-    #     #     var_class = class_dict[var]
-    #     #     for other_var in var_dict[var_class]:
-    #     #         if other_var != var:
-    #     #             a = Term('v' + str(other_var))
-    #     #             clause.append(-a)
-    #
-    #     # print(clause)
-    #
-    #     if (not (switch_signs) and row[-1] == "0") or (switch_signs and row[-1] == "1"):
-    #         negative_input_clauses.add(frozenset(clause))
-    #         if load_top_k and len(negative_input_clauses) == load_top_k:
-    #             # Top k negative clauses have been loaded already
-    #             break
-    #     elif (not (switch_signs) and row[-1] == "1") or (
-    #         switch_signs and row[-1] == "0"
-    #     ):
-    #         positive_input_clauses.add(frozenset(clause))
-    #
-    # print_input_data_statistics(
-    #     "Mushroom",
-    #     positive_input_clauses,
-    #     negative_input_clauses,
-    #     ["0", "1"],
-    #     negation,
-    #     load_top_k,
-    #     switch_signs,
-    # )
-
     return load_dataset(
         "mushroom_cp4im.txt",
         8124,
@@ -311,7 +270,6 @@ def load_mushroom(negation=False, load_top_k=None, switch_signs=False):
 
 
 def load_pima(negation=False, load_top_k=None, switch_signs=False):
-
     return load_dataset(
         "pima.D38.N768.C2.num",
         768,
@@ -382,7 +340,7 @@ def get_new_var():
     :return: A brand new term 'z' followed by an updated counter
     """
     global new_var_counter
-    new_var = symbols("z" + str(new_var_counter))
+    new_var = new_var_counter
     new_var_counter += 1
     return new_var
 
@@ -391,14 +349,14 @@ def convert_to_clause(partial_assignment):
     """
     Negate the terms in the input frozenset to convert them from a partial assignment to a clause.
     Example:
-        input: frozenset({~v1, ~v2, ~v3, ~v4, ~v5, ~v6, ~v7, ~v8})
+        input: frozenset({-1*v1, -1*v2, -1*v3, -1*v4, -1*v5, -1*v6, -1*v7, -1*v8})
         output: frozenset({v1, v2, v3, v4, v5, v6, v7, v8})
     :param partial_assignment: Every term in the frozenset is in a conjunction with one another
     :return: clause: Every term in the frozenset is in a disjunction with one another
     """
     clause = set()
     for term in partial_assignment:
-        clause.add(~term)
+        clause.add(-1 * term)
     return frozenset(clause)
 
 
@@ -453,7 +411,7 @@ def compress_pairwise(clause1, clause2, lossless=False):
         # Apply V-operator on (a; b1; b2; b3), (b1; b2; b3; c1; c2; c3)
         # Return (a; b1; b2; b3), (c1; c2; c3; -a)
         a = clause_a.pop()
-        clause_c.add(~a)
+        clause_c.add(-1 * a)
         operator_counter["V"] += 1
         return ({clause1, frozenset(clause_c)}, len(clause_b) - 1, False)
 
@@ -461,7 +419,7 @@ def compress_pairwise(clause1, clause2, lossless=False):
         # Apply V-operator on (a1; a2; a3; b1; b2; b3), (b1; b2; b3; c)
         # Return (a1; a2; a3; -c), (b1; b2; b3; c)
         c = clause_c.pop()
-        clause_a.add(~c)
+        clause_a.add(-1 * c)
         operator_counter["V"] += 1
         return ({frozenset(clause_a), clause2}, len(clause_b) - 1, False)
 
@@ -474,9 +432,9 @@ def compress_pairwise(clause1, clause2, lossless=False):
         # Apply W-operator on (a1; a2; a3; b1; b2; b3), (b1; b2; b3; c1; c2; c3)
         # Return (a1; a2; a3; -z), (b1; b2; b3; z), (c1; c2; c3, -z)
         new_var = get_new_var()
-        clause_a.add(~new_var)
+        clause_a.add(-1 * new_var)
         clause_b.add(new_var)
-        clause_c.add(~new_var)
+        clause_c.add(-1 * new_var)
         operator_counter["W"] += 1
         return (
             {frozenset(clause_a), frozenset(clause_b), frozenset(clause_c)},
@@ -501,22 +459,8 @@ def check_validity(positives, theory):
     print("Theory")
     print_2d(theory)
 
-    for pos in positives:
-        pos_invalid = False
-        for clause in theory:
-            clause_validy = False
-            for literal in clause:
-                if literal in pos:
-                    clause_validy = True
-                    break
-
-            if not clause_validy:
-                pos_invalid = True
-                break
-
-        if pos_invalid:
-            theory_valid = False
-            break
+    prolog = Prolog()
+    prolog.assertz("clause(michael, john)")
 
     return theory_valid
 
@@ -806,63 +750,3 @@ new_var_counter = 1
 operator_counter = {"W": 0, "V": 0, "S": 0}
 positives, negatives = load_animal_taxonomy()
 theory = mistle(positives, negatives, lossless=False)
-# theory = mistle(negatives, positives, lossless=False)
-# _, input_clauses = load_mushroom(negation = True, load_top_k = None)
-# _, input_clauses = load_adult()
-# _, input_clauses = load_breast()
-# _, input_clauses = load_mushroom()
-# _, input_clauses = load_ionosphere()
-# _, input_clauses = load_pima()
-# _, input_clauses = load_tictactoe()
-# theory = mistle(input_clauses)
-
-# _, input_clauses = load_breast()
-# theory = mistle(input_clauses)
-#
-# _, input_clauses = load_breast(switch_signs=True)
-# theory = mistle(input_clauses)
-#
-# _, input_clauses = load_breast(negation=True)
-# theory = mistle(input_clauses)
-#
-# _, input_clauses = load_breast(negation=True, switch_signs=True)
-# theory = mistle(input_clauses)
-
-
-# _, input_clauses = load_chess()
-# theory = mistle(input_clauses)
-#
-# _, input_clauses = load_chess(switch_signs=True)
-# theory = mistle(input_clauses)
-
-# _, input_clauses = load_chess(negation=True)
-# theory = mistle(input_clauses)
-#
-# _, input_clauses = load_chess(negation=True, switch_signs=True)
-# theory = mistle(input_clauses)
-
-
-# _, input_clauses = load_pima()
-# theory = mistle(input_clauses)
-
-# _, input_clauses = load_pima(switch_signs=True)
-# theory = mistle(input_clauses)
-#
-# _, input_clauses = load_pima(negation=True)
-# theory = mistle(input_clauses)
-#
-# _, input_clauses = load_pima(negation=True, switch_signs=True)
-# theory = mistle(input_clauses)
-#
-#
-# _, input_clauses = load_tictactoe()
-# theory = mistle(input_clauses)
-#
-# _, input_clauses = load_tictactoe(switch_signs=True)
-# theory = mistle(input_clauses)
-#
-# _, input_clauses = load_tictactoe(negation=True)
-# theory = mistle(input_clauses)
-#
-# _, input_clauses = load_tictactoe(negation=True, switch_signs=True)
-# theory = mistle(input_clauses)
