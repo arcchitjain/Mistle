@@ -1,7 +1,7 @@
 from tqdm import tqdm
 import math
 from collections import Counter
-from pyswip import Prolog
+from copy import copy
 
 
 def print_input_data_statistics(
@@ -372,6 +372,13 @@ def convert_to_theory(partial_assignments):
     return theory
 
 
+def get_subclauses(clause1, clause2):
+    clause_a = set(clause1 - clause2)
+    clause_b = set(clause1 & clause2)
+    clause_c = set(clause2 - clause1)
+    return clause_a, clause_b, clause_c
+
+
 def compress_pairwise(clause1, clause2, lossless=False):
     """
     Compress clause1 and clause2
@@ -387,10 +394,8 @@ def compress_pairwise(clause1, clause2, lossless=False):
             None    if no operator is applied
     """
 
-    global operator_counter
-    clause_a = set(clause1 - clause2)
-    clause_b = set(clause1 & clause2)
-    clause_c = set(clause2 - clause1)
+    global operator_counter, invented_predicate_definition
+    clause_a, clause_b, clause_c = get_subclauses(clause1, clause2)
 
     if len(clause_a) == 0:
         # Apply subsumption operator on (b1; b2; b3), (b1; b2; b3; c1; c2; c3)
@@ -433,6 +438,7 @@ def compress_pairwise(clause1, clause2, lossless=False):
         # Return (a1; a2; a3; -z), (b1; b2; b3; z), (c1; c2; c3, -z)
         new_var = get_new_var()
         clause_a.add(-1 * new_var)
+        invented_predicate_definition[new_var] = copy(clause_b)
         clause_b.add(new_var)
         clause_c.add(-1 * new_var)
         operator_counter["W"] += 1
@@ -443,7 +449,47 @@ def compress_pairwise(clause1, clause2, lossless=False):
         )
 
 
-def check_validity(positives, theory):
+def check_subset(pa_set, x):
+
+    for pa in pa_set:
+        x_found = True
+        for literal in x:
+            if literal not in pa:
+                x_found = False
+                break
+
+        if x_found:
+            return True
+
+    return False
+
+
+def substitute_new_predicates(pa):
+    new_pa = set()
+    for literal in pa:
+
+        if literal < 0:
+            base_literal = -1 * literal
+        else:
+            base_literal = literal
+
+        if base_literal in invented_predicate_definition:
+            for l in invented_predicate_definition[base_literal]:
+                if literal > 0:
+                    if l in new_pa:
+                        return None
+                    new_pa.add(-1 * l)
+                else:
+                    if -1 * l in new_pa:
+                        return None
+                    new_pa.add(l)
+        else:
+            new_pa.add(literal)
+
+    return new_pa
+
+
+def check_validity(positives, negatives, clause1, clause2):
     """
     :param positives: A list of positive partial assignments
     :param theory: A SAT Theory on which the validity of positives is to be checked
@@ -451,18 +497,52 @@ def check_validity(positives, theory):
         True    if all positives are valid in the SAT Theory
         False   if at least one of the positives is not True in that theory
     """
-    theory_valid = True
 
-    print("Positives:")
-    print_2d(positives)
+    clause_a, clause_b, clause_c = get_subclauses(clause1, clause2)
+    pos_loss_pa = copy(clause_b)
+    neg_loss_pa = set()
 
-    print("Theory")
-    print_2d(theory)
+    if (len(clause_a) == 1 or len(clause_c) == 1) and len(clause_b) > 1:
 
-    prolog = Prolog()
-    prolog.assertz("clause(michael, john)")
+        if len(clause_a) == 1:
+            # V-operator is applied on (a; b1; b2; b3), (b1; b2; b3; c1; c2; c3)
+            # To get (a; b1; b2; b3), (c1; c2; c3; -a)
 
-    return theory_valid
+            for c in clause_c:
+                pos_loss_pa.add(-1 * c)
+
+            a = copy(clause_a).pop()
+            pos_loss_pa.add(-1 * a)
+        elif len(clause_c) == 1:
+            # V-operator is applied on (a1; a2; a3; b1; b2; b3), (b1; b2; b3; c)
+            # To get (a1; a2; a3; -c), (b1; b2; b3; c)
+
+            for a in clause_a:
+                pos_loss_pa.add(-1 * a)
+
+            c = copy(clause_c).pop()
+            pos_loss_pa.add(-1 * c)
+
+        pos_loss_pa = substitute_new_predicates(pos_loss_pa)
+
+        if pos_loss_pa is None:
+            # pos_loss_pa is inconsistent; So it cannot be in the data
+            return True
+
+        pos_loss_pa = frozenset(pos_loss_pa)
+
+        for literal in pos_loss_pa:
+            neg_loss_pa.add(-1 * literal)
+
+        neg_loss_pa = frozenset(neg_loss_pa)
+
+        if check_subset(positives, pos_loss_pa) or check_subset(negatives, neg_loss_pa):
+            return False
+        else:
+            return True
+
+    else:
+        return True
 
 
 def sort_theory(theory):
@@ -702,9 +782,8 @@ def mistle(positives, negatives, lossless=False):
             # Theory cannot be compressed any further
             ignore_clauses.append((clause1, clause2))
             continue
-        elif is_lossless or (
-            is_lossless is False and check_validity(positives, theory)
-        ):
+        elif is_lossless:
+            # V - Operator is not applied
             # Continue compressing the theory
             # Delete the clauses used for last compression step
             theory, clause_length, overlap_matrix = delete_clause(
@@ -718,7 +797,43 @@ def mistle(positives, negatives, lossless=False):
                     theory, clause_length, overlap_matrix, clause
                 )
 
-            # ignore_clauses = []
+        else:
+            if check_validity(positives, negatives, clause1, clause2):
+                print(
+                    "Applying V-operator on ",
+                    clause1,
+                    " and ",
+                    clause2,
+                    " is valid with the data.",
+                )
+
+                # Delete the clauses used for last compression step
+                theory, clause_length, overlap_matrix = delete_clause(
+                    theory, clause_length, overlap_matrix, max_overlap_indices
+                )
+
+                # Insert clauses from compressed_clauses at appropriate lengths so that the theory remains sorted
+                # theory |= compressed_clauses
+                for clause in compressed_clauses:
+                    theory, clause_length, overlap_matrix = insert_clause(
+                        theory, clause_length, overlap_matrix, clause
+                    )
+            else:
+                (compressed_clauses, compression_size, is_lossless) = compress_pairwise(
+                    clause1, clause2, lossless=True
+                )
+
+                # Delete the clauses used for last compression step
+                theory, clause_length, overlap_matrix = delete_clause(
+                    theory, clause_length, overlap_matrix, max_overlap_indices
+                )
+
+                # Insert clauses from compressed_clauses at appropriate lengths so that the theory remains sorted
+                # theory |= compressed_clauses
+                for clause in compressed_clauses:
+                    theory, clause_length, overlap_matrix = insert_clause(
+                        theory, clause_length, overlap_matrix, clause
+                    )
 
         # print_2d(theory)
         # pbar.update(1)
@@ -747,6 +862,7 @@ def mistle(positives, negatives, lossless=False):
 
 
 new_var_counter = 1
+invented_predicate_definition = {}
 operator_counter = {"W": 0, "V": 0, "S": 0}
 positives, negatives = load_animal_taxonomy()
 theory = mistle(positives, negatives, lossless=False)
