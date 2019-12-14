@@ -2,6 +2,11 @@ from tqdm import tqdm
 import math
 from collections import Counter
 from copy import copy
+from time import time
+import numpy as np
+import sys
+
+np.set_printoptions(linewidth=150)
 
 
 def print_input_data_statistics(
@@ -59,72 +64,38 @@ def print_input_data_statistics(
 
 
 def load_animal_taxonomy():
-    a = 0
-    b = 1
-    c = 2
-    d = 3
-    e = 4
-    f = 5
-    g = 6
-    h = 7
-    i = 8
-    j = 9
-    k = 10
-    l = 11
-    m = 12
-    n = 13
+    a = 1
+    b = 2
+    c = 3
+    d = 4
+    e = 5
+    f = 6
+    g = 7
+    h = 8
+    i = 9
+    j = 10
+    k = 11
+    l = 12
+    m = 13
+    n = 14
 
     global new_var_counter
-    new_var_counter = 14
+    new_var_counter = 15
 
-    p1 = frozenset([a, b, -1 * c, -1 * d, -1 * e, -1 * f, g, -1 * h, i, j])
-    p2 = frozenset([a, -1 * b, -1 * c, -1 * d, -1 * e, f, g, -1 * h, i, j])
-    p3 = frozenset([a, -1 * b, c, -1 * d, -1 * e, -1 * f, g, -1 * h, i, j, -1 * l, m])
-    p4 = frozenset([a, -1 * b, c, -1 * d, -1 * e, -1 * f, g, -1 * h, i, j, l, -1 * m])
+    p1 = frozenset([a, b, -c, -d, -e, -f, g, -h, i, j])
+    p2 = frozenset([a, -b, -c, -d, -e, f, g, -h, i, j])
+    p3 = frozenset([a, -b, c, -d, -e, -f, g, -h, i, j, -l, m])
+    p4 = frozenset([a, -b, c, -d, -e, -f, g, -h, i, j, l, -m])
 
     positives = {p1, p2, p3, p4}
 
-    n1 = frozenset([-1 * b, c, -1 * d, -1 * e, -1 * f, g, -1 * h, i, -1 * j, k])
-    n2 = frozenset(
-        [-1 * b, -1 * c, d, -1 * e, -1 * f, -1 * g, h, i, -1 * j, -1 * l, m, n]
-    )
-    n3 = frozenset(
-        [-1 * b, -1 * c, d, -1 * e, -1 * f, -1 * g, h, i, -1 * j, l, -1 * m, n]
-    )
-    n4 = frozenset([b, -1 * c, -1 * d, -1 * e, -1 * f, g, -1 * h, -1 * i, -1 * j, k])
-    n5 = frozenset([-1 * b, -1 * c, d, -1 * e, -1 * f, g, -1 * h, i, -1 * j])
-    n6 = frozenset(
-        [
-            -1 * b,
-            c,
-            -1 * d,
-            -1 * e,
-            -1 * f,
-            g,
-            -1 * h,
-            -1 * i,
-            -1 * j,
-            -1 * k,
-            -1 * l,
-            m,
-        ]
-    )
-    n7 = frozenset(
-        [
-            -1 * b,
-            -1 * c,
-            -1 * d,
-            e,
-            -1 * f,
-            g,
-            -1 * h,
-            -1 * i,
-            -1 * j,
-            -1 * k,
-            l,
-            -1 * m,
-        ]
-    )
+    n1 = frozenset([-b, c, -d, -e, -f, g, -h, i, -j, k])
+    n2 = frozenset([-b, -c, d, -e, -f, -g, h, i, -j, -l, m, n])
+    n3 = frozenset([-b, -c, d, -e, -f, -g, h, i, -j, l, -m, n])
+    n4 = frozenset([b, -c, -d, -e, -f, g, -h, -i, -j, k])
+    n5 = frozenset([-b, -c, d, -e, -f, g, -h, i, -j])
+    n6 = frozenset([-b, c, -d, -e, -f, g, -h, -i, -j, -k, -l, m])
+    n7 = frozenset([-b, -c, -d, e, -f, g, -h, -i, -j, -k, l, -m])
 
     negatives = {n1, n2, n3, n4, n5, n6, n7}
 
@@ -139,7 +110,10 @@ def load_dataset(
     negation=False,
     load_top_k=None,
     switch_signs=False,
+    num_vars=0,
 ):
+    global new_var_counter
+    new_var_counter = num_vars + 1
 
     f = open("./Data/" + filename, "r")
     name = filename.split(".")[0].split("_")[0]
@@ -159,11 +133,12 @@ def load_dataset(
     for line in pbar:
         row = str(line).replace("\n", "").strip().split(" ")
         partial_assignmemnt = set()
-        for j in var_range:
+        for i, j in enumerate(var_range):
             if str(j) in row[:-1]:
-                partial_assignmemnt.add(j)
+                partial_assignmemnt.add(i + 1)
             elif negation:
-                partial_assignmemnt.add(-1 * j)
+                # Using closed world assumption to register absent variables as if they are false.
+                partial_assignmemnt.add(-(i + 1))
 
         if (not (switch_signs) and row[-1] == target_class[0]) or (
             switch_signs and row[-1] == target_class[1]
@@ -218,6 +193,7 @@ def load_adult(negation=False, load_top_k=None, switch_signs=False):
         negation,
         load_top_k,
         switch_signs,
+        num_vars=95,
     )
 
 
@@ -230,18 +206,20 @@ def load_breast(negation=False, load_top_k=None, switch_signs=False):
         negation,
         load_top_k,
         switch_signs,
+        num_vars=18,
     )
 
 
 def load_chess(negation=False, load_top_k=None, switch_signs=False):
     return load_dataset(
         "chess.txt",
-        699,
+        3196,
         list(range(1, 74)),
         ["74", "75"],
         negation,
         load_top_k,
         switch_signs,
+        num_vars=73,
     )
 
 
@@ -254,6 +232,7 @@ def load_ionosphere(negation=False, load_top_k=None, switch_signs=False):
         negation,
         load_top_k,
         switch_signs,
+        num_vars=155,
     )
 
 
@@ -266,6 +245,7 @@ def load_mushroom(negation=False, load_top_k=None, switch_signs=False):
         negation,
         load_top_k,
         switch_signs,
+        num_vars=116,
     )
 
 
@@ -278,6 +258,7 @@ def load_pima(negation=False, load_top_k=None, switch_signs=False):
         negation,
         load_top_k,
         switch_signs,
+        num_vars=36,
     )
 
 
@@ -291,6 +272,7 @@ def load_tictactoe(negation=False, load_top_k=None, switch_signs=False):
         negation,
         load_top_k,
         switch_signs,
+        num_vars=27,
     )
 
 
@@ -306,7 +288,7 @@ def get_literal_length(theory):
     return length
 
 
-def get_shannon_entropy_for_clause(clause):
+def get_shannon_entropy_for_list(clause):
     if len(clause) <= 1:
         return 0
 
@@ -323,15 +305,43 @@ def get_shannon_entropy_for_clause(clause):
     return entropy
 
 
-def get_shannon_entropy_for_theory(theory):
+def get_shannon_entropy_elementwise(theory):
     """
     :param theory: a list of clauses which are in the form of frozensets
     :return: the total number of bits required to represent the input theory
     """
     length = 0
+    bit_lengths = []
     for clause in theory:
-        length += get_shannon_entropy_for_clause(clause)
+        bl = get_shannon_entropy_for_list(clause)
+        length += bl
+        bit_lengths.append(bl)
+
+    print(bit_lengths)
+
     return length
+
+
+def get_bit_length_for_theory(theory):
+    """
+    :param theory: a list of clauses which are in the form of frozensets
+    :return: the total number of bits required to represent the input theory
+    """
+
+    counts = Counter()
+    total_literals = 0
+    for clause in theory:
+        for literal in clause:
+            counts[literal] += 1
+            total_literals += 1
+
+    entropy = 0
+    for c in counts.values():
+        p = float(c) / total_literals
+        if p > 0.0:
+            entropy -= math.log(p, 2)
+
+    return entropy
 
 
 def get_new_var():
@@ -356,7 +366,7 @@ def convert_to_clause(partial_assignment):
     """
     clause = set()
     for term in partial_assignment:
-        clause.add(-1 * term)
+        clause.add(-term)
     return frozenset(clause)
 
 
@@ -373,9 +383,9 @@ def convert_to_theory(partial_assignments):
 
 
 def get_subclauses(clause1, clause2):
-    clause_a = set(clause1 - clause2)
-    clause_b = set(clause1 & clause2)
-    clause_c = set(clause2 - clause1)
+    clause_a = copy(set(clause1 - clause2))
+    clause_b = copy(set(clause1 & clause2))
+    clause_c = copy(set(clause2 - clause1))
     return clause_a, clause_b, clause_c
 
 
@@ -409,6 +419,8 @@ def compress_pairwise(clause1, clause2, lossless=False):
 
     elif len(clause_b) == 0:
         # Cannot compress (a1; a2; a3), (c1; c2; c3)
+        print_1d(clause1)
+        print_1d(clause2)
         print("No Overlap Found")
         return ({clause1, clause2}, 0, None)
 
@@ -416,7 +428,7 @@ def compress_pairwise(clause1, clause2, lossless=False):
         # Apply V-operator on (a; b1; b2; b3), (b1; b2; b3; c1; c2; c3)
         # Return (a; b1; b2; b3), (c1; c2; c3; -a)
         a = clause_a.pop()
-        clause_c.add(-1 * a)
+        clause_c.add(-a)
         operator_counter["V"] += 1
         return ({clause1, frozenset(clause_c)}, len(clause_b) - 1, False)
 
@@ -424,7 +436,7 @@ def compress_pairwise(clause1, clause2, lossless=False):
         # Apply V-operator on (a1; a2; a3; b1; b2; b3), (b1; b2; b3; c)
         # Return (a1; a2; a3; -c), (b1; b2; b3; c)
         c = clause_c.pop()
-        clause_a.add(-1 * c)
+        clause_a.add(-c)
         operator_counter["V"] += 1
         return ({frozenset(clause_a), clause2}, len(clause_b) - 1, False)
 
@@ -437,10 +449,10 @@ def compress_pairwise(clause1, clause2, lossless=False):
         # Apply W-operator on (a1; a2; a3; b1; b2; b3), (b1; b2; b3; c1; c2; c3)
         # Return (a1; a2; a3; -z), (b1; b2; b3; z), (c1; c2; c3, -z)
         new_var = get_new_var()
-        clause_a.add(-1 * new_var)
+        clause_a.add(-new_var)
         invented_predicate_definition[new_var] = copy(clause_b)
         clause_b.add(new_var)
-        clause_c.add(-1 * new_var)
+        clause_c.add(-new_var)
         operator_counter["W"] += 1
         return (
             {frozenset(clause_a), frozenset(clause_b), frozenset(clause_c)},
@@ -464,35 +476,144 @@ def check_subset(pa_set, x):
     return False
 
 
-def substitute_new_predicates(pa):
-    new_pa = set()
+def substitute_pa(pa):
+    global invented_predicate_definition
+
+    # new_pa = set()
+    # for literal in pa:
+    #
+    #     if literal < 0:
+    #         base_literal = -literal
+    #     else:
+    #         base_literal = literal
+    #
+    #     if base_literal in invented_predicate_definition:
+    #         for l in invented_predicate_definition[base_literal]:
+    #             if literal > 0:
+    #                 if l in new_pa:
+    #                     return False
+    #                 new_pa.add(-l)
+    #             else:
+    #                 if -l in new_pa:
+    #                     return False
+    #                 new_pa.add(l)
+    #     else:
+    #         new_pa.add(literal)
+    #
+    # return new_pa
+
+    new_pas = [set()]
     for literal in pa:
 
         if literal < 0:
-            base_literal = -1 * literal
+            base_literal = -literal
         else:
             base_literal = literal
 
-        if base_literal in invented_predicate_definition:
-            for l in invented_predicate_definition[base_literal]:
-                if literal > 0:
-                    if l in new_pa:
-                        return None
-                    new_pa.add(-1 * l)
-                else:
-                    if -1 * l in new_pa:
-                        return None
-                    new_pa.add(l)
+        if literal > 0:
+            if base_literal in invented_predicate_definition:
+                for l in invented_predicate_definition[base_literal]:
+
+                    for i in range(len(new_pas)):
+                        if l in new_pas[i]:
+                            new_pas[i] = {"False"}
+                        elif "False" not in new_pas[i]:
+                            new_pas[i].add(-l)
+            else:
+                for i in range(len(new_pas)):
+                    if -literal in new_pas[i]:
+                        new_pas[i] = {"False"}
+                    elif "False" not in new_pas[i]:
+                        new_pas[i].add(literal)
         else:
-            new_pa.add(literal)
+            if base_literal in invented_predicate_definition:
+                # Recurse on all the literals present in the definition of the invented predicate
+                new_pas = new_pas * len(invented_predicate_definition[base_literal])
 
-    return new_pa
+                for i, l in enumerate(invented_predicate_definition[base_literal]):
+                    if -l in new_pas[i]:
+                        new_pas[i] = {"False"}
+                    elif "False" not in new_pas[i]:
+                        new_pas[i].add(l)
+
+            else:
+                for i in range(len(new_pas)):
+                    if -literal in new_pas[i]:
+                        new_pas[i] = {"False"}
+                    elif "False" not in new_pas[i]:
+                        new_pas[i].add(literal)
+
+    pruned_pas = []
+    for new_pa in new_pas:
+        if "False" in new_pa:
+            continue
+        else:
+            pruned_pas.append(new_pa)
+
+    return pruned_pas
 
 
-def check_validity(positives, negatives, clause1, clause2):
+def substitute_clause(clause):
+    # TODO: Why do we not substitute inveted predicates that are in the definition of other invented predicates?
+    global invented_predicate_definition
+
+    new_clauses = [set()]
+    for literal in clause:
+
+        if literal < 0:
+            base_literal = -literal
+        else:
+            base_literal = literal
+
+        if literal > 0:
+            if base_literal in invented_predicate_definition:
+                # Recurse on all the literals present in the definition of the invented predicate
+                new_clauses = new_clauses * len(
+                    invented_predicate_definition[base_literal]
+                )
+
+                for i, l in enumerate(invented_predicate_definition[base_literal]):
+                    if l in new_clauses[i]:
+                        new_clauses[i] = {"True"}
+                    elif "True" not in new_clauses[i]:
+                        new_clauses[i].add(-l)
+            else:
+                for i in range(len(new_clauses)):
+                    if -literal in new_clauses[i]:
+                        new_clauses[i] = {"True"}
+                    elif "True" not in new_clauses[i]:
+                        new_clauses[i].add(literal)
+        else:
+            if base_literal in invented_predicate_definition:
+                for l in invented_predicate_definition[base_literal]:
+
+                    for i in range(len(new_clauses)):
+                        if -l in new_clauses[i]:
+                            new_clauses[i] = {"True"}
+                        elif "True" not in new_clauses[i]:
+                            new_clauses[i].add(l)
+            else:
+                for i in range(len(new_clauses)):
+                    if -literal in new_clauses[i]:
+                        new_clauses[i] = {"True"}
+                    elif "True" not in new_clauses[i]:
+                        new_clauses[i].add(literal)
+
+    pruned_clauses = []
+    for new_clause in new_clauses:
+        if "True" in new_clause:
+            continue
+        else:
+            pruned_clauses.append(new_clause)
+
+    return pruned_clauses
+
+
+def check_clause_validity(positives, negatives, clause1, clause2):
     """
     :param positives: A list of positive partial assignments
-    :param theory: A SAT Theory on which the validity of positives is to be checked
+    :param negatives: A list of negative partial assignments
+    :param clause1, clause2: 2 clauses for V-operator
     :return:
         True    if all positives are valid in the SAT Theory
         False   if at least one of the positives is not True in that theory
@@ -500,7 +621,6 @@ def check_validity(positives, negatives, clause1, clause2):
 
     clause_a, clause_b, clause_c = get_subclauses(clause1, clause2)
     pos_loss_pa = copy(clause_b)
-    neg_loss_pa = set()
 
     if (len(clause_a) == 1 or len(clause_c) == 1) and len(clause_b) > 1:
 
@@ -509,40 +629,115 @@ def check_validity(positives, negatives, clause1, clause2):
             # To get (a; b1; b2; b3), (c1; c2; c3; -a)
 
             for c in clause_c:
-                pos_loss_pa.add(-1 * c)
+                pos_loss_pa.add(-c)
 
             a = copy(clause_a).pop()
-            pos_loss_pa.add(-1 * a)
+            pos_loss_pa.add(-a)
+
         elif len(clause_c) == 1:
             # V-operator is applied on (a1; a2; a3; b1; b2; b3), (b1; b2; b3; c)
             # To get (a1; a2; a3; -c), (b1; b2; b3; c)
 
             for a in clause_a:
-                pos_loss_pa.add(-1 * a)
+                pos_loss_pa.add(-a)
 
             c = copy(clause_c).pop()
-            pos_loss_pa.add(-1 * c)
+            pos_loss_pa.add(-c)
 
-        pos_loss_pa = substitute_new_predicates(pos_loss_pa)
+        pos_substituted_pas = substitute_pa(pos_loss_pa)
 
-        if pos_loss_pa is None:
+        if len(pos_substituted_pas) == 0:
             # pos_loss_pa is inconsistent; So it cannot be in the data
             return True
 
-        pos_loss_pa = frozenset(pos_loss_pa)
+        for pos_substituted_pa in pos_substituted_pas:
+            neg_substituted_pa = set()
+            for literal in pos_substituted_pa:
+                if literal == "True" or literal == "False":
+                    print(
+                        "True/False encountered in the partial assignment",
+                        str(pos_substituted_pa),
+                    )
+                neg_substituted_pa.add(-literal)
 
-        for literal in pos_loss_pa:
-            neg_loss_pa.add(-1 * literal)
+            pos_substituted_pa = frozenset(pos_substituted_pa)
+            neg_substituted_pa = frozenset(neg_substituted_pa)
 
-        neg_loss_pa = frozenset(neg_loss_pa)
+            if check_subset(positives, pos_substituted_pa) or check_subset(
+                negatives, neg_substituted_pa
+            ):
+                return False
 
-        if check_subset(positives, pos_loss_pa) or check_subset(negatives, neg_loss_pa):
-            return False
-        else:
-            return True
+        return True
 
     else:
         return True
+
+
+def check_pa_validity(pa, theory, sign=None):
+    pos_valid = True
+    for i, clause in enumerate(theory):
+        substituted_clauses = substitute_clause(clause)
+
+        for sub_clause in substituted_clauses:
+            clause_valid = False
+            for literal in sub_clause:
+                if literal in pa or -literal not in pa:
+                    clause_valid = True
+                    if sign == "-":
+                        print("Clause violated by partial assignment")
+                        print("Clause", end="\t")
+                        print_1d(clause)
+                        print("Substituted Clause", end="\t")
+                        print_1d(sub_clause)
+                        print("Partial Assignment", end="\t")
+                        print_1d(pa)
+                        a = 1
+                    break
+
+            if sign == "+" and not clause_valid:
+                print("Clause violated by partial assignment")
+                print("Clause", end="\t")
+                print_1d(clause)
+                print("Substituted Clause", end="\t")
+                print_1d(sub_clause)
+                print("Partial Assignment", end="\t")
+                print_1d(pa)
+                pos_valid = False
+                break
+
+    return pos_valid
+
+
+def count_violations(positives, negatives, theory):
+    print()
+    violated_pos = []
+    pos_counter = 0
+    for pos in positives:
+        if not check_pa_validity(pos, theory, "+"):
+            violated_pos.append(pos)
+            pos_counter += 1
+    print(
+        pos_counter,
+        " violations of positive partial assignments found for the learned theory.",
+    )
+    if pos_counter > 0:
+        print_2d(violated_pos)
+
+    violated_neg = []
+    neg_counter = 0
+    for neg in negatives:
+        if check_pa_validity(neg, theory, "-"):
+            violated_neg.append(neg)
+            neg_counter += 1
+    print(
+        neg_counter,
+        " violations of negative partial assignments found for the learned theory.",
+    )
+    if neg_counter > 0:
+        print_2d(violated_neg)
+
+    return pos_counter + neg_counter
 
 
 def sort_theory(theory):
@@ -550,22 +745,34 @@ def sort_theory(theory):
     clause_length = []
     for clause in theory:
         clause_length.append(len(clause))
+    clause_length = np.array(clause_length)
+    index = clause_length.argsort()[::-1]
+    clause_length = clause_length[index]
 
-    index = list(range(len(clause_length)))
-    index.sort(key=clause_length.__getitem__, reverse=True)
-    clause_length = [clause_length[i] for i in index]
+    # index = list(range(len(clause_length)))
+    # index.sort(key=clause_length.__getitem__, reverse=True)
+    # clause_length = [clause_length[i] for i in index]
     theory = [theory[i] for i in index]
 
-    # for clause, length in zip(theory, clause_length):
-    #     print(length, clause)
-    # print()
+    # print_2d(theory)
 
     return theory, clause_length
 
 
+def print_1d(frozen_set):
+    l = list(frozen_set)
+    abs_l = [abs(i) for i in l]
+    print(np.array([x for _, x in sorted(zip(abs_l, l))]))
+
+
 def print_2d(matrix):
     for row in matrix:
-        print(row)
+        if isinstance(row, np.ndarray):
+            print(row)
+        elif isinstance(row, frozenset):
+            print_1d(row)
+        else:
+            print(row)
     print()
 
 
@@ -585,10 +792,10 @@ def get_overlap_matrix(theory):
 
     # print_2d(overlap_matrix)
 
-    return overlap_matrix
+    return np.array(overlap_matrix)
 
 
-def select_clauses_1(overlap_matrix):
+def select_clauses_1(overlap_matrix, search_index, prev_overlap_size):
     """
     Select clauses for next compression step WITH a compression matrix
     :param overlap_matrix: A triangular matrix that stores overlap of ith and jth clause of the theory at (i,j) position
@@ -597,18 +804,37 @@ def select_clauses_1(overlap_matrix):
         max_overlap_size: The maximum overlap size
     """
 
-    max_overlap_size = None
-    max_overlap_indices = (None, None)
+    # max_overlap_size = 0
+    # max_overlap_indices = (0, 0)
+    # global row_pointer, col_pointer
+    # for i, row in enumerate(overlap_matrix[row_pointer:]):
+    #     for j, overlap in enumerate(row[max(col_pointer, row_pointer + i + 1) :]):
+    #         if overlap > max_overlap_size:
+    #             max_overlap_size = overlap
+    #             max_overlap_indices = (
+    #                 row_pointer + i,
+    #                 max(col_pointer, row_pointer + i + 1) + j,
+    #             )
+    #             if prev_overlap_size and max_overlap_size >= prev_overlap_size:
+    #                 break
+    #
+    # (row_pointer, col_pointer) = max_overlap_indices
+
+    max_overlap_size = 0
+    max_overlap_indices = (0, 0)
     for i, row in enumerate(overlap_matrix):
         for j, overlap in enumerate(row[i + 1 :]):
             if overlap > max_overlap_size:
                 max_overlap_size = overlap
-                max_overlap_indices = (i, j)
+                max_overlap_indices = (i, i + 1 + j)
+                if prev_overlap_size and max_overlap_size >= prev_overlap_size:
+                    break
 
     return max_overlap_indices, max_overlap_size
 
 
-def select_clauses_2(theory, clause_length, prev_overlap_size, ignore_indices):
+# def select_clauses_2(theory, clause_length, prev_overlap_size, ignore_indices):
+def select_clauses_2(theory, clause_length, prev_overlap_size):
     """
     Select clauses for next compression step WITHOUT a compression matrix
     :param theory: List of clauses sorted descending by their length
@@ -626,8 +852,8 @@ def select_clauses_2(theory, clause_length, prev_overlap_size, ignore_indices):
     for x, clause1 in enumerate(theory):
         for y, clause2 in enumerate(theory[x + 1 : end]):
 
-            if (clause1, clause2) in ignore_indices:
-                continue
+            # if (clause1, clause2) in ignore_indices:
+            #     continue
             # if max_overlap_size > len(clause2):
 
             # This step may be highly greedy and sub-optimal, but it should make things faster
@@ -653,18 +879,24 @@ def select_clauses_2(theory, clause_length, prev_overlap_size, ignore_indices):
 
 def delete_clause(theory, clause_length, overlap_matrix, indices):
     n = len(theory)
-    del clause_length[indices[1]]
-    del clause_length[indices[0]]
+    clause_length = np.delete(clause_length, indices)
+    # del clause_length[indices[1]]
+    # del clause_length[indices[0]]
     del theory[indices[1]]
     del theory[indices[0]]
 
     # print_2d(overlap_matrix)
 
-    del overlap_matrix[indices[1]]
-    del overlap_matrix[indices[0]]
-    for i in range(n - 2):
-        del overlap_matrix[i][indices[1]]
-        del overlap_matrix[i][indices[0]]
+    overlap_matrix = np.delete(overlap_matrix, indices[1], 0)
+    overlap_matrix = np.delete(overlap_matrix, indices[0], 0)
+    overlap_matrix = np.delete(overlap_matrix, indices[1], 1)
+    overlap_matrix = np.delete(overlap_matrix, indices[0], 1)
+
+    # del overlap_matrix[indices[1]]
+    # del overlap_matrix[indices[0]]
+    # for i in range(n - 2):
+    #     del overlap_matrix[i][indices[1]]
+    #     del overlap_matrix[i][indices[0]]
 
     # print_2d(overlap_matrix)
 
@@ -672,68 +904,91 @@ def delete_clause(theory, clause_length, overlap_matrix, indices):
 
 
 def insert_clause(theory, clause_length, overlap_matrix, clause):
-    i = int(len(clause_length) / 2)
-    start = 0
-    end = len(clause_length)
-    index_found = False
-    while i < len(clause_length):
-        if len(clause) <= clause_length[-1]:
-            # Insert element at the end of the list
-            index = len(clause_length)
-            index_found = True
-            break
-        elif len(clause) >= clause_length[0]:
-            # Insert element at the start of the list
-            index = 0
-            index_found = True
-            break
-        elif len(clause) <= clause_length[i] and len(clause) >= clause_length[i + 1]:
-            # Insert element at/before (i + 1) if
-            # clause_length[i] >= len(clause) >= clause_length[i + 1]
-            index = i + 1
-            index_found = True
-            break
-        elif len(clause) > clause_length[i]:
-            end = i
-            i = int((i + start) / 2)
-        elif len(clause) < clause_length[i]:
-            start = i
-            i = int((end + i) / 2)
-        else:
-            i += 1
+    # i = int(len(clause_length) / 2)
+    # start = 0
+    # end = len(clause_length)
+    # index_found = False
+    # while i < len(clause_length):
+    #     if len(clause) <= clause_length[-1]:
+    #         # Insert element at the end of the list
+    #         index = len(clause_length)
+    #         index_found = True
+    #         break
+    #     elif len(clause) >= clause_length[0]:
+    #         # Insert element at the start of the list
+    #         index = 0
+    #         index_found = True
+    #         break
+    #     elif len(clause) <= clause_length[i] and len(clause) >= clause_length[i + 1]:
+    #         # Insert element at/before (i + 1) if
+    #         # clause_length[i] >= len(clause) >= clause_length[i + 1]
+    #         index = i + 1
+    #         index_found = True
+    #         break
+    #     elif len(clause) > clause_length[i]:
+    #         end = i
+    #         i = int((i + start) / 2)
+    #     elif len(clause) < clause_length[i]:
+    #         start = i
+    #         i = int((end + i) / 2)
+    #     else:
+    #         i += 1
+    # assert index_found
 
+    index = np.searchsorted(-clause_length, -len(clause), side="right")
+
+    # print("Inserting " + str(clause) + " at index = " + str(index))
+
+    # Insert zero rows and columns in overlap_matrix at index
+    overlap_matrix = np.insert(overlap_matrix, index, np.zeros(len(overlap_matrix)), 0)
+    overlap_matrix = np.insert(overlap_matrix, index, np.zeros(len(overlap_matrix)), 1)
     # print_2d(overlap_matrix)
-
-    assert index_found
+    theory[index:index] = [clause]
 
     for i, clause2 in enumerate(theory):
+        if i == index:
+            continue
+        overlap = len(clause & clause2)
         if i < index:
-            overlap_matrix[i][index:index] = [len(clause & clause2)]
+            overlap_matrix[i][index] = overlap
         else:
-            overlap_matrix[i][index:index] = [0]
+            overlap_matrix[index][i] = overlap
 
     # print_2d(overlap_matrix)
 
-    new_overlap_row = [0] * (len(theory) + 1)
-    for j, clause2 in enumerate(theory[index + 1 :]):
-        new_overlap_row[index + j + 1] = len(clause & clause2)
+    # new_overlap_row = [0] * (len(theory) + 1)
+    # for j, clause2 in enumerate(theory[index + 1 :]):
+    #     new_overlap_row[index + j + 1] = len(clause & clause2)
+    #
+    # overlap_matrix[index:index] = [new_overlap_row]
 
-    overlap_matrix[index:index] = [new_overlap_row]
+    # clause_length[index:index] = [len(clause)]
+    clause_length = np.insert(clause_length, index, len(clause))
 
-    # print_2d(overlap_matrix)
-
-    theory[index:index] = [clause]
-    clause_length[index:index] = [len(clause)]
+    # print_2d(theory)
+    # print_1d(clause_length)
 
     return theory, clause_length, overlap_matrix
 
 
-def mistle(positives, negatives, lossless=False):
+def mistle(positives, negatives, lossless=False, description_measure="ll"):
 
-    input_length = get_literal_length(negatives)
+    start_time = time()
+
+    global operator_counter, new_var_counter
+    input_literal_length = get_literal_length(negatives)
+    input_bit_length = get_bit_length_for_theory(negatives)
+
+    if description_measure == "ll":
+        input_length = input_literal_length
+    elif description_measure == "se":
+        input_length = input_bit_length
+
     print(
         "\nInput Theory:\n\tLiteral Length = "
-        + str(input_length)
+        + str(input_literal_length)
+        + "\n\tBit Length = "
+        + str(input_bit_length)
         + "\n\tNumber of clauses = "
         + str(len(negatives))
     )
@@ -742,46 +997,77 @@ def mistle(positives, negatives, lossless=False):
 
     # Remove redundant clauses from the theory
     theory = convert_to_theory(set(negatives))
-    print_2d(theory)
+    # print_2d(theory)
     theory, clause_length = sort_theory(theory)
 
     overlap_matrix = get_overlap_matrix(theory)
 
     overlap_size = None
+    search_index = None
     compression_counter = 0
-    ignore_clauses = []
-    # pbar = tqdm(total=int(1.1 * len(theory) + 100))
-    # pbar.set_description("Compressing Clauses")
+    # ignore_clauses = []
+    pbar = tqdm(total=int(1.1 * len(theory) + 100))
+    pbar.set_description("Compressing Clauses")
     while True:
         prev_overlap_size = overlap_size
-        max_overlap_indices, overlap_size = select_clauses_2(
-            theory, clause_length, prev_overlap_size, ignore_clauses
+        # max_overlap_indices, overlap_size = select_clauses_2(
+        #     theory, clause_length, prev_overlap_size, ignore_clauses
+        # )
+        # max_overlap_indices, overlap_size = select_clauses_2(
+        #     theory, clause_length, prev_overlap_size
+        # )
+        max_overlap_indices, overlap_size = select_clauses_1(
+            overlap_matrix, search_index, prev_overlap_size
         )
+
         if overlap_size < 2:
             break
 
         clause1 = theory[max_overlap_indices[0]]
         clause2 = theory[max_overlap_indices[1]]
 
-        print(
-            "\nCompressing ("
-            + str(clause1)
-            + ") and ("
-            + str(clause2)
-            + ") for overlap of "
-            + str(overlap_size)
-            + " literals."
-        )
+        # print(
+        #     "\nCompressing ("
+        #     + str(clause1)
+        #     + ") and ("
+        #     + str(clause2)
+        #     + ") for overlap of "
+        #     + str(overlap_size)
+        #     + " literals."
+        # )
         (compressed_clauses, compression_size, is_lossless) = compress_pairwise(
             clause1, clause2, lossless=lossless
         )
-        print(compression_counter, compressed_clauses, compression_size, is_lossless)
+        # print(compression_counter, compressed_clauses, compression_size, is_lossless)
+        # print(overlap_size, compression_size, str(operator_counter))
+        if overlap_size - compression_size > 2:
+
+            print(len(clause1))
+            print_1d(clause1)
+            print(len(clause2))
+            print_1d(clause2)
+            print("Overlap = " + str(len(clause1 & clause2)))
+            clause_a, clause_b, clause_c = get_subclauses(clause1, clause2)
+            print(
+                "len(a) = "
+                + str(len(clause_a))
+                + ";\tlen(b) = "
+                + str(len(clause_b))
+                + ";\tlen(c) = "
+                + str(len(clause_c))
+            )
+            print_2d(theory)
+            print_2d(overlap_matrix)
+            a = 1
         compression_counter += 1
 
         if len(compressed_clauses) == 2 and compression_size == 0:
             # Theory cannot be compressed any further
-            ignore_clauses.append((clause1, clause2))
-            continue
+            # ignore_clauses.append((clause1, clause2))
+            # overlap_matrix[max_overlap_indices[0]][max_overlap_indices[1]] = -1
+            # continue
+            # Initialize search index
+            break
         elif is_lossless:
             # V - Operator is not applied
             # Continue compressing the theory
@@ -798,14 +1084,14 @@ def mistle(positives, negatives, lossless=False):
                 )
 
         else:
-            if check_validity(positives, negatives, clause1, clause2):
-                print(
-                    "Applying V-operator on ",
-                    clause1,
-                    " and ",
-                    clause2,
-                    " is valid with the data.",
-                )
+            if check_clause_validity(positives, negatives, clause1, clause2):
+                # print(
+                #     "Applying V-operator on "
+                #     + str(clause1)
+                #     + " and "
+                #     + str(clause2)
+                #     + " is valid with the data."
+                # )
 
                 # Delete the clauses used for last compression step
                 theory, clause_length, overlap_matrix = delete_clause(
@@ -836,33 +1122,80 @@ def mistle(positives, negatives, lossless=False):
                     )
 
         # print_2d(theory)
-        # pbar.update(1)
+        pbar.update(1)
 
-    global new_var_counter, operator_counter
-    output_length = get_literal_length(theory)
+    output_literal_length = get_literal_length(theory)
+    output_bit_length = get_bit_length_for_theory(theory)
+
+    if description_measure == "ll":
+        output_length = output_literal_length
+    elif description_measure == "se":
+        output_length = output_bit_length
+
     print(
         "\nResultant Theory:\n\tLiteral Length = "
-        + str(output_length)
+        + str(output_literal_length)
+        + "\n\tBit Length = "
+        + str(output_bit_length)
         + "\n\tNumber of clauses = "
         + str(len(theory))
-        + "\n\tNumber of invented predicates = "
-        + str(new_var_counter - 1)
-        + "\n\t% Compressed Literals = "
+        + "\n\t% Compressed Literals (For measure: "
+        + str(description_measure)
+        + ") = "
         + str(round(output_length * 100 / input_length, 2))
         + "%"
         + "\n\tOperator Count = "
         + str(operator_counter)
-        + "\n\tOverlap Matrix = "
+        + "\n\tTime Taken = "
+        + str(time() - start_time)
+        + " seconds"
+        # + "\n\tOverlap Matrix = "
     )
-    print_2d(overlap_matrix)
-    print()
-    print_2d(theory)
+    # print_2d(overlap_matrix)
+    # print()
+    # print_2d(theory)
 
     return theory
 
 
+def run_all(outfile):
+    sys.stdout = open(outfile, "a+")
+
+    # 1
+    theory = mistle(*load_animal_taxonomy(), lossless=False)
+    theory = mistle(*load_animal_taxonomy(negation=True), lossless=False)
+    # 2
+    theory = mistle(*load_adult(), lossless=False)
+    theory = mistle(*load_adult(negation=True), lossless=False)
+    # 3
+    theory = mistle(*load_breast(), lossless=False)
+    theory = mistle(*load_breast(negation=True), lossless=False)
+    # 4
+    theory = mistle(*load_chess(), lossless=False)
+    theory = mistle(*load_chess(negation=True), lossless=False)
+    # 5
+    theory = mistle(*load_ionosphere(), lossless=False)
+    theory = mistle(*load_ionosphere(negation=True), lossless=False)
+    # 6
+    theory = mistle(*load_mushroom(), lossless=False)
+    theory = mistle(*load_mushroom(negation=True), lossless=False)
+    # 7
+    theory = mistle(*load_pima(), lossless=False)
+    theory = mistle(*load_pima(negation=True), lossless=False)
+    # 8
+    theory = mistle(*load_tictactoe(), lossless=False)
+    theory = mistle(*load_tictactoe(negation=True), lossless=False)
+
+
+row_pointer = 0
+col_pointer = 0
 new_var_counter = 1
 invented_predicate_definition = {}
 operator_counter = {"W": 0, "V": 0, "S": 0}
-positives, negatives = load_animal_taxonomy()
-theory = mistle(positives, negatives, lossless=False)
+
+# theory = mistle(*load_animal_taxonomy(), lossless=False, description_measure="ll")
+# positives, negatives = load_animal_taxonomy()
+positives, negatives = load_ionosphere()
+theory = mistle(positives, negatives, lossless=False, description_measure="ll")
+
+count = count_violations(positives, negatives, theory)

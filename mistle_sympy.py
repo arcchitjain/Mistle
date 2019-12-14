@@ -2,7 +2,8 @@ from sympy import symbols
 from tqdm import tqdm
 import math
 from collections import Counter
-from pyswip import Prolog
+
+# from pyswip import Prolog
 
 
 def print_input_data_statistics(
@@ -495,28 +496,28 @@ def check_validity(positives, theory):
     """
     theory_valid = True
 
-    print("Positives:")
-    print_2d(positives)
+    # print("Positives:")
+    # print_2d(positives)
+    #
+    # print("Theory")
+    # print_2d(theory)
 
-    print("Theory")
-    print_2d(theory)
-
-    for pos in positives:
-        pos_invalid = False
-        for clause in theory:
-            clause_validy = False
-            for literal in clause:
-                if literal in pos:
-                    clause_validy = True
-                    break
-
-            if not clause_validy:
-                pos_invalid = True
-                break
-
-        if pos_invalid:
-            theory_valid = False
-            break
+    # for pos in positives:
+    #     pos_invalid = False
+    #     for clause in theory:
+    #         clause_validy = False
+    #         for literal in clause:
+    #             if literal in pos:
+    #                 clause_validy = True
+    #                 break
+    #
+    #         if not clause_validy:
+    #             pos_invalid = True
+    #             break
+    #
+    #     if pos_invalid:
+    #         theory_valid = False
+    #         break
 
     return theory_valid
 
@@ -718,7 +719,7 @@ def mistle(positives, negatives, lossless=False):
 
     # Remove redundant clauses from the theory
     theory = convert_to_theory(set(negatives))
-    print_2d(theory)
+    # print_2d(theory)
     theory, clause_length = sort_theory(theory)
 
     overlap_matrix = get_overlap_matrix(theory)
@@ -726,8 +727,8 @@ def mistle(positives, negatives, lossless=False):
     overlap_size = None
     compression_counter = 0
     ignore_clauses = []
-    # pbar = tqdm(total=int(1.1 * len(theory) + 100))
-    # pbar.set_description("Compressing Clauses")
+    pbar = tqdm(total=int(1.1 * len(theory) + 100))
+    pbar.set_description("Compressing Clauses")
     while True:
         prev_overlap_size = overlap_size
         max_overlap_indices, overlap_size = select_clauses_2(
@@ -739,25 +740,26 @@ def mistle(positives, negatives, lossless=False):
         clause1 = theory[max_overlap_indices[0]]
         clause2 = theory[max_overlap_indices[1]]
 
-        print(
-            "\nCompressing ("
-            + str(clause1)
-            + ") and ("
-            + str(clause2)
-            + ") for overlap of "
-            + str(overlap_size)
-            + " literals."
-        )
+        # print(
+        #     "\nCompressing ("
+        #     + str(clause1)
+        #     + ") and ("
+        #     + str(clause2)
+        #     + ") for overlap of "
+        #     + str(overlap_size)
+        #     + " literals."
+        # )
         (compressed_clauses, compression_size, is_lossless) = compress_pairwise(
             clause1, clause2, lossless=lossless
         )
-        print(compression_counter, compressed_clauses, compression_size, is_lossless)
+        # print(compression_counter, compressed_clauses, compression_size, is_lossless)
         compression_counter += 1
 
         if len(compressed_clauses) == 2 and compression_size == 0:
             # Theory cannot be compressed any further
-            ignore_clauses.append((clause1, clause2))
-            continue
+            # ignore_clauses.append((clause1, clause2))
+            # continue
+            break
         elif is_lossless or (
             is_lossless is False and check_validity(positives, theory)
         ):
@@ -795,23 +797,25 @@ def mistle(positives, negatives, lossless=False):
         + str(operator_counter)
         + "\n\tOverlap Matrix = "
     )
-    print_2d(overlap_matrix)
-    print()
-    print_2d(theory)
+    # print_2d(overlap_matrix)
+    # print()
+    # print_2d(theory)
 
     return theory
 
 
 new_var_counter = 1
 operator_counter = {"W": 0, "V": 0, "S": 0}
-positives, negatives = load_animal_taxonomy()
-theory = mistle(positives, negatives, lossless=False)
+# positives, negatives = load_animal_taxonomy()
+# theory = mistle(positives, negatives, lossless=False)
 # theory = mistle(negatives, positives, lossless=False)
 # _, input_clauses = load_mushroom(negation = True, load_top_k = None)
 # _, input_clauses = load_adult()
 # _, input_clauses = load_breast()
 # _, input_clauses = load_mushroom()
-# _, input_clauses = load_ionosphere()
+_, input_clauses = load_ionosphere()
+theory = mistle(None, input_clauses, lossless=False)
+
 # _, input_clauses = load_pima()
 # _, input_clauses = load_tictactoe()
 # theory = mistle(input_clauses)
