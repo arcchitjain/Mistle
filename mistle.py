@@ -4,14 +4,26 @@ from collections import Counter
 from copy import copy
 from time import time
 import numpy as np
-import sys
+
+# from pysmt.shortcuts import Symbol, And, Or, Not, is_sat
+# from z3 import *
+from pycosat import solve
 
 np.set_printoptions(linewidth=150)
 
 
 def print_input_data_statistics(
-    name, pos_freq, neg_freq, target_class, negation, load_top_k, switch_signs
+    name,
+    positive_input_clauses,
+    negative_input_clauses,
+    target_class,
+    negation,
+    load_top_k,
+    switch_signs,
 ):
+    pos_freq = len(positive_input_clauses)
+    neg_freq = len(negative_input_clauses)
+
     print()
     print("Input Data Statistics:")
     print("\tDataset Name \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t: " + name)
@@ -29,6 +41,25 @@ def print_input_data_statistics(
             "\tNumber of negative partial assignments loaded from the top of the file \t: "
             + str(load_top_k)
         )
+
+    inconsistent_clauses = set(positive_input_clauses) & set(negative_input_clauses)
+    print(
+        "\tNumber of inconsistent clauses found \t\t\t\t\t\t\t\t\t: "
+        + str(len(inconsistent_clauses))
+    )
+
+    pos_redundancies = len(positive_input_clauses) - len(set(positive_input_clauses))
+    print(
+        "\tNumber of positive redundancies found \t\t\t\t\t\t\t\t\t: "
+        + str(pos_redundancies)
+    )
+
+    neg_redundancies = len(negative_input_clauses) - len(set(negative_input_clauses))
+    print(
+        "\tNumber of negative redundancies found \t\t\t\t\t\t\t\t\t: "
+        + str(neg_redundancies)
+    )
+
     print()
 
     if switch_signs:
@@ -63,7 +94,7 @@ def print_input_data_statistics(
     print()
 
 
-def load_animal_taxonomy():
+def load_animal_taxonomy(switch_signs=False):
     a = 1
     b = 2
     c = 3
@@ -99,7 +130,19 @@ def load_animal_taxonomy():
 
     negatives = {n1, n2, n3, n4, n5, n6, n7}
 
-    return positives, negatives
+    print_input_data_statistics(
+        "Animal Taxonomy",
+        positives,
+        negatives,
+        target_class=["B", "NB"],
+        negation=False,
+        load_top_k=False,
+        switch_signs=False,
+    )
+    if switch_signs:
+        return negatives, positives
+    else:
+        return positives, negatives
 
 
 def load_dataset(
@@ -111,6 +154,7 @@ def load_dataset(
     load_top_k=None,
     switch_signs=False,
     num_vars=0,
+    load_tqdm=True,
 ):
     global new_var_counter
     new_var_counter = num_vars + 1
@@ -122,15 +166,16 @@ def load_dataset(
     # positive_input_clauses = set()
     # negative_input_clauses = set()
 
-    positive_input_clauses = []
-    negative_input_clauses = []
+    positive_pas = []
+    negative_pas = []
 
-    pbar = tqdm(f, total=total)
-    pbar.set_description("Reading input file for " + name)
+    if load_tqdm:
+        pbar = tqdm(f, total=total)
+        pbar.set_description("Reading input file for " + name)
 
     pos_freq = 0
     neg_freq = 0
-    for line in pbar:
+    for line in f:
         row = str(line).replace("\n", "").strip().split(" ")
         partial_assignmemnt = set()
         for i, j in enumerate(var_range):
@@ -143,48 +188,82 @@ def load_dataset(
         if (not (switch_signs) and row[-1] == target_class[0]) or (
             switch_signs and row[-1] == target_class[1]
         ):
-            negative_input_clauses.append(frozenset(partial_assignmemnt))
-            # negative_input_clauses.add(frozenset(partial_assignmemnt))
+            negative_pas.append(frozenset(partial_assignmemnt))
             neg_freq += 1
-            if load_top_k and len(negative_input_clauses) == load_top_k:
+            if load_top_k and len(negative_pas) == load_top_k:
                 # Top k negative clauses have been loaded already
                 break
         elif (not (switch_signs) and row[-1] == target_class[1]) or (
             switch_signs and row[-1] == target_class[0]
         ):
-            positive_input_clauses.append(frozenset(partial_assignmemnt))
-            # positive_input_clauses.add(frozenset(partial_assignmemnt))
+            positive_pas.append(frozenset(partial_assignmemnt))
             pos_freq += 1
         else:
             print("Row found without target class at the end:\n")
             print(line)
 
+        if load_tqdm:
+            pbar.update(1)
+
     print_input_data_statistics(
-        name, pos_freq, neg_freq, target_class, negation, load_top_k, switch_signs
+        name,
+        positive_pas,
+        negative_pas,
+        target_class,
+        negation,
+        load_top_k,
+        switch_signs,
     )
 
-    inconsistent_clauses = set(positive_input_clauses) & set(negative_input_clauses)
-    if len(inconsistent_clauses) != 0:
-        print(str(len(inconsistent_clauses)) + " inconsistent clauses found.")
-        for i, partial_assignmemnt in enumerate(inconsistent_clauses):
-            if i < 10:
-                print(i, partial_assignmemnt)
-            else:
-                break
+    # # Remove redundant partial assignments
+    # positive_pas = set(positive_pas)
+    # negative_pas = set(negative_pas)
+    #
+    # # Remove inconsistent partial assignments (Those pas that are both classified as +ves and -ves) in the data
+    # inconsistent_pas = positive_pas & negative_pas
+    # positive_pas = positive_pas - inconsistent_pas
+    # negative_pas = negative_pas - inconsistent_pas
+    #
+    # input_literal_length = get_literal_length(negative_pas)
+    # input_bit_length = get_bit_length_for_theory(negative_pas)
+    #
+    # print(
+    #     "\nInput Theory (without redundancies and inconsistencies):\n\tLiteral Length = "
+    #     + str(input_literal_length)
+    #     + "\n\tBit Length = "
+    #     + str(input_bit_length)
+    #     + "\n\tNumber of clauses = "
+    #     + str(len(negative_pas))
+    # )
+    return (positive_pas, negative_pas)
 
-    redundancies = (
-        len(positive_input_clauses)
-        + len(negative_input_clauses)
-        - len(set(positive_input_clauses))
-        - len(set(negative_input_clauses))
-    )
-    if redundancies != 0:
-        print(str(redundancies) + " duplicate found.")
+    # # Remove inconsistent partial assignments (Those pas that are both classified as +ves and -ves) in the data
+    # new_positive_pas = []
+    # for pa in positive_pas:
+    #     if pa not in negative_pas:
+    #         new_positive_pas.append(pa)
+    #
+    # new_negative_pas = []
+    # for pa in negative_pas:
+    #     if pa not in positive_pas:
+    #         new_negative_pas.append(pa)
+    #
+    # input_literal_length = get_literal_length(new_negative_pas)
+    # input_bit_length = get_bit_length_for_theory(new_negative_pas)
+    #
+    # print(
+    #     "\nInput Theory (only without inconsistencies):\n\tLiteral Length = "
+    #     + str(input_literal_length)
+    #     + "\n\tBit Length = "
+    #     + str(input_bit_length)
+    #     + "\n\tNumber of clauses = "
+    #     + str(len(negative_pas))
+    # )
+    #
+    # return (new_positive_pas, new_negative_pas)
 
-    return (positive_input_clauses, negative_input_clauses)
 
-
-def load_adult(negation=False, load_top_k=None, switch_signs=False):
+def load_adult(negation=False, load_top_k=None, switch_signs=False, load_tqdm=True):
     return load_dataset(
         "adult.D97.N48842.C2.num",
         48842,
@@ -194,10 +273,11 @@ def load_adult(negation=False, load_top_k=None, switch_signs=False):
         load_top_k,
         switch_signs,
         num_vars=95,
+        load_tqdm=load_tqdm,
     )
 
 
-def load_breast(negation=False, load_top_k=None, switch_signs=False):
+def load_breast(negation=False, load_top_k=None, switch_signs=False, load_tqdm=True):
     return load_dataset(
         "breast.D20.N699.C2.num",
         699,
@@ -207,10 +287,11 @@ def load_breast(negation=False, load_top_k=None, switch_signs=False):
         load_top_k,
         switch_signs,
         num_vars=18,
+        load_tqdm=load_tqdm,
     )
 
 
-def load_chess(negation=False, load_top_k=None, switch_signs=False):
+def load_chess(negation=False, load_top_k=None, switch_signs=False, load_tqdm=True):
     return load_dataset(
         "chess.txt",
         3196,
@@ -220,10 +301,13 @@ def load_chess(negation=False, load_top_k=None, switch_signs=False):
         load_top_k,
         switch_signs,
         num_vars=73,
+        load_tqdm=load_tqdm,
     )
 
 
-def load_ionosphere(negation=False, load_top_k=None, switch_signs=False):
+def load_ionosphere(
+    negation=False, load_top_k=None, switch_signs=False, load_tqdm=True
+):
     return load_dataset(
         "ionosphere.D157.N351.C2.num",
         351,
@@ -233,10 +317,11 @@ def load_ionosphere(negation=False, load_top_k=None, switch_signs=False):
         load_top_k,
         switch_signs,
         num_vars=155,
+        load_tqdm=load_tqdm,
     )
 
 
-def load_mushroom(negation=False, load_top_k=None, switch_signs=False):
+def load_mushroom(negation=False, load_top_k=None, switch_signs=False, load_tqdm=True):
     return load_dataset(
         "mushroom_cp4im.txt",
         8124,
@@ -246,10 +331,11 @@ def load_mushroom(negation=False, load_top_k=None, switch_signs=False):
         load_top_k,
         switch_signs,
         num_vars=116,
+        load_tqdm=load_tqdm,
     )
 
 
-def load_pima(negation=False, load_top_k=None, switch_signs=False):
+def load_pima(negation=False, load_top_k=None, switch_signs=False, load_tqdm=True):
     return load_dataset(
         "pima.D38.N768.C2.num",
         768,
@@ -259,10 +345,11 @@ def load_pima(negation=False, load_top_k=None, switch_signs=False):
         load_top_k,
         switch_signs,
         num_vars=36,
+        load_tqdm=load_tqdm,
     )
 
 
-def load_tictactoe(negation=False, load_top_k=None, switch_signs=False):
+def load_tictactoe(negation=False, load_top_k=None, switch_signs=False, load_tqdm=True):
 
     return load_dataset(
         "ticTacToe.D29.N958.C2.num",
@@ -273,6 +360,7 @@ def load_tictactoe(negation=False, load_top_k=None, switch_signs=False):
         load_top_k,
         switch_signs,
         num_vars=27,
+        load_tqdm=load_tqdm,
     )
 
 
@@ -336,8 +424,10 @@ def get_bit_length_for_theory(theory):
             total_literals += 1
 
     entropy = 0
-    for c in counts.values():
-        p = float(c) / total_literals
+    for v in counts.values():
+        # for k, v in counts.items():
+        # print(k, ":\t", v)
+        p = float(v) / total_literals
         if p > 0.0:
             entropy -= math.log(p, 2)
 
@@ -448,11 +538,20 @@ def compress_pairwise(clause1, clause2, lossless=False):
         # This is the case where len(clause_a) > 1, len(clause_b) > 2, and len(clause_c) > 1.
         # Apply W-operator on (a1; a2; a3; b1; b2; b3), (b1; b2; b3; c1; c2; c3)
         # Return (a1; a2; a3; -z), (b1; b2; b3; z), (c1; c2; c3, -z)
-        new_var = get_new_var()
-        clause_a.add(-new_var)
-        invented_predicate_definition[new_var] = copy(clause_b)
-        clause_b.add(new_var)
-        clause_c.add(-new_var)
+        if clause_b not in invented_predicate_definition.items():
+            # Invent a new predicate if the definition of a predicate is new.
+            new_var = get_new_var()
+            clause_a.add(-new_var)
+            invented_predicate_definition[new_var] = copy(clause_b)
+            clause_b.add(new_var)
+            clause_c.add(-new_var)
+        else:
+            for var, clause in invented_predicate_definition.items():
+                if clause == clause_b:
+                    clause_a.add(-var)
+                    clause_b.add(var)
+                    clause_c.add(-var)
+
         operator_counter["W"] += 1
         return (
             {frozenset(clause_a), frozenset(clause_b), frozenset(clause_c)},
@@ -620,7 +719,7 @@ def check_clause_validity(positives, negatives, clause1, clause2):
     """
 
     clause_a, clause_b, clause_c = get_subclauses(clause1, clause2)
-    pos_loss_pa = copy(clause_b)
+    # pos_loss_pa = copy(clause_b)
 
     if (len(clause_a) == 1 or len(clause_c) == 1) and len(clause_b) > 1:
 
@@ -628,45 +727,81 @@ def check_clause_validity(positives, negatives, clause1, clause2):
             # V-operator is applied on (a; b1; b2; b3), (b1; b2; b3; c1; c2; c3)
             # To get (a; b1; b2; b3), (c1; c2; c3; -a)
 
-            for c in clause_c:
-                pos_loss_pa.add(-c)
+            # for c in clause_c:
+            #     pos_loss_pa.add(-c)
+            #
+            # a = copy(clause_a).pop()
+            # pos_loss_pa.add(a)
 
-            a = copy(clause_a).pop()
-            pos_loss_pa.add(-a)
+            for pos_pa in positives:
+                if (
+                    check_pa_satisfiability(pos_pa, [clause_a])
+                    and check_pa_satisfiability(pos_pa, [clause_b])
+                    and not check_pa_satisfiability(pos_pa, [clause_c])
+                ):
+                    # Loss of a positive partial assignment encountered.
+                    return False
+
+            for neg_pa in negatives:
+                if (
+                    not check_pa_satisfiability(neg_pa, [clause_a])
+                    and not check_pa_satisfiability(neg_pa, [clause_b])
+                    and check_pa_satisfiability(neg_pa, [clause_c])
+                ):
+                    # Loss of a negative partial assignment encountered.
+                    return False
 
         elif len(clause_c) == 1:
             # V-operator is applied on (a1; a2; a3; b1; b2; b3), (b1; b2; b3; c)
             # To get (a1; a2; a3; -c), (b1; b2; b3; c)
 
-            for a in clause_a:
-                pos_loss_pa.add(-a)
+            # for a in clause_a:
+            #     pos_loss_pa.add(-a)
+            #
+            # c = copy(clause_c).pop()
+            # pos_loss_pa.add(c)
 
-            c = copy(clause_c).pop()
-            pos_loss_pa.add(-c)
+            for pos_pa in positives:
+                if (
+                    not check_pa_satisfiability(pos_pa, [clause_a])
+                    and check_pa_satisfiability(pos_pa, [clause_b])
+                    and check_pa_satisfiability(pos_pa, [clause_c])
+                ):
+                    # Loss of a positive partial assignment encountered.
+                    return False
 
-        pos_substituted_pas = substitute_pa(pos_loss_pa)
+            for neg_pa in negatives:
+                if (
+                    check_pa_satisfiability(neg_pa, [clause_a])
+                    and not check_pa_satisfiability(neg_pa, [clause_b])
+                    and not check_pa_satisfiability(neg_pa, [clause_c])
+                ):
+                    # Loss of a negative partial assignment encountered.
+                    return False
 
-        if len(pos_substituted_pas) == 0:
-            # pos_loss_pa is inconsistent; So it cannot be in the data
-            return True
-
-        for pos_substituted_pa in pos_substituted_pas:
-            neg_substituted_pa = set()
-            for literal in pos_substituted_pa:
-                if literal == "True" or literal == "False":
-                    print(
-                        "True/False encountered in the partial assignment",
-                        str(pos_substituted_pa),
-                    )
-                neg_substituted_pa.add(-literal)
-
-            pos_substituted_pa = frozenset(pos_substituted_pa)
-            neg_substituted_pa = frozenset(neg_substituted_pa)
-
-            if check_subset(positives, pos_substituted_pa) or check_subset(
-                negatives, neg_substituted_pa
-            ):
-                return False
+        # pos_substituted_pas = substitute_pa(pos_loss_pa)
+        #
+        # if len(pos_substituted_pas) == 0:
+        #     # pos_loss_pa is inconsistent; So it cannot be in the data
+        #     return True
+        #
+        # for pos_substituted_pa in pos_substituted_pas:
+        #     neg_substituted_pa = set()
+        #     for literal in pos_substituted_pa:
+        #         if literal == "True" or literal == "False":
+        #             print(
+        #                 "True/False encountered in the partial assignment",
+        #                 str(pos_substituted_pa),
+        #             )
+        #         neg_substituted_pa.add(-literal)
+        #
+        #     pos_substituted_pa = frozenset(pos_substituted_pa)
+        #     neg_substituted_pa = frozenset(neg_substituted_pa)
+        #
+        #     if check_subset(positives, pos_substituted_pa) or check_subset(
+        #         negatives, neg_substituted_pa
+        #     ):
+        #         return False
 
         return True
 
@@ -674,25 +809,67 @@ def check_clause_validity(positives, negatives, clause1, clause2):
         return True
 
 
+# def convert_to_formula(theory):
+#     conjuncts = set()
+#     for clause in theory:
+#         substituted_clauses = substitute_clause(clause)
+#
+#         for sub_clause in substituted_clauses:
+#             or_list = set()
+#             for literal in sub_clause:
+#                 if literal > 0:
+#                     or_list.add(Symbol(str(literal)))
+#                 else:
+#                     or_list.add(Not(Symbol(str(literal))))
+#             conjuncts.add(Or(list(or_list)))
+#     return conjuncts
+#
+#
+# def check_pa_satisfiability1(pa, theory, sign=None):
+#     conjuncts = convert_to_formula(theory)
+#     for literal in pa:
+#         if literal > 0:
+#             conjuncts.add(Symbol(str(literal)))
+#         else:
+#             conjuncts.add(Not(Symbol(str(literal))))
+#
+#     formula = And(list(conjuncts))
+#     return is_sat(formula)
+
+
+def check_pa_satisfiability(pa, theory):
+
+    theory_cnf = [list(clause) for clause in theory]
+
+    cnf = theory_cnf + [(a,) for a in pa]
+
+    return not (solve(cnf) == "UNSAT")
+
+
 def check_pa_validity(pa, theory, sign=None):
-    pos_valid = True
+    """
+    1. A partial assignment is invalid wrt a theory if and only if
+            there exists a clause 'c' in theory where the given pa is invalid.
+
+    2. A partial assignment is invalid in a clause if and only if
+            the negations of all the literals in the clause are present in the pa, i.e.,
+            Forall 'a' in clause, -a lies in the partial assignment.
+
+    :param pa:
+    :param theory:
+    :param sign:
+    :return:
+    """
+
+    pa_valid = True
     for i, clause in enumerate(theory):
         substituted_clauses = substitute_clause(clause)
 
         for sub_clause in substituted_clauses:
             clause_valid = False
             for literal in sub_clause:
-                if literal in pa or -literal not in pa:
+                if -literal not in pa:
                     clause_valid = True
-                    if sign == "-":
-                        print("Clause violated by partial assignment")
-                        print("Clause", end="\t")
-                        print_1d(clause)
-                        print("Substituted Clause", end="\t")
-                        print_1d(sub_clause)
-                        print("Partial Assignment", end="\t")
-                        print_1d(pa)
-                        a = 1
                     break
 
             if sign == "+" and not clause_valid:
@@ -703,41 +880,75 @@ def check_pa_validity(pa, theory, sign=None):
                 print_1d(sub_clause)
                 print("Partial Assignment", end="\t")
                 print_1d(pa)
-                pos_valid = False
+                a = 1
+
+            if not clause_valid:
+                pa_valid = False
                 break
 
-    return pos_valid
+    if sign == "-" and pa_valid:
+        print("Clause violated by partial assignment")
+        print("Clause", end="\t")
+        print_1d(clause)
+        print("Substituted Clause", end="\t")
+        print_1d(sub_clause)
+        print("Partial Assignment", end="\t")
+        print_1d(pa)
+        a = 1
+
+    return pa_valid
 
 
-def count_violations(positives, negatives, theory):
-    print()
-    violated_pos = []
+def count_violations(positives, negatives, theory, sign=None, print_violations=True):
+
+    start_time = time()
     pos_counter = 0
-    for pos in positives:
-        if not check_pa_validity(pos, theory, "+"):
-            violated_pos.append(pos)
-            pos_counter += 1
-    print(
-        pos_counter,
-        " violations of positive partial assignments found for the learned theory.",
-    )
-    if pos_counter > 0:
-        print_2d(violated_pos)
-
-    violated_neg = []
     neg_counter = 0
-    for neg in negatives:
-        if check_pa_validity(neg, theory, "-"):
-            violated_neg.append(neg)
-            neg_counter += 1
-    print(
-        neg_counter,
-        " violations of negative partial assignments found for the learned theory.",
-    )
-    if neg_counter > 0:
-        print_2d(violated_neg)
+    violated_pos = []
+    violated_neg = []
 
-    return pos_counter + neg_counter
+    if sign is None or sign == "+":
+
+        for pos in positives:
+            # if not check_pa_validity(pos, theory, "+"):
+            if not check_pa_satisfiability(pos, theory):
+                violated_pos.append(pos)
+                pos_counter += 1
+
+        if pos_counter > 0:
+            print(
+                pos_counter,
+                " violations of positive partial assignments found for the learned theory.",
+            )
+            if print_violations:
+                print_2d(violated_pos)
+                print()
+
+    elif sign is None or sign == "-":
+
+        for neg in negatives:
+            # if check_pa_validity(neg, theory, "-"):
+            if check_pa_satisfiability(neg, theory):
+                violated_neg.append(neg)
+                neg_counter += 1
+
+        if neg_counter > 0:
+            print(
+                neg_counter,
+                " violations of negative partial assignments found for the learned theory.",
+            )
+            if print_violations:
+                print_2d(violated_neg)
+                print()
+
+    print(
+        "Time taken in counting violations (Sign = "
+        + str(sign)
+        + ") = "
+        + str(time() - start_time)
+        + " seconds"
+    )
+    return (pos_counter + neg_counter, violated_pos, violated_neg)
 
 
 def sort_theory(theory):
@@ -795,7 +1006,36 @@ def get_overlap_matrix(theory):
     return np.array(overlap_matrix)
 
 
-def select_clauses_1(overlap_matrix, search_index, prev_overlap_size):
+def get_overlap_list(theory):
+    """
+    Construct a list that stores overlap of ith and jth clause at (i*n + j)th position
+    :param theory: List of clauses sorted descending by their length
+    :param clause_length: List of length of clauses
+    :return: A list that stores overlap of ith and jth clause at (i*n + j)th position
+    """
+    overlap_list = []
+    for i, clause1 in enumerate(theory):
+        for j, clause2 in enumerate(theory[i + 1 :]):
+            overlap_list.append((i, i + j + 1, len(clause1 & clause2)))
+
+    # print(overlap_list)
+
+    overlap_list = np.array(overlap_list)
+    index = np.argsort(overlap_list[:, 2])[::-1]
+    sorted_overlap_list = overlap_list[index]
+
+    # print(sorted_overlap_list)
+
+    return sorted_overlap_list
+
+
+def select_clauses(overlap_list):
+    return (overlap_list[0][0], overlap_list[0][1]), overlap_list[0][2]
+
+
+def select_clauses_1(
+    overlap_matrix, overlap_list, overlap_indices, search_index, prev_overlap_size
+):
     """
     Select clauses for next compression step WITH a compression matrix
     :param overlap_matrix: A triangular matrix that stores overlap of ith and jth clause of the theory at (i,j) position
@@ -820,17 +1060,9 @@ def select_clauses_1(overlap_matrix, search_index, prev_overlap_size):
     #
     # (row_pointer, col_pointer) = max_overlap_indices
 
-    max_overlap_size = 0
-    max_overlap_indices = (0, 0)
-    for i, row in enumerate(overlap_matrix):
-        for j, overlap in enumerate(row[i + 1 :]):
-            if overlap > max_overlap_size:
-                max_overlap_size = overlap
-                max_overlap_indices = (i, i + 1 + j)
-                if prev_overlap_size and max_overlap_size >= prev_overlap_size:
-                    break
+    # return max_overlap_indices, max_overlap_size
 
-    return max_overlap_indices, max_overlap_size
+    return overlap_indices[0], overlap_list[0]
 
 
 # def select_clauses_2(theory, clause_length, prev_overlap_size, ignore_indices):
@@ -877,7 +1109,52 @@ def select_clauses_2(theory, clause_length, prev_overlap_size):
     return max_overlap_indices, max_overlap_size
 
 
-def delete_clause(theory, clause_length, overlap_matrix, indices):
+def delete_clause_test(theory, clause_length, overlap_list, indices):
+
+    assert indices[0] < indices[1]
+
+    clause_length = np.delete(clause_length, indices)
+    del theory[indices[1]]
+    del theory[indices[0]]
+
+    return theory, clause_length, overlap_list
+
+
+def delete_clause(theory, clause_length, overlap_list, indices):
+
+    assert indices[0] < indices[1]
+
+    clause_length = np.delete(clause_length, indices)
+    del theory[indices[1]]
+    del theory[indices[0]]
+
+    # print(overlap_list)
+
+    remove_indices = []
+    for k, overlap_triplet in enumerate(overlap_list):
+        i, j, overlap = overlap_triplet
+        if i == indices[0] or i == indices[1] or j == indices[0] or j == indices[1]:
+            remove_indices.append(k)
+            continue
+
+        if indices[0] < i and i < indices[1]:
+            overlap_list[k][0] -= 1
+        elif indices[1] < i:
+            overlap_list[k][0] -= 2
+
+        if indices[0] < j and j < indices[1]:
+            overlap_list[k][1] -= 1
+        elif indices[1] < j:
+            overlap_list[k][1] -= 2
+
+    overlap_list = np.delete(overlap_list, remove_indices, axis=0)
+
+    # print(overlap_list)
+
+    return theory, clause_length, overlap_list
+
+
+def delete_clause_1(theory, clause_length, overlap_matrix, indices):
     n = len(theory)
     clause_length = np.delete(clause_length, indices)
     # del clause_length[indices[1]]
@@ -903,7 +1180,25 @@ def delete_clause(theory, clause_length, overlap_matrix, indices):
     return theory, clause_length, overlap_matrix
 
 
-def insert_clause(theory, clause_length, overlap_matrix, clause):
+def insert_clause(theory, clause_length, overlap_list, clause):
+
+    clause_index = len(clause_length)
+    clause_length = np.append(clause_length, len(clause))
+
+    for i, old_clause in enumerate(theory):
+        overlap = len(clause & old_clause)
+
+        insert_index = np.searchsorted(-overlap_list[:, 2], -overlap, side="right")
+        overlap_list = np.insert(
+            overlap_list, insert_index, np.array((i, clause_index, overlap)), 0
+        )
+
+    theory.append(clause)
+
+    return theory, clause_length, overlap_list, clause_index
+
+
+def insert_clause_1(theory, clause_length, overlap_matrix, clause):
     # i = int(len(clause_length) / 2)
     # start = 0
     # end = len(clause_length)
@@ -937,7 +1232,7 @@ def insert_clause(theory, clause_length, overlap_matrix, clause):
 
     index = np.searchsorted(-clause_length, -len(clause), side="right")
 
-    # print("Inserting " + str(clause) + " at index = " + str(index))
+    print("Inserting clause at index = " + str(index))
 
     # Insert zero rows and columns in overlap_matrix at index
     overlap_matrix = np.insert(overlap_matrix, index, np.zeros(len(overlap_matrix)), 0)
@@ -968,7 +1263,7 @@ def insert_clause(theory, clause_length, overlap_matrix, clause):
     # print_2d(theory)
     # print_1d(clause_length)
 
-    return theory, clause_length, overlap_matrix
+    return theory, clause_length, overlap_matrix, index
 
 
 def mistle(positives, negatives, lossless=False, description_measure="ll"):
@@ -976,16 +1271,13 @@ def mistle(positives, negatives, lossless=False, description_measure="ll"):
     start_time = time()
 
     global operator_counter, new_var_counter
+    operator_counter = {"W": 0, "V": 0, "S": 0}
+
     input_literal_length = get_literal_length(negatives)
     input_bit_length = get_bit_length_for_theory(negatives)
 
-    if description_measure == "ll":
-        input_length = input_literal_length
-    elif description_measure == "se":
-        input_length = input_bit_length
-
     print(
-        "\nInput Theory:\n\tLiteral Length = "
+        "\nInput Theory (with redundancies and inconsistencies):\n\tLiteral Length = "
         + str(input_literal_length)
         + "\n\tBit Length = "
         + str(input_bit_length)
@@ -993,17 +1285,52 @@ def mistle(positives, negatives, lossless=False, description_measure="ll"):
         + str(len(negatives))
     )
 
-    # print_2d(theory)
+    # Remove redundant partial assignments
+    positives = set(positives)
+    negatives = set(negatives)
 
-    # Remove redundant clauses from the theory
-    theory = convert_to_theory(set(negatives))
+    # Remove inconsistent partial assignments (Those pas that are both classified as +ves and -ves) in the data
+    inconsistent_pas = positives & negatives
+    positives = positives - inconsistent_pas
+    negatives = negatives - inconsistent_pas
+
+    print(
+        "\nInput Theory (without redundancies and inconsistencies):\n\tLiteral Length = "
+        + str(get_literal_length(negatives))
+        + "\n\tBit Length = "
+        + str(get_bit_length_for_theory(negatives))
+        + "\n\tNumber of clauses = "
+        + str(len(negatives))
+    )
+
+    if description_measure == "ll":
+        input_length = input_literal_length
+    elif description_measure == "se":
+        input_length = input_bit_length
+
+    # Convert the set of -ve PAs to a theory
+    theory = convert_to_theory(negatives)
+
+    initial_violations, positive_violations, negative_violations = count_violations(
+        positives, negatives, theory, sign="+", print_violations=False
+    )
+
+    if len(positive_violations) > 0:
+        # Ignore Positive Violations while calculating the loss
+        positives = copy(positives - set(positive_violations))
+
+        # initial_violations, positive_violations, negative_violations = count_violations(
+        #     positives, negatives, theory, sign="+"
+        # )
+
     # print_2d(theory)
     theory, clause_length = sort_theory(theory)
 
     overlap_matrix = get_overlap_matrix(theory)
+    overlap_list = get_overlap_list(theory)
 
     overlap_size = None
-    search_index = None
+    # search_index = 0
     compression_counter = 0
     # ignore_clauses = []
     pbar = tqdm(total=int(1.1 * len(theory) + 100))
@@ -1013,12 +1340,13 @@ def mistle(positives, negatives, lossless=False, description_measure="ll"):
         # max_overlap_indices, overlap_size = select_clauses_2(
         #     theory, clause_length, prev_overlap_size, ignore_clauses
         # )
-        # max_overlap_indices, overlap_size = select_clauses_2(
-        #     theory, clause_length, prev_overlap_size
+        max_overlap_indices, overlap_size = select_clauses(overlap_list)
+        # max_overlap_indices, overlap_size = select_clauses_1(
+        #     overlap_matrix, search_index, prev_overlap_size
         # )
-        max_overlap_indices, overlap_size = select_clauses_1(
-            overlap_matrix, search_index, prev_overlap_size
-        )
+
+        # print("Max overlapping indices = " + str(max_overlap_indices))
+        # search_index = min(max_overlap_indices)
 
         if overlap_size < 2:
             break
@@ -1058,7 +1386,7 @@ def mistle(positives, negatives, lossless=False, description_measure="ll"):
             )
             print_2d(theory)
             print_2d(overlap_matrix)
-            a = 1
+
         compression_counter += 1
 
         if len(compressed_clauses) == 2 and compression_size == 0:
@@ -1072,54 +1400,73 @@ def mistle(positives, negatives, lossless=False, description_measure="ll"):
             # V - Operator is not applied
             # Continue compressing the theory
             # Delete the clauses used for last compression step
-            theory, clause_length, overlap_matrix = delete_clause(
-                theory, clause_length, overlap_matrix, max_overlap_indices
+            theory, clause_length, overlap_list = delete_clause(
+                theory, clause_length, overlap_list, max_overlap_indices
             )
+            # theory, clause_length, overlap_matrix = delete_clause_1(
+            #     theory, clause_length, overlap_matrix, max_overlap_indices
+            # )
 
             # Insert clauses from compressed_clauses at appropriate lengths so that the theory remains sorted
             # theory |= compressed_clauses
             for clause in compressed_clauses:
-                theory, clause_length, overlap_matrix = insert_clause(
-                    theory, clause_length, overlap_matrix, clause
+                theory, clause_length, overlap_list, insert_index = insert_clause(
+                    theory, clause_length, overlap_list, clause
                 )
+                # theory, clause_length, overlap_matrix, insert_index = insert_clause_1(
+                #     theory, clause_length, overlap_matrix, clause
+                # )
+                # search_index = min(insert_index, search_index)
 
         else:
-            if check_clause_validity(positives, negatives, clause1, clause2):
-                # print(
-                #     "Applying V-operator on "
-                #     + str(clause1)
-                #     + " and "
-                #     + str(clause2)
-                #     + " is valid with the data."
-                # )
+            # more_violations, p, n = count_violations(positives, negatives, theory)
+            clause_validity = check_clause_validity(
+                positives, negatives, clause1, clause2
+            )
+            # if (clause_validity and more_violations != initial_violations) or (
+            #     not clause_validity and more_violations == initial_violations
+            # ):
+            #     print("Kuchh to gadbad hai daya")
+            #     # Ignore clauses 1 and 2
+            #     catch_it = 1
 
+            # elif more_violations == initial_violations and clause_validity:
+            if clause_validity:
                 # Delete the clauses used for last compression step
-                theory, clause_length, overlap_matrix = delete_clause(
-                    theory, clause_length, overlap_matrix, max_overlap_indices
+                theory, clause_length, overlap_list = delete_clause(
+                    theory, clause_length, overlap_list, max_overlap_indices
                 )
 
                 # Insert clauses from compressed_clauses at appropriate lengths so that the theory remains sorted
                 # theory |= compressed_clauses
                 for clause in compressed_clauses:
-                    theory, clause_length, overlap_matrix = insert_clause(
-                        theory, clause_length, overlap_matrix, clause
+                    theory, clause_length, overlap_list, insert_index = insert_clause(
+                        theory, clause_length, overlap_list, clause
                     )
-            else:
+                    # search_index = min(insert_index, search_index)
+
+            # elif more_violations != initial_violations and not clause_validity:
+            elif not clause_validity:
+                # Perform a lossless step here, i.e., APply W-operator instead of V-operator
                 (compressed_clauses, compression_size, is_lossless) = compress_pairwise(
                     clause1, clause2, lossless=True
                 )
 
                 # Delete the clauses used for last compression step
-                theory, clause_length, overlap_matrix = delete_clause(
-                    theory, clause_length, overlap_matrix, max_overlap_indices
+                theory, clause_length, overlap_list = delete_clause(
+                    theory, clause_length, overlap_list, max_overlap_indices
                 )
 
                 # Insert clauses from compressed_clauses at appropriate lengths so that the theory remains sorted
                 # theory |= compressed_clauses
                 for clause in compressed_clauses:
-                    theory, clause_length, overlap_matrix = insert_clause(
-                        theory, clause_length, overlap_matrix, clause
+                    theory, clause_length, overlap_list, insert_index = insert_clause(
+                        theory, clause_length, overlap_list, clause
                     )
+                    # theory, clause_length, overlap_matrix, insert_index = insert_clause_1(
+                    #     theory, clause_length, overlap_matrix, clause
+                    # )
+                    # search_index = min(insert_index, search_index)
 
         # print_2d(theory)
         pbar.update(1)
@@ -1155,36 +1502,36 @@ def mistle(positives, negatives, lossless=False, description_measure="ll"):
     # print()
     # print_2d(theory)
 
+    count = count_violations(positives, negatives, theory)
+
     return theory
 
 
-def run_all(outfile):
-    sys.stdout = open(outfile, "a+")
+def run_all(lossless=False):
+    pass
+    theory = mistle(*load_animal_taxonomy(), lossless=lossless)
+    theory = mistle(*load_animal_taxonomy(switch_signs=True), lossless=lossless)
 
-    # 1
-    theory = mistle(*load_animal_taxonomy(), lossless=False)
-    theory = mistle(*load_animal_taxonomy(negation=True), lossless=False)
-    # 2
-    theory = mistle(*load_adult(), lossless=False)
-    theory = mistle(*load_adult(negation=True), lossless=False)
-    # 3
-    theory = mistle(*load_breast(), lossless=False)
-    theory = mistle(*load_breast(negation=True), lossless=False)
-    # 4
-    theory = mistle(*load_chess(), lossless=False)
-    theory = mistle(*load_chess(negation=True), lossless=False)
-    # 5
-    theory = mistle(*load_ionosphere(), lossless=False)
-    theory = mistle(*load_ionosphere(negation=True), lossless=False)
-    # 6
-    theory = mistle(*load_mushroom(), lossless=False)
-    theory = mistle(*load_mushroom(negation=True), lossless=False)
-    # 7
-    theory = mistle(*load_pima(), lossless=False)
-    theory = mistle(*load_pima(negation=True), lossless=False)
-    # 8
-    theory = mistle(*load_tictactoe(), lossless=False)
-    theory = mistle(*load_tictactoe(negation=True), lossless=False)
+    # theory = mistle(*load_adult(), lossless=lossless)
+    # theory = mistle(*load_adult(switch_signs=True), lossless=lossless)
+
+    theory = mistle(*load_breast(), lossless=lossless)
+    theory = mistle(*load_breast(switch_signs=True), lossless=lossless)
+
+    # theory = mistle(*load_chess(), lossless=lossless)
+    # theory = mistle(*load_chess(switch_signs=True), lossless=lossless)
+
+    theory = mistle(*load_ionosphere(), lossless=lossless)
+    theory = mistle(*load_ionosphere(switch_signs=True), lossless=lossless)
+
+    # theory = mistle(*load_mushroom(), lossless=lossless)
+    # theory = mistle(*load_mushroom(switch_signs=True), lossless=lossless)
+
+    theory = mistle(*load_pima(), lossless=lossless)
+    theory = mistle(*load_pima(switch_signs=True), lossless=lossless)
+
+    theory = mistle(*load_tictactoe(), lossless=lossless)
+    theory = mistle(*load_tictactoe(switch_signs=True), lossless=lossless)
 
 
 row_pointer = 0
@@ -1193,9 +1540,10 @@ new_var_counter = 1
 invented_predicate_definition = {}
 operator_counter = {"W": 0, "V": 0, "S": 0}
 
-# theory = mistle(*load_animal_taxonomy(), lossless=False, description_measure="ll")
 # positives, negatives = load_animal_taxonomy()
-positives, negatives = load_ionosphere()
+positives, negatives = load_adult()
 theory = mistle(positives, negatives, lossless=False, description_measure="ll")
-
-count = count_violations(positives, negatives, theory)
+# theory = convert_to_theory(set(negatives))
+# theory, clause_length = sort_theory(theory)
+# count = count_violations(positives, negatives, theory)
+# run_all(lossless=False)
