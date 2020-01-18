@@ -1,0 +1,36 @@
+/Library/Frameworks/Python.framework/Versions/3.7/bin/python3 /Users/arcchit/Docs/Mistle/10_fold_cv.py
+Reading input file for Mushroom: 100%|██████████| 8124/8124 [00:00<00:00, 10294.12it/s]
+Outputting data: 100%|██████████| 8124/8124 [00:00<00:00, 71636.91it/s]
+Testing theory: 100%|█████████▉| 756/757 [00:04<00:00, 165.83it/s]Accuracy of fold 0	: 0.5482166446499339
+Testing theory: 100%|██████████| 757/757 [00:04<00:00, 162.25it/s]
+Outputting data: 100%|██████████| 8124/8124 [00:00<00:00, 74613.08it/s]
+Testing theory:  98%|█████████▊| 795/812 [00:04<00:00, 162.95it/s]Accuracy of fold 1	: 0.5554187192118226
+Testing theory: 100%|██████████| 812/812 [00:05<00:00, 163.40it/s]
+Outputting data: 100%|██████████| 8124/8124 [00:00<00:00, 74883.14it/s]
+Testing theory:  99%|█████████▉| 758/764 [00:04<00:00, 164.82it/s]Accuracy of fold 2	: 0.5458115183246073
+Testing theory: 100%|██████████| 764/764 [00:04<00:00, 162.42it/s]
+Outputting data: 100%|██████████| 8124/8124 [00:00<00:00, 68834.09it/s]
+Testing theory: 100%|█████████▉| 813/816 [00:04<00:00, 166.88it/s]Accuracy of fold 3	: 0.5514705882352942
+Testing theory: 100%|██████████| 816/816 [00:04<00:00, 164.71it/s]
+Outputting data: 100%|██████████| 8124/8124 [00:00<00:00, 75799.83it/s]
+Testing theory:  99%|█████████▊| 811/822 [00:04<00:00, 163.21it/s]Accuracy of fold 4	: 0.5450121654501217
+Testing theory: 100%|██████████| 822/822 [00:05<00:00, 163.67it/s]
+Outputting data: 100%|██████████| 8124/8124 [00:00<00:00, 77167.11it/s]
+Testing theory:  99%|█████████▊| 850/862 [00:05<00:00, 141.71it/s]Accuracy of fold 5	: 0.5440835266821346
+Testing theory: 100%|██████████| 862/862 [00:05<00:00, 148.38it/s]
+Outputting data: 100%|██████████| 8124/8124 [00:00<00:00, 48494.86it/s]
+Testing theory: 100%|█████████▉| 811/813 [00:05<00:00, 165.25it/s]Accuracy of fold 6	: 0.5448954489544895
+Testing theory: 100%|██████████| 813/813 [00:05<00:00, 150.62it/s]
+Outputting data: 100%|██████████| 8124/8124 [00:00<00:00, 75523.63it/s]
+Testing theory:  99%|█████████▉| 794/800 [00:04<00:00, 167.03it/s]Accuracy of fold 7	: 0.55375
+Testing theory: 100%|██████████| 800/800 [00:04<00:00, 164.68it/s]
+Outputting data: 100%|██████████| 8124/8124 [00:00<00:00, 74632.69it/s]
+Testing theory:  99%|█████████▉| 800/810 [00:04<00:00, 166.68it/s]Accuracy of fold 8	: 0.5481481481481482
+Testing theory: 100%|██████████| 810/810 [00:04<00:00, 164.64it/s]
+Outputting data: 100%|██████████| 8124/8124 [00:00<00:00, 73906.36it/s]
+Testing theory: 100%|██████████| 868/868 [00:05<00:00, 164.84it/s]
+Accuracy of fold 9	: 0.5460829493087558
+Average Classification Accuracy 	: 54.83%
+Average Compression 	: 0.0%
+
+Process finished with exit code 0

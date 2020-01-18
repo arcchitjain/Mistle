@@ -1,0 +1,216 @@
+/Library/Frameworks/Python.framework/Versions/3.7/bin/python3 /Users/arcchit/Docs/Mistle/10_fold_cv.py
+Reading input file for Adult: 100%|██████████| 48842/48842 [00:03<00:00, 15437.73it/s]
+
+Input Theory (with redundancies and inconsistencies):
+	Literal Length = 147395
+	Number of clauses = 10576
+
+Input Theory (without redundancies and inconsistencies):
+	Literal Length = 30592
+	Number of clauses = 2203
+168  violations of positive partial assignments found for the learned theory.
+Compressing Clauses:  87%|████████▋ | 2201/2523 [2:07:12<1:23:02, 15.47s/it]
+Cannot compress the theory any further.
+
+Resultant Theory:
+	Literal Length = 11414
+	Length of Theory = 4068
+	% Compression (For measure: ll) = 92.26%
+	Operator Count = {'W': 1918, 'V': 230, 'S': 53, 'C': 0}
+	# Contradictions = 0 (0, 0)
+	Time Taken = 7650.06693315506 seconds
+Testing theory:  77%|███████▋  | 3658/4767 [00:12<00:03, 290.75it/s]Accuracy of fold 0	: 0.7933710929305643
+
+Input Theory (with redundancies and inconsistencies):
+	Literal Length = 146692
+	Number of clauses = 10527
+
+Input Theory (without redundancies and inconsistencies):
+	Literal Length = 30431
+	Number of clauses = 2192
+Testing theory: 100%|██████████| 4767/4767 [00:15<00:00, 298.84it/s]
+171  violations of positive partial assignments found for the learned theory.
+Compressing Clauses:  87%|████████▋ | 2185/2511 [1:56:39<06:34,  1.21s/it]Cannot compress the theory any further.
+
+Resultant Theory:
+	Literal Length = 11434
+	Length of Theory = 4080
+	% Compression (For measure: ll) = 92.21%
+	Operator Count = {'W': 1943, 'V': 187, 'S': 55, 'C': 0}
+	# Contradictions = 0 (0, 0)
+	Time Taken = 7018.089147090912 seconds
+
+Testing theory:  99%|█████████▉| 4831/4860 [00:17<00:00, 308.17it/s]Accuracy of fold 1	: 0.7936213991769547
+Testing theory: 100%|██████████| 4860/4860 [00:17<00:00, 277.27it/s]
+
+Input Theory (with redundancies and inconsistencies):
+	Literal Length = 145866
+	Number of clauses = 10467
+
+Input Theory (without redundancies and inconsistencies):
+	Literal Length = 30192
+	Number of clauses = 2174
+167  violations of positive partial assignments found for the learned theory.
+Compressing Clauses:  87%|████████▋ | 2175/2491 [2:03:33<1:18:58, 14.99s/it]
+Cannot compress the theory any further.
+
+Resultant Theory:
+	Literal Length = 11395
+	Length of Theory = 4046
+	% Compression (For measure: ll) = 92.19%
+	Operator Count = {'W': 1923, 'V': 201, 'S': 51, 'C': 0}
+	# Contradictions = 0 (0, 0)
+	Time Taken = 7431.83359003067 seconds
+Testing theory:  43%|████▎     | 2145/5014 [00:07<00:10, 275.93it/s]Accuracy of fold 2	: 0.7891902672516953
+
+Input Theory (with redundancies and inconsistencies):
+	Literal Length = 146741
+	Number of clauses = 10531
+
+Input Theory (without redundancies and inconsistencies):
+	Literal Length = 30235
+	Number of clauses = 2178
+Testing theory: 100%|██████████| 5014/5014 [00:18<00:00, 273.63it/s]
+151  violations of positive partial assignments found for the learned theory.
+Compressing Clauses:  87%|████████▋ | 2169/2495 [3:07:15<11:12,  2.06s/it]Cannot compress the theory any further.
+
+Resultant Theory:
+	Literal Length = 11342
+	Length of Theory = 4041
+	% Compression (For measure: ll) = 92.27%
+	Operator Count = {'W': 1914, 'V': 206, 'S': 51, 'C': 0}
+	# Contradictions = 0 (0, 0)
+	Time Taken = 11283.485635995865 seconds
+Compressing Clauses:  87%|████████▋ | 2171/2495 [3:07:44<38:17,  7.09s/it]
+Testing theory: 100%|██████████| 4875/4875 [00:17<00:00, 272.27it/s]
+Accuracy of fold 3	: 0.7874871794871795
+
+Input Theory (with redundancies and inconsistencies):
+	Literal Length = 146590
+	Number of clauses = 10518
+
+Input Theory (without redundancies and inconsistencies):
+	Literal Length = 30368
+	Number of clauses = 2187
+Compressing Clauses:   0%|          | 5/2505 [00:06<51:08,  1.23s/it]158  violations of positive partial assignments found for the learned theory.
+Compressing Clauses:  87%|████████▋ | 2184/2505 [2:14:27<42:44,  7.99s/it]  
+Cannot compress the theory any further.
+
+Resultant Theory:
+	Literal Length = 11340
+	Length of Theory = 4026
+	% Compression (For measure: ll) = 92.26%
+	Operator Count = {'W': 1895, 'V': 233, 'S': 56, 'C': 0}
+	# Contradictions = 0 (0, 0)
+	Time Taken = 8086.955406188965 seconds
+Testing theory: 100%|██████████| 4896/4896 [00:18<00:00, 270.56it/s]
+Accuracy of fold 4	: 0.7826797385620915
+
+Input Theory (with redundancies and inconsistencies):
+	Literal Length = 145975
+	Number of clauses = 10474
+
+Input Theory (without redundancies and inconsistencies):
+	Literal Length = 30155
+	Number of clauses = 2171
+Compressing Clauses:   0%|          | 9/2488 [00:10<39:42,  1.04it/s]119  violations of positive partial assignments found for the learned theory.
+Compressing Clauses:  87%|████████▋ | 2167/2488 [2:06:45<22:48,  4.26s/it]Cannot compress the theory any further.
+
+Resultant Theory:
+Compressing Clauses:  87%|████████▋ | 2168/2488 [2:07:14<1:01:59, 11.62s/it]
+	Literal Length = 11364
+	Length of Theory = 4035
+	% Compression (For measure: ll) = 92.22%
+	Operator Count = {'W': 1914, 'V': 204, 'S': 50, 'C': 0}
+	# Contradictions = 0 (0, 0)
+	Time Taken = 7653.278753995895 seconds
+Testing theory:  17%|█▋        | 840/5042 [00:03<00:16, 259.52it/s]Accuracy of fold 5	: 0.8044426814756049
+
+Input Theory (with redundancies and inconsistencies):
+	Literal Length = 146511
+	Number of clauses = 10512
+
+Input Theory (without redundancies and inconsistencies):
+	Literal Length = 30561
+	Number of clauses = 2200
+Testing theory: 100%|██████████| 5042/5042 [00:19<00:00, 262.39it/s]
+177  violations of positive partial assignments found for the learned theory.
+Compressing Clauses:  87%|████████▋ | 2193/2520 [2:11:04<54:18,  9.96s/it]  Cannot compress the theory any further.
+Compressing Clauses:  87%|████████▋ | 2195/2520 [2:11:33<59:34, 11.00s/it]  
+
+Resultant Theory:
+	Literal Length = 11471
+	Length of Theory = 4078
+	% Compression (For measure: ll) = 92.17%
+	Operator Count = {'W': 1926, 'V': 221, 'S': 48, 'C': 0}
+	# Contradictions = 0 (0, 0)
+	Time Taken = 7912.320529937744 seconds
+Testing theory: 100%|██████████| 4873/4873 [00:17<00:00, 272.71it/s]
+Compressing Clauses:   0%|          | 0/2514 [00:00<?, ?it/s]Accuracy of fold 6	: 0.801970038990355
+
+Input Theory (with redundancies and inconsistencies):
+	Literal Length = 146999
+	Number of clauses = 10549
+
+Input Theory (without redundancies and inconsistencies):
+	Literal Length = 30477
+	Number of clauses = 2195
+166  violations of positive partial assignments found for the learned theory.
+Compressing Clauses:  87%|████████▋ | 2189/2514 [2:05:29<57:09, 10.55s/it]
+Cannot compress the theory any further.
+
+Resultant Theory:
+	Literal Length = 11468
+	Length of Theory = 4071
+	% Compression (For measure: ll) = 92.2%
+	Operator Count = {'W': 1929, 'V': 207, 'S': 53, 'C': 0}
+	# Contradictions = 0 (0, 0)
+	Time Taken = 7548.737499952316 seconds
+Testing theory:  60%|█████▉    | 2884/4825 [00:11<00:07, 258.56it/s]Accuracy of fold 7	: 0.7987564766839378
+Testing theory: 100%|██████████| 4825/4825 [00:17<00:00, 269.86it/s]
+
+Input Theory (with redundancies and inconsistencies):
+	Literal Length = 147079
+	Number of clauses = 10555
+
+Input Theory (without redundancies and inconsistencies):
+	Literal Length = 30336
+	Number of clauses = 2185
+Compressing Clauses:   0%|          | 2/2503 [00:06<2:33:52,  3.69s/it]173  violations of positive partial assignments found for the learned theory.
+Compressing Clauses:  87%|████████▋ | 2180/2503 [1:58:04<52:28,  9.75s/it]
+Cannot compress the theory any further.
+
+Resultant Theory:
+	Literal Length = 11439
+	Length of Theory = 4055
+	% Compression (For measure: ll) = 92.22%
+	Operator Count = {'W': 1926, 'V': 198, 'S': 56, 'C': 0}
+	# Contradictions = 0 (0, 0)
+	Time Taken = 7103.514827013016 seconds
+Testing theory: 100%|██████████| 4778/4778 [00:16<00:00, 281.42it/s]
+Accuracy of fold 8	: 0.8015906236919214
+
+Input Theory (with redundancies and inconsistencies):
+	Literal Length = 145964
+	Number of clauses = 10474
+
+Input Theory (without redundancies and inconsistencies):
+	Literal Length = 30239
+	Number of clauses = 2178
+181  violations of positive partial assignments found for the learned theory.
+Compressing Clauses:  87%|████████▋ | 2174/2495 [2:04:43<1:15:32, 14.12s/it]
+Cannot compress the theory any further.
+
+Resultant Theory:
+	Literal Length = 11295
+	Length of Theory = 4025
+	% Compression (For measure: ll) = 92.26%
+	Operator Count = {'W': 1902, 'V': 217, 'S': 55, 'C': 0}
+	# Contradictions = 0 (0, 0)
+	Time Taken = 7501.453407049179 seconds
+Testing theory:  55%|█████▍    | 2688/4912 [00:11<00:10, 203.81it/s]Accuracy of fold 9	: 0.7923452768729642
+Average Classification Accuracy 	: 79.45%
+Average Compression 	: 92.226%
+Testing theory: 100%|██████████| 4912/4912 [00:18<00:00, 261.76it/s]
+
+Process finished with exit code 0
