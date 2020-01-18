@@ -118,7 +118,7 @@ def load_animal_taxonomy(switch_signs=False):
     p3 = frozenset([a, -b, c, -d, -e, -f, g, -h, i, j, -l, m])
     p4 = frozenset([a, -b, c, -d, -e, -f, g, -h, i, j, l, -m])
 
-    positives = {p1, p2, p3, p4}
+    positives = [p1, p2, p3, p4]
 
     n1 = frozenset([-b, c, -d, -e, -f, g, -h, i, -j, k])
     n2 = frozenset([-b, -c, d, -e, -f, -g, h, i, -j, -l, m, n])
@@ -128,7 +128,7 @@ def load_animal_taxonomy(switch_signs=False):
     n6 = frozenset([-b, c, -d, -e, -f, g, -h, -i, -j, -k, -l, m])
     n7 = frozenset([-b, -c, -d, e, -f, g, -h, -i, -j, -k, l, -m])
 
-    negatives = {n1, n2, n3, n4, n5, n6, n7}
+    negatives = [n1, n2, n3, n4, n5, n6, n7]
 
     print_input_data_statistics(
         "Animal Taxonomy",
@@ -1014,7 +1014,11 @@ def get_overlap_list(theory):
     :return: A list that stores overlap of ith and jth clause at (i*n + j)th position
     """
     overlap_list = []
+    clause_dict = {}
+    counter = 0
     for i, clause1 in enumerate(theory):
+        clause_dict[counter] = clause1
+        counter += 1
         for j, clause2 in enumerate(theory[i + 1 :]):
             overlap_list.append((i, i + j + 1, len(clause1 & clause2)))
 
@@ -1024,9 +1028,16 @@ def get_overlap_list(theory):
     index = np.argsort(overlap_list[:, 2])[::-1]
     sorted_overlap_list = overlap_list[index]
 
-    # print(sorted_overlap_list)
+    # print("sorted_overlap_list\t:", sorted_overlap_list)
+    # print("clause_dict\t:", clause_dict)
 
-    return sorted_overlap_list
+    return sorted_overlap_list, clause_dict
+
+
+def select_clauses_test(clause_dict, overlap_list):
+    for i, j, overlap in overlap_list:
+        if i in clause_dict and j in clause_dict:
+            return (i, j), overlap
 
 
 def select_clauses(overlap_list):
@@ -1109,15 +1120,27 @@ def select_clauses_2(theory, clause_length, prev_overlap_size):
     return max_overlap_indices, max_overlap_size
 
 
-def delete_clause_test(theory, clause_length, overlap_list, indices):
+def delete_clause_test(theory, clause_length, clause_dict, indices):
 
     assert indices[0] < indices[1]
 
-    clause_length = np.delete(clause_length, indices)
-    del theory[indices[1]]
-    del theory[indices[0]]
+    id = [None, None]
 
-    return theory, clause_length, overlap_list
+    id[0] = theory.index(clause_dict[indices[0]])
+    id[1] = theory.index(clause_dict[indices[1]])
+
+    clause_length = np.delete(clause_length, id)
+    # theory.remove(clause_dict[indices[1]])
+    # theory.remove(clause_dict[indices[0]])
+    del theory[id[1]]
+    del theory[id[0]]
+
+    del clause_dict[indices[0]]
+    del clause_dict[indices[1]]
+
+    # print("Clause dict after deletion\t:", clause_dict)
+
+    return theory, clause_length, clause_dict
 
 
 def delete_clause(theory, clause_length, overlap_list, indices):
@@ -1178,6 +1201,40 @@ def delete_clause_1(theory, clause_length, overlap_matrix, indices):
     # print_2d(overlap_matrix)
 
     return theory, clause_length, overlap_matrix
+
+
+def insert_clause_test(
+    theory, clause_length, overlap_list, clause_dict, new_clause_index, clause
+):
+
+    assert new_clause_index not in clause_dict
+
+    clause_dict[new_clause_index] = clause
+    clause_length = np.append(clause_length, len(clause))
+
+    for i, old_clause in clause_dict.items():
+
+        if old_clause not in theory:
+            continue
+
+        overlap = len(clause & old_clause)
+
+        # if i == 4 and new_clause_index == 9:
+        #     print("4\t:", old_clause)
+        #     print("9\t:", clause)
+        #     print("overlap\t:", overlap)
+
+        insert_index = np.searchsorted(-overlap_list[:, 2], -overlap, side="right")
+        overlap_list = np.insert(
+            overlap_list, insert_index, np.array((i, new_clause_index, overlap)), 0
+        )
+
+    # print("Clause dict after insertion\t:", clause_dict)
+    # print("Overlap list after insertion\t:", overlap_list)
+
+    theory.append(clause)
+
+    return theory, clause_length, overlap_list, clause_dict
 
 
 def insert_clause(theory, clause_length, overlap_list, clause):
@@ -1326,12 +1383,15 @@ def mistle(positives, negatives, lossless=False, description_measure="ll"):
     # print_2d(theory)
     theory, clause_length = sort_theory(theory)
 
-    overlap_matrix = get_overlap_matrix(theory)
-    overlap_list = get_overlap_list(theory)
+    # overlap_matrix = get_overlap_matrix(theory)
+    overlap_list, clause_dict = get_overlap_list(theory)
+
+    # global overlap_list, clause_dict, theory, clause_length
 
     overlap_size = None
     # search_index = 0
     compression_counter = 0
+    new_clause_index = len(clause_dict)
     # ignore_clauses = []
     pbar = tqdm(total=int(1.1 * len(theory) + 100))
     pbar.set_description("Compressing Clauses")
@@ -1340,7 +1400,10 @@ def mistle(positives, negatives, lossless=False, description_measure="ll"):
         # max_overlap_indices, overlap_size = select_clauses_2(
         #     theory, clause_length, prev_overlap_size, ignore_clauses
         # )
-        max_overlap_indices, overlap_size = select_clauses(overlap_list)
+        max_overlap_indices, overlap_size = select_clauses_test(
+            clause_dict, overlap_list
+        )
+        # max_overlap_indices, overlap_size = select_clauses(overlap_list)
         # max_overlap_indices, overlap_size = select_clauses_1(
         #     overlap_matrix, search_index, prev_overlap_size
         # )
@@ -1351,8 +1414,10 @@ def mistle(positives, negatives, lossless=False, description_measure="ll"):
         if overlap_size < 2:
             break
 
-        clause1 = theory[max_overlap_indices[0]]
-        clause2 = theory[max_overlap_indices[1]]
+        clause1 = clause_dict[max_overlap_indices[0]]
+        clause2 = clause_dict[max_overlap_indices[1]]
+        # clause1 = theory[max_overlap_indices[0]]
+        # clause2 = theory[max_overlap_indices[1]]
 
         # print(
         #     "\nCompressing ("
@@ -1369,10 +1434,12 @@ def mistle(positives, negatives, lossless=False, description_measure="ll"):
         # print(compression_counter, compressed_clauses, compression_size, is_lossless)
         # print(overlap_size, compression_size, str(operator_counter))
         if overlap_size - compression_size > 2:
-
-            print(len(clause1))
+            print(
+                "------------------------------- Compressing is not efficient! -------------------------------"
+            )
+            print("Length of clause 1\t:", len(clause1))
             print_1d(clause1)
-            print(len(clause2))
+            print("Length of clause 2\t:", len(clause2))
             print_1d(clause2)
             print("Overlap = " + str(len(clause1 & clause2)))
             clause_a, clause_b, clause_c = get_subclauses(clause1, clause2)
@@ -1384,8 +1451,9 @@ def mistle(positives, negatives, lossless=False, description_measure="ll"):
                 + ";\tlen(c) = "
                 + str(len(clause_c))
             )
+            print("Clause_dict\t:", clause_dict)
             print_2d(theory)
-            print_2d(overlap_matrix)
+            # print_2d(overlap_matrix)
 
         compression_counter += 1
 
@@ -1395,14 +1463,18 @@ def mistle(positives, negatives, lossless=False, description_measure="ll"):
             # overlap_matrix[max_overlap_indices[0]][max_overlap_indices[1]] = -1
             # continue
             # Initialize search index
+            print("Cannot compress the theory any further.")
             break
         elif is_lossless:
             # V - Operator is not applied
             # Continue compressing the theory
             # Delete the clauses used for last compression step
-            theory, clause_length, overlap_list = delete_clause(
-                theory, clause_length, overlap_list, max_overlap_indices
+            theory, clause_length, clause_dict = delete_clause_test(
+                theory, clause_length, clause_dict, max_overlap_indices
             )
+            # theory, clause_length, overlap_list = delete_clause(
+            #     theory, clause_length, overlap_list, max_overlap_indices
+            # )
             # theory, clause_length, overlap_matrix = delete_clause_1(
             #     theory, clause_length, overlap_matrix, max_overlap_indices
             # )
@@ -1410,9 +1482,18 @@ def mistle(positives, negatives, lossless=False, description_measure="ll"):
             # Insert clauses from compressed_clauses at appropriate lengths so that the theory remains sorted
             # theory |= compressed_clauses
             for clause in compressed_clauses:
-                theory, clause_length, overlap_list, insert_index = insert_clause(
-                    theory, clause_length, overlap_list, clause
+                theory, clause_length, overlap_list, clause_dict = insert_clause_test(
+                    theory,
+                    clause_length,
+                    overlap_list,
+                    clause_dict,
+                    new_clause_index,
+                    clause,
                 )
+                new_clause_index += 1
+                # theory, clause_length, overlap_list, insert_index = insert_clause(
+                #     theory, clause_length, overlap_list, clause
+                # )
                 # theory, clause_length, overlap_matrix, insert_index = insert_clause_1(
                 #     theory, clause_length, overlap_matrix, clause
                 # )
@@ -1433,16 +1514,28 @@ def mistle(positives, negatives, lossless=False, description_measure="ll"):
             # elif more_violations == initial_violations and clause_validity:
             if clause_validity:
                 # Delete the clauses used for last compression step
-                theory, clause_length, overlap_list = delete_clause(
-                    theory, clause_length, overlap_list, max_overlap_indices
+                theory, clause_length, clause_dict = delete_clause_test(
+                    theory, clause_length, clause_dict, max_overlap_indices
                 )
+                # theory, clause_length, overlap_list = delete_clause(
+                #     theory, clause_length, overlap_list, max_overlap_indices
+                # )
 
                 # Insert clauses from compressed_clauses at appropriate lengths so that the theory remains sorted
                 # theory |= compressed_clauses
                 for clause in compressed_clauses:
-                    theory, clause_length, overlap_list, insert_index = insert_clause(
-                        theory, clause_length, overlap_list, clause
+                    theory, clause_length, overlap_list, clause_dict = insert_clause_test(
+                        theory,
+                        clause_length,
+                        overlap_list,
+                        clause_dict,
+                        new_clause_index,
+                        clause,
                     )
+                    new_clause_index += 1
+                    # theory, clause_length, overlap_list, insert_index = insert_clause(
+                    #     theory, clause_length, overlap_list, clause
+                    # )
                     # search_index = min(insert_index, search_index)
 
             # elif more_violations != initial_violations and not clause_validity:
@@ -1453,16 +1546,28 @@ def mistle(positives, negatives, lossless=False, description_measure="ll"):
                 )
 
                 # Delete the clauses used for last compression step
-                theory, clause_length, overlap_list = delete_clause(
-                    theory, clause_length, overlap_list, max_overlap_indices
+                theory, clause_length, clause_dict = delete_clause_test(
+                    theory, clause_length, clause_dict, max_overlap_indices
                 )
+                # theory, clause_length, overlap_list = delete_clause(
+                #     theory, clause_length, overlap_list, max_overlap_indices
+                # )
 
                 # Insert clauses from compressed_clauses at appropriate lengths so that the theory remains sorted
                 # theory |= compressed_clauses
                 for clause in compressed_clauses:
-                    theory, clause_length, overlap_list, insert_index = insert_clause(
-                        theory, clause_length, overlap_list, clause
+                    theory, clause_length, overlap_list, clause_dict = insert_clause_test(
+                        theory,
+                        clause_length,
+                        overlap_list,
+                        clause_dict,
+                        new_clause_index,
+                        clause,
                     )
+                    new_clause_index += 1
+                    # theory, clause_length, overlap_list, insert_index = insert_clause(
+                    #     theory, clause_length, overlap_list, clause
+                    # )
                     # theory, clause_length, overlap_matrix, insert_index = insert_clause_1(
                     #     theory, clause_length, overlap_matrix, clause
                     # )
@@ -1541,7 +1646,8 @@ invented_predicate_definition = {}
 operator_counter = {"W": 0, "V": 0, "S": 0}
 
 # positives, negatives = load_animal_taxonomy()
-positives, negatives = load_adult()
+# positives, negatives = load_adult()
+positives, negatives = load_ionosphere()
 theory = mistle(positives, negatives, lossless=False, description_measure="ll")
 # theory = convert_to_theory(set(negatives))
 # theory, clause_length = sort_theory(theory)
