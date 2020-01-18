@@ -1,21 +1,22 @@
 from problog.logic import Term, And, Or
 from tqdm import tqdm
 
+
 def load_animal_taxonomy():
-    a = Term('a')
-    b = Term('b')
-    c = Term('c')
-    d = Term('d')
-    e = Term('e')
-    f = Term('f')
-    g = Term('g')
-    h = Term('h')
-    i = Term('i')
-    j = Term('j')
-    k = Term('k')
-    l = Term('l')
-    m = Term('m')
-    n = Term('n')
+    a = Term("a")
+    b = Term("b")
+    c = Term("c")
+    d = Term("d")
+    e = Term("e")
+    f = Term("f")
+    g = Term("g")
+    h = Term("h")
+    i = Term("i")
+    j = Term("j")
+    k = Term("k")
+    l = Term("l")
+    m = Term("m")
+    n = Term("n")
 
     clause1_list = [b, -c, d, e, f, -g, h, -i, j, -k]
     clause2_list = [b, c, -d, e, f, g, -h, -i, j, l, -m, -n]
@@ -37,27 +38,28 @@ def load_animal_taxonomy():
 
     return input_clauses
 
+
 def load_mushroom():
     schema = "e/p b/c/x/f/k/s f/g/y/s n/b/c/g/r/p/u/e/w/y t/f a/l/c/y/f/m/n/p/s a/d/f/n c/w/d b/n k/n/b/h/g/r/o/p/u/e/w/y e/t b/c/u/e/z/r f/y/k/s f/y/k/s n/b/c/g/o/p/e/w/y n/b/c/g/o/p/e/w/y p/u n/o/w/y n/o/t c/e/f/l/n/p/s/z k/n/b/h/r/o/u/w/y a/c/n/s/v/y g/l/m/p/u/w/d"
     schema_list = []
     var_dict = {}
     var_counter = 0
     for i, options in enumerate(schema.split(" ")[1:]):
-        option_list = options.split('/')
+        option_list = options.split("/")
         schema_list.append(len(option_list))
 
         var_list = []
         for j in range(len(option_list)):
-            var_list.append(str(var_counter+j))
+            var_list.append(str(var_counter + j))
         var_counter += len(option_list)
 
-        var_dict[i+1] = var_list
+        var_dict[i + 1] = var_list
 
     class_dict = {}
     var_counter = 0
     for i, schema in enumerate(schema_list):
         for j in range(schema):
-            class_dict[str(var_counter+j)] = i+1
+            class_dict[str(var_counter + j)] = i + 1
         var_counter += schema
 
     print(schema_list)
@@ -74,9 +76,9 @@ def load_mushroom():
         clause = []
         for i in range(117):
             if str(i) in row:
-                clause.append(-Term('v' + str(i)))
+                clause.append(-Term("v" + str(i)))
             else:
-                clause.append(Term('v' + str(i)))
+                clause.append(Term("v" + str(i)))
 
         # for var in row[:-1]:
         #     clause.append(Term('v'+str(var)))
@@ -88,26 +90,30 @@ def load_mushroom():
 
         # print(clause)
 
-        if row[-1] == '0':
+        if row[-1] == "0":
             negative_input_clauses.append(Or.from_list(clause))
-        elif row[-1] == '1':
+        elif row[-1] == "1":
             positive_input_clauses.append(Or.from_list(clause))
 
     return (positive_input_clauses, negative_input_clauses)
 
+
 def get_literal_length(f):
     f_str = str(f)
-    f_str = f_str.replace('(', '').replace(')', '').replace(';', '').replace(',', '')
-    literal_list = f_str.split(' ')
+    f_str = f_str.replace("(", "").replace(")", "").replace(";", "").replace(",", "")
+    literal_list = f_str.split(" ")
     return len(literal_list)
+
 
 new_var_counter = 1
 
+
 def get_new_var():
     global new_var_counter
-    new_var = Term('z'+str(new_var_counter))
+    new_var = Term("z" + str(new_var_counter))
     new_var_counter += 1
     return new_var
+
 
 def compress_pairwise(clause1, clause2):
     """
@@ -178,7 +184,11 @@ def compress_pairwise(clause1, clause2):
 
 def mistle(theory):
 
-    print("\nInput Theory (length = " + str(get_literal_length(And.from_list(theory))) + "):")
+    print(
+        "\nInput Theory (length = "
+        + str(get_literal_length(And.from_list(theory)))
+        + "):"
+    )
     for clause in theory:
         print(clause)
 
@@ -208,18 +218,18 @@ def mistle(theory):
         max_overlap_index = None
 
         for x, clause1 in enumerate(theory):
-            for y, clause2 in enumerate(theory[x+1:]):
-                if max_overlap_size > clause_length[x+y+1]:
+            for y, clause2 in enumerate(theory[x + 1 :]):
+                if max_overlap_size > clause_length[x + y + 1]:
                     break
 
                 clause_b = set(clause1.to_list()) & set(clause2.to_list())
                 overlap_size = len(clause_b)
-                overlap_indices.append((x, x+y+1))
+                overlap_indices.append((x, x + y + 1))
                 overlap_sizes.append(overlap_size)
 
                 if overlap_size > max_overlap_size:
                     max_overlap_size = overlap_size
-                    max_overlap_index = (x, x+y+1)
+                    max_overlap_index = (x, x + y + 1)
 
                 # print(str(x), str(x+y+1), str(len(clause_b)))
 
@@ -240,11 +250,12 @@ def mistle(theory):
                 theory.append(clause)
 
     theory_cnf = And.from_list(theory)
-    print("\nResultant Theory (Length = " + str(get_literal_length(theory_cnf)) +"):")
+    print("\nResultant Theory (Length = " + str(get_literal_length(theory_cnf)) + "):")
     for clause in theory:
         print(clause)
 
     return theory
+
 
 input_clauses = load_animal_taxonomy()
 # _, input_clauses = load_mushroom()

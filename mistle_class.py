@@ -1325,7 +1325,7 @@ class Mistle:
 
 # positives, negatives = load_ionosphere()
 # positives, negatives = load_tictactoe()
-positives, negatives = load_chess(switch_signs=True)
+# positives, negatives = load_chess(switch_signs=True)
 # positives, negatives = load_adult()
-mistle = Mistle(positives, negatives)
-theory = mistle.learn()
+# mistle = Mistle(positives, negatives)
+# theory = mistle.learn()
