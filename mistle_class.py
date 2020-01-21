@@ -89,7 +89,7 @@ def print_input_data_statistics(
     print()
 
 
-def load_test():
+def load_test1():
     # a = 1, b = (2, 3, 4), c = (5, 6)
     input_cnf = [(1, 2, 3, 4), (2, 3, 4, 5, 6)]
     output_cnf = [(-1, 5, 6), (2, 3, 4, 5, 6)]
@@ -154,6 +154,25 @@ def load_test():
     print("\nNegatives\t:", len(negatives))
     for n in negatives:
         print(n)
+
+    return positives, negatives
+
+
+def load_test2():
+    positives = []
+    positives.append(frozenset([1, 2]))
+    positives.append(frozenset([2, 3]))
+    positives.append(frozenset([2, 5]))
+
+    negatives = []
+    negatives.append(frozenset([-1, -2, -3, -4, -5]))
+    negatives.append(frozenset([-1, -2, -3, -6, -7]))
+    negatives.append(frozenset([-1, -3, -4]))
+    negatives.append(frozenset([-2, -5, -6]))
+    negatives.append(frozenset([-2, -3, -4]))
+    negatives.append(frozenset([-2, -3, 4]))
+    negatives.append(frozenset([-1, -3, -4]))
+    negatives.append(frozenset([-2, 3]))
 
     return positives, negatives
 
@@ -491,7 +510,7 @@ class Mistle:
         self.total_negatives = len(negatives)
         self.theory_length = len(negatives)
 
-        self.operator_counter = {"W": 0, "V": 0, "S": 0, "C": 0}
+        self.operator_counter = {"W": 0, "V": 0, "S": 0, "R": 0}
         self.invented_predicate_definition = {}
 
         self.theory = []
@@ -500,7 +519,7 @@ class Mistle:
 
         self.new_var_counter = 0
         for pa in positives + negatives:
-            self.new_var_counter = max(self.new_var_counter, abs(max(pa)))
+            self.new_var_counter = max(self.new_var_counter, max([abs(l) for l in pa]))
         self.new_var_counter += 1
         # print("new_var_counter\t:", self.new_var_counter)
 
@@ -992,13 +1011,13 @@ class Mistle:
         """
 
         clause_a, clause_b, clause_c = get_subclauses(clause1, clause2)
-        complementation_applicable = False
+        resolution_applicable = False
         if (
             len(clause_a) == 1
             and len(clause_c) == 1
             and copy(clause_a).pop() == -copy(clause_c).pop()
         ):
-            complementation_applicable = True
+            resolution_applicable = True
 
         if len(clause_a) == 0:
             # Apply subsumption operator on (b1; b2; b3), (b1; b2; b3; c1; c2; c3)
@@ -1010,10 +1029,10 @@ class Mistle:
             self.operator_counter["S"] += 1
             return {clause2}, len(clause_b), True
 
-        elif complementation_applicable:
+        elif resolution_applicable:
             # Apply complementation operator on (a; b1; b2; b3), (b1; b2; b3; -a)
             # Return (b1; b2; b3)
-            self.operator_counter["C"] += 1
+            self.operator_counter["R"] += 1
             return {frozenset(clause_b)}, len(clause_b) + 2, True
 
         elif len(clause_b) == 0:
@@ -1289,13 +1308,13 @@ class Mistle:
             + "%"
             + "\n\tOperator Count = "
             + str(self.operator_counter)
-            + "\n\t# Contradictions = "
-            + str(catch_it)
-            + " ("
-            + str(pos2neg)
-            + ", "
-            + str(neg2pos)
-            + ")"
+            # + "\n\t# Contradictions = "
+            # + str(catch_it)
+            # + " ("
+            # + str(pos2neg)
+            # + ", "
+            # + str(neg2pos)
+            # + ")"
             + "\n\tTime Taken = "
             + str(time() - start_time)
             + " seconds"
@@ -1327,5 +1346,6 @@ class Mistle:
 # positives, negatives = load_tictactoe()
 # positives, negatives = load_chess(switch_signs=True)
 # positives, negatives = load_adult()
-# mistle = Mistle(positives, negatives)
-# theory = mistle.learn()
+positives, negatives = load_test2()
+mistle = Mistle(positives, negatives)
+theory = mistle.learn()
