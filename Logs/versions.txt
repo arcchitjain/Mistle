@@ -1,0 +1,9 @@
+versions:
+
+v3: 
+positives, negatives = load_pima()
+cross_validate(positives, negatives, num_folds=10, lossless=False, test_both=True)
+
+v4: 
+positives, negatives = load_pima()
+cross_validate(positives, negatives, num_folds=10, lossless=True, test_both=True)

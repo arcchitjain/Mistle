@@ -24,6 +24,37 @@ def split_data(data, num_folds=10, seed=1234):
     return split_data
 
 
+def compress(pa, definitions):
+    """
+    :param pa: A partial assignment as a test datapoint
+    :param definitions: An ordered dictionary of definitions invented predicates
+    :return: A compressed pa that is substituted with some of the invented predicates
+    """
+
+    # substituted_definitions = {}
+    # for new_predicate, definition in definitions.items():
+    #     substituted_definition = set()
+    #     for literal in definition:
+    #         if literal not in definitions:
+    #             substituted_definition.add(literal)
+    #         else:
+    #             # TODO
+    #             pass
+    #
+    #     substituted_definitions[new_predicate] = definition
+
+    compressed_pa = set(pa)
+    # definitions = copy(definitions)
+
+    while definitions:
+        new_pred, definition = definitions.popitem(last=False)
+        if definition.issubset(compressed_pa):
+            compressed_pa = compressed_pa - definition
+            compressed_pa.add(new_pred)
+
+    return compressed_pa
+
+
 def test_theory(theory, positives, negatives):
     accuracy = 0
     total_datapoints = len(positives) + len(negatives)
@@ -46,7 +77,14 @@ def test_theory(theory, positives, negatives):
     return float(accuracy) / total_datapoints
 
 
-def test_both_theories(pos_theory, neg_theory, test_positives, test_negatives):
+def test_both_theories(
+    pos_theory,
+    pos_definitions,
+    neg_theory,
+    neg_definitions,
+    test_positives,
+    test_negatives,
+):
     accuracy = 0
     total_classifications = 0
 
@@ -56,6 +94,21 @@ def test_both_theories(pos_theory, neg_theory, test_positives, test_negatives):
     ft = 0
     tf = 0
     tt = 0
+
+    # Remove negative signs from the literals in the definitions
+    abs_pos_def = OrderedDict()
+    for var, definition in pos_definitions.items():
+        abs_def = set()
+        for literal in definition:
+            abs_def.add(-1 * literal)
+        abs_pos_def[var] = abs_def
+
+    abs_neg_def = OrderedDict()
+    for var, definition in neg_definitions.items():
+        abs_def = set()
+        for literal in definition:
+            abs_def.add(-1 * literal)
+        abs_neg_def[var] = abs_def
 
     for pa in test_positives:
         p = check_pa_satisfiability(pa, pos_theory)
@@ -70,10 +123,33 @@ def test_both_theories(pos_theory, neg_theory, test_positives, test_negatives):
             # Wrongly classified as a negative
             total_classifications += 1
             tf += 1
-        elif p and n:
-            tt += 1
-        elif not p and not n:
-            ff += 1
+        else:
+            # elif p and n:
+            #     tt += 1
+            # elif not p and not n:
+            #     ff += 1
+
+            pos_length = len(compress(pa, copy(abs_pos_def)))
+            neg_length = len(compress(pa, copy(abs_neg_def)))
+
+            # if not pos_definitions or not pos_definitions:
+            #     print("Afsoos")
+            # elif pos_length != neg_length:
+            #     print("Yo\t: " + str(pos_length) + " != " + str(neg_length))
+
+            if pos_length < neg_length:
+                # Correctly classified as a positive
+                accuracy += 1
+                total_classifications += 1
+                ft += 1
+            elif neg_length < pos_length:
+                # Wrongly classified as a negative
+                total_classifications += 1
+                tf += 1
+            elif p and n:
+                tt += 1
+            elif not p and not n:
+                ff += 1
 
         pbar.update(1)
 
@@ -90,10 +166,32 @@ def test_both_theories(pos_theory, neg_theory, test_positives, test_negatives):
             accuracy += 1
             total_classifications += 1
             tf += 1
-        elif p and n:
-            tt += 1
-        elif not p and not n:
-            ff += 1
+        else:
+            # elif p and n:
+            #     tt += 1
+            # elif not p and not n:
+            #     ff += 1
+            pos_length = len(compress(pa, copy(abs_pos_def)))
+            neg_length = len(compress(pa, copy(abs_neg_def)))
+
+            # if not pos_definitions or not pos_definitions:
+            #     print("Afsoos")
+            # elif pos_length != neg_length:
+            #     print("Yo\t: " + str(pos_length) + " != " + str(neg_length))
+
+            if pos_length < neg_length:
+                # Wrongly classified as a positive
+                total_classifications += 1
+                ft += 1
+            elif neg_length < pos_length:
+                # Correctly classified as a negative
+                accuracy += 1
+                total_classifications += 1
+                tf += 1
+            elif p and n:
+                tt += 1
+            elif not p and not n:
+                ff += 1
 
         pbar.update(1)
 
@@ -214,13 +312,22 @@ def cross_validate(
         # Compressed Theory
         if test_both:
             pos_mistle = Mistle(train_negatives, train_positives)
-            pos_theory, pos_compression = pos_mistle.learn(lossless=lossless)
+            pos_theory, pos_compression, pos_definitions = pos_mistle.learn(
+                lossless=lossless
+            )
 
             neg_mistle = Mistle(train_positives, train_negatives)
-            neg_theory, neg_compression = neg_mistle.learn(lossless=lossless)
+            neg_theory, neg_compression, neg_definitions = neg_mistle.learn(
+                lossless=lossless
+            )
 
             fold_accuracy, coverage = test_both_theories(
-                pos_theory, neg_theory, test_positives, test_negatives
+                pos_theory,
+                pos_definitions,
+                neg_theory,
+                neg_definitions,
+                test_positives,
+                test_negatives,
             )
 
             print("Accuracy of fold " + str(fold) + "\t: " + str(fold_accuracy))
@@ -234,7 +341,7 @@ def cross_validate(
             avg_coverage += coverage
         else:
             mistle = Mistle(train_positives, train_negatives)
-            theory, compression = mistle.learn(lossless=lossless)
+            theory, compression, definitions = mistle.learn(lossless=lossless)
 
             fold_accuracy = test_theory(theory, test_positives, test_negatives)
             print("Accuracy of fold " + str(fold) + "\t: " + str(fold_accuracy))
@@ -272,21 +379,30 @@ def cross_validate(
     return avg_accuracy
 
 
-positives, negatives = load_breast()
-# cross_validate(positives, negatives, 10, lossless=False, test_both=False)
-cross_validate(negatives, positives, 10, lossless=False, test_both=False)
-positives, negatives = load_pima()
-# cross_validate(positives, negatives, 10, lossless=False, test_both=False)
-cross_validate(negatives, positives, 10, lossless=False, test_both=False)
-positives, negatives = load_ionosphere()
-# cross_validate(positives, negatives, 10, lossless=False, test_both=False)
-cross_validate(negatives, positives, 10, lossless=False, test_both=False)
-positives, negatives = load_tictactoe()
-# cross_validate(positives, negatives, 10, lossless=False, test_both=False)
-cross_validate(negatives, positives, 10, lossless=False, test_both=False)
+# positives, negatives = load_breast()
+# positives, negatives = load_pima()
+# positives, negatives = load_ionosphere()
+# positives, negatives = load_tictactoe()
+# cross_validate(positives, negatives, 10, lossless=False, test_both=True)
+# cross_validate(negatives, positives, 10, lossless=False, test_both=False)
 
 # positives, negatives = load_chess(switch_signs=True)
 # positives, negatives = load_mushroom()
 # cross_validate(positives, negatives, 10, "./Output/adult", lossless=False)
 # cross_validate(positives, negatives, 10, "./Output/mushroom", lossless=False)
 # cross_validate(positives, negatives, 10, lossless=False, test_both=False)
+
+# positives, negatives = load_tictactoe()
+# cross_validate(positives, negatives, num_folds=10, lossless=True, test_both=True)
+# positives, negatives = load_ionosphere()
+# cross_validate(positives, negatives, num_folds=10, lossless=True, test_both=True)
+# positives, negatives = load_breast()
+# cross_validate(positives, negatives, num_folds=10, lossless=True, test_both=True)
+# positives, negatives = load_pima()
+# cross_validate(positives, negatives, num_folds=10, lossless=True, test_both=True)
+# positives, negatives = load_chess()
+# cross_validate(positives, negatives, num_folds=10, lossless=False, test_both=True)
+positives, negatives = load_adult()
+cross_validate(positives, negatives, num_folds=10, lossless=False, test_both=True)
+# positives, negatives = load_mushroom()
+# cross_validate(positives, negatives, 10, lossless=False, test_both=True)

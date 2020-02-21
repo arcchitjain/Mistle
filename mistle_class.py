@@ -3,6 +3,7 @@ from copy import copy
 from time import time
 import numpy as np
 from pycosat import solve
+from collections import OrderedDict
 
 np.set_printoptions(linewidth=150)
 
@@ -511,7 +512,7 @@ class Mistle:
         self.theory_length = len(negatives)
 
         self.operator_counter = {"W": 0, "V": 0, "S": 0, "R": 0}
-        self.invented_predicate_definition = {}
+        self.invented_predicate_definition = OrderedDict()
 
         self.theory = []
         self.clause_length = []
@@ -1326,7 +1327,7 @@ class Mistle:
 
         count, p, n = self.count_violations(self.positives, self.negatives)
 
-        return self.theory, compression
+        return self.theory, compression, self.invented_predicate_definition
 
 
 # # positives, negatives = load_animal_taxonomy()
@@ -1346,6 +1347,6 @@ class Mistle:
 # positives, negatives = load_tictactoe()
 # positives, negatives = load_chess(switch_signs=True)
 # positives, negatives = load_adult()
-positives, negatives = load_test2()
-mistle = Mistle(positives, negatives)
-theory = mistle.learn()
+# positives, negatives = load_ionosphere()
+# mistle = Mistle(positives, negatives)
+# theory = mistle.learn()

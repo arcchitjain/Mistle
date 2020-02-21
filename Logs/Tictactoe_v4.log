@@ -1,0 +1,383 @@
+Reading input file for TicTacToe:   0%|          | 0/958 [00:00<?, ?it/s]
+Input Theory (with redundancies and inconsistencies):
+	Literal Length = 2709
+	Number of clauses = 301
+
+Input Theory (without redundancies and inconsistencies):
+	Literal Length = 2709
+	Number of clauses = 301
+Reading input file for TicTacToe: 100%|██████████| 958/958 [00:00<00:00, 40622.59it/s]
+Compressing Clauses:  64%|██████▍   | 275/431 [00:01<00:01, 118.35it/s]Cannot compress the theory any further.
+
+Resultant Theory:
+	Literal Length = 1893
+	Length of Theory = 582
+	% Compression (For measure: ll) = 30.12%
+	Operator Count = {'W': 281, 'V': 0, 'S': 0, 'R': 0}
+	Time Taken = 1.8805558681488037 seconds
+Compressing Clauses:  65%|██████▌   | 281/431 [00:01<00:00, 166.00it/s]
+
+Input Theory (with redundancies and inconsistencies):
+	Literal Length = 5121
+	Number of clauses = 569
+
+Input Theory (without redundancies and inconsistencies):
+	Literal Length = 5121
+	Number of clauses = 569
+Compressing Clauses:  73%|███████▎  | 532/725 [00:11<00:06, 31.11it/s]Cannot compress the theory any further.
+
+Resultant Theory:
+	Literal Length = 3538
+	Length of Theory = 1091
+	% Compression (For measure: ll) = 30.91%
+	Operator Count = {'W': 527, 'V': 0, 'S': 5, 'R': 0}
+	Time Taken = 11.550046920776367 seconds
+
+Testing both theories: 100%|██████████| 88/88 [00:00<00:00, 549.08it/s]
+Classification Matrix 	: ff = 0; ft = 29; tf = 54; tt = 5
+Accuracy of fold 0	: 0.9879518072289156
+Coverage of fold 0	: 94.32
+
+Input Theory (with redundancies and inconsistencies):
+	Literal Length = 2673
+	Number of clauses = 297
+
+Input Theory (without redundancies and inconsistencies):
+	Literal Length = 2673
+	Number of clauses = 297
+Compressing Clauses:  65%|██████▍   | 275/426 [00:01<00:01, 124.30it/s]Cannot compress the theory any further.
+
+Resultant Theory:
+	Literal Length = 1853
+	Length of Theory = 569
+	% Compression (For measure: ll) = 30.68%
+	Operator Count = {'W': 274, 'V': 0, 'S': 2, 'R': 0}
+	Time Taken = 1.8052709102630615 seconds
+Compressing Clauses:  65%|██████▍   | 276/426 [00:01<00:00, 170.72it/s]
+
+Input Theory (with redundancies and inconsistencies):
+	Literal Length = 5085
+	Number of clauses = 565
+
+Input Theory (without redundancies and inconsistencies):
+	Literal Length = 5085
+	Number of clauses = 565
+Compressing Clauses:  73%|███████▎  | 524/721 [00:10<00:05, 33.56it/s]Cannot compress the theory any further.
+
+Resultant Theory:
+	Literal Length = 3524
+	Length of Theory = 1079
+	% Compression (For measure: ll) = 30.7%
+	Operator Count = {'W': 520, 'V': 0, 'S': 6, 'R': 0}
+	Time Taken = 11.173321962356567 seconds
+Compressing Clauses:  73%|███████▎  | 526/721 [00:10<00:04, 48.14it/s]
+Testing both theories:  57%|█████▋    | 55/96 [00:00<00:00, 545.73it/s]Classification Matrix 	: ff = 0; ft = 24; tf = 62; tt = 10
+Accuracy of fold 1	: 0.9534883720930233
+Coverage of fold 1	: 89.58
+
+Input Theory (with redundancies and inconsistencies):
+	Literal Length = 2736
+	Number of clauses = 304
+
+Input Theory (without redundancies and inconsistencies):
+	Literal Length = 2736
+	Number of clauses = 304
+Testing both theories: 100%|██████████| 96/96 [00:00<00:00, 552.66it/s]
+Compressing Clauses:  62%|██████▏   | 268/434 [00:01<00:01, 118.58it/s]Cannot compress the theory any further.
+
+Resultant Theory:
+	Literal Length = 1918
+	Length of Theory = 583
+	% Compression (For measure: ll) = 29.9%
+	Operator Count = {'W': 279, 'V': 0, 'S': 0, 'R': 0}
+	Time Taken = 1.9223058223724365 seconds
+Compressing Clauses:  64%|██████▍   | 279/434 [00:01<00:00, 161.71it/s]
+
+Input Theory (with redundancies and inconsistencies):
+	Literal Length = 5184
+	Number of clauses = 576
+
+Input Theory (without redundancies and inconsistencies):
+	Literal Length = 5184
+	Number of clauses = 576
+Compressing Clauses:  73%|███████▎  | 533/733 [00:11<00:06, 30.82it/s]Cannot compress the theory any further.
+
+Resultant Theory:
+	Literal Length = 3590
+	Length of Theory = 1100
+	% Compression (For measure: ll) = 30.75%
+	Operator Count = {'W': 529, 'V': 0, 'S': 5, 'R': 0}
+	Time Taken = 11.834443092346191 seconds
+Compressing Clauses:  73%|███████▎  | 534/733 [00:11<00:04, 46.12it/s]
+Testing both theories: 100%|██████████| 78/78 [00:00<00:00, 530.68it/s]
+Classification Matrix 	: ff = 0; ft = 20; tf = 53; tt = 5
+Accuracy of fold 2	: 0.8904109589041096
+Coverage of fold 2	: 93.59
+
+Input Theory (with redundancies and inconsistencies):
+	Literal Length = 2646
+	Number of clauses = 294
+
+Input Theory (without redundancies and inconsistencies):
+	Literal Length = 2646
+	Number of clauses = 294
+Compressing Clauses:  62%|██████▏   | 264/423 [00:01<00:01, 129.11it/s]Cannot compress the theory any further.
+Compressing Clauses:  64%|██████▍   | 271/423 [00:01<00:00, 175.85it/s]
+
+Resultant Theory:
+	Literal Length = 1844
+	Length of Theory = 563
+	% Compression (For measure: ll) = 30.31%
+	Operator Count = {'W': 270, 'V': 0, 'S': 1, 'R': 0}
+	Time Taken = 1.7282018661499023 seconds
+
+Input Theory (with redundancies and inconsistencies):
+	Literal Length = 4995
+	Number of clauses = 555
+
+Input Theory (without redundancies and inconsistencies):
+	Literal Length = 4995
+	Number of clauses = 555
+Compressing Clauses:  72%|███████▏  | 513/710 [00:10<00:05, 33.53it/s]Cannot compress the theory any further.
+
+Resultant Theory:
+	Literal Length = 3443
+	Length of Theory = 1056
+	% Compression (For measure: ll) = 31.07%
+	Operator Count = {'W': 507, 'V': 0, 'S': 6, 'R': 0}
+	Time Taken = 10.434731006622314 seconds
+
+Testing both theories: 100%|██████████| 109/109 [00:00<00:00, 562.03it/s]
+Classification Matrix 	: ff = 0; ft = 24; tf = 73; tt = 12
+Accuracy of fold 3	: 0.9484536082474226
+Coverage of fold 3	: 88.99
+
+Input Theory (with redundancies and inconsistencies):
+	Literal Length = 2709
+	Number of clauses = 301
+
+Input Theory (without redundancies and inconsistencies):
+	Literal Length = 2709
+	Number of clauses = 301
+Compressing Clauses:  63%|██████▎   | 272/431 [00:01<00:01, 120.32it/s]Cannot compress the theory any further.
+Compressing Clauses:  64%|██████▍   | 277/431 [00:01<00:00, 166.91it/s]
+
+Resultant Theory:
+	Literal Length = 1887
+	Length of Theory = 576
+	% Compression (For measure: ll) = 30.34%
+	Operator Count = {'W': 276, 'V': 0, 'S': 1, 'R': 0}
+	Time Taken = 1.854870080947876 seconds
+
+Input Theory (with redundancies and inconsistencies):
+	Literal Length = 5130
+	Number of clauses = 570
+
+Input Theory (without redundancies and inconsistencies):
+	Literal Length = 5130
+	Number of clauses = 570
+Compressing Clauses:  73%|███████▎  | 531/727 [00:13<00:05, 39.13it/s]
+Cannot compress the theory any further.
+
+Resultant Theory:
+	Literal Length = 3539
+	Length of Theory = 1089
+	% Compression (For measure: ll) = 31.01%
+	Operator Count = {'W': 525, 'V': 0, 'S': 6, 'R': 0}
+	Time Taken = 13.819769859313965 seconds
+Testing both theories: 100%|██████████| 87/87 [00:00<00:00, 532.20it/s]
+Classification Matrix 	: ff = 0; ft = 27; tf = 53; tt = 7
+Accuracy of fold 4	: 0.9375
+Coverage of fold 4	: 91.95
+
+Input Theory (with redundancies and inconsistencies):
+	Literal Length = 2637
+	Number of clauses = 293
+
+Input Theory (without redundancies and inconsistencies):
+	Literal Length = 2637
+	Number of clauses = 293
+Compressing Clauses:  65%|██████▍   | 273/422 [00:01<00:00, 160.55it/s]
+Cannot compress the theory any further.
+
+Resultant Theory:
+	Literal Length = 1839
+	Length of Theory = 562
+	% Compression (For measure: ll) = 30.26%
+	Operator Count = {'W': 271, 'V': 0, 'S': 2, 'R': 0}
+	Time Taken = 1.888733148574829 seconds
+
+Input Theory (with redundancies and inconsistencies):
+	Literal Length = 4968
+	Number of clauses = 552
+
+Input Theory (without redundancies and inconsistencies):
+	Literal Length = 4968
+	Number of clauses = 552
+Compressing Clauses:  73%|███████▎  | 516/707 [00:13<00:06, 28.48it/s]Cannot compress the theory any further.
+
+Resultant Theory:
+	Literal Length = 3421
+	Length of Theory = 1058
+	% Compression (For measure: ll) = 31.14%
+	Operator Count = {'W': 512, 'V': 0, 'S': 6, 'R': 0}
+	Time Taken = 13.955501794815063 seconds
+Compressing Clauses:  73%|███████▎  | 518/707 [00:13<00:04, 37.88it/s]
+Testing both theories: 100%|██████████| 113/113 [00:00<00:00, 485.84it/s]
+Classification Matrix 	: ff = 0; ft = 32; tf = 72; tt = 9
+Accuracy of fold 5	: 0.9807692307692307
+Coverage of fold 5	: 92.04
+
+Input Theory (with redundancies and inconsistencies):
+	Literal Length = 2682
+	Number of clauses = 298
+
+Input Theory (without redundancies and inconsistencies):
+	Literal Length = 2682
+	Number of clauses = 298
+Compressing Clauses:  64%|██████▍   | 273/427 [00:01<00:01, 136.57it/s]
+Cannot compress the theory any further.
+
+Resultant Theory:
+	Literal Length = 1878
+	Length of Theory = 571
+	% Compression (For measure: ll) = 29.98%
+	Operator Count = {'W': 273, 'V': 0, 'S': 0, 'R': 0}
+	Time Taken = 2.221101999282837 seconds
+
+Input Theory (with redundancies and inconsistencies):
+	Literal Length = 5022
+	Number of clauses = 558
+
+Input Theory (without redundancies and inconsistencies):
+	Literal Length = 5022
+	Number of clauses = 558
+Compressing Clauses:  73%|███████▎  | 522/713 [00:13<00:05, 38.18it/s]
+Cannot compress the theory any further.
+
+Resultant Theory:
+	Literal Length = 3466
+	Length of Theory = 1064
+	% Compression (For measure: ll) = 30.98%
+	Operator Count = {'W': 514, 'V': 0, 'S': 8, 'R': 0}
+	Time Taken = 14.019232988357544 seconds
+Testing both theories: 100%|██████████| 102/102 [00:00<00:00, 489.00it/s]
+Classification Matrix 	: ff = 0; ft = 31; tf = 65; tt = 6
+Accuracy of fold 6	: 0.9583333333333334
+Coverage of fold 6	: 94.12
+
+Input Theory (with redundancies and inconsistencies):
+	Literal Length = 2745
+	Number of clauses = 305
+
+Input Theory (without redundancies and inconsistencies):
+	Literal Length = 2745
+	Number of clauses = 305
+Compressing Clauses:  64%|██████▍   | 280/435 [00:02<00:01, 103.58it/s]Cannot compress the theory any further.
+
+Resultant Theory:
+	Literal Length = 1906
+	Length of Theory = 582
+	% Compression (For measure: ll) = 30.56%
+	Operator Count = {'W': 280, 'V': 0, 'S': 3, 'R': 0}
+	Time Taken = 2.278334379196167 seconds
+Compressing Clauses:  65%|██████▌   | 283/435 [00:02<00:01, 137.14it/s]
+
+Input Theory (with redundancies and inconsistencies):
+	Literal Length = 5085
+	Number of clauses = 565
+
+Input Theory (without redundancies and inconsistencies):
+	Literal Length = 5085
+	Number of clauses = 565
+Compressing Clauses:  74%|███████▎  | 530/721 [00:12<00:04, 42.42it/s]
+Cannot compress the theory any further.
+
+Resultant Theory:
+	Literal Length = 3487
+	Length of Theory = 1079
+	% Compression (For measure: ll) = 31.43%
+	Operator Count = {'W': 522, 'V': 0, 'S': 8, 'R': 0}
+	Time Taken = 12.772050857543945 seconds
+Testing both theories:  56%|█████▌    | 49/88 [00:00<00:00, 481.45it/s]Classification Matrix 	: ff = 0; ft = 24; tf = 60; tt = 4
+Accuracy of fold 7	: 0.9761904761904762
+Coverage of fold 7	: 95.45
+
+Input Theory (with redundancies and inconsistencies):
+	Literal Length = 2700
+	Number of clauses = 300
+
+Input Theory (without redundancies and inconsistencies):
+	Literal Length = 2700
+	Number of clauses = 300
+Testing both theories: 100%|██████████| 88/88 [00:00<00:00, 492.32it/s]
+Compressing Clauses:  63%|██████▎   | 271/430 [00:01<00:01, 150.70it/s]
+Cannot compress the theory any further.
+
+Resultant Theory:
+	Literal Length = 1898
+	Length of Theory = 569
+	% Compression (For measure: ll) = 29.7%
+	Operator Count = {'W': 270, 'V': 0, 'S': 1, 'R': 0}
+	Time Taken = 2.0061590671539307 seconds
+
+Input Theory (with redundancies and inconsistencies):
+	Literal Length = 5112
+	Number of clauses = 568
+
+Input Theory (without redundancies and inconsistencies):
+	Literal Length = 5112
+	Number of clauses = 568
+Compressing Clauses:  73%|███████▎  | 529/724 [00:11<00:04, 46.37it/s]
+Cannot compress the theory any further.
+
+Resultant Theory:
+	Literal Length = 3527
+	Length of Theory = 1085
+	% Compression (For measure: ll) = 31.01%
+	Operator Count = {'W': 523, 'V': 0, 'S': 6, 'R': 0}
+	Time Taken = 11.681517124176025 seconds
+Testing both theories:  62%|██████▏   | 56/90 [00:00<00:00, 551.61it/s]Classification Matrix 	: ff = 0; ft = 27; tf = 59; tt = 4
+Accuracy of fold 8	: 0.9302325581395349
+Testing both theories: 100%|██████████| 90/90 [00:00<00:00, 541.44it/s]
+Coverage of fold 8	: 95.56
+
+Input Theory (with redundancies and inconsistencies):
+	Literal Length = 2655
+	Number of clauses = 295
+
+Input Theory (without redundancies and inconsistencies):
+	Literal Length = 2655
+	Number of clauses = 295
+Compressing Clauses:  64%|██████▍   | 271/424 [00:01<00:01, 87.15it/s] Cannot compress the theory any further.
+
+Resultant Theory:
+	Literal Length = 1844
+	Length of Theory = 566
+	% Compression (For measure: ll) = 30.55%
+	Operator Count = {'W': 272, 'V': 0, 'S': 1, 'R': 0}
+	Time Taken = 2.020582914352417 seconds
+Compressing Clauses:  64%|██████▍   | 273/424 [00:01<00:01, 149.66it/s]
+
+Input Theory (with redundancies and inconsistencies):
+	Literal Length = 5004
+	Number of clauses = 556
+
+Input Theory (without redundancies and inconsistencies):
+	Literal Length = 5004
+	Number of clauses = 556
+Compressing Clauses:  73%|███████▎  | 521/711 [00:10<00:03, 48.99it/s]
+Cannot compress the theory any further.
+
+Resultant Theory:
+	Literal Length = 3451
+	Length of Theory = 1069
+	% Compression (For measure: ll) = 31.04%
+	Operator Count = {'W': 517, 'V': 0, 'S': 4, 'R': 0}
+	Time Taken = 10.874426126480103 seconds
+Accuracy of fold 9	: 0.9405940594059405
+Coverage of fold 9	: 94.39
+Average Coverage 					: 93.0%
+Average Classification Accuracy 	: 95.04%
+Average Compression 				: [30.24, 31.004]%
+Total Time 							: 149.68812108039856 seconds
