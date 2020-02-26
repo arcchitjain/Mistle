@@ -474,9 +474,9 @@ def print_2d(matrix):
     print()
 
 
-def check_pa_satisfiability(pa, theory):
+def check_pa_satisfiability(pa, clauses):
 
-    theory_cnf = [tuple(clause) for clause in theory]
+    theory_cnf = [tuple(clause) for clause in clauses]
 
     cnf = theory_cnf + [(a,) for a in pa]
 
@@ -509,24 +509,22 @@ class Mistle:
 
         self.total_positives = len(positives)
         self.total_negatives = len(negatives)
-        self.theory_length = len(negatives)
+        # self.theory_length = len(negatives)
 
         self.operator_counter = {"W": 0, "V": 0, "S": 0, "R": 0}
         self.invented_predicate_definition = OrderedDict()
-
-        self.theory = []
-        self.clause_length = []
-        self.overlap_matrix = []
+        self.theory = Theory(clauses=[], overlap_matrix=[], search_index=0)
+        # self.clause_length = []
+        # self.overlap_matrix = []
+        # self.search_index = 0
+        # self.compression = 0
+        self.beam = None
 
         self.new_var_counter = 0
         for pa in positives + negatives:
             self.new_var_counter = max(self.new_var_counter, max([abs(l) for l in pa]))
         self.new_var_counter += 1
         # print("new_var_counter\t:", self.new_var_counter)
-
-        self.search_index = 0
-        self.update_dict = {}
-        self.update_threshold = 1
 
     def get_new_var(self):
         """
@@ -536,32 +534,6 @@ class Mistle:
         new_var = self.new_var_counter
         self.new_var_counter += 1
         return new_var
-
-    def convert_to_theory(self, partial_assignments):
-        """
-        Negate the disjunctive set of partial assignments to get a conjunctive set of clauses (theory)
-        :param partial_assignments: List/Set of frozensets of terms where each frozenset is a partial assignment
-        :return: List of frozensets of terms where each frozenset is a clause
-        """
-        for pa in partial_assignments:
-            self.theory.append(convert_to_clause(pa))
-            self.clause_length.append(len(pa))
-
-        return self.theory
-
-    def sort_theory(self):
-
-        # # Numpy Implementation
-        # self.clause_length = np.array(self.clause_length)
-        # index = self.clause_length.argsort()[::-1]
-        # self.clause_length = self.clause_length[index]
-
-        # Non-numpy Implementation
-        index = list(range(self.theory_length))
-        index.sort(key=self.clause_length.__getitem__, reverse=True)
-        self.clause_length = [self.clause_length[i] for i in index]
-
-        self.theory = [self.theory[i] for i in index]
 
     def get_literal_length(self, cnf=None):
         """
@@ -585,7 +557,7 @@ class Mistle:
             False   otherwise
         """
 
-        new_theory = copy(self.theory)
+        new_theory = copy(self.theory.clauses)
         new_theory.remove(input_clause1)
         new_theory.remove(input_clause2)
         new_theory += list(output_clauses)
@@ -636,11 +608,7 @@ class Mistle:
                     pos_cnf_c.append(component)
 
                 for pos_pa in self.positives:
-                    # if (
-                    #     check_pa_satisfiability(pos_pa, [clause_a])
-                    #     and check_pa_satisfiability(pos_pa, [clause_b])
-                    #     and not check_pa_satisfiability(pos_pa, [clause_c])
-                    # ):
+
                     if not check_pa_satisfiability(pos_pa, pos_cnf_c):
                         # if check_pa_satisfiability(pos_pa, pos_cnf):
                         # Loss of a positive partial assignment encountered.
@@ -663,11 +631,6 @@ class Mistle:
                     pos_cnf_c.append(component)
 
                 for pos_pa in self.positives:
-                    # if (
-                    #     not check_pa_satisfiability(pos_pa, [clause_a])
-                    #     and check_pa_satisfiability(pos_pa, [clause_b])
-                    #     and check_pa_satisfiability(pos_pa, [clause_c])
-                    # ):
                     if not check_pa_satisfiability(pos_pa, pos_cnf_c):
                         # if check_pa_satisfiability(pos_pa, pos_cnf):
                         # Loss of a positive partial assignment encountered.
@@ -679,7 +642,12 @@ class Mistle:
             return True
 
     def count_violations(
-        self, positives=None, negatives=None, sign=None, print_violations=True
+        self,
+        theory=None,
+        positives=None,
+        negatives=None,
+        sign=None,
+        print_violations=True,
     ):
 
         start_time = time()
@@ -687,6 +655,9 @@ class Mistle:
         neg_counter = 0
         violated_pos = []
         violated_neg = []
+
+        if not theory:
+            theory = self.theory
 
         if positives is None:
             positives = self.initial_positives
@@ -697,7 +668,7 @@ class Mistle:
         if sign is None or sign == "+":
 
             for pos in positives:
-                if not check_pa_satisfiability(pos, self.theory):
+                if not check_pa_satisfiability(pos, theory.clauses):
                     violated_pos.append(pos)
                     pos_counter += 1
 
@@ -713,7 +684,7 @@ class Mistle:
         elif sign is None or sign == "-":
 
             for neg in negatives:
-                if check_pa_satisfiability(neg, self.theory):
+                if check_pa_satisfiability(neg, theory.clauses):
                     violated_neg.append(neg)
                     neg_counter += 1
 
@@ -722,279 +693,8 @@ class Mistle:
                     neg_counter,
                     " violations of negative partial assignments found for the learned theory.",
                 )
-                # if print_violations:
-                #     print_2d(violated_neg)
-                #     print()
 
-        # print(
-        #     "Time taken in counting violations (Sign = "
-        #     + str(sign)
-        #     + ") = "
-        #     + str(time() - start_time)
-        #     + " seconds"
-        # )
         return pos_counter + neg_counter, violated_pos, violated_neg
-
-    def get_overlap_matrix(self):
-        """
-        Construct a triangular matrix that stores overlap of ith and jth clause at (i,j) position
-        :return: A triangular matrix that stores overlap of ith and jth clause at (i,j) position
-        """
-
-        n = len(self.theory)
-        for i, clause1 in enumerate(self.theory):
-            self.overlap_matrix.append([0] * n)
-            for j, clause2 in enumerate(self.theory[i + 1 :]):
-                self.overlap_matrix[i][i + j + 1] = len(clause1 & clause2)
-
-        # # Numpy Implementation
-        # return np.array(self.overlap_matrix)
-
-        # Non-numpy Implementation
-        return self.overlap_matrix
-
-    def select_clauses(self, prev_overlap_size):
-        """
-        Select clauses for next compression step WITH a compression matrix
-        :param prev_overlap_size: Previous Overlap Size
-        :return:
-            max_overlap_indices: The indices of 2 clauses that have the maximum overlap size
-            max_overlap_size: The maximum overlap size
-        """
-
-        max_overlap_size = 0
-        max_overlap_indices = (0, 0)
-        # Only search the overlap matrix (After self.search_index)
-        for i, row in enumerate(self.overlap_matrix[self.search_index :]):
-            for j, overlap in enumerate(row[self.search_index + i + 1 :]):
-                if overlap > max_overlap_size:
-                    max_overlap_size = overlap
-                    max_overlap_indices = (
-                        self.search_index + i,
-                        self.search_index + i + 1 + j,
-                    )
-                    if prev_overlap_size and max_overlap_size >= prev_overlap_size:
-                        break
-
-        if prev_overlap_size and max_overlap_size < prev_overlap_size:
-            # Search the initial part of the matrix too (Before self.search_index)
-
-            max_overlap_size1 = 0
-            max_overlap_indices1 = (0, 0)
-            for i, row in enumerate(self.overlap_matrix[: self.search_index]):
-                for j, overlap in enumerate(row[i + 1 : self.search_index]):
-                    if overlap > max_overlap_size1:
-                        max_overlap_size1 = overlap
-                        max_overlap_indices1 = (i, i + 1 + j)
-
-            if max_overlap_size1 >= max_overlap_size:
-                max_overlap_indices = max_overlap_indices1
-                max_overlap_size = max_overlap_size1
-
-        self.search_index = max_overlap_indices[0]
-
-        return max_overlap_indices, max_overlap_size
-
-    def delete_clauses(self, indices):
-
-        # # Numpy Implementation
-        # self.clause_length = np.delete(self.clause_length, indices)
-        # self.overlap_matrix = np.delete(self.overlap_matrix, indices[1], 0)
-        # self.overlap_matrix = np.delete(self.overlap_matrix, indices[0], 0)
-        # self.overlap_matrix = np.delete(self.overlap_matrix, indices[1], 1)
-        # self.overlap_matrix = np.delete(self.overlap_matrix, indices[0], 1)
-
-        # Non-numpy implementation
-        del self.clause_length[indices[1]]
-        del self.clause_length[indices[0]]
-
-        del self.overlap_matrix[indices[1]]
-        del self.overlap_matrix[indices[0]]
-        for i in range(self.theory_length - 2):
-            del self.overlap_matrix[i][indices[1]]
-            del self.overlap_matrix[i][indices[0]]
-
-        del self.theory[indices[1]]
-        del self.theory[indices[0]]
-
-        self.theory_length -= 2
-
-    def insert_clause(self, clause):
-
-        # # Numpy Implementation
-        # index = np.searchsorted(-self.clause_length, -len(clause), side="right")
-        #
-        # # Insert zero rows and columns in overlap_matrix at index
-        # self.overlap_matrix = np.insert(
-        #     self.overlap_matrix, index, np.zeros(len(self.overlap_matrix)), 0
-        # )
-        # self.overlap_matrix = np.insert(
-        #     self.overlap_matrix, index, np.zeros(len(self.overlap_matrix)), 1
-        # )
-        #
-        # self.theory[index:index] = [clause]
-        #
-        # for i, clause2 in enumerate(self.theory):
-        #     if i == index:
-        #         continue
-        #     overlap = len(clause & clause2)
-        #     if i < index:
-        #         self.overlap_matrix[i][index] = overlap
-        #     else:
-        #         self.overlap_matrix[index][i] = overlap
-        #
-        # self.clause_length = np.insert(self.clause_length, index, len(clause))
-
-        # Non-numpy implementation
-        i = int(self.theory_length / 2)
-        start = 0
-        end = self.theory_length
-        index_found = False
-        index = None
-        l = len(clause)
-        while i < self.theory_length:
-            if l <= self.clause_length[-1]:
-                # Insert element at the end of the list
-                index = self.theory_length
-                index_found = True
-                break
-            elif l >= self.clause_length[0]:
-                # Insert element around the beginning at the place when the length drops right after
-                for j, cl in enumerate(self.clause_length):
-                    if cl < l:
-                        index = j
-                        break
-                index_found = True
-                break
-            elif self.clause_length[i] == l:
-                for j, cl in enumerate(self.clause_length[i + 1 :]):
-                    if cl < l:
-                        index = j + i + 1
-                        break
-                index_found = True
-                break
-            elif i + 1 < len(self.clause_length) and self.clause_length[i + 1] == l:
-                for j, cl in enumerate(self.clause_length[i + 2 :]):
-                    if cl < l:
-                        index = j + i + 2
-                        break
-                index_found = True
-                break
-            elif (
-                i + 1 < len(self.clause_length)
-                and self.clause_length[i] > l > self.clause_length[i + 1]
-            ):
-                # Insert element at/before (i + 1) if
-                # clause_length[i] >= len(clause) >= clause_length[i + 1]
-                index = i + 1
-                index_found = True
-                break
-            elif l > self.clause_length[i]:
-                end = i
-                i = int((i + start) / 2)
-            elif l < self.clause_length[i]:
-                start = i
-                i = int((end + i) / 2)
-            else:
-                i += 1
-
-        if index_found is False:
-            # This is the case where a clause is being inserted to an empty theory
-            index = 0
-
-        new_overlap_row = [0] * (self.theory_length + 1)
-        self.overlap_matrix[index:index] = [new_overlap_row]
-
-        self.theory[index:index] = [clause]
-
-        for j, clause2 in enumerate(self.theory):
-            if j == index:
-                continue
-
-            overlap = len(clause & clause2)
-
-            if j < index:
-                self.overlap_matrix[j][index:index] = [overlap]
-                self.overlap_matrix[index][j] = 0
-            elif j > index:
-                self.overlap_matrix[j][index:index] = [0]
-                self.overlap_matrix[index][j] = overlap
-
-        self.clause_length[index:index] = [len(clause)]
-
-        if index < self.search_index:
-            self.search_index = index
-        # else:
-        #     # print(np.array(self.clause_length))
-        #     prev_l = self.clause_length[0]
-        #     for l in self.clause_length[1:]:
-        #         if l < prev_l:
-        #             prev_l = l
-        #         elif l > prev_l:
-        #             print(np.array(self.clause_length))
-        #             break
-
-        # self.search_index = min(self.search_index, index)
-        self.theory_length += 1
-
-    def update_clause(self, new_var, clause):
-        """
-        Update the theory to replace every occurrence of 'clause' by 'new_var'
-        :param new_var:
-        :param clause:
-        :return:
-        """
-        self.update_dict[new_var] = clause
-
-        if len(self.update_dict) == self.update_threshold:
-            clause_list = []
-            new_var_list = []
-            clause_lengths = []
-            for k, v in self.update_dict.items():
-                new_var_list.append(k)
-                clause_list.append(v)
-                clause_lengths.append(len(v))
-
-            index = list(range(self.update_threshold))
-            index.sort(key=clause_lengths.__getitem__, reverse=True)
-
-            clause_list = [clause_list[i] for i in index]
-            new_var_list = [new_var_list[i] for i in index]
-
-            delete_indices = []
-            updated_clauses = []
-            for i, clause in enumerate(self.theory):
-
-                for new_var, clause_def in zip(new_var_list, clause_list):
-                    if clause_def.issubset(clause):
-                        new_clause = set(clause) - clause_def
-                        new_clause.add(-new_var)
-
-                        updated_clauses.append(new_clause)
-                        delete_indices.append(i)
-                        break
-
-            if len(delete_indices) > 0:
-                print("Other clause found in theory that has the subset.")
-
-            # Delete the old clauses from the theory
-            delete_indices = delete_indices[::-1]
-            for index in delete_indices:
-                del self.clause_length[index]
-
-                del self.overlap_matrix[index]
-                for i in range(self.theory_length - 1):
-                    del self.overlap_matrix[i][index]
-
-                del self.theory[index]
-
-                self.theory_length -= 1
-
-            # Insert the updated clauses in the theory
-            for clause in updated_clauses:
-                self.insert_clause(clause)
-
-            self.update_dict = {}
 
     def compress_pairwise(self, clause1, clause2, lossless=False):
         """
@@ -1078,21 +778,14 @@ class Mistle:
                 clause_c.add(-new_var)
 
                 # Update other clauses in the theory that contain 'clause_b'
-                # start_time = time()
-                self.update_clause(new_var, clause_b)
-                # print(time() - start_time)
+                self.theory.update_clause(new_var, clause_b)
+
             else:
                 for var, clause in self.invented_predicate_definition.items():
                     if clause == clause_b:
                         clause_a.add(-var)
                         clause_b.add(var)
                         clause_c.add(-var)
-
-            # new_var = self.get_new_var()
-            # clause_a.add(-new_var)
-            # self.invented_predicate_definition[new_var] = copy(clause_b)
-            # clause_b.add(new_var)
-            # clause_c.add(-new_var)
 
             self.operator_counter["W"] += 1
 
@@ -1102,9 +795,11 @@ class Mistle:
                 True,
             )
 
-    def learn(self, lossless=False, description_measure="ll"):
+    def learn(self, lossless=False, description_measure="ll", beam_size=1):
 
         start_time = time()
+
+        self.beam = Beam(beam_size)
 
         input_literal_length = self.get_literal_length(self.negatives)
         input_length = -1
@@ -1114,8 +809,6 @@ class Mistle:
         print(
             "\nInput Theory (with redundancies and inconsistencies):\n\tLiteral Length = "
             + str(input_literal_length)
-            # + "\n\tBit Length = "
-            # + str(input_bit_length)
             + "\n\tNumber of clauses = "
             + str(self.total_negatives)
         )
@@ -1132,8 +825,6 @@ class Mistle:
         print(
             "\nInput Theory (without redundancies and inconsistencies):\n\tLiteral Length = "
             + str(self.get_literal_length(self.negatives))
-            # + "\n\tBit Length = "
-            # + str(get_bit_length_for_theory(negatives))
             + "\n\tNumber of clauses = "
             + str(len(self.negatives))
         )
@@ -1144,10 +835,14 @@ class Mistle:
         #     input_length = input_bit_length
 
         # Convert the set of -ve PAs to a theory
-        self.theory = self.convert_to_theory(self.negatives)
+        self.theory.intialize(self.negatives)
 
         initial_violations, positive_violations, negative_violations = self.count_violations(
-            self.positives, self.negatives, sign="+", print_violations=False
+            self.theory,
+            self.positives,
+            self.negatives,
+            sign="+",
+            print_violations=False,
         )
 
         if len(positive_violations) > 0:
@@ -1155,17 +850,12 @@ class Mistle:
             self.positives = copy(self.positives - set(positive_violations))
 
             # initial_violations, positive_violations, negative_violations = count_violations(
-            #     positives, negatives, theory, sign="+"
+            #     self.theory, positives, negatives, theory, sign="+"
             # )
 
         self.total_positives = len(self.positives)
         self.total_negatives = len(self.negatives)
-        self.theory_length = self.total_negatives
-
-        # print_2d(theory)
-        self.sort_theory()
-
-        self.overlap_matrix = self.get_overlap_matrix()
+        self.theory.theory_length = self.total_negatives
 
         overlap_size = None
         # search_index = 0
@@ -1174,12 +864,19 @@ class Mistle:
         pos2neg = 0
         neg2pos = 0
 
-        pbar = tqdm(total=int(1.1 * self.theory_length + 100))
+        pbar = tqdm(total=int(1.1 * self.theory.theory_length + 100))
         pbar.set_description("Compressing Clauses")
         while True:
+            new_beam = Beam(beam_size)
+
+            while self.beam:
+                current_theory = self.beam.pop()
+                next_beam = Beam(beam_size)
 
             prev_overlap_size = overlap_size
-            max_overlap_indices, overlap_size = self.select_clauses(prev_overlap_size)
+            max_overlap_indices, overlap_size = self.theory.select_clauses(
+                prev_overlap_size
+            )
 
             # print("Max overlapping indices = " + str(max_overlap_indices))
             # print(
@@ -1192,8 +889,8 @@ class Mistle:
                 print("Cannot compress anymore: Max overlap size < 2.")
                 break
 
-            clause1 = self.theory[max_overlap_indices[0]]
-            clause2 = self.theory[max_overlap_indices[1]]
+            clause1 = self.theory.clauses[max_overlap_indices[0]]
+            clause2 = self.theory.clauses[max_overlap_indices[1]]
 
             (
                 compressed_clauses,
@@ -1221,7 +918,7 @@ class Mistle:
                     + str(len(clause_c))
                 )
 
-                print_2d(self.theory)
+                print_2d(self.theory.clauses)
                 # print_2d(overlap_matrix)
 
             compression_counter += 1
@@ -1237,12 +934,12 @@ class Mistle:
                 # V - Operator is not applied
                 # Continue compressing the theory
                 # Delete the clauses used for last compression step
-                self.delete_clauses(max_overlap_indices)
+                self.theory.delete_clauses(max_overlap_indices)
 
                 # Insert clauses from compressed_clauses at appropriate lengths so that the theory remains sorted
                 # theory |= compressed_clauses
                 for clause in compressed_clauses:
-                    self.insert_clause(clause)
+                    self.theory.insert_clause(clause)
 
             else:
                 clause_validity_slow = self.check_clause_validity(
@@ -1259,10 +956,10 @@ class Mistle:
                 #     # clause_validity_fast = self.check_clause_validity1(clause1, clause2)
 
                 if clause_validity_slow:
-                    self.delete_clauses(max_overlap_indices)
+                    self.theory.delete_clauses(max_overlap_indices)
 
                     for clause in compressed_clauses:
-                        self.insert_clause(clause)
+                        self.theory.insert_clause(clause)
 
                 elif not clause_validity_slow:
                     # Perform a lossless step here, i.e., Apply W-operator instead of V-operator
@@ -1276,17 +973,17 @@ class Mistle:
 
                     assert is_lossless is True
 
-                    self.delete_clauses(max_overlap_indices)
+                    self.theory.delete_clauses(max_overlap_indices)
 
                     for clause in compressed_clauses:
-                        self.insert_clause(clause)
+                        self.theory.insert_clause(clause)
 
             # print_2d(self.theory)
             # print_2d(self.overlap_matrix)
             pbar.update(1)
 
         pbar.close()
-        output_literal_length = self.get_literal_length()
+        output_literal_length = self.get_literal_length(self.theory.clauses)
         # output_bit_length = get_bit_length_for_theory(theory)
 
         if description_measure == "ll":
@@ -1301,7 +998,7 @@ class Mistle:
             # + "\n\tBit Length = "
             # + str(output_bit_length)
             + "\n\tLength of Theory = "
-            + str(self.theory_length)
+            + str(self.theory.theory_length)
             + "\n\t% Compression (For measure: "
             + str(description_measure)
             + ") = "
@@ -1325,29 +1022,319 @@ class Mistle:
         # print()
         # print_2d(self.theory)
 
-        count, p, n = self.count_violations(self.positives, self.negatives)
+        count, p, n = self.count_violations(self.theory, self.positives, self.negatives)
 
         return self.theory, compression, self.invented_predicate_definition
 
+
+class Theory:
+    def __init__(self, clauses, overlap_matrix, search_index):
+        self.clauses = clauses
+        self.overlap_matrix = overlap_matrix
+        self.search_index = search_index
+        self.clause_length = []  # List of lengths of all the clauses of this theory
+        self.compression = 0
+        self.theory_length = len(clauses)  # Total number of clauses in the theory
+
+        self.update_dict = {}
+        self.update_threshold = (
+            1
+        )  # The number of new predicates to invent before updating the theory
+
+    def intialize(self, partial_assignments):
+        # Construct a theory from the partial assignments
+        for pa in partial_assignments:
+            self.clauses.append(convert_to_clause(pa))
+            self.clause_length.append(len(pa))
+
+        # Sort the theory
+        self.theory_length = len(self.clauses)
+        index = list(range(self.theory_length))
+        index.sort(key=self.clause_length.__getitem__, reverse=True)
+        self.clause_length = [self.clause_length[i] for i in index]
+
+        self.clauses = [self.clauses[i] for i in index]
+
+        # Initialize the overlap matrix
+        for i, clause1 in enumerate(self.clauses):
+            self.overlap_matrix.append([0] * self.theory_length)
+            for j, clause2 in enumerate(self.clauses[i + 1 :]):
+                self.overlap_matrix[i][i + j + 1] = len(clause1 & clause2)
+
+    def __len__(self):
+        return self.theory_length
+
+    def select_clauses(self, prev_overlap_size):
+        """
+        Select clauses for next compression step WITH a compression matrix
+        :param prev_overlap_size: Previous Overlap Size
+        :return:
+            max_overlap_indices: The indices of 2 clauses that have the maximum overlap size
+            max_overlap_size: The maximum overlap size
+        """
+
+        max_overlap_size = 0
+        max_overlap_indices = (0, 0)
+        # Only search the overlap matrix (After self.search_index)
+        for i, row in enumerate(self.overlap_matrix[self.search_index :]):
+            for j, overlap in enumerate(row[self.search_index + i + 1 :]):
+                if overlap > max_overlap_size:
+                    max_overlap_size = overlap
+                    max_overlap_indices = (
+                        self.search_index + i,
+                        self.search_index + i + 1 + j,
+                    )
+                    if prev_overlap_size and max_overlap_size >= prev_overlap_size:
+                        break
+
+        if prev_overlap_size and max_overlap_size < prev_overlap_size:
+            # Search the initial part of the matrix too (Before self.search_index)
+
+            max_overlap_size1 = 0
+            max_overlap_indices1 = (0, 0)
+            for i, row in enumerate(self.overlap_matrix[: self.search_index]):
+                for j, overlap in enumerate(row[i + 1 : self.search_index]):
+                    if overlap > max_overlap_size1:
+                        max_overlap_size1 = overlap
+                        max_overlap_indices1 = (i, i + 1 + j)
+
+            if max_overlap_size1 >= max_overlap_size:
+                max_overlap_indices = max_overlap_indices1
+                max_overlap_size = max_overlap_size1
+
+        self.search_index = max_overlap_indices[0]
+
+        return max_overlap_indices, max_overlap_size
+
+    def delete_clauses(self, indices):
+
+        del self.clause_length[indices[1]]
+        del self.clause_length[indices[0]]
+
+        del self.overlap_matrix[indices[1]]
+        del self.overlap_matrix[indices[0]]
+        for i in range(self.theory_length - 2):
+            del self.overlap_matrix[i][indices[1]]
+            del self.overlap_matrix[i][indices[0]]
+
+        del self.clauses[indices[1]]
+        del self.clauses[indices[0]]
+
+        self.theory_length -= 2
+
+    def insert_clause(self, clause):
+
+        i = int(self.theory_length / 2)
+        start = 0
+        end = self.theory_length
+        index_found = False
+        index = None
+        l = len(clause)
+        while i < self.theory_length:
+            if l <= self.clause_length[-1]:
+                # Insert element at the end of the list
+                index = self.theory_length
+                index_found = True
+                break
+            elif l >= self.clause_length[0]:
+                # Insert element around the beginning at the place when the length drops right after
+                for j, cl in enumerate(self.clause_length):
+                    if cl < l:
+                        index = j
+                        break
+                index_found = True
+                break
+            elif self.clause_length[i] == l:
+                for j, cl in enumerate(self.clause_length[i + 1 :]):
+                    if cl < l:
+                        index = j + i + 1
+                        break
+                index_found = True
+                break
+            elif i + 1 < len(self.clause_length) and self.clause_length[i + 1] == l:
+                for j, cl in enumerate(self.clause_length[i + 2 :]):
+                    if cl < l:
+                        index = j + i + 2
+                        break
+                index_found = True
+                break
+            elif (
+                i + 1 < len(self.clause_length)
+                and self.clause_length[i] > l > self.clause_length[i + 1]
+            ):
+                # Insert element at/before (i + 1) if
+                # clause_length[i] >= len(clause) >= clause_length[i + 1]
+                index = i + 1
+                index_found = True
+                break
+            elif l > self.clause_length[i]:
+                end = i
+                i = int((i + start) / 2)
+            elif l < self.clause_length[i]:
+                start = i
+                i = int((end + i) / 2)
+            else:
+                i += 1
+
+        if index_found is False:
+            # This is the case where a clause is being inserted to an empty theory
+            index = 0
+
+        new_overlap_row = [0] * (self.theory_length + 1)
+        self.overlap_matrix[index:index] = [new_overlap_row]
+
+        self.clauses[index:index] = [clause]
+
+        for j, clause2 in enumerate(self.clauses):
+            if j == index:
+                continue
+
+            overlap = len(clause & clause2)
+
+            if j < index:
+                self.overlap_matrix[j][index:index] = [overlap]
+                self.overlap_matrix[index][j] = 0
+            elif j > index:
+                self.overlap_matrix[j][index:index] = [0]
+                self.overlap_matrix[index][j] = overlap
+
+        self.clause_length[index:index] = [len(clause)]
+
+        if index < self.search_index:
+            self.search_index = index
+        # else:
+        #     # print(np.array(self.clause_length))
+        #     prev_l = self.clause_length[0]
+        #     for l in self.clause_length[1:]:
+        #         if l < prev_l:
+        #             prev_l = l
+        #         elif l > prev_l:
+        #             print(np.array(self.clause_length))
+        #             break
+
+        # self.search_index = min(self.search_index, index)
+        self.theory_length += 1
+
+    def update_clause(self, new_var, clause):
+        """
+        Update the theory to replace every occurrence of 'clause' by 'new_var'
+        :param new_var:
+        :param clause:
+        :return:
+        """
+        self.update_dict[new_var] = clause
+
+        if len(self.update_dict) == self.update_threshold:
+            clause_list = []
+            new_var_list = []
+            clause_lengths = []
+            for k, v in self.update_dict.items():
+                new_var_list.append(k)
+                clause_list.append(v)
+                clause_lengths.append(len(v))
+
+            index = list(range(self.update_threshold))
+            index.sort(key=clause_lengths.__getitem__, reverse=True)
+
+            clause_list = [clause_list[i] for i in index]
+            new_var_list = [new_var_list[i] for i in index]
+
+            delete_indices = []
+            updated_clauses = []
+            for i, clause in enumerate(self.clauses):
+
+                for new_var, clause_def in zip(new_var_list, clause_list):
+                    if clause_def.issubset(clause):
+                        new_clause = set(clause) - clause_def
+                        new_clause.add(-new_var)
+
+                        updated_clauses.append(new_clause)
+                        delete_indices.append(i)
+                        break
+
+            if len(delete_indices) > 0:
+                print("Other clause found in theory that has the subset.")
+
+            # Delete the old clauses from the theory
+            delete_indices = delete_indices[::-1]
+            for index in delete_indices:
+                del self.clause_length[index]
+
+                del self.overlap_matrix[index]
+                for i in range(self.theory_length - 1):
+                    del self.overlap_matrix[i][index]
+
+                del self.clauses[index]
+
+                self.theory_length -= 1
+
+            # Insert the updated clauses in the theory
+            for clause in updated_clauses:
+                self.insert_clause(clause)
+
+            self.update_dict = {}
+
+
+class Beam:
+    def __init__(self, size):
+        self._size = size
+        self._candidates = []  # A list of candidate theories to be stored in the beam
+
+    def _bottom_score(self):
+        if self._candidates:
+            return self._candidates[-1].compression
+        else:
+            return 0
+
+    def _insert(self, candidate):
+        for i, x in enumerate(self._candidates):
+            if x.is_equivalent(candidate):
+                raise ValueError("duplicate")
+            elif x.compression < candidate.compression:
+                self._candidates.insert(i, candidate)
+                return False
+        self._candidates.append(candidate)
+        return True
+
+    def push(self, candidate):
+        """Adds a candidate to the beam.
+
+        :param candidate: candidate to add
+        :return: True if candidate was accepted, False otherwise
+        """
+        if (
+            len(self._candidates) < self._size
+            or candidate.compression > self._bottom_score()
+        ):
+            #  We should add it to the beam.
+            try:
+                is_last = self._insert(candidate)
+                if len(self._candidates) > self._size:
+                    self._candidates.pop(-1)
+                    return not is_last
+            except ValueError:
+                return False
+            return True
+        return False
+
+    def pop(self):
+        return self._candidates.pop(0)
+
+    def __bool__(self):
+        return bool(self._candidates)
+
+    def __nonzero__(self):
+        return bool(self._candidates)
+
+    def __str__(self):
+        s = "==================================\n"
+        for candidate in self._candidates:
+            s += str(candidate.compression) + "\n"
+        s += "=================================="
+        return s
+
+
 if __name__ == "__main__":
-
-    # # positives, negatives = load_animal_taxonomy()
-    # # positives, negatives = load_ionosphere()
-    # positives, negatives = load_chess(switch_signs=True)
-    # # positives, negatives = load_tictactoe()
-    # # positives, negatives = load_chess()
-    # # positives, negatives = load_mushroom()
-    # mistle = Mistle(positives, negatives)
-    # theory = mistle.learn()
-
-    # positives, negatives = load_test()
-    # mistle = Mistle(positives, negatives)
-    # theory = mistle.learn()
-
-    # positives, negatives = load_ionosphere()
-    # positives, negatives = load_tictactoe()
-    # positives, negatives = load_chess(switch_signs=True)
-    # positives, negatives = load_adult()
-    # positives, negatives = load_ionosphere()
-    # mistle = Mistle(positives, negatives)
-    # theory = mistle.learn()
+    positives, negatives = load_ionosphere()
+    mistle = Mistle(positives, negatives)
+    theory = mistle.learn(beam_size=2)
