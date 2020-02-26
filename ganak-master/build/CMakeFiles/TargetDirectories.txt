@@ -1,0 +1,12 @@
+/home/dtai/Downloads/ganak-master/build/CMakeFiles/rebuild_cache.dir
+/home/dtai/Downloads/ganak-master/build/CMakeFiles/ganak.dir
+/home/dtai/Downloads/ganak-master/build/CMakeFiles/edit_cache.dir
+/home/dtai/Downloads/ganak-master/build/src/CMakeFiles/rebuild_cache.dir
+/home/dtai/Downloads/ganak-master/build/src/CMakeFiles/libganak.dir
+/home/dtai/Downloads/ganak-master/build/src/CMakeFiles/edit_cache.dir
+/home/dtai/Downloads/ganak-master/build/src/component_types/CMakeFiles/rebuild_cache.dir
+/home/dtai/Downloads/ganak-master/build/src/component_types/CMakeFiles/component_types.dir
+/home/dtai/Downloads/ganak-master/build/src/component_types/CMakeFiles/edit_cache.dir
+/home/dtai/Downloads/ganak-master/build/src/clhash/CMakeFiles/rebuild_cache.dir
+/home/dtai/Downloads/ganak-master/build/src/clhash/CMakeFiles/clhash.dir
+/home/dtai/Downloads/ganak-master/build/src/clhash/CMakeFiles/edit_cache.dir

@@ -1,0 +1,32 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/dtai/Downloads/ganak-master/src/clhash/clhash.c
+clhash.h
+/home/dtai/Downloads/ganak-master/src/clhash/clhash.h
+assert.h
+-
+string.h
+-
+x86intrin.h
+-
+
+/home/dtai/Downloads/ganak-master/src/clhash/clhash.h
+stdlib.h
+-
+stdint.h
+-
+stddef.h
+-
+vector
+-
+string
+-
+cstring
+-
+
