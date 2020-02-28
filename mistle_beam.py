@@ -511,8 +511,8 @@ class Mistle:
         self.total_negatives = len(negatives)
         # self.theory_length = len(negatives)
 
-        self.operator_counter = {"W": 0, "V": 0, "S": 0, "R": 0}
-        self.invented_predicate_definition = OrderedDict()
+        # self.operator_counter = {"W": 0, "V": 0, "S": 0, "R": 0}
+        # self.invented_predicate_definition = OrderedDict()
         self.theory = Theory(clauses=[], overlap_matrix=[], search_index=0)
         # self.clause_length = []
         # self.overlap_matrix = []
@@ -520,20 +520,11 @@ class Mistle:
         # self.compression = 0
         self.beam = None
 
-        self.new_var_counter = 0
-        for pa in positives + negatives:
-            self.new_var_counter = max(self.new_var_counter, max([abs(l) for l in pa]))
-        self.new_var_counter += 1
+        # self.new_var_counter = 0
+        # for pa in positives + negatives:
+        #     self.new_var_counter = max(self.new_var_counter, max([abs(l) for l in pa]))
+        # self.new_var_counter += 1
         # print("new_var_counter\t:", self.new_var_counter)
-
-    def get_new_var(self):
-        """
-        Invent a new predicate
-        :return: An integer (updated counter) which has not been used as a literal before
-        """
-        new_var = self.new_var_counter
-        self.new_var_counter += 1
-        return new_var
 
     def get_literal_length(self, cnf=None):
         """
@@ -696,105 +687,6 @@ class Mistle:
 
         return pos_counter + neg_counter, violated_pos, violated_neg
 
-    def compress_pairwise(self, clause1, clause2, lossless=False):
-        """
-        Compress clause1 and clause2
-        :param clause1:
-        :param clause2:
-        :param lossless: Apply V-operator only if lossless=False
-        :return:
-            A list of the new clauses obtained after compression
-            The decrease in literal length achieved during compression
-            A Boolean variable that is:
-                True    if a lossless compression step (W-operator, Subsumption) took place
-                False   if a lossy compression step (V-operator) took place
-                None    if no operator is applied
-        """
-
-        clause_a, clause_b, clause_c = get_subclauses(clause1, clause2)
-        resolution_applicable = False
-        if (
-            len(clause_a) == 1
-            and len(clause_c) == 1
-            and copy(clause_a).pop() == -copy(clause_c).pop()
-        ):
-            resolution_applicable = True
-
-        if len(clause_a) == 0:
-            # Apply subsumption operator on (b1; b2; b3), (b1; b2; b3; c1; c2; c3)
-            self.operator_counter["S"] += 1
-            return {clause1}, len(clause_b), True
-
-        elif len(clause_c) == 0:
-            # Apply subsumption operator on (a1; a2; a3; b1; b2; b3), (b1; b2; b3)
-            self.operator_counter["S"] += 1
-            return {clause2}, len(clause_b), True
-
-        elif resolution_applicable:
-            # Apply complementation operator on (a; b1; b2; b3), (b1; b2; b3; -a)
-            # Return (b1; b2; b3)
-            self.operator_counter["R"] += 1
-            return {frozenset(clause_b)}, len(clause_b) + 2, True
-
-        elif len(clause_b) == 0:
-            # Cannot compress (a1; a2; a3), (c1; c2; c3)
-            print_1d(clause1)
-            print_1d(clause2)
-            print("No Overlap Found")
-            return {clause1, clause2}, 0, None
-
-        elif not lossless and len(clause_a) == 1 and len(clause_b) > 1:
-            # Apply V-operator on (a; b1; b2; b3), (b1; b2; b3; c1; c2; c3)
-            # Return (a; b1; b2; b3), (c1; c2; c3; -a)
-            a = clause_a.pop()
-            clause_c.add(-a)
-            self.operator_counter["V"] += 1
-            return {clause1, frozenset(clause_c)}, len(clause_b) - 1, False
-
-        elif not lossless and len(clause_c) == 1 and len(clause_b) > 1:
-            # Apply V-operator on (a1; a2; a3; b1; b2; b3), (b1; b2; b3; c)
-            # Return (a1; a2; a3; -c), (b1; b2; b3; c)
-            c = clause_c.pop()
-            clause_a.add(-c)
-            self.operator_counter["V"] += 1
-            return {frozenset(clause_a), clause2}, len(clause_b) - 1, False
-
-        elif len(clause_b) < 3:
-            # print("Application of W-Operator is infeasible due to overlap of only " + str(len(clause_b)) + "
-            # literals.")
-            return {clause1, clause2}, 0, None
-
-        else:
-            # This is the case where len(clause_a) > 1, len(clause_b) > 2, and len(clause_c) > 1.
-            # Apply W-operator on (a1; a2; a3; b1; b2; b3), (b1; b2; b3; c1; c2; c3)
-            # Return (a1; a2; a3; -z), (b1; b2; b3; z), (c1; c2; c3, -z)
-
-            # Invent a new predicate if the definition of a predicate is new.
-            if clause_b not in self.invented_predicate_definition.values():
-                new_var = self.get_new_var()
-                clause_a.add(-new_var)
-                self.invented_predicate_definition[new_var] = copy(clause_b)
-                clause_b.add(new_var)
-                clause_c.add(-new_var)
-
-                # Update other clauses in the theory that contain 'clause_b'
-                self.theory.update_clause(new_var, clause_b)
-
-            else:
-                for var, clause in self.invented_predicate_definition.items():
-                    if clause == clause_b:
-                        clause_a.add(-var)
-                        clause_b.add(var)
-                        clause_c.add(-var)
-
-            self.operator_counter["W"] += 1
-
-            return (
-                {frozenset(clause_a), frozenset(clause_b), frozenset(clause_c)},
-                len(clause_b) - 3,
-                True,
-            )
-
     def learn(self, lossless=False, description_measure="ll", beam_size=1):
 
         start_time = time()
@@ -896,7 +788,7 @@ class Mistle:
                 compressed_clauses,
                 compression_size,
                 is_lossless,
-            ) = self.compress_pairwise(clause1, clause2, lossless=lossless)
+            ) = self.theory.compress_pairwise(clause1, clause2, lossless=lossless)
             # print(compression_counter, compressed_clauses, compression_size, is_lossless)
             # print(overlap_size, compression_size, str(operator_counter))
             if overlap_size - compression_size > 2:
@@ -963,13 +855,13 @@ class Mistle:
 
                 elif not clause_validity_slow:
                     # Perform a lossless step here, i.e., Apply W-operator instead of V-operator
-                    self.operator_counter["V"] -= 1
+                    self.theory.operator_counter["V"] -= 1
 
                     (
                         compressed_clauses,
                         compression_size,
                         is_lossless,
-                    ) = self.compress_pairwise(clause1, clause2, lossless=True)
+                    ) = self.theory.compress_pairwise(clause1, clause2, lossless=True)
 
                     assert is_lossless is True
 
@@ -1005,7 +897,7 @@ class Mistle:
             + str(compression)
             + "%"
             + "\n\tOperator Count = "
-            + str(self.operator_counter)
+            + str(self.theory.operator_counter)
             # + "\n\t# Contradictions = "
             # + str(catch_it)
             # + " ("
@@ -1024,7 +916,7 @@ class Mistle:
 
         count, p, n = self.count_violations(self.theory, self.positives, self.negatives)
 
-        return self.theory, compression, self.invented_predicate_definition
+        return self.theory, compression, self.theory.invented_predicate_definition
 
 
 class Theory:
@@ -1041,11 +933,21 @@ class Theory:
             1
         )  # The number of new predicates to invent before updating the theory
 
+        self.operator_counter = {"W": 0, "V": 0, "S": 0, "R": 0}
+        self.invented_predicate_definition = OrderedDict()
+        self.new_var_counter = 0
+        for pa in clauses:
+            self.new_var_counter = max(self.new_var_counter, max([abs(l) for l in pa]))
+        self.new_var_counter += 1
+
     def intialize(self, partial_assignments):
         # Construct a theory from the partial assignments
+        self.new_var_counter = 0
         for pa in partial_assignments:
             self.clauses.append(convert_to_clause(pa))
             self.clause_length.append(len(pa))
+            self.new_var_counter = max(self.new_var_counter, max([abs(l) for l in pa]))
+        self.new_var_counter += 1
 
         # Sort the theory
         self.theory_length = len(self.clauses)
@@ -1061,8 +963,104 @@ class Theory:
             for j, clause2 in enumerate(self.clauses[i + 1 :]):
                 self.overlap_matrix[i][i + j + 1] = len(clause1 & clause2)
 
-    def __len__(self):
-        return self.theory_length
+    def compress_pairwise(self, clause1, clause2, lossless=False):
+        """
+        Compress clause1 and clause2
+        :param clause1:
+        :param clause2:
+        :param lossless: Apply V-operator only if lossless=False
+        :return:
+            A list of the new clauses obtained after compression
+            The decrease in literal length achieved during compression
+            A Boolean variable that is:
+                True    if a lossless compression step (W-operator, Subsumption) took place
+                False   if a lossy compression step (V-operator) took place
+                None    if no operator is applied
+        """
+
+        clause_a, clause_b, clause_c = get_subclauses(clause1, clause2)
+        resolution_applicable = False
+        if (
+            len(clause_a) == 1
+            and len(clause_c) == 1
+            and copy(clause_a).pop() == -copy(clause_c).pop()
+        ):
+            resolution_applicable = True
+
+        if len(clause_a) == 0:
+            # Apply subsumption operator on (b1; b2; b3), (b1; b2; b3; c1; c2; c3)
+            self.operator_counter["S"] += 1
+            return {clause1}, len(clause_b), True
+
+        elif len(clause_c) == 0:
+            # Apply subsumption operator on (a1; a2; a3; b1; b2; b3), (b1; b2; b3)
+            self.operator_counter["S"] += 1
+            return {clause2}, len(clause_b), True
+
+        elif resolution_applicable:
+            # Apply complementation operator on (a; b1; b2; b3), (b1; b2; b3; -a)
+            # Return (b1; b2; b3)
+            self.operator_counter["R"] += 1
+            return {frozenset(clause_b)}, len(clause_b) + 2, True
+
+        elif len(clause_b) == 0:
+            # Cannot compress (a1; a2; a3), (c1; c2; c3)
+            print_1d(clause1)
+            print_1d(clause2)
+            print("No Overlap Found")
+            return {clause1, clause2}, 0, None
+
+        elif not lossless and len(clause_a) == 1 and len(clause_b) > 1:
+            # Apply V-operator on (a; b1; b2; b3), (b1; b2; b3; c1; c2; c3)
+            # Return (a; b1; b2; b3), (c1; c2; c3; -a)
+            a = clause_a.pop()
+            clause_c.add(-a)
+            self.operator_counter["V"] += 1
+            return {clause1, frozenset(clause_c)}, len(clause_b) - 1, False
+
+        elif not lossless and len(clause_c) == 1 and len(clause_b) > 1:
+            # Apply V-operator on (a1; a2; a3; b1; b2; b3), (b1; b2; b3; c)
+            # Return (a1; a2; a3; -c), (b1; b2; b3; c)
+            c = clause_c.pop()
+            clause_a.add(-c)
+            self.operator_counter["V"] += 1
+            return {frozenset(clause_a), clause2}, len(clause_b) - 1, False
+
+        elif len(clause_b) < 3:
+            # print("Application of W-Operator is infeasible due to overlap of only " + str(len(clause_b)) + "
+            # literals.")
+            return {clause1, clause2}, 0, None
+
+        else:
+            # This is the case where len(clause_a) > 1, len(clause_b) > 2, and len(clause_c) > 1.
+            # Apply W-operator on (a1; a2; a3; b1; b2; b3), (b1; b2; b3; c1; c2; c3)
+            # Return (a1; a2; a3; -z), (b1; b2; b3; z), (c1; c2; c3, -z)
+
+            # Invent a new predicate if the definition of a predicate is new.
+            if clause_b not in self.invented_predicate_definition.values():
+                new_var = self.get_new_var()
+                clause_a.add(-new_var)
+                self.invented_predicate_definition[new_var] = copy(clause_b)
+                clause_b.add(new_var)
+                clause_c.add(-new_var)
+
+                # Update other clauses in the theory that contain 'clause_b'
+                self.theory.update_clause(new_var, clause_b)
+
+            else:
+                for var, clause in self.invented_predicate_definition.items():
+                    if clause == clause_b:
+                        clause_a.add(-var)
+                        clause_b.add(var)
+                        clause_c.add(-var)
+
+            self.operator_counter["W"] += 1
+
+            return (
+                {frozenset(clause_a), frozenset(clause_b), frozenset(clause_c)},
+                len(clause_b) - 3,
+                True,
+            )
 
     def select_clauses(self, prev_overlap_size):
         """
@@ -1273,6 +1271,18 @@ class Theory:
                 self.insert_clause(clause)
 
             self.update_dict = {}
+
+    def get_new_var(self):
+        """
+        Invent a new predicate
+        :return: An integer (updated counter) which has not been used as a literal before
+        """
+        new_var = self.new_var_counter
+        self.new_var_counter += 1
+        return new_var
+
+    def __len__(self):
+        return self.theory_length
 
 
 class Beam:

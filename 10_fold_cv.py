@@ -1,16 +1,56 @@
-from mistle_class import *
+# from mistle_class import *
+from mistle_beam import *
 import random
 from tqdm import tqdm
+import os
 from pycosat import itersolve
 
 
-def count_solutions(pa, theory):
+# def count_solutions(pa, theory):
+#
+#     theory_cnf = [tuple(clause) for clause in theory]
+#
+#     cnf = theory_cnf + [(a,) for a in pa]
+#
+#     return len(list(itersolve(cnf)))
 
-    theory_cnf = [tuple(clause) for clause in theory]
 
-    cnf = theory_cnf + [(a,) for a in pa]
+def count_models(pa, theory, id=None):
+    cnf = copy(theory.clauses) + [(a,) for a in pa]
 
-    return len(list(itersolve(cnf)))
+    total_clauses = len(theory.clauses) + len(pa)
+    total_vars = theory.new_var_counter - 1
+    if id:
+        filename = "./CNFs/" + id + ".cnf"
+    else:
+        filename = "./CNFs/0.cnf"
+
+    f = open(filename, "w+")
+    f.write("p cnf " + str(total_vars) + " " + str(total_clauses) + "\n")
+    for literal in pa:
+        f.write(str(literal) + " 0\n")
+
+    for clause in theory.clauses:
+        f.write(" ".join(clause) + " 0\n")
+
+    f.close()
+
+    if id:
+        outfilename = "./CNFs/" + id + ".out"
+    else:
+        outfilename = "./CNFs/0.out"
+
+    os.system(
+        "cd ganak-master/build/ && python ganak.py ../../CNFs/"
+        + filename
+        + " > ../../CNFs/"
+        + outfilename
+    )
+
+    outf = open(outfilename, "r")
+    for line in outf.readlines():
+        if  in line
+    outf.close()
 
 
 def split_data(data, num_folds=10, seed=1234):

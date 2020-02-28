@@ -1329,6 +1329,7 @@ class Mistle:
 
         return self.theory, compression, self.invented_predicate_definition
 
+
 if __name__ == "__main__":
 
     # # positives, negatives = load_animal_taxonomy()
@@ -1340,7 +1341,7 @@ if __name__ == "__main__":
     # mistle = Mistle(positives, negatives)
     # theory = mistle.learn()
 
-    # positives, negatives = load_test()
+    # positives, negatives = load_test1()
     # mistle = Mistle(positives, negatives)
     # theory = mistle.learn()
 
@@ -1348,6 +1349,6 @@ if __name__ == "__main__":
     # positives, negatives = load_tictactoe()
     # positives, negatives = load_chess(switch_signs=True)
     # positives, negatives = load_adult()
-    # positives, negatives = load_ionosphere()
-    # mistle = Mistle(positives, negatives)
-    # theory = mistle.learn()
+    positives, negatives = load_ionosphere()
+    mistle = Mistle(positives, negatives)
+    theory = mistle.learn()

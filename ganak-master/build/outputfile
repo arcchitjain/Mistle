@@ -1,15 +1,2 @@
-c Outputting solution to console
-c GANAK version 1.0.0
-The value of delta is 0.05
-The value of hashrange is 64x1
-
-Maximum cache size:	2000 MB
-
-We have solved halfed
-We have solved halfed
-We have solved halfed
-We have solved halfed
-Max decision level :25
-We have solved halfed
-We have solved halfed
-Max decision level :50
+/usr/bin/time: illegal option -- -
+usage: time [-lp] command.
