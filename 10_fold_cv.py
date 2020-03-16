@@ -1,5 +1,6 @@
-# from mistle_class import *
-from mistle_beam import *
+from mistle_class import *
+
+# from mistle_mdl import *
 import random
 from tqdm import tqdm
 import os
@@ -16,7 +17,7 @@ from pycosat import itersolve
 
 
 def count_models(pa, theory, id=None):
-    cnf = copy(theory.clauses) + [(a,) for a in pa]
+    # cnf = copy(theory.clauses) + [(a,) for a in pa]
 
     total_clauses = len(theory.clauses) + len(pa)
     total_vars = theory.new_var_counter - 1
@@ -47,10 +48,10 @@ def count_models(pa, theory, id=None):
         + outfilename
     )
 
-    outf = open(outfilename, "r")
-    for line in outf.readlines():
-        if  in line
-    outf.close()
+    # outf = open(outfilename, "r")
+    # for line in outf.readlines():
+    #     if  in line
+    # outf.close()
 
 
 def split_data(data, num_folds=10, seed=1234):
@@ -433,16 +434,16 @@ def cross_validate(
 # cross_validate(positives, negatives, 10, lossless=False, test_both=False)
 
 # positives, negatives = load_tictactoe()
-# cross_validate(positives, negatives, num_folds=10, lossless=True, test_both=True)
+# cross_validate(positives, negatives, num_folds=10, lossless=False, test_both=False)
 # positives, negatives = load_ionosphere()
-# cross_validate(positives, negatives, num_folds=10, lossless=True, test_both=True)
+# cross_validate(positives, negatives, num_folds=10, lossless=False, test_both=False)
 # positives, negatives = load_breast()
-# cross_validate(positives, negatives, num_folds=10, lossless=True, test_both=True)
-# positives, negatives = load_pima()
-# cross_validate(positives, negatives, num_folds=10, lossless=True, test_both=True)
-# positives, negatives = load_chess()
 # cross_validate(positives, negatives, num_folds=10, lossless=False, test_both=True)
-positives, negatives = load_adult()
-cross_validate(positives, negatives, num_folds=10, lossless=False, test_both=True)
+# positives, negatives = load_pima()
+# cross_validate(positives, negatives, num_folds=10, lossless=False, test_both=False)
+positives, negatives = load_chess()
+cross_validate(negatives, positives, num_folds=10, lossless=False, test_both=False)
+# positives, negatives = load_adult()
+# cross_validate(positives, negatives, num_folds=10, lossless=False, test_both=True)
 # positives, negatives = load_mushroom()
 # cross_validate(positives, negatives, 10, lossless=False, test_both=True)
