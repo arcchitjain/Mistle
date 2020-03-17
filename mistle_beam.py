@@ -506,6 +506,7 @@ class Mistle:
 
         self.positives = positives
         self.negatives = negatives
+        self.errors = set()
 
         self.total_positives = len(positives)
         self.total_negatives = len(negatives)
@@ -553,139 +554,30 @@ class Mistle:
         new_theory.remove(input_clause2)
         new_theory += list(output_clauses)
 
+        uncovered_positives = set()
+
         for pa in self.positives:
             if not check_pa_satisfiability(pa, new_theory):
-                return False
+                uncovered_positives.add(pa)
 
-        for pa in self.negatives:
-            if check_pa_satisfiability(pa, new_theory):
-                return False
+        return uncovered_positives
 
-        return True
-
-    def check_clause_validity1(self, clause1, clause2):
-        """
-        :param clause1: 1st clause for V-operator
-        :param clause2: 2nd clause for V-operator
-        :return:
-            True    if all positives are valid in the SAT Theory
-            False   if at least one of the positives is not True in that theory
-        """
-
-        clause_a, clause_b, clause_c = get_subclauses(clause1, clause2)
-        clause_a = tuple(clause_a)
-        clause_b = tuple(clause_b)
-        clause_c = tuple(clause_c)
-        l_a = len(clause_a)
-        l_b = len(clause_b)
-        l_c = len(clause_c)
-
-        if (l_a == 1 or l_c == 1) and l_b > 1:
-
-            if l_a == 1:
-                # V-operator is applied on (a; b1; b2; b3), (b1; b2; b3; c1; c2; c3)
-                # To get (a; b1; b2; b3), (c1; c2; c3; -a)
-
-                # Create a CNF to represent the datapoints moving from positive to negative after V-operator
-                # Positive Loss = a, (b1; b2; b3), -c1, -c2, -c3
-                pos_cnf = [clause_a, clause_b]
-                for c in clause_c:
-                    pos_cnf.append((-c,))
-
-                common_part = [-clause_a[0]] + [c for c in clause_c]
-                pos_cnf_c = []
-                for i, b in enumerate(clause_b):
-                    component = copy(common_part) + [-b]
-                    pos_cnf_c.append(component)
-
-                for pos_pa in self.positives:
-
-                    if not check_pa_satisfiability(pos_pa, pos_cnf_c):
-                        # if check_pa_satisfiability(pos_pa, pos_cnf):
-                        # Loss of a positive partial assignment encountered.
-                        return False
-
-            elif len(clause_c) == 1:
-                # V-operator is applied on (a1; a2; a3; b1; b2; b3), (b1; b2; b3; c)
-                # To get (a1; a2; a3; -c), (b1; b2; b3; c)
-
-                # Create a CNF to represent the datapoints moving from positive to negative after V-operator
-                # Positive Loss = -a1, -a2, -a3, (b1; b2; b3), c
-                pos_cnf = [clause_c, clause_b]
-                for a in clause_a:
-                    pos_cnf.append((-a,))
-
-                common_part = [-clause_c[0]] + [a for a in clause_a]
-                pos_cnf_c = []
-                for i, b in enumerate(clause_b):
-                    component = copy(common_part) + [-b]
-                    pos_cnf_c.append(component)
-
-                for pos_pa in self.positives:
-                    if not check_pa_satisfiability(pos_pa, pos_cnf_c):
-                        # if check_pa_satisfiability(pos_pa, pos_cnf):
-                        # Loss of a positive partial assignment encountered.
-                        return False
-
-            return True
-
-        else:
-            return True
-
-    def count_violations(
-        self,
-        theory=None,
-        positives=None,
-        negatives=None,
-        sign=None,
-        print_violations=True,
-    ):
-
-        start_time = time()
-        pos_counter = 0
-        neg_counter = 0
-        violated_pos = []
-        violated_neg = []
-
-        if not theory:
-            theory = self.theory
+    def count_violations(self, positives=None, print_violations=True):
+        violated_pos = set()
 
         if positives is None:
             positives = self.initial_positives
 
-        if negatives is None:
-            negatives = self.initial_negatives
+        for pos in positives:
+            if not check_pa_satisfiability(pos, self.theory.clauses):
+                violated_pos.add(pos)
 
-        if sign is None or sign == "+":
-
-            for pos in positives:
-                if not check_pa_satisfiability(pos, theory.clauses):
-                    violated_pos.append(pos)
-                    pos_counter += 1
-
-            if pos_counter > 0:
-                print(
-                    pos_counter,
-                    " violations of positive partial assignments found for the learned theory.",
-                )
-                # if print_violations:
-                #     print_2d(violated_pos)
-                #     print()
-
-        elif sign is None or sign == "-":
-
-            for neg in negatives:
-                if check_pa_satisfiability(neg, theory.clauses):
-                    violated_neg.append(neg)
-                    neg_counter += 1
-
-            if neg_counter > 0:
-                print(
-                    neg_counter,
-                    " violations of negative partial assignments found for the learned theory.",
-                )
-
-        return pos_counter + neg_counter, violated_pos, violated_neg
+        if print_violations & len(violated_pos) > 0:
+            print(
+                len(violated_pos),
+                " violations of positive partial assignments found for the learned theory.",
+            )
+        return violated_pos
 
     def learn(self, lossless=False, description_measure="ll", beam_size=1):
 
@@ -694,7 +586,6 @@ class Mistle:
         self.beam = Beam(beam_size)
 
         input_literal_length = self.get_literal_length(self.negatives)
-        input_length = -1
         output_length = -1
         # input_bit_length = get_bit_length_for_theory(negatives)
 
@@ -721,40 +612,16 @@ class Mistle:
             + str(len(self.negatives))
         )
 
-        if description_measure == "ll":
-            input_length = input_literal_length
-        # elif description_measure == "se":
-        #     input_length = input_bit_length
-
         # Convert the set of -ve PAs to a theory
         self.theory.intialize(self.negatives)
-
-        initial_violations, positive_violations, negative_violations = self.count_violations(
-            self.theory,
-            self.positives,
-            self.negatives,
-            sign="+",
-            print_violations=False,
-        )
-
-        if len(positive_violations) > 0:
-            # Ignore Positive Violations while calculating the loss
-            self.positives = copy(self.positives - set(positive_violations))
-
-            # initial_violations, positive_violations, negative_violations = count_violations(
-            #     self.theory, positives, negatives, theory, sign="+"
-            # )
+        self.errors = self.count_violations(self.positives)
 
         self.total_positives = len(self.positives)
         self.total_negatives = len(self.negatives)
         self.theory.theory_length = self.total_negatives
 
         overlap_size = None
-        # search_index = 0
         compression_counter = 0
-        catch_it = 0
-        pos2neg = 0
-        neg2pos = 0
 
         pbar = tqdm(total=int(1.1 * self.theory.theory_length + 100))
         pbar.set_description("Compressing Clauses")
@@ -834,26 +701,12 @@ class Mistle:
                     self.theory.insert_clause(clause)
 
             else:
-                clause_validity_slow = self.check_clause_validity(
+                uncovered_positives = self.check_clause_validity(
                     clause1, clause2, compressed_clauses
                 )
-                # clause_validity_fast = self.check_clause_validity1(clause1, clause2)
-                #
-                # if clause_validity_fast != clause_validity_slow:
-                #     catch_it += 1
-                #     if clause_validity_fast:
-                #         neg2pos += 1
-                #     else:
-                #         pos2neg += 1
-                #     # clause_validity_fast = self.check_clause_validity1(clause1, clause2)
 
-                if clause_validity_slow:
-                    self.theory.delete_clauses(max_overlap_indices)
-
-                    for clause in compressed_clauses:
-                        self.theory.insert_clause(clause)
-
-                elif not clause_validity_slow:
+                # if len(uncovered_positives) > compression_size:
+                if len(uncovered_positives) > 0:
                     # Perform a lossless step here, i.e., Apply W-operator instead of V-operator
                     self.theory.operator_counter["V"] -= 1
 
@@ -869,27 +722,25 @@ class Mistle:
 
                     for clause in compressed_clauses:
                         self.theory.insert_clause(clause)
+                else:
+                    self.errors |= uncovered_positives
+                    # self.positives -= uncovered_positives
+                    self.theory.delete_clauses(max_overlap_indices)
 
-            # print_2d(self.theory)
-            # print_2d(self.overlap_matrix)
+                    for clause in compressed_clauses:
+                        self.theory.insert_clause(clause)
+
             pbar.update(1)
 
         pbar.close()
         output_literal_length = self.get_literal_length(self.theory.clauses)
-        # output_bit_length = get_bit_length_for_theory(theory)
 
-        if description_measure == "ll":
-            output_length = output_literal_length
-        # elif description_measure == "se":
-        #     output_length = output_bit_length
-        compression = round((1 - output_length / input_length) * 100, 2)
+        compression = round((1 - output_literal_length / input_literal_length) * 100, 2)
 
         print(
             "\nResultant Theory:\n\tLiteral Length = "
             + str(output_literal_length)
-            # + "\n\tBit Length = "
-            # + str(output_bit_length)
-            + "\n\tLength of Theory = "
+            + "\n\t# of clauses = "
             + str(self.theory.theory_length)
             + "\n\t% Compression (For measure: "
             + str(description_measure)
@@ -898,25 +749,19 @@ class Mistle:
             + "%"
             + "\n\tOperator Count = "
             + str(self.theory.operator_counter)
-            # + "\n\t# Contradictions = "
-            # + str(catch_it)
-            # + " ("
-            # + str(pos2neg)
-            # + ", "
-            # + str(neg2pos)
-            # + ")"
             + "\n\tTime Taken = "
             + str(time() - start_time)
             + " seconds"
-            # + "\n\tOverlap Matrix = "
         )
-        # print_2d(self.overlap_matrix)
-        # print()
-        # print_2d(self.theory)
 
-        count, p, n = self.count_violations(self.theory, self.positives, self.negatives)
+        inconsistent_pas = set(self.initial_positives) & set(self.initial_negatives)
+        consistent_positives = set(self.initial_positives) - inconsistent_pas
 
-        return self.theory, compression, self.theory.invented_predicate_definition
+        assert self.errors == self.count_violations(
+            consistent_positives, print_violations=False
+        )
+
+        return self.theory, compression
 
 
 class Theory:
@@ -1045,7 +890,7 @@ class Theory:
                 clause_c.add(-new_var)
 
                 # Update other clauses in the theory that contain 'clause_b'
-                self.theory.update_clause(new_var, clause_b)
+                self.update_clause(new_var, clause_b)
 
             else:
                 for var, clause in self.invented_predicate_definition.items():

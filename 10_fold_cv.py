@@ -1,4 +1,6 @@
-from mistle_class import *
+# from mistle_class import *
+
+from mistle_beam import *
 
 # from mistle_mdl import *
 import random
@@ -17,7 +19,6 @@ from pycosat import itersolve
 
 
 def count_models(pa, theory, id=None):
-    # cnf = copy(theory.clauses) + [(a,) for a in pa]
 
     total_clauses = len(theory.clauses) + len(pa)
     total_vars = theory.new_var_counter - 1
@@ -27,12 +28,24 @@ def count_models(pa, theory, id=None):
         filename = "./CNFs/0.cnf"
 
     f = open(filename, "w+")
+    f.write(
+        "c ind "
+        + " ".join(
+            [
+                str(a)
+                for a in range(
+                    1, total_vars - len(theory.invented_predicate_definition)
+                )
+            ]
+        )
+        + " 0\n"
+    )
     f.write("p cnf " + str(total_vars) + " " + str(total_clauses) + "\n")
     for literal in pa:
         f.write(str(literal) + " 0\n")
 
     for clause in theory.clauses:
-        f.write(" ".join(clause) + " 0\n")
+        f.write(" ".join([str(a) for a in clause]) + " 0\n")
 
     f.close()
 
@@ -42,16 +55,29 @@ def count_models(pa, theory, id=None):
         outfilename = "./CNFs/0.out"
 
     os.system(
-        "cd ganak-master/build/ && python ganak.py ../../CNFs/"
+        "cd ganak-master/build/ && python ganak.py ../."
         + filename
-        + " > ../../CNFs/"
+        + " -p > ../."
         + outfilename
     )
 
-    # outf = open(outfilename, "r")
-    # for line in outf.readlines():
-    #     if  in line
-    # outf.close()
+    outf = open(outfilename, "r")
+    sol_found = False
+    total_models = None
+    for line in outf.readlines():
+        if sol_found:
+            total_models = line[:-1]
+            # print(total_models)
+            break
+        if "solutions" in line:
+            sol_found = True
+    outf.close()
+
+    if total_models:
+        return int(total_models)
+    else:
+        print("No solutions found")
+        return 0
 
 
 def split_data(data, num_folds=10, seed=1234):
@@ -104,12 +130,12 @@ def test_theory(theory, positives, negatives):
     pbar.set_description("Testing theory")
 
     for pa in positives:
-        if check_pa_satisfiability(pa, theory):
+        if check_pa_satisfiability(pa, theory.clauses):
             accuracy += 1
         pbar.update(1)
 
     for pa in negatives:
-        if not check_pa_satisfiability(pa, theory):
+        if not check_pa_satisfiability(pa, theory.clauses):
             accuracy += 1
         pbar.update(1)
 
@@ -118,13 +144,8 @@ def test_theory(theory, positives, negatives):
     return float(accuracy) / total_datapoints
 
 
-def test_both_theories(
-    pos_theory,
-    pos_definitions,
-    neg_theory,
-    neg_definitions,
-    test_positives,
-    test_negatives,
+def test_both_theories_by_compression(
+    pos_theory, neg_theory, test_positives, test_negatives
 ):
     accuracy = 0
     total_classifications = 0
@@ -138,22 +159,22 @@ def test_both_theories(
 
     # Remove negative signs from the literals in the definitions
     abs_pos_def = OrderedDict()
-    for var, definition in pos_definitions.items():
+    for var, definition in pos_theory.invented_predicate_definition.items():
         abs_def = set()
         for literal in definition:
             abs_def.add(-1 * literal)
         abs_pos_def[var] = abs_def
 
     abs_neg_def = OrderedDict()
-    for var, definition in neg_definitions.items():
+    for var, definition in neg_theory.invented_predicate_definition.items():
         abs_def = set()
         for literal in definition:
             abs_def.add(-1 * literal)
         abs_neg_def[var] = abs_def
 
     for pa in test_positives:
-        p = check_pa_satisfiability(pa, pos_theory)
-        n = check_pa_satisfiability(pa, neg_theory)
+        p = check_pa_satisfiability(pa, pos_theory.clauses)
+        n = check_pa_satisfiability(pa, neg_theory.clauses)
 
         if not p and n:
             # Correctly classified as a positive
@@ -195,8 +216,8 @@ def test_both_theories(
         pbar.update(1)
 
     for pa in test_negatives:
-        p = check_pa_satisfiability(pa, pos_theory)
-        n = check_pa_satisfiability(pa, neg_theory)
+        p = check_pa_satisfiability(pa, pos_theory.clauses)
+        n = check_pa_satisfiability(pa, neg_theory.clauses)
 
         if not p and n:
             # Wrongly classified as a positive
@@ -246,6 +267,118 @@ def test_both_theories(
         + str(tf)
         + "; tt = "
         + str(tt)
+    )
+
+    if total_classifications == 0:
+        return None, 0
+    else:
+        return (
+            float(accuracy) / total_classifications,
+            float(total_classifications) / (len(test_positives) + len(test_negatives)),
+        )
+
+
+def test_both_theories_by_counting(
+    pos_theory, neg_theory, test_positives, test_negatives
+):
+    accuracy = 0
+    total_classifications = 0
+
+    pbar = tqdm(total=len(test_positives) + len(test_negatives))
+    pbar.set_description("Testing both theories")
+    ff = 0
+    ft = 0
+    tf = 0
+    tt = 0
+    ft_c = 0
+    tf_c = 0
+
+    for i, pa in enumerate(test_positives):
+        p = check_pa_satisfiability(pa, pos_theory.clauses)
+        n = check_pa_satisfiability(pa, neg_theory.clauses)
+
+        if not p and n:
+            # Correctly classified as a positive
+            accuracy += 1
+            total_classifications += 1
+            ft += 1
+        elif p and not n:
+            # Wrongly classified as a negative
+            total_classifications += 1
+            tf += 1
+        else:
+            pos_models = count_models(pa, pos_theory, str(i) + "+")
+            neg_models = count_models(pa, neg_theory, str(i) + "-")
+
+            if pos_models < neg_models:
+                # Correctly classified as a positive
+                accuracy += 1
+                total_classifications += 1
+                ft_c += 1
+            elif neg_models < pos_models:
+                # Wrongly classified as a negative
+                total_classifications += 1
+                tf_c += 1
+            elif p and n:
+                tt += 1
+            elif not p and not n:
+                ff += 1
+
+            if pos_models == neg_models and pos_models != 0:
+                print("#SAT(Pos) = #SAT(Neg) = " + str(pos_models))
+        pbar.update(1)
+
+    i = len(test_positives)
+    for j, pa in enumerate(test_negatives):
+        p = check_pa_satisfiability(pa, pos_theory.clauses)
+        n = check_pa_satisfiability(pa, neg_theory.clauses)
+
+        if not p and n:
+            # Wrongly classified as a positive
+            total_classifications += 1
+            ft += 1
+        elif p and not n:
+            # Correctly classified as a negative
+            accuracy += 1
+            total_classifications += 1
+            tf += 1
+        else:
+            pos_models = count_models(pa, pos_theory, str(j + i) + "+")
+            neg_models = count_models(pa, neg_theory, str(j + i) + "-")
+
+            if pos_models < neg_models:
+                # Wrongly classified as a positive
+                total_classifications += 1
+                ft_c += 1
+            elif neg_models < pos_models:
+                # Correctly classified as a negative
+                accuracy += 1
+                total_classifications += 1
+                tf_c += 1
+            elif p and n:
+                tt += 1
+            elif not p and not n:
+                ff += 1
+
+            if pos_models == neg_models and pos_models != 0:
+                print("#SAT(Pos) = #SAT(Neg) = " + str(pos_models))
+
+        pbar.update(1)
+
+    pbar.close()
+    print(
+        "Classification Matrix \t: ff = "
+        + str(ff)
+        + "; ft = "
+        + str(ft)
+        + "; tf = "
+        + str(tf)
+        + "; tt = "
+        + str(tt)
+        + "; ft_c = "
+        + str(ft_c)
+        + "; tf_c = "
+        + str(tf_c)
     )
 
     if total_classifications == 0:
@@ -353,22 +486,13 @@ def cross_validate(
         # Compressed Theory
         if test_both:
             pos_mistle = Mistle(train_negatives, train_positives)
-            pos_theory, pos_compression, pos_definitions = pos_mistle.learn(
-                lossless=lossless
-            )
+            pos_theory, pos_compression = pos_mistle.learn(lossless=lossless)
 
             neg_mistle = Mistle(train_positives, train_negatives)
-            neg_theory, neg_compression, neg_definitions = neg_mistle.learn(
-                lossless=lossless
-            )
+            neg_theory, neg_compression = neg_mistle.learn(lossless=lossless)
 
-            fold_accuracy, coverage = test_both_theories(
-                pos_theory,
-                pos_definitions,
-                neg_theory,
-                neg_definitions,
-                test_positives,
-                test_negatives,
+            fold_accuracy, coverage = test_both_theories_by_compression(
+                pos_theory, neg_theory, test_positives, test_negatives
             )
 
             print("Accuracy of fold " + str(fold) + "\t: " + str(fold_accuracy))
@@ -382,7 +506,7 @@ def cross_validate(
             avg_coverage += coverage
         else:
             mistle = Mistle(train_positives, train_negatives)
-            theory, compression, definitions = mistle.learn(lossless=lossless)
+            theory, compression = mistle.learn(lossless=lossless)
 
             fold_accuracy = test_theory(theory, test_positives, test_negatives)
             print("Accuracy of fold " + str(fold) + "\t: " + str(fold_accuracy))
@@ -433,16 +557,16 @@ def cross_validate(
 # cross_validate(positives, negatives, 10, "./Output/mushroom", lossless=False)
 # cross_validate(positives, negatives, 10, lossless=False, test_both=False)
 
-# positives, negatives = load_tictactoe()
-# cross_validate(positives, negatives, num_folds=10, lossless=False, test_both=False)
+positives, negatives = load_tictactoe()
+cross_validate(positives, negatives, num_folds=10, lossless=False, test_both=True)
 # positives, negatives = load_ionosphere()
-# cross_validate(positives, negatives, num_folds=10, lossless=False, test_both=False)
+# cross_validate(positives, negatives, num_folds=10, lossless=False, test_both=True)
 # positives, negatives = load_breast()
 # cross_validate(positives, negatives, num_folds=10, lossless=False, test_both=True)
 # positives, negatives = load_pima()
-# cross_validate(positives, negatives, num_folds=10, lossless=False, test_both=False)
-positives, negatives = load_chess()
-cross_validate(negatives, positives, num_folds=10, lossless=False, test_both=False)
+# cross_validate(positives, negatives, num_folds=10, lossless=False, test_both=True)
+# positives, negatives = load_chess()
+# cross_validate(negatives, positives, num_folds=10, lossless=False, test_both=False)
 # positives, negatives = load_adult()
 # cross_validate(positives, negatives, num_folds=10, lossless=False, test_both=True)
 # positives, negatives = load_mushroom()

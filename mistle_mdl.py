@@ -1124,9 +1124,8 @@ class Mistle:
                 uncovered_positives = self.check_clause_validity(
                     clause1, clause2, compressed_clauses
                 )
-                c1 = len(uncovered_positives)
-                c2 = compression_size
-                if c1 > c2:
+
+                if len(uncovered_positives) > compression_size:
                     # Perform a lossless step here, i.e., Apply W-operator instead of V-operator
                     self.operator_counter["V"] -= 1
 
