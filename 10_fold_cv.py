@@ -293,6 +293,16 @@ def test_both_theories_by_counting(
     ft_c = 0
     tf_c = 0
 
+    TP_c = 0
+    TN_c = 0
+    FP_c = 0
+    FN_c = 0
+
+    TP_s = 0
+    TN_s = 0
+    FP_s = 0
+    FN_s = 0
+
     for i, pa in enumerate(test_positives):
         p = check_pa_satisfiability(pa, pos_theory.clauses)
         n = check_pa_satisfiability(pa, neg_theory.clauses)
@@ -302,10 +312,12 @@ def test_both_theories_by_counting(
             accuracy += 1
             total_classifications += 1
             ft += 1
+            TP_s += 1
         elif p and not n:
             # Wrongly classified as a negative
             total_classifications += 1
             tf += 1
+            FN_s += 1
         else:
             pos_models = count_models(pa, pos_theory, str(i) + "+")
             neg_models = count_models(pa, neg_theory, str(i) + "-")
@@ -491,7 +503,11 @@ def cross_validate(
             neg_mistle = Mistle(train_positives, train_negatives)
             neg_theory, neg_compression = neg_mistle.learn(lossless=lossless)
 
-            fold_accuracy, coverage = test_both_theories_by_compression(
+            # fold_accuracy, coverage = test_both_theories_by_compression(
+            #     pos_theory, neg_theory, test_positives, test_negatives
+            # )
+
+            fold_accuracy, coverage = test_both_theories_by_counting(
                 pos_theory, neg_theory, test_positives, test_negatives
             )
 
@@ -559,16 +575,16 @@ def cross_validate(
 
 # positives, negatives = load_tictactoe()
 # cross_validate(positives, negatives, num_folds=10, lossless=False, test_both=True)
-# positives, negatives = load_ionosphere()
-# cross_validate(positives, negatives, num_folds=10, lossless=False, test_both=True)
-positives, negatives = load_breast()
+positives, negatives = load_ionosphere()
 cross_validate(positives, negatives, num_folds=10, lossless=False, test_both=True)
+# positives, negatives = load_breast()
+# cross_validate(positives, negatives, num_folds=10, lossless=False, test_both=True)
 # positives, negatives = load_pima()
 # cross_validate(positives, negatives, num_folds=10, lossless=False, test_both=True)
-positives, negatives = load_chess()
+# positives, negatives = load_chess()
 # cross_validate(negatives, positives, num_folds=10, lossless=False, test_both=False)
-cross_validate(positives, negatives, num_folds=10, lossless=False, test_both=True)
-positives, negatives = load_adult()
-cross_validate(positives, negatives, num_folds=10, lossless=False, test_both=True)
-positives, negatives = load_mushroom()
-cross_validate(positives, negatives, 10, lossless=False, test_both=True)
+# cross_validate(positives, negatives, num_folds=10, lossless=False, test_both=True)
+# positives, negatives = load_adult()
+# cross_validate(positives, negatives, num_folds=10, lossless=False, test_both=True)
+# positives, negatives = load_mushroom()
+# cross_validate(positives, negatives, 10, lossless=False, test_both=True)

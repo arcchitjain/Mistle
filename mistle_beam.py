@@ -798,8 +798,8 @@ class Mistle:
                     clause1, clause2, compressed_clauses
                 )
 
-                if len(uncovered_positives) > compression_size:
-                    # if len(uncovered_positives) > 0:
+                if len(uncovered_positives) > compression_size: # Comment this line for ignoring errors
+                # if len(uncovered_positives) > 0:# Uncomment this line for ignoring errors
                     # Perform a lossless step here, i.e., Apply W-operator instead of V-operator
                     self.theory.operator_counter["V"] -= 1
 
@@ -815,7 +815,7 @@ class Mistle:
                         compressed_clauses2,
                         compression_size,
                         is_lossless,
-                    ) = self.theory.compress_pairwise(clause1, clause2, lossless=True)
+                    ) = self.theory.compress_pairwise(clause1, clause2, lossless=True, force_w=True)
 
                     # uncovered_positives2 = self.check_clause_validity(
                     #     clause1, clause2, compressed_clauses2
@@ -842,6 +842,8 @@ class Mistle:
                     #     print("Incremental Uncovered Posiitive PA\t:" + str(q.pop()))
 
                     assert is_lossless is True
+                    # if is_lossless is not True:
+                    #     pass
 
                     self.theory.delete_clauses(max_overlap_indices)
 
@@ -855,7 +857,7 @@ class Mistle:
                 else:
                     assert not self.errors.intersection(uncovered_positives)
                     self.errors |= uncovered_positives
-                    self.positives -= uncovered_positives
+                    self.positives -= uncovered_positives # Comment this line for ignoring errors
                     self.theory.delete_clauses(max_overlap_indices)
 
                     for clause in compressed_clauses:
@@ -935,7 +937,7 @@ class Theory:
             for j, clause2 in enumerate(self.clauses[i + 1 :]):
                 self.overlap_matrix[i][i + j + 1] = len(clause1 & clause2)
 
-    def compress_pairwise(self, clause1, clause2, lossless=False):
+    def compress_pairwise(self, clause1, clause2, lossless=False, force_w=False):
         """
         Compress clause1 and clause2
         :param clause1:
@@ -999,7 +1001,7 @@ class Theory:
             self.operator_counter["V"] += 1
             return {frozenset(clause_a), clause2}, len(clause_b) - 1, False
 
-        elif len(clause_b) < 3:
+        elif not force_w and len(clause_b) < 3:
             # print("Application of W-Operator is infeasible due to overlap of only " + str(len(clause_b)) + "
             # literals.")
             return {clause1, clause2}, 0, None
