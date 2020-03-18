@@ -178,6 +178,75 @@ def load_test2():
     return positives, negatives
 
 
+def load_test3():
+    # a = 1, b = (2, 3, 4), c = (5, 6)
+    input_cnf = [(1, 2, 3, 4), (1, 2, 5, 6)]
+    output_cnf = [(-7, 3, 4), (7, 1, 2), (-7, 5, 6)]
+
+    truth_assignments = []
+    for a in [-1, 1]:
+        for b1 in [-2, 2]:
+            for b2 in [-3, 3]:
+                for b3 in [-4, 4]:
+                    for c1 in [-5, 5]:
+                        for c2 in [-6, 6]:
+                            truth_assignments.append((a, b1, b2, b3, c1, c2))
+
+    # pos2pos = []
+    # neg2neg = []
+    # pos2neg = []
+    # neg2pos = []
+    #
+    # for ass in truth_assignments:
+    #     i = input_cnf + [(a,) for a in ass]
+    #     o = output_cnf + [(a,) for a in ass]
+    #
+    #     s_i = 0 if solve(i) == "UNSAT" else 1
+    #     s_o = 0 if solve(o) == "UNSAT" else 1
+    #
+    #     if s_i == 1 and s_o == 1:
+    #         pos2pos.append(ass)
+    #     elif s_i == 0 and s_o == 0:
+    #         neg2neg.append(ass)
+    #     elif s_i == 1 and s_o == 0:
+    #         pos2neg.append(ass)
+    #     elif s_i == 0 and s_o == 1:
+    #         neg2pos.append(ass)
+    #
+    #     print(ass, s_i, s_o)
+    #
+    # print("\nPos2Pos\t:", len(pos2pos))
+    # for p in pos2pos:
+    #     print(p)
+    #
+    # print("\nNeg2Neg\t:", len(neg2neg))
+    # for n in neg2neg:
+    #     print(n)
+    #
+    # print("\nPos2Neg\t:", len(pos2neg))
+    # for p in pos2neg:
+    #     print(p)
+    #
+    # print("\nNeg2Pos\t:", len(neg2pos))
+    # for n in neg2pos:
+    #     print(n)
+
+    positives = [frozenset(ass) for ass in truth_assignments]
+    negatives = [frozenset([-1, -2, -3, -4]), frozenset([-1, -2, -5, -6])]
+    # # positives = [frozenset(ass) for ass in pos2pos + pos2neg]
+    # # negatives = [frozenset(ass) for ass in neg2neg + neg2pos]
+    #
+    # print("\nPositives\t:", len(positives))
+    # for p in positives:
+    #     print(p)
+    #
+    # print("\nNegatives\t:", len(negatives))
+    # for n in negatives:
+    #     print(n)
+
+    return positives, negatives
+
+
 def load_animal_taxonomy(switch_signs=False):
     a = 1
     b = 2
@@ -600,9 +669,18 @@ class Mistle:
         self.positives = set(self.positives)
         self.negatives = set(self.negatives)
 
+        # Construct a theory from the partial assignments
+        self.theory.new_var_counter = 0
+        for pa in self.positives | self.negatives:
+            self.theory.new_var_counter = max(
+                self.theory.new_var_counter, max([abs(l) for l in pa])
+            )
+        self.theory.new_var_counter += 1
+
         # Remove inconsistent partial assignments (Those pas that are both classified as +ves and -ves) in the data
         inconsistent_pas = self.positives & self.negatives
-        self.positives = self.positives - inconsistent_pas
+        consistent_positives = self.positives - inconsistent_pas
+        self.positives = copy(consistent_positives)
         self.negatives = self.negatives - inconsistent_pas
 
         print(
@@ -693,6 +771,12 @@ class Mistle:
                 # V - Operator is not applied
                 # Continue compressing the theory
                 # Delete the clauses used for last compression step
+
+                # if self.theory.w:
+                #     old_violations = self.count_violations(
+                #         consistent_positives, print_violations=False
+                #     )
+
                 self.theory.delete_clauses(max_overlap_indices)
 
                 # Insert clauses from compressed_clauses at appropriate lengths so that the theory remains sorted
@@ -700,21 +784,62 @@ class Mistle:
                 for clause in compressed_clauses:
                     self.theory.insert_clause(clause)
 
+                # if self.theory.w:
+                #     new_violations = self.count_violations(
+                #         consistent_positives, print_violations=False
+                #     )
+                #
+                #     if len(new_violations) > len(old_violations):
+                #         p = new_violations - old_violations
+                #         print("Incremental Violation PA\t:" + str(p.pop()))
+
             else:
                 uncovered_positives = self.check_clause_validity(
                     clause1, clause2, compressed_clauses
                 )
 
-                # if len(uncovered_positives) > compression_size:
-                if len(uncovered_positives) > 0:
+                if len(uncovered_positives) > compression_size:
+                    # if len(uncovered_positives) > 0:
                     # Perform a lossless step here, i.e., Apply W-operator instead of V-operator
                     self.theory.operator_counter["V"] -= 1
 
+                    # uncovered_positives = self.check_clause_validity(
+                    #     clause1, clause2, compressed_clauses
+                    # )
+                    #
+                    # old_violations = self.count_violations(
+                    #     consistent_positives, print_violations=False
+                    # )
+
                     (
-                        compressed_clauses,
+                        compressed_clauses2,
                         compression_size,
                         is_lossless,
                     ) = self.theory.compress_pairwise(clause1, clause2, lossless=True)
+
+                    # uncovered_positives2 = self.check_clause_validity(
+                    #     clause1, clause2, compressed_clauses2
+                    # )
+                    #
+                    # new_violations = self.count_violations(
+                    #     consistent_positives, print_violations=False
+                    # )
+                    #
+                    # print("Clause 1\t:" + str(clause1))
+                    # print("Clause 2\t:" + str(clause2))
+                    # print("Compressed Clauses 1\t:" + str(compressed_clauses))
+                    # print("Compressed Clauses 2\t:" + str(compressed_clauses2))
+                    # print("Old Violations\t:" + str(len(old_violations)))
+                    # print("New Violations\t:" + str(len(new_violations)))
+                    # if len(new_violations) > len(old_violations):
+                    #     p = new_violations - old_violations
+                    #     print("Incremental Violation PA\t:" + str(p.pop()))
+                    #
+                    # print("Uncovered Positives\t:" + str(len(uncovered_positives)))
+                    # print("Uncovered Positives\t:" + str(len(uncovered_positives2)))
+                    # if len(uncovered_positives2) > len(uncovered_positives):
+                    #     q = uncovered_positives2 - uncovered_positives
+                    #     print("Incremental Uncovered Posiitive PA\t:" + str(q.pop()))
 
                     assert is_lossless is True
 
@@ -722,9 +847,15 @@ class Mistle:
 
                     for clause in compressed_clauses:
                         self.theory.insert_clause(clause)
+
+                    # assert self.errors == self.count_violations(
+                    #     consistent_positives, print_violations=False
+                    # )
+
                 else:
+                    assert not self.errors.intersection(uncovered_positives)
                     self.errors |= uncovered_positives
-                    # self.positives -= uncovered_positives
+                    self.positives -= uncovered_positives
                     self.theory.delete_clauses(max_overlap_indices)
 
                     for clause in compressed_clauses:
@@ -754,12 +885,14 @@ class Mistle:
             + " seconds"
         )
 
-        inconsistent_pas = set(self.initial_positives) & set(self.initial_negatives)
-        consistent_positives = set(self.initial_positives) - inconsistent_pas
+        p = self.count_violations(consistent_positives, print_violations=False)
 
-        assert self.errors == self.count_violations(
-            consistent_positives, print_violations=False
-        )
+        if self.errors != p:
+            print("# Violations\t: " + str(len(p)))
+            print("# Errors\t\t: " + str(len(self.errors)))
+            pass
+
+        # assert self.errors == p
 
         return self.theory, compression
 
@@ -780,19 +913,13 @@ class Theory:
 
         self.operator_counter = {"W": 0, "V": 0, "S": 0, "R": 0}
         self.invented_predicate_definition = OrderedDict()
-        self.new_var_counter = 0
-        for pa in clauses:
-            self.new_var_counter = max(self.new_var_counter, max([abs(l) for l in pa]))
-        self.new_var_counter += 1
+        self.new_var_counter = None
 
     def intialize(self, partial_assignments):
         # Construct a theory from the partial assignments
-        self.new_var_counter = 0
         for pa in partial_assignments:
             self.clauses.append(convert_to_clause(pa))
             self.clause_length.append(len(pa))
-            self.new_var_counter = max(self.new_var_counter, max([abs(l) for l in pa]))
-        self.new_var_counter += 1
 
         # Sort the theory
         self.theory_length = len(self.clauses)
@@ -825,6 +952,7 @@ class Theory:
 
         clause_a, clause_b, clause_c = get_subclauses(clause1, clause2)
         resolution_applicable = False
+        # self.w = False
         if (
             len(clause_a) == 1
             and len(clause_c) == 1
@@ -893,6 +1021,7 @@ class Theory:
                 self.update_clause(new_var, clause_b)
 
             else:
+                # self.w = True
                 for var, clause in self.invented_predicate_definition.items():
                     if clause == clause_b:
                         clause_a.add(-var)
@@ -1190,6 +1319,9 @@ class Beam:
 
 
 if __name__ == "__main__":
-    positives, negatives = load_ionosphere()
-    mistle = Mistle(positives, negatives)
+    positives, negatives = load_chess()
+    mistle = Mistle(negatives, positives)
     theory = mistle.learn(beam_size=2)
+    # positives, negatives = load_test3()
+    # mistle = Mistle(positives, negatives)
+    # theory = mistle.learn(beam_size=2)
