@@ -798,8 +798,10 @@ class Mistle:
                     clause1, clause2, compressed_clauses
                 )
 
-                if len(uncovered_positives) > compression_size: # Comment this line for ignoring errors
-                # if len(uncovered_positives) > 0:# Uncomment this line for ignoring errors
+                if (
+                    len(uncovered_positives) > compression_size
+                ):  # Comment this line for ignoring errors
+                    # if len(uncovered_positives) > 0:# Uncomment this line for ignoring errors
                     # Perform a lossless step here, i.e., Apply W-operator instead of V-operator
                     self.theory.operator_counter["V"] -= 1
 
@@ -815,7 +817,9 @@ class Mistle:
                         compressed_clauses2,
                         compression_size,
                         is_lossless,
-                    ) = self.theory.compress_pairwise(clause1, clause2, lossless=True, force_w=True)
+                    ) = self.theory.compress_pairwise(
+                        clause1, clause2, lossless=True, force_w=True
+                    )
 
                     # uncovered_positives2 = self.check_clause_validity(
                     #     clause1, clause2, compressed_clauses2
@@ -857,7 +861,9 @@ class Mistle:
                 else:
                     assert not self.errors.intersection(uncovered_positives)
                     self.errors |= uncovered_positives
-                    self.positives -= uncovered_positives # Comment this line for ignoring errors
+                    self.positives -= (
+                        uncovered_positives
+                    )  # Comment this line for ignoring errors
                     self.theory.delete_clauses(max_overlap_indices)
 
                     for clause in compressed_clauses:
