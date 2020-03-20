@@ -88,6 +88,11 @@ def split_data(data, num_folds=10, seed=1234):
     for datapoint in data:
         split_data[int(random.random() * num_folds)].append(datapoint)
 
+    # split_data2 = [[] for i in range(num_folds)]
+    #
+    # for datapoint in split_data[0]:
+    #     split_data2[int(random.random() * num_folds)].append(datapoint)
+
     return split_data
 
 
@@ -575,15 +580,15 @@ def cross_validate(
 
 # positives, negatives = load_tictactoe()
 # cross_validate(positives, negatives, num_folds=10, lossless=False, test_both=True)
-positives, negatives = load_ionosphere()
-cross_validate(positives, negatives, num_folds=10, lossless=False, test_both=True)
+# positives, negatives = load_ionosphere()
+# cross_validate(positives, negatives, num_folds=10, lossless=False, test_both=True)
 # positives, negatives = load_breast()
 # cross_validate(positives, negatives, num_folds=10, lossless=False, test_both=True)
 # positives, negatives = load_pima()
 # cross_validate(positives, negatives, num_folds=10, lossless=False, test_both=True)
-# positives, negatives = load_chess()
+positives, negatives = load_chess()
 # cross_validate(negatives, positives, num_folds=10, lossless=False, test_both=False)
-# cross_validate(positives, negatives, num_folds=10, lossless=False, test_both=True)
+cross_validate(positives, negatives, num_folds=10, lossless=False, test_both=True)
 # positives, negatives = load_adult()
 # cross_validate(positives, negatives, num_folds=10, lossless=False, test_both=True)
 # positives, negatives = load_mushroom()
