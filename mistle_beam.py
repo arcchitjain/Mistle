@@ -567,6 +567,15 @@ def convert_to_clause(partial_assignment):
     return frozenset(clause)
 
 
+def get_description_length(theory):
+    dl = sum(theory.clause_length) + theory.theory_length - 1
+    for misclassified_pa in theory.errors:
+        dl += len(misclassified_pa)
+    dl += len(theory.errors) - 1
+    print("Description Length of theory\t:" + str(dl))
+    return dl
+
+
 class Mistle:
     def __init__(self, positives, negatives):
 
@@ -692,7 +701,7 @@ class Mistle:
 
         # Convert the set of -ve PAs to a theory
         self.theory.intialize(self.negatives)
-        self.errors = self.count_violations(self.positives)
+        self.theory.errors = self.count_violations(self.positives)
 
         self.total_positives = len(self.positives)
         self.total_negatives = len(self.negatives)
@@ -859,11 +868,11 @@ class Mistle:
                     # )
 
                 else:
-                    assert not self.errors.intersection(uncovered_positives)
-                    self.errors |= uncovered_positives
+                    assert not self.theory.errors.intersection(uncovered_positives)
+                    self.theory.errors |= uncovered_positives
                     self.positives -= (
-                        uncovered_positives
-                    )  # Comment this line for ignoring errors
+                        uncovered_positives  # Comment this line for ignoring errors
+                    )
                     self.theory.delete_clauses(max_overlap_indices)
 
                     for clause in compressed_clauses:
@@ -895,9 +904,9 @@ class Mistle:
 
         p = self.count_violations(consistent_positives, print_violations=False)
 
-        if self.errors != p:
+        if self.theory.errors != p:
             print("# Violations\t: " + str(len(p)))
-            print("# Errors\t\t: " + str(len(self.errors)))
+            print("# Errors\t\t: " + str(len(self.theory.errors)))
             pass
 
         # assert self.errors == p
@@ -916,8 +925,9 @@ class Theory:
 
         self.update_dict = {}
         self.update_threshold = (
-            1
-        )  # The number of new predicates to invent before updating the theory
+            1  # The number of new predicates to invent before updating the theory
+        )
+        self.errors = set()
 
         self.operator_counter = {"W": 0, "V": 0, "S": 0, "R": 0}
         self.invented_predicate_definition = OrderedDict()
@@ -1327,9 +1337,17 @@ class Beam:
 
 
 if __name__ == "__main__":
-    positives, negatives = load_chess()
-    mistle = Mistle(negatives, positives)
-    theory = mistle.learn(beam_size=2)
-    # positives, negatives = load_test3()
-    # mistle = Mistle(positives, negatives)
-    # theory = mistle.learn(beam_size=2)
+    positives, negatives = load_pima()
+    mistle = Mistle(positives, negatives)
+    theory, compression1 = mistle.learn(beam_size=2)
+    initial_dl = -1
+    for pa in positives + negatives:
+        initial_dl += 1
+        initial_dl += len(pa)
+
+    final_dl = get_description_length(theory)
+    compression2 = (initial_dl - final_dl) / float(initial_dl)
+    print("Compression (wrt Literal Length)\t: " + str(compression1))
+    print("Initial DL\t: " + str(initial_dl))
+    print("Final DL\t: " + str(final_dl))
+    print("Compression (wrt Description Length)\t: " + str(compression2))
