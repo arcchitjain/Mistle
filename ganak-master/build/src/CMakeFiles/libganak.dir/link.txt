@@ -1,2 +1,0 @@
-/usr/bin/ar qc liblibganak.a  CMakeFiles/libganak.dir/alt_component_analyzer.cpp.o CMakeFiles/libganak.dir/component_analyzer.cpp.o CMakeFiles/libganak.dir/component_cache.cpp.o CMakeFiles/libganak.dir/component_management.cpp.o CMakeFiles/libganak.dir/instance.cpp.o CMakeFiles/libganak.dir/new_component_analyzer.cpp.o CMakeFiles/libganak.dir/solver.cpp.o CMakeFiles/libganak.dir/statistics.cpp.o
-/usr/bin/ranlib liblibganak.a

@@ -55,7 +55,7 @@ def count_models(pa, theory, id=None):
         outfilename = "./CNFs/0.out"
 
     os.system(
-        "cd ganak-master/build/ && python ganak.py ../."
+        "cd Ganak/build/ && python ganak.py ../."
         + filename
         + " -p > ../."
         + outfilename
