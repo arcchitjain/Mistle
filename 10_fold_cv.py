@@ -323,7 +323,7 @@ def test_both_theories_by_counting(
             total_classifications += 1
             tf += 1
             FN_s += 1
-        else:
+        elif p and n:
             pos_models = count_models(pa, pos_theory, str(i) + "+")
             neg_models = count_models(pa, neg_theory, str(i) + "-")
 
@@ -332,17 +332,16 @@ def test_both_theories_by_counting(
                 accuracy += 1
                 total_classifications += 1
                 ft_c += 1
+                TP_c += 1
             elif neg_models < pos_models:
                 # Wrongly classified as a negative
                 total_classifications += 1
                 tf_c += 1
-            elif p and n:
+                FN_c += 1
+            else:
                 tt += 1
-            elif not p and not n:
-                ff += 1
-
-            if pos_models == neg_models and pos_models != 0:
-                print("#SAT(Pos) = #SAT(Neg) = " + str(pos_models))
+        elif not p and not n:
+            ff += 1
         pbar.update(1)
 
     i = len(test_positives)
@@ -354,12 +353,14 @@ def test_both_theories_by_counting(
             # Wrongly classified as a positive
             total_classifications += 1
             ft += 1
+            FP_s += 1
         elif p and not n:
             # Correctly classified as a negative
             accuracy += 1
             total_classifications += 1
             tf += 1
-        else:
+            TN_s += 1
+        elif p and n:
             pos_models = count_models(pa, pos_theory, str(j + i) + "+")
             neg_models = count_models(pa, neg_theory, str(j + i) + "-")
 
@@ -367,19 +368,17 @@ def test_both_theories_by_counting(
                 # Wrongly classified as a positive
                 total_classifications += 1
                 ft_c += 1
+                FP_c += 1
             elif neg_models < pos_models:
                 # Correctly classified as a negative
                 accuracy += 1
                 total_classifications += 1
                 tf_c += 1
-            elif p and n:
+                TN_c += 1
+            else:
                 tt += 1
-            elif not p and not n:
-                ff += 1
-
-            if pos_models == neg_models and pos_models != 0:
-                print("#SAT(Pos) = #SAT(Neg) = " + str(pos_models))
-
+        elif not p and not n:
+            ff += 1
         pbar.update(1)
 
     pbar.close()
@@ -398,6 +397,25 @@ def test_both_theories_by_counting(
         + str(tf_c)
     )
 
+    print(
+        "Confusion Matrix \t: TP_s = "
+        + str(TP_s)
+        + "; TN_s = "
+        + str(TN_s)
+        + "; FP_s = "
+        + str(FP_s)
+        + "; FN_s = "
+        + str(FN_s)
+        + "; TP_c = "
+        + str(TP_c)
+        + "; TN_c = "
+        + str(TN_c)
+        + "; FP_c = "
+        + str(FP_c)
+        + "; FN_c = "
+        + str(FN_c)
+    )
+
     if total_classifications == 0:
         return None, 0
     else:
@@ -405,32 +423,6 @@ def test_both_theories_by_counting(
             float(accuracy) / total_classifications,
             float(total_classifications) / (len(test_positives) + len(test_negatives)),
         )
-
-
-# def test_both_theories_intersolve(pos_theory, neg_theory, positives, negatives):
-#     accuracy = 0
-#     total_datapoints = len(positives) + len(negatives)
-#
-#     pbar = tqdm(total=total_datapoints)
-#     pbar.set_description("Testing both theories")
-#
-#     for pa in positives:
-#         if count_solutions(pa, pos_theory) > count_solutions(pa, neg_theory):
-#             accuracy += 1
-#         elif count_solutions(pa, pos_theory) == count_solutions(pa, neg_theory):
-#             accuracy += 0.5
-#         pbar.update(1)
-#
-#     for pa in negatives:
-#         if count_solutions(pa, pos_theory) < count_solutions(pa, neg_theory):
-#             accuracy += 1
-#         elif count_solutions(pa, pos_theory) == count_solutions(pa, neg_theory):
-#             accuracy += 0.5
-#         pbar.update(1)
-#
-#     pbar.close()
-#
-#     return float(accuracy) / total_datapoints
 
 
 def cross_validate(
@@ -578,14 +570,14 @@ def cross_validate(
 # cross_validate(positives, negatives, 10, "./Output/mushroom", lossless=False)
 # cross_validate(positives, negatives, 10, lossless=False, test_both=False)
 
-positives, negatives = load_tictactoe()
-cross_validate(positives, negatives, num_folds=10, lossless=False, test_both=True)
+# positives, negatives = load_tictactoe()
+# cross_validate(positives, negatives, num_folds=10, lossless=False, test_both=True)
 # positives, negatives = load_ionosphere()
 # cross_validate(positives, negatives, num_folds=10, lossless=False, test_both=True)
 # positives, negatives = load_breast()
 # cross_validate(positives, negatives, num_folds=10, lossless=False, test_both=True)
-# positives, negatives = load_pima()
-# cross_validate(positives, negatives, num_folds=10, lossless=False, test_both=True)
+positives, negatives = load_pima()
+cross_validate(positives, negatives, num_folds=10, lossless=False, test_both=True)
 # positives, negatives = load_chess()
 # cross_validate(negatives, positives, num_folds=10, lossless=False, test_both=False)
 # cross_validate(positives, negatives, num_folds=10, lossless=False, test_both=True)
