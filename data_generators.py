@@ -12,6 +12,7 @@ class GeneratedTheory:
         :param clauses: list of clauses as a DIMACS like format. Example: [[1, -2, 3], [-5, -4]] represents the theory (x1 or not(x2) or x3) and (not(x5) or not(x4))
         """
         self.clauses = clauses
+        self.nb_literals = max([abs(l) for c in self.clauses for l in c])
 
     @staticmethod
     def from_string(string_repr):
@@ -97,6 +98,8 @@ class TheoryNoisyGenerator(DataGenerator):
         all_negative_examples = list(pycosat.itersolve(self.theory.get_negated_theory().clauses))
         if len(all_negative_examples) == 0:
             raise Exception("Negated theory is UNSAT. Impossible to generate the full dataset")
+
+        assert len(all_positive_examples) + len(all_negative_examples) == 2 ** self.theory.nb_literals
 
         return all_positive_examples, all_negative_examples
 
