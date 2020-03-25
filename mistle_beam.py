@@ -160,6 +160,11 @@ def load_test1():
 
 
 def load_test2():
+    """
+    Illustrative Toy Example used in the Paper
+    :return:
+    """
+
     positives = []
     positives.append(frozenset([1, 2]))
     positives.append(frozenset([2, 3]))
@@ -174,75 +179,6 @@ def load_test2():
     negatives.append(frozenset([-2, -3, 4]))
     negatives.append(frozenset([-1, -3, -4]))
     negatives.append(frozenset([-2, 3]))
-
-    return positives, negatives
-
-
-def load_test3():
-    # a = 1, b = (2, 3, 4), c = (5, 6)
-    input_cnf = [(1, 2, 3, 4), (1, 2, 5, 6)]
-    output_cnf = [(-7, 3, 4), (7, 1, 2), (-7, 5, 6)]
-
-    truth_assignments = []
-    for a in [-1, 1]:
-        for b1 in [-2, 2]:
-            for b2 in [-3, 3]:
-                for b3 in [-4, 4]:
-                    for c1 in [-5, 5]:
-                        for c2 in [-6, 6]:
-                            truth_assignments.append((a, b1, b2, b3, c1, c2))
-
-    # pos2pos = []
-    # neg2neg = []
-    # pos2neg = []
-    # neg2pos = []
-    #
-    # for ass in truth_assignments:
-    #     i = input_cnf + [(a,) for a in ass]
-    #     o = output_cnf + [(a,) for a in ass]
-    #
-    #     s_i = 0 if solve(i) == "UNSAT" else 1
-    #     s_o = 0 if solve(o) == "UNSAT" else 1
-    #
-    #     if s_i == 1 and s_o == 1:
-    #         pos2pos.append(ass)
-    #     elif s_i == 0 and s_o == 0:
-    #         neg2neg.append(ass)
-    #     elif s_i == 1 and s_o == 0:
-    #         pos2neg.append(ass)
-    #     elif s_i == 0 and s_o == 1:
-    #         neg2pos.append(ass)
-    #
-    #     print(ass, s_i, s_o)
-    #
-    # print("\nPos2Pos\t:", len(pos2pos))
-    # for p in pos2pos:
-    #     print(p)
-    #
-    # print("\nNeg2Neg\t:", len(neg2neg))
-    # for n in neg2neg:
-    #     print(n)
-    #
-    # print("\nPos2Neg\t:", len(pos2neg))
-    # for p in pos2neg:
-    #     print(p)
-    #
-    # print("\nNeg2Pos\t:", len(neg2pos))
-    # for n in neg2pos:
-    #     print(n)
-
-    positives = [frozenset(ass) for ass in truth_assignments]
-    negatives = [frozenset([-1, -2, -3, -4]), frozenset([-1, -2, -5, -6])]
-    # # positives = [frozenset(ass) for ass in pos2pos + pos2neg]
-    # # negatives = [frozenset(ass) for ass in neg2neg + neg2pos]
-    #
-    # print("\nPositives\t:", len(positives))
-    # for p in positives:
-    #     print(p)
-    #
-    # print("\nNegatives\t:", len(negatives))
-    # for n in negatives:
-    #     print(n)
 
     return positives, negatives
 
@@ -331,18 +267,18 @@ def load_dataset(
     neg_freq = 0
     for line in f:
         row = str(line).replace("\n", "").strip().split(" ")
-        partial_assignmemnt = set()
+        partial_assignment = set()
         for i, j in enumerate(var_range):
             if str(j) in row[:-1]:
-                partial_assignmemnt.add(i + 1)
+                partial_assignment.add(i + 1)
             elif negation:
                 # Using closed world assumption to register absent variables as if they are false.
-                partial_assignmemnt.add(-(i + 1))
+                partial_assignment.add(-(i + 1))
 
         if (not switch_signs and row[-1] == target_class[0]) or (
             switch_signs and row[-1] == target_class[1]
         ):
-            negative_pas.append(frozenset(partial_assignmemnt))
+            negative_pas.append(frozenset(partial_assignment))
             neg_freq += 1
             if load_top_k and len(negative_pas) == load_top_k:
                 # Top k negative clauses have been loaded already
@@ -350,7 +286,7 @@ def load_dataset(
         elif (not switch_signs and row[-1] == target_class[1]) or (
             switch_signs and row[-1] == target_class[0]
         ):
-            positive_pas.append(frozenset(partial_assignmemnt))
+            positive_pas.append(frozenset(partial_assignment))
             pos_freq += 1
         else:
             print("Row found without target class at the end:\n")
@@ -370,52 +306,7 @@ def load_dataset(
             switch_signs,
         )
 
-    # # Remove redundant partial assignments
-    # positive_pas = set(positive_pas)
-    # negative_pas = set(negative_pas)
-    #
-    # # Remove inconsistent partial assignments (Those pas that are both classified as +ves and -ves) in the data
-    # inconsistent_pas = positive_pas & negative_pas
-    # positive_pas = positive_pas - inconsistent_pas
-    # negative_pas = negative_pas - inconsistent_pas
-    #
-    # input_literal_length = get_literal_length(negative_pas)
-    # input_bit_length = get_bit_length_for_theory(negative_pas)
-    #
-    # print(
-    #     "\nInput Theory (without redundancies and inconsistencies):\n\tLiteral Length = "
-    #     + str(input_literal_length)
-    #     + "\n\tBit Length = "
-    #     + str(input_bit_length)
-    #     + "\n\tNumber of clauses = "
-    #     + str(len(negative_pas))
-    # )
     return (positive_pas, negative_pas)
-
-    # # Remove inconsistent partial assignments (Those pas that are both classified as +ves and -ves) in the data
-    # new_positive_pas = []
-    # for pa in positive_pas:
-    #     if pa not in negative_pas:
-    #         new_positive_pas.append(pa)
-    #
-    # new_negative_pas = []
-    # for pa in negative_pas:
-    #     if pa not in positive_pas:
-    #         new_negative_pas.append(pa)
-    #
-    # input_literal_length = get_literal_length(new_negative_pas)
-    # input_bit_length = get_bit_length_for_theory(new_negative_pas)
-    #
-    # print(
-    #     "\nInput Theory (only without inconsistencies):\n\tLiteral Length = "
-    #     + str(input_literal_length)
-    #     + "\n\tBit Length = "
-    #     + str(input_bit_length)
-    #     + "\n\tNumber of clauses = "
-    #     + str(len(negative_pas))
-    # )
-    #
-    # return (new_positive_pas, new_negative_pas)
 
 
 def load_adult(negation=False, load_top_k=None, switch_signs=False, load_tqdm=True):
@@ -544,27 +435,9 @@ def print_2d(matrix):
 
 
 def check_pa_satisfiability(pa, clauses):
-
-    theory_cnf = [tuple(clause) for clause in clauses]
-
-    cnf = theory_cnf + [(a,) for a in pa]
-
-    return not (solve(cnf) == "UNSAT")
-
-
-def convert_to_clause(partial_assignment):
-    """
-    Negate the terms in the input frozenset to convert them from a partial assignment to a clause.
-    Example:
-        input: frozenset({-1*v1, -1*v2, -1*v3, -1*v4, -1*v5, -1*v6, -1*v7, -1*v8})
-        output: frozenset({v1, v2, v3, v4, v5, v6, v7, v8})
-    :param partial_assignment: Every term in the frozenset is in a conjunction with one another
-    :return: clause: Every term in the frozenset is in a disjunction with one another
-    """
-    clause = set()
-    for term in partial_assignment:
-        clause.add(-term)
-    return frozenset(clause)
+    return not (
+        solve([tuple(clause) for clause in clauses] + [(a,) for a in pa]) == "UNSAT"
+    )
 
 
 def get_description_length(theory):
@@ -578,46 +451,21 @@ def get_description_length(theory):
 
 class Mistle:
     def __init__(self, positives, negatives):
-
-        self.initial_positives = copy(positives)
-        self.initial_negatives = copy(negatives)
-
         self.positives = positives
         self.negatives = negatives
-        self.errors = set()
 
         self.total_positives = len(positives)
         self.total_negatives = len(negatives)
-        # self.theory_length = len(negatives)
 
-        # self.operator_counter = {"W": 0, "V": 0, "S": 0, "R": 0}
-        # self.invented_predicate_definition = OrderedDict()
         self.theory = Theory(clauses=[], overlap_matrix=[], search_index=0)
-        # self.clause_length = []
-        # self.overlap_matrix = []
-        # self.search_index = 0
-        # self.compression = 0
         self.beam = None
 
-        # self.new_var_counter = 0
-        # for pa in positives + negatives:
-        #     self.new_var_counter = max(self.new_var_counter, max([abs(l) for l in pa]))
-        # self.new_var_counter += 1
-        # print("new_var_counter\t:", self.new_var_counter)
-
-    def get_literal_length(self, cnf=None):
+    def get_literal_length(self, cnf):
         """
-        :param theory:
+        :param cnf: a CNF/Theory
         :return: the total number of literals in the whole theory
         """
-        if cnf is None:
-            cnf = self.theory
-
-        length = 0
-        for clause in cnf:
-            length += len(clause)
-
-        return length
+        return sum([len(clause) for clause in cnf])
 
     def check_clause_validity(self, input_clause1, input_clause2, output_clauses):
         """
@@ -640,11 +488,14 @@ class Mistle:
 
         return uncovered_positives
 
-    def count_violations(self, positives=None, print_violations=True):
+    def get_violations(self, positives, print_violations=True):
+        """
+        Get the number of positive partial assignments violated by the given theory.
+        :param positives:
+        :param print_violations:
+        :return:
+        """
         violated_pos = set()
-
-        if positives is None:
-            positives = self.initial_positives
 
         for pos in positives:
             if not check_pa_satisfiability(pos, self.theory.clauses):
@@ -657,16 +508,19 @@ class Mistle:
             )
         return violated_pos
 
-    def learn(self, lossless=False, description_measure="ll", beam_size=1):
+    def learn(self, lossless=False, beam_size=1):
+        """
+        This function returns the minimal SAT theory that satisfies self.positives and does not satisfy self.negatives
+        :param lossless: If lossless=True, then V-operator will not be considered for compression.
+        :param beam_size: Not implemented yet (#TODO)
+        :return: an instance of the class Theory
+        """
 
         start_time = time()
 
         self.beam = Beam(beam_size)
 
         input_literal_length = self.get_literal_length(self.negatives)
-        output_length = -1
-        # input_bit_length = get_bit_length_for_theory(negatives)
-
         print(
             "\nInput Theory (with redundancies and inconsistencies):\n\tLiteral Length = "
             + str(input_literal_length)
@@ -678,15 +532,12 @@ class Mistle:
         self.positives = set(self.positives)
         self.negatives = set(self.negatives)
 
-        # Construct a theory from the partial assignments
-        self.theory.new_var_counter = 0
-        for pa in self.positives | self.negatives:
-            self.theory.new_var_counter = max(
-                self.theory.new_var_counter, max([abs(l) for l in pa])
-            )
-        self.theory.new_var_counter += 1
+        self.theory.new_var_counter = (
+            max([abs(l) for pa in self.positives | self.negatives for l in pa]) + 1
+        )
 
         # Remove inconsistent partial assignments (Those pas that are both classified as +ves and -ves) in the data
+        # TODO: Discuss with Clement on what to do with the inconsistent PAs
         inconsistent_pas = self.positives & self.negatives
         consistent_positives = self.positives - inconsistent_pas
         self.positives = copy(consistent_positives)
@@ -701,7 +552,7 @@ class Mistle:
 
         # Convert the set of -ve PAs to a theory
         self.theory.intialize(self.negatives)
-        self.theory.errors = self.count_violations(self.positives)
+        self.theory.errors = self.get_violations(self.positives)
 
         self.total_positives = len(self.positives)
         self.total_negatives = len(self.negatives)
@@ -713,6 +564,7 @@ class Mistle:
         pbar = tqdm(total=int(1.1 * self.theory.theory_length + 100))
         pbar.set_description("Compressing Clauses")
         while True:
+            # TODO: Implement Beam Search
             new_beam = Beam(beam_size)
 
             while self.beam:
@@ -724,13 +576,6 @@ class Mistle:
                 prev_overlap_size
             )
 
-            # print("Max overlapping indices = " + str(max_overlap_indices))
-            # print(
-            #     "[" + str(compression_counter) + "]",
-            #     str(prev_overlap_size) + " --> " + str(overlap_size),
-            #     self.search_index,
-            # )
-
             if overlap_size < 2:
                 print("Cannot compress anymore: Max overlap size < 2.")
                 break
@@ -741,131 +586,64 @@ class Mistle:
             (
                 compressed_clauses,
                 compression_size,
-                is_lossless,
+                applied_operator,
             ) = self.theory.compress_pairwise(clause1, clause2, lossless=lossless)
-            # print(compression_counter, compressed_clauses, compression_size, is_lossless)
-            # print(overlap_size, compression_size, str(operator_counter))
-            if overlap_size - compression_size > 2:
-                print(
-                    "------------------------------- Compressing is not efficient! -------------------------------"
-                )
-                print("Length of clause 1\t:", len(clause1))
-                print_1d(clause1)
-                print("Length of clause 2\t:", len(clause2))
-                print_1d(clause2)
-                print("Overlap = " + str(len(clause1 & clause2)))
-                clause_a, clause_b, clause_c = get_subclauses(clause1, clause2)
-                print(
-                    "len(a) = "
-                    + str(len(clause_a))
-                    + ";\tlen(b) = "
-                    + str(len(clause_b))
-                    + ";\tlen(c) = "
-                    + str(len(clause_c))
-                )
-
-                print_2d(self.theory.clauses)
-                # print_2d(overlap_matrix)
+            # assert overlap_size - 2 <= compression_size
 
             compression_counter += 1
 
-            if len(compressed_clauses) == 2 and compression_size == 0:
+            if applied_operator is None:
+                assert len(compressed_clauses) == 2 and compression_size == 0
                 # Theory cannot be compressed any further
-                # overlap_matrix[max_overlap_indices[0]][max_overlap_indices[1]] = -1
-                # continue
                 # Initialize search index
                 print("Cannot compress the theory any further.")
                 break
-            elif is_lossless:
+            elif applied_operator in ["R", "S", "W"]:
                 # V - Operator is not applied
                 # Continue compressing the theory
+
                 # Delete the clauses used for last compression step
-
-                # if self.theory.w:
-                #     old_violations = self.count_violations(
-                #         consistent_positives, print_violations=False
-                #     )
-
                 self.theory.delete_clauses(max_overlap_indices)
 
                 # Insert clauses from compressed_clauses at appropriate lengths so that the theory remains sorted
-                # theory |= compressed_clauses
                 for clause in compressed_clauses:
                     self.theory.insert_clause(clause)
 
-                # if self.theory.w:
-                #     new_violations = self.count_violations(
-                #         consistent_positives, print_violations=False
-                #     )
-                #
-                #     if len(new_violations) > len(old_violations):
-                #         p = new_violations - old_violations
-                #         print("Incremental Violation PA\t:" + str(p.pop()))
+                self.theory.compression += compression_size
 
-            else:
+            elif applied_operator == "V":
                 uncovered_positives = self.check_clause_validity(
                     clause1, clause2, compressed_clauses
                 )
 
                 if (
-                    len(uncovered_positives) > compression_size
-                ):  # Comment this line for ignoring errors
+                    self.get_literal_length(uncovered_positives)
+                    + len(uncovered_positives)
+                    - 1
+                    > compression_size
+                ):
+                    # if (
+                    #     len(uncovered_positives) > compression_size
+                    # ):  # Comment this line for ignoring errors
                     # if len(uncovered_positives) > 0:# Uncomment this line for ignoring errors
                     # Perform a lossless step here, i.e., Apply W-operator instead of V-operator
                     self.theory.operator_counter["V"] -= 1
 
-                    # uncovered_positives = self.check_clause_validity(
-                    #     clause1, clause2, compressed_clauses
-                    # )
-                    #
-                    # old_violations = self.count_violations(
-                    #     consistent_positives, print_violations=False
-                    # )
-
                     (
                         compressed_clauses2,
                         compression_size,
-                        is_lossless,
+                        applied_operator,
                     ) = self.theory.compress_pairwise(
                         clause1, clause2, lossless=True, force_w=True
                     )
 
-                    # uncovered_positives2 = self.check_clause_validity(
-                    #     clause1, clause2, compressed_clauses2
-                    # )
-                    #
-                    # new_violations = self.count_violations(
-                    #     consistent_positives, print_violations=False
-                    # )
-                    #
-                    # print("Clause 1\t:" + str(clause1))
-                    # print("Clause 2\t:" + str(clause2))
-                    # print("Compressed Clauses 1\t:" + str(compressed_clauses))
-                    # print("Compressed Clauses 2\t:" + str(compressed_clauses2))
-                    # print("Old Violations\t:" + str(len(old_violations)))
-                    # print("New Violations\t:" + str(len(new_violations)))
-                    # if len(new_violations) > len(old_violations):
-                    #     p = new_violations - old_violations
-                    #     print("Incremental Violation PA\t:" + str(p.pop()))
-                    #
-                    # print("Uncovered Positives\t:" + str(len(uncovered_positives)))
-                    # print("Uncovered Positives\t:" + str(len(uncovered_positives2)))
-                    # if len(uncovered_positives2) > len(uncovered_positives):
-                    #     q = uncovered_positives2 - uncovered_positives
-                    #     print("Incremental Uncovered Posiitive PA\t:" + str(q.pop()))
-
-                    assert is_lossless is True
-                    # if is_lossless is not True:
-                    #     pass
+                    assert applied_operator == "W"
 
                     self.theory.delete_clauses(max_overlap_indices)
+                    self.theory.compression += compression_size
 
                     for clause in compressed_clauses:
                         self.theory.insert_clause(clause)
-
-                    # assert self.errors == self.count_violations(
-                    #     consistent_positives, print_violations=False
-                    # )
 
                 else:
                     assert not self.theory.errors.intersection(uncovered_positives)
@@ -874,6 +652,7 @@ class Mistle:
                         uncovered_positives  # Comment this line for ignoring errors
                     )
                     self.theory.delete_clauses(max_overlap_indices)
+                    self.theory.compression += compression_size
 
                     for clause in compressed_clauses:
                         self.theory.insert_clause(clause)
@@ -881,8 +660,7 @@ class Mistle:
             pbar.update(1)
 
         pbar.close()
-        output_literal_length = self.get_literal_length(self.theory.clauses)
-
+        output_literal_length = sum(self.theory.clause_length)
         compression = round((1 - output_literal_length / input_literal_length) * 100, 2)
 
         print(
@@ -890,9 +668,7 @@ class Mistle:
             + str(output_literal_length)
             + "\n\t# of clauses = "
             + str(self.theory.theory_length)
-            + "\n\t% Compression (For measure: "
-            + str(description_measure)
-            + ") = "
+            + "\n\t% Compression = "
             + str(compression)
             + "%"
             + "\n\tOperator Count = "
@@ -902,7 +678,7 @@ class Mistle:
             + " seconds"
         )
 
-        p = self.count_violations(consistent_positives, print_violations=False)
+        p = self.get_violations(consistent_positives, print_violations=False)
 
         if self.theory.errors != p:
             print("# Violations\t: " + str(len(p)))
@@ -936,7 +712,7 @@ class Theory:
     def intialize(self, partial_assignments):
         # Construct a theory from the partial assignments
         for pa in partial_assignments:
-            self.clauses.append(convert_to_clause(pa))
+            self.clauses.append(frozenset([-literal for literal in pa]))
             self.clause_length.append(len(pa))
 
         # Sort the theory
@@ -962,15 +738,12 @@ class Theory:
         :return:
             A list of the new clauses obtained after compression
             The decrease in literal length achieved during compression
-            A Boolean variable that is:
-                True    if a lossless compression step (W-operator, Subsumption) took place
-                False   if a lossy compression step (V-operator) took place
-                None    if no operator is applied
+            A character variable specifying the type of operator used. It is None if no operator is applied.
         """
 
         clause_a, clause_b, clause_c = get_subclauses(clause1, clause2)
         resolution_applicable = False
-        # self.w = False
+
         if (
             len(clause_a) == 1
             and len(clause_c) == 1
@@ -981,18 +754,21 @@ class Theory:
         if len(clause_a) == 0:
             # Apply subsumption operator on (b1; b2; b3), (b1; b2; b3; c1; c2; c3)
             self.operator_counter["S"] += 1
-            return {clause1}, len(clause_b), True
+            # return {clause1}, len(clause_b), "S"
+            return {clause1}, len(clause_b) + 1, "S"
 
         elif len(clause_c) == 0:
             # Apply subsumption operator on (a1; a2; a3; b1; b2; b3), (b1; b2; b3)
             self.operator_counter["S"] += 1
-            return {clause2}, len(clause_b), True
+            # return {clause2}, len(clause_b), "S"
+            return {clause2}, len(clause_b) + 1, "S"
 
         elif resolution_applicable:
             # Apply complementation operator on (a; b1; b2; b3), (b1; b2; b3; -a)
             # Return (b1; b2; b3)
             self.operator_counter["R"] += 1
-            return {frozenset(clause_b)}, len(clause_b) + 2, True
+            # return {frozenset(clause_b)}, len(clause_b) + 2, "R"
+            return {frozenset(clause_b)}, len(clause_b) + 3, "R"
 
         elif len(clause_b) == 0:
             # Cannot compress (a1; a2; a3), (c1; c2; c3)
@@ -1007,7 +783,7 @@ class Theory:
             a = clause_a.pop()
             clause_c.add(-a)
             self.operator_counter["V"] += 1
-            return {clause1, frozenset(clause_c)}, len(clause_b) - 1, False
+            return {clause1, frozenset(clause_c)}, len(clause_b) - 1, "V"
 
         elif not lossless and len(clause_c) == 1 and len(clause_b) > 1:
             # Apply V-operator on (a1; a2; a3; b1; b2; b3), (b1; b2; b3; c)
@@ -1015,9 +791,10 @@ class Theory:
             c = clause_c.pop()
             clause_a.add(-c)
             self.operator_counter["V"] += 1
-            return {frozenset(clause_a), clause2}, len(clause_b) - 1, False
+            return {frozenset(clause_a), clause2}, len(clause_b) - 1, "V"
 
-        elif not force_w and len(clause_b) < 3:
+        # elif not force_w and len(clause_b) < 3:
+        elif not force_w and len(clause_b) < 4:
             # print("Application of W-Operator is infeasible due to overlap of only " + str(len(clause_b)) + "
             # literals.")
             return {clause1, clause2}, 0, None
@@ -1048,10 +825,16 @@ class Theory:
 
             self.operator_counter["W"] += 1
 
+            # return (
+            #     {frozenset(clause_a), frozenset(clause_b), frozenset(clause_c)},
+            #     len(clause_b) - 3,
+            #     "W",
+            # )
+            # TODO: Think about the feasibility for the case when W-operator is supposed to applied for more than 2 clauses
             return (
                 {frozenset(clause_a), frozenset(clause_b), frozenset(clause_c)},
-                len(clause_b) - 3,
-                True,
+                len(clause_b) - 4,
+                "W",
             )
 
     def select_clauses(self, prev_overlap_size):
