@@ -23,7 +23,7 @@ class GeneratedTheory:
         :param string_repr:
         :return:
         """
-        #TODO
+        # TODO
         pass
 
     def get_negated_theory(self):
@@ -49,12 +49,16 @@ class GeneratedTheory:
                 or_literals = []
                 if isinstance(clause, Or):
                     for sympy_literal in clause.args:
-                        or_literals.append(TheoryNoisyGenerator.get_dimacs_repr(sympy_literal))
+                        or_literals.append(
+                            TheoryNoisyGenerator.get_dimacs_repr(sympy_literal)
+                        )
                 else:
                     or_literals.append(TheoryNoisyGenerator.get_dimacs_repr(clause))
                 negated_cnf_dimacs.append(or_literals)
         else:
-            negated_cnf_dimacs.append([TheoryNoisyGenerator.get_dimacs_repr(negated_cnf)])
+            negated_cnf_dimacs.append(
+                [TheoryNoisyGenerator.get_dimacs_repr(negated_cnf)]
+            )
         return GeneratedTheory(negated_cnf_dimacs)
 
 
@@ -68,7 +72,9 @@ class DataGenerator(ABC):
 
 
 class TheoryNoisyGenerator(DataGenerator):
-    def __init__(self, theory: GeneratedTheory, nb_positives=100, nb_negatives=100, noise=0.1):
+    def __init__(
+        self, theory: GeneratedTheory, nb_positives=100, nb_negatives=100, noise=0.1
+    ):
         """
         Creates a new generator that generates noisy data satisfying (or not) a given theory.
         This means that for each example the proportion of noise is exactly equal to the noise parameter.
@@ -95,11 +101,18 @@ class TheoryNoisyGenerator(DataGenerator):
         if len(all_positive_examples) == 0:
             raise Exception("Theory is UNSAT. Impossible to generate the full dataset")
 
-        all_negative_examples = list(pycosat.itersolve(self.theory.get_negated_theory().clauses))
+        all_negative_examples = list(
+            pycosat.itersolve(self.theory.get_negated_theory().clauses)
+        )
         if len(all_negative_examples) == 0:
-            raise Exception("Negated theory is UNSAT. Impossible to generate the full dataset")
+            raise Exception(
+                "Negated theory is UNSAT. Impossible to generate the full dataset"
+            )
 
-        assert len(all_positive_examples) + len(all_negative_examples) == 2 ** self.theory.nb_literals
+        assert (
+            len(all_positive_examples) + len(all_negative_examples)
+            == 2 ** self.theory.nb_literals
+        )
 
         return all_positive_examples, all_negative_examples
 
@@ -116,8 +129,12 @@ class TheoryNoisyGenerator(DataGenerator):
         negative = []
         if use_all_examples:
             all_pos, all_neg = self.generate_all_examples()
-            positive_indices = np.random.choice(len(all_pos), self.nb_positives, replace=True).tolist()
-            negative_indices = np.random.choice(len(all_neg), self.nb_negatives, replace=True).tolist()
+            positive_indices = np.random.choice(
+                len(all_pos), self.nb_positives, replace=True
+            ).tolist()
+            negative_indices = np.random.choice(
+                len(all_neg), self.nb_negatives, replace=True
+            ).tolist()
 
             positive = [all_pos[i] for i in positive_indices]
             negative = [all_neg[i] for i in negative_indices]
@@ -136,12 +153,16 @@ class TheoryNoisyGenerator(DataGenerator):
 
             # If some positive or negative examples are missing, we resample from all possible solutions
             if len(positive) < self.nb_positives:
-                positive_indices = np.random.choice(len(positive), self.nb_positives-len(positive), replace=True).tolist()
+                positive_indices = np.random.choice(
+                    len(positive), self.nb_positives - len(positive), replace=True
+                ).tolist()
                 for i in positive_indices:
                     positive.append(positive[i])
 
             if len(negative) < self.nb_negatives:
-                negative_indices = np.random.choice(len(negative), self.nb_negatives-len(negative), replace=True).tolist()
+                negative_indices = np.random.choice(
+                    len(negative), self.nb_negatives - len(negative), replace=True
+                ).tolist()
                 for i in negative_indices:
                     negative.append(negative[i])
 
@@ -156,7 +177,7 @@ class TheoryNoisyGenerator(DataGenerator):
         """
         if isinstance(symbol, Not):
             for l in symbol.args:
-                return -1*TheoryNoisyGenerator.get_dimacs_repr(l)
+                return -1 * TheoryNoisyGenerator.get_dimacs_repr(l)
         else:
             literal = int(symbol.name.split("_")[1])
             if symbol.name.startswith("~"):
@@ -185,16 +206,30 @@ class TheoryNoisyGeneratorOnExample(TheoryNoisyGenerator):
         :param use_all_examples: If True, will first generate all examples and sample from these. This can be impractical for theories with many literals (about 15 literals is ok).
         :return: 2 list. The first list contains positive examples in DIMACS format (as a frozenset), the second contains the negative examples
         """
-        complete_pos, complete_neg = self.generate_complete_examples(use_all_examples=use_all_examples)
+        complete_pos, complete_neg = self.generate_complete_examples(
+            use_all_examples=use_all_examples
+        )
         partial_pos = []
         partial_neg = []
 
         # For each example, we add self.noise amount of noise
         for example in complete_pos:
-            partial_pos.append(frozenset(np.random.choice(example, int((1-self.noise)*len(example)), replace=False).tolist()))
+            partial_pos.append(
+                frozenset(
+                    np.random.choice(
+                        example, int((1 - self.noise) * len(example)), replace=False
+                    ).tolist()
+                )
+            )
 
         for example in complete_neg:
-            partial_neg.append(frozenset(np.random.choice(example, int((1-self.noise)*len(example)), replace=False).tolist()))
+            partial_neg.append(
+                frozenset(
+                    np.random.choice(
+                        example, int((1 - self.noise) * len(example)), replace=False
+                    ).tolist()
+                )
+            )
 
         return partial_pos, partial_neg
 
@@ -220,7 +255,9 @@ class TheoryNoisyGeneratorOnDataset(TheoryNoisyGenerator):
         :param use_all_examples: If True, will first generate all examples and sample from these. This can be impractical for theories with many literals (about 15 literals is ok).
         :return: 2 list. The first list contains positive examples in DIMACS format (as a frozenset), the second contains the negative examples
         """
-        complete_pos, complete_neg = self.generate_complete_examples(use_all_examples=use_all_examples)
+        complete_pos, complete_neg = self.generate_complete_examples(
+            use_all_examples=use_all_examples
+        )
         partial_pos = []
         partial_neg = []
 
@@ -228,20 +265,43 @@ class TheoryNoisyGeneratorOnDataset(TheoryNoisyGenerator):
         nb_neg_literals = sum([len(e) for e in complete_neg])
 
         # We apply noise on the whole dataset, not at the transaction level by skipping random idices according to the noise level on the whole data
-        skipped_indices = frozenset(np.random.choice(nb_pos_literals+nb_neg_literals, int(self.noise*(nb_pos_literals+nb_neg_literals)), replace=False))
+        skipped_indices = frozenset(
+            np.random.choice(
+                nb_pos_literals + nb_neg_literals,
+                int(self.noise * (nb_pos_literals + nb_neg_literals)),
+                replace=False,
+            )
+        )
         current_index = 0
 
         for example in complete_pos:
-            partial_pos.append(frozenset([example[i] for i in range(len(example)) if current_index+i not in skipped_indices]))
+            partial_pos.append(
+                frozenset(
+                    [
+                        example[i]
+                        for i in range(len(example))
+                        if current_index + i not in skipped_indices
+                    ]
+                )
+            )
             current_index += len(example)
 
         for example in complete_neg:
-            partial_neg.append(frozenset([example[i] for i in range(len(example)) if current_index + i not in skipped_indices]))
+            partial_neg.append(
+                frozenset(
+                    [
+                        example[i]
+                        for i in range(len(example))
+                        if current_index + i not in skipped_indices
+                    ]
+                )
+            )
             current_index += len(example)
 
-        assert current_index == nb_neg_literals+nb_pos_literals
+        assert current_index == nb_neg_literals + nb_pos_literals
 
         return partial_pos, partial_neg
+
 
 if __name__ == "__main__":
     th = GeneratedTheory([[1, -5, 4], [-1, 5, 3, 4], [-3, -10]])
