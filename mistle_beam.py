@@ -1120,9 +1120,11 @@ class Beam:
 
 
 if __name__ == "__main__":
-    positives, negatives = load_pima()
+    positives, negatives = load_ionosphere()
+    start_time = time()
     mistle = Mistle(positives, negatives)
     theory, compression1 = mistle.learn(beam_size=2)
+    print("Total time\t: " + str(time() - start_time) + " seconds.")
     initial_dl = -1
     for pa in positives + negatives:
         initial_dl += 1

@@ -1,13 +1,12 @@
 # from mistle_class import *
+# from mistle_beam import *
 
-from mistle_beam import *
-
-# from mistle_mdl import *
+from mistle_v2 import *
 import random
 from tqdm import tqdm
 import os
 from pycosat import itersolve
-
+from collections import OrderedDict
 
 # def count_solutions(pa, theory):
 #
@@ -324,22 +323,22 @@ def test_both_theories_by_counting(
             tf += 1
             FN_s += 1
         elif p and n:
-            pos_models = count_models(pa, pos_theory, str(i) + "+")
-            neg_models = count_models(pa, neg_theory, str(i) + "-")
-
-            if pos_models < neg_models:
-                # Correctly classified as a positive
-                accuracy += 1
-                total_classifications += 1
-                ft_c += 1
-                TP_c += 1
-            elif neg_models < pos_models:
-                # Wrongly classified as a negative
-                total_classifications += 1
-                tf_c += 1
-                FN_c += 1
-            else:
-                tt += 1
+            # pos_models = count_models(pa, pos_theory, str(i) + "+")
+            # neg_models = count_models(pa, neg_theory, str(i) + "-")
+            #
+            # if pos_models < neg_models:
+            #     # Correctly classified as a positive
+            #     accuracy += 1
+            #     total_classifications += 1
+            #     ft_c += 1
+            #     TP_c += 1
+            # elif neg_models < pos_models:
+            #     # Wrongly classified as a negative
+            #     total_classifications += 1
+            #     tf_c += 1
+            #     FN_c += 1
+            # else:
+            tt += 1
         elif not p and not n:
             ff += 1
         pbar.update(1)
@@ -361,22 +360,22 @@ def test_both_theories_by_counting(
             tf += 1
             TN_s += 1
         elif p and n:
-            pos_models = count_models(pa, pos_theory, str(j + i) + "+")
-            neg_models = count_models(pa, neg_theory, str(j + i) + "-")
-
-            if pos_models < neg_models:
-                # Wrongly classified as a positive
-                total_classifications += 1
-                ft_c += 1
-                FP_c += 1
-            elif neg_models < pos_models:
-                # Correctly classified as a negative
-                accuracy += 1
-                total_classifications += 1
-                tf_c += 1
-                TN_c += 1
-            else:
-                tt += 1
+            # pos_models = count_models(pa, pos_theory, str(j + i) + "+")
+            # neg_models = count_models(pa, neg_theory, str(j + i) + "-")
+            #
+            # if pos_models < neg_models:
+            #     # Wrongly classified as a positive
+            #     total_classifications += 1
+            #     ft_c += 1
+            #     FP_c += 1
+            # elif neg_models < pos_models:
+            #     # Correctly classified as a negative
+            #     accuracy += 1
+            #     total_classifications += 1
+            #     tf_c += 1
+            #     TN_c += 1
+            # else:
+            tt += 1
         elif not p and not n:
             ff += 1
         pbar.update(1)
@@ -426,12 +425,7 @@ def test_both_theories_by_counting(
 
 
 def cross_validate(
-    positives,
-    negatives,
-    num_folds=10,
-    output_file=None,
-    lossless=False,
-    test_both=False,
+    positives, negatives, num_folds=10, output_file=None, test_both=False, minsup=10,
 ):
     start_time = time()
     avg_accuracy = 0.0
@@ -495,10 +489,10 @@ def cross_validate(
         # Compressed Theory
         if test_both:
             pos_mistle = Mistle(train_negatives, train_positives)
-            pos_theory, pos_compression = pos_mistle.learn(lossless=lossless)
+            pos_theory, pos_compression = pos_mistle.learn(minsup=minsup)
 
             neg_mistle = Mistle(train_positives, train_negatives)
-            neg_theory, neg_compression = neg_mistle.learn(lossless=lossless)
+            neg_theory, neg_compression = neg_mistle.learn(minsup=minsup)
 
             # fold_accuracy, coverage = test_both_theories_by_compression(
             #     pos_theory, neg_theory, test_positives, test_negatives
@@ -519,7 +513,7 @@ def cross_validate(
             avg_coverage += coverage
         else:
             mistle = Mistle(train_positives, train_negatives)
-            theory, compression = mistle.learn(lossless=lossless)
+            theory, compression = mistle.learn(minsup=minsup)
 
             fold_accuracy = test_theory(theory, test_positives, test_negatives)
             print("Accuracy of fold " + str(fold) + "\t: " + str(fold_accuracy))
@@ -528,8 +522,8 @@ def cross_validate(
 
         # theory = mistle.convert_to_theory(train_negatives)
         # compression = 0
-        # pos_theory = Mistle(train_positives, train_negatives).learn(lossless=lossless)
-        # neg_theory = Mistle(train_negatives, train_positives).learn(lossless=lossless)
+        # pos_theory = Mistle(train_positives, train_negatives).learn()
+        # neg_theory = Mistle(train_negatives, train_positives).learn()
 
         # Uncompressed Theory
         # mistle = Mistle(train_positives, train_negatives)
@@ -570,14 +564,14 @@ def cross_validate(
 # cross_validate(positives, negatives, 10, "./Output/mushroom", lossless=False)
 # cross_validate(positives, negatives, 10, lossless=False, test_both=False)
 
-# positives, negatives = load_tictactoe()
-# cross_validate(positives, negatives, num_folds=10, lossless=False, test_both=True)
+positives, negatives = load_tictactoe()
+cross_validate(positives, negatives, num_folds=10, test_both=True, minsup=2)
 # positives, negatives = load_ionosphere()
-# cross_validate(positives, negatives, num_folds=10, lossless=False, test_both=True)
+# cross_validate(positives, negatives, num_folds=10, test_both=True, minsup=90)
 # positives, negatives = load_breast()
 # cross_validate(positives, negatives, num_folds=10, lossless=False, test_both=True)
-positives, negatives = load_pima()
-cross_validate(positives, negatives, num_folds=10, lossless=False, test_both=True)
+# positives, negatives = load_pima()
+# cross_validate(positives, negatives, num_folds=10, lossless=False, test_both=True)
 # positives, negatives = load_chess()
 # cross_validate(negatives, positives, num_folds=10, lossless=False, test_both=False)
 # cross_validate(positives, negatives, num_folds=10, lossless=False, test_both=True)
