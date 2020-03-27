@@ -354,15 +354,23 @@ def get_description_length(theory):
     return dl
 
 
-def get_entropy(theory):
+def get_literal_length(clauses):
     """
-    :param theory: a list of clauses
+    :param clauses: a CNF/Theory
+    :return: the total number of literals in the whole theory
+    """
+    return sum([len(clause) for clause in clauses])
+
+
+def get_entropy(clauses):
+    """
+    :param clauses: a list of clauses
     :return: the total number of bits required to represent the input theory
     """
 
     counts = Counter()
     total_literals = 0
-    for clause in theory:
+    for clause in clauses:
         for literal in clause:
             counts[literal] += 1
             total_literals += 1
@@ -376,24 +384,15 @@ def get_entropy(theory):
     return entropy
 
 
-# def get_description_bit_length(theory):
-#     dl = get_entropy(theory.clauses) + get_entropy(theory.errors)
-#     print("Description Length of theory\t:" + str(dl))
-#     return dl
-
-# def get_decrease_in_DL(old_clause_list, old_errors, new_clause_list, new_errors):
-#
-#     old_dl = 0
-#     for clause in new_clause_list + new_errors:
-#         old_dl += len(clause) + 1
-#     print("Old DL\t: " + str(old_dl))
-#
-#     new_dl = 0
-#     for clause in old_clause_list + old_errors:
-#         new_dl += len(clause) + 1
-#     print("New DL\t: " + str(new_dl))
-#
-#     return new_dl - old_dl
+def get_dl(dl_measure, clauses, errors):
+    if dl_measure == "ll":  # Literal Length
+        return get_literal_length(clauses)
+    elif dl_measure == "sl":  # Symbol Length
+        return get_literal_length(clauses + errors) + len(clauses + errors) - 1
+    elif dl_measure == "se":  # Shanon Entropy
+        return get_entropy(clauses) + get_entropy(errors)
+    elif dl_measure == "ce":  # TODO: Clement Entropy
+        return get_entropy(clauses) + get_entropy(errors)
 
 
 class Eclat:
@@ -478,20 +477,7 @@ class Mistle:
 
         self.theory = Theory(clauses=[], overlap_matrix=[], search_index=0)
         self.beam = None
-
-        self.initial_dl = -1
-        for pa in positives + negatives:
-            self.initial_dl += 1
-            self.initial_dl += len(pa)
-
-        self.inital_entropy = get_entropy(positives + negatives)
-
-    def get_literal_length(self, cnf):
-        """
-        :param cnf: a CNF/Theory
-        :return: the total number of literals in the whole theory
-        """
-        return sum([len(clause) for clause in cnf])
+        self.initial_dl = None
 
     def check_clause_validity(self, input_clause1, input_clause2, output_clauses):
         """
@@ -514,7 +500,9 @@ class Mistle:
 
         return uncovered_positives
 
-    def learn(self, minsup):
+    def learn(self, minsup, dl_measure):
+
+        self.initial_dl = get_dl(dl_measure, self.positives + self.negatives, [])
 
         # Remove redundant partial assignments
         self.positives = set(self.positives)
@@ -531,7 +519,7 @@ class Mistle:
         self.negatives = self.negatives - inconsistent_pas
 
         # Convert the set of -ve PAs to a theory
-        self.theory.intialize(self.positives, self.negatives, minsup)
+        self.theory.intialize(self.positives, self.negatives, minsup, dl_measure)
 
         self.total_positives = len(self.positives)
         self.total_negatives = len(self.negatives)
@@ -571,12 +559,12 @@ class Theory:
         self.errors = set()
         self.positives = set()
         self.minsup = None
-        # self.total_compression = 0
-        self.entropy = None
+        self.dl = None
+        self.dl_measure = None
         self.operator_counter = {"W": 0, "V": 0, "S": 0, "R": 0, "T": 0}
         self.new_var_counter = None
 
-    def intialize(self, positives, negatives, minsup):
+    def intialize(self, positives, negatives, minsup, dl_measure):
         # Construct a theory from the partial assignments
         for pa in negatives:
             self.clauses.append(frozenset([-literal for literal in pa]))
@@ -587,8 +575,9 @@ class Theory:
         self.freq_items = eclat.get_Frequent_Itemsets(self.clauses)
         self.positives = positives
         self.errors = self.get_violations(positives)
-        self.entropy = get_entropy(self.clauses) + get_entropy(self.errors)
-        print("Entropy of initial theory\t: " + str(self.entropy))
+        self.dl = get_dl(dl_measure, list(positives | negatives), [])
+        print("DL of initial theory\t: " + str(self.dl))
+        self.dl_measure = dl_measure
 
     def get_new_var(self):
         """
@@ -630,40 +619,22 @@ class Theory:
         new_theory += list(output_clauses)
 
         uncovered_positives = set()
-        # compression = 0
-
         if op in {"V", "T"}:
             for pa in self.positives:
                 if not check_pa_satisfiability(pa, new_theory):
                     uncovered_positives.add(pa)
-                    # compression -= len(pa) + 1
 
-        # for clause in input_clauses:
-        #     compression += len(clause) + 1
-        #
-        # for clause in output_clauses:
-        #     compression -= len(clause) + 1
-
-        a = get_entropy(new_theory)
-        b = get_entropy(self.errors | uncovered_positives)
-        entropy = a + b
-        print(
-            "Entropy of "
-            + op
-            + " operator\t= "
-            + str(a)
-            + " + "
-            + str(b)
-            + " = "
-            + str(entropy)
+        return (
+            uncovered_positives,
+            get_dl(
+                self.dl_measure, new_theory, list(self.errors | uncovered_positives)
+            ),
         )
-        return uncovered_positives, entropy
 
     def apply_best_operator(self, input_clause_list, possible_operations):
         success = "ignore_itemset"
         operator_precedence = ["S", "R", "W", "V", "T", None]
-        # max_compression = 0
-        min_entropy = 1e10
+        min_dl = self.dl
         best_operator = None
         new_errors = None
         output_clause_list = None
@@ -678,24 +649,21 @@ class Theory:
             #     < operator_precedence.index(best_operator)
             # ):
 
-            errors, entropy = self.get_compression(
-                input_clause_list, op, output_clauses
-            )
-            possible_entropies.append((op, entropy))
-            if entropy < min_entropy or (
-                entropy == min_entropy
+            errors, dl = self.get_compression(input_clause_list, op, output_clauses)
+            possible_entropies.append((op, dl))
+            if dl < min_dl or (
+                dl == min_dl
                 and operator_precedence.index(op)
                 < operator_precedence.index(best_operator)
             ):
-                # max_compression = compression
-                min_entropy = entropy
+                min_dl = dl
                 best_operator = op
                 new_errors = errors
                 output_clause_list = list(output_clauses)
                 success = True
 
-        if min_entropy >= self.entropy:
-            print("Ignoring itemset\t: Initial Entropy = " + str(self.entropy))
+        if min_dl == self.dl:
+            print("Ignoring itemset\t: Initial DL = " + str(self.dl))
             print(possible_entropies)
             success = "ignore_itemset"
 
@@ -805,8 +773,9 @@ class Theory:
                 self.clauses.append(clause)
                 self.clause_length.append(len(clause))
 
-            assert min_entropy == get_entropy(self.clauses) + get_entropy(self.errors)
-            self.entropy = min_entropy
+            # assert min_entropy == get_entropy(self.clauses) + get_entropy(self.errors)
+            # self.entropy = min_entropy
+            self.dl = min_dl
         return success
 
     def compress_theory(self):
@@ -886,10 +855,10 @@ class Theory:
 
 
 if __name__ == "__main__":
-    positives, negatives = load_ionosphere()
+    positives, negatives = load_tictactoe()
     start_time = time()
     mistle = Mistle(positives, negatives)
-    theory, compression = mistle.learn(minsup=150)
+    theory, compression = mistle.learn(minsup=2, dl_measure="se")
     print("Total time\t: " + str(time() - start_time) + " seconds.")
     print("Final Theory\t: " + str(theory.clauses))
     print("Compression (wrt Description Length)\t: " + str(compression))

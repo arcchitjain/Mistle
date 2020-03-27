@@ -28,16 +28,34 @@ def compute_itemsets(transactions, support, algo="LCM", spmf_path="Resources/spm
         encoded_transaction = []
         for item in transaction:
             if item not in encoding_dict:
-                encoding_dict[item] = len(encoding_dict)+1
+                encoding_dict[item] = len(encoding_dict) + 1
             encoded_transaction.append(encoding_dict[item])
         encoded_transactions.append(sorted(encoded_transaction))
 
     inverse_token_dict = {v: k for k, v in encoding_dict.items()}
 
     with open(dataset_name, "w+") as db_file:
-        db_file.write("\n".join([" ".join([str(item) for item in transaction]) for transaction in encoded_transactions]))
+        db_file.write(
+            "\n".join(
+                [
+                    " ".join([str(item) for item in transaction])
+                    for transaction in encoded_transactions
+                ]
+            )
+        )
 
-    subprocess.call(["java", "-jar", spmf_path, "run", algo, dataset_name, output_name, str(support)])
+    subprocess.call(
+        [
+            "java",
+            "-jar",
+            spmf_path,
+            "run",
+            algo,
+            dataset_name,
+            output_name,
+            str(support),
+        ]
+    )
 
     with open(output_name) as output:
         for l in output:
@@ -67,7 +85,7 @@ if __name__ == "__main__":
     support = 0.1
     frequent_patterns = compute_itemsets(pos, support, "Eclat")
 
-    closed_patterns = compute_itemsets(pos, support, "LCM") # default one
+    closed_patterns = compute_itemsets(pos, support, "LCM")  # default one
 
     maximal_patterns = compute_itemsets(pos, support, "FPMax")
 
@@ -75,5 +93,8 @@ if __name__ == "__main__":
     print("Number of closed frequent itemsets: {}\n".format(len(closed_patterns)))
     print("Number of maximal frequent itemsets: {}\n".format(len(maximal_patterns)))
 
-    print("Closed patterns in decreased frequency order: {}".format(sorted(closed_patterns, key=lambda p: p[1], reverse=True)))
-
+    print(
+        "Closed patterns in decreased frequency order: {}".format(
+            sorted(closed_patterns, key=lambda p: p[1], reverse=True)
+        )
+    )
