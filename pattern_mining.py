@@ -19,8 +19,6 @@ def compute_itemsets(transactions, support, algo="LCM", spmf_path="Resources/spm
     output_base_name = "temp_spmf_dataset_res" + str(rand_id)
     output_name = os.path.join(working_dir, output_base_name)
 
-    result_patterns = []
-
     encoding_dict = {}
 
     encoded_transactions = []
@@ -57,6 +55,7 @@ def compute_itemsets(transactions, support, algo="LCM", spmf_path="Resources/spm
         ]
     )
 
+    result_patterns = []
     with open(output_name) as output:
         for l in output:
             pattern, support = l.split("#SUP:")

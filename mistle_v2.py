@@ -4,6 +4,7 @@ from pycosat import solve
 from time import time
 import math
 from collections import Counter
+from pattern_mining import compute_itemsets
 
 
 def print_input_data_statistics(
@@ -88,7 +89,7 @@ def print_input_data_statistics(
     print()
 
 
-def load_test2():
+def load_test():
     """
     Illustrative Toy Example used in the Paper
     :return:
@@ -340,18 +341,12 @@ def load_tictactoe(negation=False, load_top_k=None, switch_signs=False, load_tqd
 
 
 def check_pa_satisfiability(pa, clauses):
-    return not (
-        solve([tuple(clause) for clause in clauses] + [(a,) for a in pa]) == "UNSAT"
-    )
-
-
-def get_description_length(theory):
-    dl = sum(theory.clause_length) + theory.theory_length - 1
-    for misclassified_pa in theory.errors:
-        dl += len(misclassified_pa)
-    dl += len(theory.errors)
-    print("Description Length of theory\t:" + str(dl))
-    return dl
+    if clauses is None or len(clauses) == 0:
+        return None
+    else:
+        return not (
+            solve([tuple(clause) for clause in clauses] + [(a,) for a in pa]) == "UNSAT"
+        )
 
 
 def get_literal_length(clauses):
@@ -384,21 +379,65 @@ def get_entropy(clauses):
     return entropy
 
 
-def get_dl(dl_measure, clauses, errors):
+def log_star(input):
+    # From the footnote on page 5 of the paper https://hal.inria.fr/hal-02505913/document
+    result = math.log(2.865064)
+    n = copy(input)
+    while True:
+        n = math.log(n)
+        if n <= 0:
+            break
+        else:
+            result += n
+
+    # print("Log*N( " + str(input) + ")\t= " + str(result))
+    return result
+
+
+def get_c_entropy(clauses, alphabet_size):
+    """
+    :param clauses: a list of clauses
+    :return: the total number of bits required to represent the input theory
+    """
+    c_entropy = 0
+    if len(clauses) == 0:
+        return c_entropy
+
+    for j, clause in enumerate(clauses):
+
+        for i, literal in enumerate(clause):
+            c_entropy -= math.log(1.0 / (2 * len(clause) + 1 - 2 * i), 2)
+
+        # c_entropy -= math.log(1.0 / (2 * len(clauses) + 1 - 2 * len(clause)), 2)
+        c_entropy -= math.log(1.0 / (2 * len(clauses) + 1 - 2 * j), 2)
+
+    c_entropy += log_star(2 * alphabet_size)
+    c_entropy += log_star(len(clauses))
+
+    return c_entropy
+
+
+def get_dl(dl_measure, clauses, errors, alphabet_size):
     if dl_measure == "ll":  # Literal Length
         return get_literal_length(clauses)
     elif dl_measure == "sl":  # Symbol Length
-        return get_literal_length(clauses + errors) + len(clauses + errors) - 1
+        return (
+            get_literal_length(clauses + list(errors)) + len(clauses + list(errors)) - 1
+        )
     elif dl_measure == "se":  # Shanon Entropy
         return get_entropy(clauses) + get_entropy(errors)
-    elif dl_measure == "ce":  # TODO: Clement Entropy
-        return get_entropy(clauses) + get_entropy(errors)
+    elif dl_measure == "ce":  # Clement Entropy
+        return get_c_entropy(clauses, alphabet_size) + get_c_entropy(
+            errors, alphabet_size
+        )
 
 
 class Eclat:
     def __init__(self, minsup):
         self.minsup = minsup
-        self.freq_items = []
+        # self.freq_items = []
+        self.freq_items = {}
+        self.pruned_itemsets = set()
 
     def read_data(self, input):
         data = {}
@@ -414,7 +453,22 @@ class Eclat:
             i, itids = items.pop()
             if len(itids) >= self.minsup:
                 # if len(prefix) > 0:  # Only store patterns with length > 1
-                self.freq_items.append((frozenset(prefix + [i]), itids))
+                # self.freq_items.append((frozenset(prefix + [i]), itids))
+
+                if frozenset(prefix) in self.freq_items and len(
+                    self.freq_items[frozenset(prefix)]
+                ) <= len(itids):
+                    self.pruned_itemsets.add(frozenset(prefix))
+                    del self.freq_items[frozenset(prefix)]
+                # elif frozenset(prefix + [i]) not in self.pruned_itemsets:
+                if frozenset(prefix + [i]) in self.pruned_itemsets:
+                    old_itids = self.freq_items[frozenset(prefix + [i])]
+                    print("Old len(itids)\t: " + str(len(old_itids)))
+                    print("New len(itids)\t: " + str(len(itids)))
+                    print("Intersection len(itids)\t: " + str(itids & old_itids))
+
+                self.freq_items[frozenset(prefix + [i])] = itids
+
                 suffix = []
                 for j, ojtids in items:
                     jtids = itids & ojtids
@@ -437,6 +491,7 @@ class Eclat:
         data = self.read_data(input)
         sorted_data = sorted(data.items(), key=lambda item: len(item[1]), reverse=True)
         self.eclat(prefix, sorted_data, dict_id)
+        # self.freq_items = list(self.freq_items.items())
 
         # print("Frequent Itemsets\t:")
         # for item, clause_ids in self.freq_items.items():
@@ -445,14 +500,14 @@ class Eclat:
 
         # sort freq items descending wrt change in DL (wrt W-op), length of the itemset, frequency
 
-        self.freq_items.sort(
-            key=lambda item: (
-                len(item[0]) * len(item[1]) - (len(item[0]) + len(item[1]) + 1),
-                len(item[0]),
-                len(item[1]),
-            ),
-            reverse=True,
-        )
+        # self.freq_items.sort(
+        #     key=lambda item: (
+        #         len(item[0]) * len(item[1]) - (len(item[0]) + len(item[1]) + 1),
+        #         len(item[0]),
+        #         len(item[1]),
+        #     ),
+        #     reverse=True,
+        # )
 
         print(
             str(len(self.freq_items))
@@ -502,15 +557,19 @@ class Mistle:
 
     def learn(self, minsup, dl_measure):
 
-        self.initial_dl = get_dl(dl_measure, self.positives + self.negatives, [])
+        # This line of code assumes that variable numbers start from 1:
+        alphabet_size = max(
+            [abs(literal) for pa in self.positives + self.negatives for literal in pa]
+        )
+        self.initial_dl = get_dl(
+            dl_measure, self.positives + self.negatives, [], alphabet_size
+        )
 
         # Remove redundant partial assignments
         self.positives = set(self.positives)
         self.negatives = set(self.negatives)
 
-        self.theory.new_var_counter = (
-            max([abs(l) for pa in self.positives | self.negatives for l in pa]) + 1
-        )
+        self.theory.new_var_counter = alphabet_size + 1
 
         # Remove inconsistent partial assignments (Those pas that are both classified as +ves and -ves) in the data
         inconsistent_pas = self.positives & self.negatives
@@ -519,7 +578,12 @@ class Mistle:
         self.negatives = self.negatives - inconsistent_pas
 
         # Convert the set of -ve PAs to a theory
-        self.theory.intialize(self.positives, self.negatives, minsup, dl_measure)
+        success = self.theory.intialize(
+            self.positives, self.negatives, minsup, dl_measure
+        )
+        if not success:
+            # Return empty theory
+            return None, 0
 
         self.total_positives = len(self.positives)
         self.total_negatives = len(self.negatives)
@@ -539,10 +603,15 @@ class Mistle:
             #     print(" {}\t: {}".format(list(item), clause_ids))
             # print("\n")
 
-        final_dl = get_description_length(self.theory)
+        final_dl = get_dl(
+            dl_measure,
+            self.theory.clauses,
+            self.theory.errors,
+            self.theory.new_var_counter - 1,
+        )
         compression = (self.initial_dl - final_dl) / float(self.initial_dl)
-        print("Initial DL\t: " + str(self.initial_dl))
-        print("Final DL\t: " + str(final_dl))
+        print("Initial DL\t\t\t\t: " + str(self.initial_dl))
+        print("Final DL\t\t\t\t: " + str(final_dl))
 
         return self.theory, compression
 
@@ -555,7 +624,7 @@ class Theory:
         self.clause_length = []  # List of lengths of all the clauses of this theory
         self.theory_length = len(clauses)  # Total number of clauses in the theory
         self.invented_predicate_definition = dict()
-        self.freq_items = dict()
+        self.freq_items = []
         self.errors = set()
         self.positives = set()
         self.minsup = None
@@ -565,19 +634,61 @@ class Theory:
         self.new_var_counter = None
 
     def intialize(self, positives, negatives, minsup, dl_measure):
+
+        if (
+            len(negatives) < 1
+        ):  # We still allow a theory to be learned and compressed if there are some negatives and no positives.
+            return False
+
         # Construct a theory from the partial assignments
         for pa in negatives:
             self.clauses.append(frozenset([-literal for literal in pa]))
             self.clause_length.append(len(pa))
 
         self.minsup = minsup
+
+        start_time1 = time()
         eclat = Eclat(minsup=minsup)
-        self.freq_items = eclat.get_Frequent_Itemsets(self.clauses)
+        freq_items1 = eclat.get_Frequent_Itemsets(self.clauses)
+        total_time1 = time() - start_time1
+        print("Length of freq items 1\t: " + str(len(freq_items1)))
+        print("Time of freq items 1\t: " + str(total_time1))
+
+        start_time2 = time()
+        freq_items2 = compute_itemsets(self.clauses, minsup / len(self.clauses), "LCM")
+        total_time2 = time() - start_time2
+        print("Length of freq items 2\t: " + str(len(freq_items2)))
+        print("Time of freq items 2\t: " + str(total_time2))
+
+        assert len(freq_items1) >= len(freq_items2)
+
+        if len(freq_items1) == len(freq_items2):
+            self.freq_items = list(freq_items1.items())
+        else:
+            for i, (itemset, frequency) in enumerate(freq_items2):
+                item = frozenset(itemset)
+                if item not in freq_items1:
+                    print("Itemset not found\t: " + str(item))
+                else:
+                    self.freq_items.append((item, freq_items1[item]))
+
+        self.freq_items.sort(
+            key=lambda item: (
+                len(item[0]) * len(item[1]) - (len(item[0]) + len(item[1]) + 1),
+                len(item[0]),
+                len(item[1]),
+            ),
+            reverse=True,
+        )
+
         self.positives = positives
         self.errors = self.get_violations(positives)
-        self.dl = get_dl(dl_measure, list(positives | negatives), [])
+        self.dl = get_dl(
+            dl_measure, list(positives | negatives), [], self.new_var_counter - 1
+        )
         print("DL of initial theory\t: " + str(self.dl))
         self.dl_measure = dl_measure
+        return True
 
     def get_new_var(self):
         """
@@ -627,7 +738,10 @@ class Theory:
         return (
             uncovered_positives,
             get_dl(
-                self.dl_measure, new_theory, list(self.errors | uncovered_positives)
+                self.dl_measure,
+                new_theory,
+                list(self.errors | uncovered_positives),
+                self.new_var_counter - 1,
             ),
         )
 
@@ -663,17 +777,16 @@ class Theory:
                 success = True
 
         if min_dl == self.dl:
-            print("Ignoring itemset\t: Initial DL = " + str(self.dl))
-            print(possible_entropies)
+            print(
+                "Ignoring itemset\t: Initial DL = "
+                + str(self.dl)
+                + "\t; Possible DLs\t: "
+                + str(possible_entropies)
+            )
             success = "ignore_itemset"
 
         if success is True:
             # Update old_theory
-            print(
-                best_operator
-                + " operator applied to get \t: "
-                + str(output_clause_list)
-            )
             self.operator_counter[best_operator] += 1
             if best_operator == "W":
                 new_var = self.get_new_var()
@@ -743,12 +856,6 @@ class Theory:
             for i in prune_itemsets:
                 del self.freq_items[i]
 
-            # print("Old Clauses\t: " + str(input_clause_list))
-            # print("New Clauses\t: " + str(output_clause_list))
-
-            # self.freq_items = new_freq_items
-
-            # sort freq_items again
             self.freq_items.sort(
                 key=lambda item: (
                     len(item[0]) * len(item[1]) - (len(item[0]) + len(item[1]) + 1),
@@ -758,7 +865,13 @@ class Theory:
                 reverse=True,
             )
 
-            print(str(len(self.freq_items)) + " frequent itemsets left.")
+            print(
+                str(len(self.freq_items))
+                + "\tfrequent itemsets left after applying "
+                + best_operator
+                + " operator with output \t: "
+                + str(output_clause_list)
+            )
             # print("New Frequent Itemsets\t:")
             # for item, clause_ids in self.freq_items:
             #     print(" {}\t: {}".format(list(item), len(clause_ids)))
@@ -796,23 +909,28 @@ class Theory:
             residue.append(clause - subclause)
 
         # Check if S-operator is applicable
+        s_applicable = False
         for clause in old_clause_list:
             if clause == subclause:
                 # S-operator is applicable
+                s_applicable = True
                 possible_operations.append(("S", [subclause]))
                 # self.operator_counter["S"] += 1
                 # return True
 
-        possible_operations.append(("T", [subclause]))
-
         # Check if R-operator is applicable
+        r_applicable = False
         r_residue = [tuple(clause) for clause in residue]
         if solve(r_residue) == "UNSAT":
             # R-operator is applicable (R-operator is a special case when applying T-operator is lossless.
             # Example: If input is [(a,b), (a,c), (a,-b,-c)], then the output is [(a)].
             # Here, then input is logically equivalent to the output (Lossless Truncation).
+            r_applicable = True
             possible_operations.append(("R", [subclause]))
             # return True
+
+        if not s_applicable and not r_applicable:
+            possible_operations.append(("T", [subclause]))
 
         # Check if V-operator is applicable
         v_literals = []
@@ -855,11 +973,14 @@ class Theory:
 
 
 if __name__ == "__main__":
-    positives, negatives = load_tictactoe()
+    positives, negatives = load_test()
     start_time = time()
     mistle = Mistle(positives, negatives)
-    theory, compression = mistle.learn(minsup=2, dl_measure="se")
-    print("Total time\t: " + str(time() - start_time) + " seconds.")
-    print("Final Theory\t: " + str(theory.clauses))
-    print("Compression (wrt Description Length)\t: " + str(compression))
-    print("Operator Counters\t: " + str(theory.operator_counter))
+    theory, compression = mistle.learn(minsup=2, dl_measure="ce")
+    print("Total time\t\t\t\t: " + str(time() - start_time) + " seconds.")
+    if theory is not None:
+        print("Final Theory\t\t\t: " + str(theory.clauses))
+        print("Compression (wrt " + str(theory.dl_measure) + ")\t: " + str(compression))
+        print("Operator Counters\t\t: " + str(theory.operator_counter))
+    else:
+        print("Empty theory learned.")

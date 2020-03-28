@@ -56,9 +56,19 @@ class GeneratedTheory:
                     or_literals.append(TheoryNoisyGenerator.get_dimacs_repr(clause))
                 negated_cnf_dimacs.append(or_literals)
         else:
-            negated_cnf_dimacs.append(
-                [TheoryNoisyGenerator.get_dimacs_repr(negated_cnf)]
-            )
+            or_literals = []
+            if isinstance(negated_cnf, Or):
+                for sympy_literal in negated_cnf.args:
+                    or_literals.append(
+                        TheoryNoisyGenerator.get_dimacs_repr(sympy_literal)
+                    )
+            else:
+                or_literals.append(TheoryNoisyGenerator.get_dimacs_repr(negated_cnf))
+            negated_cnf_dimacs.append(or_literals)
+
+            # negated_cnf_dimacs.append(
+            #     [TheoryNoisyGenerator.get_dimacs_repr(negated_cnf)]
+            # )
         return GeneratedTheory(negated_cnf_dimacs)
 
 
@@ -85,6 +95,7 @@ class TheoryNoisyGenerator(DataGenerator):
         :param nb_negatives: Number of negative examples
         :param noise:
         """
+
         self.theory = theory
         self.nb_positives = nb_positives
         self.nb_negatives = nb_negatives

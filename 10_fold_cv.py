@@ -7,6 +7,7 @@ from tqdm import tqdm
 import os
 from pycosat import itersolve
 from collections import OrderedDict
+from collections import defaultdict
 
 # def count_solutions(pa, theory):
 #
@@ -133,19 +134,43 @@ def test_theory(theory, positives, negatives):
     pbar = tqdm(total=total_datapoints)
     pbar.set_description("Testing theory")
 
+    if theory is None:
+        clauses = None
+    else:
+        clauses = theory.clauses
+
+    TP_s = 0
+    TN_s = 0
+    FP_s = 0
+    FN_s = 0
+
     for pa in positives:
-        if check_pa_satisfiability(pa, theory.clauses):
+        if check_pa_satisfiability(pa, clauses):
+            # Correctly classified as a positive
             accuracy += 1
+            TP_s += 1
+        else:
+            # Wrongly classified as a negative
+            FN_s += 1
         pbar.update(1)
 
     for pa in negatives:
-        if not check_pa_satisfiability(pa, theory.clauses):
+        if not check_pa_satisfiability(pa, clauses):
+            # Correctly classified as a negative
             accuracy += 1
+            TN_s += 1
+        else:
+            # Wrongly classified as a positive
+            FP_s += 1
         pbar.update(1)
 
     pbar.close()
 
-    return float(accuracy) / total_datapoints
+    return (
+        float(accuracy) / total_datapoints,
+        1.0,
+        {"TP_s": TP_s, "TN_s": TN_s, "FP_s": FP_s, "FN_s": FN_s},
+    )
 
 
 def test_both_theories_by_compression(
@@ -156,10 +181,26 @@ def test_both_theories_by_compression(
 
     pbar = tqdm(total=len(test_positives) + len(test_negatives))
     pbar.set_description("Testing both theories using SAT + Counting")
-    ff = 0
-    ft = 0
-    tf = 0
-    tt = 0
+
+    TP_c = 0
+    TN_c = 0
+    FP_c = 0
+    FN_c = 0
+
+    TP_s = 0
+    TN_s = 0
+    FP_s = 0
+    FN_s = 0
+
+    if pos_theory is None:
+        p_clauses = None
+    else:
+        p_clauses = pos_theory.clauses
+
+    if neg_theory is None:
+        n_clauses = None
+    else:
+        n_clauses = neg_theory.clauses
 
     # Remove negative signs from the literals in the definitions
     abs_pos_def = OrderedDict()
@@ -177,18 +218,18 @@ def test_both_theories_by_compression(
         abs_neg_def[var] = abs_def
 
     for pa in test_positives:
-        p = check_pa_satisfiability(pa, pos_theory.clauses)
-        n = check_pa_satisfiability(pa, neg_theory.clauses)
+        p = check_pa_satisfiability(pa, p_clauses)
+        n = check_pa_satisfiability(pa, n_clauses)
 
         if not p and n:
             # Correctly classified as a positive
             accuracy += 1
+            TP_s += 1
             total_classifications += 1
-            ft += 1
         elif p and not n:
             # Wrongly classified as a negative
+            FN_s += 1
             total_classifications += 1
-            tf += 1
         else:
             pos_length = len(compress(pa, copy(abs_pos_def)))
             neg_length = len(compress(pa, copy(abs_neg_def)))
@@ -196,186 +237,45 @@ def test_both_theories_by_compression(
             if pos_length < neg_length:
                 # Correctly classified as a positive
                 accuracy += 1
+                TP_c += 1
                 total_classifications += 1
-                ft += 1
             elif neg_length < pos_length:
                 # Wrongly classified as a negative
+                FN_c += 1
                 total_classifications += 1
-                tf += 1
-            elif p and n:
-                tt += 1
-            elif not p and not n:
-                ff += 1
 
         pbar.update(1)
 
     for pa in test_negatives:
-        p = check_pa_satisfiability(pa, pos_theory.clauses)
-        n = check_pa_satisfiability(pa, neg_theory.clauses)
+        p = check_pa_satisfiability(pa, p_clauses)
+        n = check_pa_satisfiability(pa, n_clauses)
 
         if not p and n:
             # Wrongly classified as a positive
+            FP_s += 1
             total_classifications += 1
-            ft += 1
         elif p and not n:
             # Correctly classified as a negative
             accuracy += 1
+            TN_s += 1
             total_classifications += 1
-            tf += 1
         else:
             pos_length = len(compress(pa, copy(abs_pos_def)))
             neg_length = len(compress(pa, copy(abs_neg_def)))
 
             if pos_length < neg_length:
                 # Wrongly classified as a positive
+                FP_c += 1
                 total_classifications += 1
-                ft += 1
             elif neg_length < pos_length:
                 # Correctly classified as a negative
                 accuracy += 1
-                total_classifications += 1
-                tf += 1
-            elif p and n:
-                tt += 1
-            elif not p and not n:
-                ff += 1
-
-        pbar.update(1)
-
-    pbar.close()
-    print(
-        "Classification Matrix \t: ff = "
-        + str(ff)
-        + "; ft = "
-        + str(ft)
-        + "; tf = "
-        + str(tf)
-        + "; tt = "
-        + str(tt)
-    )
-
-    if total_classifications == 0:
-        return None, 0
-    else:
-        return (
-            float(accuracy) / total_classifications,
-            float(total_classifications) / (len(test_positives) + len(test_negatives)),
-        )
-
-
-def test_both_theories_by_counting(
-    pos_theory, neg_theory, test_positives, test_negatives
-):
-    accuracy = 0
-    total_classifications = 0
-
-    pbar = tqdm(total=len(test_positives) + len(test_negatives))
-    pbar.set_description("Testing both theories using SAT + Compression")
-    ff = 0
-    ft = 0
-    tf = 0
-    tt = 0
-    ft_c = 0
-    tf_c = 0
-
-    TP_c = 0
-    TN_c = 0
-    FP_c = 0
-    FN_c = 0
-
-    TP_s = 0
-    TN_s = 0
-    FP_s = 0
-    FN_s = 0
-
-    for i, pa in enumerate(test_positives):
-        p = check_pa_satisfiability(pa, pos_theory.clauses)
-        n = check_pa_satisfiability(pa, neg_theory.clauses)
-
-        if not p and n:
-            # Correctly classified as a positive
-            accuracy += 1
-            total_classifications += 1
-            ft += 1
-            TP_s += 1
-        elif p and not n:
-            # Wrongly classified as a negative
-            total_classifications += 1
-            tf += 1
-            FN_s += 1
-        elif p and n:
-            pos_models = count_models(pa, pos_theory, str(i) + "+")
-            neg_models = count_models(pa, neg_theory, str(i) + "-")
-
-            if pos_models < neg_models:
-                # Correctly classified as a positive
-                accuracy += 1
-                total_classifications += 1
-                ft_c += 1
-                TP_c += 1
-            elif neg_models < pos_models:
-                # Wrongly classified as a negative
-                total_classifications += 1
-                tf_c += 1
-                FN_c += 1
-            else:
-                tt += 1
-        elif not p and not n:
-            ff += 1
-        pbar.update(1)
-
-    i = len(test_positives)
-    for j, pa in enumerate(test_negatives):
-        p = check_pa_satisfiability(pa, pos_theory.clauses)
-        n = check_pa_satisfiability(pa, neg_theory.clauses)
-
-        if not p and n:
-            # Wrongly classified as a positive
-            total_classifications += 1
-            ft += 1
-            FP_s += 1
-        elif p and not n:
-            # Correctly classified as a negative
-            accuracy += 1
-            total_classifications += 1
-            tf += 1
-            TN_s += 1
-        elif p and n:
-            pos_models = count_models(pa, pos_theory, str(j + i) + "+")
-            neg_models = count_models(pa, neg_theory, str(j + i) + "-")
-
-            if pos_models < neg_models:
-                # Wrongly classified as a positive
-                total_classifications += 1
-                ft_c += 1
-                FP_c += 1
-            elif neg_models < pos_models:
-                # Correctly classified as a negative
-                accuracy += 1
-                total_classifications += 1
-                tf_c += 1
                 TN_c += 1
-            else:
-                tt += 1
-        elif not p and not n:
-            ff += 1
+                total_classifications += 1
+
         pbar.update(1)
 
     pbar.close()
-    print(
-        "Classification Matrix \t: ff = "
-        + str(ff)
-        + "; ft = "
-        + str(ft)
-        + "; tf = "
-        + str(tf)
-        + "; tt = "
-        + str(tt)
-        + "; ft_c = "
-        + str(ft_c)
-        + "; tf_c = "
-        + str(tf_c)
-    )
 
     print(
         "Confusion Matrix \t: TP_s = "
@@ -402,6 +302,143 @@ def test_both_theories_by_counting(
         return (
             float(accuracy) / total_classifications,
             float(total_classifications) / (len(test_positives) + len(test_negatives)),
+            {
+                "TP_s": TP_s,
+                "TN_s": TN_s,
+                "FP_s": FP_s,
+                "FN_s": FN_s,
+                "TP_c": TP_c,
+                "TN_c": TN_c,
+                "FP_c": FP_c,
+                "FN_c": FN_c,
+            },
+        )
+
+
+def test_both_theories_by_counting(
+    pos_theory, neg_theory, test_positives, test_negatives
+):
+    accuracy = 0
+    total_classifications = 0
+
+    pbar = tqdm(total=len(test_positives) + len(test_negatives))
+    pbar.set_description("Testing both theories using SAT + Compression")
+
+    TP_c = 0
+    TN_c = 0
+    FP_c = 0
+    FN_c = 0
+
+    TP_s = 0
+    TN_s = 0
+    FP_s = 0
+    FN_s = 0
+
+    if pos_theory is None:
+        p_clauses = None
+    else:
+        p_clauses = pos_theory.clauses
+
+    if neg_theory is None:
+        n_clauses = None
+    else:
+        n_clauses = neg_theory.clauses
+
+    for i, pa in enumerate(test_positives):
+        p = check_pa_satisfiability(pa, p_clauses)
+        n = check_pa_satisfiability(pa, n_clauses)
+
+        if not p and n:
+            # Correctly classified as a positive
+            accuracy += 1
+            total_classifications += 1
+            TP_s += 1
+        elif p and not n:
+            # Wrongly classified as a negative
+            total_classifications += 1
+            FN_s += 1
+        elif p and n:
+            pos_models = count_models(pa, pos_theory, str(i) + "+")
+            neg_models = count_models(pa, neg_theory, str(i) + "-")
+
+            if pos_models < neg_models:
+                # Correctly classified as a positive
+                accuracy += 1
+                total_classifications += 1
+                TP_c += 1
+            elif neg_models < pos_models:
+                # Wrongly classified as a negative
+                total_classifications += 1
+                FN_c += 1
+        pbar.update(1)
+
+    i = len(test_positives)
+    for j, pa in enumerate(test_negatives):
+        p = check_pa_satisfiability(pa, p_clauses)
+        n = check_pa_satisfiability(pa, n_clauses)
+
+        if not p and n:
+            # Wrongly classified as a positive
+            total_classifications += 1
+            FP_s += 1
+        elif p and not n:
+            # Correctly classified as a negative
+            accuracy += 1
+            total_classifications += 1
+            TN_s += 1
+        elif p and n:
+            pos_models = count_models(pa, pos_theory, str(j + i) + "+")
+            neg_models = count_models(pa, neg_theory, str(j + i) + "-")
+
+            if pos_models < neg_models:
+                # Wrongly classified as a positive
+                total_classifications += 1
+                FP_c += 1
+            elif neg_models < pos_models:
+                # Correctly classified as a negative
+                accuracy += 1
+                total_classifications += 1
+                TN_c += 1
+
+        pbar.update(1)
+
+    pbar.close()
+
+    print(
+        "Confusion Matrix \t: TP_s = "
+        + str(TP_s)
+        + "; TN_s = "
+        + str(TN_s)
+        + "; FP_s = "
+        + str(FP_s)
+        + "; FN_s = "
+        + str(FN_s)
+        + "; TP_c = "
+        + str(TP_c)
+        + "; TN_c = "
+        + str(TN_c)
+        + "; FP_c = "
+        + str(FP_c)
+        + "; FN_c = "
+        + str(FN_c)
+    )
+
+    if total_classifications == 0:
+        return None, 0
+    else:
+        return (
+            float(accuracy) / total_classifications,
+            float(total_classifications) / (len(test_positives) + len(test_negatives)),
+            {
+                "TP_s": TP_s,
+                "TN_s": TN_s,
+                "FP_s": FP_s,
+                "FN_s": FN_s,
+                "TP_c": TP_c,
+                "TN_c": TN_c,
+                "FP_c": FP_c,
+                "FN_c": FN_c,
+            },
         )
 
 
@@ -428,21 +465,40 @@ def test_both_theories_by_satisfiability(
     FP_f = 0
     FN_f = 0
 
-    for pa in test_positives:
-        p = check_pa_satisfiability(pa, pos_theory.clauses)
-        n = check_pa_satisfiability(pa, neg_theory.clauses)
+    if pos_theory is None:
+        p_clauses = None
+    else:
+        p_clauses = pos_theory.clauses
 
-        if not p and n:
+    if neg_theory is None:
+        n_clauses = None
+    else:
+        n_clauses = neg_theory.clauses
+
+    for pa in test_positives:
+        p = check_pa_satisfiability(pa, p_clauses)
+        n = check_pa_satisfiability(pa, n_clauses)
+
+        if (
+            (p is False and n is True)
+            or (p is None and n is True)
+            or (p is False and n is None)
+        ):
             # Correctly classified as a positive
             accuracy += 1
             TP_s += 1
             total_classifications += 1
-        elif p and not n:
+        elif (
+            (p is True and n is False)
+            or (p is None and n is False)
+            or (p is True and n is None)
+        ):
             # Wrongly classified as a negative
             FN_s += 1
             total_classifications += 1
         else:
             if default_prediction == "+":
+                accuracy += 1
                 TP_f += 1
                 total_classifications += 1
             elif default_prediction == "-":
@@ -451,14 +507,22 @@ def test_both_theories_by_satisfiability(
         pbar.update(1)
 
     for pa in test_negatives:
-        p = check_pa_satisfiability(pa, pos_theory.clauses)
-        n = check_pa_satisfiability(pa, neg_theory.clauses)
+        p = check_pa_satisfiability(pa, p_clauses)
+        n = check_pa_satisfiability(pa, n_clauses)
 
-        if not p and n:
+        if (
+            (p is False and n is True)
+            or (p is None and n is True)
+            or (p is False and n is None)
+        ):
             # Wrongly classified as a positive
             FP_s += 1
             total_classifications += 1
-        elif p and not n:
+        elif (
+            (p is True and n is False)
+            or (p is None and n is False)
+            or (p is True and n is None)
+        ):
             # Correctly classified as a negative
             accuracy += 1
             TN_s += 1
@@ -468,6 +532,7 @@ def test_both_theories_by_satisfiability(
                 FP_f += 1
                 total_classifications += 1
             elif default_prediction == "-":
+                accuracy += 1
                 TN_f += 1
                 total_classifications += 1
         pbar.update(1)
@@ -495,6 +560,16 @@ def test_both_theories_by_satisfiability(
     return (
         float(accuracy) / total_classifications,
         float(total_classifications) / (len(test_positives) + len(test_negatives)),
+        {
+            "TP_s": TP_s,
+            "TN_s": TN_s,
+            "FP_s": FP_s,
+            "FN_s": FN_s,
+            "TP_f": TP_f,
+            "TN_f": TN_f,
+            "FP_f": FP_f,
+            "FN_f": FN_f,
+        },
     )
 
 
@@ -521,6 +596,8 @@ def cross_validate(
 
     split_positives = split_data(positives, num_folds, seed=seed)
     split_negatives = split_data(negatives, num_folds, seed=seed)
+
+    confusions = defaultdict(int)
 
     for fold in range(num_folds):
         train_positives = []
@@ -578,11 +655,11 @@ def cross_validate(
                 minsup=minsup, dl_measure=dl_measure
             )
 
-            # fold_accuracy, coverage = test_both_theories_by_compression(
+            # fold_accuracy, coverage, fold_confusions = test_both_theories_by_compression(
             #     pos_theory, neg_theory, test_positives, test_negatives
             # )
 
-            # fold_accuracy, coverage = test_both_theories_by_counting(
+            # fold_accuracy, coverage, fold_confusions = test_both_theories_by_counting(
             #     pos_theory, neg_theory, test_positives, test_negatives
             # )
 
@@ -591,41 +668,69 @@ def cross_validate(
             else:
                 default_prediction = "-"
 
-            fold_accuracy, coverage = test_both_theories_by_satisfiability(
-                pos_theory, neg_theory, test_positives, test_negatives, None
+            fold_accuracy, coverage, fold_confusions = test_both_theories_by_satisfiability(
+                pos_theory,
+                neg_theory,
+                test_positives,
+                test_negatives,
+                default_prediction,
             )
 
             print("Accuracy of fold " + str(fold) + "\t: " + str(fold_accuracy))
             print(
-                "Coverage of fold " + str(fold) + "\t: " + str(round(coverage * 100, 2))
+                "Coverage of fold "
+                + str(fold)
+                + "\t: "
+                + str(round(coverage * 100, 2))
+                + "\n"
             )
 
             avg_compression[0] += pos_compression
             avg_compression[1] += neg_compression
 
-            avg_coverage += coverage
         else:
             mistle = Mistle(train_positives, train_negatives)
             theory, compression = mistle.learn(minsup=minsup, dl_measure=dl_measure)
 
-            fold_accuracy = test_theory(theory, test_positives, test_negatives)
-            print("Accuracy of fold " + str(fold) + "\t: " + str(fold_accuracy))
+            fold_accuracy, coverage, fold_confusions = test_theory(
+                theory, test_positives, test_negatives
+            )
+            print("Accuracy of fold " + str(fold) + "\t: " + str(fold_accuracy) + "\n")
 
             avg_compression += compression
 
-        # theory = mistle.convert_to_theory(train_negatives)
-        # compression = 0
-        # pos_theory = Mistle(train_positives, train_negatives).learn()
-        # neg_theory = Mistle(train_negatives, train_positives).learn()
+        for k, v in fold_confusions.items():
+            confusions[k] += v
 
-        # Uncompressed Theory
-        # mistle = Mistle(train_positives, train_negatives)
-        # theory = mistle.convert_to_theory(train_negatives)
+        avg_coverage += coverage
 
         if fold_accuracy is not None:
             avg_accuracy += fold_accuracy
         else:
             ignore_folds += 1
+
+    tp = 0.0
+    tn = 0.0
+    fp = 0.0
+    fn = 0.0
+    for k, v in confusions.items():
+        if "TP" in k:
+            tp += v
+        elif "TN" in k:
+            tn += v
+        elif "FP" in k:
+            fp += v
+        elif "FN" in k:
+            fn += v
+
+    precision = 0 if tp + fp == 0 else tp / (tp + fp)
+    recall = 0 if tp + fn == 0 else tp / (tp + fn)
+    accuracy = 0 if tp + tn + fp + fn == 0 else (tp + tn) / (tp + tn + fp + fn)
+
+    print("\nTotal Confusions\t\t\t\t\t: " + str(confusions))
+    print("Precision\t\t\t\t\t\t\t: " + str(round(precision * 100, 2)) + "%")
+    print("Recall\t\t\t\t\t\t\t\t: " + str(round(recall * 100, 2)) + "%")
+    print("Accuracy\t\t\t\t\t\t\t: " + str(round(accuracy * 100, 2)) + "%")
 
     avg_accuracy = avg_accuracy / (num_folds - ignore_folds)
     if test_both:
@@ -657,17 +762,26 @@ def cross_validate(
 # cross_validate(positives, negatives, 10, "./Output/mushroom", lossless=False)
 # cross_validate(positives, negatives, 10, lossless=False, test_both=False)
 
-positives, negatives = load_tictactoe()
-cross_validate(
-    positives, negatives, num_folds=10, test_both=True, minsup=2, dl_measure="se"
-)
+# positives, negatives = load_tictactoe()
+# cross_validate(
+#     positives, negatives, num_folds=10, test_both=True, minsup=2, dl_measure="ce"
+# )
 # positives, negatives = load_ionosphere()
-# cross_validate(positives, negatives, num_folds=10, test_both=True, minsup=90)
+# cross_validate(
+#     positives, negatives, num_folds=10, test_both=True, minsup=40, dl_measure="ce"
+# )
 # positives, negatives = load_breast()
-# cross_validate(positives, negatives, num_folds=10, lossless=False, test_both=True)
+# cross_validate(
+#     positives, negatives, num_folds=10, test_both=True, minsup=2, dl_measure="ce"
+# )
 # positives, negatives = load_pima()
-# cross_validate(positives, negatives, num_folds=10, lossless=False, test_both=True)
-# positives, negatives = load_chess()
+# cross_validate(
+#     positives, negatives, num_folds=10, test_both=True, minsup=2, dl_measure="ce"
+# )
+positives, negatives = load_chess()
+cross_validate(
+    positives, negatives, num_folds=10, test_both=True, minsup=1800, dl_measure="ce"
+)
 # cross_validate(negatives, positives, num_folds=10, lossless=False, test_both=False)
 # cross_validate(positives, negatives, num_folds=10, lossless=False, test_both=True)
 # positives, negatives = load_adult()
