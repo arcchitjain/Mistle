@@ -615,32 +615,76 @@ def cross_validate(
                 train_negatives += split_negatives[i]
 
         if output_file is not None:
-            pbar = tqdm(total=total_datapoints)
+            pbar = tqdm(total=2 * total_datapoints)
             pbar.set_description("Outputting data")
 
-            train_file = open(output_file + "_train_" + str(fold) + ".db", "w+")
+            if not os.path.exists("./Output/" + output_file):
+                os.makedirs("./Output/" + output_file)
 
-            for pa in train_positives + train_negatives:
-                l = list(pa)
-                abs_l = [abs(i) for i in l]
-                train_file.write(
-                    " ".join([str(x) for _, x in sorted(zip(abs_l, l))]) + "\n"
-                )
-                pbar.update(1)
+            with open(
+                "./Output/"
+                + output_file
+                + "/"
+                + output_file
+                + "_"
+                + str(fold)
+                + "_train_pos.dat",
+                "w+",
+            ) as f:
+                for pa in train_positives:
+                    l = list(pa)
+                    abs_l = [abs(i) for i in l]
+                    f.write(" ".join([str(x) for _, x in sorted(zip(abs_l, l))]) + "\n")
+                    pbar.update(1)
 
-            train_file.close()
+            with open(
+                "./Output/"
+                + output_file
+                + "/"
+                + output_file
+                + "_"
+                + str(fold)
+                + "_train_neg.dat",
+                "w+",
+            ) as f:
+                for pa in train_negatives:
+                    l = list(pa)
+                    abs_l = [abs(i) for i in l]
+                    f.write(" ".join([str(x) for _, x in sorted(zip(abs_l, l))]) + "\n")
+                    pbar.update(1)
 
-            test_file = open(output_file + "_test_" + str(fold) + ".db", "w+")
+            with open(
+                "./Output/"
+                + output_file
+                + "/"
+                + output_file
+                + "_"
+                + str(fold)
+                + "_test_pos.dat",
+                "w+",
+            ) as f:
+                for pa in test_positives:
+                    l = list(pa)
+                    abs_l = [abs(i) for i in l]
+                    f.write(" ".join([str(x) for _, x in sorted(zip(abs_l, l))]) + "\n")
+                    pbar.update(1)
 
-            for pa in test_positives + test_negatives:
-                l = list(pa)
-                abs_l = [abs(i) for i in l]
-                test_file.write(
-                    " ".join([str(x) for _, x in sorted(zip(abs_l, l))]) + "\n"
-                )
-                pbar.update(1)
+            with open(
+                "./Output/"
+                + output_file
+                + "/"
+                + output_file
+                + "_"
+                + str(fold)
+                + "_test_neg.dat",
+                "w+",
+            ) as f:
+                for pa in test_negatives:
+                    l = list(pa)
+                    abs_l = [abs(i) for i in l]
+                    f.write(" ".join([str(x) for _, x in sorted(zip(abs_l, l))]) + "\n")
+                    pbar.update(1)
 
-            test_file.close()
             pbar.close()
 
         # Compressed Theory
@@ -753,57 +797,33 @@ def cross_validate(
     return avg_accuracy
 
 
-# positives, negatives = load_breast()
-# positives, negatives = load_pima()
-# positives, negatives = load_ionosphere()
-# positives, negatives = load_tictactoe()
-# cross_validate(positives, negatives, 10, lossless=False, test_both=True)
-# cross_validate(negatives, positives, 10, lossless=False, test_both=False)
+if __name__ == "__main__":
+    filename = sys.argv[1]
+    size = int(sys.argv[2])
+    minsup = int(sys.argv[3])
+    if len(sys.argv) > 4:
+        output_file = sys.argv[4]
+    else:
+        output_file = None
 
-# positives, negatives = load_chess(switch_signs=True)
-# positives, negatives = load_mushroom()
-# cross_validate(positives, negatives, 10, "./Output/adult", lossless=False)
-# cross_validate(positives, negatives, 10, "./Output/mushroom", lossless=False)
-# cross_validate(positives, negatives, 10, lossless=False, test_both=False)
-
-# positives, negatives = load_tictactoe()
-# cross_validate(
-#     positives, negatives, num_folds=10, test_both=True, minsup=2, dl_measure="ce"
-# )
-# positives, negatives = load_ionosphere()
-# cross_validate(
-#     positives, negatives, num_folds=10, test_both=True, minsup=40, dl_measure="ce"
-# )
-# positives, negatives = load_breast()
-# cross_validate(
-#     positives, negatives, num_folds=10, test_both=True, minsup=2, dl_measure="ce"
-# )
-# positives, negatives = load_pima()
-# cross_validate(
-#     positives, negatives, num_folds=10, test_both=True, minsup=2, dl_measure="ce"
-# )
-positives, negatives = load_chess()
-cross_validate(
-    positives, negatives, num_folds=10, test_both=True, minsup=1800, dl_measure="ce"
-)
-# cross_validate(negatives, positives, num_folds=10, lossless=False, test_both=False)
-# cross_validate(positives, negatives, num_folds=10, lossless=False, test_both=True)
-# positives, negatives = load_adult()
-# cross_validate(positives, negatives, num_folds=10, lossless=False, test_both=True)
-# positives, negatives = load_mushroom()
-# cross_validate(positives, negatives, 10, lossless=False, test_both=True)
-
-positives, negatives = load_dataset(
-    "wff.3.100.150_100_100_0.2_data.dat",
-    200,
-    list(range(1, 100)),
-    ["101", "102"],
-    negation=False,
-    load_top_k=None,
-    switch_signs=False,
-    num_vars=100,
-    load_tqdm=True,
-)
-cross_validate(
-    positives, negatives, num_folds=10, test_both=True, minsup=30, dl_measure="ce"
-)
+    positives, negatives = load_dataset(
+        filename,
+        2 * size,
+        list(range(1, size + 1)),
+        [str(size + 1), str(size + 2)],
+        negation=False,
+        load_top_k=None,
+        switch_signs=False,
+        num_vars=100,
+        load_tqdm=True,
+        raw_data=True,
+    )
+    cross_validate(
+        positives,
+        negatives,
+        num_folds=10,
+        output_file="wff_3_100_150_100_100_20_data",
+        test_both=True,
+        minsup=minsup,
+        dl_measure="ce",
+    )

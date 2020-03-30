@@ -9,6 +9,8 @@ import logging
 import shutil
 import uuid
 import os
+import sys
+import pickle
 
 
 class Krimp:
@@ -294,14 +296,33 @@ def get_item_dictionary(analysis_result_path):
 
 
 if __name__ == "__main__":
-    db_name = "wff_3_100_150_100_100_20_data"
+    db_name = sys.argv[1]
+    db_suffix = sys.argv[2]
+    min_support = int(sys.argv[2])
+    output_pickl = sys.argv[3]
+
+    # db_name = "wff_3_100_150_100_100_20_data"
     # db_name = "ticTacToe"
-    min_support = 30
-    db_file = "/home/dtai/PycharmProjects/Mistle/Data/" + db_name + ".dat"
+    # db_suffix = "0_test_pos"
+    # min_support = 50
+    # db_file = "/home/dtai/PycharmProjects/Mistle/Data/" + db_name + ".dat"
+    db_file = (
+        "/home/dtai/PycharmProjects/Mistle/Output/"
+        + db_name
+        + "/"
+        + db_name
+        + "_"
+        + db_suffix
+        + ".dat"
+    )
     krimp_exec_path = "/home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp"
     output_dir = "/home/dtai/PycharmProjects/Mistle/Output/"
     test_krimp = Krimp(krimp_exec_path)
     code_table = test_krimp.compute_code_table(
         db_file, output_dir, min_support=min_support, convert_db=True
     )
-    print(code_table)
+
+    with open(output_dir + output_pickl, "wb") as f:
+        pickle.dump(code_table, f)
+
+    # print(code_table)

@@ -3,6 +3,7 @@ from copy import copy
 from pycosat import solve
 from time import time
 import math
+import sys
 from collections import Counter
 from pattern_mining import compute_itemsets
 
@@ -175,6 +176,7 @@ def load_dataset(
     num_vars=0,
     load_tqdm=True,
     print_stats=False,
+    raw_data=False,
 ):
     global new_var_counter
     new_var_counter = num_vars + 1
@@ -197,13 +199,16 @@ def load_dataset(
     neg_freq = 0
     for line in f:
         row = str(line).replace("\n", "").strip().split(" ")
-        partial_assignment = set()
-        for i, j in enumerate(var_range):
-            if str(j) in row[:-1]:
-                partial_assignment.add(i + 1)
-            elif negation:
-                # Using closed world assumption to register absent variables as if they are false.
-                partial_assignment.add(-(i + 1))
+        if raw_data:
+            partial_assignment = [int(literal) for literal in row[:-1]]
+        else:
+            partial_assignment = set()
+            for i, j in enumerate(var_range):
+                if str(j) in row[:-1]:
+                    partial_assignment.add(i + 1)
+                elif negation:
+                    # Using closed world assumption to register absent variables as if they are false.
+                    partial_assignment.add(-(i + 1))
 
         if (not switch_signs and row[-1] == target_class[0]) or (
             switch_signs and row[-1] == target_class[1]
@@ -612,6 +617,13 @@ class Mistle:
         compression = (self.initial_dl - final_dl) / float(self.initial_dl)
         print("Initial DL\t\t\t\t: " + str(self.initial_dl))
         print("Final DL\t\t\t\t: " + str(final_dl))
+        print(
+            "Compression (wrt "
+            + str(self.theory.dl_measure)
+            + ")\t: "
+            + str(compression)
+        )
+        print("Operator Counters\t\t: " + str(self.theory.operator_counter))
 
         return self.theory, compression
 
@@ -973,25 +985,27 @@ class Theory:
 
 
 if __name__ == "__main__":
-    # positives, negatives = load_test()
+    filename = sys.argv[1]
+    size = int(sys.argv[2])
+    minsup = int(sys.argv[3])
+    output_file = sys.argv[4]
     positives, negatives = load_dataset(
-        "wff.3.100.150_100_100_0.2_data.dat",
-        200,
-        list(range(1, 100)),
-        ["101", "102"],
+        filename,
+        2 * size,
+        list(range(1, size + 1)),
+        [str(size + 1), str(size + 2)],
         negation=False,
         load_top_k=None,
         switch_signs=False,
         num_vars=100,
         load_tqdm=True,
+        raw_data=True,
     )
     start_time = time()
     mistle = Mistle(positives, negatives)
-    theory, compression = mistle.learn(minsup=30, dl_measure="ce")
+    theory, compression = mistle.learn(minsup=minsup, dl_measure="ce")
     print("Total time\t\t\t\t: " + str(time() - start_time) + " seconds.")
     if theory is not None:
         print("Final Theory\t\t\t: " + str(theory.clauses))
-        print("Compression (wrt " + str(theory.dl_measure) + ")\t: " + str(compression))
-        print("Operator Counters\t\t: " + str(theory.operator_counter))
     else:
         print("Empty theory learned.")
