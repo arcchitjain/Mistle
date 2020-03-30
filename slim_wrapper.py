@@ -179,7 +179,7 @@ class Slim:
         Path(data_dir).joinpath("datasets").rmdir()
 
         # We get the latest directory created in the xps dir. This is not perfect but it should be fine. I did not find a way to get the directory name automatically
-        base_res_dir = os.path.join(config_fic_user["main"]["xpsdir"], "compress_ng")
+        base_res_dir = os.path.join(config_fic_user["main"]["xpsdir"], "compress")
         dirs = [
             os.path.join(base_res_dir, d)
             for d in os.listdir(base_res_dir)
@@ -293,8 +293,10 @@ def get_item_dictionary(analysis_result_path):
 if __name__ == "__main__":
     db_name = sys.argv[1]
     db_suffix = sys.argv[2]
-    min_support = int(sys.argv[2])
-    output_pickl = sys.argv[3]
+    min_support = int(sys.argv[3])
+    output_pickle = (
+        "slim_" + sys.argv[1] + "_" + sys.argv[2] + "_" + sys.argv[3] + ".pckl"
+    )
 
     # db_name = "wff_3_100_150_100_100_20_data"
     # db_name = "ticTacToe"
@@ -317,7 +319,7 @@ if __name__ == "__main__":
         db_file, output_dir, min_support=min_support, convert_db=True
     )
 
-    with open(output_dir + output_pickl, "wb") as f:
+    with open(output_dir + output_pickle, "wb") as f:
         pickle.dump(code_table, f)
 
-    # print(code_table)
+    print(code_table)
