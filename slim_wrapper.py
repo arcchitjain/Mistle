@@ -9,6 +9,8 @@ import logging
 import shutil
 import uuid
 import os
+import sys
+import pickle
 
 
 class Slim:
@@ -286,3 +288,36 @@ def get_item_dictionary(analysis_result_path):
             if "* Alphabet" in line:
                 alphabet_read = True
     return slim_alphabet
+
+
+if __name__ == "__main__":
+    db_name = sys.argv[1]
+    db_suffix = sys.argv[2]
+    min_support = int(sys.argv[2])
+    output_pickl = sys.argv[3]
+
+    # db_name = "wff_3_100_150_100_100_20_data"
+    # db_name = "ticTacToe"
+    # db_suffix = "0_test_pos"
+    # min_support = 50
+    # db_file = "/home/dtai/PycharmProjects/Mistle/Data/" + db_name + ".dat"
+    db_file = (
+        "/home/dtai/PycharmProjects/Mistle/Output/"
+        + db_name
+        + "/"
+        + db_name
+        + "_"
+        + db_suffix
+        + ".dat"
+    )
+    slim_exec_path = "/home/dtai/PycharmProjects/Mistle/Slim/bin/fic"
+    output_dir = "/home/dtai/PycharmProjects/Mistle/Output/"
+    test_slim = Slim(slim_exec_path)
+    code_table = test_slim.compute_code_table(
+        db_file, output_dir, min_support=min_support, convert_db=True
+    )
+
+    with open(output_dir + output_pickl, "wb") as f:
+        pickle.dump(code_table, f)
+
+    # print(code_table)
