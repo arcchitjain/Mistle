@@ -615,7 +615,7 @@ def cross_validate(
                 train_negatives += split_negatives[i]
 
         if output_file is not None:
-            pbar = tqdm(total=2 * total_datapoints)
+            pbar = tqdm(total=total_datapoints)
             pbar.set_description("Outputting data")
 
             if not os.path.exists("./Output/" + output_file):
@@ -822,7 +822,7 @@ if __name__ == "__main__":
         positives,
         negatives,
         num_folds=10,
-        output_file="wff_3_100_150_100_100_20_data",
+        output_file=output_file,
         test_both=True,
         minsup=minsup,
         dl_measure="ce",
