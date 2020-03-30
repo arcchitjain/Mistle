@@ -347,72 +347,77 @@ class TheoryNoisyGeneratorOnDataset(TheoryNoisyGenerator):
 if __name__ == "__main__":
     # th = GeneratedTheory([[1, -5, 4], [-1, 5, 3, 4], [-3, -10]])
     cnf = []
-    filename = "wff.3.100.150.cnf"
+    filename = "wff_3_100_150.cnf"
     with open("./Data/" + filename, "r") as cnf_file:
         lines = cnf_file.readlines()
         for line in lines[2:]:
             line = line.strip()
             cnf.append([int(number) for number in line.split(" ")[:-1]])
-    # print(cnf)
+
     th = GeneratedTheory(cnf)
-    gen = TheoryNoisyGeneratorOnExample(th, 500, 500, 0.4)
-    pos, neg = gen.generate_dataset(use_all_examples=False)
-    # print(pos)
-    # print(neg)
+    input_params = []
+    input_params.append((100, 100, 0.2))
+    input_params.append((100, 100, 0.4))
+    input_params.append((100, 100, 0.6))
+    input_params.append((100, 100, 0.8))
+    input_params.append((500, 500, 0.2))
+    input_params.append((500, 500, 0.4))
+    input_params.append((1000, 1000, 0.2))
+    input_params.append((1000, 1000, 0.4))
 
-    with open(
-        "./Data/"
-        + filename.split(".cnf")[0]
-        + "_"
-        + str(gen.nb_positives)
-        + "_"
-        + str(gen.nb_negatives)
-        + "_"
-        + str(gen.noise)
-        + "_ex.dat",
-        "w+",
-    ) as out_file:
-        for p in pos:
-            l = list(p)
-            abs_l = [abs(i) for i in l]
-            p = [str(x) for _, x in sorted(zip(abs_l, l))]
+    for nb_positives, nb_negatives, noise in input_params:
+        gen = TheoryNoisyGeneratorOnExample(th, nb_positives, nb_negatives, noise)
+        pos, neg = gen.generate_dataset(use_all_examples=False)
 
-            out_file.write(" ".join(p) + " " + str(th.nb_literals + 1) + "\n")
-        for n in neg:
-            l = list(n)
-            abs_l = [abs(i) for i in l]
-            n = [str(x) for _, x in sorted(zip(abs_l, l))]
+        with open(
+            "./Data/"
+            + filename.split(".cnf")[0]
+            + "_"
+            + str(gen.nb_positives)
+            + "_"
+            + str(gen.nb_negatives)
+            + "_"
+            + str(int(gen.noise * 100))
+            + "_ex.dat",
+            "w+",
+        ) as out_file:
+            for p in pos:
+                l = list(p)
+                abs_l = [abs(i) for i in l]
+                p = [str(x) for _, x in sorted(zip(abs_l, l))]
 
-            out_file.write(" ".join(n) + " " + str(th.nb_literals + 2) + "\n")
+                out_file.write(" ".join(p) + " " + str(th.nb_literals + 1) + "\n")
+            for n in neg:
+                l = list(n)
+                abs_l = [abs(i) for i in l]
+                n = [str(x) for _, x in sorted(zip(abs_l, l))]
 
-    gen2 = TheoryNoisyGeneratorOnDataset(th, 500, 500, 0.4)
-    pos2, neg2 = gen2.generate_dataset(use_all_examples=False)
-    # print(pos2)
-    # print(neg2)
+                out_file.write(" ".join(n) + " " + str(th.nb_literals + 2) + "\n")
 
-    with open(
-        "./Data/"
-        + filename.split(".cnf")[0]
-        + "_"
-        + str(gen2.nb_positives)
-        + "_"
-        + str(gen2.nb_negatives)
-        + "_"
-        + str(gen2.noise)
-        + "_data.dat",
-        "w+",
-    ) as out_file:
-        for p in pos:
-            l = list(p)
-            abs_l = [abs(i) for i in l]
-            p = [str(x) for _, x in sorted(zip(abs_l, l))]
+        gen2 = TheoryNoisyGeneratorOnDataset(th, nb_positives, nb_negatives, noise)
+        pos2, neg2 = gen2.generate_dataset(use_all_examples=False)
 
-            out_file.write(" ".join(p) + " " + str(th.nb_literals + 1) + "\n")
-        for n in neg:
-            l = list(n)
-            abs_l = [abs(i) for i in l]
-            n = [str(x) for _, x in sorted(zip(abs_l, l))]
+        with open(
+            "./Data/"
+            + filename.split(".cnf")[0]
+            + "_"
+            + str(gen2.nb_positives)
+            + "_"
+            + str(gen2.nb_negatives)
+            + "_"
+            + str(int(gen2.noise * 100))
+            + "_data.dat",
+            "w+",
+        ) as out_file:
+            for p in pos:
+                l = list(p)
+                abs_l = [abs(i) for i in l]
+                p = [str(x) for _, x in sorted(zip(abs_l, l))]
 
-            out_file.write(" ".join(n) + " " + str(th.nb_literals + 2) + "\n")
+                out_file.write(" ".join(p) + " " + str(th.nb_literals + 1) + "\n")
+            for n in neg:
+                l = list(n)
+                abs_l = [abs(i) for i in l]
+                n = [str(x) for _, x in sorted(zip(abs_l, l))]
 
-    a = 1
+                out_file.write(" ".join(n) + " " + str(th.nb_literals + 2) + "\n")

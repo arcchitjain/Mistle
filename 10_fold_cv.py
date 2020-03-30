@@ -668,7 +668,11 @@ def cross_validate(
             else:
                 default_prediction = "-"
 
-            fold_accuracy, coverage, fold_confusions = test_both_theories_by_satisfiability(
+            (
+                fold_accuracy,
+                coverage,
+                fold_confusions,
+            ) = test_both_theories_by_satisfiability(
                 pos_theory,
                 neg_theory,
                 test_positives,

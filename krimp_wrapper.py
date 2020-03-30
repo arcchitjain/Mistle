@@ -294,8 +294,9 @@ def get_item_dictionary(analysis_result_path):
 
 
 if __name__ == "__main__":
-    db_name = "ticTacToe"
-    min_support = 99
+    db_name = "wff_3_100_150_100_100_20_data"
+    # db_name = "ticTacToe"
+    min_support = 30
     db_file = "/home/dtai/PycharmProjects/Mistle/Data/" + db_name + ".dat"
     krimp_exec_path = "/home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp"
     output_dir = "/home/dtai/PycharmProjects/Mistle/Output/"
