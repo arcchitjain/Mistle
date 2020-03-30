@@ -355,7 +355,7 @@ if __name__ == "__main__":
             cnf.append([int(number) for number in line.split(" ")[:-1]])
     # print(cnf)
     th = GeneratedTheory(cnf)
-    gen = TheoryNoisyGeneratorOnExample(th, 100, 100, 0.2)
+    gen = TheoryNoisyGeneratorOnExample(th, 500, 500, 0.4)
     pos, neg = gen.generate_dataset(use_all_examples=False)
     # print(pos)
     # print(neg)
@@ -385,7 +385,7 @@ if __name__ == "__main__":
 
             out_file.write(" ".join(n) + " " + str(th.nb_literals + 2) + "\n")
 
-    gen2 = TheoryNoisyGeneratorOnDataset(th, 100, 100, 0.2)
+    gen2 = TheoryNoisyGeneratorOnDataset(th, 500, 500, 0.4)
     pos2, neg2 = gen2.generate_dataset(use_all_examples=False)
     # print(pos2)
     # print(neg2)
