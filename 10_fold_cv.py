@@ -788,3 +788,18 @@ cross_validate(
 # cross_validate(positives, negatives, num_folds=10, lossless=False, test_both=True)
 # positives, negatives = load_mushroom()
 # cross_validate(positives, negatives, 10, lossless=False, test_both=True)
+
+positives, negatives = load_dataset(
+    "wff.3.100.150_100_100_0.2_data.dat",
+    200,
+    list(range(1, 100)),
+    ["101", "102"],
+    negation=False,
+    load_top_k=None,
+    switch_signs=False,
+    num_vars=100,
+    load_tqdm=True,
+)
+cross_validate(
+    positives, negatives, num_folds=10, test_both=True, minsup=30, dl_measure="ce"
+)

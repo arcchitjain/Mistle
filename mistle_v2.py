@@ -648,29 +648,29 @@ class Theory:
         self.minsup = minsup
 
         start_time1 = time()
-        eclat = Eclat(minsup=minsup)
-        freq_items1 = eclat.get_Frequent_Itemsets(self.clauses)
+        freq_items1 = compute_itemsets(self.clauses, minsup / len(self.clauses), "LCM")
         total_time1 = time() - start_time1
         print("Length of freq items 1\t: " + str(len(freq_items1)))
         print("Time of freq items 1\t: " + str(total_time1))
 
         start_time2 = time()
-        freq_items2 = compute_itemsets(self.clauses, minsup / len(self.clauses), "LCM")
+        eclat = Eclat(minsup=minsup)
+        freq_items2 = eclat.get_Frequent_Itemsets(self.clauses)
         total_time2 = time() - start_time2
         print("Length of freq items 2\t: " + str(len(freq_items2)))
         print("Time of freq items 2\t: " + str(total_time2))
 
-        assert len(freq_items1) >= len(freq_items2)
+        assert len(freq_items2) >= len(freq_items1)
 
-        if len(freq_items1) == len(freq_items2):
-            self.freq_items = list(freq_items1.items())
+        if len(freq_items2) == len(freq_items1):
+            self.freq_items = list(freq_items2.items())
         else:
-            for i, (itemset, frequency) in enumerate(freq_items2):
+            for i, (itemset, frequency) in enumerate(freq_items1):
                 item = frozenset(itemset)
-                if item not in freq_items1:
+                if item not in freq_items2:
                     print("Itemset not found\t: " + str(item))
                 else:
-                    self.freq_items.append((item, freq_items1[item]))
+                    self.freq_items.append((item, freq_items2[item]))
 
         self.freq_items.sort(
             key=lambda item: (
@@ -973,10 +973,21 @@ class Theory:
 
 
 if __name__ == "__main__":
-    positives, negatives = load_test()
+    # positives, negatives = load_test()
+    positives, negatives = load_dataset(
+        "wff.3.100.150_100_100_0.2_data.dat",
+        200,
+        list(range(1, 100)),
+        ["101", "102"],
+        negation=False,
+        load_top_k=None,
+        switch_signs=False,
+        num_vars=100,
+        load_tqdm=True,
+    )
     start_time = time()
     mistle = Mistle(positives, negatives)
-    theory, compression = mistle.learn(minsup=2, dl_measure="ce")
+    theory, compression = mistle.learn(minsup=30, dl_measure="ce")
     print("Total time\t\t\t\t: " + str(time() - start_time) + " seconds.")
     if theory is not None:
         print("Final Theory\t\t\t: " + str(theory.clauses))
