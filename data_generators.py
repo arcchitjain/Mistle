@@ -3,6 +3,8 @@ import pycosat
 import numpy as np
 from sympy.core import Symbol
 from sympy.logic.boolalg import And, Or, Not, to_cnf
+import random
+from copy import copy
 
 
 class GeneratedTheory:
@@ -36,14 +38,20 @@ class GeneratedTheory:
             sympy_or_clauses = []
             for l in c:
                 if l > 0:
-                    sympy_or_clauses.append(Symbol("cnf_%s" % l))
+                    # sympy_or_clauses.append(Symbol("cnf_%s" % l))
+                    sympy_or_clauses.append(~Symbol("cnf_%s" % l))
                 else:
-                    sympy_or_clauses.append(~Symbol("cnf_%s" % abs(l)))
-            sympy_and_clauses.append(Or(*sympy_or_clauses))
-        sympy_cnf = And(*sympy_and_clauses)
-        negated_cnf = to_cnf(~sympy_cnf, True)
-
+                    # sympy_or_clauses.append(~Symbol("cnf_%s" % abs(l)))
+                    sympy_or_clauses.append(Symbol("cnf_%s" % abs(l)))
+            # sympy_and_clauses.append(Or(*sympy_or_clauses))
+            sympy_and_clauses.append(And(*sympy_or_clauses))
+        # sympy_cnf = And(*sympy_and_clauses)
+        sympy_cnf = Or(*sympy_and_clauses)
+        # negated_cnf = to_cnf(~sympy_cnf, True)
+        negated_cnf = to_cnf(sympy_cnf, True)
+        negated_cnf1 = to_cnf(sympy_cnf, False)
         negated_cnf_dimacs = []
+
         if isinstance(negated_cnf, And):
             for clause in negated_cnf.args:
                 or_literals = []
@@ -66,9 +74,9 @@ class GeneratedTheory:
                 or_literals.append(TheoryNoisyGenerator.get_dimacs_repr(negated_cnf))
             negated_cnf_dimacs.append(or_literals)
 
-            # negated_cnf_dimacs.append(
-            #     [TheoryNoisyGenerator.get_dimacs_repr(negated_cnf)]
-            # )
+        # negated_cnf_dimacs.append(
+        #     [TheoryNoisyGenerator.get_dimacs_repr(negated_cnf)]
+        # )
         return GeneratedTheory(negated_cnf_dimacs)
 
 
@@ -154,11 +162,33 @@ class TheoryNoisyGenerator(DataGenerator):
             # We use the first nb_positive and nb_negative solutions in pycosat
             for sol in pycosat.itersolve(self.theory.clauses):
                 positive.append(sol)
-                if len(positive) == self.nb_positives:
+                if len(positive) == 10 * self.nb_positives:
                     break
 
-            for sol in pycosat.itersolve(self.theory.get_negated_theory().clauses):
-                negative.append(sol)
+            positive = random.sample(positive, self.nb_positives)
+
+            # for sol in pycosat.itersolve(self.theory.get_negated_theory().clauses):
+            #     negative.append(sol)
+            #     if len(negative) == self.nb_negatives:
+            #         break
+
+            negative = []
+            while True:
+                clauses = copy(self.theory.clauses)
+                neg = []
+                for i in range(1, self.theory.nb_literals + 1):
+                    # for i, j in enumerate(random.getrandbits(self.theory.nb_literals)):
+                    #     if bool(j) is True:
+                    if random.random() < 0.5:
+                        clauses.append([i])
+                        neg.append(i)
+                    else:
+                        clauses.append([-i])
+                        neg.append(-i)
+
+                if pycosat.solve(clauses) == "UNSAT":
+                    negative.append(neg)
+
                 if len(negative) == self.nb_negatives:
                     break
 
@@ -315,13 +345,74 @@ class TheoryNoisyGeneratorOnDataset(TheoryNoisyGenerator):
 
 
 if __name__ == "__main__":
-    th = GeneratedTheory([[1, -5, 4], [-1, 5, 3, 4], [-3, -10]])
-    gen = TheoryNoisyGeneratorOnExample(th, 10, 10, 0.2)
-    pos, neg = gen.generate_dataset()
-    print(pos)
-    print(neg)
+    # th = GeneratedTheory([[1, -5, 4], [-1, 5, 3, 4], [-3, -10]])
+    cnf = []
+    filename = "wff.3.100.150.cnf"
+    with open("./Data/" + filename, "r") as cnf_file:
+        lines = cnf_file.readlines()
+        for line in lines[2:]:
+            line = line.strip()
+            cnf.append([int(number) for number in line.split(" ")[:-1]])
+    # print(cnf)
+    th = GeneratedTheory(cnf)
+    gen = TheoryNoisyGeneratorOnExample(th, 100, 100, 0.2)
+    pos, neg = gen.generate_dataset(use_all_examples=False)
+    # print(pos)
+    # print(neg)
 
-    gen2 = TheoryNoisyGeneratorOnDataset(th, 10, 10, 0.2)
-    pos2, neg2 = gen2.generate_dataset()
-    print(pos2)
-    print(neg2)
+    with open(
+        "./Data/"
+        + filename.split(".cnf")[0]
+        + "_"
+        + str(gen.nb_positives)
+        + "_"
+        + str(gen.nb_negatives)
+        + "_"
+        + str(gen.noise)
+        + "_ex.dat",
+        "w+",
+    ) as out_file:
+        for p in pos:
+            l = list(p)
+            abs_l = [abs(i) for i in l]
+            p = [str(x) for _, x in sorted(zip(abs_l, l))]
+
+            out_file.write(" ".join(p) + " " + str(th.nb_literals + 1) + "\n")
+        for n in neg:
+            l = list(n)
+            abs_l = [abs(i) for i in l]
+            n = [str(x) for _, x in sorted(zip(abs_l, l))]
+
+            out_file.write(" ".join(n) + " " + str(th.nb_literals + 2) + "\n")
+
+    gen2 = TheoryNoisyGeneratorOnDataset(th, 100, 100, 0.2)
+    pos2, neg2 = gen2.generate_dataset(use_all_examples=False)
+    # print(pos2)
+    # print(neg2)
+
+    with open(
+        "./Data/"
+        + filename.split(".cnf")[0]
+        + "_"
+        + str(gen2.nb_positives)
+        + "_"
+        + str(gen2.nb_negatives)
+        + "_"
+        + str(gen2.noise)
+        + "_data.dat",
+        "w+",
+    ) as out_file:
+        for p in pos:
+            l = list(p)
+            abs_l = [abs(i) for i in l]
+            p = [str(x) for _, x in sorted(zip(abs_l, l))]
+
+            out_file.write(" ".join(p) + " " + str(th.nb_literals + 1) + "\n")
+        for n in neg:
+            l = list(n)
+            abs_l = [abs(i) for i in l]
+            n = [str(x) for _, x in sorted(zip(abs_l, l))]
+
+            out_file.write(" ".join(n) + " " + str(th.nb_literals + 2) + "\n")
+
+    a = 1

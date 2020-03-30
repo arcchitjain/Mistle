@@ -83,9 +83,7 @@ if __name__ == "__main__":
     # The part where
     support = 0.1
     frequent_patterns = compute_itemsets(pos, support, "Eclat")
-
     closed_patterns = compute_itemsets(pos, support, "LCM")  # default one
-
     maximal_patterns = compute_itemsets(pos, support, "FPMax")
 
     print("Number of frequent itemsets: {}\n".format(len(frequent_patterns)))
