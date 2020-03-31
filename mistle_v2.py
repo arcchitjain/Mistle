@@ -988,7 +988,7 @@ if __name__ == "__main__":
     filename = sys.argv[1]
     size = int(sys.argv[2])
     minsup = int(sys.argv[3])
-    output_file = sys.argv[4]
+
     positives, negatives = load_dataset(
         filename,
         2 * size,
