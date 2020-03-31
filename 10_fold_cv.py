@@ -579,7 +579,7 @@ def cross_validate(
     num_folds=10,
     output_file=None,
     test_both=False,
-    minsup=10,
+    minsup=(25, 50),
     dl_measure="se",
 ):
     start_time = time()
@@ -691,12 +691,12 @@ def cross_validate(
         if test_both:
             pos_mistle = Mistle(train_negatives, train_positives)
             pos_theory, pos_compression = pos_mistle.learn(
-                minsup=minsup, dl_measure=dl_measure
+                minsup=minsup[0], dl_measure=dl_measure
             )
 
             neg_mistle = Mistle(train_positives, train_negatives)
             neg_theory, neg_compression = neg_mistle.learn(
-                minsup=minsup, dl_measure=dl_measure
+                minsup=minsup[1], dl_measure=dl_measure
             )
 
             # fold_accuracy, coverage, fold_confusions = test_both_theories_by_compression(
@@ -738,7 +738,7 @@ def cross_validate(
 
         else:
             mistle = Mistle(train_positives, train_negatives)
-            theory, compression = mistle.learn(minsup=minsup, dl_measure=dl_measure)
+            theory, compression = mistle.learn(minsup=minsup[0], dl_measure=dl_measure)
 
             fold_accuracy, coverage, fold_confusions = test_theory(
                 theory, test_positives, test_negatives
@@ -799,18 +799,20 @@ def cross_validate(
 
 if __name__ == "__main__":
     filename = sys.argv[1]
-    size = int(sys.argv[2])
-    minsup = int(sys.argv[3])
-    if len(sys.argv) > 4:
-        output_file = sys.argv[4]
+    nb_rows = int(sys.argv[2])
+    nb_vars = int(sys.argv[3])
+    pos_minsup = int(sys.argv[4])
+    neg_minsup = int(sys.argv[5])
+    if len(sys.argv) > 6:
+        output_file = sys.argv[6]
     else:
         output_file = None
 
     positives, negatives = load_dataset(
         filename,
-        2 * size,
-        list(range(1, size + 1)),
-        [str(size + 1), str(size + 2)],
+        nb_rows,
+        list(range(1, nb_vars + 1)),
+        [str(nb_vars + 1), str(nb_vars + 2)],
         negation=False,
         load_top_k=None,
         switch_signs=False,
@@ -824,6 +826,6 @@ if __name__ == "__main__":
         num_folds=10,
         output_file=output_file,
         test_both=True,
-        minsup=minsup,
+        minsup=(pos_minsup, neg_minsup),
         dl_measure="ce",
     )

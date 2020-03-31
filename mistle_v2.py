@@ -986,14 +986,15 @@ class Theory:
 
 if __name__ == "__main__":
     filename = sys.argv[1]
-    size = int(sys.argv[2])
-    minsup = int(sys.argv[3])
+    nb_rows = int(sys.argv[2])
+    nb_vars = int(sys.argv[3])
+    minsup = int(sys.argv[4])
 
     positives, negatives = load_dataset(
         filename,
-        2 * size,
-        list(range(1, size + 1)),
-        [str(size + 1), str(size + 2)],
+        nb_rows,
+        list(range(1, nb_vars + 1)),
+        [str(nb_vars + 1), str(nb_vars + 2)],
         negation=False,
         load_top_k=None,
         switch_signs=False,
@@ -1006,6 +1007,6 @@ if __name__ == "__main__":
     theory, compression = mistle.learn(minsup=minsup, dl_measure="ce")
     print("Total time\t\t\t\t: " + str(time() - start_time) + " seconds.")
     if theory is not None:
-        print("Final Theory\t\t\t: " + str(theory.clauses))
+        print("Final theory has " + str(len(theory.clauses)) + " clauses.")
     else:
         print("Empty theory learned.")
