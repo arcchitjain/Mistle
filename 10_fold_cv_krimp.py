@@ -1,8 +1,7 @@
 from mistle_v2 import *
-import pickle
-from tqdm import tqdm
-from collections import OrderedDict
 from collections import defaultdict
+from krimp_wrapper import Krimp
+from slim_wrapper import Slim
 
 
 def compress(pa, definitions):
@@ -21,6 +20,56 @@ def compress(pa, definitions):
             new_var_count += 1
 
     return compressed_pa
+
+
+def run_krimp(db_name, min_support, db_suffix=None):
+    if db_suffix is None:
+        db_file = "/home/dtai/PycharmProjects/Mistle/Data/" + db_name + ".dat"
+    else:
+        db_file = (
+            "/home/dtai/PycharmProjects/Mistle/Output/"
+            + db_name
+            + "/"
+            + db_name
+            + "_"
+            + db_suffix
+            + ".dat"
+        )
+
+    krimp_exec_path = "/home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp"
+    output_dir = "/home/dtai/PycharmProjects/Mistle/Output/"
+    test_krimp = Krimp(krimp_exec_path)
+    code_table = test_krimp.compute_code_table(
+        db_file, output_dir, min_support=min_support, convert_db=True
+    )
+
+    # print(code_table)
+    return code_table
+
+
+def run_slim(db_name, min_support, db_suffix=None):
+    if db_suffix is None:
+        db_file = "/home/dtai/PycharmProjects/Mistle/Data/" + db_name + ".dat"
+    else:
+        db_file = (
+            "/home/dtai/PycharmProjects/Mistle/Output/"
+            + db_name
+            + "/"
+            + db_name
+            + "_"
+            + db_suffix
+            + ".dat"
+        )
+
+    slim_exec_path = "/home/dtai/PycharmProjects/Mistle/Slim/bin/fic"
+    output_dir = "/home/dtai/PycharmProjects/Mistle/Output/"
+    test_slim = Slim(slim_exec_path)
+    code_table = test_slim.compute_code_table(
+        db_file, output_dir, min_support=min_support, convert_db=True
+    )
+
+    # print(code_table)
+    return code_table
 
 
 def test_both_theories_by_compression(
@@ -129,42 +178,20 @@ def test_both_theories_by_compression(
     )
 
 
-def cross_validate(
-    filename, num_folds=10, minsup=50, system="krimp",
-):
+def cross_validate(filename, num_folds=10, minsup=(25, 50), system="krimp"):
     start_time = time()
     avg_accuracy = 0.0
     confusions = defaultdict(int)
 
     for fold in range(num_folds):
-        pos_def = pickle.load(
-            open(
-                "./Output/"
-                + system
-                + "_"
-                + filename
-                + "_"
-                + str(fold)
-                + "_train_pos_"
-                + str(minsup)
-                + ".pckl",
-                "rb",
-            )
-        )
-        neg_def = pickle.load(
-            open(
-                "./Output/"
-                + system
-                + "_"
-                + filename
-                + "_"
-                + str(fold)
-                + "_train_neg_"
-                + str(minsup)
-                + ".pckl",
-                "rb",
-            )
-        )
+        pos_def = None
+        neg_def = None
+        if system == "krimp":
+            pos_def = run_krimp(filename, minsup[0], str(fold) + "_train_pos")
+            neg_def = run_krimp(filename, minsup[1], str(fold) + "_train_neg")
+        elif system == "slim":
+            pos_def = run_slim(filename, minsup[0], str(fold) + "_train_pos")
+            neg_def = run_slim(filename, minsup[1], str(fold) + "_train_neg")
 
         with open(
             "./Output/"
@@ -217,8 +244,8 @@ def cross_validate(
                 line = line.strip().split(" ")
                 test_negatives.append([int(item) for item in line])
 
-        (fold_accuracy, fold_confusions,) = test_both_theories_by_compression(
-            pos_def, neg_def, test_positives, test_negatives, default_prediction,
+        (fold_accuracy, fold_confusions) = test_both_theories_by_compression(
+            pos_def, neg_def, test_positives, test_negatives, default_prediction
         )
 
         print("Accuracy of fold " + str(fold) + "\t: " + str(fold_accuracy))
@@ -260,9 +287,10 @@ def cross_validate(
 
 if __name__ == "__main__":
     filename = sys.argv[1]
-    minsup = int(sys.argv[2])
-    system = sys.argv[3]
+    pos_minsup = int(sys.argv[2])
+    neg_minsup = int(sys.argv[3])
+    system = sys.argv[4]
 
     cross_validate(
-        filename, num_folds=10, minsup=minsup, system=system,
+        filename, num_folds=10, minsup=(pos_minsup, neg_minsup), system=system
     )
