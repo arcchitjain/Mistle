@@ -122,6 +122,7 @@ class Slim:
             config_convert_db_path = str(uuid.uuid4()) + "_convertdb.conf"
             save_config(config_convert_db, config_convert_db_path)
 
+            print("Running\t: " + self.slim_exec_path + "\t" + config_convert_db_path)
             subprocess.run([self.slim_exec_path, config_convert_db_path])
             os.remove(config_convert_db_path)
             database_path = Path(database_path).with_suffix(
@@ -146,6 +147,7 @@ class Slim:
         config_analysedb_path = str(uuid.uuid4()) + "_analysedb.conf"
         save_config(analysedb_db, config_analysedb_path)
 
+        print("Running\t: " + self.slim_exec_path + "\t" + config_analysedb_path)
         subprocess.run([self.slim_exec_path, config_analysedb_path])
         # Clean up
         os.remove(config_analysedb_path)
@@ -172,14 +174,15 @@ class Slim:
         config_compress_path = str(uuid.uuid4()) + "_compress.conf"
         save_config(compress_db, config_compress_path)
 
+        print("Running\t: " + self.slim_exec_path + "\t" + config_compress_path)
         subprocess.run([self.slim_exec_path, config_compress_path])
         os.remove(config_compress_path)
-        Path(data_dir).joinpath("candidates").rmdir()
-        Path(data_dir).joinpath("codetables").rmdir()
-        Path(data_dir).joinpath("datasets").rmdir()
+        # Path(data_dir).joinpath("candidates").rmdir()
+        # Path(data_dir).joinpath("codetables").rmdir()
+        # Path(data_dir).joinpath("datasets").rmdir()
 
         # We get the latest directory created in the xps dir. This is not perfect but it should be fine. I did not find a way to get the directory name automatically
-        base_res_dir = os.path.join(config_fic_user["main"]["xpsdir"], "compress")
+        base_res_dir = os.path.join(config_fic_user["main"]["xpsdir"], "compress_ng")
         dirs = [
             os.path.join(base_res_dir, d)
             for d in os.listdir(base_res_dir)
@@ -326,7 +329,7 @@ if __name__ == "__main__":
         db_file, output_dir, min_support=min_support, convert_db=True
     )
 
-    with open(output_dir + output_pickle, "wb") as f:
+    with open(output_dir + output_pickle, "wb+") as f:
         pickle.dump(code_table, f)
 
     print(code_table)

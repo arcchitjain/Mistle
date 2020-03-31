@@ -179,9 +179,9 @@ class Krimp:
         print("Running\t: " + self.krimp_exec_path + "\t" + config_compress_path)
         subprocess.run([self.krimp_exec_path, config_compress_path])
         os.remove(config_compress_path)
-        Path(data_dir).joinpath("candidates").rmdir()
-        Path(data_dir).joinpath("codetables").rmdir()
-        Path(data_dir).joinpath("datasets").rmdir()
+        # Path(data_dir).joinpath("candidates").rmdir()
+        # Path(data_dir).joinpath("codetables").rmdir()
+        # Path(data_dir).joinpath("datasets").rmdir()
 
         # We get the latest directory created in the xps dir. This is not perfect but it should be fine. I did not find a way to get the directory name automatically
         base_res_dir = os.path.join(config_fic_user["main"]["xpsdir"], "compress")
@@ -331,7 +331,7 @@ if __name__ == "__main__":
         db_file, output_dir, min_support=min_support, convert_db=True
     )
 
-    with open(output_dir + output_pickle, "wb") as f:
+    with open(output_dir + output_pickle, "wb+") as f:
         pickle.dump(code_table, f)
 
     print(code_table)
