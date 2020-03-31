@@ -409,13 +409,13 @@ if __name__ == "__main__":
             + "_data.dat",
             "w+",
         ) as out_file:
-            for p in pos:
+            for p in pos2:
                 l = list(p)
                 abs_l = [abs(i) for i in l]
                 p = [str(x) for _, x in sorted(zip(abs_l, l))]
 
                 out_file.write(" ".join(p) + " " + str(th.nb_literals + 1) + "\n")
-            for n in neg:
+            for n in neg2:
                 l = list(n)
                 abs_l = [abs(i) for i in l]
                 n = [str(x) for _, x in sorted(zip(abs_l, l))]

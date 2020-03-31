@@ -789,12 +789,12 @@ class Theory:
                 success = True
 
         if min_dl == self.dl:
-            print(
-                "Ignoring itemset\t: Initial DL = "
-                + str(self.dl)
-                + "\t; Possible DLs\t: "
-                + str(possible_entropies)
-            )
+            # print(
+            #     "Ignoring itemset\t: Initial DL = "
+            #     + str(self.dl)
+            #     + "\t; Possible DLs\t: "
+            #     + str(possible_entropies)
+            # )
             success = "ignore_itemset"
 
         if success is True:
