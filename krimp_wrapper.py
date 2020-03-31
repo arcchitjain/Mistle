@@ -297,26 +297,33 @@ def get_item_dictionary(analysis_result_path):
 
 if __name__ == "__main__":
     db_name = sys.argv[1]
-    db_suffix = sys.argv[2]
-    min_support = int(sys.argv[3])
-    output_pickle = (
-        "krimp_" + sys.argv[1] + "_" + sys.argv[2] + "_" + sys.argv[3] + ".pckl"
-    )
+    min_support = int(sys.argv[2])
+    if len(sys.argv) > 3:
+        db_suffix = sys.argv[3]
+        output_pickle = (
+            "krimp_" + sys.argv[1] + "_" + sys.argv[3] + "_" + sys.argv[2] + ".pckl"
+        )
+    else:
+        db_suffix = None
+        output_pickle = "krimp_" + sys.argv[1] + "_" + sys.argv[2] + ".pckl"
 
     # db_name = "wff_3_100_150_100_100_20_data"
     # db_name = "ticTacToe"
     # db_suffix = "0_test_pos"
     # min_support = 50
-    # db_file = "/home/dtai/PycharmProjects/Mistle/Data/" + db_name + ".dat"
-    db_file = (
-        "/home/dtai/PycharmProjects/Mistle/Output/"
-        + db_name
-        + "/"
-        + db_name
-        + "_"
-        + db_suffix
-        + ".dat"
-    )
+    if db_suffix == None:
+        db_file = "/home/dtai/PycharmProjects/Mistle/Data/" + db_name + ".dat"
+    else:
+        db_file = (
+            "/home/dtai/PycharmProjects/Mistle/Output/"
+            + db_name
+            + "/"
+            + db_name
+            + "_"
+            + db_suffix
+            + ".dat"
+        )
+
     krimp_exec_path = "/home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp"
     output_dir = "/home/dtai/PycharmProjects/Mistle/Output/"
     test_krimp = Krimp(krimp_exec_path)
