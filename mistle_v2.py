@@ -830,13 +830,11 @@ class Theory:
             decrement = 0
             replace_dict = {}
             for i in range(len(self.clauses)):
-                if i < buffer[0]:
-                    replace_dict[i] = i - decrement
-                elif i == buffer[0]:
+                if len(buffer) > 0 and i == buffer[0]:
                     del buffer[0]
                     decrement += 1
-                    if len(buffer) == 0:
-                        break
+                else:
+                    replace_dict[i] = i - decrement
 
             # print("Final Buffer\t: " + str(buffer))
             # print("Replace Dict\t: " + str(replace_dict))

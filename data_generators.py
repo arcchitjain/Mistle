@@ -6,6 +6,9 @@ from sympy.logic.boolalg import And, Or, Not, to_cnf
 import random
 from copy import copy
 
+np.random.seed(0)
+random.seed(0)
+
 
 class GeneratedTheory:
     def __init__(self, clauses):
