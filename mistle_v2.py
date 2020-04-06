@@ -954,20 +954,21 @@ class Theory:
                 v_output = []
                 for clause in residue:
                     if len(clause) == 1 and v_literal == next(iter(clause)):
-                        new_clause = set(subclause)
+                        new_clause = set(copy(subclause))
                         new_clause.add(v_literal)
                         v_output.append(frozenset(new_clause))
                     else:
-                        new_clause = set(clause)
-                        new_clause.add(-v_literal)
-                        v_output.append(frozenset(new_clause))
+                        new_clause = set(copy(clause))
+                        if v_literal not in new_clause:
+                            new_clause.add(-v_literal)
+                            v_output.append(frozenset(new_clause))
                 possible_operations.append(("V", v_output))
 
         # Consider W-operator
 
         # Use '#' as a special newly invented variable.
         # If/once W-operator is accepted for compression, it will be replaced by a self.new_var_counter()
-        new_clause = set(subclause)
+        new_clause = set(copy(subclause))
         new_clause.add("#")
         w_output = [new_clause]
         self.invented_predicate_definition["#"] = subclause
@@ -1008,3 +1009,27 @@ if __name__ == "__main__":
         print("Final theory has " + str(len(theory.clauses)) + " clauses.")
     else:
         print("Empty theory learned.")
+
+    # from data_generators import TheoryNoisyGeneratorOnDataset, GeneratedTheory
+    # import random
+    # import numpy as np
+    #
+    # seed = 0
+    # random.seed(seed)
+    # np.random.seed(seed)
+    #
+    # start_time = time()
+    #
+    # th = GeneratedTheory([[1, -4], [2, 5], [6, -7, -8]])
+    # generator = TheoryNoisyGeneratorOnDataset(th, 200, 200, 0.2)
+    # positives, negatives = generator.generate_dataset(use_all_examples=True)
+    #
+    # mistle = Mistle(positives, negatives)
+    # theory, compression = mistle.learn(minsup=1, dl_measure="ce")
+    # print("Total time\t\t\t\t: " + str(time() - start_time) + " seconds.")
+    # if theory is not None:
+    #     print("Final theory has " + str(len(theory.clauses)) + " clauses.")
+    # else:
+    #     print("Empty theory learned.")
+    #
+    # print([list(c) for c in theory.clauses])
