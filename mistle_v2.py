@@ -345,6 +345,23 @@ def load_tictactoe(negation=False, load_top_k=None, switch_signs=False, load_tqd
     )
 
 
+def print_1d(frozen_set):
+    l = list(frozen_set)
+    abs_l = [abs(i) for i in l]
+    print(np.array([x for _, x in sorted(zip(abs_l, l))]))
+
+
+def print_2d(matrix):
+    for row in matrix:
+        if isinstance(row, np.ndarray):
+            print(row)
+        elif isinstance(row, frozenset):
+            print_1d(row)
+        else:
+            print(row)
+    print()
+
+
 def check_pa_satisfiability(pa, clauses):
     if clauses is None or len(clauses) == 0:
         return None
@@ -574,8 +591,6 @@ class Mistle:
         self.positives = set(self.positives)
         self.negatives = set(self.negatives)
 
-        self.theory.new_var_counter = alphabet_size + 1
-
         # Remove inconsistent partial assignments (Those pas that are both classified as +ves and -ves) in the data
         inconsistent_pas = self.positives & self.negatives
         consistent_positives = self.positives - inconsistent_pas
@@ -584,7 +599,7 @@ class Mistle:
 
         # Convert the set of -ve PAs to a theory
         success = self.theory.intialize(
-            self.positives, self.negatives, minsup, dl_measure
+            self.positives, self.negatives, minsup, dl_measure, alphabet_size
         )
         if not success:
             # Return empty theory
@@ -594,19 +609,45 @@ class Mistle:
         self.total_negatives = len(self.negatives)
         self.theory.theory_length = self.total_negatives
 
+        prev_clauses = []
         while True:
-            success = self.theory.compress_theory()
-            if success == "ignore_itemset":
-                del self.theory.freq_items[0]
-            elif not success:
-                break
+            while True:
+                success = self.theory.compress_theory()
+                if success == "ignore_itemset":
+                    del self.theory.freq_items[0]
+                elif not success:
+                    break
+                if success is True:
+                    neg_violations = self.theory.get_violations(
+                        self.theory.clauses, self.negatives, True, "-"
+                    )
+                    assert len(neg_violations) == 0
 
-            # print(
-            #     "--------------------------Frequent Itemsets--------------------------\t:"
-            # )
-            # for item, clause_ids in self.theory.freq_items:
-            #     print(" {}\t: {}".format(list(item), clause_ids))
-            # print("\n")
+            # Unpack W operator if one of its non-definition clauses got truncated and the application is no longer useful.
+            self.theory.unpack_theory()
+
+            if self.theory.clauses == prev_clauses:
+                break
+            else:
+                prev_clauses = self.theory.clauses
+
+            self.theory.freq_items = self.theory.get_frequent_itemsets(
+                self.theory.clauses, minsup=1
+            )
+
+        # print(
+        #     "--------------------------Frequent Itemsets--------------------------\t:"
+        # )
+        # for item, clause_ids in self.theory.freq_items:
+        #     print(" {}\t: {}".format(list(item), clause_ids))
+        # print("\n")
+
+        # print("Theory before pruning\t:")
+        # print_2d(self.theory.clauses)
+        nb_pruned = self.theory.prune_theory()
+        # if nb_pruned != 0:
+        #     print("Pruned Theory\t:")
+        #     print_2d(self.theory.clauses)
 
         final_dl = get_dl(
             dl_measure,
@@ -631,21 +672,25 @@ class Mistle:
 class Theory:
     def __init__(self, clauses, overlap_matrix, search_index):
         self.clauses = clauses
+        self.unpacked_clauses = dict()
         self.overlap_matrix = overlap_matrix
         self.search_index = search_index
-        self.clause_length = []  # List of lengths of all the clauses of this theory
+        # self.clause_length = []  # List of lengths of all the clauses of this theory
         self.theory_length = len(clauses)  # Total number of clauses in the theory
         self.invented_predicate_definition = dict()
         self.freq_items = []
         self.errors = set()
         self.positives = set()
+        self.negatives = set()
         self.minsup = None
         self.dl = None
         self.dl_measure = None
         self.operator_counter = {"W": 0, "V": 0, "S": 0, "R": 0, "T": 0}
         self.new_var_counter = None
+        self.alphabet_size = None
+        self.pruned_invented_literals = set()
 
-    def intialize(self, positives, negatives, minsup, dl_measure):
+    def intialize(self, positives, negatives, minsup, dl_measure, alphabet_size):
 
         if (
             len(negatives) < 1
@@ -655,36 +700,75 @@ class Theory:
         # Construct a theory from the partial assignments
         for pa in negatives:
             self.clauses.append(frozenset([-literal for literal in pa]))
-            self.clause_length.append(len(pa))
+            # self.clause_length.append(len(pa))
 
         self.minsup = minsup
 
+        self.freq_items = self.get_frequent_itemsets(self.clauses, minsup)
+        self.alphabet_size = alphabet_size
+        self.new_var_counter = alphabet_size + 1
+        self.positives = positives
+        self.negatives = negatives
+        self.errors = self.get_violations(self.clauses, positives)
+        self.dl = get_dl(
+            dl_measure, list(positives | negatives), [], self.new_var_counter - 1
+        )
+        print("DL of initial theory\t: " + str(self.dl))
+        self.dl_measure = dl_measure
+        return True
+
+    def is_invented_literal(self, literal):
+        """
+        Returns true if the |literal| > largest variable in the data
+        :param literal:
+        :return:
+        """
+        return (literal < -self.alphabet_size) or (literal > self.alphabet_size)
+
+    def is_definition_clause(self, clause):
+        """
+        Returns true if a clause is serving as a definition for an invented predicate.
+        :param clause:
+        :return:
+        """
+        return any([literal > self.alphabet_size for literal in clause])
+
+    def get_invented_literals(self, clause):
+        invented_literals = set()
+        for literal in clause:
+            if self.is_invented_literal(literal):
+                invented_literals.add(abs(literal))
+        return invented_literals
+
+    def get_frequent_itemsets(self, clauses, minsup):
+
         start_time1 = time()
-        freq_items1 = compute_itemsets(self.clauses, minsup / len(self.clauses), "LCM")
+        freq_items1 = compute_itemsets(clauses, minsup / len(clauses), "LCM")
         total_time1 = time() - start_time1
         print("Length of freq items 1\t: " + str(len(freq_items1)))
         print("Time of freq items 1\t: " + str(total_time1))
 
         start_time2 = time()
         eclat = Eclat(minsup=minsup)
-        freq_items2 = eclat.get_Frequent_Itemsets(self.clauses)
+        freq_items2 = eclat.get_Frequent_Itemsets(clauses)
         total_time2 = time() - start_time2
         print("Length of freq items 2\t: " + str(len(freq_items2)))
         print("Time of freq items 2\t: " + str(total_time2))
 
         assert len(freq_items2) >= len(freq_items1)
 
+        result = []
         if len(freq_items2) == len(freq_items1):
-            self.freq_items = list(freq_items2.items())
+            result = list(freq_items2.items())
         else:
             for i, (itemset, frequency) in enumerate(freq_items1):
                 item = frozenset(itemset)
                 if item not in freq_items2:
                     print("Itemset not found\t: " + str(item))
                 else:
-                    self.freq_items.append((item, freq_items2[item]))
+                    result.append((item, freq_items2[item]))
 
-        self.freq_items.sort(
+        result.sort(
             key=lambda item: (
                 len(item[0]) * len(item[1]) - (len(item[0]) + len(item[1]) + 1),
                 len(item[0]),
@@ -693,14 +777,7 @@ class Theory:
             reverse=True,
         )
 
-        self.positives = positives
-        self.errors = self.get_violations(positives)
-        self.dl = get_dl(
-            dl_measure, list(positives | negatives), [], self.new_var_counter - 1
-        )
-        print("DL of initial theory\t: " + str(self.dl))
-        self.dl_measure = dl_measure
-        return True
+        return result
 
     def get_new_var(self):
         """
@@ -714,25 +791,112 @@ class Theory:
     def __len__(self):
         return self.theory_length
 
-    def get_violations(self, positives, print_violations=True):
+    def get_violations(
+        self, clauses, partial_assignments, print_violations=True, sign="+"
+    ):
         """
-        Get the number of positive partial assignments violated by the given theory.
-        :param positives:
-        :param print_violations:
-        :return:
+        Get the number of partial assignments violated by the given theory.
         """
-        violated_pos = set()
+        if len(clauses) == 0 or len(partial_assignments) == 0:
+            return set()
 
-        for pos in positives:
-            if not check_pa_satisfiability(pos, self.clauses):
-                violated_pos.add(pos)
+        violated_pas = set()
 
-        if print_violations & len(violated_pos) > 0:
+        for pa in partial_assignments:
+            if (sign == "+" and not check_pa_satisfiability(pa, clauses)) or (
+                sign == "-" and check_pa_satisfiability(pa, clauses)
+            ):
+                violated_pas.add(pa)
+
+        if print_violations and len(violated_pas) > 0:
             print(
-                len(violated_pos),
-                " violations of positive partial assignments found for the learned theory.",
+                len(violated_pas),
+                " violations of "
+                + sign
+                + "ve partial assignments found for the learned theory.",
             )
-        return violated_pos
+        return violated_pas
+
+    def unpack_theory(self):
+        """
+        Unpack W operator if one of its non-definition clauses got truncated and the application is no longer useful.
+        Ex: Consider a case when Mistle invents the literal '12' and defines it as 6 or -8.
+            [6, -8, 12], [-1, -2, -3, 5, -12], [4, -11, -12], [-7, -12]
+
+            But now if the second clause gets deleted as it is subsumed by [-1, -2], the following clauses are left:
+            [6, -8, 12], [4, -11, -12], [-7, -12]
+
+            And now, it makes sense for us to undo the 'W' operator (as it is no longer compressing much) to get:
+            [4, -11, 6, -8], [-7, 6, -8]
+
+            The invented literals to check for are stored in the set, self.pruned_invented_literals
+        """
+        possible_clauses = []
+        new_clauses = []
+        for clause in self.clauses:
+            literal_found = False
+            for literal in clause:
+                if abs(literal) in self.pruned_invented_literals:
+                    possible_clauses.append(clause)
+                    literal_found = True
+                    break
+            if literal_found is False:
+                new_clauses.append(clause)
+
+        output_clauses = []
+        for literal in self.pruned_invented_literals:
+            temp_theory = copy(new_clauses)
+            unpack_clauses = []
+            pack_clauses = []
+            for clause in possible_clauses:
+                if -literal in clause:
+                    pack_clauses.append(clause)
+                    unpack_clauses.append(self.unpack_clause(clause))
+                elif literal in clause:
+                    pack_clauses.append(clause)
+
+            temp_theory += unpack_clauses
+            unpack_dl = get_dl(
+                self.dl_measure,
+                temp_theory,
+                list(self.errors),
+                self.new_var_counter - 1,
+            )
+
+            if unpack_dl < self.dl:
+                # It is better to keep the unpacked clause for this particular W operator
+                output_clauses += unpack_clauses
+                print(
+                    "Unpacking W operator applied earlier using "
+                    + str(literal)
+                    + " on "
+                    + str(self.invented_predicate_definition[literal])
+                )
+            else:
+                # It is better to keep the packed clause for this particular W operator
+                output_clauses += pack_clauses
+
+        self.clauses = new_clauses + output_clauses
+
+    def unpack_clause(self, clause):
+        """
+        Substitute the invented literals with their definitions in a clause
+        """
+        if clause in self.unpacked_clauses:
+            return self.unpacked_clauses[clause]
+
+        unpacked_clause = set()
+        for literal in clause:
+            if literal < 0 and -literal in self.invented_predicate_definition:
+                definition = self.invented_predicate_definition[-literal]
+                unpacked_clause |= definition
+            else:
+                unpacked_clause.add(literal)
+
+        # Cache the unpacked clause
+        self.unpacked_clauses[clause] = frozenset(unpacked_clause)
+
+        return unpacked_clause
 
     def get_compression(self, input_clauses, op, output_clauses):
 
@@ -757,7 +921,7 @@ class Theory:
             ),
         )
 
-    def apply_best_operator(self, input_clause_list, possible_operations):
+    def select_best_operator(self, input_clause_list, possible_operations):
         success = "ignore_itemset"
         operator_precedence = ["S", "R", "W", "V", "T", None]
         min_dl = self.dl
@@ -797,109 +961,156 @@ class Theory:
             # )
             success = "ignore_itemset"
 
-        if success is True:
-            # Update old_theory
-            self.operator_counter[best_operator] += 1
-            if best_operator == "W":
-                new_var = self.get_new_var()
-                for i, clause in enumerate(output_clause_list):
-                    if "#" in clause:
-                        output_clause_list[i].remove("#")
-                        output_clause_list[i].add(new_var)
-                    else:
-                        output_clause_list[i].remove("-#")
-                        output_clause_list[i].add(-new_var)
-                    output_clause_list[i] = frozenset(output_clause_list[i])
-                subclause = self.invented_predicate_definition["#"]
-                assert new_var not in self.invented_predicate_definition
-                self.invented_predicate_definition[new_var] = subclause
+        return (
+            success,
+            best_operator,
+            input_clause_list,
+            output_clause_list,
+            min_dl,
+            new_errors,
+        )
 
-            assert "#" in self.invented_predicate_definition
-            del self.invented_predicate_definition["#"]
+    def apply_best_operator(
+        self, best_operator, input_clause_list, output_clause_list, min_dl, new_errors
+    ):
 
-            self.errors |= new_errors
-            self.positives -= new_errors
-            # self.total_compression += max_compression
-            self.theory_length += len(output_clause_list) - len(input_clause_list)
-
-            pruned_indices = list(self.freq_items[0][1])
-
-            # Delete indices that are in pruned indices and decrease indices of other clauses correspondingly
-            buffer = sorted(pruned_indices)
-            # print("Initial Buffer\t: " + str(buffer))
-            decrement = 0
-            replace_dict = {}
-            for i in range(len(self.clauses)):
-                if len(buffer) > 0 and i == buffer[0]:
-                    del buffer[0]
-                    decrement += 1
+        # Update old_theory
+        self.operator_counter[best_operator] += 1
+        if best_operator == "W":
+            new_var = self.get_new_var()
+            for i, clause in enumerate(output_clause_list):
+                if "#" in clause:
+                    output_clause_list[i].remove("#")
+                    output_clause_list[i].add(new_var)
                 else:
-                    replace_dict[i] = i - decrement
+                    assert "-#" in clause
+                    output_clause_list[i].remove("-#")
+                    output_clause_list[i].add(-new_var)
+                output_clause_list[i] = frozenset(output_clause_list[i])
+            subclause = self.invented_predicate_definition["#"]
+            assert new_var not in self.invented_predicate_definition
+            self.invented_predicate_definition[new_var] = subclause
 
-            # print("Final Buffer\t: " + str(buffer))
-            # print("Replace Dict\t: " + str(replace_dict))
+        assert "#" in self.invented_predicate_definition
+        del self.invented_predicate_definition["#"]
 
-            # Replace the indices of clauses wrt the replacement dictionary
-            increment = len(replace_dict)
-            # new_freq_items = []
-            del self.freq_items[0]
-            prune_itemsets = []
-            for i, (itemset, clause_ids) in enumerate(self.freq_items):
+        self.errors |= new_errors
+        self.positives -= new_errors
+        # self.total_compression += max_compression
+        self.theory_length += len(output_clause_list) - len(input_clause_list)
 
-                new_clause_ids = set()
-                # Repalce ids of old existing clauses
-                for clause_id in clause_ids:
-                    if clause_id in replace_dict:
-                        new_clause_ids.add(replace_dict[clause_id])
+        pruned_indices = set(self.freq_items[0][1])
 
-                # Add ids of new clause covering this itemset
-                for j, clause in enumerate(output_clause_list):
-                    if itemset.issubset(clause):
-                        new_clause_ids.add(j + increment)
+        if best_operator == "T":
+            # Check if any unpacked clauses are subsumed by the output of the T operator
+            # invented_literal = None
+            for i, clause in enumerate(self.clauses):
+                if i in pruned_indices:
+                    continue
+                unpacked_clause = self.unpack_clause(clause)
+                # if self.is_definition_clause(clause):
+                #     invented_literal = None
+                #     for literal in clause:
+                #         if literal > self.alphabet_size:
+                #             # We assert that there is only one positive invented literal in the clause
+                #             invented_literal = literal
+                #             break
+                #     assert invented_literal is not None
+                #
+                # # This code assumes that the definition clause will be contiguously followed by its non-definition clauses
+                # # ex: [2, 3, -8, 9, -4], [-5, -6, -9, 7], [1, -6, -9, 7], [-7, -5, -1, -9]
+                # # The first clause is a definition clause as it contains 9 (alphabet size was 8).
+                # # The rest are non-definition clauses as they contain -9. These are assumed to come right after their definition clause.
+                # if invented_literal is not None and -invented_literal in clause:
+                #     # This makes sure that if we prune a definition clause, we also prune all the clauses that were using that invented literal.
+                #     pruned_indices.add(i)
+                # elif invented_literal not in clause:
+                #     invented_literal = None
 
-                if len(new_clause_ids) >= 2:
-                    self.freq_items[i] = (itemset, new_clause_ids)
-                else:
-                    prune_itemsets.append(i)
+                if output_clause_list[0].issubset(unpacked_clause):
+                    pruned_indices.add(i)
+                    if self.is_definition_clause(clause):
+                        self.operator_counter["W"] -= 1
 
-            prune_itemsets.sort(reverse=True)
-            for i in prune_itemsets:
-                del self.freq_items[i]
+                    self.pruned_invented_literals |= self.get_invented_literals(clause)
 
-            self.freq_items.sort(
-                key=lambda item: (
-                    len(item[0]) * len(item[1]) - (len(item[0]) + len(item[1]) + 1),
-                    len(item[0]),
-                    len(item[1]),
-                ),
-                reverse=True,
-            )
+        pruned_indices = list(pruned_indices)
 
-            print(
-                str(len(self.freq_items))
-                + "\tfrequent itemsets left after applying "
-                + best_operator
-                + " operator with output \t: "
-                + str(output_clause_list)
-            )
-            # print("New Frequent Itemsets\t:")
-            # for item, clause_ids in self.freq_items:
-            #     print(" {}\t: {}".format(list(item), len(clause_ids)))
-            # print()
+        # Delete indices that are in pruned indices and decrease indices of other clauses correspondingly
+        buffer = sorted(pruned_indices)
+        # print("Initial Buffer\t: " + str(buffer))
+        decrement = 0
+        replace_dict = {}
+        for i in range(len(self.clauses)):
+            if len(buffer) > 0 and i == buffer[0]:
+                del buffer[0]
+                decrement += 1
+            else:
+                replace_dict[i] = i - decrement
 
-            pruned_indices.sort(reverse=True)
-            for i in pruned_indices:
-                del self.clauses[i]
-                del self.clause_length[i]
+        # print("Final Buffer\t: " + str(buffer))
+        # print("Replace Dict\t: " + str(replace_dict))
 
-            for clause in output_clause_list:
-                self.clauses.append(clause)
-                self.clause_length.append(len(clause))
+        # Replace the indices of clauses wrt the replacement dictionary
+        increment = len(replace_dict)
+        # new_freq_items = []
+        del self.freq_items[0]
+        prune_itemsets = []
+        for i, (itemset, clause_ids) in enumerate(self.freq_items):
 
-            # assert min_entropy == get_entropy(self.clauses) + get_entropy(self.errors)
-            # self.entropy = min_entropy
-            self.dl = min_dl
-        return success
+            new_clause_ids = set()
+            # Repalce ids of old existing clauses
+            for clause_id in clause_ids:
+                if clause_id in replace_dict:
+                    new_clause_ids.add(replace_dict[clause_id])
+
+            # Add ids of new clause covering this itemset
+            for j, clause in enumerate(output_clause_list):
+                if itemset.issubset(clause):
+                    new_clause_ids.add(j + increment)
+
+            if len(new_clause_ids) >= 2:
+                self.freq_items[i] = (itemset, new_clause_ids)
+            else:
+                prune_itemsets.append(i)
+
+        prune_itemsets.sort(reverse=True)
+        for i in prune_itemsets:
+            del self.freq_items[i]
+
+        self.freq_items.sort(
+            key=lambda item: (
+                len(item[0]) * len(item[1]) - (len(item[0]) + len(item[1]) + 1),
+                len(item[0]),
+                len(item[1]),
+            ),
+            reverse=True,
+        )
+
+        print(
+            str(len(self.freq_items))
+            + "\tfrequent itemsets left after applying "
+            + best_operator
+            + " operator with output \t: "
+            + str(output_clause_list)
+        )
+        # print("New Frequent Itemsets\t:")
+        # for item, clause_ids in self.freq_items:
+        #     print(" {}\t: {}".format(list(item), len(clause_ids)))
+        # print()
+
+        pruned_indices.sort(reverse=True)
+        for i in pruned_indices:
+            del self.clauses[i]
+            # del self.clause_length[i]
+
+        for clause in output_clause_list:
+            self.clauses.append(clause)
+            # self.clause_length.append(len(clause))
+
+        # assert min_entropy == get_entropy(self.clauses) + get_entropy(self.errors)
+        # self.entropy = min_entropy
+        self.dl = min_dl
 
     def compress_theory(self):
         # TODO: Make it more efficient once it is complete. Reduce the number of iterations on old_clause_list/residue
@@ -930,6 +1141,9 @@ class Theory:
 
         # Check if R-operator is applicable
         r_applicable = False
+        # r_residue = [tuple(clause) for clause in residue] + [tuple(-literal) for literal in subclause]
+        # Technically, if we assume that each atom can already appear once in a clause, then it suffices to check the
+        # unsatisfiability of [tuple(clause) for clause in residue] as each of the literal in the subclause is absent in the residue.
         r_residue = [tuple(clause) for clause in residue]
         if solve(r_residue) == "UNSAT":
             # R-operator is applicable (R-operator is a special case when applying T-operator is lossless.
@@ -980,56 +1194,110 @@ class Theory:
 
         possible_operations.append(("W", w_output))
 
-        return self.apply_best_operator(old_clause_list, possible_operations)
+        success, best_operator, input_clause_list, output_clause_list, min_dl, new_errors = self.select_best_operator(
+            old_clause_list, possible_operations
+        )
+        if success is True:
+            self.apply_best_operator(
+                best_operator, input_clause_list, output_clause_list, min_dl, new_errors
+            )
+
+        return success
+
+    def prune_theory(self):
+        # TODO: Test for a case where we know for sure that at least one clause will be pruned
+        old_clauses = copy(self.clauses)
+        # old_clause_length = copy(self.clause_length)
+
+        # Sort the clauses in the descending order of their lengths
+        # index = list(range(len(old_clauses)))
+        # index.sort(key=old_clause_length.__getitem__, reverse=True)
+        # old_clause_length = [old_clause_length[i] for i in index]
+        # old_clauses = [old_clauses[i] for i in index]
+
+        pruned_clause_ids = set()
+        clauses_set = copy(set(old_clauses))
+
+        assert len(self.get_violations(clauses_set, self.positives)) == 0
+        neg_violations = len(
+            self.get_violations(clauses_set, self.negatives, True, "-")
+        )
+        assert neg_violations == 0
+
+        for i, clause in enumerate(old_clauses):
+            violations = len(
+                self.get_violations(
+                    copy(clauses_set) - {clause}, self.negatives, False, sign="-"
+                )
+            )
+            if violations == neg_violations:
+                pruned_clause_ids.add(i)
+                clauses_set.remove(clause)
+
+        # print("Pruned IDs\t: " + str(pruned_clause_ids))
+
+        self.clauses = []
+        # self.clause_length = []
+        # for i, (clause, length) in enumerate(zip(old_clauses, old_clause_length)):
+        for i, clause in enumerate(old_clauses):
+            if i not in pruned_clause_ids:
+                self.clauses.append(clause)
+                # self.clause_length.append(length)
+
+        print(str(len(pruned_clause_ids)) + " clauses are pruned.")
+
+        assert set(self.clauses) == clauses_set
+
+        return len(pruned_clause_ids)
 
 
 if __name__ == "__main__":
-    filename = sys.argv[1]
-    nb_rows = int(sys.argv[2])
-    nb_vars = int(sys.argv[3])
-    minsup = int(sys.argv[4])
-
-    positives, negatives = load_dataset(
-        filename,
-        nb_rows,
-        list(range(1, nb_vars + 1)),
-        [str(nb_vars + 1), str(nb_vars + 2)],
-        negation=False,
-        load_top_k=None,
-        switch_signs=False,
-        num_vars=100,
-        load_tqdm=True,
-        raw_data=True,
-    )
-    start_time = time()
-    mistle = Mistle(positives, negatives)
-    theory, compression = mistle.learn(minsup=minsup, dl_measure="ce")
-    print("Total time\t\t\t\t: " + str(time() - start_time) + " seconds.")
-    if theory is not None:
-        print("Final theory has " + str(len(theory.clauses)) + " clauses.")
-    else:
-        print("Empty theory learned.")
-
-    # from data_generators import TheoryNoisyGeneratorOnDataset, GeneratedTheory
-    # import random
-    # import numpy as np
+    # filename = sys.argv[1]
+    # nb_rows = int(sys.argv[2])
+    # nb_vars = int(sys.argv[3])
+    # minsup = int(sys.argv[4])
     #
-    # seed = 0
-    # random.seed(seed)
-    # np.random.seed(seed)
-    #
+    # positives, negatives = load_dataset(
+    #     filename,
+    #     nb_rows,
+    #     list(range(1, nb_vars + 1)),
+    #     [str(nb_vars + 1), str(nb_vars + 2)],
+    #     negation=False,
+    #     load_top_k=None,
+    #     switch_signs=False,
+    #     num_vars=100,
+    #     load_tqdm=True,
+    #     raw_data=True,
+    # )
     # start_time = time()
-    #
-    # th = GeneratedTheory([[1, -4], [2, 5], [6, -7, -8]])
-    # generator = TheoryNoisyGeneratorOnDataset(th, 200, 200, 0.2)
-    # positives, negatives = generator.generate_dataset(use_all_examples=True)
-    #
     # mistle = Mistle(positives, negatives)
-    # theory, compression = mistle.learn(minsup=1, dl_measure="ce")
+    # theory, compression = mistle.learn(minsup=minsup, dl_measure="ce")
     # print("Total time\t\t\t\t: " + str(time() - start_time) + " seconds.")
     # if theory is not None:
     #     print("Final theory has " + str(len(theory.clauses)) + " clauses.")
     # else:
     #     print("Empty theory learned.")
-    #
-    # print([list(c) for c in theory.clauses])
+
+    from data_generators import TheoryNoisyGeneratorOnDataset, GeneratedTheory
+    import random
+    import numpy as np
+
+    seed = 0
+    random.seed(seed)
+    np.random.seed(seed)
+
+    start_time = time()
+
+    th = GeneratedTheory([[1, -4], [2, 5], [6, -7, -8]])
+    generator = TheoryNoisyGeneratorOnDataset(th, 400, 400, 0.01)
+    positives, negatives = generator.generate_dataset(use_all_examples=True)
+    mistle = Mistle(positives, negatives)
+    theory, compression = mistle.learn(minsup=1, dl_measure="ce")
+    print("Total time\t\t\t\t: " + str(time() - start_time) + " seconds.")
+    if theory is not None:
+        print("Final theory has " + str(len(theory.clauses)) + " clauses.")
+        # for c in theory.clauses:
+        #     print(list(c))
+        print_2d(theory.clauses)
+    else:
+        print("Empty theory learned.")
