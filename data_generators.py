@@ -5,6 +5,7 @@ from sympy.core import Symbol
 from sympy.logic.boolalg import And, Or, Not, to_cnf
 import random
 from copy import copy
+import time
 
 
 class GeneratedTheory:
@@ -328,6 +329,90 @@ class TheoryNoisyGeneratorOnDataset():
                 partial_neg.append(frozenset(example))
 
         return partial_pos, partial_neg
+
+
+class TheoryNoisyGeneratorPosNeg():
+    def __init__(self, theory, nb_positives=100, nb_negatives=100, noise=0.1, timeout=20):
+        """
+        Generates a dataset of partial examples.
+        First, partial examples are generated. If it is SAT with the theory, it belongs to the positive examples. Otherwise, it is in the negative.
+        We generate nb_positives positive examples and nb_negatives negative examples. The noise parameter controls how partial the examples are. 0 means full examples.
+        0.1 means 10% of the literals are not observed...
+        Generating negative examples might be slower, as they are generally harder to find
+        :param theory: Instance of a GeneratedTheory
+        :param nb_positives: Number of positive examples
+        :param nb_negatives: Number of negative examples
+        :param timeout: If dataset generation takes more than timeout, we switch back to finding all SAT or UNSAT examples that are missing.
+        """
+        self.theory = theory
+        self.nb_positives = nb_positives
+        self.nb_negatives = nb_negatives
+        self.noise = noise
+        self.timeout = timeout
+
+
+    def generate_partial_example(self):
+        partial_example = []
+
+        for i in range(1, self.theory.nb_literals+1):
+            # If we observe the i-th literal
+            if random.random() >= self.noise:
+                # We choose at random between positive or negated for this literal
+                if random.random() >= 0.5:
+                    partial_example.append(i)
+                else:
+                    partial_example.append(-i)
+
+        return partial_example
+
+    def generate_dataset(self):
+        """
+        Generates the dataset given corresponding to the created generator.
+        :return: 2 list. The first list contains positive examples in DIMACS format (as a frozenset), the second contains the negative examples
+        """
+        partial_pos = []
+        partial_neg = []
+
+        while len(partial_neg) < self.nb_negatives and len(partial_pos) < self.nb_positives:
+            example = self.generate_partial_example()
+            if self.theory.is_example_sat(example):
+                partial_pos.append(frozenset(example))
+            else:
+                partial_neg.append(frozenset(example))
+
+        start = time.time()
+        if len(partial_neg) < self.nb_negatives:
+            # Complete the negatives
+            while len(partial_neg) < self.nb_negatives:
+                example = self.generate_partial_example()
+                if not self.theory.is_example_sat(example):
+                    partial_neg.append(frozenset(example))
+                if time.time()-start > self.timeout:
+                    partial_pos = self.complete_negatives(partial_pos)
+                    break
+        else:
+            # complete the positives
+            while len(partial_pos) < self.nb_positives:
+                example = self.generate_partial_example()
+                if self.theory.is_example_sat(example):
+                    partial_pos.append(frozenset(example))
+                if time.time()-start > self.timeout:
+                    partial_pos = self.complete_positives(partial_pos)
+        return partial_pos, partial_neg
+
+    def complete_positives(self, partial_pos):
+        if len(partial_pos) == 0:
+            raise Exception("Unable to find any positive example in {} seconds. Consider increasing timeout".format(self.timeout))
+        else:
+            print("WARNING: Resampling positive examples from current list. Consider increasing timeout")
+        return random.choices(partial_pos, k=self.nb_positives)
+
+    def complete_negatives(self, partial_neg):
+        if len(partial_neg) == 0:
+            raise Exception("Unable to find any negative example in {} seconds. Consider increasing timeout".format(self.timeout))
+        else:
+            print("WARNING: Resampling negative examples from current list. Consider increasing timeout")
+        return random.choices(partial_neg, k=self.nb_negatives)
 
 if __name__ == "__main__":
     th = GeneratedTheory([[1, -5, 4], [-1, 5, 3, 4], [-3, -10]])
