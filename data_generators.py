@@ -6,9 +6,6 @@ from sympy.logic.boolalg import And, Or, Not, to_cnf
 import random
 from copy import copy
 
-np.random.seed(0)
-random.seed(0)
-
 
 class GeneratedTheory:
     def __init__(self, clauses):
@@ -81,6 +78,14 @@ class GeneratedTheory:
         #     [TheoryNoisyGenerator.get_dimacs_repr(negated_cnf)]
         # )
         return GeneratedTheory(negated_cnf_dimacs)
+
+    def is_example_sat(self, example):
+        if self.clauses is None or len(self.clauses) == 0:
+            return None
+        else:
+            return not (
+                    pycosat.solve([tuple(clause) for clause in self.clauses] + [(a,) for a in example]) == "UNSAT"
+            )
 
 
 class DataGenerator(ABC):
@@ -278,149 +283,56 @@ class TheoryNoisyGeneratorOnExample(TheoryNoisyGenerator):
         return partial_pos, partial_neg
 
 
-class TheoryNoisyGeneratorOnDataset(TheoryNoisyGenerator):
-    def __init__(self, theory, nb_positives=100, nb_negatives=100, noise=0.1):
+class TheoryNoisyGeneratorOnDataset():
+    def __init__(self, theory, nb_examples=100, noise=0.1):
         """
-        Creates a new generator that adds noise at the dataset level.
-        This means that the noise level is applied on the whole dataset.
-        Individual examples might therefore have a different level of noise.
-        There are nb_positives examples satisfying the theory and nb_negatives examples not satisfying the theory.
-        Theory satisfaction is checked BEFORE noise is applied.
-        :param theory: Instance of a GeneratedTheory
-        :param nb_positives: Number of positive examples
-        :param nb_negatives: Number of negative examples
-        :param noise:
+        Generates a dataset of partial examples.
+        First, partial examples are generated. If it is SAT with the theory, it belongs to the positive examples. Otherwise, it is in the negative.
+        We generate nb_examples examples. The noise parameter controls how partial the examples are. 0 means full examples.
+        0.1 means 10% of the literals are not observed...
+        :param theory: The theory that gives whether the examples are SAT or not
+        :param nb_examples: Number of examples to generate (positive+negative)
+        :param noise: Amount of missing literal (between 0 and 1)
         """
-        super().__init__(theory, nb_positives, nb_negatives, noise)
+        self.theory = theory
+        self.nb_examples = nb_examples
+        self.noise = noise
 
-    def generate_dataset(self, use_all_examples=True):
+    def generate_partial_example(self):
+        partial_example = []
+
+        for i in range(1, self.theory.nb_literals+1):
+            # If we observe the i-th literal
+            if random.random() >= self.noise:
+                # We choose at random between positive or negated for this literal
+                if random.random() >= 0.5:
+                    partial_example.append(i)
+                else:
+                    partial_example.append(-i)
+
+        return partial_example
+
+    def generate_dataset(self):
         """
         Generates the dataset given corresponding to the created generator.
-        :param use_all_examples: If True, will first generate all examples and sample from these. This can be impractical for theories with many literals (about 15 literals is ok).
         :return: 2 list. The first list contains positive examples in DIMACS format (as a frozenset), the second contains the negative examples
         """
-        complete_pos, complete_neg = self.generate_complete_examples(
-            use_all_examples=use_all_examples
-        )
         partial_pos = []
         partial_neg = []
 
-        nb_pos_literals = sum([len(e) for e in complete_pos])
-        nb_neg_literals = sum([len(e) for e in complete_neg])
-
-        # We apply noise on the whole dataset, not at the transaction level by skipping random idices according to the noise level on the whole data
-        skipped_indices = frozenset(
-            np.random.choice(
-                nb_pos_literals + nb_neg_literals,
-                int(self.noise * (nb_pos_literals + nb_neg_literals)),
-                replace=False,
-            )
-        )
-        current_index = 0
-
-        for example in complete_pos:
-            partial_pos.append(
-                frozenset(
-                    [
-                        example[i]
-                        for i in range(len(example))
-                        if current_index + i not in skipped_indices
-                    ]
-                )
-            )
-            current_index += len(example)
-
-        for example in complete_neg:
-            partial_neg.append(
-                frozenset(
-                    [
-                        example[i]
-                        for i in range(len(example))
-                        if current_index + i not in skipped_indices
-                    ]
-                )
-            )
-            current_index += len(example)
-
-        assert current_index == nb_neg_literals + nb_pos_literals
+        while len(partial_neg) + len(partial_pos) < self.nb_examples:
+            example = self.generate_partial_example()
+            if self.theory.is_example_sat(example):
+                partial_pos.append(frozenset(example))
+            else:
+                partial_neg.append(frozenset(example))
 
         return partial_pos, partial_neg
 
-
 if __name__ == "__main__":
-    # th = GeneratedTheory([[1, -5, 4], [-1, 5, 3, 4], [-3, -10]])
-    cnf = []
-    filename = "wff_3_100_150.cnf"
-    with open("./Data/" + filename, "r") as cnf_file:
-        lines = cnf_file.readlines()
-        for line in lines[2:]:
-            line = line.strip()
-            cnf.append([int(number) for number in line.split(" ")[:-1]])
+    th = GeneratedTheory([[1, -5, 4], [-1, 5, 3, 4], [-3, -10]])
+    generator = TheoryNoisyGeneratorOnDataset(th, 200, 0.3)
+    pos, neg = generator.generate_dataset()
+    print(len(pos))
+    print(len(neg))
 
-    th = GeneratedTheory(cnf)
-    input_params = []
-    input_params.append((100, 100, 0.2))
-    input_params.append((100, 100, 0.4))
-    input_params.append((100, 100, 0.6))
-    input_params.append((100, 100, 0.8))
-    input_params.append((500, 500, 0.2))
-    input_params.append((500, 500, 0.4))
-    input_params.append((1000, 1000, 0.2))
-    input_params.append((1000, 1000, 0.4))
-
-    for nb_positives, nb_negatives, noise in input_params:
-        gen = TheoryNoisyGeneratorOnExample(th, nb_positives, nb_negatives, noise)
-        pos, neg = gen.generate_dataset(use_all_examples=False)
-
-        with open(
-            "./Data/"
-            + filename.split(".cnf")[0]
-            + "_"
-            + str(gen.nb_positives)
-            + "_"
-            + str(gen.nb_negatives)
-            + "_"
-            + str(int(gen.noise * 100))
-            + "_ex.dat",
-            "w+",
-        ) as out_file:
-            for p in pos:
-                l = list(p)
-                abs_l = [abs(i) for i in l]
-                p = [str(x) for _, x in sorted(zip(abs_l, l))]
-
-                out_file.write(" ".join(p) + " " + str(th.nb_literals + 1) + "\n")
-            for n in neg:
-                l = list(n)
-                abs_l = [abs(i) for i in l]
-                n = [str(x) for _, x in sorted(zip(abs_l, l))]
-
-                out_file.write(" ".join(n) + " " + str(th.nb_literals + 2) + "\n")
-
-        gen2 = TheoryNoisyGeneratorOnDataset(th, nb_positives, nb_negatives, noise)
-        pos2, neg2 = gen2.generate_dataset(use_all_examples=False)
-
-        with open(
-            "./Data/"
-            + filename.split(".cnf")[0]
-            + "_"
-            + str(gen2.nb_positives)
-            + "_"
-            + str(gen2.nb_negatives)
-            + "_"
-            + str(int(gen2.noise * 100))
-            + "_data.dat",
-            "w+",
-        ) as out_file:
-            for p in pos2:
-                l = list(p)
-                abs_l = [abs(i) for i in l]
-                p = [str(x) for _, x in sorted(zip(abs_l, l))]
-
-                out_file.write(" ".join(p) + " " + str(th.nb_literals + 1) + "\n")
-            for n in neg2:
-                l = list(n)
-                abs_l = [abs(i) for i in l]
-                n = [str(x) for _, x in sorted(zip(abs_l, l))]
-
-                out_file.write(" ".join(n) + " " + str(th.nb_literals + 2) + "\n")
