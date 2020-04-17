@@ -85,7 +85,10 @@ class GeneratedTheory:
             return None
         else:
             return not (
-                    pycosat.solve([tuple(clause) for clause in self.clauses] + [(a,) for a in example]) == "UNSAT"
+                pycosat.solve(
+                    [tuple(clause) for clause in self.clauses] + [(a,) for a in example]
+                )
+                == "UNSAT"
             )
 
 
@@ -284,7 +287,7 @@ class TheoryNoisyGeneratorOnExample(TheoryNoisyGenerator):
         return partial_pos, partial_neg
 
 
-class TheoryNoisyGeneratorOnDataset():
+class TheoryNoisyGeneratorOnDataset:
     def __init__(self, theory, nb_examples=100, noise=0.1):
         """
         Generates a dataset of partial examples.
@@ -302,7 +305,7 @@ class TheoryNoisyGeneratorOnDataset():
     def generate_partial_example(self):
         partial_example = []
 
-        for i in range(1, self.theory.nb_literals+1):
+        for i in range(1, self.theory.nb_literals + 1):
             # If we observe the i-th literal
             if random.random() >= self.noise:
                 # We choose at random between positive or negated for this literal
@@ -331,8 +334,10 @@ class TheoryNoisyGeneratorOnDataset():
         return partial_pos, partial_neg
 
 
-class TheoryNoisyGeneratorPosNeg():
-    def __init__(self, theory, nb_positives=100, nb_negatives=100, noise=0.1, timeout=20):
+class TheoryNoisyGeneratorPosNeg:
+    def __init__(
+        self, theory, nb_positives=100, nb_negatives=100, noise=0.1, timeout=20
+    ):
         """
         Generates a dataset of partial examples.
         First, partial examples are generated. If it is SAT with the theory, it belongs to the positive examples. Otherwise, it is in the negative.
@@ -350,11 +355,10 @@ class TheoryNoisyGeneratorPosNeg():
         self.noise = noise
         self.timeout = timeout
 
-
     def generate_partial_example(self):
         partial_example = []
 
-        for i in range(1, self.theory.nb_literals+1):
+        for i in range(1, self.theory.nb_literals + 1):
             # If we observe the i-th literal
             if random.random() >= self.noise:
                 # We choose at random between positive or negated for this literal
@@ -373,7 +377,10 @@ class TheoryNoisyGeneratorPosNeg():
         partial_pos = []
         partial_neg = []
 
-        while len(partial_neg) < self.nb_negatives and len(partial_pos) < self.nb_positives:
+        while (
+            len(partial_neg) < self.nb_negatives
+            and len(partial_pos) < self.nb_positives
+        ):
             example = self.generate_partial_example()
             if self.theory.is_example_sat(example):
                 partial_pos.append(frozenset(example))
@@ -387,7 +394,7 @@ class TheoryNoisyGeneratorPosNeg():
                 example = self.generate_partial_example()
                 if not self.theory.is_example_sat(example):
                     partial_neg.append(frozenset(example))
-                if time.time()-start > self.timeout:
+                if time.time() - start > self.timeout:
                     partial_pos = self.complete_negatives(partial_pos)
                     break
         else:
@@ -396,23 +403,36 @@ class TheoryNoisyGeneratorPosNeg():
                 example = self.generate_partial_example()
                 if self.theory.is_example_sat(example):
                     partial_pos.append(frozenset(example))
-                if time.time()-start > self.timeout:
+                if time.time() - start > self.timeout:
                     partial_pos = self.complete_positives(partial_pos)
         return partial_pos, partial_neg
 
     def complete_positives(self, partial_pos):
         if len(partial_pos) == 0:
-            raise Exception("Unable to find any positive example in {} seconds. Consider increasing timeout".format(self.timeout))
+            raise Exception(
+                "Unable to find any positive example in {} seconds. Consider increasing timeout".format(
+                    self.timeout
+                )
+            )
         else:
-            print("WARNING: Resampling positive examples from current list. Consider increasing timeout")
+            print(
+                "WARNING: Resampling positive examples from current list. Consider increasing timeout"
+            )
         return random.choices(partial_pos, k=self.nb_positives)
 
     def complete_negatives(self, partial_neg):
         if len(partial_neg) == 0:
-            raise Exception("Unable to find any negative example in {} seconds. Consider increasing timeout".format(self.timeout))
+            raise Exception(
+                "Unable to find any negative example in {} seconds. Consider increasing timeout".format(
+                    self.timeout
+                )
+            )
         else:
-            print("WARNING: Resampling negative examples from current list. Consider increasing timeout")
+            print(
+                "WARNING: Resampling negative examples from current list. Consider increasing timeout"
+            )
         return random.choices(partial_neg, k=self.nb_negatives)
+
 
 if __name__ == "__main__":
     th = GeneratedTheory([[1, -5, 4], [-1, 5, 3, 4], [-3, -10]])
@@ -420,4 +440,3 @@ if __name__ == "__main__":
     pos, neg = generator.generate_dataset()
     print(len(pos))
     print(len(neg))
-
