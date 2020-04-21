@@ -6,6 +6,7 @@ import math
 import sys
 from collections import Counter
 from pattern_mining import compute_itemsets
+import numpy as np
 
 
 def print_input_data_statistics(
@@ -110,6 +111,60 @@ def load_test():
     negatives.append(frozenset([-2, -3, 4]))
     negatives.append(frozenset([-1, -3, -4]))
     negatives.append(frozenset([-2, 3]))
+
+    return positives, negatives
+
+
+def load_dtest():
+    """
+    An Example used to test the efficacy of the Dichotomization Operator.
+    :return:
+    """
+
+    positives = []  # Dummy positives
+    # positives.append(frozenset([1, -2, -3, 8, 9, 10, 11]))
+    # positives.append(frozenset([-1, -2, -3, 4, 5, 6, 7]))
+    positives.append(frozenset([1, -2, -3, 4, 5, 6, 7, 8, 9, 10, 11]))
+    positives.append(frozenset([1, -2, -3, 4, 5, 6, -7, 8, 9, 10, 11]))
+    positives.append(frozenset([1, -2, -3, 4, 5, -6, 7, 8, 9, 10, 11]))
+    positives.append(frozenset([1, -2, -3, 4, -5, 6, 7, 8, 9, 10, 11]))
+    positives.append(frozenset([1, -2, -3, 4, -5, 6, -7, 8, 9, 10, 11]))
+    positives.append(frozenset([1, -2, -3, 4, -5, -6, 7, 8, 9, 10, 11]))
+    positives.append(frozenset([1, -2, -3, 4, 5, -6, -7, 8, 9, 10, 11]))
+    positives.append(frozenset([1, -2, -3, 4, -5, -6, -7, 8, 9, 10, 11]))
+    positives.append(frozenset([1, -2, -3, -4, 5, 6, 7, 8, 9, 10, 11]))
+    positives.append(frozenset([1, -2, -3, -4, 5, 6, -7, 8, 9, 10, 11]))
+    positives.append(frozenset([1, -2, -3, -4, 5, -6, 7, 8, 9, 10, 11]))
+    positives.append(frozenset([1, -2, -3, -4, -5, 6, 7, 8, 9, 10, 11]))
+    positives.append(frozenset([1, -2, -3, -4, -5, 6, -7, 8, 9, 10, 11]))
+    positives.append(frozenset([1, -2, -3, -4, -5, -6, 7, 8, 9, 10, 11]))
+    positives.append(frozenset([1, -2, -3, -4, 5, -6, -7, 8, 9, 10, 11]))
+    positives.append(frozenset([1, -2, -3, -4, -5, -6, -7, 8, 9, 10, 11]))
+    positives.append(frozenset([1, -2, -3, 4, 5, 6, 7, 8, 9, 10, -11]))
+    positives.append(frozenset([1, -2, -3, 4, 5, 6, 7, 8, 9, -10, 11]))
+    positives.append(frozenset([1, -2, -3, 4, 5, 6, 7, 8, 9, -10, -11]))
+    positives.append(frozenset([1, -2, -3, 4, 5, 6, 7, 8, -9, 10, 11]))
+    positives.append(frozenset([1, -2, -3, 4, 5, 6, 7, 8, -9, 10, -11]))
+    positives.append(frozenset([1, -2, -3, 4, 5, 6, 7, 8, -9, -10, 11]))
+    positives.append(frozenset([1, -2, -3, 4, 5, 6, 7, 8, -9, -10, -11]))
+    positives.append(frozenset([1, -2, -3, 4, 5, 6, 7, -8, 9, 10, 11]))
+    positives.append(frozenset([1, -2, -3, 4, 5, 6, 7, -8, 9, 10, -11]))
+    positives.append(frozenset([1, -2, -3, 4, 5, 6, 7, -8, 9, -10, 11]))
+    positives.append(frozenset([1, -2, -3, 4, 5, 6, 7, -8, 9, -10, -11]))
+    positives.append(frozenset([1, -2, -3, 4, 5, 6, 7, -8, -9, 10, 11]))
+    positives.append(frozenset([1, -2, -3, 4, 5, 6, 7, -8, -9, 10, -11]))
+    positives.append(frozenset([1, -2, -3, 4, 5, 6, 7, -8, -9, -10, 11]))
+    positives.append(frozenset([1, -2, -3, 4, 5, 6, 7, -8, -9, -10, -11]))
+
+    negatives = []
+    negatives.append(frozenset([-1, -2, -3, -4]))
+    negatives.append(frozenset([-1, -2, -3, -5]))
+    negatives.append(frozenset([-1, -2, -3, -6]))
+    negatives.append(frozenset([-1, -2, -3, -7]))
+    negatives.append(frozenset([1, -2, -3, -8]))
+    negatives.append(frozenset([1, -2, -3, -9]))
+    negatives.append(frozenset([1, -2, -3, -10]))
+    negatives.append(frozenset([1, -2, -3, -11]))
 
     return positives, negatives
 
@@ -685,7 +740,7 @@ class Theory:
         self.minsup = None
         self.dl = None
         self.dl_measure = None
-        self.operator_counter = {"W": 0, "V": 0, "S": 0, "R": 0, "T": 0}
+        self.operator_counter = {"D": 0, "W": 0, "V": 0, "S": 0, "R": 0, "T": 0}
         self.new_var_counter = None
         self.alphabet_size = None
         self.pruned_invented_literals = set()
@@ -903,27 +958,51 @@ class Theory:
         new_theory = copy(self.clauses)
         for clause in input_clauses:
             new_theory.remove(clause)
-        new_theory += list(output_clauses)
+        if op in {"D", "W"}:
+            for clause in output_clauses:
+                substituted_clause = []
+                for literal in clause:
+                    if literal == "#":
+                        substituted_clause.append(self.new_var_counter)
+                    elif literal == "-#":
+                        substituted_clause.append(-self.new_var_counter)
+                    else:
+                        substituted_clause.append(literal)
+                new_theory.append(substituted_clause)
+        else:
+            new_theory += list(output_clauses)
 
         uncovered_positives = set()
-        if op in {"V", "T"}:
+        if op in {"D", "V", "T"}:
             for pa in self.positives:
                 if not check_pa_satisfiability(pa, new_theory):
                     uncovered_positives.add(pa)
 
-        return (
-            uncovered_positives,
-            get_dl(
-                self.dl_measure,
-                new_theory,
-                list(self.errors | uncovered_positives),
-                self.new_var_counter - 1,
-            ),
-        )
+        if op in {"D", "W"}:
+            return (
+                uncovered_positives,
+                # The alphabet size for D-op and W-op is incremented by 1 as they invent a new literal, that is represented temporarily by "#" here.
+                get_dl(
+                    self.dl_measure,
+                    new_theory,
+                    list(self.errors | uncovered_positives),
+                    self.new_var_counter,
+                ),
+            )
+        else:
+            return (
+                uncovered_positives,
+                get_dl(
+                    self.dl_measure,
+                    new_theory,
+                    list(self.errors | uncovered_positives),
+                    self.new_var_counter - 1,
+                ),
+            )
 
     def select_best_operator(self, input_clause_list, possible_operations):
         success = "ignore_itemset"
-        operator_precedence = ["S", "R", "W", "V", "T", None]
+        operator_precedence = ["S", "R", "W", "D", "V", "T", None]
         min_dl = self.dl
         best_operator = None
         new_errors = None
@@ -976,7 +1055,7 @@ class Theory:
 
         # Update old_theory
         self.operator_counter[best_operator] += 1
-        if best_operator == "W":
+        if best_operator in {"D", "W"}:
             new_var = self.get_new_var()
             for i, clause in enumerate(output_clause_list):
                 if "#" in clause:
@@ -988,10 +1067,15 @@ class Theory:
                     output_clause_list[i].add(-new_var)
                 output_clause_list[i] = frozenset(output_clause_list[i])
             subclause = self.invented_predicate_definition["#"]
-            assert new_var not in self.invented_predicate_definition
-            self.invented_predicate_definition[new_var] = subclause
+            if best_operator == "W":
+                assert (
+                    new_var not in self.invented_predicate_definition
+                )  # DEBUG: Remove once debugging is complete
+                self.invented_predicate_definition[new_var] = subclause
 
-        assert "#" in self.invented_predicate_definition
+        assert (
+            "#" in self.invented_predicate_definition
+        )  # DEBUG: Remove once debugging is complete
         del self.invented_predicate_definition["#"]
 
         self.errors |= new_errors
@@ -1178,6 +1262,59 @@ class Theory:
                             v_output.append(frozenset(new_clause))
                 possible_operations.append(("V", v_output))
 
+        # Check if D-operator is applicable
+
+        # D-operator is only applicable if V operator and S operators are not applicable
+        if not s_applicable and not v_literals:
+            d_literals = []
+            for literal in residue[0]:
+                d_literals.append(abs(literal))
+
+            assert len(d_literals) == len(
+                set(d_literals)
+            )  # DEBUG: Remove once debugging od D_op is complete
+
+            for clause in residue[1:]:
+                remove_d_literals = []
+                for literal in d_literals:
+                    if literal not in clause and -literal not in clause:
+                        remove_d_literals.append(literal)
+                for literal in remove_d_literals:
+                    d_literals.remove(literal)
+
+                if len(d_literals) == 0:
+                    break
+
+            # D-operator is applicable on the set of literals contained in d_literals.
+            # It is not applicable if d_literals is empty.
+
+            if d_literals:
+                for d_literal in d_literals:
+                    clause1 = set(copy(subclause))
+                    clause1.add(d_literal)
+                    clause1.add("#")
+
+                    clause2 = set(copy(subclause))
+                    clause2.add(-d_literal)
+                    clause2.add("-#")
+
+                    d_output = [clause1, clause2]
+
+                    for clause in residue:
+                        clause3 = set(copy(clause))
+                        assert (
+                            d_literal in clause or -d_literal in clause
+                        )  # DEBUG: Remove once debugging od D_op is complete
+                        if d_literal in clause:
+                            clause3.remove(d_literal)
+                            clause3.add("-#")
+                        elif -d_literal in clause:
+                            clause3.remove(-d_literal)
+                            clause3.add("#")
+                        d_output.append(clause3)
+
+                    possible_operations.append(("D", d_output))
+
         # Consider W-operator
 
         # Use '#' as a special newly invented variable.
@@ -1278,19 +1415,20 @@ if __name__ == "__main__":
     # else:
     #     print("Empty theory learned.")
 
-    from data_generators import TheoryNoisyGeneratorOnDataset, GeneratedTheory
-    import random
-    import numpy as np
-
-    seed = 0
-    random.seed(seed)
-    np.random.seed(seed)
-
+    # from data_generators import TheoryNoisyGeneratorOnDataset, GeneratedTheory
+    # import random
+    # import numpy as np
+    #
+    # seed = 0
+    # random.seed(seed)
+    # np.random.seed(seed)
+    #
     start_time = time()
-
-    th = GeneratedTheory([[1, -4], [2, 5], [6, -7, -8]])
-    generator = TheoryNoisyGeneratorOnDataset(th, 400, 400, 0.01)
-    positives, negatives = generator.generate_dataset(use_all_examples=True)
+    #
+    # th = GeneratedTheory([[1, -4], [2, 5], [6, -7, -8]])
+    # generator = TheoryNoisyGeneratorOnDataset(th, 400, 0.01)
+    # positives, negatives = generator.generate_dataset()
+    positives, negatives = load_dtest()
     mistle = Mistle(positives, negatives)
     theory, compression = mistle.learn(minsup=1, dl_measure="ce")
     print("Total time\t\t\t\t: " + str(time() - start_time) + " seconds.")
