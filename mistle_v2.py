@@ -632,7 +632,7 @@ class Mistle:
 
         return uncovered_positives
 
-    def learn(self, minsup, dl_measure):
+    def learn(self, dl_measure, minsup=None, k=None):
 
         # This line of code assumes that variable numbers start from 1:
         alphabet_size = max(
@@ -653,8 +653,10 @@ class Mistle:
         self.negatives = self.negatives - inconsistent_pas
 
         # Convert the set of -ve PAs to a theory
+        if minsup is None and k is None:
+            minsup = 1
         success = self.theory.intialize(
-            self.positives, self.negatives, minsup, dl_measure, alphabet_size
+            self.positives, self.negatives, dl_measure, alphabet_size, minsup, k
         )
         if not success:
             # Return empty theory
@@ -738,6 +740,7 @@ class Theory:
         self.positives = set()
         self.negatives = set()
         self.minsup = None
+        self.k = None
         self.dl = None
         self.dl_measure = None
         self.operator_counter = {"D": 0, "W": 0, "V": 0, "S": 0, "R": 0, "T": 0}
@@ -745,7 +748,9 @@ class Theory:
         self.alphabet_size = None
         self.pruned_invented_literals = set()
 
-    def intialize(self, positives, negatives, minsup, dl_measure, alphabet_size):
+    def intialize(
+        self, positives, negatives, dl_measure, alphabet_size, minsup=None, k=None
+    ):
 
         if (
             len(negatives) < 1
@@ -758,8 +763,14 @@ class Theory:
             # self.clause_length.append(len(pa))
 
         self.minsup = minsup
+        self.k = k
 
-        self.freq_items = self.get_frequent_itemsets(self.clauses, minsup)
+        if minsup is not None:
+            self.freq_items = self.get_frequent_itemsets(self.clauses, minsup)
+        elif k is not None:
+            self.freq_items, minsup = self.get_frequent_itemsets_topk(self.clauses, k)
+            self.minsup = minsup
+
         self.alphabet_size = alphabet_size
         self.new_var_counter = alphabet_size + 1
         self.positives = positives
@@ -794,6 +805,64 @@ class Theory:
             if self.is_invented_literal(literal):
                 invented_literals.add(abs(literal))
         return invented_literals
+
+    def get_frequent_itemsets_topk(self, clauses, k, decrement_factor=2):
+        """
+        :param clauses: all the transactions
+        :param k: maximum itemsets to be returned
+        :param decrement_factor: a float > 1 by which the minimum support threshold needs to be decreased
+        :return: Return top-k closed frequent itemsets, a minsup value that is guaranteed to mine at least k closed frequent itemsets
+        """
+        start_time_eclat = time()
+        if decrement_factor <= 1:
+            decrement_factor = 2
+        minsup = int(len(clauses) / decrement_factor)
+
+        while minsup >= 1:
+            eclat = Eclat(minsup=minsup)
+            freq_items_eclat = eclat.get_Frequent_Itemsets(clauses)
+            if len(freq_items_eclat) > k:
+                break
+            else:
+                minsup = int(minsup / decrement_factor)
+
+        total_time_eclat = time() - start_time_eclat
+        print("Length of freq items by Eclat\t: " + str(len(freq_items_eclat)))
+        print("Time of freq items by Eclat\t: " + str(total_time_eclat))
+
+        start_time_lcm = time()
+        freq_items_lcm = compute_itemsets(clauses, minsup / len(clauses), "LCM")
+        total_time_lcm = time() - start_time_lcm
+        print("Length of freq items by LCM\t: " + str(len(freq_items_lcm)))
+        print("Time of freq items by LCM\t: " + str(total_time_lcm))
+
+        assert len(freq_items_eclat) >= len(freq_items_lcm)
+
+        result = []
+        if len(freq_items_eclat) == len(freq_items_lcm):
+            result = list(freq_items_eclat.items())
+        else:
+            for i, (itemset, frequency) in enumerate(freq_items_lcm):
+                item = frozenset(itemset)
+                if item not in freq_items_eclat:
+                    print("Itemset not found\t: " + str(item))
+                else:
+                    result.append((item, freq_items_eclat[item]))
+
+        result.sort(
+            key=lambda item: (
+                len(item[0]) * len(item[1]) - (len(item[0]) + len(item[1]) + 1),
+                len(item[0]),
+                len(item[1]),
+            ),
+            reverse=True,
+        )
+
+        # Only return top-k closed frequent itemsets
+        if len(result) > k:
+            result = result[:k]
+
+        return result, minsup
 
     def get_frequent_itemsets(self, clauses, minsup):
 
@@ -1415,22 +1484,22 @@ if __name__ == "__main__":
     # else:
     #     print("Empty theory learned.")
 
-    # from data_generators import TheoryNoisyGeneratorOnDataset, GeneratedTheory
-    # import random
-    # import numpy as np
-    #
-    # seed = 0
-    # random.seed(seed)
-    # np.random.seed(seed)
-    #
+    from data_generators import TheoryNoisyGeneratorOnDataset, GeneratedTheory
+    import random
+    import numpy as np
+
+    seed = 0
+    random.seed(seed)
+    np.random.seed(seed)
+
     start_time = time()
-    #
-    # th = GeneratedTheory([[1, -4], [2, 5], [6, -7, -8]])
-    # generator = TheoryNoisyGeneratorOnDataset(th, 400, 0.01)
-    # positives, negatives = generator.generate_dataset()
-    positives, negatives = load_dtest()
+
+    th = GeneratedTheory([[1, -4], [2, 5], [6, -7, -8]])
+    generator = TheoryNoisyGeneratorOnDataset(th, 400, 0.01)
+    positives, negatives = generator.generate_dataset()
+    # positives, negatives = load_dtest()
     mistle = Mistle(positives, negatives)
-    theory, compression = mistle.learn(minsup=1, dl_measure="ce")
+    theory, compression = mistle.learn(dl_measure="ce", k=100)
     print("Total time\t\t\t\t: " + str(time() - start_time) + " seconds.")
     if theory is not None:
         print("Final theory has " + str(len(theory.clauses)) + " clauses.")
