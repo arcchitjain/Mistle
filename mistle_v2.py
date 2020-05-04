@@ -632,7 +632,7 @@ class Mistle:
 
         return uncovered_positives
 
-    def learn(self, dl_measure, minsup=None, k=None):
+    def learn(self, dl_measure, minsup=None, k=None, lossy=True):
 
         # This line of code assumes that variable numbers start from 1:
         alphabet_size = max(
@@ -669,7 +669,7 @@ class Mistle:
         prev_clauses = []
         while True:
             while True:
-                success = self.theory.compress_theory()
+                success = self.theory.compress_theory(lossy)
                 if success == "ignore_itemset":
                     del self.theory.freq_items[0]
                 elif not success:
@@ -1265,7 +1265,7 @@ class Theory:
         # self.entropy = min_entropy
         self.dl = min_dl
 
-    def compress_theory(self):
+    def compress_theory(self, lossy=True):
         # TODO: Make it more efficient once it is complete. Reduce the number of iterations on old_clause_list/residue
         if len(self.freq_items) == 0:
             return False
@@ -1306,15 +1306,16 @@ class Theory:
             possible_operations.append(("R", [subclause]))
             # return True
 
-        if not s_applicable and not r_applicable:
+        if lossy and not s_applicable and not r_applicable:
             possible_operations.append(("T", [subclause]))
 
         # Check if V-operator is applicable
         v_literals = []
-        for clause in residue:
-            if len(clause) == 1:
-                v_literals.append(next(iter(clause)))
-                break
+        if lossy:
+            for clause in residue:
+                if len(clause) == 1:
+                    v_literals.append(next(iter(clause)))
+                    break
 
         if v_literals:
             for v_literal in v_literals:
@@ -1334,7 +1335,7 @@ class Theory:
         # Check if D-operator is applicable
 
         # D-operator is only applicable if V operator and S operators are not applicable
-        if not s_applicable and not v_literals:
+        if lossy and not s_applicable and not v_literals:
             d_literals = []
             for literal in residue[0]:
                 d_literals.append(abs(literal))
