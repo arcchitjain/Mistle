@@ -632,7 +632,27 @@ class Mistle:
 
         return uncovered_positives
 
-    def learn(self, dl_measure, minsup=None, k=None, lossy=True):
+    def learn(
+        self,
+        dl_measure,
+        minsup=None,
+        k=None,
+        lossy=True,
+        prune=True,
+        mining_steps=None,
+        permitted_operators=None,
+    ):
+
+        if permitted_operators is None:
+            # Assume, by default, that each operator is permitted to compress the theory.
+            permitted_operators = {
+                "D": True,
+                "W": True,
+                "V": True,
+                "S": True,
+                "R": True,
+                "T": True,
+            }
 
         # This line of code assumes that variable numbers start from 1:
         alphabet_size = max(
@@ -667,9 +687,10 @@ class Mistle:
         self.theory.theory_length = self.total_negatives
 
         prev_clauses = []
+        mining_count = 0
         while True:
             while True:
-                success = self.theory.compress_theory(lossy)
+                success = self.theory.compress_theory(lossy, permitted_operators)
                 if success == "ignore_itemset":
                     del self.theory.freq_items[0]
                 elif not success:
@@ -688,9 +709,17 @@ class Mistle:
             else:
                 prev_clauses = self.theory.clauses
 
-            self.theory.freq_items = self.theory.get_frequent_itemsets(
-                self.theory.clauses, minsup=1
-            )
+            mining_count += 1
+
+            if mining_steps is None or (
+                mining_steps is not None and mining_steps > mining_count
+            ):
+                self.theory.freq_items = self.theory.get_frequent_itemsets(
+                    self.theory.clauses, minsup=1
+                )
+            else:
+                # Break the loop and don't compress further if maximum number of mining steps reached.
+                break
 
         # print(
         #     "--------------------------Frequent Itemsets--------------------------\t:"
@@ -699,12 +728,15 @@ class Mistle:
         #     print(" {}\t: {}".format(list(item), clause_ids))
         # print("\n")
 
-        # print("Theory before pruning\t:")
-        # print_2d(self.theory.clauses)
-        nb_pruned = self.theory.prune_theory()
-        # if nb_pruned != 0:
-        #     print("Pruned Theory\t:")
-        #     print_2d(self.theory.clauses)
+        if prune:
+            # print("Theory before pruning\t:")
+            # print_2d(self.theory.clauses)
+
+            nb_pruned = self.theory.prune_theory()
+
+            # if nb_pruned != 0:
+            #     print("Pruned Theory\t:")
+            #     print_2d(self.theory.clauses)
 
         final_dl = get_dl(
             dl_measure,
@@ -732,7 +764,6 @@ class Theory:
         self.unpacked_clauses = dict()
         self.overlap_matrix = overlap_matrix
         self.search_index = search_index
-        # self.clause_length = []  # List of lengths of all the clauses of this theory
         self.theory_length = len(clauses)  # Total number of clauses in the theory
         self.invented_predicate_definition = dict()
         self.freq_items = []
@@ -760,7 +791,6 @@ class Theory:
         # Construct a theory from the partial assignments
         for pa in negatives:
             self.clauses.append(frozenset([-literal for literal in pa]))
-            # self.clause_length.append(len(pa))
 
         self.minsup = minsup
         self.k = k
@@ -1142,10 +1172,8 @@ class Theory:
                 )  # DEBUG: Remove once debugging is complete
                 self.invented_predicate_definition[new_var] = subclause
 
-        assert (
-            "#" in self.invented_predicate_definition
-        )  # DEBUG: Remove once debugging is complete
-        del self.invented_predicate_definition["#"]
+        if "#" in self.invented_predicate_definition:
+            del self.invented_predicate_definition["#"]
 
         self.errors |= new_errors
         self.positives -= new_errors
@@ -1255,63 +1283,64 @@ class Theory:
         pruned_indices.sort(reverse=True)
         for i in pruned_indices:
             del self.clauses[i]
-            # del self.clause_length[i]
 
         for clause in output_clause_list:
             self.clauses.append(clause)
-            # self.clause_length.append(len(clause))
 
         # assert min_entropy == get_entropy(self.clauses) + get_entropy(self.errors)
         # self.entropy = min_entropy
         self.dl = min_dl
 
-    def compress_theory(self, lossy=True):
-        # TODO: Make it more efficient once it is complete. Reduce the number of iterations on old_clause_list/residue
+    def compress_theory(self, lossy=True, permitted_operators=None):
+        # TODO: Make it more efficient once it is complete. Reduce the number of iterations on input_clause_list/residue
+
         if len(self.freq_items) == 0:
             return False
         subclause, clause_ids = self.freq_items[0]
         if len(clause_ids) == 1:
             return "ignore_itemset"
 
-        old_clause_list = []  # A list of input clauses (to be compressed)
+        input_clause_list = []  # A list of input clauses (to be compressed)
         residue = []  # A list of input clauses without the shared subclause
         possible_operations = []
 
         for clause_id in clause_ids:
             clause = self.clauses[clause_id]
-            old_clause_list.append(clause)
+            input_clause_list.append(clause)
             residue.append(clause - subclause)
 
         # Check if S-operator is applicable
-        s_applicable = False
-        for clause in old_clause_list:
-            if clause == subclause:
-                # S-operator is applicable
-                s_applicable = True
-                possible_operations.append(("S", [subclause]))
-                # self.operator_counter["S"] += 1
-                # return True
+        if permitted_operators["S"] is True:
+            for clause in input_clause_list:
+                if clause == subclause:
+                    # S-operator is applicable
+                    _, dl = self.get_compression(input_clause_list, "S", [subclause])
+                    self.apply_best_operator(
+                        "S", input_clause_list, [subclause], dl, set()
+                    )
+                    return True
 
         # Check if R-operator is applicable
-        r_applicable = False
-        # r_residue = [tuple(clause) for clause in residue] + [tuple(-literal) for literal in subclause]
-        # Technically, if we assume that each atom can already appear once in a clause, then it suffices to check the
-        # unsatisfiability of [tuple(clause) for clause in residue] as each of the literal in the subclause is absent in the residue.
-        r_residue = [tuple(clause) for clause in residue]
-        if solve(r_residue) == "UNSAT":
-            # R-operator is applicable (R-operator is a special case when applying T-operator is lossless.
-            # Example: If input is [(a,b), (a,c), (a,-b,-c)], then the output is [(a)].
-            # Here, then input is logically equivalent to the output (Lossless Truncation).
-            r_applicable = True
-            possible_operations.append(("R", [subclause]))
-            # return True
+        if permitted_operators["R"] is True:
+            r_applicable = False
+            # r_residue = [tuple(clause) for clause in residue] + [tuple(-literal) for literal in subclause]
+            # Technically, if we assume that each atom can already appear once in a clause, then it suffices to check the
+            # unsatisfiability of [tuple(clause) for clause in residue] as each of the literal in the subclause is absent in the residue.
+            r_residue = [tuple(clause) for clause in residue]
+            if solve(r_residue) == "UNSAT":
+                # R-operator is applicable (R-operator is a special case when applying T-operator is lossless.
+                # Example: If input is [(a,b), (a,c), (a,-b,-c)], then the output is [(a)].
+                # Here, then input is logically equivalent to the output (Lossless Truncation).
+                _, dl = self.get_compression(input_clause_list, "R", [subclause])
+                self.apply_best_operator("R", input_clause_list, [subclause], dl, set())
+                return True
 
-        if lossy and not s_applicable and not r_applicable:
+        if permitted_operators["T"] is True and lossy:
             possible_operations.append(("T", [subclause]))
 
         # Check if V-operator is applicable
         v_literals = []
-        if lossy:
+        if permitted_operators["V"] is True and lossy:
             for clause in residue:
                 if len(clause) == 1:
                     v_literals.append(next(iter(clause)))
@@ -1333,9 +1362,8 @@ class Theory:
                 possible_operations.append(("V", v_output))
 
         # Check if D-operator is applicable
-
         # D-operator is only applicable if V operator and S operators are not applicable
-        if lossy and not s_applicable and not v_literals:
+        if permitted_operators["D"] is True and lossy and not v_literals:
             d_literals = []
             for literal in residue[0]:
                 d_literals.append(abs(literal))
@@ -1386,23 +1414,23 @@ class Theory:
                     possible_operations.append(("D", d_output))
 
         # Consider W-operator
+        if permitted_operators["W"] is True:
+            # Use '#' as a special newly invented variable.
+            # If/once W-operator is accepted for compression, it will be replaced by a self.new_var_counter()
+            new_clause = set(copy(subclause))
+            new_clause.add("#")
+            w_output = [new_clause]
+            self.invented_predicate_definition["#"] = subclause
 
-        # Use '#' as a special newly invented variable.
-        # If/once W-operator is accepted for compression, it will be replaced by a self.new_var_counter()
-        new_clause = set(copy(subclause))
-        new_clause.add("#")
-        w_output = [new_clause]
-        self.invented_predicate_definition["#"] = subclause
+            for clause in residue:
+                new_clause = set(clause)
+                new_clause.add("-#")
+                w_output.append(new_clause)
 
-        for clause in residue:
-            new_clause = set(clause)
-            new_clause.add("-#")
-            w_output.append(new_clause)
-
-        possible_operations.append(("W", w_output))
+            possible_operations.append(("W", w_output))
 
         success, best_operator, input_clause_list, output_clause_list, min_dl, new_errors = self.select_best_operator(
-            old_clause_list, possible_operations
+            input_clause_list, possible_operations
         )
         if success is True:
             self.apply_best_operator(
@@ -1412,18 +1440,16 @@ class Theory:
         return success
 
     def prune_theory(self):
-        # TODO: Test for a case where we know for sure that at least one clause will be pruned
-        old_clauses = copy(self.clauses)
-        # old_clause_length = copy(self.clause_length)
 
-        # Sort the clauses in the descending order of their lengths
-        # index = list(range(len(old_clauses)))
-        # index.sort(key=old_clause_length.__getitem__, reverse=True)
-        # old_clause_length = [old_clause_length[i] for i in index]
-        # old_clauses = [old_clauses[i] for i in index]
+        # Don't check for pruning, those clauses that were unchanged from when the theory was initialized
+        initial_clauses = set()
+        for pa in self.negatives:
+            initial_clauses.add(frozenset([-literal for literal in pa]))
+
+        old_clauses = copy(self.clauses)
 
         pruned_clause_ids = set()
-        clauses_set = copy(set(old_clauses))
+        clauses_set = copy(set(self.clauses))
 
         assert len(self.get_violations(clauses_set, self.positives)) == 0
         neg_violations = len(
@@ -1432,6 +1458,8 @@ class Theory:
         assert neg_violations == 0
 
         for i, clause in enumerate(old_clauses):
+            if clause in initial_clauses:
+                continue
             violations = len(
                 self.get_violations(
                     copy(clauses_set) - {clause}, self.negatives, False, sign="-"
@@ -1444,12 +1472,9 @@ class Theory:
         # print("Pruned IDs\t: " + str(pruned_clause_ids))
 
         self.clauses = []
-        # self.clause_length = []
-        # for i, (clause, length) in enumerate(zip(old_clauses, old_clause_length)):
         for i, clause in enumerate(old_clauses):
             if i not in pruned_clause_ids:
                 self.clauses.append(clause)
-                # self.clause_length.append(length)
 
         print(str(len(pruned_clause_ids)) + " clauses are pruned.")
 
