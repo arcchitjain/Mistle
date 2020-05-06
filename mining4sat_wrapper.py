@@ -143,10 +143,10 @@ def run_mining4sat(
                 compressed_theory.append(items[:-1])
 
         os.remove(output_name)
-        os.remove(dataset_name)
     except FileNotFoundError as e:
         print("Output File not created\t: " + str(e))
 
+    os.remove(dataset_name)
     return compressed_theory
 
 

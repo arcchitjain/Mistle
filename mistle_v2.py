@@ -804,11 +804,17 @@ class Theory:
         for pa in negatives:
             self.clauses.append(frozenset([-literal for literal in pa]))
 
-        self.minsup = minsup
+        if minsup is None:
+            self.minsup = None
+        elif minsup >= 1:
+            self.minsup = int(minsup)
+        elif minsup < 1:
+            self.minsup = minsup * len(self.clauses)
+
         self.k = k
 
         if minsup is not None:
-            self.freq_items = self.get_frequent_itemsets(self.clauses, minsup)
+            self.freq_items = self.get_frequent_itemsets(self.clauses, self.minsup)
         elif k is not None:
             self.freq_items, minsup = self.get_frequent_itemsets_topk(self.clauses, k)
             self.minsup = minsup

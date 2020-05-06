@@ -62,29 +62,7 @@ def get_clauses(theory):
         return []
 
 
-def get_uci_dataset_with_noise(dataset, noise):
-    true_positives, true_negatives = globals()["load_" + dataset]()
-
-    noisy_positives = []
-    for pa in true_positives:
-        noisy_pa = set()
-        for literal in pa:
-            if random.random() >= noise:
-                noisy_pa.add(literal)
-        noisy_positives.append(frozenset(pa))
-
-    noisy_negatives = []
-    for pa in true_negatives:
-        noisy_pa = set()
-        for literal in pa:
-            if random.random() >= noise:
-                noisy_pa.add(literal)
-        noisy_negatives.append(frozenset(pa))
-
-    return noisy_positives, noisy_negatives
-
-
-def plot_uci_with_noise(dataset, noise_list, dl, version=1):
+def plot_uci(dataset, minsup_list, dl, version=1):
     positives, negatives = globals()["load_" + dataset]()
     pos_theory = initialize_theory(positives)
     neg_theory = initialize_theory(negatives)
