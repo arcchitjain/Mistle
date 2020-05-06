@@ -32,7 +32,7 @@ def get_alphabet_size(theory):
     return len(alphabets)
 
 
-dl = "ce"
+dl = "me"  # For Modified Entropy
 
 th = GeneratedTheory([[1, -4], [2, 5], [6, -7, -8]])
 generator = TheoryNoisyGeneratorOnDataset(th, 400, 0.01)
@@ -47,7 +47,7 @@ print("Initial DL\t\t: " + str(initial_dl))
 version = 2
 
 ###############################################################################
-# Plot 1: Misup Plot: Increase minimum support threshold
+# Plot 1: Minsup Plot: Increase minimum support threshold
 ###############################################################################
 
 # minsup_list = [1, 2, 5, 10]

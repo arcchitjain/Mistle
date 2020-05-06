@@ -471,7 +471,7 @@ def log_star(input):
     return result
 
 
-def get_c_entropy(clauses, alphabet_size):
+def get_modified_entropy(clauses, alphabet_size):
     """
     :param clauses: a list of clauses
     :return: the total number of bits required to represent the input theory
@@ -503,8 +503,8 @@ def get_dl(dl_measure, clauses, errors, alphabet_size):
         )
     elif dl_measure == "se":  # Shanon Entropy
         return get_entropy(clauses) + get_entropy(errors)
-    elif dl_measure == "ce":  # Clement Entropy
-        return get_c_entropy(clauses, alphabet_size) + get_c_entropy(
+    elif dl_measure == "me":  # Clement Entropy
+        return get_modified_entropy(clauses, alphabet_size) + get_modified_entropy(
             errors, alphabet_size
         )
 
@@ -642,6 +642,17 @@ class Mistle:
         mining_steps=None,
         permitted_operators=None,
     ):
+        """
+
+        :param dl_measure: it can take one
+        :param minsup:
+        :param k:
+        :param lossy:
+        :param prune:
+        :param mining_steps:
+        :param permitted_operators:
+        :return:
+        """
 
         if permitted_operators is None:
             # Assume, by default, that each operator is permitted to compress the theory.
@@ -679,7 +690,8 @@ class Mistle:
             self.positives, self.negatives, dl_measure, alphabet_size, minsup, k
         )
         if not success:
-            # Return empty theory
+            # This is the case when no frequent itemsets get mined or when the input data is empty.
+            # Return empty theory with 0 compression
             return None, 0
 
         self.total_positives = len(self.positives)
@@ -784,7 +796,7 @@ class Theory:
     ):
 
         if (
-            len(negatives) < 1
+            len(negatives) == 0
         ):  # We still allow a theory to be learned and compressed if there are some negatives and no positives.
             return False
 
@@ -800,6 +812,9 @@ class Theory:
         elif k is not None:
             self.freq_items, minsup = self.get_frequent_itemsets_topk(self.clauses, k)
             self.minsup = minsup
+
+        if len(self.freq_items) == 0:
+            return False
 
         self.alphabet_size = alphabet_size
         self.new_var_counter = alphabet_size + 1
@@ -1503,7 +1518,7 @@ if __name__ == "__main__":
     # )
     # start_time = time()
     # mistle = Mistle(positives, negatives)
-    # theory, compression = mistle.learn(minsup=minsup, dl_measure="ce")
+    # theory, compression = mistle.learn(minsup=minsup, dl_measure="me")
     # print("Total time\t\t\t\t: " + str(time() - start_time) + " seconds.")
     # if theory is not None:
     #     print("Final theory has " + str(len(theory.clauses)) + " clauses.")
@@ -1525,7 +1540,7 @@ if __name__ == "__main__":
     positives, negatives = generator.generate_dataset()
     # positives, negatives = load_dtest()
     mistle = Mistle(positives, negatives)
-    theory, compression = mistle.learn(dl_measure="ce", k=100)
+    theory, compression = mistle.learn(dl_measure="me", k=100)
     print("Total time\t\t\t\t: " + str(time() - start_time) + " seconds.")
     if theory is not None:
         print("Final theory has " + str(len(theory.clauses)) + " clauses.")

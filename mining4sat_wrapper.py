@@ -17,13 +17,11 @@ def run_mining4sat(
     :param code_path: absolute path to the code of mining4SAT
     :param n: If True, then launch only non-binary reductions
     :param b: If True, then launch only binary reductions
-    :return: a list of patterns as a list of tuples. First element of the tuple is the items of the patterns, second element is the support.
+    :return: compressed theory/cnfs as a list of clauses
     """
     working_dir = os.getcwd()
     rand_id = uuid.uuid4()
-    dataset_name = os.path.join(
-        working_dir, "temp_mining4sat_dataset_" + str(rand_id) + "_.cnf"
-    )
+    dataset_name = os.path.join(working_dir, "mining4sat_" + str(rand_id) + "_.cnf")
     print("Input Data\t: " + str(dataset_name))
 
     with open(dataset_name, "w+") as db_file:
@@ -113,21 +111,29 @@ def run_mining4sat(
     print("Return Code\t: " + str(result))
 
     output_base_name = (
-        output_prefix
-        + "temp_mining4sat_dataset_"
-        + str(rand_id)
-        + "_L"
-        + str(support)
-        + ".cnf"
+        output_prefix + "mining4sat_" + str(rand_id) + "_L" + str(support) + ".cnf"
     )
     output_name = os.path.join(code_path, output_base_name)
 
     compressed_theory = []
     try:
-        if not os.path.exists(output_name) and "Binary_NonBinary" == output_prefix[:16]:
+        if (
+            not os.path.exists(output_name)
+            and "Binary_NonBinary" == output_base_name[:16]
+        ):
             # This case occurs when there is no binary clause in the input file
             output_base_name = output_base_name[7:]
             output_name = os.path.join(code_path, output_base_name)
+
+        if not os.path.exists(output_name) and "NonBinary" == output_base_name[:9]:
+            # This case occurs when there is no non binary clause in the input file
+            output_base_name = output_base_name[3:]
+            output_name = os.path.join(code_path, output_base_name)
+
+        if not os.path.exists(output_name):
+            output_names = output_name.split("_")
+            output_name = "_".join(output_names[:-1]) + "_.cnf"
+
         print("Output Data\t: " + str(output_name))
 
         with open(output_name) as output:
