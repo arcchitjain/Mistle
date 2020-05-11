@@ -14,7 +14,7 @@ def compress(pa, definitions):
     new_var_count = 1
     while definitions:
         freq, pattern = definitions.pop()
-        if pattern.issubset(compressed_pa):
+        if len(pattern) > 1 and pattern.issubset(compressed_pa):
             compressed_pa = compressed_pa - pattern
             compressed_pa.add("z" + str(new_var_count))
             new_var_count += 1
@@ -24,22 +24,23 @@ def compress(pa, definitions):
 
 def run_krimp(db_name, min_support, db_suffix=None):
     if db_suffix is None:
-        db_file = "/home/dtai/PycharmProjects/Mistle/Data/" + db_name + ".dat"
+        # db_file = "/home/dtai/PycharmProjects/Mistle/Data/" + db_name + ".dat"
+        db_file = "Data/" + db_name + ".dat"
     else:
-        db_file = (
-            "/home/dtai/PycharmProjects/Mistle/Output/"
-            + db_name
-            + "/"
-            + db_name
-            + "_"
-            + db_suffix
-            + ".dat"
-        )
+        # db_file = (
+        #     "/home/dtai/PycharmProjects/Mistle/Output/"
+        #     + db_name
+        #     + "/"
+        #     + db_name
+        #     + "_"
+        #     + db_suffix
+        #     + ".dat"
+        # )
+        db_file = "Output/" + db_name + "/" + db_name + "_" + db_suffix + ".dat"
 
-    krimp_exec_path = "/home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp"
-    output_dir = "/home/dtai/PycharmProjects/Mistle/Output/"
-    test_krimp = Krimp(krimp_exec_path)
-    code_table = test_krimp.compute_code_table(
+    krimp_exec_path = "Resources/Krimp/bin/krimp"
+    output_dir = "Output/"
+    code_table = Krimp(krimp_exec_path).compute_code_table(
         db_file, output_dir, min_support=min_support, convert_db=True
     )
 
@@ -49,22 +50,23 @@ def run_krimp(db_name, min_support, db_suffix=None):
 
 def run_slim(db_name, min_support, db_suffix=None):
     if db_suffix is None:
-        db_file = "/home/dtai/PycharmProjects/Mistle/Data/" + db_name + ".dat"
+        # db_file = "/home/dtai/PycharmProjects/Mistle/Data/" + db_name + ".dat"
+        db_file = "Data/" + db_name + ".dat"
     else:
-        db_file = (
-            "/home/dtai/PycharmProjects/Mistle/Output/"
-            + db_name
-            + "/"
-            + db_name
-            + "_"
-            + db_suffix
-            + ".dat"
-        )
+        # db_file = (
+        #     "/home/dtai/PycharmProjects/Mistle/Output/"
+        #     + db_name
+        #     + "/"
+        #     + db_name
+        #     + "_"
+        #     + db_suffix
+        #     + ".dat"
+        # )
+        db_file = "Output/" + db_name + "/" + db_name + "_" + db_suffix + ".dat"
 
-    slim_exec_path = "/home/dtai/PycharmProjects/Mistle/Slim/bin/fic"
-    output_dir = "/home/dtai/PycharmProjects/Mistle/Output/"
-    test_slim = Slim(slim_exec_path)
-    code_table = test_slim.compute_code_table(
+    slim_exec_path = "Resources/Slim/bin/fic"
+    output_dir = "Output/"
+    code_table = Slim(slim_exec_path).compute_code_table(
         db_file, output_dir, min_support=min_support, convert_db=True
     )
 

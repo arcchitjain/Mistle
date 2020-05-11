@@ -1450,9 +1450,14 @@ class Theory:
 
             possible_operations.append(("W", w_output))
 
-        success, best_operator, input_clause_list, output_clause_list, min_dl, new_errors = self.select_best_operator(
-            input_clause_list, possible_operations
-        )
+        (
+            success,
+            best_operator,
+            input_clause_list,
+            output_clause_list,
+            min_dl,
+            new_errors,
+        ) = self.select_best_operator(input_clause_list, possible_operations)
         if success is True:
             self.apply_best_operator(
                 best_operator, input_clause_list, output_clause_list, min_dl, new_errors
