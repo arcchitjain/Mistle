@@ -426,6 +426,15 @@ def check_pa_satisfiability(pa, clauses):
         )
 
 
+def get_alphabet_size(theory):
+    alphabets = set()
+    for clause in theory:
+        for literal in clause:
+            alphabets.add(abs(int(literal)))
+
+    return len(alphabets)
+
+
 def get_literal_length(clauses):
     """
     :param clauses: a CNF/Theory
@@ -666,11 +675,13 @@ class Mistle:
             }
 
         # This line of code assumes that variable numbers start from 1:
-        alphabet_size = max(
-            [abs(literal) for pa in self.positives + self.negatives for literal in pa]
-        )
+        # initial_alphabet_size = max(
+        #     [abs(literal) for pa in self.positives + self.negatives for literal in pa]
+        # )
+
+        initial_alphabet_size = get_alphabet_size(self.positives + self.negatives)
         self.initial_dl = get_dl(
-            dl_measure, self.positives + self.negatives, [], alphabet_size
+            dl_measure, self.positives + self.negatives, [], initial_alphabet_size
         )
 
         # Remove redundant partial assignments
@@ -687,7 +698,7 @@ class Mistle:
         if minsup is None and k is None:
             minsup = 1
         success = self.theory.intialize(
-            self.positives, self.negatives, dl_measure, alphabet_size, minsup, k
+            self.positives, self.negatives, dl_measure, initial_alphabet_size, minsup, k
         )
         if not success:
             # This is the case when no frequent itemsets get mined or when the input data is empty.
@@ -750,12 +761,27 @@ class Mistle:
             #     print("Pruned Theory\t:")
             #     print_2d(self.theory.clauses)
 
+        # assert self.theory.final_alphabet_size == get_alphabet_size(
+        #     self.theory.clauses
+        # )  # Debug
+        if self.theory.final_alphabet_size != get_alphabet_size(self.theory.clauses):
+            print(
+                "self.theory.final_alphabet_size\t: "
+                + str(self.theory.final_alphabet_size)
+            )
+            print(
+                "get_alphabet_size(self.theory.clauses)\t: "
+                + str(get_alphabet_size(self.theory.clauses))
+            )
+            self.theory.final_alphabet_size = get_alphabet_size(self.theory.clauses)
+
         final_dl = get_dl(
             dl_measure,
             self.theory.clauses,
             self.theory.errors,
-            self.theory.new_var_counter - 1,
+            self.theory.final_alphabet_size,
         )
+
         compression = (self.initial_dl - final_dl) / float(self.initial_dl)
         print("Initial DL\t\t\t\t: " + str(self.initial_dl))
         print("Final DL\t\t\t\t: " + str(final_dl))
@@ -774,6 +800,7 @@ class Theory:
     def __init__(self, clauses, overlap_matrix, search_index):
         self.clauses = clauses
         self.unpacked_clauses = dict()
+        self.unpacked_w = dict()
         self.overlap_matrix = overlap_matrix
         self.search_index = search_index
         self.theory_length = len(clauses)  # Total number of clauses in the theory
@@ -788,7 +815,8 @@ class Theory:
         self.dl_measure = None
         self.operator_counter = {"D": 0, "W": 0, "V": 0, "S": 0, "R": 0, "T": 0}
         self.new_var_counter = None
-        self.alphabet_size = None
+        self.initial_alphabet_size = None
+        self.final_alphabet_size = None
         self.pruned_invented_literals = set()
 
     def intialize(
@@ -822,7 +850,8 @@ class Theory:
         if len(self.freq_items) == 0:
             return False
 
-        self.alphabet_size = alphabet_size
+        self.initial_alphabet_size = alphabet_size
+        self.final_alphabet_size = alphabet_size
         self.new_var_counter = alphabet_size + 1
         self.positives = positives
         self.negatives = negatives
@@ -840,15 +869,31 @@ class Theory:
         :param literal:
         :return:
         """
-        return (literal < -self.alphabet_size) or (literal > self.alphabet_size)
+        return (literal < -self.initial_alphabet_size) or (
+            literal > self.initial_alphabet_size
+        )
 
-    def is_definition_clause(self, clause):
+    def is_definition_clause(self, clause, invented_literals=None):
         """
         Returns true if a clause is serving as a definition for an invented predicate.
-        :param clause:
+        :param clause: The clause which is to be checked if it is a definition clause
+        :param invented_literals: Check if the clause is a definition clause for only these literals
         :return:
         """
-        return any([literal > self.alphabet_size for literal in clause])
+        unpacked_clause = self.unpack_clause(clause)
+        for literal in unpacked_clause:
+            if (
+                literal in self.invented_predicate_definition
+                and unpacked_clause
+                == frozenset(
+                    [literal] + list(self.invented_predicate_definition[literal])
+                )
+            ):
+                if invented_literals is None:
+                    return True
+                elif literal in invented_literals:
+                    return True
+        return False
 
     def get_invented_literals(self, clause):
         invented_literals = set()
@@ -961,6 +1006,7 @@ class Theory:
         """
         new_var = self.new_var_counter
         self.new_var_counter += 1
+        self.final_alphabet_size += 1
         return new_var
 
     def __len__(self):
@@ -1006,6 +1052,12 @@ class Theory:
 
             The invented literals to check for are stored in the set, self.pruned_invented_literals
         """
+        if not self.pruned_invented_literals:
+            return
+
+        # ALl the clauses in self.clauses are divided into 2 parts:
+        # 1. new_clauses: clauses that do not contain any pruned invented literals
+        # 2. possible_clauses: clauses that contain any pruned invented literals which may be unpacked later
         possible_clauses = []
         new_clauses = []
         for clause in self.clauses:
@@ -1018,7 +1070,9 @@ class Theory:
             if literal_found is False:
                 new_clauses.append(clause)
 
-        output_clauses = []
+        unpack_literals = set()
+        self.pruned_invented_literals = list(self.pruned_invented_literals)
+        self.pruned_invented_literals.sort(reverse=True)
         for literal in self.pruned_invented_literals:
             temp_theory = copy(new_clauses)
             unpack_clauses = []
@@ -1026,37 +1080,83 @@ class Theory:
             for clause in possible_clauses:
                 if -literal in clause:
                     pack_clauses.append(clause)
-                    unpack_clauses.append(self.unpack_clause(clause))
+                    unpack_clauses.append(self.unpack_clause(clause, {literal}))
                 elif literal in clause:
                     pack_clauses.append(clause)
 
+            temp_theory += pack_clauses
             temp_theory += unpack_clauses
             unpack_dl = get_dl(
                 self.dl_measure,
                 temp_theory,
                 list(self.errors),
-                self.new_var_counter - 1,
+                self.new_var_counter - 2,
             )
 
             if unpack_dl < self.dl:
                 # It is better to keep the unpacked clause for this particular W operator
-                output_clauses += unpack_clauses
+                # output_clauses += unpack_clauses
+                unpack_literals.add(literal)
                 print(
                     "Unpacking W operator applied earlier using "
                     + str(literal)
                     + " on "
                     + str(self.invented_predicate_definition[literal])
                 )
-            else:
-                # It is better to keep the packed clause for this particular W operator
-                output_clauses += pack_clauses
+                self.unpacked_w[literal] = copy(
+                    self.invented_predicate_definition[literal]
+                )
+                # TODO: what if there is a "D" operator involved that needs to be unpacked
+                self.operator_counter["W"] -= 1
+                print(
+                    "Line 1108: Decreasing final alphabet size due to " + str(literal)
+                )
+                self.final_alphabet_size -= 1
 
+            # else:
+            #     # It is better to keep the packed clause for this particular W operator
+            #     output_clauses += pack_clauses
+
+        output_clauses = []
+        for clause in possible_clauses:
+            if not self.is_definition_clause(clause, unpack_literals):
+                output_clauses.append(self.unpack_clause(clause, unpack_literals))
+
+        for literal in unpack_literals:
+            del self.invented_predicate_definition[literal]
+
+        assert len(set(output_clauses)) == len(output_clauses)
+        print("Possible clauses:\n")
+        print_2d(possible_clauses)
+        print("Output clauses:\n")
+        print_2d(output_clauses)
         self.clauses = new_clauses + output_clauses
+        self.dl = get_dl(
+            self.dl_measure, self.clauses, list(self.errors), self.final_alphabet_size
+        )
 
-    def unpack_clause(self, clause):
+        # assert self.final_alphabet_size == get_alphabet_size(self.clauses)
+        if self.final_alphabet_size != get_alphabet_size(self.clauses):
+            self.final_alphabet_size = get_alphabet_size(self.clauses)
+        self.pruned_invented_literals = set()
+
+    def unpack_clause(self, clause, invented_literals=None):
         """
         Substitute the invented literals with their definitions in a clause
+        :param clause: The clause which is to be unpacked or resolved
+        :param invented_literals: Replace only these invented literal while unpacking and leave others as is
+        :return:
         """
+
+        if invented_literals is not None:
+            unpacked_clause = set()
+            for literal in clause:
+                if -literal in invented_literals:
+                    unpacked_clause |= self.invented_predicate_definition[-literal]
+                else:
+                    unpacked_clause.add(literal)
+            return frozenset(unpacked_clause)
+
         if clause in self.unpacked_clauses:
             return self.unpacked_clauses[clause]
 
@@ -1071,7 +1171,7 @@ class Theory:
         # Cache the unpacked clause
         self.unpacked_clauses[clause] = frozenset(unpacked_clause)
 
-        return unpacked_clause
+        return frozenset(unpacked_clause)
 
     def get_compression(self, input_clauses, op, output_clauses):
 
@@ -1213,7 +1313,7 @@ class Theory:
                 # if self.is_definition_clause(clause):
                 #     invented_literal = None
                 #     for literal in clause:
-                #         if literal > self.alphabet_size:
+                #         if literal > self.initial_alphabet_size:
                 #             # We assert that there is only one positive invented literal in the clause
                 #             invented_literal = literal
                 #             break
@@ -1233,6 +1333,11 @@ class Theory:
                     pruned_indices.add(i)
                     if self.is_definition_clause(clause):
                         self.operator_counter["W"] -= 1
+                        print(
+                            "Line 1326: Decreasing final alphabet size due to "
+                            + str(clause)
+                        )
+                        self.final_alphabet_size -= 1
 
                     self.pruned_invented_literals |= self.get_invented_literals(clause)
 
@@ -1329,6 +1434,12 @@ class Theory:
             clause = self.clauses[clause_id]
             input_clause_list.append(clause)
             residue.append(clause - subclause)
+
+        if (
+            subclause in self.unpacked_w
+            and set(input_clause_list) == self.unpacked_w[subclause]
+        ):
+            return "ignore_itemset"
 
         # Check if S-operator is applicable
         if permitted_operators["S"] is True:

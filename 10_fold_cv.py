@@ -22,10 +22,10 @@ def count_models(pa, theory, id=None):
 
     total_clauses = len(theory.clauses) + len(pa)
     total_vars = theory.new_var_counter - 1
-    if id:
-        filename = "./CNFs/" + id + ".cnf"
+    if id is not None:
+        filename = "./Output/Ganak_CNFs/" + id + ".cnf"
     else:
-        filename = "./CNFs/0.cnf"
+        filename = "./Output/Ganak_CNFs/0.cnf"
 
     f = open(filename, "w+")
     f.write(
@@ -49,15 +49,15 @@ def count_models(pa, theory, id=None):
 
     f.close()
 
-    if id:
-        outfilename = "./CNFs/" + id + ".out"
+    if id is not None:
+        outfilename = "./Output/Ganak_CNFs/" + id + ".out"
     else:
-        outfilename = "./CNFs/0.out"
+        outfilename = "./Output/Ganak_CNFs/0.out"
 
     os.system(
-        "cd Ganak/build/ && python ganak.py ../."
+        "cd Resources/Ganak/build/ && python ganak.py ../."
         + filename
-        + " -p > ../."
+        + " -p > ../../."
         + outfilename
     )
 
@@ -73,6 +73,9 @@ def count_models(pa, theory, id=None):
             sol_found = True
     outf.close()
 
+    os.remove(filename)
+    os.remove(outfilename)
+
     if total_models:
         return int(total_models)
     else:
@@ -80,18 +83,13 @@ def count_models(pa, theory, id=None):
         return 0
 
 
-def split_data(data, num_folds=10, seed=1234):
+def split_data(data, num_folds=10, seed=0):
     random.seed(seed)
 
-    split_data = [[] for i in range(num_folds)]
+    split_data = [[] for _ in range(num_folds)]
 
     for datapoint in data:
         split_data[int(random.random() * num_folds)].append(datapoint)
-
-    # split_data2 = [[] for i in range(num_folds)]
-    #
-    # for datapoint in split_data[0]:
-    #     split_data2[int(random.random() * num_folds)].append(datapoint)
 
     return split_data
 
@@ -103,20 +101,7 @@ def compress(pa, definitions):
     :return: A compressed pa that is substituted with some of the invented predicates
     """
 
-    # substituted_definitions = {}
-    # for new_predicate, definition in definitions.items():
-    #     substituted_definition = set()
-    #     for literal in definition:
-    #         if literal not in definitions:
-    #             substituted_definition.add(literal)
-    #         else:
-    #             # TODO
-    #             pass
-    #
-    #     substituted_definitions[new_predicate] = definition
-
     compressed_pa = set(pa)
-    # definitions = copy(definitions)
 
     while definitions:
         new_pred, definition = definitions.popitem(last=False)
@@ -827,5 +812,5 @@ if __name__ == "__main__":
         output_file=output_file,
         test_both=True,
         minsup=(pos_minsup, neg_minsup),
-        dl_measure="ce",
+        dl_measure="me",
     )
