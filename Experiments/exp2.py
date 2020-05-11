@@ -38,7 +38,42 @@ def write_cnf(clauses, file):
             f.write(" ".join([str(literal) for literal in clause]) + " 0\n")
 
 
+def load_complete_dataset(dataset):
+    """
+    Apply closed world assumption on the  data to complete it
+    :param dataset: Name of the dataset in string
+    :return: a tuple of positives and negatives (which are complete, i.e., they contain every variables in each row)
+    """
+    positives, negatives = globals()["load_" + dataset]()
+    complete_positives = []
+    complete_negatives = []
+    if dataset == "breast":
+        var_range = list(range(1, 19))
+    else:
+        var_range = None
+
+    for positive_pa in positives:
+        complete_pa = set(positive_pa)
+        for var in var_range:
+            if var not in positive_pa:
+                complete_pa.add(-var)
+        complete_positives.append(complete_pa)
+
+    for negative_pa in negatives:
+        complete_pa = set(negative_pa)
+        for var in var_range:
+            if var not in negative_pa:
+                complete_pa.add(-var)
+        complete_negatives.append(complete_pa)
+
+    return complete_positives, complete_negatives
+
+
 def get_clauses(theory):
+    """
+    :param theory: it can be an instance if a Theory class or could just be None
+    :return: a list of clauses present in the theory
+    """
     if hasattr(theory, "clauses"):
         return theory.clauses
     else:
@@ -52,7 +87,7 @@ def get_uci_mcar(dataset, missing_parameter=0.0):
     :return: a tuple of incomplete positives and incomplete negatives
     """
 
-    complete_positives, complete_negatives = globals()["load_" + dataset]()
+    complete_positives, complete_negatives = load_complete_dataset(dataset)
 
     incomplete_positives = []
     for pa in complete_positives:
@@ -79,12 +114,12 @@ def get_uci_nb_missing(dataset, M=0):
     :param M: a positive integer fixating on the exact number of values to be made missing in each row
     :return: a tuple of incomplete positives and incomplete negatives
     """
-    complete_positives, complete_negatives = globals()["load_" + dataset]()
+    complete_positives, complete_negatives = load_complete_dataset(dataset)
 
     incomplete_positives = []
     missing_positives = []
     for pa in complete_positives:
-        missing_literals = random.sample(pa, M)
+        missing_literals = frozenset(random.sample(pa, M))
         missing_positives.append(missing_literals)
         incomplete_positive = set()
         for literal in pa:
@@ -95,7 +130,7 @@ def get_uci_nb_missing(dataset, M=0):
     incomplete_negatives = []
     missing_negatives = []
     for pa in complete_negatives:
-        missing_literals = random.sample(pa, M)
+        missing_literals = frozenset(random.sample(pa, M))
         missing_negatives.append(missing_literals)
         incomplete_negative = set()
         for literal in pa:
@@ -111,179 +146,193 @@ def get_uci_nb_missing(dataset, M=0):
     )
 
 
-def plot_uci(dataset, minsup_list, dl, version=1):
-    positives, negatives = globals()["load_" + dataset]()
-    pos_theory = initialize_theory(positives)
-    neg_theory = initialize_theory(negatives)
-    initial_dl = (
-        get_dl(
-            dl, pos_theory + neg_theory, [], get_alphabet_size(pos_theory + neg_theory)
-        )
-        + 1
-    )
-
-    out_path = "Output/CNFs/" + dataset
-    mining4sat_compression_list = []
-    mistle_lossless_compression_list = []
-    mistle_compression_list = []
-
-    for support in minsup_list:
-
-        # 1
-        mining4sat_pos_theory = run_mining4sat(
-            pos_theory, support=support, code_path=mining4sat_absolute_path
-        )
-        mining4sat_neg_theory = run_mining4sat(
-            neg_theory, support=support, code_path=mining4sat_absolute_path
-        )
-        mining4sat_dl = (
-            get_dl(
-                dl,
-                mining4sat_pos_theory + mining4sat_neg_theory,
-                [],
-                get_alphabet_size(mining4sat_pos_theory + mining4sat_pos_theory),
-            )
-            + 1
-        )
-
-        if mining4sat_dl == 0:
-            mining4sat_compression_list.append(0)
-        else:
-            mining4sat_compression_list.append(
-                (initial_dl - mining4sat_dl) / initial_dl
-            )
-
-        # 2
-        mistle_pos = Mistle([], positives)
-        mistle_pos_theory, _ = mistle_pos.learn(
-            dl_measure=dl, minsup=support, lossy=False
-        )
-        mistle_neg = Mistle([], negatives)
-        mistle_neg_theory, _ = mistle_neg.learn(
-            dl_measure=dl, minsup=support, lossy=False
-        )
-        write_cnf(
-            get_clauses(mistle_pos_theory),
-            out_path + "_L" + str(support) + "_lossless_pos.cnf",
-        )
-        write_cnf(
-            get_clauses(mistle_neg_theory),
-            out_path + "_L" + str(support) + "_lossless_neg.cnf",
-        )
-        mistle_dl = (
-            get_dl(
-                dl,
-                get_clauses(mistle_pos_theory) + get_clauses(mistle_neg_theory),
-                [],
-                get_alphabet_size(
-                    get_clauses(mistle_pos_theory) + get_clauses(mistle_neg_theory)
-                ),
-            )
-            + 1
-        )
-        if mistle_dl == 0:
-            mistle_lossless_compression_list.append(0)
-        else:
-            mistle_lossless_compression_list.append(
-                (initial_dl - mistle_dl) / initial_dl
-            )
-
-        # 3
-        mistle_pos = Mistle(negatives, positives)
-        mistle_pos_theory, _ = mistle_pos.learn(
-            dl_measure=dl, minsup=support, lossy=True
-        )
-        mistle_neg = Mistle(positives, negatives)
-        mistle_neg_theory, _ = mistle_neg.learn(
-            dl_measure=dl, minsup=support, lossy=True
-        )
-        write_cnf(
-            get_clauses(mistle_pos_theory), out_path + "_L" + str(support) + "_pos.cnf"
-        )
-        write_cnf(
-            get_clauses(mistle_neg_theory), out_path + "_L" + str(support) + "_neg.cnf"
-        )
-        mistle_pos_dl = get_dl(
-            dl,
-            get_clauses(mistle_pos_theory),
-            [],
-            get_alphabet_size(get_clauses(mistle_pos_theory)),
-        )
-        mistle_neg_dl = get_dl(
-            dl,
-            get_clauses(mistle_neg_theory),
-            [],
-            get_alphabet_size(get_clauses(mistle_neg_theory)),
-        )
-        if mistle_pos_dl > mistle_neg_dl:
-            mistle_compression_list.append((initial_dl - mistle_neg_dl) / initial_dl)
-        else:
-            mistle_compression_list.append((initial_dl - mistle_pos_dl) / initial_dl)
-
-    plt.figure()
-    if dl == "ll":
-        plt.ylabel("Compression (DL: Literal Length)")
-    elif dl == "sl":
-        plt.ylabel("Compression (DL: Symbol Length)")
-    elif dl == "se":
-        plt.ylabel("Compression (DL: Shanon Entropy)")
-    elif dl == "me":
-        plt.ylabel("Compression (DL: Modified Entropy)")
-
-    plt.xlabel("Minimum support threshold")
-    plt.title("UCI: " + dataset)
-
-    plt.plot(minsup_list, mining4sat_compression_list, marker="o", label="Mining4SAT")
-    plt.plot(
-        minsup_list,
-        mistle_lossless_compression_list,
-        marker="o",
-        label="Mistle (lossless)",
-    )
-    plt.plot(minsup_list, mistle_compression_list, marker="o", label="Mistle (lossy)")
-
-    plt.ylim(bottom=0, top=1)
-    plt.legend()
-    mplcyberpunk.add_glow_effects()
-    plt.savefig(
-        "Experiments/exp3_uci_" + dataset + "_v" + str(version) + ".png",
-        bbox_inches="tight",
-    )
-    plt.show()
-    plt.close()
+# def plot_uci(dataset, minsup_list, dl, version=1):
+#     positives, negatives = globals()["load_" + dataset]()
+#     pos_theory = initialize_theory(positives)
+#     neg_theory = initialize_theory(negatives)
+#     initial_dl = (
+#         get_dl(
+#             dl, pos_theory + neg_theory, [], get_alphabet_size(pos_theory + neg_theory)
+#         )
+#         + 1
+#     )
+#
+#     out_path = "Output/CNFs/" + dataset
+#     mining4sat_compression_list = []
+#     mistle_lossless_compression_list = []
+#     mistle_compression_list = []
+#
+#     for support in minsup_list:
+#
+#         # 1
+#         mining4sat_pos_theory = run_mining4sat(
+#             pos_theory, support=support, code_path=mining4sat_absolute_path
+#         )
+#         mining4sat_neg_theory = run_mining4sat(
+#             neg_theory, support=support, code_path=mining4sat_absolute_path
+#         )
+#         mining4sat_dl = (
+#             get_dl(
+#                 dl,
+#                 mining4sat_pos_theory + mining4sat_neg_theory,
+#                 [],
+#                 get_alphabet_size(mining4sat_pos_theory + mining4sat_pos_theory),
+#             )
+#             + 1
+#         )
+#
+#         if mining4sat_dl == 0:
+#             mining4sat_compression_list.append(0)
+#         else:
+#             mining4sat_compression_list.append(
+#                 (initial_dl - mining4sat_dl) / initial_dl
+#             )
+#
+#         # 2
+#         mistle_pos = Mistle([], positives)
+#         mistle_pos_theory, _ = mistle_pos.learn(
+#             dl_measure=dl, minsup=support, lossy=False
+#         )
+#         mistle_neg = Mistle([], negatives)
+#         mistle_neg_theory, _ = mistle_neg.learn(
+#             dl_measure=dl, minsup=support, lossy=False
+#         )
+#         write_cnf(
+#             get_clauses(mistle_pos_theory),
+#             out_path + "_L" + str(support) + "_lossless_pos.cnf",
+#         )
+#         write_cnf(
+#             get_clauses(mistle_neg_theory),
+#             out_path + "_L" + str(support) + "_lossless_neg.cnf",
+#         )
+#         mistle_dl = (
+#             get_dl(
+#                 dl,
+#                 get_clauses(mistle_pos_theory) + get_clauses(mistle_neg_theory),
+#                 [],
+#                 get_alphabet_size(
+#                     get_clauses(mistle_pos_theory) + get_clauses(mistle_neg_theory)
+#                 ),
+#             )
+#             + 1
+#         )
+#         if mistle_dl == 0:
+#             mistle_lossless_compression_list.append(0)
+#         else:
+#             mistle_lossless_compression_list.append(
+#                 (initial_dl - mistle_dl) / initial_dl
+#             )
+#
+#         # 3
+#         mistle_pos = Mistle(negatives, positives)
+#         mistle_pos_theory, _ = mistle_pos.learn(
+#             dl_measure=dl, minsup=support, lossy=True
+#         )
+#         mistle_neg = Mistle(positives, negatives)
+#         mistle_neg_theory, _ = mistle_neg.learn(
+#             dl_measure=dl, minsup=support, lossy=True
+#         )
+#         write_cnf(
+#             get_clauses(mistle_pos_theory), out_path + "_L" + str(support) + "_pos.cnf"
+#         )
+#         write_cnf(
+#             get_clauses(mistle_neg_theory), out_path + "_L" + str(support) + "_neg.cnf"
+#         )
+#         mistle_pos_dl = get_dl(
+#             dl,
+#             get_clauses(mistle_pos_theory),
+#             [],
+#             get_alphabet_size(get_clauses(mistle_pos_theory)),
+#         )
+#         mistle_neg_dl = get_dl(
+#             dl,
+#             get_clauses(mistle_neg_theory),
+#             [],
+#             get_alphabet_size(get_clauses(mistle_neg_theory)),
+#         )
+#         if mistle_pos_dl > mistle_neg_dl:
+#             mistle_compression_list.append((initial_dl - mistle_neg_dl) / initial_dl)
+#         else:
+#             mistle_compression_list.append((initial_dl - mistle_pos_dl) / initial_dl)
+#
+#     plt.figure()
+#     if dl == "ll":
+#         plt.ylabel("Compression (DL: Literal Length)")
+#     elif dl == "sl":
+#         plt.ylabel("Compression (DL: Symbol Length)")
+#     elif dl == "se":
+#         plt.ylabel("Compression (DL: Shanon Entropy)")
+#     elif dl == "me":
+#         plt.ylabel("Compression (DL: Modified Entropy)")
+#
+#     plt.xlabel("Minimum support threshold")
+#     plt.title("UCI: " + dataset)
+#
+#     plt.plot(minsup_list, mining4sat_compression_list, marker="o", label="Mining4SAT")
+#     plt.plot(
+#         minsup_list,
+#         mistle_lossless_compression_list,
+#         marker="o",
+#         label="Mistle (lossless)",
+#     )
+#     plt.plot(minsup_list, mistle_compression_list, marker="o", label="Mistle (lossy)")
+#
+#     plt.ylim(bottom=0, top=1)
+#     plt.legend()
+#     mplcyberpunk.add_glow_effects()
+#     plt.savefig(
+#         "Experiments/exp3_uci_" + dataset + "_v" + str(version) + ".png",
+#         bbox_inches="tight",
+#     )
+#     plt.show()
+#     plt.close()
 
 
 def get_all_completions_recursive(incomplete_pa, missing_attributes, result):
+    """
+    Example: if incomplete_pa = [1, 2, 3], missing_attributes = [4, 5],
+        then the result after the recursion should be:
+        [[1, 2, 3, 4, 5], [1, 2, 3, 4, -5], [1, 2, 3, -4, 5], [1, 2, 3, -4, -5]]
+    :param incomplete_pa: an incomplete partial assignment taht is needed to be completed
+    :param missing_attributes: a list of positive literals whose values are missing in the incomplete_pa
+    :param result: a variable that stores the current / temporary value of the final result
+    :return: a list of all completions of the incomplete_pa wrt all posisble combinations of missing_attributes
+    """
     if not missing_attributes:
         return result
 
     pos_result = copy(result)
     neg_result = copy(result)
-    new_incomplete_pa = copy(incomplete_pa)
     attribute = missing_attributes.pop()
 
     new_result = []
 
     if result:
         for p_r in pos_result:
-            p_r.append(attribute)
-            new_result.append(p_r)
+            l = copy(p_r)
+            l.append(attribute)
+            new_result.append(l)
 
         for n_r in neg_result:
-            n_r.append(attribute)
-            new_result.append(n_r)
+            l = copy(n_r)
+            l.append(-attribute)
+            new_result.append(l)
     else:
         new_result.append(incomplete_pa + [attribute])
         new_result.append(incomplete_pa + [-attribute])
 
-    new_incomplete_pa.append(attribute)
-
-    return get_all_completions_recursive(
-        new_incomplete_pa, missing_attributes, new_result
-    )
+    return get_all_completions_recursive([], missing_attributes, new_result)
 
 
-def impute_missing_values(theory, incomplete_pa, missing_attributes):
+def impute_missing_values(incomplete_pa, theory, missing_attributes):
+    """
+    A function that predicts the most suitable completion of 'incomplete_pa' wrt a theory.
+    The completion that is selected out of all the candidates fails the most number of clauses in that theory.
+    :param incomplete_pa: An incomplete partial assignment that is needed to be completed
+    :param theory: A theory
+    :param missing_attributes:
+    :return:
+    """
     completed_pas = get_all_completions_recursive(
         list(incomplete_pa), missing_attributes, []
     )
@@ -324,7 +373,7 @@ def get_accuracy(
         for literal in m_p:
             missing_attributes.add(abs(literal))
         predicted_c_p = impute_missing_values(
-            mistle_pos_theory, i_p, missing_attributes
+            i_p, mistle_pos_theory, missing_attributes
         )
         if set(predicted_c_p) == set(c_p):
             accuracy += 1
@@ -337,7 +386,7 @@ def get_accuracy(
         for literal in m_n:
             missing_attributes.add(abs(literal))
         predicted_c_n = impute_missing_values(
-            mistle_neg_theory, i_n, missing_attributes
+            i_n, mistle_neg_theory, missing_attributes
         )
         if set(predicted_c_n) == set(c_n):
             accuracy += 1
@@ -346,7 +395,8 @@ def get_accuracy(
 
 
 def plot_uci_nb_missing(dataset, M_list, minsup, dl, version):
-    complete_positives, complete_negatives = globals()["load_" + dataset]()
+    # complete_positives, complete_negatives = globals()["load_" + dataset]()
+    complete_positives, complete_negatives = load_complete_dataset(dataset)
     out_path = "Output/CNFs/" + dataset
     mistle_accuracy_list = []
 
@@ -354,11 +404,11 @@ def plot_uci_nb_missing(dataset, M_list, minsup, dl, version):
         incomplete_positives, incomplete_negatives, missing_positives, missing_negatives = get_uci_nb_missing(
             dataset, m
         )
-
-        mistle_pos_theory, _ = Mistle(incomplete_negatives, incomplete_positives).learn(
+        print("Number of missing values\t:" + str(m))
+        mistle_neg_theory, _ = Mistle(incomplete_positives, incomplete_negatives).learn(
             dl_measure=dl, minsup=minsup, lossy=True
         )
-        mistle_neg_theory, _ = Mistle(incomplete_positives, incomplete_negatives).learn(
+        mistle_pos_theory, _ = Mistle(incomplete_negatives, incomplete_positives).learn(
             dl_measure=dl, minsup=minsup, lossy=True
         )
         write_cnf(
@@ -409,7 +459,9 @@ def plot_uci_nb_missing(dataset, M_list, minsup, dl, version):
 # Plot 1: UCI: Breast
 ###############################################################################
 
-plot_uci_nb_missing(dataset="breast", M_list=[1, 3, 5], minsup=1, dl="me", version=1)
+plot_uci_nb_missing(
+    dataset="breast", M_list=[1, 2, 3, 4, 5], minsup=1, dl="me", version=1
+)
 
 # ###############################################################################
 # # Plot 2: UCI: TicTacToe
