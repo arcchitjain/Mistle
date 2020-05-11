@@ -401,11 +401,14 @@ def plot_uci_nb_missing(dataset, M_list, minsup, dl, version):
     mistle_accuracy_list = []
 
     for m in M_list:
-        incomplete_positives, incomplete_negatives, missing_positives, missing_negatives = get_uci_nb_missing(
-            dataset, m
-        )
-        print("Number of missing values\t:" + str(m))
-        mistle_neg_theory, _ = Mistle(incomplete_positives, incomplete_negatives).learn(
+        (
+            incomplete_positives,
+            incomplete_negatives,
+            missing_positives,
+            missing_negatives,
+        ) = get_uci_nb_missing(dataset, m)
+
+        mistle_pos_theory, _ = Mistle(incomplete_negatives, incomplete_positives).learn(
             dl_measure=dl, minsup=minsup, lossy=True
         )
         mistle_pos_theory, _ = Mistle(incomplete_negatives, incomplete_positives).learn(
