@@ -393,17 +393,19 @@ class Krimp:
         res_dir = sorted(dirs, key=lambda x: os.path.getctime(x), reverse=True)[0]
 
         # Run Classify.conf
-        classify_config_file = os.path.join(res_dir, "classify.conf")
-        target_config_file = os.path.join(krimp_exec_path, "classify.conf")
-        shutil.copyfile(classify_config_file, os.path.abspath(krimp_exec_path))
+        config_classify_path = os.path.join(res_dir, "classify.conf")
+        target_config_file = os.path.abspath("classify.conf")
+        shutil.copyfile(config_classify_path, target_config_file)
         print("Running\t: " + self.krimp_exec_path + "\t" + target_config_file)
-        subprocess.run([self.krimp_exec_path, target_config_file])
+        subprocess.run([self.krimp_exec_path, "classify.conf"])
 
-        res_file = os.path.join(res_dir, "singleline.text")
+        res_file = os.path.join(res_dir, "singleline.txt")
 
         accuracy = None
         minsup = None
         std_dev = None
+        if not os.path.exists(res_file):
+            catch_it = 1
         with open(res_file, "r") as f:
             lines = f.readlines()
             line = lines[0].strip()
