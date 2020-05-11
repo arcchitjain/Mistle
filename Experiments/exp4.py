@@ -204,8 +204,8 @@ def classify_by_failing_clauses(
     n_clauses = get_clauses(neg_theory)
 
     for pa in test_positives:
-        p = count_failed_clauses(pa, n_clauses)
-        n = count_failed_clauses(pa, p_clauses)
+        p = count_failed_clauses(pa, p_clauses)
+        n = count_failed_clauses(pa, n_clauses)
 
         if p > n:
             # Correctly classified as a positive
@@ -222,8 +222,8 @@ def classify_by_failing_clauses(
                 FN_f += 1
 
     for pa in test_negatives:
-        p = count_failed_clauses(pa, n_clauses)
-        n = count_failed_clauses(pa, p_clauses)
+        p = count_failed_clauses(pa, p_clauses)
+        n = count_failed_clauses(pa, n_clauses)
 
         if p > n:
             # Wrongly classified as a positive
@@ -338,7 +338,7 @@ krimp_item_dict = {
 
 mistle_accuracy_list = []
 
-for fold in range(3, 4):
+for fold in range(1, 11):
     train_file = os.path.join(res_path, "f" + str(fold), "train.db")
     test_file = os.path.join(res_path, "f" + str(fold), "test.db")
 
