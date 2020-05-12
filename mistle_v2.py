@@ -446,6 +446,17 @@ def get_clauses(theory):
         return []
 
 
+def get_errors(theory):
+    """
+    :param theory: it can be an instance if a Theory class or could just be None
+    :return: a list of errors present in the theory
+    """
+    if hasattr(theory, "errors"):
+        return theory.errors
+    else:
+        return []
+
+
 def get_literal_length(clauses):
     """
     :param clauses: a CNF/Theory
@@ -869,13 +880,18 @@ class Theory:
 
     def is_invented_literal(self, literal):
         """
-        Returns true if the |literal| > largest variable in the data
+        # Returns true if the |literal| > largest variable in the data
+        Returns true if the literal is invented only due to the 'W' operator and not due to 'D' operator
         :param literal:
         :return:
         """
-        return (literal < -self.initial_alphabet_size) or (
-            literal > self.initial_alphabet_size
-        )
+
+        if (literal >= -self.initial_alphabet_size) and (
+            literal <= self.initial_alphabet_size
+        ):
+            return False
+        else:
+            return abs(literal) in self.invented_predicate_definition
 
     def is_definition_clause(self, clause, invented_literals=None):
         """
@@ -1556,14 +1572,14 @@ class Theory:
                 )
                 # TODO: what if there is a "D" operator involved that needs to be unpacked
                 self.operator_counter["W"] -= 1
-                print(
-                    "Line 1108: Decreasing final alphabet size due to " + str(literal)
-                )
                 self.final_alphabet_size -= 1
 
             # else:
             #     # It is better to keep the packed clause for this particular W operator
             #     output_clauses += pack_clauses
+
+        if len(unpack_literals) == 0:
+            return
 
         pruned_clauses = []
         for clause in prunable_clauses:
@@ -1574,31 +1590,35 @@ class Theory:
         for literal in unpack_literals:
             del self.invented_predicate_definition[literal]
 
-        assert len(pruned_clauses) == len(prunable_clauses) - len(unpack_literals)
+        # assert len(pruned_clauses) == len(prunable_clauses) - len(unpack_literals)
         # print("Possible clauses:\n")
         # print_2d(possible_clauses)
         # print("Output clauses:\n")
         # print_2d(output_clauses)
-        self.clauses = imprunable_clauses + pruned_clauses
+        new_clauses = imprunable_clauses + pruned_clauses
         self.dl = get_dl(
             self.dl_measure, self.clauses, list(self.errors), self.final_alphabet_size
         )
 
-        # assert self.final_alphabet_size == get_alphabet_size(self.clauses)
-        if self.final_alphabet_size != get_alphabet_size(self.clauses):
-            self.final_alphabet_size = get_alphabet_size(self.clauses)
-
         self.prunable_invented_literals = set()
 
-        for clause in self.clauses:
+        removal_indices = set()
+        for i, clause in enumerate(new_clauses):
             for literal in unpack_literals:
-                assert literal not in clause and -literal not in clause
+                if literal in clause or -literal in clause:
+                    removal_indices.add(i)
+        removal_indices = list(removal_indices)
+        removal_indices.sort(reverse=True)
 
-        if len(unpack_literals) > 0:
-            neg_violations = self.get_violations(
-                self.clauses, self.negatives, True, "-"
-            )
-            assert len(neg_violations) == 0
+        for i in removal_indices:
+            del new_clauses[i]
+
+        neg_violations = self.get_violations(new_clauses, self.negatives, True, "-")
+        if len(neg_violations) == 0:
+            self.clauses = new_clauses
+
+        if self.final_alphabet_size != get_alphabet_size(self.clauses):
+            self.final_alphabet_size = get_alphabet_size(self.clauses)
 
     def prune(self):
 
