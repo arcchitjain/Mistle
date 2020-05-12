@@ -2,6 +2,10 @@ from krimp_wrapper import Krimp
 import os
 import statistics
 from mistle_v2 import *
+import matplotlib.pyplot as plt
+import mplcyberpunk
+
+plt.style.use("cyberpunk")
 
 
 def translate(krimp_vars, krimp_item_dict, sort=False):
@@ -25,6 +29,59 @@ def translate(krimp_vars, krimp_item_dict, sort=False):
             return str(literal - 65536)
         else:
             return str(literal)
+
+
+def save_complete_dataset(dataset):
+    """
+    Apply closed world assumption on the data to complete it
+    :param dataset: Name of the dataset in string
+    :return: a tuple of positives and negatives (which are complete, i.e., they contain every variables in each row)
+    """
+    positives, negatives = globals()["load_" + dataset]()
+    complete_positives = []
+    complete_negatives = []
+    if dataset == "breast":
+        var_range = list(range(1, 19))
+        class_vars = [19, 20]
+    elif dataset == "tictactoe":
+        var_range = list(range(1, 28))
+        class_vars = [28, 29]
+    else:
+        print("Invalid Dataset Name")
+        return None
+
+    for positive_pa in positives:
+        complete_pa = set(positive_pa)
+        for var in var_range:
+            if var not in positive_pa:
+                complete_pa.add(-var)
+        complete_positives.append(complete_pa)
+
+    for negative_pa in negatives:
+        complete_pa = set(negative_pa)
+        for var in var_range:
+            if var not in negative_pa:
+                complete_pa.add(-var)
+        complete_negatives.append(complete_pa)
+
+    output_filename = os.path.abspath("Data/" + dataset + "_completed.dat")
+    with open(output_filename, "w+") as f:
+        for pa in complete_positives:
+            f.write(
+                " ".join([str(literal) for literal in pa])
+                + " "
+                + str(class_vars[1])
+                + "\n"
+            )
+        for pa in complete_negatives:
+            f.write(
+                " ".join([str(literal) for literal in pa])
+                + " "
+                + str(class_vars[0])
+                + "\n"
+            )
+
+    return complete_positives, complete_negatives, output_filename
 
 
 def db2dat(file, krimp_item_dict, save=True):
@@ -273,100 +330,568 @@ def classify_by_failing_clauses(
     )
 
 
+def count_passed_clauses(pa, clauses):
+    if len(clauses) == 0:
+        return 0
+
+    nb_passed_clauses = 0
+    for clause in clauses:
+        if solve([tuple(clause)] + [(a,) for a in pa]) != "UNSAT":
+            nb_passed_clauses += 1
+    return nb_passed_clauses / len(clauses)
+
+
+def classify_by_passing_clauses(
+    pos_theory, neg_theory, test_positives, test_negatives, default_prediction=None
+):
+    accuracy = 0
+    TP_s, TN_s, FP_s, FN_s = 0, 0, 0, 0
+    TP_f, TN_f, FP_f, FN_f = 0, 0, 0, 0
+
+    p_clauses = get_clauses(pos_theory)
+    n_clauses = get_clauses(neg_theory)
+
+    for pa in test_positives:
+        p = count_passed_clauses(pa, n_clauses)
+        n = count_passed_clauses(pa, p_clauses)
+
+        if p > n:
+            # Correctly classified as a positive
+            accuracy += 1
+            TP_s += 1
+        elif p < n:
+            # Wrongly classified as a negative
+            FN_s += 1
+        else:
+            if default_prediction == "+":
+                accuracy += 1
+                TP_f += 1
+            elif default_prediction == "-":
+                FN_f += 1
+
+    for pa in test_negatives:
+        p = count_passed_clauses(pa, n_clauses)
+        n = count_passed_clauses(pa, p_clauses)
+
+        if p > n:
+            # Wrongly classified as a positive
+            FP_s += 1
+        elif p < n:
+            # Correctly classified as a negative
+            accuracy += 1
+            TN_s += 1
+        else:
+            if default_prediction == "+":
+                FP_f += 1
+            elif default_prediction == "-":
+                accuracy += 1
+                TN_f += 1
+
+    print(
+        "Confusions \t: TP_s = "
+        + str(TP_s)
+        + "; TN_s = "
+        + str(TN_s)
+        + "; FP_s = "
+        + str(FP_s)
+        + "; FN_s = "
+        + str(FN_s)
+        + "; TP_f = "
+        + str(TP_f)
+        + "; TN_f = "
+        + str(TN_f)
+        + "; FP_f = "
+        + str(FP_f)
+        + "; FN_f = "
+        + str(FN_f)
+    )
+
+    return (
+        float(accuracy) / (len(test_positives) + len(test_negatives)),
+        {
+            "TP_s": TP_s,
+            "TN_s": TN_s,
+            "FP_s": FP_s,
+            "FN_s": FN_s,
+            "TP_f": TP_f,
+            "TN_f": TN_f,
+            "FP_f": FP_f,
+            "FN_f": FN_f,
+        },
+    )
+
+
+def classify_by_shortest_theory(
+    pos_theory, neg_theory, test_positives, test_negatives, default_prediction=None
+):
+    accuracy = 0
+    TP_s, TN_s, FP_s, FN_s = 0, 0, 0, 0
+    TP_f, TN_f, FP_f, FN_f = 0, 0, 0, 0
+
+    p_clauses = get_clauses(pos_theory)
+    n_clauses = get_clauses(neg_theory)
+
+    if neg_theory is None and pos_theory is None:
+        use = "d"
+    elif neg_theory is None:
+        use = "p"
+    elif pos_theory is None:
+        use = "n"
+    elif pos_theory.dl < neg_theory.dl:
+        use = "p"
+    elif neg_theory.dl < pos_theory.dl:
+        use = "n"
+    elif neg_theory.dl == pos_theory.dl:
+        use = "d"
+    else:
+        use = "d"
+
+    for pa in test_positives:
+        if use == "d":
+            if default_prediction == "+":
+                accuracy += 1
+                TP_f += 1
+            elif default_prediction == "-":
+                FN_f += 1
+        elif use == "p":
+            if check_pa_satisfiability(pa, p_clauses):
+                # Correctly classified as a positive
+                accuracy += 1
+                TP_s += 1
+            else:
+                # Wrongly classified as a negative
+                FN_s += 1
+        elif use == "n":
+            if check_pa_satisfiability(pa, n_clauses):
+                # Wrongly classified as a negative
+                FN_s += 1
+            else:
+                # Correctly classified as a positive
+                accuracy += 1
+                TP_s += 1
+
+    for pa in test_negatives:
+        if use == "d":
+            if default_prediction == "+":
+                FP_f += 1
+            elif default_prediction == "-":
+                accuracy += 1
+                TN_f += 1
+        elif use == "p":
+            if check_pa_satisfiability(pa, p_clauses):
+                # Wrongly classified as a positive
+                FP_s += 1
+            else:
+                # Correctly classified as a negative
+                accuracy += 1
+                TN_s += 1
+        elif use == "n":
+            if check_pa_satisfiability(pa, n_clauses):
+                # Wrongly classified as a positive
+                FP_s += 1
+            else:
+                # Correctly classified as a negative
+                accuracy += 1
+                TN_s += 1
+
+    print(
+        "Confusions \t: TP_s = "
+        + str(TP_s)
+        + "; TN_s = "
+        + str(TN_s)
+        + "; FP_s = "
+        + str(FP_s)
+        + "; FN_s = "
+        + str(FN_s)
+        + "; TP_f = "
+        + str(TP_f)
+        + "; TN_f = "
+        + str(TN_f)
+        + "; FP_f = "
+        + str(FP_f)
+        + "; FN_f = "
+        + str(FN_f)
+    )
+
+    return (
+        float(accuracy) / (len(test_positives) + len(test_negatives)),
+        {
+            "TP_s": TP_s,
+            "TN_s": TN_s,
+            "FP_s": FP_s,
+            "FN_s": FN_s,
+            "TP_f": TP_f,
+            "TN_f": TN_f,
+            "FP_f": FP_f,
+            "FN_f": FN_f,
+        },
+    )
+
+
+def check_pa_satisfiability_on_errors(pa, errors):
+    if errors is None or len(errors) == 0:
+        return None
+    else:
+        for error in errors:
+            if solve([(l,) for l in error] + [(a,) for a in pa]) != "UNSAT":
+                return True
+        return False
+
+
+def classify_by_shortest_theory_with_errors(
+    pos_theory, neg_theory, test_positives, test_negatives, default_prediction=None
+):
+    accuracy = 0
+    TP_s, TN_s, FP_s, FN_s = 0, 0, 0, 0
+    TP_f, TN_f, FP_f, FN_f = 0, 0, 0, 0
+
+    p_clauses = get_clauses(pos_theory)
+    n_clauses = get_clauses(neg_theory)
+    p_errors = get_errors(pos_theory)
+    n_errors = get_errors(neg_theory)
+
+    if neg_theory is None and pos_theory is None:
+        use = "d"
+    elif neg_theory is None:
+        use = "p"
+    elif pos_theory is None:
+        use = "n"
+    elif pos_theory.dl < neg_theory.dl:
+        use = "p"
+    elif neg_theory.dl < pos_theory.dl:
+        use = "n"
+    elif neg_theory.dl == pos_theory.dl:
+        use = "d"
+    else:
+        use = "d"
+
+    for pa in test_positives:
+
+        if use == "d":
+            if default_prediction == "+":
+                accuracy += 1
+                TP_f += 1
+            elif default_prediction == "-":
+                FN_f += 1
+        elif use == "p":
+            p_t = check_pa_satisfiability(pa, p_clauses)
+            p_e = check_pa_satisfiability_on_errors(pa, p_errors)
+            if (p_t is True and p_e is True) or (p_t is False and p_e is False):
+                # Correctly classified as a positive
+                accuracy += 1
+                TP_s += 1
+            elif (p_t is False and p_e is True) or (p_t is True and p_e is False):
+                # Wrongly classified as a negative
+                FN_s += 1
+        elif use == "n":
+            n_t = check_pa_satisfiability(pa, n_clauses)
+            n_e = check_pa_satisfiability_on_errors(pa, n_errors)
+            if (n_t is True and n_e is True) or (n_t is False and n_e is False):
+                # Wrongly classified as a negative
+                FN_s += 1
+            elif (n_t is False and n_e is True) or (n_t is True and n_e is False):
+                # Correctly classified as a positive
+                accuracy += 1
+                TP_s += 1
+
+    for pa in test_negatives:
+
+        if use == "d":
+            if default_prediction == "+":
+                FP_f += 1
+            elif default_prediction == "-":
+                accuracy += 1
+                TN_f += 1
+        elif use == "p":
+            p_t = check_pa_satisfiability(pa, p_clauses)
+            p_e = check_pa_satisfiability_on_errors(pa, p_errors)
+            if (p_t is True and p_e is True) or (p_t is False and p_e is False):
+                # Wrongly classified as a positive
+                FP_s += 1
+            elif (p_t is False and p_e is True) or (p_t is True and p_e is False):
+                # Correctly classified as a negative
+                accuracy += 1
+                TN_s += 1
+        elif use == "n":
+            n_t = check_pa_satisfiability(pa, n_clauses)
+            n_e = check_pa_satisfiability_on_errors(pa, n_errors)
+            if (n_t is True and n_e is True) or (n_t is False and n_e is False):
+                # Wrongly classified as a positive
+                FP_s += 1
+            elif (n_t is False and n_e is True) or (n_t is True and n_e is False):
+                # Correctly classified as a negative
+                accuracy += 1
+                TN_s += 1
+
+    print(
+        "Confusions \t: TP_s = "
+        + str(TP_s)
+        + "; TN_s = "
+        + str(TN_s)
+        + "; FP_s = "
+        + str(FP_s)
+        + "; FN_s = "
+        + str(FN_s)
+        + "; TP_f = "
+        + str(TP_f)
+        + "; TN_f = "
+        + str(TN_f)
+        + "; FP_f = "
+        + str(FP_f)
+        + "; FN_f = "
+        + str(FN_f)
+    )
+
+    return (
+        float(accuracy) / (len(test_positives) + len(test_negatives)),
+        {
+            "TP_s": TP_s,
+            "TN_s": TN_s,
+            "FP_s": FP_s,
+            "FN_s": FN_s,
+            "TP_f": TP_f,
+            "TN_f": TN_f,
+            "FP_f": FP_f,
+            "FN_f": FN_f,
+        },
+    )
+
+
+start_time = time()
+os.chdir("..")
+krimp_exec_path = "Resources/Krimp/bin/krimp"
+output_dir = "Output/"
+seed = 1234
+dl = "me"
+version = 2
+
 # minsup = 1
 # db_file = "/home/dtai/PycharmProjects/Mistle/Data/breast.dat"
 # class_vars = [19, 20]
 # minsup = 600
 # db_file = "/home/dtai/PycharmProjects/Mistle/Data/chess.dat"
 # class_vars = [74, 75]
-minsup = 50
-db_file = "/home/dtai/PycharmProjects/Mistle/Data/ticTacToe.dat"
-class_vars = [28, 29]
-os.chdir("..")
-krimp_exec_path = "Resources/Krimp/bin/krimp"
-output_dir = "Output/"
-seed = 1234
-dl = "me"
 
-# accuracy, std_dev, best_minsup, res_path, krimp_item_dict = Krimp(
-#     krimp_exec_path
-# ).classify(
-#     db_file,
-#     output_dir,
-#     class_vars=class_vars,
-#     min_support=minsup,
-#     convert_db=True,
-#     seed=seed,
+# cp, cn, db_file = save_complete_dataset("tictactoe")
+# minsup = int(0.2 * (len(cp) + len(cn)))
+
+rel_minsups = [0.6, 0.7, 0.8]
+krimp_accuracy_list = []
+krimp_std_dev_list = []
+mistle1_accuracy_list = []
+mistle1_std_dev_list = []
+mistle2_accuracy_list = []
+mistle2_std_dev_list = []
+mistle3_accuracy_list = []
+mistle3_std_dev_list = []
+mistle4_accuracy_list = []
+mistle4_std_dev_list = []
+mistle5_accuracy_list = []
+mistle5_std_dev_list = []
+
+# dataset = "tictactoe"
+# dataset = "breast"
+# dataset = "pima"
+dataset = "ionosphere"
+
+for rel_minsup in rel_minsups:
+
+    # Tictactoe
+    # db_file = "/home/dtai/PycharmProjects/Mistle/Data/tictactoe_completed.dat"
+    # nb_rows = 958
+    # class_vars = [28, 29]
+
+    # Breast
+    # class_vars = [19, 20]
+    # nb_rows = 699
+
+    # PIMA
+    # class_vars = [37, 38]
+    # nb_rows = 768
+
+    # Ionosphere
+    class_vars = [156, 157]
+    nb_rows = 351
+
+    db_file = "/home/dtai/PycharmProjects/Mistle/Data/" + dataset + ".dat"
+    minsup = int(rel_minsup * nb_rows)
+
+    accuracy, std_dev, best_minsup, res_path, krimp_item_dict = Krimp(
+        krimp_exec_path
+    ).classify(
+        db_file,
+        output_dir,
+        class_vars=class_vars,
+        min_support=minsup,
+        convert_db=True,
+        seed=seed,
+    )
+
+    krimp_accuracy_list.append(float(accuracy))
+    krimp_std_dev_list.append(float(std_dev))
+    print("KRIMP accuracy", accuracy)
+    print("KRIMP std_dev", std_dev)
+
+    mistle1_fold_accuracy_list = []
+    mistle2_fold_accuracy_list = []
+    mistle3_fold_accuracy_list = []
+    mistle4_fold_accuracy_list = []
+    mistle5_fold_accuracy_list = []
+
+    for fold in range(1, 2):
+        train_file = os.path.join(res_path, "f" + str(fold), "train.db")
+        test_file = os.path.join(res_path, "f" + str(fold), "test.db")
+
+        train_pos, train_neg = db2dat(train_file, krimp_item_dict, save=True)
+        test_pos, test_neg = db2dat(test_file, krimp_item_dict, save=True)
+
+        mistle_pos_theory, _ = Mistle(train_neg, train_pos).learn(
+            dl_measure=dl,
+            minsup=int(rel_minsup * len(train_pos)),
+            lossy=True,
+            prune=True,
+        )
+        mistle_neg_theory, _ = Mistle(train_pos, train_neg).learn(
+            dl_measure=dl,
+            minsup=int(rel_minsup * len(train_neg)),
+            lossy=True,
+            prune=True,
+        )
+
+        if len(train_pos) > len(train_neg):
+            default_prediction = "+"
+        else:
+            default_prediction = "-"
+
+        fold_accuracy1, _ = classify_by_satisfiability(
+            mistle_pos_theory, mistle_neg_theory, test_pos, test_neg, default_prediction
+        )
+
+        mistle1_fold_accuracy_list.append(fold_accuracy1)
+
+        fold_accuracy2, _ = classify_by_failing_clauses(
+            mistle_pos_theory, mistle_neg_theory, test_pos, test_neg, default_prediction
+        )
+
+        mistle2_fold_accuracy_list.append(fold_accuracy2)
+
+        fold_accuracy3, _ = classify_by_passing_clauses(
+            mistle_pos_theory, mistle_neg_theory, test_pos, test_neg, default_prediction
+        )
+
+        mistle3_fold_accuracy_list.append(fold_accuracy3)
+
+        fold_accuracy4, _ = classify_by_shortest_theory(
+            mistle_pos_theory, mistle_neg_theory, test_pos, test_neg, default_prediction
+        )
+
+        mistle4_fold_accuracy_list.append(fold_accuracy4)
+
+        fold_accuracy5, _ = classify_by_shortest_theory_with_errors(
+            mistle_pos_theory, mistle_neg_theory, test_pos, test_neg, default_prediction
+        )
+
+        mistle5_fold_accuracy_list.append(fold_accuracy5)
+
+    mistle1_accuracy_list.append(statistics.mean(mistle1_fold_accuracy_list))
+    # mistle1_std_dev_list.append(statistics.stdev(mistle1_fold_accuracy_list))
+
+    mistle2_accuracy_list.append(statistics.mean(mistle2_fold_accuracy_list))
+    # mistle2_std_dev_list.append(statistics.stdev(mistle2_fold_accuracy_list))
+
+    mistle3_accuracy_list.append(statistics.mean(mistle3_fold_accuracy_list))
+    # mistle3_std_dev_list.append(statistics.stdev(mistle3_fold_accuracy_list))
+
+    mistle4_accuracy_list.append(statistics.mean(mistle4_fold_accuracy_list))
+    # mistle4_std_dev_list.append(statistics.stdev(mistle4_fold_accuracy_list))
+
+    mistle5_accuracy_list.append(statistics.mean(mistle5_fold_accuracy_list))
+    # mistle5_std_dev_list.append(statistics.stdev(mistle5_fold_accuracy_list))
+
+    print(
+        "Relative Minsup "
+        + str(rel_minsup)
+        + "% : Mistle1: "
+        + str(statistics.mean(mistle1_fold_accuracy_list))
+    )
+    print(
+        "Relative Minsup "
+        + str(rel_minsup)
+        + "% : Mistle2: "
+        + str(statistics.mean(mistle2_fold_accuracy_list))
+    )
+    print(
+        "Relative Minsup "
+        + str(rel_minsup)
+        + "% : Mistle3: "
+        + str(statistics.mean(mistle3_fold_accuracy_list))
+    )
+    print(
+        "Relative Minsup "
+        + str(rel_minsup)
+        + "% : Mistle4: "
+        + str(statistics.mean(mistle4_fold_accuracy_list))
+    )
+
+    print(
+        "Relative Minsup "
+        + str(rel_minsup)
+        + "% : Mistle5: "
+        + str(statistics.mean(mistle5_fold_accuracy_list))
+    )
+
+plt.figure()
+plt.xlabel("Minimum Support Threshold")
+plt.ylabel("Classification Accuracy")
+plt.title("Classification on incomplete " + dataset.title() + " by varying minsup")
+
+plt.plot(
+    rel_minsups, [float(acc) for acc in krimp_accuracy_list], marker="o", label="KRIMP"
+)
+plt.plot(
+    rel_minsups,
+    mistle1_accuracy_list,
+    marker="o",
+    label="Mistle: classification by satisfiability",
+)
+plt.plot(
+    rel_minsups,
+    mistle2_accuracy_list,
+    marker="o",
+    label="Mistle: classification by %failing clauses",
+)
+plt.plot(
+    rel_minsups,
+    mistle3_accuracy_list,
+    marker="o",
+    label="Mistle: classification by %passing clauses",
+)
+plt.plot(
+    rel_minsups,
+    mistle4_accuracy_list,
+    marker="o",
+    label="Mistle: classification by shortest theory",
+)
+# plt.plot(
+#     rel_minsups,
+#     mistle5_accuracy_list,
+#     marker="o",
+#     label="Mistle: classification by shortest theory with errors",
 # )
 
-res_path = "/home/dtai/PycharmProjects/Mistle/Output/xps/classify/ticTacToe-all-50d-pop-cccp-20200511213650"
-krimp_item_dict = {
-    0: 28,
-    1: 13,
-    2: 25,
-    3: 19,
-    4: 7,
-    5: 1,
-    6: 22,
-    7: 16,
-    8: 10,
-    9: 4,
-    10: 14,
-    11: 26,
-    12: 20,
-    13: 8,
-    14: 2,
-    15: 29,
-    16: 23,
-    17: 17,
-    18: 11,
-    19: 5,
-    20: 24,
-    21: 18,
-    22: 12,
-    23: 6,
-    24: 27,
-    25: 21,
-    26: 9,
-    27: 3,
-    28: 15,
-}
-# best_minsup = int(best_minsup) / 100
-# print("KRIMP accuracy", accuracy)
-# print("KRIMP std_dev", std_dev)
-# print("KRIMP minsup", best_minsup)
+plt.legend()
+mplcyberpunk.add_glow_effects()
+# mplcyberpunk.add_underglow()
+plt.savefig(
+    "Experiments/exp4_" + dataset + "_v" + str(version) + ".png", bbox_inches="tight",
+)
+plt.show()
+plt.close()
 
-mistle_accuracy_list = []
-
-for fold in range(1, 11):
-    train_file = os.path.join(res_path, "f" + str(fold), "train.db")
-    test_file = os.path.join(res_path, "f" + str(fold), "test.db")
-
-    train_pos, train_neg = db2dat(train_file, krimp_item_dict, save=True)
-    test_pos, test_neg = db2dat(test_file, krimp_item_dict, save=True)
-
-    mistle_pos_theory, _ = Mistle(train_neg, train_pos).learn(
-        dl_measure=dl, minsup=minsup, lossy=True, prune=True
-    )
-    mistle_neg_theory, _ = Mistle(train_pos, train_neg).learn(
-        dl_measure=dl, minsup=minsup, lossy=True, prune=True
-    )
-
-    if len(train_pos) > len(train_neg):
-        default_prediction = "+"
-    else:
-        default_prediction = "-"
-
-    fold_accuracy, fold_confusions = classify_by_failing_clauses(
-        mistle_pos_theory, mistle_neg_theory, test_pos, test_neg, default_prediction
-    )
-
-    mistle_accuracy_list.append(fold_accuracy)
-    print("Accuracy of fold " + str(fold) + "\t: " + str(fold_accuracy))
-
-
-mistle_avg_accuracy = statistics.mean(mistle_accuracy_list)
-mistle_std_dev_accuracy = statistics.stdev(mistle_accuracy_list)
-
-print("MISTLE accuracy " + str(mistle_avg_accuracy))
-print("MISTLE std_dev " + str(mistle_std_dev_accuracy))
+print("KRIMP   - Accuracy\t: " + str(krimp_accuracy_list))
+print("Mistle1 - Accuracy\t: " + str(mistle1_accuracy_list))
+print("Mistle2 - Accuracy\t: " + str(mistle2_accuracy_list))
+print("Mistle3 - Accuracy\t: " + str(mistle3_accuracy_list))
+print("Mistle4 - Accuracy\t: " + str(mistle4_accuracy_list))
+print("Mistle5 - Accuracy\t: " + str(mistle5_accuracy_list))
+print("TIME: " + str(time() - start_time))

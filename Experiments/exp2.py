@@ -411,7 +411,7 @@ def plot_uci_nb_missing(dataset, M_list, minsup, dl, version):
         mistle_pos_theory, _ = Mistle(incomplete_negatives, incomplete_positives).learn(
             dl_measure=dl, minsup=minsup, lossy=True
         )
-        mistle_pos_theory, _ = Mistle(incomplete_negatives, incomplete_positives).learn(
+        mistle_neg_theory, _ = Mistle(incomplete_positives, incomplete_negatives).learn(
             dl_measure=dl, minsup=minsup, lossy=True
         )
         write_cnf(
