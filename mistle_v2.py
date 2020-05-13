@@ -931,28 +931,29 @@ class Theory:
         :param decrement_factor: a float > 1 by which the minimum support threshold needs to be decreased
         :return: Return top-k closed frequent itemsets, a minsup value that is guaranteed to mine at least k closed frequent itemsets
         """
-        start_time_eclat = time()
+
+        start_time_lcm = time()
         if decrement_factor <= 1:
             decrement_factor = 2
         minsup = int(len(clauses) / decrement_factor)
 
         while minsup >= 1:
-            eclat = Eclat(minsup=minsup)
-            freq_items_eclat = eclat.get_Frequent_Itemsets(clauses)
-            if len(freq_items_eclat) > k:
+            freq_items_lcm = compute_itemsets(clauses, minsup / len(clauses), "LCM")
+            if len(freq_items_lcm) > k:
                 break
             else:
                 minsup = int(minsup / decrement_factor)
 
-        total_time_eclat = time() - start_time_eclat
-        print("Length of freq items by Eclat\t: " + str(len(freq_items_eclat)))
-        print("Time of freq items by Eclat\t: " + str(total_time_eclat))
-
-        start_time_lcm = time()
-        freq_items_lcm = compute_itemsets(clauses, minsup / len(clauses), "LCM")
         total_time_lcm = time() - start_time_lcm
         print("Length of freq items by LCM\t: " + str(len(freq_items_lcm)))
         print("Time of freq items by LCM\t: " + str(total_time_lcm))
+
+        start_time_eclat = time()
+        eclat = Eclat(minsup=minsup)
+        freq_items_eclat = eclat.get_Frequent_Itemsets(clauses)
+        total_time_eclat = time() - start_time_eclat
+        print("Length of freq items by Eclat\t: " + str(len(freq_items_eclat)))
+        print("Time of freq items by Eclat\t: " + str(total_time_eclat))
 
         assert len(freq_items_eclat) >= len(freq_items_lcm)
 
