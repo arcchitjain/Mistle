@@ -5,7 +5,7 @@ import os
 def run_mining4sat(
     transactions,
     support,
-    code_path="/Users/arcchit/Docs/Mistle/Resources/Mining4SAT",
+    code_path=os.path.abspath("Resources/Mining4SAT"),
     n=False,
     b=False,
 ):
