@@ -632,8 +632,8 @@ class Eclat:
 
 class Mistle:
     def __init__(self, positives, negatives):
-        self.positives = positives
-        self.negatives = negatives
+        self.positives = copy(positives)
+        self.negatives = copy(negatives)
 
         self.total_positives = len(positives)
         self.total_negatives = len(negatives)
