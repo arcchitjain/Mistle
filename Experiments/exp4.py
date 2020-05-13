@@ -2,10 +2,20 @@ from krimp_wrapper import Krimp
 import os
 import statistics
 from mistle_v2 import *
+import matplotlib
 import matplotlib.pyplot as plt
 import mplcyberpunk
 
 plt.style.use("cyberpunk")
+matplotlib.rcParams["mathtext.fontset"] = "stix"
+matplotlib.rcParams["font.family"] = "STIXGeneral"
+matplotlib.rc("font", size=24)
+matplotlib.rc("axes", titlesize=22)
+matplotlib.rc("axes", labelsize=22)
+matplotlib.rc("xtick", labelsize=22)
+matplotlib.rc("ytick", labelsize=22)
+matplotlib.rc("legend", fontsize=22)
+matplotlib.rc("figure", titlesize=22)
 
 
 def translate(krimp_vars, krimp_item_dict, sort=False):
@@ -692,7 +702,7 @@ mistle5_std_dev_list = []
 # dataset = "tictactoe"
 # dataset = "breast"
 # dataset = "pima"
-dataset = "ionosphere"
+dataset = "breast"
 
 for rel_minsup in rel_minsups:
 
@@ -883,7 +893,7 @@ plt.legend()
 mplcyberpunk.add_glow_effects()
 # mplcyberpunk.add_underglow()
 plt.savefig(
-    "Experiments/exp4_" + dataset + "_v" + str(version) + ".png", bbox_inches="tight",
+    "Experiments/exp4_" + dataset + "_v" + str(version) + ".png", bbox_inches="tight"
 )
 plt.show()
 plt.close()

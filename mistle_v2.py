@@ -1578,6 +1578,8 @@ class Theory:
             #     # It is better to keep the packed clause for this particular W operator
             #     output_clauses += pack_clauses
 
+        self.prunable_invented_literals = set()
+
         if len(unpack_literals) == 0:
             return
 
@@ -1599,8 +1601,6 @@ class Theory:
         self.dl = get_dl(
             self.dl_measure, self.clauses, list(self.errors), self.final_alphabet_size
         )
-
-        self.prunable_invented_literals = set()
 
         removal_indices = set()
         for i, clause in enumerate(new_clauses):

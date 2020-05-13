@@ -4,16 +4,41 @@ import numpy as np
 from time import time
 from mistle_v2 import *
 import os
+import matplotlib
 import matplotlib.pyplot as plt
 import mplcyberpunk
+import seaborn as sns
 
 plt.style.use("cyberpunk")
+
+matplotlib.rcParams["mathtext.fontset"] = "stix"
+matplotlib.rcParams["font.family"] = "STIXGeneral"
+matplotlib.rc("font", size=24)
+matplotlib.rc("axes", titlesize=22)
+matplotlib.rc("axes", labelsize=22)
+matplotlib.rc("xtick", labelsize=22)
+matplotlib.rc("ytick", labelsize=22)
+matplotlib.rc("legend", fontsize=22)
+matplotlib.rc("figure", titlesize=22)
+
+# for param in ['figure.facecolor', 'axes.facecolor', 'savefig.facecolor']:
+#     plt.rcParams[param] = '0.9'  # very light grey
+#
+# for param in ['text.color', 'axes.labelcolor', 'xtick.color', 'ytick.color']:
+#     plt.rcParams[param] = '#212946'  # bluish dark grey
+
+# sns.set(color_codes=True)
+# current_palette = sns.color_palette("pastel")
+# sns.palplot(current_palette)
+# sns.set_context("paper")
+
 seed = 0
+
 random.seed(seed)
 np.random.seed(seed)
 os.chdir("..")
 start_time = time()
-version = 1
+version = 2
 
 
 def generate_theory(alphabet_size):
@@ -101,101 +126,98 @@ print(similarity_list)
 
 plt.figure(1)
 plt.ylabel("Similarity")
-plt.xlabel("Number of clauses in data")
-plt.title("Mistle is able to learn the actual theory when data size is varied")
+plt.xlabel("Data size")
+# plt.title("Mistle is able to learn the actual theory when data size is varied")
 plt.plot(data_sizes, similarity_list, marker="o")
-plt.ylim(bottom=0.975, top=1)
-mplcyberpunk.add_glow_effects()
+plt.ylim(bottom=0.975, top=1.001)
+# plt.xlim(left=95, right=505)
+# mplcyberpunk.add_glow_effects()
 # mplcyberpunk.make_lines_glow(plt)
-# mplcyberpunk.add_underglow(plt)
-plt.savefig("Experiments/exp1_plot1_v" + str(version) + ".png", bbox_inches="tight")
+mplcyberpunk.add_underglow()
+plt.savefig("Experiments/exp1_plot1_v" + str(version) + ".pdf", bbox_inches="tight")
 plt.show()
 plt.close()
 
 
-###############################################################################
-# Plot 2: Missingness Paramter
-###############################################################################
-
-alphabet_size = 10
-data_size = 400
-missingness_parameters = [0, 0.1, 0.2, 0.3, 0.4, 0.5]
-dl = "me"
-support = 1
-similarity_list = []
-
-for missingness_parameter in missingness_parameters:
-    actual_theory = generate_theory(alphabet_size)
-    theory_object = GeneratedTheory(actual_theory)
-    generator = TheoryNoisyGeneratorOnDataset(
-        theory_object, data_size, missingness_parameter
-    )
-    positives, negatives = generator.generate_dataset()
-
-    mistle = Mistle(positives, negatives)
-    learned_theory, _ = mistle.learn(dl_measure=dl, minsup=support)
-    learned_clauses = get_clauses(learned_theory)
-
-    similarity = compare_theories(actual_theory, learned_clauses, alphabet_size)
-    similarity_list.append(similarity)
-
-
-print(similarity_list)
-
-plt.figure(2)
-plt.ylabel("Similarity")
-plt.xlabel("Missingness Parameter")
-plt.title(
-    "Mistle is able to learn the actual theory when missingness paramter is varied"
-)
-plt.plot(missingness_parameters, similarity_list, marker="o")
-plt.ylim(bottom=0.975, top=1)
-mplcyberpunk.add_glow_effects()
-# mplcyberpunk.make_lines_glow(plt)
-# mplcyberpunk.add_underglow(plt)
-plt.savefig("Experiments/exp1_plot2_v" + str(version) + ".png", bbox_inches="tight")
-plt.show()
-plt.close()
-
-
-###############################################################################
-# Plot 3: Alphabet Size
-###############################################################################
-
-alphabet_sizes = [4, 6, 8, 10, 12]
-data_size = 400
-missingness_parameter = 0.1
-dl = "me"
-support = 1
-similarity_list = []
-
-for alphabet_size in alphabet_sizes:
-    actual_theory = generate_theory(alphabet_size)
-    theory_object = GeneratedTheory(actual_theory)
-    generator = TheoryNoisyGeneratorOnDataset(
-        theory_object, data_size, missingness_parameter
-    )
-    positives, negatives = generator.generate_dataset()
-
-    mistle = Mistle(positives, negatives)
-    learned_theory, _ = mistle.learn(dl_measure=dl, minsup=support)
-    learned_clauses = get_clauses(learned_theory)
-
-    similarity = compare_theories(actual_theory, learned_clauses, alphabet_size)
-    similarity_list.append(similarity)
-
-
-print(similarity_list)
-
-plt.figure(3)
-plt.ylabel("Similarity")
-plt.xlabel("Alphabet Size")
-plt.title("Mistle is able to learn the actual theory when alphabet size is varied")
-plt.plot(alphabet_sizes, similarity_list, marker="o")
-plt.ylim(bottom=0.975, top=1)
-mplcyberpunk.add_glow_effects()
-# mplcyberpunk.make_lines_glow(plt)
-# mplcyberpunk.add_underglow(plt)
-plt.savefig("Experiments/exp1_plot3_v" + str(version) + ".png", bbox_inches="tight")
-plt.show()
-plt.close()
+# ###############################################################################
+# # Plot 2: Missingness Paramter
+# ###############################################################################
+#
+# alphabet_size = 10
+# data_size = 400
+# missingness_parameters = [0, 0.1, 0.2, 0.3, 0.4, 0.5]
+# dl = "me"
+# support = 1
+# similarity_list = []
+#
+# for missingness_parameter in missingness_parameters:
+#     actual_theory = generate_theory(alphabet_size)
+#     theory_object = GeneratedTheory(actual_theory)
+#     generator = TheoryNoisyGeneratorOnDataset(
+#         theory_object, data_size, missingness_parameter
+#     )
+#     positives, negatives = generator.generate_dataset()
+#
+#     mistle = Mistle(positives, negatives)
+#     learned_theory, _ = mistle.learn(dl_measure=dl, minsup=support)
+#     learned_clauses = get_clauses(learned_theory)
+#
+#     similarity = compare_theories(actual_theory, learned_clauses, alphabet_size)
+#     similarity_list.append(similarity)
+#
+#
+# print(similarity_list)
+#
+# plt.figure(2)
+# plt.ylabel("Similarity")
+# plt.xlabel("Missingness Parameter")
+# # plt.title(
+# #     "Mistle is able to learn the actual theory when missingness paramter is varied"
+# # )
+# plt.plot(missingness_parameters, similarity_list, marker="o")
+# plt.ylim(bottom=0.975, top=1.001)
+# mplcyberpunk.add_underglow()
+# plt.savefig("Experiments/exp1_plot2_v" + str(version) + ".pdf", bbox_inches="tight")
+# plt.show()
+# plt.close()
+#
+#
+# ###############################################################################
+# # Plot 3: Alphabet Size
+# ###############################################################################
+#
+# alphabet_sizes = [4, 6, 8, 10, 12]
+# data_size = 400
+# missingness_parameter = 0.1
+# dl = "me"
+# support = 1
+# similarity_list = []
+#
+# for alphabet_size in alphabet_sizes:
+#     actual_theory = generate_theory(alphabet_size)
+#     theory_object = GeneratedTheory(actual_theory)
+#     generator = TheoryNoisyGeneratorOnDataset(
+#         theory_object, data_size, missingness_parameter
+#     )
+#     positives, negatives = generator.generate_dataset()
+#
+#     mistle = Mistle(positives, negatives)
+#     learned_theory, _ = mistle.learn(dl_measure=dl, minsup=support)
+#     learned_clauses = get_clauses(learned_theory)
+#
+#     similarity = compare_theories(actual_theory, learned_clauses, alphabet_size)
+#     similarity_list.append(similarity)
+#
+#
+# print(similarity_list)
+#
+# plt.figure(3)
+# plt.ylabel("Similarity")
+# plt.xlabel("Alphabet size")
+# # plt.title("Mistle is able to learn the actual theory when alphabet size is varied")
+# plt.plot(alphabet_sizes, similarity_list, marker="o")
+# plt.ylim(bottom=0.975, top=1.001)
+# mplcyberpunk.add_underglow()
+# plt.savefig("Experiments/exp1_plot3_v" + str(version) + ".pdf", bbox_inches="tight")
+# plt.show()
+# plt.close()
