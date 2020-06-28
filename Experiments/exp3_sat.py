@@ -5,14 +5,26 @@ from time import time
 from mining4sat_wrapper import run_mining4sat
 from mistle_v2 import get_dl, Mistle
 import os
+import matplotlib
 import matplotlib.pyplot as plt
 import mplcyberpunk
 
 plt.style.use("cyberpunk")
+
+matplotlib.rcParams["mathtext.fontset"] = "stix"
+matplotlib.rcParams["font.family"] = "STIXGeneral"
+matplotlib.rc("font", size=24)
+matplotlib.rc("axes", titlesize=22)
+matplotlib.rc("axes", labelsize=22)
+matplotlib.rc("xtick", labelsize=22)
+matplotlib.rc("ytick", labelsize=22)
+matplotlib.rc("legend", fontsize=22)
+matplotlib.rc("figure", titlesize=22)
 seed = 0
 random.seed(seed)
 np.random.seed(seed)
-mining4sat_absolute_path = "/Users/arcchit/Docs/Mistle/Resources/Mining4SAT"
+os.chdir("..")
+mining4sat_absolute_path = os.path.abspath("Resources/Mining4SAT")
 
 
 def initialize_theory(negatives):
@@ -57,14 +69,13 @@ def write_cnf(theory, file):
 
 
 dl = "ll"
-os.chdir("..")
 version = 1
 
 ###############################################################################
 # Plot 1: File:     eq.atree.braun.10.unsat.cnf
 ###############################################################################
 
-minsup_list = [1, 3, 5]
+minsup_list = [1, 2, 3, 4, 5]
 file = "eq.atree.braun.10.unsat.cnf"
 in_path = "Data/CNFs/" + file
 out_path = "Output/CNFs/" + file[:-4]
@@ -95,16 +106,23 @@ for support in minsup_list:
     mistle_compression_list.append(compression)
 
 plt.figure(1)
-plt.ylabel("Compression (DL: Modified Entropy)")
+if dl == "ll":
+    plt.ylabel("Compression\n(DL: Literal Length)")
+elif dl == "sl":
+    plt.ylabel("Compression\n(DL: Symbol Length)")
+elif dl == "se":
+    plt.ylabel("Compression\n(DL: Shanon Entropy)")
+elif dl == "me":
+    plt.ylabel("Compression\n(DL: Modified Entropy)")
 plt.xlabel("Minimum support threshold")
-plt.title("File: eq.atree.braun.10.unsat.cnf")
+# plt.title("File: eq.atree.braun.10.unsat.cnf")
 
 plt.plot(minsup_list, mining4sat_compression_list, marker="o", label="Mining4SAT")
 plt.plot(minsup_list, mistle_compression_list, marker="o", label="Mistle")
 
 plt.legend()
-mplcyberpunk.add_glow_effects()
-plt.savefig("Experiments/exp3_sat_plot1_v" + str(version) + ".png", bbox_inches="tight")
+mplcyberpunk.add_underglow()
+plt.savefig("Experiments/exp3_sat_plot1_v" + str(version) + ".pdf", bbox_inches="tight")
 plt.show()
 plt.close()
 
@@ -112,7 +130,7 @@ plt.close()
 # Plot 2: File: eq.atree.braun.11.unsat.cnf
 ###############################################################################
 
-minsup_list = [1, 3, 5]
+minsup_list = [1, 2, 3, 4, 5]
 file = "eq.atree.braun.11.unsat.cnf"
 in_path = "Data/CNFs/" + file
 out_path = "Output/CNFs/" + file[:-4]
@@ -144,15 +162,22 @@ for support in minsup_list:
     mistle_compression_list.append(compression)
 
 plt.figure(2)
-plt.ylabel("Compression (DL: Modified Entropy)")
+if dl == "ll":
+    plt.ylabel("Compression\n(DL: Literal Length)")
+elif dl == "sl":
+    plt.ylabel("Compression\n(DL: Symbol Length)")
+elif dl == "se":
+    plt.ylabel("Compression\n(DL: Shanon Entropy)")
+elif dl == "me":
+    plt.ylabel("Compression\n(DL: Modified Entropy)")
 plt.xlabel("Minimum support threshold")
-plt.title("File: eq.atree.braun.11.unsat.cnf")
+# plt.title("File: eq.atree.braun.11.unsat.cnf")
 
 plt.plot(minsup_list, mining4sat_compression_list, marker="o", label="Mining4SAT")
 plt.plot(minsup_list, mistle_compression_list, marker="o", label="Mistle")
 
 plt.legend()
-mplcyberpunk.add_glow_effects()
-plt.savefig("Experiments/exp3_sat_plot2_v" + str(version) + ".png", bbox_inches="tight")
+mplcyberpunk.add_underglow()
+plt.savefig("Experiments/exp3_sat_plot2_v" + str(version) + ".pdf", bbox_inches="tight")
 plt.show()
 plt.close()

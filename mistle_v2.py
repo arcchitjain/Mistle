@@ -504,25 +504,28 @@ def log_star(input):
 
 def get_modified_entropy(clauses, alphabet_size):
     """
+    Refer https://hal.inria.fr/hal-02505913/document
     :param clauses: a list of clauses
     :return: the total number of bits required to represent the input theory
     """
-    c_entropy = 0
+    m_entropy = 0
     if len(clauses) == 0:
-        return c_entropy
+        return m_entropy
+
+    # Encode the total number of literals that can exist in the theory
+    m_entropy += log_star(2 * alphabet_size)
+
+    # Encode the total number of clauses in the theory
+    m_entropy += log_star(len(clauses))
 
     for j, clause in enumerate(clauses):
 
         for i, literal in enumerate(clause):
-            c_entropy -= math.log(1.0 / (2 * len(clause) + 1 - 2 * i), 2)
+            m_entropy -= math.log(1.0 / (2 * len(clause) + 1 - 2 * i), 2)
 
-        # c_entropy -= math.log(1.0 / (2 * len(clauses) + 1 - 2 * len(clause)), 2)
-        c_entropy -= math.log(1.0 / (2 * len(clauses) + 1 - 2 * j), 2)
+        m_entropy -= math.log(1.0 / (2 * len(clauses) + 1 - 2 * j), 2)
 
-    c_entropy += log_star(2 * alphabet_size)
-    c_entropy += log_star(len(clauses))
-
-    return c_entropy
+    return m_entropy
 
 
 def get_dl(dl_measure, clauses, errors, alphabet_size):
@@ -534,7 +537,7 @@ def get_dl(dl_measure, clauses, errors, alphabet_size):
         )
     elif dl_measure == "se":  # Shanon Entropy
         return get_entropy(clauses) + get_entropy(errors)
-    elif dl_measure == "me":  # Clement Entropy
+    elif dl_measure == "me":  # Modified Entropy
         return get_modified_entropy(clauses, alphabet_size) + get_modified_entropy(
             errors, alphabet_size
         )

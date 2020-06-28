@@ -1,15 +1,26 @@
 from mining4sat_wrapper import run_mining4sat
 from mistle_v2 import *
 import os
+import matplotlib
 import matplotlib.pyplot as plt
 import mplcyberpunk
+import random
 
 plt.style.use("cyberpunk")
+matplotlib.rcParams["mathtext.fontset"] = "stix"
+matplotlib.rcParams["font.family"] = "STIXGeneral"
+matplotlib.rc("font", size=24)
+matplotlib.rc("axes", titlesize=22)
+matplotlib.rc("axes", labelsize=22)
+matplotlib.rc("xtick", labelsize=22)
+matplotlib.rc("ytick", labelsize=22)
+matplotlib.rc("legend", fontsize=22)
+matplotlib.rc("figure", titlesize=22)
 seed = 0
 random.seed(seed)
 np.random.seed(seed)
-mining4sat_absolute_path = "/Users/arcchit/Docs/Mistle/Resources/Mining4SAT"
 os.chdir("..")
+mining4sat_absolute_path = os.path.abspath("Resources/Mining4SAT")
 
 
 def initialize_theory(negatives):
@@ -173,16 +184,16 @@ def plot_uci_with_minsup(dataset, minsup_list, dl, version=1):
 
     plt.figure()
     if dl == "ll":
-        plt.ylabel("Compression (DL: Literal Length)")
+        plt.ylabel("Compression\n(DL: Literal Length)")
     elif dl == "sl":
-        plt.ylabel("Compression (DL: Symbol Length)")
+        plt.ylabel("Compression\n(DL: Symbol Length)")
     elif dl == "se":
-        plt.ylabel("Compression (DL: Shanon Entropy)")
+        plt.ylabel("Compression\n(DL: Shanon Entropy)")
     elif dl == "me":
-        plt.ylabel("Compression (DL: Modified Entropy)")
+        plt.ylabel("Compression\n(DL: Modified Entropy)")
 
     plt.xlabel("Minimum support threshold")
-    plt.title("UCI: " + dataset)
+    # plt.title("UCI: " + dataset)
 
     plt.plot(minsup_list, mining4sat_compression_list, marker="o", label="Mining4SAT")
     plt.plot(
@@ -193,11 +204,11 @@ def plot_uci_with_minsup(dataset, minsup_list, dl, version=1):
     )
     plt.plot(minsup_list, mistle_compression_list, marker="o", label="Mistle (lossy)")
 
-    plt.ylim(bottom=0, top=1)
+    plt.ylim(bottom=0, top=1.0)
     plt.legend()
-    mplcyberpunk.add_glow_effects()
+    mplcyberpunk.add_underglow()
     plt.savefig(
-        "Experiments/exp3_uci_" + dataset + "_v" + str(version) + ".png",
+        "Experiments/exp3_uci_" + dataset + "_v" + str(version) + ".pdf",
         bbox_inches="tight",
     )
     plt.show()
