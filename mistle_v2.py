@@ -3,10 +3,8 @@ from copy import copy
 from pycosat import solve
 from time import time
 import math
-import sys
 from collections import Counter
 from pattern_mining import compute_itemsets
-import numpy as np
 
 
 def print_input_data_statistics(
@@ -435,6 +433,119 @@ def get_alphabet_size(theory):
     return len(alphabets)
 
 
+def get_resolvents(clauses, max_length=20):
+    """
+    This function compresses the list of clauses using propositional resolution
+    Example: Input: [(-1, 2, 3, 4), (1, 2, 3, 4), (1, 2, -3, -4), (1, -3)]
+             Output: [[], [(2, 3, 4)], [(1, -3)], [(1, 2, 4)]]
+             The output is obtained after resolving on '1', '3' (2 cases), '4'
+    :param clauses: a list of clauses
+    :param max_length: an upper bound on the number of possible compressed clauses to be returned
+    :return: a list of possible compressed clauses
+    """
+    # Only those literals can be resolved upon which are present in both the signs
+    all_literals = set()
+    literals_resolved_upon = set()
+    for clause in clauses:
+        for literal in clause:
+            if -literal in all_literals:
+                literals_resolved_upon.add(abs(literal))
+            else:
+                all_literals.add(literal)
+
+    output_list = []
+    for i, resolving_literal in enumerate(literals_resolved_upon):
+
+        output = []
+        positive_residues = []
+        negative_residues = []
+        for clause in clauses:
+            if resolving_literal in clause:
+                positive_residues.append(set(clause) - {resolving_literal})
+            elif -resolving_literal in clause:
+                negative_residues.append(set(clause) - {-resolving_literal})
+            else:
+                output.append(frozenset(clause))
+
+        positive_residues.sort(key=len, reverse=True)
+        negative_residues.sort(key=len, reverse=True)
+
+        index = 0
+        while True:
+            if index < len(positive_residues) and index < len(negative_residues):
+                # Resolve positive_residues[index] and negative_residues[index] and add it in the output
+                resolvent = set(positive_residues[index])
+                true_resolvent = False
+                for literal in negative_residues[index]:
+                    if -literal in resolvent:
+                        true_resolvent = True
+                        break
+                    else:
+                        resolvent.add(literal)
+
+                if true_resolvent is False:
+                    if resolvent not in output:
+                        output.append(frozenset(resolvent))
+
+            elif index < len(positive_residues):
+                # Resolve positive_residues[index] and negative_residues[0] and add it to the input
+                # if they do not resolve to True and the length of resolvent is less than the length of positive_residues[index] + 1
+                # otherwise add positive_residues[index] | {resolving_literal}
+                resolvent = set(negative_residues[0])
+                for literal in positive_residues[index]:
+                    if -literal in resolvent:
+                        resolvent = set()
+                        break
+                    else:
+                        resolvent.add(literal)
+
+                if not (
+                    len(resolvent) == 0
+                    or resolvent in output
+                    or positive_residues[index] | {resolving_literal} in output
+                ):
+                    if len(resolvent) <= len(positive_residues[index]) + 1:
+                        output.append(frozenset(resolvent))
+                    else:
+                        output.append(
+                            frozenset(positive_residues[index] | {resolving_literal})
+                        )
+
+            elif index < len(negative_residues):
+                # Resolve positive_residues[0] and negative_residues[index] and check to add it in the output
+                resolvent = set(positive_residues[0])
+                for literal in negative_residues[index]:
+                    if -literal in resolvent:
+                        resolvent = set()
+                        break
+                    else:
+                        resolvent.add(literal)
+
+                if not (
+                    len(resolvent) == 0
+                    or resolvent in output
+                    or negative_residues[index] | {-resolving_literal} in output
+                ):
+                    if len(resolvent) <= len(positive_residues[index]) + 1:
+                        output.append(frozenset(resolvent))
+                    else:
+                        output.append(
+                            frozenset(negative_residues[index] | {-resolving_literal})
+                        )
+            else:
+                break
+
+            index += 1
+
+        if len(output_list) < max_length:
+            if output not in output_list:
+                output_list.append(output)
+            if len(output_list) == max_length:
+                break
+
+    return output_list
+
+
 def get_clauses(theory):
     """
     :param theory: it can be an instance if a Theory class or could just be None
@@ -689,9 +800,9 @@ class Mistle:
         """
 
         if permitted_operators is None:
-            # Assume, by default, that each operator is permitted to compress the theory.
+            # Assume, by default, that each operator (except dichotmization) is permitted to compress the theory.
             permitted_operators = {
-                "D": True,
+                "D": False,
                 "W": True,
                 "V": True,
                 "S": True,
@@ -738,6 +849,7 @@ class Mistle:
         mining_count = 0
         while True:
             while True:
+                # Compress the theory based on the most frequent itemset
                 success = self.theory.compress(lossy, permitted_operators)
                 if success == "ignore_itemset":
                     del self.theory.freq_items[0]
@@ -1347,14 +1459,11 @@ class Theory:
 
         # Check if R-operator is applicable
         if permitted_operators["R"] is True:
-            r_applicable = False
-            # r_residue = [tuple(clause) for clause in residue] + [tuple(-literal) for literal in subclause]
+            # Example: If input is [(a,b), (a,c), (a,-b,-c)], then the output is [(a)].
             # Technically, if we assume that each atom can already appear once in a clause, then it suffices to check the
             # unsatisfiability of [tuple(clause) for clause in residue] as each of the literal in the subclause is absent in the residue.
-            r_residue = [tuple(clause) for clause in residue]
-            if solve(r_residue) == "UNSAT":
+            if solve([tuple(clause) for clause in residue]) == "UNSAT":
                 # R-operator is applicable (R-operator is a special case when applying T-operator is lossless.
-                # Example: If input is [(a,b), (a,c), (a,-b,-c)], then the output is [(a)].
                 # Here, then input is logically equivalent to the output (Lossless Truncation).
                 _, dl = self.get_compression(input_clause_list, "R", [subclause])
                 self.apply_best_operator("R", input_clause_list, [subclause], dl, set())
