@@ -433,6 +433,119 @@ def get_alphabet_size(theory):
     return len(alphabets)
 
 
+def get_resolvents(clauses, max_length=20):
+    """
+    This function compresses the list of clauses using propositional resolution
+    Example: Input: [(-1, 2, 3, 4), (1, 2, 3, 4), (1, 2, -3, -4), (1, -3)]
+             Output: [[], [(2, 3, 4)], [(1, -3)], [(1, 2, 4)]]
+             The output is obtained after resolving on '1', '3' (2 cases), '4'
+    :param clauses: a list of clauses
+    :param max_length: an upper bound on the number of possible compressed clauses to be returned
+    :return: a list of possible compressed clauses
+    """
+    # Only those literals can be resolved upon which are present in both the signs
+    all_literals = set()
+    literals_resolved_upon = set()
+    for clause in clauses:
+        for literal in clause:
+            if -literal in all_literals:
+                literals_resolved_upon.add(abs(literal))
+            else:
+                all_literals.add(literal)
+
+    output_list = []
+    for i, resolving_literal in enumerate(literals_resolved_upon):
+
+        output = []
+        positive_residues = []
+        negative_residues = []
+        for clause in clauses:
+            if resolving_literal in clause:
+                positive_residues.append(set(clause) - {resolving_literal})
+            elif -resolving_literal in clause:
+                negative_residues.append(set(clause) - {-resolving_literal})
+            else:
+                output.append(frozenset(clause))
+
+        positive_residues.sort(key=len, reverse=True)
+        negative_residues.sort(key=len, reverse=True)
+
+        index = 0
+        while True:
+            if index < len(positive_residues) and index < len(negative_residues):
+                # Resolve positive_residues[index] and negative_residues[index] and add it in the output
+                resolvent = set(positive_residues[index])
+                true_resolvent = False
+                for literal in negative_residues[index]:
+                    if -literal in resolvent:
+                        true_resolvent = True
+                        break
+                    else:
+                        resolvent.add(literal)
+
+                if true_resolvent is False:
+                    if resolvent not in output:
+                        output.append(frozenset(resolvent))
+
+            elif index < len(positive_residues):
+                # Resolve positive_residues[index] and negative_residues[0] and add it to the input
+                # if they do not resolve to True and the length of resolvent is less than the length of positive_residues[index] + 1
+                # otherwise add positive_residues[index] | {resolving_literal}
+                resolvent = set(negative_residues[0])
+                for literal in positive_residues[index]:
+                    if -literal in resolvent:
+                        resolvent = set()
+                        break
+                    else:
+                        resolvent.add(literal)
+
+                if not (
+                    len(resolvent) == 0
+                    or resolvent in output
+                    or positive_residues[index] | {resolving_literal} in output
+                ):
+                    if len(resolvent) <= len(positive_residues[index]) + 1:
+                        output.append(frozenset(resolvent))
+                    else:
+                        output.append(
+                            frozenset(positive_residues[index] | {resolving_literal})
+                        )
+
+            elif index < len(negative_residues):
+                # Resolve positive_residues[0] and negative_residues[index] and check to add it in the output
+                resolvent = set(positive_residues[0])
+                for literal in negative_residues[index]:
+                    if -literal in resolvent:
+                        resolvent = set()
+                        break
+                    else:
+                        resolvent.add(literal)
+
+                if not (
+                    len(resolvent) == 0
+                    or resolvent in output
+                    or negative_residues[index] | {-resolving_literal} in output
+                ):
+                    if len(resolvent) <= len(negative_residues[index]) + 1:
+                        output.append(frozenset(resolvent))
+                    else:
+                        output.append(
+                            frozenset(negative_residues[index] | {-resolving_literal})
+                        )
+            else:
+                break
+
+            index += 1
+
+        if len(output_list) < max_length:
+            if output not in output_list:
+                output_list.append(output)
+            if len(output_list) == max_length:
+                break
+
+    return output_list
+
+
 def get_clauses(theory):
     """
     :param theory: it can be an instance if a Theory class or could just be None
@@ -687,11 +800,13 @@ class Mistle:
         """
 
         if permitted_operators is None:
-            # Assume, by default, that each operator is permitted to compress the theory.
+            # Assume, by default, that each operator (except dichotmization) is permitted to compress the theory.
             permitted_operators = {
-                "D": True,
+                "D": False,
                 "W": True,
                 "V": True,
+                "Res": True,
+                "Res+": True,
                 "S": True,
                 "R": True,
                 "T": True,
@@ -721,7 +836,13 @@ class Mistle:
         if minsup is None and k is None:
             minsup = 1
         success = self.theory.intialize(
-            self.positives, self.negatives, dl_measure, initial_alphabet_size, minsup, k
+            self.positives,
+            self.negatives,
+            permitted_operators,
+            dl_measure,
+            initial_alphabet_size,
+            minsup,
+            k,
         )
         if not success:
             # This is the case when no frequent itemsets get mined or when the input data is empty.
@@ -736,7 +857,8 @@ class Mistle:
         mining_count = 0
         while True:
             while True:
-                success = self.theory.compress(lossy, permitted_operators)
+                # Compress the theory based on the most frequent itemset
+                success = self.theory.compress(lossy)
                 if success == "ignore_itemset":
                     del self.theory.freq_items[0]
                 elif not success:
@@ -829,20 +951,40 @@ class Theory:
         self.k = None
         self.dl = None
         self.dl_measure = None
-        self.operator_counter = {"D": 0, "W": 0, "V": 0, "S": 0, "R": 0, "T": 0}
+        self.operator_counter = {
+            "D": 0,
+            "W": 0,
+            "V": 0,
+            "S": 0,
+            "R": 0,
+            "Res": 0,
+            "Res+": 0,
+            "T": 0,
+        }
         self.new_var_counter = None
         self.initial_alphabet_size = None
         self.final_alphabet_size = None
         self.prunable_invented_literals = set()
 
     def intialize(
-        self, positives, negatives, dl_measure, alphabet_size, minsup=None, k=None
+        self,
+        positives,
+        negatives,
+        permitted_operators,
+        dl_measure,
+        alphabet_size,
+        minsup=None,
+        k=None,
     ):
 
         if (
             len(negatives) == 0
         ):  # We still allow a theory to be learned and compressed if there are some negatives and no positives.
             return False
+
+        for key, value in permitted_operators.items():
+            if value is False:
+                del self.operator_counter[key]
 
         # Construct a theory from the partial assignments
         for pa in negatives:
@@ -871,7 +1013,9 @@ class Theory:
         self.new_var_counter = alphabet_size + 1
         self.positives = positives
         self.negatives = negatives
-        self.errors = self.get_violations(self.clauses, positives)
+        self.errors = self.get_violations(
+            self.clauses, positives, sign="+"
+        ) | self.get_violations(self.clauses, negatives, sign="-")
         self.dl = get_dl(
             dl_measure, list(positives | negatives), [], self.new_var_counter - 1
         )
@@ -1087,36 +1231,71 @@ class Theory:
                 if not check_pa_satisfiability(pa, new_theory):
                     uncovered_positives.add(pa)
 
-        if op in {"D", "W"}:
-            return (
-                uncovered_positives,
-                # The alphabet size for D-op and W-op is incremented by 1 as they invent a new literal, that is represented temporarily by "#" here.
-                get_dl(
-                    self.dl_measure,
-                    new_theory,
-                    list(self.errors | uncovered_positives),
-                    self.new_var_counter,
-                ),
-            )
+        covered_negatives = set()
+        if op in {"Res", "Res+"}:
+            for pa in self.negatives:
+                if check_pa_satisfiability(pa, new_theory):
+                    covered_negatives.add(pa)
+
+        if "Res" in self.operator_counter:
+            if op in {"D", "W"}:
+                return (
+                    uncovered_positives,
+                    covered_negatives,
+                    # The alphabet size for D-op and W-op is incremented by 1 as they invent a new literal, that is represented temporarily by "#" here.
+                    get_dl(
+                        self.dl_measure,
+                        new_theory,
+                        list(uncovered_positives | covered_negatives),
+                        self.new_var_counter,
+                    ),
+                )
+            else:
+                return (
+                    uncovered_positives,
+                    covered_negatives,
+                    get_dl(
+                        self.dl_measure,
+                        new_theory,
+                        list(uncovered_positives | covered_negatives),
+                        self.new_var_counter - 1,
+                    ),
+                )
         else:
-            return (
-                uncovered_positives,
-                get_dl(
-                    self.dl_measure,
-                    new_theory,
-                    list(self.errors | uncovered_positives),
-                    self.new_var_counter - 1,
-                ),
-            )
+            if op in {"D", "W"}:
+                return (
+                    uncovered_positives,
+                    covered_negatives,
+                    # The alphabet size for D-op and W-op is incremented by 1 as they invent a new literal, that is represented temporarily by "#" here.
+                    get_dl(
+                        self.dl_measure,
+                        new_theory,
+                        list(self.errors | uncovered_positives | covered_negatives),
+                        self.new_var_counter,
+                    ),
+                )
+            else:
+                return (
+                    uncovered_positives,
+                    covered_negatives,
+                    get_dl(
+                        self.dl_measure,
+                        new_theory,
+                        list(self.errors | uncovered_positives | covered_negatives),
+                        self.new_var_counter - 1,
+                    ),
+                )
 
     def select_best_operator(self, input_clause_list, possible_operations):
         success = "ignore_itemset"
-        operator_precedence = ["S", "R", "W", "D", "V", "T", None]
+        operator_precedence = ["S", "R", "W", "Res", "Res+", "D", "V", "T", None]
         min_dl = self.dl
         best_operator = None
-        new_errors = None
         output_clause_list = None
         possible_entropies = []
+        new_uncovered_positives = set()
+        new_covered_negatives = set()
+
         for op, output_clauses in possible_operations:
             # errors, compression = self.get_compression(
             #     input_clause_list, op, output_clauses
@@ -1127,7 +1306,9 @@ class Theory:
             #     < operator_precedence.index(best_operator)
             # ):
 
-            errors, dl = self.get_compression(input_clause_list, op, output_clauses)
+            uncovered_positives, covered_negatives, dl = self.get_compression(
+                input_clause_list, op, output_clauses
+            )
             possible_entropies.append((op, dl))
             if dl < min_dl or (
                 dl == min_dl
@@ -1136,7 +1317,8 @@ class Theory:
             ):
                 min_dl = dl
                 best_operator = op
-                new_errors = errors
+                new_uncovered_positives = uncovered_positives
+                new_covered_negatives = covered_negatives
                 output_clause_list = list(output_clauses)
                 success = True
 
@@ -1152,14 +1334,20 @@ class Theory:
         return (
             success,
             best_operator,
-            input_clause_list,
             output_clause_list,
             min_dl,
-            new_errors,
+            new_uncovered_positives,
+            new_covered_negatives,
         )
 
     def apply_best_operator(
-        self, best_operator, input_clause_list, output_clause_list, min_dl, new_errors
+        self,
+        best_operator,
+        input_clause_list,
+        output_clause_list,
+        min_dl,
+        new_uncovered_positives,
+        new_covered_negatives,
     ):
 
         # Update old_theory
@@ -1185,8 +1373,12 @@ class Theory:
         if "#" in self.invented_predicate_definition:
             del self.invented_predicate_definition["#"]
 
-        self.errors |= new_errors
-        self.positives -= new_errors
+        if "Res" in self.operator_counter:
+            self.errors = new_uncovered_positives | new_covered_negatives
+        else:
+            self.errors |= new_uncovered_positives
+            self.positives -= new_uncovered_positives
+
         # self.total_compression += max_compression
         self.theory_length += len(output_clause_list) - len(input_clause_list)
 
@@ -1308,7 +1500,7 @@ class Theory:
         # self.entropy = min_entropy
         self.dl = min_dl
 
-    def compress(self, lossy=True, permitted_operators=None):
+    def compress(self, lossy=True):
         # TODO: Make it more efficient once it is complete. Reduce the number of iterations on input_clause_list/residue
 
         if len(self.freq_items) == 0:
@@ -1333,37 +1525,36 @@ class Theory:
             return "ignore_itemset"
 
         # Check if S-operator is applicable
-        if permitted_operators["S"] is True:
+        if "S" in self.operator_counter:
             for clause in input_clause_list:
                 if clause == subclause:
                     # S-operator is applicable
-                    _, dl = self.get_compression(input_clause_list, "S", [subclause])
+                    _, _, dl = self.get_compression(input_clause_list, "S", [subclause])
                     self.apply_best_operator(
-                        "S", input_clause_list, [subclause], dl, set()
+                        "S", input_clause_list, [subclause], dl, set(), set()
                     )
                     return True
 
         # Check if R-operator is applicable
-        if permitted_operators["R"] is True:
-            r_applicable = False
-            # r_residue = [tuple(clause) for clause in residue] + [tuple(-literal) for literal in subclause]
+        if "R" in self.operator_counter:
+            # Example: If input is [(a,b), (a,c), (a,-b,-c)], then the output is [(a)].
             # Technically, if we assume that each atom can already appear once in a clause, then it suffices to check the
             # unsatisfiability of [tuple(clause) for clause in residue] as each of the literal in the subclause is absent in the residue.
-            r_residue = [tuple(clause) for clause in residue]
-            if solve(r_residue) == "UNSAT":
+            if solve([tuple(clause) for clause in residue]) == "UNSAT":
                 # R-operator is applicable (R-operator is a special case when applying T-operator is lossless.
-                # Example: If input is [(a,b), (a,c), (a,-b,-c)], then the output is [(a)].
                 # Here, then input is logically equivalent to the output (Lossless Truncation).
-                _, dl = self.get_compression(input_clause_list, "R", [subclause])
-                self.apply_best_operator("R", input_clause_list, [subclause], dl, set())
+                _, _, dl = self.get_compression(input_clause_list, "R", [subclause])
+                self.apply_best_operator(
+                    "R", input_clause_list, [subclause], dl, set(), set()
+                )
                 return True
 
-        if permitted_operators["T"] is True and lossy:
+        if "T" in self.operator_counter and lossy:
             possible_operations.append(("T", [subclause]))
 
         # Check if V-operator is applicable
         v_literals = []
-        if permitted_operators["V"] is True and lossy:
+        if "V" in self.operator_counter and lossy:
             for clause in residue:
                 if len(clause) == 1:
                     v_literals.append(next(iter(clause)))
@@ -1386,7 +1577,7 @@ class Theory:
 
         # Check if D-operator is applicable
         # D-operator is only applicable if V operator and S operators are not applicable
-        if permitted_operators["D"] is True and lossy and not v_literals:
+        if "D" in self.operator_counter and lossy and not v_literals:
             d_literals = []
             for literal in residue[0]:
                 d_literals.append(abs(literal))
@@ -1437,7 +1628,7 @@ class Theory:
                     possible_operations.append(("D", d_output))
 
         # Consider W-operator
-        if permitted_operators["W"] is True:
+        if "W" in self.operator_counter:
             # Use '#' as a special newly invented variable.
             # If/once W-operator is accepted for compression, it will be replaced by a self.new_var_counter()
             new_clause = set(copy(subclause))
@@ -1452,17 +1643,33 @@ class Theory:
 
             possible_operations.append(("W", w_output))
 
+        if "Res" in self.operator_counter:
+            output_list = get_resolvents(input_clause_list)
+            output_union = []
+            for output in output_list:
+                possible_operations.append(("Res", output))
+                for clause in output:
+                    if clause not in output_union:
+                        output_union.append(clause)
+            if "Res+" in self.operator_counter:
+                possible_operations.append(("Res+", output_union))
+
         (
             success,
             best_operator,
-            input_clause_list,
             output_clause_list,
             min_dl,
-            new_errors,
+            new_uncovered_positives,
+            new_covered_negatives,
         ) = self.select_best_operator(input_clause_list, possible_operations)
         if success is True:
             self.apply_best_operator(
-                best_operator, input_clause_list, output_clause_list, min_dl, new_errors
+                best_operator,
+                input_clause_list,
+                output_clause_list,
+                min_dl,
+                new_uncovered_positives,
+                new_covered_negatives,
             )
 
         return success
@@ -1706,7 +1913,7 @@ if __name__ == "__main__":
 
     start_time = time()
 
-    th = GeneratedTheory([[1, -4], [2, 5], [6, -7, -8]])
+    th = GeneratedTheory([[1, -4], [2, -3, 5], [2, 3, 5], [6, -7, -8]])
     generator = TheoryNoisyGeneratorOnDataset(th, 400, 0.01)
     positives, negatives = generator.generate_dataset()
     # positives, negatives = load_dtest()
