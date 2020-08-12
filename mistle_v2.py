@@ -5,6 +5,7 @@ from time import time
 import math
 from collections import Counter
 from pattern_mining import compute_itemsets
+import numpy as np
 
 
 def print_input_data_statistics(
@@ -98,7 +99,7 @@ def load_test():
     positives = []
     positives.append(frozenset([1, 2]))
     positives.append(frozenset([2, 3]))
-    positives.append(frozenset([2, 5]))
+    positives.append(frozenset([2, 4]))
 
     negatives = []
     negatives.append(frozenset([-1, -2, -3, -4, -5]))
@@ -107,6 +108,27 @@ def load_test():
     negatives.append(frozenset([-2, -5, -6]))
     negatives.append(frozenset([-2, -3, -4]))
     negatives.append(frozenset([-2, -3, 4]))
+    negatives.append(frozenset([-1, -3, -4]))
+    negatives.append(frozenset([-2, 3]))
+
+    return positives, negatives
+
+
+def load_test2():
+
+    positives = []
+    positives.append(frozenset([1, 2, -4]))
+    positives.append(frozenset([2, 3, 4]))
+    positives.append(frozenset([-1, 2, 4]))
+
+    negatives = []
+    negatives.append(frozenset([-1, 2, -3, -4, -5]))
+    negatives.append(frozenset([-1, 2, -3, 4, 6]))
+    negatives.append(frozenset([-1, 2, -3, -6, -7]))
+    negatives.append(frozenset([-1, -3, -4]))
+    negatives.append(frozenset([-2, -5, -6]))
+    negatives.append(frozenset([-2, -3, 4]))
+    negatives.append(frozenset([-2, -3, -4]))
     negatives.append(frozenset([-1, -3, -4]))
     negatives.append(frozenset([-2, 3]))
 
@@ -485,12 +507,12 @@ def get_entropy(clauses):
     return entropy
 
 
-def log_star(input):
+def log_star(input, base=2):
     # From the footnote on page 5 of the paper https://hal.inria.fr/hal-02505913/document
-    result = math.log(2.865064)
+    result = math.log(2.865064, base)
     n = copy(input)
     while True:
-        n = math.log(n)
+        n = math.log(n, base)
         if n <= 0:
             break
         else:
@@ -510,18 +532,20 @@ def get_modified_entropy(clauses, alphabet_size):
     if len(clauses) == 0:
         return m_entropy
 
-    # Encode the total number of literals that can exist in the theory
-    m_entropy += log_star(2 * alphabet_size)
-
     # Encode the total number of clauses in the theory
-    m_entropy += log_star(len(clauses))
+    m_entropy += log_star(len(clauses), base=2)
+
+    # Encode the total number of literals that can exist in the theory
+    m_entropy += log_star(alphabet_size, base=2)
 
     for j, clause in enumerate(clauses):
 
-        for i, literal in enumerate(clause):
-            m_entropy -= math.log(1.0 / (2 * len(clause) + 1 - 2 * i), 2)
+        m_entropy += math.log(alphabet_size, 2)
 
-        m_entropy -= math.log(1.0 / (2 * len(clauses) + 1 - 2 * j), 2)
+        for i, literal in enumerate(clause):
+            if (2 * alphabet_size - 2 * i) <= 0:
+                print("Math Domain Error")
+            m_entropy += math.log((2 * alphabet_size - 2 * i), 2)
 
     return m_entropy
 
@@ -689,7 +713,7 @@ class Mistle:
         if permitted_operators is None:
             # Assume, by default, that each operator is permitted to compress the theory.
             permitted_operators = {
-                "D": True,
+                "D": False,
                 "W": True,
                 "V": True,
                 "S": True,
@@ -734,6 +758,7 @@ class Mistle:
 
         prev_clauses = []
         mining_count = 0
+        # print_2d(self.theory.clauses)
         while True:
             while True:
                 success = self.theory.compress(lossy, permitted_operators)
@@ -746,11 +771,7 @@ class Mistle:
                         self.theory.clauses, self.negatives, True, "-"
                     )
                     assert len(neg_violations) == 0
-
-            if self.theory.final_alphabet_size != get_alphabet_size(
-                self.theory.clauses
-            ):
-                self.theory.final_alphabet_size = get_alphabet_size(self.theory.clauses)
+                # print_2d(self.theory.clauses)
 
             neg_violations = self.theory.get_violations(
                 self.theory.clauses, self.negatives, True, "-"
@@ -839,9 +860,8 @@ class Theory:
         self, positives, negatives, dl_measure, alphabet_size, minsup=None, k=None
     ):
 
-        if (
-            len(negatives) == 0
-        ):  # We still allow a theory to be learned and compressed if there are some negatives and no positives.
+        if len(negatives) == 0 or len(positives) == 0:
+            # A non-trivial theory cannot be learned until one of the sets out of the positives and the negatives is empty
             return False
 
         # Construct a theory from the partial assignments
@@ -1222,11 +1242,7 @@ class Theory:
                     pruned_indices.add(i)
                     if self.is_definition_clause(clause):
                         self.operator_counter["W"] -= 1
-                        print(
-                            "Line 1326: Decreasing final alphabet size due to "
-                            + str(clause)
-                        )
-                        self.final_alphabet_size -= 1
+                        # self.final_alphabet_size -= 1
 
                     self.prunable_invented_literals |= self.get_invented_literals(
                         clause
@@ -1574,7 +1590,7 @@ class Theory:
                 )
                 # TODO: what if there is a "D" operator involved that needs to be unpacked
                 self.operator_counter["W"] -= 1
-                self.final_alphabet_size -= 1
+                # self.final_alphabet_size -= 1
 
             # else:
             #     # It is better to keep the packed clause for this particular W operator
@@ -1619,9 +1635,6 @@ class Theory:
         if len(neg_violations) == 0:
             self.clauses = new_clauses
 
-        if self.final_alphabet_size != get_alphabet_size(self.clauses):
-            self.final_alphabet_size = get_alphabet_size(self.clauses)
-
     def prune(self):
 
         # Don't check for pruning, those clauses that were unchanged from when the theory was initialized
@@ -1663,7 +1676,7 @@ class Theory:
 
         assert set(self.clauses) == clauses_set
 
-        self.final_alphabet_size = get_alphabet_size(self.clauses)
+        # self.final_alphabet_size = get_alphabet_size(self.clauses)
         # if len(pruned_clause_ids) != 0:
         #     print("Pruned Theory\t:")
         #     print_2d(self.theory.clauses)
@@ -1696,22 +1709,34 @@ if __name__ == "__main__":
     # else:
     #     print("Empty theory learned.")
 
-    from data_generators import TheoryNoisyGeneratorOnDataset, GeneratedTheory
-    import random
-    import numpy as np
-
-    seed = 0
-    random.seed(seed)
-    np.random.seed(seed)
-
     start_time = time()
 
-    th = GeneratedTheory([[1, -4], [2, 5], [6, -7, -8]])
-    generator = TheoryNoisyGeneratorOnDataset(th, 400, 0.01)
-    positives, negatives = generator.generate_dataset()
-    # positives, negatives = load_dtest()
+    # from data_generators import TheoryNoisyGeneratorOnDataset, GeneratedTheory
+    # import random
+    #
+    # seed = 0
+    # random.seed(seed)
+    # np.random.seed(seed)
+    #
+    #
+    #
+    # th = GeneratedTheory([[1, -4], [2, 5], [6, -7, -8]])
+    # generator = TheoryNoisyGeneratorOnDataset(th, 400, 0.01)
+    # positives, negatives = generator.generate_dataset()
+
+    positives, negatives = load_test()
+    permitted_operators = {
+        "D": False,
+        "W": True,
+        "V": True,
+        "S": True,
+        "R": True,
+        "T": True,
+    }
     mistle = Mistle(positives, negatives)
-    theory, compression = mistle.learn(dl_measure="me", k=100)
+    theory, compression = mistle.learn(
+        dl_measure="me", k=100, permitted_operators=permitted_operators
+    )
     print("Total time\t\t\t\t: " + str(time() - start_time) + " seconds.")
     if theory is not None:
         print("Final theory has " + str(len(theory.clauses)) + " clauses.")
