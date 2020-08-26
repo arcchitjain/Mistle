@@ -8,6 +8,7 @@ import matplotlib.pyplot as plt
 from collections import defaultdict
 
 # plt.style.use("cyberpunk")
+plt.style.use("seaborn")
 matplotlib.rcParams["mathtext.fontset"] = "stix"
 matplotlib.rcParams["font.family"] = "STIXGeneral"
 matplotlib.rc("font", size=24)
@@ -48,7 +49,7 @@ def write_cnf(clauses, file):
             f.write(" ".join([str(literal) for literal in clause]) + " 0\n")
 
 
-def load_complete_dataset(dataset):
+def load_complete_dataset(dataset, sample=None):
     """
     Apply closed world assumption on the  data to complete it
     :param dataset: Name of the dataset in string
@@ -68,17 +69,26 @@ def load_complete_dataset(dataset):
     else:
         var_range = None
 
+    if sample is None:
+        sampled_var_range = var_range
+    else:
+        sampled_var_range = random.sample(var_range, sample)
+
     for positive_pa in positives:
-        complete_pa = set(positive_pa)
-        for var in var_range:
-            if var not in positive_pa:
+        complete_pa = set()
+        for var in sampled_var_range:
+            if var in positive_pa:
+                complete_pa.add(var)
+            else:
                 complete_pa.add(-var)
         complete_positives.append(frozenset(complete_pa))
 
     for negative_pa in negatives:
-        complete_pa = set(negative_pa)
-        for var in var_range:
-            if var not in negative_pa:
+        complete_pa = set()
+        for var in sampled_var_range:
+            if var in negative_pa:
+                complete_pa.add(var)
+            else:
                 complete_pa.add(-var)
         complete_negatives.append(frozenset(complete_pa))
 
@@ -199,7 +209,12 @@ def get_all_completions_recursive(incomplete_pa, missing_attributes, result):
 
 
 def impute_missing_values(
-    incomplete_pa, theory, missing_attributes, metric="count", nb_clauses=None
+    incomplete_pa,
+    max_theory,
+    min_theory,
+    missing_attributes,
+    metric="count",
+    nb_clauses=None,
 ):
     """
     A function that predicts the most suitable completion of 'incomplete_pa' wrt a theory.
@@ -220,7 +235,7 @@ def impute_missing_values(
         max_value = -1
         for i, completed_pa in enumerate(completed_pas):
             nb_failed_clauses = 0
-            for clause in get_clauses(theory):
+            for clause in get_clauses(max_theory):
                 if solve([tuple(clause)] + [(a,) for a in completed_pa]) == "UNSAT":
                     nb_failed_clauses += 1
 
@@ -229,7 +244,22 @@ def impute_missing_values(
                 max_value = nb_failed_clauses
             elif nb_failed_clauses == max_value:
                 max_indices.append(i)
+        if len(max_indices) == 1:
+            return completed_pas[max_indices[0]]
+        else:
+            min_indices = []
+            min_value = 1000
+            for i, completed_pa in enumerate(completed_pas):
+                nb_failed_clauses = 0
+                for clause in get_clauses(min_theory):
+                    if solve([tuple(clause)] + [(a,) for a in completed_pa]) != "UNSAT":
+                        nb_failed_clauses += 1
 
+                if nb_failed_clauses < min_value:
+                    min_indices = [i]
+                    min_value = nb_failed_clauses
+                elif nb_failed_clauses == min_value:
+                    min_indices.append(i)
         return completed_pas[random.choice(max_indices)]
 
     elif metric == "length":
@@ -237,17 +267,15 @@ def impute_missing_values(
         # Calculate number of clauses in the theory for different lengths
         nb_clauses = defaultdict(int)
 
-        for clause in get_clauses(theory):
+        for clause in get_clauses(max_theory):
             nb_clauses[len(clause)] += 1
 
         # For each completion of the given example, calculate number of failing clauses of different lengths
-        # min_indices = []
-        # min_score = 1000
         max_indices = []
         max_score = 0
         for i, completed_pa in enumerate(completed_pas):
             nb_failing_clauses = defaultdict(int)
-            for clause in get_clauses(theory):
+            for clause in get_clauses(max_theory):
                 if solve([tuple(clause)] + [(a,) for a in completed_pa]) == "UNSAT":
                     nb_failing_clauses[len(clause)] += 1
 
@@ -257,20 +285,45 @@ def impute_missing_values(
                 if length in nb_failing_clauses:
                     length_metric += nb_failing_clauses[length] / (length * nb_clause)
 
-            # if length_metric < min_score:
-            #     min_indices = [i]
-            #     min_score = length_metric
-            # elif length_metric == min_score:
-            #     min_indices.append(i)
-
             if length_metric > max_score:
                 max_indices = [i]
                 max_score = length_metric
             elif length_metric == max_score:
                 max_indices.append(i)
 
-        return completed_pas[random.choice(max_indices)]
-        # return completed_pas[random.choice(min_indices)]
+        if len(max_indices) == 1:
+            return completed_pas[max_indices[0]]
+        else:
+            # Calculate number of clauses in the theory for different lengths
+            nb_clauses = defaultdict(int)
+
+            for clause in get_clauses(min_theory):
+                nb_clauses[len(clause)] += 1
+
+            # For each completion of the given example, calculate number of failing clauses of different lengths
+            min_indices = []
+            min_score = 1000
+            for i, completed_pa in enumerate(completed_pas):
+                nb_failing_clauses = defaultdict(int)
+                for clause in get_clauses(min_theory):
+                    if solve([tuple(clause)] + [(a,) for a in completed_pa]) != "UNSAT":
+                        nb_failing_clauses[len(clause)] += 1
+
+                # Referred from Page 3 of 'Mining predictive kCNF expressions - Anton, Luc, Siegfried
+                length_metric = 0.0
+                for length, nb_clause in nb_clauses.items():
+                    if length in nb_failing_clauses:
+                        length_metric += nb_failing_clauses[length] / (
+                            length * nb_clause
+                        )
+
+                if length_metric < min_score:
+                    min_indices = [i]
+                    min_score = length_metric
+                elif length_metric == min_score:
+                    min_indices.append(i)
+
+        return completed_pas[random.choice(min_indices)]
 
 
 def get_accuracy(
@@ -296,18 +349,26 @@ def get_accuracy(
 
         for clause in get_clauses(mistle_neg_theory):
             nb_clauses_n[len(clause)] += 1
+    else:
+        nb_clauses_p = None
+        nb_clauses_n = None
 
     accuracy = 0
     for c_p, i_p, m_p in zip(
         complete_positives, incomplete_positives, missing_positives
     ):
-        # c_p = i_p + m_p
+        assert c_p == i_p | m_p
         missing_attributes = set()
         for literal in m_p:
             missing_attributes.add(abs(literal))
 
         predicted_c_p = impute_missing_values(
-            i_p, mistle_pos_theory, missing_attributes, metric, nb_clauses_p
+            i_p,
+            mistle_pos_theory,
+            mistle_neg_theory,
+            missing_attributes,
+            metric,
+            nb_clauses_p,
         )
 
         if set(predicted_c_p) == set(c_p):
@@ -316,13 +377,18 @@ def get_accuracy(
     for c_n, i_n, m_n in zip(
         complete_negatives, incomplete_negatives, missing_negatives
     ):
-        # c_n = i_n + m_n
+        assert c_n == i_n | m_n
         missing_attributes = set()
         for literal in m_n:
             missing_attributes.add(abs(literal))
 
         predicted_c_n = impute_missing_values(
-            i_n, mistle_neg_theory, missing_attributes, metric, nb_clauses_n
+            i_n,
+            mistle_neg_theory,
+            mistle_pos_theory,
+            missing_attributes,
+            metric,
+            nb_clauses_n,
         )
 
         if set(predicted_c_n) == set(c_n):
@@ -485,16 +551,30 @@ def get_missing_data(complete_data, M=0):
 
 
 def plot_uci_nb_missing_split(
-    dataset, M_list, dl, version, minsup=None, k=None, metric="length"
+    dataset,
+    M_list,
+    dl,
+    version,
+    minsup=None,
+    k=None,
+    metric="length",
+    train_pct=0.7,
+    sample_vars=None,
+    sample_rows=None,
 ):
 
-    train_pct = (
-        0.7
-    )  # Train PCT = 0.7 denotes that 70% of the data will be used for training and the rest for testing.
-    complete_positives, complete_negatives = load_complete_dataset(dataset)
+    # train_pct = (
+    #     0.7
+    # )  # Train PCT = 0.7 denotes that 70% of the data will be used for training and the rest for testing.
+    # sample_vars = 10
+    # sample_rows = None
+    complete_positives, complete_negatives = load_complete_dataset(
+        dataset, sample=sample_vars
+    )
 
-    complete_positives = complete_positives[:100]
-    complete_negatives = complete_negatives[:100]
+    if sample_rows is not None:
+        complete_positives = random.sample(complete_positives, sample_rows)
+        complete_negatives = random.sample(complete_negatives, sample_rows)
 
     complete_train_positives, complete_test_positives = split_data(
         complete_positives, train_pct
@@ -523,11 +603,11 @@ def plot_uci_nb_missing_split(
             complete_test_negatives, m
         )
 
-        mistle_pos_theory, _ = Mistle(
-            complete_train_negatives, complete_train_positives
-        ).learn(dl_measure=dl, minsup=minsup, k=k)
         mistle_neg_theory, _ = Mistle(
             complete_train_positives, complete_train_negatives
+        ).learn(dl_measure=dl, minsup=minsup, k=k)
+        mistle_pos_theory, _ = Mistle(
+            complete_train_negatives, complete_train_positives
         ).learn(dl_measure=dl, minsup=minsup, k=k)
 
         nb_clauses = 0
@@ -585,7 +665,11 @@ def plot_uci_nb_missing_split(
     plt.ylim(bottom=0, top=1)
     plt.legend()
     plt.savefig(
-        "Experiments/exp2_uci_missing_split_" + dataset + "_v" + str(version) + ".pdf",
+        "Experiments/exp2.1_uci_missing_split_"
+        + dataset
+        + "_v"
+        + str(version)
+        + ".pdf",
         bbox_inches="tight",
     )
     plt.show()
@@ -600,7 +684,7 @@ def plot_uci_nb_missing_split(
 
     plt.legend()
     plt.savefig(
-        "Experiments/exp2_nb_clauses_" + dataset + "_v" + str(version) + ".pdf",
+        "Experiments/exp2.1_nb_clauses_" + dataset + "_v" + str(version) + ".pdf",
         bbox_inches="tight",
     )
     plt.show()
@@ -616,11 +700,24 @@ def plot_uci_nb_missing_split(
 
     plt.legend()
     plt.savefig(
-        "Experiments/exp2_nb_literals_" + dataset + "_v" + str(version) + ".pdf",
+        "Experiments/exp2.1_nb_literals_" + dataset + "_v" + str(version) + ".pdf",
         bbox_inches="tight",
     )
     plt.show()
     plt.close()
+
+    print(
+        "\nSampled Variables\t\t:"
+        + str(sorted([abs(x) for x in complete_positives[0]]))
+    )
+
+    print("Mistle Accuracy List\t:" + str(mistle_accuracy_list))
+    print("Mistle Clauses List\t\t:" + str(mistle_clauses_list))
+    print("Mistle Literals List\t:" + str(mistle_literals_list))
+
+    print("CNF-cc Accuracy List\t:" + str(cnfalgo_accuracy_list))
+    print("CNF-cc Clauses List\t\t:" + str(cnfalgo_clauses_list))
+    print("CNF-cc Literals List\t:" + str(cnfalgo_literals_list))
 
 
 # plot_uci_nb_missing_split(
@@ -632,14 +729,30 @@ def plot_uci_nb_missing_split(
 #     version=1,
 # )
 
+# plot_uci_nb_missing_split(
+#     dataset="tictactoe",
+#     M_list=[1, 3, 5, 7],
+#     minsup=1,
+#     # k=20000,
+#     dl="me",
+#     version=7,
+#     metric="count",
+#     train_pct=0.7,
+#     sample_vars=12,
+#     sample_rows=None,
+# )
+
 plot_uci_nb_missing_split(
     dataset="tictactoe",
-    M_list=[1, 3, 5],
-    minsup=0.5,
-    k=20000,
+    M_list=[1, 3, 5, 7],
+    minsup=1,
+    # k=20000,
     dl="me",
-    version=2,
-    metric="count",
+    version=8,
+    metric="length",
+    train_pct=0.7,
+    sample_vars=12,
+    sample_rows=None,
 )
 
 
@@ -685,7 +798,7 @@ def plot_artificial(M_list, dl, version, minsup=None, k=None, metric="length"):
     dataset = "artificial"
     th = GeneratedTheory([[1, -4], [2, 5], [6, -7, -8], [3, 9, -10]])
     var_range = range(1, 11)
-    generator = TheoryNoisyGeneratorOnDataset(th, 400, 0.01)
+    generator = TheoryNoisyGeneratorOnDataset(th, 400, 0.1)
     positives, negatives = generator.generate_dataset()
     complete_positives = []
     complete_negatives = []
@@ -847,6 +960,14 @@ def plot_artificial(M_list, dl, version, minsup=None, k=None, metric="length"):
     plt.show()
     plt.close()
 
+    print("Mistle Accuracy List\t:" + str(mistle_accuracy_list))
+    print("Mistle Clauses List\t\t:" + str(mistle_clauses_list))
+    print("Mistle Literals List\t:" + str(mistle_literals_list))
+
+    print("CNF-cc Accuracy List\t:" + str(cnfalgo_accuracy_list))
+    print("CNF-cc Clauses List\t\t:" + str(cnfalgo_clauses_list))
+    print("CNF-cc Literals List\t:" + str(cnfalgo_literals_list))
+
 
 from data_generators import TheoryNoisyGeneratorOnDataset, GeneratedTheory
 
@@ -860,5 +981,5 @@ np.random.seed(seed)
 #     M_list=[1, 2, 3, 4, 5, 6], minsup=0.05, dl="me", version=2, metric="count"
 # )
 # plot_artificial(
-#     M_list=[1, 2, 3, 4, 5, 6], minsup=0.05, dl="me", version=2, metric="length"
+#     M_list=[1, 2, 3, 4, 5, 6], minsup=0.05, dl="me", version=1, metric="length"
 # )

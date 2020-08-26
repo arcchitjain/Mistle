@@ -582,6 +582,7 @@ class Eclat:
         return data
 
     def eclat(self, prefix, items, dict_id):
+        # print(prefix, dict_id, items)
         while items:
             i, itids = items.pop()
             if len(itids) >= self.minsup:
@@ -698,17 +699,6 @@ class Mistle:
         mining_steps=None,
         permitted_operators=None,
     ):
-        """
-
-        :param dl_measure: it can take one
-        :param minsup:
-        :param k:
-        :param lossy:
-        :param prune:
-        :param mining_steps:
-        :param permitted_operators:
-        :return:
-        """
 
         if permitted_operators is None:
             # Assume, by default, that each operator is permitted to compress the theory.
@@ -755,7 +745,7 @@ class Mistle:
         self.total_positives = len(self.positives)
         self.total_negatives = len(self.negatives)
         self.theory.theory_length = self.total_negatives
-
+        # assert len(self.theory.get_violations(self.theory.clauses, self.positives)) == 0
         prev_clauses = []
         mining_count = 0
         # print_2d(self.theory.clauses)
@@ -771,6 +761,12 @@ class Mistle:
                         self.theory.clauses, self.negatives, True, "-"
                     )
                     assert len(neg_violations) == 0
+
+                    # pos_violations = self.theory.get_violations(
+                    #     self.theory.clauses, self.positives, True, "+"
+                    # )
+                    # assert len(pos_violations) == 0
+
                 # print_2d(self.theory.clauses)
 
             neg_violations = self.theory.get_violations(
@@ -793,7 +789,7 @@ class Mistle:
                 mining_steps is not None and mining_steps > mining_count
             ):
                 self.theory.freq_items = self.theory.get_frequent_itemsets(
-                    self.theory.clauses, minsup=1
+                    self.theory.clauses, minsup=self.theory.minsup
                 )
             else:
                 # Break the loop and don't compress further if maximum number of mining steps reached.
@@ -889,6 +885,10 @@ class Theory:
         self.initial_alphabet_size = alphabet_size
         self.final_alphabet_size = alphabet_size
         self.new_var_counter = alphabet_size + 1
+        for clause in positives | negatives:
+            for literal in clause:
+                if abs(int(literal)) >= self.new_var_counter:
+                    self.new_var_counter = abs(int(literal)) + 1
         self.positives = positives
         self.negatives = negatives
         self.errors = self.get_violations(self.clauses, positives)
@@ -1002,6 +1002,9 @@ class Theory:
         if len(result) > k:
             result = result[:k]
 
+        if minsup < 1:
+            minsup = 1
+
         return result, minsup
 
     def get_frequent_itemsets(self, clauses, minsup):
@@ -1077,6 +1080,22 @@ class Theory:
                 + sign
                 + "ve partial assignments found for the learned theory.",
             )
+
+            violating_clauses = set()
+            for pa in violated_pas:
+                for clause in clauses:
+                    if (
+                        sign == "+"
+                        and solve([tuple(clause)] + [(a,) for a in pa]) == "UNSAT"
+                    ):
+                        violating_clauses.add(clause)
+                    elif (
+                        sign == "-"
+                        and solve([tuple(clause)] + [(a,) for a in pa]) != "UNSAT"
+                    ):
+                        violating_clauses.add(clause)
+            print("Violating Clauses\t:" + str(violating_clauses))
+
         return violated_pas
 
     def __len__(self):
@@ -1647,11 +1666,9 @@ class Theory:
         pruned_clause_ids = set()
         clauses_set = copy(set(self.clauses))
 
-        assert len(self.get_violations(clauses_set, self.positives)) == 0
-        neg_violations = len(
-            self.get_violations(clauses_set, self.negatives, True, "-")
-        )
-        assert neg_violations == 0
+        assert len(self.get_violations(clauses_set, self.positives, True, "+")) == 0
+        neg_violations = self.get_violations(clauses_set, self.negatives, True, "-")
+        assert len(neg_violations) == 0
 
         for i, clause in enumerate(old_clauses):
             if clause in initial_clauses:

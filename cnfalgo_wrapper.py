@@ -1,4 +1,6 @@
 import subprocess
+import uuid
+import os
 
 
 def write_train_file(positives, negatives, file="Resources/cnfalgo_train"):
@@ -113,10 +115,10 @@ def complete_cnfalgo(
     metric="length",
 ):
 
-    train_file = "Resources/cnfalgo_train"
-    test_file = "Resources/cnfalgo_test"
-    deletion_file = "Resources/cnfalgo_deletion"
-    output_file = "Resources/cnfalgo_output"
+    train_file = "Resources/cnfalgo_" + str(uuid.uuid4()) + "_train"
+    test_file = "Resources/cnfalgo_" + str(uuid.uuid4()) + "_test"
+    deletion_file = "Resources/cnfalgo_" + str(uuid.uuid4()) + "_deletion"
+    output_file = "Resources/cnfalgo_" + str(uuid.uuid4()) + "_output"
 
     write_train_file(train_positives, train_negatives, train_file)
     write_test_file(
@@ -162,6 +164,23 @@ def complete_cnfalgo(
                 # The atom is the first digit of the number
                 fs.add(-1 * (l // 1000))
 
+            # if abs(l) % 10 == 1:
+            #     # The atom is True if the last digit of the number is 1
+            #     # The atom is the first digit of the number
+            #     # The truth value reverses with a negation sign
+            #     if l > 0:
+            #         fs.add(abs(l) // 1000)
+            #     else:
+            #         fs.add(-1 * (abs(l) // 1000))
+            # elif abs(l) % 10 == 2:
+            #     # The atom is True if the last digit of the number is 2
+            #     # The atom is the first digit of the number
+            #     # The truth value reverses with a negation sign
+            #     if l > 0:
+            #         fs.add(-1 * (abs(l) // 1000))
+            #     else:
+            #         fs.add(abs(l) // 1000)
+
         if line[1] == "1,":
             # This line denotes a positive
             # print("Complete Train Positive\t: " + str(fs))
@@ -198,7 +217,73 @@ def complete_cnfalgo(
 
     print("Predictive Accuracy\t\t: " + str(accuracy))
 
+    os.remove(train_file)
+    os.remove(test_file)
+    os.remove(deletion_file)
+    os.remove(output_file)
+
     return nb_clauses, nb_literals, accuracy
+
+
+def get_cnfalgo_theory(
+    train_positives,
+    train_negatives,
+    cnfalgo_exec_path="Resources/cnfalgo",
+    pos_literal=1000,
+):
+
+    train_file = "Resources/cnfalgo_" + str(uuid.uuid4()) + "_train"
+    output_file = "Resources/cnfalgo_" + str(uuid.uuid4()) + "_output"
+
+    write_train_file(train_positives, train_negatives, train_file)
+
+    subprocess.run([cnfalgo_exec_path, "mv", train_file, "-o", output_file])
+
+    f = open(output_file, "r")
+
+    lines = f.readlines()
+
+    cnfalgo_theory = []
+    nb_clauses = int(lines[0].strip("\n"))
+    for line in lines[1:]:
+        line = line.strip("\n").split(" ")
+        fs = set()
+
+        for l in line:
+            l = int(l.strip(","))
+            if l == 1 or l == -2:
+                # This atom corresponds to positive_class or not(negative_class)
+                fs.add(pos_literal)
+
+            elif l == 2 or l == -1:
+                # This atom corresponds to negative_class or not(positive_class)
+                fs.add(-pos_literal)
+
+            elif abs(l) % 10 == 1:
+                # The atom is True if the last digit of the number is 1
+                # The atom is the first digit of the number
+                # The truth value reverses with a negation sign
+                if l > 0:
+                    fs.add(abs(l) // 1000)
+                else:
+                    fs.add(-1 * (abs(l) // 1000))
+            elif abs(l) % 10 == 2:
+                # The atom is True if the last digit of the number is 2
+                # The atom is the first digit of the number
+                # The truth value reverses with a negation sign
+                if l > 0:
+                    fs.add(-1 * (abs(l) // 1000))
+                else:
+                    fs.add(abs(l) // 1000)
+
+        cnfalgo_theory.append(frozenset(fs))
+
+    assert len(cnfalgo_theory) == nb_clauses
+
+    os.remove(train_file)
+    os.remove(output_file)
+
+    return cnfalgo_theory
 
 
 if __name__ == "__main__":
