@@ -8,11 +8,11 @@ import os
 import matplotlib
 import matplotlib.pyplot as plt
 
-# import mplcyberpunk
+import mplcyberpunk
 from statistics import mean, stdev
 
 # plt.style.use("cyberpunk")
-plt.style.use("seaborn")
+plt.style.use("cyberpunk")
 
 matplotlib.rcParams["mathtext.fontset"] = "stix"
 matplotlib.rcParams["font.family"] = "STIXGeneral"
@@ -192,9 +192,7 @@ plt.ylabel("Similarity")
 plt.xlabel("Data size")
 # plt.title("Mistle is able to learn the actual theory when data size is varied")
 plt.plot(data_sizes, mean_similarity_list)
-plt.fill_between(
-    data_sizes, lstd_dev_similarity_list, ustd_dev_similarity_list, alpha=0.3
-)
+
 plt.ylim(bottom=lylim, top=uylim)
 # plt.xlim(left=95, right=505)
 # mplcyberpunk.add_glow_effects()

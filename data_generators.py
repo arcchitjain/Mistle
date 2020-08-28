@@ -316,22 +316,31 @@ class TheoryNoisyGeneratorOnDataset:
 
         return partial_example
 
-    def generate_dataset(self):
+    def generate_dataset(self, generate_only_negatives=False):
         """
         Generates the dataset given corresponding to the created generator.
         :return: 2 list. The first list contains positive examples in DIMACS format (as a frozenset), the second contains the negative examples
         """
-        partial_pos = []
+
         partial_neg = []
 
-        while len(partial_neg) + len(partial_pos) < self.nb_examples:
-            example = self.generate_partial_example()
-            if self.theory.is_example_sat(example):
-                partial_pos.append(frozenset(example))
-            else:
-                partial_neg.append(frozenset(example))
+        if generate_only_negatives:
+            while len(partial_neg) < self.nb_examples:
+                example = self.generate_partial_example()
+                if not self.theory.is_example_sat(example):
+                    partial_neg.append(frozenset(example))
+            return partial_neg
 
-        return partial_pos, partial_neg
+        else:
+            partial_pos = []
+            while len(partial_neg) + len(partial_pos) < self.nb_examples:
+                example = self.generate_partial_example()
+                if self.theory.is_example_sat(example):
+                    partial_pos.append(frozenset(example))
+                else:
+                    partial_neg.append(frozenset(example))
+
+            return partial_pos, partial_neg
 
 
 class TheoryNoisyGeneratorPosNeg:

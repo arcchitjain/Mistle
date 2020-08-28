@@ -389,7 +389,6 @@ def get_cnfalgo_accuracy2(
 
 
 def plot_uci_nb_missing_split(dataset, dl, version, minsup=None, k=None, num_folds=10):
-    # positives, negatives = globals()["load_" + dataset]()
 
     positives, negatives = globals()["load_" + dataset]()
 

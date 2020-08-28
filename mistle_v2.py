@@ -698,6 +698,7 @@ class Mistle:
         prune=True,
         mining_steps=None,
         permitted_operators=None,
+        allow_empty_positives=False,
     ):
 
         if permitted_operators is None:
@@ -735,7 +736,13 @@ class Mistle:
         if minsup is None and k is None:
             minsup = 1
         success = self.theory.intialize(
-            self.positives, self.negatives, dl_measure, initial_alphabet_size, minsup, k
+            self.positives,
+            self.negatives,
+            dl_measure,
+            initial_alphabet_size,
+            minsup,
+            k,
+            allow_empty_positives,
         )
         if not success:
             # This is the case when no frequent itemsets get mined or when the input data is empty.
@@ -853,10 +860,17 @@ class Theory:
         self.prunable_invented_literals = set()
 
     def intialize(
-        self, positives, negatives, dl_measure, alphabet_size, minsup=None, k=None
+        self,
+        positives,
+        negatives,
+        dl_measure,
+        alphabet_size,
+        minsup=None,
+        k=None,
+        allow_empty_positives=False,
     ):
 
-        if len(negatives) == 0 or len(positives) == 0:
+        if len(negatives) == 0 or (len(positives) == 0 and not allow_empty_positives):
             # A non-trivial theory cannot be learned until one of the sets out of the positives and the negatives is empty
             return False
 
@@ -869,7 +883,7 @@ class Theory:
         elif minsup >= 1:
             self.minsup = int(minsup)
         elif minsup < 1:
-            self.minsup = minsup * len(self.clauses)
+            self.minsup = int(minsup * len(self.clauses))
 
         self.k = k
 
@@ -1673,10 +1687,8 @@ class Theory:
         for i, clause in enumerate(old_clauses):
             if clause in initial_clauses:
                 continue
-            violations = len(
-                self.get_violations(
-                    copy(clauses_set) - {clause}, self.negatives, False, sign="-"
-                )
+            violations = self.get_violations(
+                copy(clauses_set) - {clause}, self.negatives, False, sign="-"
             )
             if violations == neg_violations:
                 pruned_clause_ids.add(i)

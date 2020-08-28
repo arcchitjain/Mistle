@@ -145,7 +145,8 @@ def complete_cnfalgo(
     f = open(output_file, "r")
 
     lines = f.readlines()
-
+    missing_rows_pos = []
+    missing_rows_neg = []
     complete_train_positives = []
     complete_train_negatives = []
     nb_clauses = int(lines[0].strip("\n"))
@@ -185,35 +186,43 @@ def complete_cnfalgo(
             # This line denotes a positive
             # print("Complete Train Positive\t: " + str(fs))
             complete_train_positives.append(frozenset(fs))
+            missing_rows_pos.append(int(line[0]))
 
         elif line[1] == "2,":
             # This line denotes a negative
             # print("Complete Train Negative\t: " + str(fs))
             complete_train_negatives.append(frozenset(fs))
+            missing_rows_neg.append(int(line[0]) - len(test_positives))
 
     accuracy = 0
-    assert (
-        len(complete_train_positives) == len(test_positives) == len(missing_positives)
-    )
-    assert (
-        len(complete_train_negatives) == len(test_negatives) == len(missing_negatives)
-    )
+    assert len(test_positives) == len(missing_positives)
+    assert len(test_negatives) == len(missing_negatives)
 
-    for c_p, t_p, m_p in zip(
-        complete_train_positives, test_positives, missing_positives
-    ):
+    for i, c_p in zip(missing_rows_pos, complete_train_positives):
+        t_p = test_positives[i]
+        m_p = missing_positives[i]
         if set(c_p) == set(t_p) | set(m_p):
             accuracy += 1
 
-    for c_n, t_n, m_n in zip(
-        complete_train_negatives, test_negatives, missing_negatives
-    ):
+    for i, c_n in zip(missing_rows_neg, complete_train_negatives):
+        t_n = test_negatives[i]
+        m_n = missing_negatives[i]
         if set(c_n) == set(t_n) | set(m_n):
             accuracy += 1
 
-    accuracy = accuracy / (
-        len(complete_train_positives) + len(complete_train_negatives)
-    )
+    # for c_p, t_p, m_p in zip(
+    #     complete_train_positives, test_positives, missing_positives
+    # ):
+    #     if set(c_p) == set(t_p) | set(m_p):
+    #         accuracy += 1
+
+    # for c_n, t_n, m_n in zip(
+    #     complete_train_negatives, test_negatives, missing_negatives
+    # ):
+    #     if set(c_n) == set(t_n) | set(m_n):
+    #         accuracy += 1
+
+    accuracy = accuracy / (len(test_positives) + len(test_negatives))
 
     print("Predictive Accuracy\t\t: " + str(accuracy))
 
