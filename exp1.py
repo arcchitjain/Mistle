@@ -74,24 +74,19 @@ def generate_theory(alphabet_size):
 
 def compare_theories(actual_clauses, learned_clauses, alphabet_size):
     similarity = 0
-    actual_tuples = [tuple(clause) for clause in actual_clauses]
-    learned_tuples = [tuple(clause) for clause in learned_clauses]
-
     for counter in range(0, 2 ** alphabet_size):
         binary_counter = format(counter, "b")
         char_counter = binary_counter.rjust(alphabet_size, "0")
-
-        new_actual_tuples = copy(actual_tuples)
-        new_learned_tuples = copy(learned_tuples)
+        pa = set()
         for i, char in enumerate(char_counter):
             if char == "0":
-                new_actual_tuples.append((-i - 1,))
-                new_learned_tuples.append((-i - 1,))
+                pa.add(-i - 1)
             elif char == "1":
-                new_actual_tuples.append((i + 1,))
-                new_learned_tuples.append((i + 1,))
+                pa.add(i + 1)
 
-        if solve(new_actual_tuples) == solve(new_learned_tuples):
+        if check_pa_satisfiability(
+            pa, actual_clauses, pa_is_complete=True
+        ) == check_pa_satisfiability(pa, learned_clauses, pa_is_complete=True):
             similarity += 1
 
     return similarity / (2 ** alphabet_size)

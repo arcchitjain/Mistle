@@ -575,10 +575,10 @@ def get_pct_satisfiable_completions(
             n = check_pa_satisfiability(
                 completion, mistle_neg_theory.clauses, pa_is_complete=True
             )
-            if not p:
+            if p is False:
                 accuracy1 += 1
                 accuracy2 += 1
-            if n:
+            if n is True:
                 accuracy3 += 1
                 accuracy4 += 1
             total += 1
@@ -600,10 +600,10 @@ def get_pct_satisfiable_completions(
             n = check_pa_satisfiability(
                 completion, mistle_neg_theory.clauses, pa_is_complete=True
             )
-            if p:
+            if p is True:
                 accuracy1 += 1
                 accuracy3 += 1
-            if not n:
+            if n is False:
                 accuracy2 += 1
                 accuracy4 += 1
             total += 1
@@ -1668,7 +1668,7 @@ def plot_exp2_2(
 
 
 def plot_exp2_2_without_num_folds(
-    dataset, missingness_parameters=[0.05, 0.15, 0.25], train_pct=0.8, minsup=None
+    dataset, missingness_parameters=[0.05, 0.10], train_pct=0.8, minsup=None
 ):
 
     complete_positives, complete_negatives = load_data(dataset, complete=True)
@@ -1682,7 +1682,10 @@ def plot_exp2_2_without_num_folds(
 
     if minsup is None:
         minsup = get_topk_minsup(
-            complete_train_positives + complete_train_negatives, suppress_output=True
+            complete_train_positives + complete_train_negatives,
+            current_minsup=0.99,
+            decrement_factor=5,
+            suppress_output=False,
         )
 
     cnfalgo_accuracy_list = []
@@ -1716,9 +1719,15 @@ def plot_exp2_2_without_num_folds(
     if mistle_pos_theory is not None:
         nb_clauses += len(mistle_pos_theory.clauses)
         clauses += mistle_pos_theory.clauses
+        print("mistle_pos_theory.clauses = " + str(mistle_pos_theory.clauses))
+    else:
+        print("Mistle_pos_theory is None")
     if mistle_neg_theory is not None:
         nb_clauses += len(mistle_neg_theory.clauses)
         clauses += mistle_neg_theory.clauses
+        print("mistle_neg_theory.clauses = " + str(mistle_neg_theory.clauses))
+    else:
+        print("Mistle_neg_theory is None")
     mistle_clauses_list = [nb_clauses] * len(missingness_parameters)
 
     mistle_nb_literals = 0
@@ -1732,6 +1741,7 @@ def plot_exp2_2_without_num_folds(
 
     for i, m in enumerate(missingness_parameters):
 
+        print("\nDataset\t: " + dataset + ";\tMissingness Parameter\t: " + str(m))
         (incomplete_test_positives, missing_test_positives) = get_missing_data_mcar(
             complete_test_positives, m
         )

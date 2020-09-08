@@ -576,48 +576,45 @@ def get_topk_minsup(
             )
 
     current_nb_fi = len(freq_items_lcm)
+    if current_nb_fi <= 2 * topk and current_nb_fi >= 0.5 * topk:
+        return current_minsup
+
     if prev_nb_fi is not None and current_nb_fi != prev_nb_fi:
         if current_nb_fi <= topk and prev_nb_fi > topk:
             lower_limit = prev_minsup
             upper_limit = current_minsup
-            if current_nb_fi <= 2 * topk and current_nb_fi >= 0.5 * topk:
-                return current_minsup
-            else:
-                # decrease minsup using linear interpolation
-                next_minsup = (prev_minsup - current_minsup) / (
-                    prev_nb_fi - current_nb_fi
-                ) * (topk - current_nb_fi) + current_minsup
-                return get_topk_minsup(
-                    data,
-                    topk,
-                    current_minsup=next_minsup,
-                    prev_minsup=current_minsup,
-                    prev_nb_fi=current_nb_fi,
-                    lower_limit=lower_limit,
-                    upper_limit=upper_limit,
-                    suppress_output=suppress_output,
-                )
+            # decrease minsup using exponential interpolation
+            next_minsup = (prev_minsup - current_minsup) / (
+                math.log(prev_nb_fi) - math.log(current_nb_fi)
+            ) * (math.log(topk) - math.log(current_nb_fi)) + current_minsup
+            return get_topk_minsup(
+                data,
+                topk,
+                current_minsup=next_minsup,
+                prev_minsup=current_minsup,
+                prev_nb_fi=current_nb_fi,
+                lower_limit=lower_limit,
+                upper_limit=upper_limit,
+                suppress_output=suppress_output,
+            )
 
         elif current_nb_fi >= topk and prev_nb_fi < topk:
             lower_limit = current_minsup
             upper_limit = prev_minsup
-            if current_nb_fi <= 2 * topk and current_nb_fi >= 0.5 * topk:
-                return current_minsup
-            else:
-                # increase minsup using linear interpolation
-                next_minsup = (prev_minsup - current_minsup) / (
-                    prev_nb_fi - current_nb_fi
-                ) * (topk - current_nb_fi) + current_minsup
-                return get_topk_minsup(
-                    data,
-                    topk,
-                    current_minsup=next_minsup,
-                    prev_minsup=current_minsup,
-                    prev_nb_fi=current_nb_fi,
-                    lower_limit=lower_limit,
-                    upper_limit=upper_limit,
-                    suppress_output=suppress_output,
-                )
+            # increase minsup using linear interpolation
+            next_minsup = (prev_minsup - current_minsup) / (
+                math.log(prev_nb_fi) - math.log(current_nb_fi)
+            ) * (math.log(topk) - math.log(current_nb_fi)) + current_minsup
+            return get_topk_minsup(
+                data,
+                topk,
+                current_minsup=next_minsup,
+                prev_minsup=current_minsup,
+                prev_nb_fi=current_nb_fi,
+                lower_limit=lower_limit,
+                upper_limit=upper_limit,
+                suppress_output=suppress_output,
+            )
 
         elif current_nb_fi > topk and prev_nb_fi > topk:
             lower_limit = current_minsup
@@ -650,9 +647,7 @@ def get_topk_minsup(
                 suppress_output=suppress_output,
             )
     else:
-        if current_nb_fi == topk:
-            return current_minsup
-        elif current_nb_fi < topk:
+        if current_nb_fi < 0.5 * topk:
             upper_limit = current_minsup
             next_minsup = current_minsup - current_minsup / decrement_factor
             return get_topk_minsup(
@@ -665,7 +660,7 @@ def get_topk_minsup(
                 upper_limit=upper_limit,
                 suppress_output=suppress_output,
             )
-        elif current_nb_fi > topk:
+        elif current_nb_fi > 2 * topk:
             lower_limit = current_minsup
             next_minsup = current_minsup + (1 - current_minsup) / decrement_factor
             return get_topk_minsup(
@@ -2008,7 +2003,7 @@ if __name__ == "__main__":
     # generator = TheoryNoisyGeneratorOnDataset(th, 400, 0.01)
     # positives, negatives = generator.generate_dataset()
 
-    positives, negatives = load_ionosphere()
+    positives, negatives = load_data("iris_17.dat", complete=True)
     permitted_operators = {
         "D": False,
         "W": True,
