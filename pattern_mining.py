@@ -3,10 +3,16 @@ import os
 import subprocess
 
 
-def compute_itemsets(transactions, support, algo="LCM", spmf_path="Resources/spmf.jar"):
+def compute_itemsets(
+    transactions,
+    support,
+    algo="LCM",
+    spmf_path="Resources/spmf.jar",
+    suppress_output=False,
+):
     """
     Computes itemsets from a set of clauses. Depending on the algorithm, itemsets can be closed, maximal or only frequent
-    :param support: Support of the itemset, between à and 1. It is relative support.
+    :param support: Support of the itemset, between 0 and 1. It is relative support.
     :param transactions: A list of clauses. Clauses are represented by a list of literals. This is like the DIMACS format
     :param algo: Name of the algorithm (see spmf doc for more details). LCM is for closed itemsets, FPMax for maximal, Eclat for frequent.
     :param spmf_path: path to the spmf.jar file
@@ -42,6 +48,11 @@ def compute_itemsets(transactions, support, algo="LCM", spmf_path="Resources/spm
             )
         )
 
+    if suppress_output:
+        stdout = open(os.devnull, "w")
+    else:
+        stdout = None
+
     subprocess.call(
         [
             "java",
@@ -52,7 +63,9 @@ def compute_itemsets(transactions, support, algo="LCM", spmf_path="Resources/spm
             dataset_name,
             output_name,
             str(support),
-        ]
+        ],
+        stdout=stdout,
+        stderr=subprocess.STDOUT,
     )
 
     result_patterns = []
