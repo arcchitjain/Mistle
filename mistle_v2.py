@@ -6,6 +6,32 @@ import math
 from collections import Counter
 from pattern_mining import compute_itemsets
 import numpy as np
+import signal
+from contextlib import contextmanager
+
+# Timeout code adapted from: https://www.jujens.eu/posts/en/2018/Jun/02/python-timeout-function/
+@contextmanager
+def timeout(time):
+    if time == None:
+        yield
+
+    # Register a function to raise a TimeoutError on the signal.
+    signal.signal(signal.SIGALRM, raise_timeout)
+    # Schedule the signal to be sent after ``time``.
+    signal.alarm(time)
+
+    try:
+        yield
+    except TimeoutError:
+        raise TimeoutError
+    finally:
+        # Unregister the signal so it won't be triggered
+        # if the timeout is not reached.
+        signal.signal(signal.SIGALRM, signal.SIG_IGN)
+
+
+def raise_timeout(signum, frame):
+    raise TimeoutError
 
 
 def print_input_data_statistics(
@@ -92,7 +118,7 @@ def print_input_data_statistics(
 
 def load_test():
     """
-    Illustrative Toy Example used in the Paper
+    Illustrative Toy Example
     :return:
     """
 
@@ -114,77 +140,132 @@ def load_test():
     return positives, negatives
 
 
-def load_test2():
+# def load_test2():
+#
+#     positives = []
+#     positives.append(frozenset([1, 2, -4]))
+#     positives.append(frozenset([2, 3, 4]))
+#     positives.append(frozenset([-1, 2, 4]))
+#
+#     negatives = []
+#     negatives.append(frozenset([-1, 2, -3, -4, -5]))
+#     negatives.append(frozenset([-1, 2, -3, 4, 6]))
+#     negatives.append(frozenset([-1, 2, -3, -6, -7]))
+#     negatives.append(frozenset([-1, -3, -4]))
+#     negatives.append(frozenset([-2, -5, -6]))
+#     negatives.append(frozenset([-2, -3, 4]))
+#     negatives.append(frozenset([-2, -3, -4]))
+#     negatives.append(frozenset([-1, -3, -4]))
+#     negatives.append(frozenset([-2, 3]))
+#
+#     return positives, negatives
+#
+#
+# def load_dtest():
+#     """
+#     An Example used to test the efficacy of the Dichotomization Operator.
+#     :return:
+#     """
+#
+#     positives = []  # Dummy positives
+#     # positives.append(frozenset([1, -2, -3, 8, 9, 10, 11]))
+#     # positives.append(frozenset([-1, -2, -3, 4, 5, 6, 7]))
+#     positives.append(frozenset([1, -2, -3, 4, 5, 6, 7, 8, 9, 10, 11]))
+#     positives.append(frozenset([1, -2, -3, 4, 5, 6, -7, 8, 9, 10, 11]))
+#     positives.append(frozenset([1, -2, -3, 4, 5, -6, 7, 8, 9, 10, 11]))
+#     positives.append(frozenset([1, -2, -3, 4, -5, 6, 7, 8, 9, 10, 11]))
+#     positives.append(frozenset([1, -2, -3, 4, -5, 6, -7, 8, 9, 10, 11]))
+#     positives.append(frozenset([1, -2, -3, 4, -5, -6, 7, 8, 9, 10, 11]))
+#     positives.append(frozenset([1, -2, -3, 4, 5, -6, -7, 8, 9, 10, 11]))
+#     positives.append(frozenset([1, -2, -3, 4, -5, -6, -7, 8, 9, 10, 11]))
+#     positives.append(frozenset([1, -2, -3, -4, 5, 6, 7, 8, 9, 10, 11]))
+#     positives.append(frozenset([1, -2, -3, -4, 5, 6, -7, 8, 9, 10, 11]))
+#     positives.append(frozenset([1, -2, -3, -4, 5, -6, 7, 8, 9, 10, 11]))
+#     positives.append(frozenset([1, -2, -3, -4, -5, 6, 7, 8, 9, 10, 11]))
+#     positives.append(frozenset([1, -2, -3, -4, -5, 6, -7, 8, 9, 10, 11]))
+#     positives.append(frozenset([1, -2, -3, -4, -5, -6, 7, 8, 9, 10, 11]))
+#     positives.append(frozenset([1, -2, -3, -4, 5, -6, -7, 8, 9, 10, 11]))
+#     positives.append(frozenset([1, -2, -3, -4, -5, -6, -7, 8, 9, 10, 11]))
+#     positives.append(frozenset([1, -2, -3, 4, 5, 6, 7, 8, 9, 10, -11]))
+#     positives.append(frozenset([1, -2, -3, 4, 5, 6, 7, 8, 9, -10, 11]))
+#     positives.append(frozenset([1, -2, -3, 4, 5, 6, 7, 8, 9, -10, -11]))
+#     positives.append(frozenset([1, -2, -3, 4, 5, 6, 7, 8, -9, 10, 11]))
+#     positives.append(frozenset([1, -2, -3, 4, 5, 6, 7, 8, -9, 10, -11]))
+#     positives.append(frozenset([1, -2, -3, 4, 5, 6, 7, 8, -9, -10, 11]))
+#     positives.append(frozenset([1, -2, -3, 4, 5, 6, 7, 8, -9, -10, -11]))
+#     positives.append(frozenset([1, -2, -3, 4, 5, 6, 7, -8, 9, 10, 11]))
+#     positives.append(frozenset([1, -2, -3, 4, 5, 6, 7, -8, 9, 10, -11]))
+#     positives.append(frozenset([1, -2, -3, 4, 5, 6, 7, -8, 9, -10, 11]))
+#     positives.append(frozenset([1, -2, -3, 4, 5, 6, 7, -8, 9, -10, -11]))
+#     positives.append(frozenset([1, -2, -3, 4, 5, 6, 7, -8, -9, 10, 11]))
+#     positives.append(frozenset([1, -2, -3, 4, 5, 6, 7, -8, -9, 10, -11]))
+#     positives.append(frozenset([1, -2, -3, 4, 5, 6, 7, -8, -9, -10, 11]))
+#     positives.append(frozenset([1, -2, -3, 4, 5, 6, 7, -8, -9, -10, -11]))
+#
+#     negatives = []
+#     negatives.append(frozenset([-1, -2, -3, -4]))
+#     negatives.append(frozenset([-1, -2, -3, -5]))
+#     negatives.append(frozenset([-1, -2, -3, -6]))
+#     negatives.append(frozenset([-1, -2, -3, -7]))
+#     negatives.append(frozenset([1, -2, -3, -8]))
+#     negatives.append(frozenset([1, -2, -3, -9]))
+#     negatives.append(frozenset([1, -2, -3, -10]))
+#     negatives.append(frozenset([1, -2, -3, -11]))
+#
+#     return positives, negatives
+
+
+def load_data(name, class_vars=None, complete=False):
+
+    if class_vars is None:
+        dataset_class_vars = {
+            "iris_17.dat": (17, 18),
+            "iris_18.dat": (17, 18),
+            "iris_19.dat": (17, 18),
+            "zoo.dat": (36, 37),
+            "glass.dat": (42, 43),
+            "wine.dat": (66, 67),
+            "ecoli.dat": (27, 28),
+            "hepatitis.dat": (55, 56),
+            "heart.dat": (48, 49),
+            "dermatology.dat": (44, 45),
+            "auto.dat": (132, 133),
+            "breast.dat": (19, 20),
+            "horseColic.dat": (84, 85),
+            "pima.dat": (37, 38),
+            "congres.dat": (33, 34),
+            "ticTacToe.dat": (28, 29),
+            "ionosphere.dat": (156, 157),
+            "flare.dat": (31, 32),
+            "cylBands.dat": (123, 124),
+            "led.dat": (15, 16),
+            "soyabean.dat": (100, 101),
+        }
+        class_vars = dataset_class_vars[name]
+
+    f = open("./Data/" + name, "r")
 
     positives = []
-    positives.append(frozenset([1, 2, -4]))
-    positives.append(frozenset([2, 3, 4]))
-    positives.append(frozenset([-1, 2, 4]))
-
     negatives = []
-    negatives.append(frozenset([-1, 2, -3, -4, -5]))
-    negatives.append(frozenset([-1, 2, -3, 4, 6]))
-    negatives.append(frozenset([-1, 2, -3, -6, -7]))
-    negatives.append(frozenset([-1, -3, -4]))
-    negatives.append(frozenset([-2, -5, -6]))
-    negatives.append(frozenset([-2, -3, 4]))
-    negatives.append(frozenset([-2, -3, -4]))
-    negatives.append(frozenset([-1, -3, -4]))
-    negatives.append(frozenset([-2, 3]))
 
-    return positives, negatives
+    for line in f:
+        row = str(line).replace("\n", "").strip().split(" ")
+        partial_assignment = set()
+        for i in range(1, class_vars[0]):
+            if str(i) in row[:-1]:
+                partial_assignment.add(i + 1)
+            elif complete:
+                # Using closed world assumption to register absent variables as if they are false.
+                partial_assignment.add(-(i + 1))
 
-
-def load_dtest():
-    """
-    An Example used to test the efficacy of the Dichotomization Operator.
-    :return:
-    """
-
-    positives = []  # Dummy positives
-    # positives.append(frozenset([1, -2, -3, 8, 9, 10, 11]))
-    # positives.append(frozenset([-1, -2, -3, 4, 5, 6, 7]))
-    positives.append(frozenset([1, -2, -3, 4, 5, 6, 7, 8, 9, 10, 11]))
-    positives.append(frozenset([1, -2, -3, 4, 5, 6, -7, 8, 9, 10, 11]))
-    positives.append(frozenset([1, -2, -3, 4, 5, -6, 7, 8, 9, 10, 11]))
-    positives.append(frozenset([1, -2, -3, 4, -5, 6, 7, 8, 9, 10, 11]))
-    positives.append(frozenset([1, -2, -3, 4, -5, 6, -7, 8, 9, 10, 11]))
-    positives.append(frozenset([1, -2, -3, 4, -5, -6, 7, 8, 9, 10, 11]))
-    positives.append(frozenset([1, -2, -3, 4, 5, -6, -7, 8, 9, 10, 11]))
-    positives.append(frozenset([1, -2, -3, 4, -5, -6, -7, 8, 9, 10, 11]))
-    positives.append(frozenset([1, -2, -3, -4, 5, 6, 7, 8, 9, 10, 11]))
-    positives.append(frozenset([1, -2, -3, -4, 5, 6, -7, 8, 9, 10, 11]))
-    positives.append(frozenset([1, -2, -3, -4, 5, -6, 7, 8, 9, 10, 11]))
-    positives.append(frozenset([1, -2, -3, -4, -5, 6, 7, 8, 9, 10, 11]))
-    positives.append(frozenset([1, -2, -3, -4, -5, 6, -7, 8, 9, 10, 11]))
-    positives.append(frozenset([1, -2, -3, -4, -5, -6, 7, 8, 9, 10, 11]))
-    positives.append(frozenset([1, -2, -3, -4, 5, -6, -7, 8, 9, 10, 11]))
-    positives.append(frozenset([1, -2, -3, -4, -5, -6, -7, 8, 9, 10, 11]))
-    positives.append(frozenset([1, -2, -3, 4, 5, 6, 7, 8, 9, 10, -11]))
-    positives.append(frozenset([1, -2, -3, 4, 5, 6, 7, 8, 9, -10, 11]))
-    positives.append(frozenset([1, -2, -3, 4, 5, 6, 7, 8, 9, -10, -11]))
-    positives.append(frozenset([1, -2, -3, 4, 5, 6, 7, 8, -9, 10, 11]))
-    positives.append(frozenset([1, -2, -3, 4, 5, 6, 7, 8, -9, 10, -11]))
-    positives.append(frozenset([1, -2, -3, 4, 5, 6, 7, 8, -9, -10, 11]))
-    positives.append(frozenset([1, -2, -3, 4, 5, 6, 7, 8, -9, -10, -11]))
-    positives.append(frozenset([1, -2, -3, 4, 5, 6, 7, -8, 9, 10, 11]))
-    positives.append(frozenset([1, -2, -3, 4, 5, 6, 7, -8, 9, 10, -11]))
-    positives.append(frozenset([1, -2, -3, 4, 5, 6, 7, -8, 9, -10, 11]))
-    positives.append(frozenset([1, -2, -3, 4, 5, 6, 7, -8, 9, -10, -11]))
-    positives.append(frozenset([1, -2, -3, 4, 5, 6, 7, -8, -9, 10, 11]))
-    positives.append(frozenset([1, -2, -3, 4, 5, 6, 7, -8, -9, 10, -11]))
-    positives.append(frozenset([1, -2, -3, 4, 5, 6, 7, -8, -9, -10, 11]))
-    positives.append(frozenset([1, -2, -3, 4, 5, 6, 7, -8, -9, -10, -11]))
-
-    negatives = []
-    negatives.append(frozenset([-1, -2, -3, -4]))
-    negatives.append(frozenset([-1, -2, -3, -5]))
-    negatives.append(frozenset([-1, -2, -3, -6]))
-    negatives.append(frozenset([-1, -2, -3, -7]))
-    negatives.append(frozenset([1, -2, -3, -8]))
-    negatives.append(frozenset([1, -2, -3, -9]))
-    negatives.append(frozenset([1, -2, -3, -10]))
-    negatives.append(frozenset([1, -2, -3, -11]))
+        if row[-1] == str(class_vars[0]):
+            positives.append(frozenset(partial_assignment))
+        elif row[-1] == str(class_vars[1]):
+            negatives.append(frozenset(partial_assignment))
+        else:
+            print("Row found without target class at the end:\n")
+            print(line)
+            raise ("Row found without target class at the end")
 
     return positives, negatives
 
@@ -437,13 +518,185 @@ def print_2d(matrix):
     print()
 
 
-def check_pa_satisfiability(pa, clauses):
+def get_topk_minsup(
+    data,
+    topk=10000,
+    decrement_factor=2,
+    current_minsup=0.5,
+    prev_minsup=None,
+    prev_nb_fi=None,
+    t_out=180,
+    lower_limit=0,
+    upper_limit=1,
+    suppress_output=False,
+):
+
+    if decrement_factor <= 1:
+        decrement_factor = 2
+
+    if int(current_minsup * len(data)) < 1:
+        return 1 / len(data)
+
+    try:
+        with timeout(t_out):
+            freq_items_lcm = compute_itemsets(
+                data, current_minsup, "LCM", suppress_output=suppress_output
+            )
+            print(
+                "Current Minsup["
+                + str(current_minsup)
+                + "] yields "
+                + str(len(freq_items_lcm))
+                + " itemsets."
+            )
+
+    except TimeoutError:
+        print("Timeout Reached")
+        if prev_minsup is not None:
+            next_minsup = (current_minsup + prev_minsup) / 2
+            return get_topk_minsup(
+                data,
+                topk,
+                current_minsup=next_minsup,
+                prev_minsup=current_minsup,
+                prev_nb_fi=None,
+                suppress_output=suppress_output,
+            )
+        else:
+            next_minsup = (
+                current_minsup + (upper_limit - current_minsup) / decrement_factor
+            )
+            return get_topk_minsup(
+                data,
+                topk,
+                current_minsup=next_minsup,
+                prev_minsup=current_minsup,
+                prev_nb_fi=None,
+                suppress_output=suppress_output,
+            )
+
+    current_nb_fi = len(freq_items_lcm)
+    if prev_nb_fi is not None and current_nb_fi != prev_nb_fi:
+        if current_nb_fi <= topk and prev_nb_fi > topk:
+            lower_limit = prev_minsup
+            upper_limit = current_minsup
+            if current_nb_fi <= 2 * topk and current_nb_fi >= 0.5 * topk:
+                return current_minsup
+            else:
+                # decrease minsup using linear interpolation
+                next_minsup = (prev_minsup - current_minsup) / (
+                    prev_nb_fi - current_nb_fi
+                ) * (topk - current_nb_fi) + current_minsup
+                return get_topk_minsup(
+                    data,
+                    topk,
+                    current_minsup=next_minsup,
+                    prev_minsup=current_minsup,
+                    prev_nb_fi=current_nb_fi,
+                    lower_limit=lower_limit,
+                    upper_limit=upper_limit,
+                    suppress_output=suppress_output,
+                )
+
+        elif current_nb_fi >= topk and prev_nb_fi < topk:
+            lower_limit = current_minsup
+            upper_limit = prev_minsup
+            if current_nb_fi <= 2 * topk and current_nb_fi >= 0.5 * topk:
+                return current_minsup
+            else:
+                # increase minsup using linear interpolation
+                next_minsup = (prev_minsup - current_minsup) / (
+                    prev_nb_fi - current_nb_fi
+                ) * (topk - current_nb_fi) + current_minsup
+                return get_topk_minsup(
+                    data,
+                    topk,
+                    current_minsup=next_minsup,
+                    prev_minsup=current_minsup,
+                    prev_nb_fi=current_nb_fi,
+                    lower_limit=lower_limit,
+                    upper_limit=upper_limit,
+                    suppress_output=suppress_output,
+                )
+
+        elif current_nb_fi > topk and prev_nb_fi > topk:
+            lower_limit = current_minsup
+            next_minsup = (
+                current_minsup + (upper_limit - current_minsup) / decrement_factor
+            )
+            return get_topk_minsup(
+                data,
+                topk,
+                current_minsup=next_minsup,
+                prev_minsup=current_minsup,
+                prev_nb_fi=current_nb_fi,
+                lower_limit=lower_limit,
+                upper_limit=upper_limit,
+                suppress_output=suppress_output,
+            )
+        elif current_nb_fi < topk and prev_nb_fi < topk:
+            upper_limit = current_minsup
+            next_minsup = (
+                current_minsup - (current_minsup - lower_limit) / decrement_factor
+            )
+            return get_topk_minsup(
+                data,
+                topk,
+                current_minsup=next_minsup,
+                prev_minsup=current_minsup,
+                prev_nb_fi=current_nb_fi,
+                lower_limit=lower_limit,
+                upper_limit=upper_limit,
+                suppress_output=suppress_output,
+            )
+    else:
+        if current_nb_fi == topk:
+            return current_minsup
+        elif current_nb_fi < topk:
+            upper_limit = current_minsup
+            next_minsup = current_minsup - current_minsup / decrement_factor
+            return get_topk_minsup(
+                data,
+                topk,
+                current_minsup=next_minsup,
+                prev_minsup=current_minsup,
+                prev_nb_fi=current_nb_fi,
+                lower_limit=lower_limit,
+                upper_limit=upper_limit,
+                suppress_output=suppress_output,
+            )
+        elif current_nb_fi > topk:
+            lower_limit = current_minsup
+            next_minsup = current_minsup + (1 - current_minsup) / decrement_factor
+            return get_topk_minsup(
+                data,
+                topk,
+                current_minsup=next_minsup,
+                prev_minsup=current_minsup,
+                prev_nb_fi=current_nb_fi,
+                lower_limit=lower_limit,
+                upper_limit=upper_limit,
+                suppress_output=suppress_output,
+            )
+
+
+def check_pa_satisfiability(pa, clauses, pa_is_complete=False):
     if clauses is None or len(clauses) == 0:
         return None
     else:
-        return not (
-            solve([tuple(clause) for clause in clauses] + [(a,) for a in pa]) == "UNSAT"
-        )
+        if pa_is_complete:
+            pa_set = set(pa)
+            for clause in clauses:
+                if len(set(clause) & pa_set) == 0:
+                    # assert check_pa_satisfiability(pa, clauses) is False
+                    return False
+            # assert check_pa_satisfiability(pa, clauses) is True
+            return True
+        else:
+            return not (
+                solve([tuple(clause) for clause in clauses] + [(a,) for a in pa])
+                == "UNSAT"
+            )
 
 
 def get_alphabet_size(theory):
@@ -691,9 +944,9 @@ class Mistle:
 
     def learn(
         self,
-        dl_measure,
+        dl_measure="me",
         minsup=None,
-        k=None,
+        k=10000,
         lossy=True,
         prune=True,
         mining_steps=None,
@@ -733,8 +986,6 @@ class Mistle:
         self.negatives = self.negatives - inconsistent_pas
 
         # Convert the set of -ve PAs to a theory
-        if minsup is None and k is None:
-            minsup = 1
         success = self.theory.intialize(
             self.positives,
             self.negatives,
@@ -795,6 +1046,7 @@ class Mistle:
             if mining_steps is None or (
                 mining_steps is not None and mining_steps > mining_count
             ):
+                # Should the minsup = 1 here?
                 self.theory.freq_items = self.theory.get_frequent_itemsets(
                     self.theory.clauses, minsup=self.theory.minsup
                 )
@@ -883,7 +1135,7 @@ class Theory:
         elif minsup >= 1:
             self.minsup = int(minsup)
         elif minsup < 1:
-            self.minsup = int(minsup * len(self.clauses))
+            self.minsup = max(int(minsup * len(self.clauses)), 1)
 
         self.k = k
 
@@ -892,6 +1144,9 @@ class Theory:
         elif k is not None:
             self.freq_items, minsup = self.get_frequent_itemsets_topk(self.clauses, k)
             self.minsup = minsup
+        else:
+            # No itemsets can be mined if both minsup and k are none
+            raise ("No itemsets can be mined if both minsup and k are none")
 
         if len(self.freq_items) == 0:
             return False
@@ -1753,7 +2008,7 @@ if __name__ == "__main__":
     # generator = TheoryNoisyGeneratorOnDataset(th, 400, 0.01)
     # positives, negatives = generator.generate_dataset()
 
-    positives, negatives = load_test()
+    positives, negatives = load_ionosphere()
     permitted_operators = {
         "D": False,
         "W": True,
@@ -1764,7 +2019,7 @@ if __name__ == "__main__":
     }
     mistle = Mistle(positives, negatives)
     theory, compression = mistle.learn(
-        dl_measure="me", k=100, permitted_operators=permitted_operators
+        dl_measure="me", minsup=0.9, permitted_operators=permitted_operators
     )
     print("Total time\t\t\t\t: " + str(time() - start_time) + " seconds.")
     if theory is not None:
