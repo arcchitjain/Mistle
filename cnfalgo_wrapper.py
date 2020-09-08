@@ -113,6 +113,7 @@ def complete_cnfalgo(
     missing_negatives,
     cnfalgo_exec_path="Resources/cnfalgo",
     metric="length",
+    suppress_output=False,
 ):
 
     train_file = "Resources/cnfalgo_" + str(uuid.uuid4()) + "_train"
@@ -125,6 +126,11 @@ def complete_cnfalgo(
         test_positives, test_negatives, missing_positives, missing_negatives, test_file
     )
     write_deletion_file(missing_positives, missing_negatives, deletion_file)
+
+    if suppress_output:
+        stdout = open(os.devnull, "w")
+    else:
+        stdout = subprocess.STDOUT
 
     subprocess.run(
         [
@@ -139,7 +145,9 @@ def complete_cnfalgo(
             output_file,
             "-m",
             metric,
-        ]
+        ],
+        stdout=stdout,
+        stderr=subprocess.STDOUT,
     )
 
     f = open(output_file, "r")
@@ -224,7 +232,7 @@ def complete_cnfalgo(
 
     accuracy = accuracy / (len(test_positives) + len(test_negatives))
 
-    print("Predictive Accuracy\t\t: " + str(accuracy))
+    print("CNF-cc Accuracy\t\t: " + str(accuracy))
 
     os.remove(train_file)
     os.remove(test_file)
@@ -239,6 +247,7 @@ def get_cnfalgo_theory(
     train_negatives,
     cnfalgo_exec_path="Resources/cnfalgo",
     pos_literal=1000,
+    suppress_output=False,
 ):
 
     train_file = "Resources/cnfalgo_" + str(uuid.uuid4()) + "_train"
@@ -246,7 +255,16 @@ def get_cnfalgo_theory(
 
     write_train_file(train_positives, train_negatives, train_file)
 
-    subprocess.run([cnfalgo_exec_path, "mv", train_file, "-o", output_file])
+    if suppress_output:
+        stdout = open(os.devnull, "w")
+    else:
+        stdout = subprocess.STDOUT
+
+    subprocess.run(
+        [cnfalgo_exec_path, "mv", train_file, "-o", output_file],
+        stdout=stdout,
+        stderr=subprocess.STDOUT,
+    )
 
     f = open(output_file, "r")
 
