@@ -298,6 +298,7 @@ def get_cnfalgo_accuracy(
     missing_test_negatives,
     pos_literal=1000,
 ):
+    # What %age of the completions of the test examples are satisfiable
     cnfalgo_nb_clauses = len(cnfalgo_theory)
 
     modified_cnfalgo_theory = set()
@@ -389,6 +390,7 @@ def check_test_completions(
 def get_cnfalgo_accuracy2(
     cnfalgo_theory, complete_test_positives, complete_test_negatives, pos_literal=1000
 ):
+    # How many of the completed test examples are satisfiable
     cnfalgo_nb_clauses = len(cnfalgo_theory)
 
     cnfalgo_nb_literals = 0
@@ -657,31 +659,16 @@ def plot_uci_nb_missing_split(
 
 
 def plot_uci_nb_missing_split2(
-    dataset,
-    M_list,
-    dl,
-    version,
-    minsup=None,
-    k=None,
-    train_pct=0.7,
-    sample_vars=None,
-    sample_rows=None,
-    metric=1,
+    dataset, M_list, dl, version, minsup=None, k=None, train_pct=0.8, metric=1
 ):
-    # positives, negatives = globals()["load_" + dataset]()
+    # This function does not do 10 fold CV.
 
-    complete_positives, complete_negatives = load_complete_dataset(
-        dataset, sample=sample_vars
-    )
+    complete_positives, complete_negatives = load_data(dataset)
 
-    if sample_rows is not None:
-        complete_positives = random.sample(complete_positives, sample_rows)
-        complete_negatives = random.sample(complete_negatives, sample_rows)
-
-    complete_train_positives, complete_test_positives = split_data(
+    complete_train_positives, complete_test_positives = split_data2(
         complete_positives, train_pct
     )
-    complete_train_negatives, complete_test_negatives = split_data(
+    complete_train_negatives, complete_test_negatives = split_data2(
         complete_negatives, train_pct
     )
 
@@ -800,11 +787,11 @@ def plot_uci_nb_missing_split2(
     plt.xlabel("# of missing literals / row")
     plt.ylabel("% of completions\ncorrectly satisfiable", multialignment="center")
 
-    # plt.plot(M_list, mistle_accuracy_list, marker="o", label="Mistle1")
-    plt.plot(M_list, mistle_accuracy_list1, marker="o", label="M1")
-    plt.plot(M_list, mistle_accuracy_list2, marker="o", label="M2")
-    plt.plot(M_list, mistle_accuracy_list3, marker="o", label="M3")
-    plt.plot(M_list, mistle_accuracy_list4, marker="o", label="M4")
+    plt.plot(M_list, mistle_accuracy_list, marker="o", label="Mistle")
+    # plt.plot(M_list, mistle_accuracy_list1, marker="o", label="M1")
+    # plt.plot(M_list, mistle_accuracy_list2, marker="o", label="M2")
+    # plt.plot(M_list, mistle_accuracy_list3, marker="o", label="M3")
+    # plt.plot(M_list, mistle_accuracy_list4, marker="o", label="M4")
     plt.plot(M_list, cnfalgo_accuracy_list, marker="o", label="CNF")
     plt.plot(M_list, randomized_accuracy_list, marker="o", label="Rand")
 
@@ -932,13 +919,76 @@ def plot_uci_nb_missing_split2(
 #     metric=1,
 # )
 
-plot_uci_nb_missing_split(
-    dataset="tictactoe",
-    M_list=[1, 3, 5, 7],
-    minsup=1,
-    # k=10000,
-    dl="me",
-    version=9,
-    sample_vars=12,
-    sample_rows=None,
-)
+
+# Sampled Variables		:[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27]
+# mistle_accuracy_list1 = [0.34392969519272765, 0.34749624184581107, 0.31326801328644416, 0.3354382353420065, 0.3335121565863027]
+# mistle_accuracy_list2 = [0.3218787093136355, 0.2998773643498877, 0.3530345490514628, 0.3055932436906864, 0.35433303693664125]
+# mistle_accuracy_list3 = [0.3399682577065785, 0.3841794963001732, 0.29655790277751143, 0.32011409207771674, 0.33013892346099444]
+# mistle_accuracy_list4 = [0.3179172718274863, 0.33656061880424976, 0.3363244385425301, 0.29026910042639675, 0.35095980381133296]
+# mistle_clauses_list = [24.0, 50.0, 19.0, 31.5, 26.5]
+# mistle_literals_list = [434.0, 1149.5, 359.5, 660.0, 514.5]
+# cnfalgo_accuracy_list = [0.00010006214190074515, 0.00013328703151351882, 4.5466557235409665e-05, 0.000165764207916866, 0.00011709102751318702]
+# cnfalgo_clauses_list = [284550.0, 286534.0, 280614.0, 292950.0, 297910.0]
+# cnfalgo_literals_list = [1345519.0, 1354823.0, 1326615.0, 1385711.0, 1410615.0]
+# train_data_literals_list = [array([23279.4, 23279.4, 23279.4, 23279.4, 23279.4])]
+# randomized_accuracy_list = [array([0.33418195, 0.20357312, 0.10831783, 0.05446911, 0.02636418])]
+# plot_uci_nb_missing_split(
+#     dataset="tictactoe",
+#     M_list=[1, 3, 5, 7],
+#     minsup=1,
+#     # k=10000,
+#     dl="me",
+#     version=9,
+#     sample_vars=12,
+#     sample_rows=None,
+# )
+
+minsup_dict = {
+    "iris_17.dat": 0.006666666666666667,
+    "iris_18.dat": 0.006666666666666667,
+    "iris_19.dat": 0.006666666666666667,
+    "zoo.dat": 0.009900990099009901,
+    "glass.dat": 0.004672897196261682,
+    "wine.dat": 0.015625,
+    "ecoli.dat": 0.002976190476190476,
+    "hepatitis.dat": 0.25,
+    "heart.dat": 0.03125,
+    "dermatology.dat": 0.0078125,
+    "auto.dat": 0.11640381366943867,
+    "breast.dat": 0.001430615164520744,
+    "horseColic.dat": 0.06149123818307586,
+    "pima.dat": 0.0013020833333333333,
+    "congres.dat": 0.1995470492747552,
+    "ticTacToe.dat": 0.0078125,
+    "ionosphere.dat": 0.27960369179497835,
+    "flare.dat": 0.0007199424046076314,
+    "cylBands.dat": 0.45031445120414193,
+    "led.dat": 0.0003125,
+    "soyabean.dat": 0.49355773072313225,
+}
+
+dataset_class_vars = {
+    "iris_17.dat": (17, 18),
+    "iris_18.dat": (17, 18),
+    "iris_19.dat": (17, 18),
+    "zoo.dat": (36, 37),
+    "glass.dat": (42, 43),
+    "wine.dat": (66, 67),
+    "ecoli.dat": (27, 28),
+    "hepatitis.dat": (55, 56),
+    "heart.dat": (48, 49),
+    "dermatology.dat": (44, 45),
+    "auto.dat": (132, 133),
+    "breast.dat": (19, 20),
+    "horseColic.dat": (84, 85),
+    "pima.dat": (37, 38),
+    "congres.dat": (33, 34),
+    "ticTacToe.dat": (28, 29),
+    "ionosphere.dat": (156, 157),
+    "flare.dat": (31, 32),
+    "cylBands.dat": (123, 124),
+    "led.dat": (15, 16),
+    "soyabean.dat": (100, 101),
+}
+
+plot_uci_nb_missing_split2(dataset="ticTacToe.dat", version=10)

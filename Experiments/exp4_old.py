@@ -4,9 +4,10 @@ import statistics
 from mistle_v2 import *
 import matplotlib
 import matplotlib.pyplot as plt
-import mplcyberpunk
 
-plt.style.use("cyberpunk")
+# import mplcyberpunk
+
+plt.style.use("seaborn")
 matplotlib.rcParams["mathtext.fontset"] = "stix"
 matplotlib.rcParams["font.family"] = "STIXGeneral"
 matplotlib.rc("font", size=24)
@@ -712,35 +713,35 @@ for rel_minsup in rel_minsups:
     # class_vars = [28, 29]
 
     # Breast
-    # class_vars = [19, 20]
-    # nb_rows = 699
+    class_vars = [19, 20]
+    nb_rows = 699
 
     # PIMA
     # class_vars = [37, 38]
     # nb_rows = 768
 
     # Ionosphere
-    class_vars = [156, 157]
-    nb_rows = 351
+    # class_vars = [156, 157]
+    # nb_rows = 351
 
-    db_file = "/home/dtai/PycharmProjects/Mistle/Data/" + dataset + ".dat"
+    db_file = "/home/arcchitjain/Documents/Mistle/Data/" + dataset + ".dat"
     minsup = int(rel_minsup * nb_rows)
 
-    accuracy, std_dev, best_minsup, res_path, krimp_item_dict = Krimp(
-        krimp_exec_path
-    ).classify(
-        db_file,
-        output_dir,
-        class_vars=class_vars,
-        min_support=minsup,
-        convert_db=True,
-        seed=seed,
-    )
-
-    krimp_accuracy_list.append(float(accuracy))
-    krimp_std_dev_list.append(float(std_dev))
-    print("KRIMP accuracy", accuracy)
-    print("KRIMP std_dev", std_dev)
+    # accuracy, std_dev, best_minsup, res_path, krimp_item_dict = Krimp(
+    #     krimp_exec_path
+    # ).classify(
+    #     db_file,
+    #     output_dir,
+    #     class_vars=class_vars,
+    #     min_support=minsup,
+    #     convert_db=True,
+    #     seed=seed,
+    # )
+    #
+    # krimp_accuracy_list.append(float(accuracy))
+    # krimp_std_dev_list.append(float(std_dev))
+    # print("KRIMP accuracy", accuracy)
+    # print("KRIMP std_dev", std_dev)
 
     mistle1_fold_accuracy_list = []
     mistle2_fold_accuracy_list = []
@@ -890,7 +891,7 @@ plt.plot(
 # )
 
 plt.legend()
-mplcyberpunk.add_glow_effects()
+# mplcyberpunk.add_glow_effects()
 # mplcyberpunk.add_underglow()
 plt.savefig(
     "Experiments/exp4_" + dataset + "_v" + str(version) + ".png", bbox_inches="tight"

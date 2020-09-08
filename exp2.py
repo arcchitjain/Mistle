@@ -1,13 +1,12 @@
-from mining4sat_wrapper import run_mining4sat
 from mistle_v2 import *
 from cnfalgo_wrapper import *
 import random
 import os
+import sys
 import matplotlib
 import matplotlib.pyplot as plt
 from collections import defaultdict
 
-# plt.style.use("cyberpunk")
 plt.style.use("seaborn")
 matplotlib.rcParams["mathtext.fontset"] = "stix"
 matplotlib.rcParams["font.family"] = "STIXGeneral"
@@ -21,11 +20,34 @@ matplotlib.rc("figure", titlesize=28)
 
 seed = 0
 random.seed(seed)
-os.chdir("..")
 
 ###############################################################################
 # Helping/Auxilliary Functions
 ###############################################################################
+
+minsup_dict = {
+    "iris_17.dat": 0.006666666666666667,
+    "iris_18.dat": 0.006666666666666667,
+    "iris_19.dat": 0.006666666666666667,
+    "zoo.dat": 0.009900990099009901,
+    "glass.dat": 0.004672897196261682,
+    "wine.dat": 0.015625,
+    "ecoli.dat": 0.002976190476190476,
+    "hepatitis.dat": 0.25,
+    "heart.dat": 0.03125,
+    "dermatology.dat": 0.0078125,
+    "auto.dat": 0.11640381366943867,
+    "breast.dat": 0.001430615164520744,
+    "horseColic.dat": 0.06149123818307586,
+    "pima.dat": 0.0013020833333333333,
+    "congres.dat": 0.1995470492747552,
+    "ticTacToe.dat": 0.0078125,
+    "ionosphere.dat": 0.27960369179497835,
+    "flare.dat": 0.0007199424046076314,
+    "cylBands.dat": 0.45031445120414193,
+    "led.dat": 0.0003125,
+    "soyabean.dat": 0.49355773072313225,
+}
 
 
 def initialize_theory(negatives):
@@ -464,7 +486,7 @@ def get_missing_data(complete_data, M=0):
 def get_missing_data_mcar(complete_data, m):
     """
     :param complete_data: complete data
-    :param M: a positive integer fixating on the exact number of values to be made missing in each row
+    :param m: a positive integer fixating on the exact number of values to be made missing in each row
     :return: a tuple of incomplete positives and incomplete negatives
     """
     incomplete_data = []
@@ -547,8 +569,12 @@ def get_pct_satisfiable_completions(
         completed_pas = get_all_completions_recursive(list(i_p), missing_attributes, [])
 
         for completion in completed_pas:
-            p = check_pa_satisfiability(completion, mistle_pos_theory.clauses)
-            n = check_pa_satisfiability(completion, mistle_neg_theory.clauses)
+            p = check_pa_satisfiability(
+                completion, mistle_pos_theory.clauses, pa_is_complete=True
+            )
+            n = check_pa_satisfiability(
+                completion, mistle_neg_theory.clauses, pa_is_complete=True
+            )
             if not p:
                 accuracy1 += 1
                 accuracy2 += 1
@@ -568,8 +594,12 @@ def get_pct_satisfiable_completions(
         completed_pas = get_all_completions_recursive(list(i_n), missing_attributes, [])
 
         for completion in completed_pas:
-            p = check_pa_satisfiability(completion, mistle_pos_theory.clauses)
-            n = check_pa_satisfiability(completion, mistle_neg_theory.clauses)
+            p = check_pa_satisfiability(
+                completion, mistle_pos_theory.clauses, pa_is_complete=True
+            )
+            n = check_pa_satisfiability(
+                completion, mistle_neg_theory.clauses, pa_is_complete=True
+            )
             if p:
                 accuracy1 += 1
                 accuracy3 += 1
@@ -592,7 +622,7 @@ def get_pct_satisfiable_completions(
         + str(accuracy3)
         + " ; "
         + str(accuracy4)
-        + "/"
+        + " / "
         + str(total)
     )
 
@@ -691,7 +721,9 @@ def get_pct_completions_cnfalgo(
 
         for completion in completed_pas:
             completion.append(pos_literal)
-            if check_pa_satisfiability(completion, modified_cnfalgo_theory):
+            if check_pa_satisfiability(
+                completion, modified_cnfalgo_theory, pa_is_complete=True
+            ):
                 accuracy += 1
             total += 1
 
@@ -707,7 +739,9 @@ def get_pct_completions_cnfalgo(
 
         for completion in completed_pas:
             completion.append(-pos_literal)
-            if check_pa_satisfiability(completion, modified_cnfalgo_theory):
+            if check_pa_satisfiability(
+                completion, modified_cnfalgo_theory, pa_is_complete=True
+            ):
                 accuracy += 1
             total += 1
 
@@ -759,6 +793,11 @@ def get_pct_test_cnfalgo(
     )
     accuracy = accuracy / (len(complete_test_positives) + len(complete_test_negatives))
     return cnfalgo_nb_clauses, cnfalgo_nb_literals, accuracy
+
+
+def avlen(l):
+    # Returns the average length of elements in the list 'l'
+    return sum([len(x) for x in l]) / len(l)
 
 
 ###############################################################################
@@ -1204,6 +1243,7 @@ def plot_exp2_1(
                 missing_test_positives,
                 missing_test_negatives,
                 metric=metric,
+                suppress_output=True,
             )
             fold_cnfalgo_clauses_list.append(cnfalgo_nb_clauses)
             fold_cnfalgo_literals_list.append(cnfalgo_nb_literals)
@@ -1212,7 +1252,6 @@ def plot_exp2_1(
         cnfalgo_accuracy_list.append(sum(fold_cnfalgo_accuracy_list) / num_folds)
         cnfalgo_clauses_list.append(sum(fold_cnfalgo_clauses_list) / num_folds)
         cnfalgo_literals_list.append(sum(fold_cnfalgo_literals_list) / num_folds)
-
         mistle_accuracy_list.append(sum(fold_mistle_accuracy_list) / num_folds)
         mistle_clauses_list.append(sum(fold_mistle_clauses_list) / num_folds)
         mistle_literals_list.append(sum(fold_mistle_literals_list) / num_folds)
@@ -1235,6 +1274,7 @@ def plot_exp2_1(
     print("cnfalgo_literals_list = " + str(cnfalgo_literals_list))
 
     print("train_data_literals_list = " + str(train_data_literals_list))
+    print("randomized_accuracy_list = " + str(randomized_accuracy_list))
 
     plt.figure()
     plt.xlabel("Partial Observability Parameter")
@@ -1289,24 +1329,24 @@ def plot_exp2_1(
 
 # Sampled Variables		:[2, 7, 9, 10, 12, 13, 14, 16, 17, 21, 25, 27]
 # mistle_accuracy_list = [0.4575484246274099, 0.3067038951580178, 0.1761600930892958, 0.0946598954285173, 0.046581495907257034]
-# mistle_clauses_list = [38.5, 38.5, 38.5, 38.5, 38.5]
-# mistle_literals_list = [225.8, 225.8, 225.8, 225.8, 225.8]
+# mistle_clauses_list = [37.9, 37.9, 37.9, 37.9, 37.9]
+# mistle_literals_list = [222.5, 222.5, 222.5, 222.5, 222.5]
 # cnfalgo_accuracy_list = [0.39942352006282517, 0.3526399447641536, 0.23788644917720828, 0.11374246268460957, 0.05186113067518916]
 # cnfalgo_clauses_list = [6916.4, 6916.4, 6916.4, 6916.4, 6916.4]
 # cnfalgo_literals_list = [34028.0, 34028.0, 34028.0, 34028.0, 34028.0]
 # train_data_literals_list = [10346.4, 10346.4, 10346.4, 10346.4, 10346.4]
-
-plot_exp2_1(
-    dataset="tictactoe",
-    missingness_parameters=[0.1, 0.2, 0.3, 0.4, 0.5],
-    minsup=1,
-    # k=20000,
-    dl="me",
-    version=10,
-    metric="count",
-    sample_vars=12,
-    sample_rows=None,
-)
+# randomized_accuracy_list = [0.3494154720258318, 0.23018823352345055, 0.13326191157653297, 0.06517439229514303, 0.031845899928442535]
+# plot_exp2_1(
+#     dataset="tictactoe",
+#     missingness_parameters=[0.1, 0.2, 0.3, 0.4, 0.5],
+#     minsup=1,
+#     # k=20000,
+#     dl="me",
+#     version=10,
+#     metric="count",
+#     sample_vars=12,
+#     sample_rows=None,
+# )
 
 ###############################################################################
 # Exp 2.2: %age of completions of test examples that are corrrectly satisfiable
@@ -1314,27 +1354,17 @@ plot_exp2_1(
 
 
 def plot_exp2_2(
-    dataset,
-    missingness_parameters,
-    dl,
-    version,
-    minsup=None,
-    k=None,
-    metric="count",
-    sample_vars=None,
-    sample_rows=None,
+    dataset, missingness_parameters, dl, version, minsup=None, k=None, sample_rows=None
 ):
 
-    complete_positives, complete_negatives = load_complete_dataset(
-        dataset, sample=sample_vars
-    )
+    complete_positives, complete_negatives = load_data(dataset, complete=True)
+    dataset = dataset.split(".")[0]
 
     if sample_rows is not None:
         complete_positives = random.sample(complete_positives, sample_rows)
         complete_negatives = random.sample(complete_negatives, sample_rows)
 
     num_folds = 10
-
     split_positives = split_data_into_num_folds(
         complete_positives, num_folds, seed=seed
     )
@@ -1358,40 +1388,69 @@ def plot_exp2_2(
     train_data_literals_list = []
     po_parameters = []
 
-    for m in missingness_parameters:
+    fold_cnfalgo_accuracy_list = np.empty((num_folds, len(missingness_parameters)))
+    fold_cnfalgo_clauses_list = np.empty((num_folds, len(missingness_parameters)))
+    fold_cnfalgo_literals_list = np.empty((num_folds, len(missingness_parameters)))
+    fold_mistle_clauses_list = np.empty((num_folds, len(missingness_parameters)))
+    fold_mistle_literals_list = np.empty((num_folds, len(missingness_parameters)))
+    fold_mistle_accuracy_list1 = np.empty((num_folds, len(missingness_parameters)))
+    fold_mistle_accuracy_list2 = np.empty((num_folds, len(missingness_parameters)))
+    fold_mistle_accuracy_list3 = np.empty((num_folds, len(missingness_parameters)))
+    fold_mistle_accuracy_list4 = np.empty((num_folds, len(missingness_parameters)))
+    fold_mistle_total_tests = np.empty((num_folds, len(missingness_parameters)))
+    fold_train_data_literals_list = np.empty((num_folds, len(missingness_parameters)))
+    fold_randomized_accuracy_list = np.empty((num_folds, len(missingness_parameters)))
 
-        po_parameters.append(1 - m)
-        fold_cnfalgo_accuracy_list = []
-        fold_cnfalgo_clauses_list = []
-        fold_cnfalgo_literals_list = []
-        fold_mistle_clauses_list = []
-        fold_mistle_literals_list = []
-        fold_mistle_accuracy_list1 = []
-        fold_mistle_accuracy_list2 = []
-        fold_mistle_accuracy_list3 = []
-        fold_mistle_accuracy_list4 = []
-        fold_mistle_total_tests = []
-        fold_train_data_literals_list = []
-        fold_randomized_accuracy_list = []
+    for fold in range(num_folds):
 
-        for fold in range(num_folds):
+        complete_train_positives = []
+        complete_train_negatives = []
+        complete_test_positives = []
+        complete_test_negatives = []
+        for i in range(num_folds):
+            if i == fold:
+                complete_test_positives = split_positives[i]
+                complete_test_negatives = split_negatives[i]
+            else:
+                complete_train_positives += split_positives[i]
+                complete_train_negatives += split_negatives[i]
 
-            complete_train_positives = []
-            complete_train_negatives = []
-            complete_test_positives = []
-            complete_test_negatives = []
-            for i in range(num_folds):
-                if i == fold:
-                    complete_test_positives = split_positives[i]
-                    complete_test_negatives = split_negatives[i]
-                else:
-                    complete_train_positives += split_positives[i]
-                    complete_train_negatives += split_negatives[i]
+        nb_literls = 0
+        for p_in in complete_train_positives + complete_train_negatives:
+            nb_literls += len(p_in)
+        fold_train_data_literals_list[fold][:] = [nb_literls] * len(
+            missingness_parameters
+        )
 
-            nb_literls = 0
-            for p_in in complete_train_positives + complete_train_negatives:
-                nb_literls += len(p_in)
-            fold_train_data_literals_list.append(nb_literls)
+        mistle_neg_theory, _ = Mistle(
+            complete_train_positives, complete_train_negatives
+        ).learn(dl_measure=dl, minsup=minsup, k=k)
+        mistle_pos_theory, _ = Mistle(
+            complete_train_negatives, complete_train_positives
+        ).learn(dl_measure=dl, minsup=minsup, k=k)
+
+        nb_clauses = 0
+        clauses = []
+        if mistle_pos_theory is not None:
+            nb_clauses += len(mistle_pos_theory.clauses)
+            clauses += mistle_pos_theory.clauses
+        if mistle_neg_theory is not None:
+            nb_clauses += len(mistle_neg_theory.clauses)
+            clauses += mistle_neg_theory.clauses
+        fold_mistle_clauses_list[fold][:] = [nb_clauses] * len(missingness_parameters)
+
+        mistle_nb_literals = 0
+        for clause in clauses:
+            mistle_nb_literals += len(clause)
+        fold_mistle_literals_list[fold][:] = [mistle_nb_literals] * len(
+            missingness_parameters
+        )
+
+        cnfalgo_theory = get_cnfalgo_theory(
+            complete_train_positives, complete_train_negatives, suppress_output=True
+        )
+
+        for i, m in enumerate(missingness_parameters):
 
             (incomplete_test_positives, missing_test_positives) = get_missing_data_mcar(
                 complete_test_positives, m
@@ -1406,31 +1465,7 @@ def plot_exp2_2(
                 if len(missing_example) != 0:
                     fra += 1 / (2 ** len(missing_example))
                     total += 1
-
-            fold_randomized_accuracy_list.append(fra / total)
-
-            mistle_neg_theory, _ = Mistle(
-                complete_train_positives, complete_train_negatives
-            ).learn(dl_measure=dl, minsup=minsup, k=k)
-            mistle_pos_theory, _ = Mistle(
-                complete_train_negatives, complete_train_positives
-            ).learn(dl_measure=dl, minsup=minsup, k=k)
-
-            nb_clauses = 0
-            clauses = []
-            if mistle_pos_theory is not None:
-                nb_clauses += len(mistle_pos_theory.clauses)
-                clauses += mistle_pos_theory.clauses
-            if mistle_neg_theory is not None:
-                nb_clauses += len(mistle_neg_theory.clauses)
-                clauses += mistle_neg_theory.clauses
-
-            fold_mistle_clauses_list.append(nb_clauses)
-
-            mistle_nb_literals = 0
-            for clause in clauses:
-                mistle_nb_literals += len(clause)
-            fold_mistle_literals_list.append(mistle_nb_literals)
+            fold_randomized_accuracy_list[fold][i] = fra / total
 
             a1, a2, a3, a4, total = get_pct_satisfiable_completions(
                 mistle_pos_theory,
@@ -1442,15 +1477,11 @@ def plot_exp2_2(
                 missing_test_positives,
                 missing_test_negatives,
             )
-            fold_mistle_accuracy_list1.append(a1)
-            fold_mistle_accuracy_list2.append(a2)
-            fold_mistle_accuracy_list3.append(a3)
-            fold_mistle_accuracy_list4.append(a4)
-            fold_mistle_total_tests.append(total)
-
-            cnfalgo_theory = get_cnfalgo_theory(
-                complete_train_positives, complete_train_negatives
-            )
+            fold_mistle_accuracy_list1[fold][i] = a1
+            fold_mistle_accuracy_list2[fold][i] = a2
+            fold_mistle_accuracy_list3[fold][i] = a3
+            fold_mistle_accuracy_list4[fold][i] = a4
+            fold_mistle_total_tests[fold][i] = total
 
             cnfalgo_nb_clauses, cnfalgo_nb_literals, cnfalgo_accuracy = get_pct_completions_cnfalgo(
                 cnfalgo_theory,
@@ -1462,33 +1493,60 @@ def plot_exp2_2(
                 missing_test_negatives,
             )
 
-            fold_cnfalgo_clauses_list.append(cnfalgo_nb_clauses)
-            fold_cnfalgo_literals_list.append(cnfalgo_nb_literals)
-            fold_cnfalgo_accuracy_list.append(cnfalgo_accuracy)
+            fold_cnfalgo_clauses_list[fold][i] = cnfalgo_nb_clauses
+            fold_cnfalgo_literals_list[fold][i] = cnfalgo_nb_literals
+            fold_cnfalgo_accuracy_list[fold][i] = cnfalgo_accuracy
 
-        cnfalgo_accuracy_list.append(sum(fold_cnfalgo_accuracy_list) / num_folds)
-        cnfalgo_clauses_list.append(sum(fold_cnfalgo_clauses_list) / num_folds)
-        cnfalgo_literals_list.append(sum(fold_cnfalgo_literals_list) / num_folds)
+        # print("fold_mistle_accuracy_list1 = " + str(fold_mistle_accuracy_list1))
+        # print("fold_mistle_accuracy_list2 = " + str(fold_mistle_accuracy_list2))
+        # print("fold_mistle_accuracy_list3 = " + str(fold_mistle_accuracy_list3))
+        # print("fold_mistle_accuracy_list4 = " + str(fold_mistle_accuracy_list4))
+        # print("fold_mistle_clauses_list = " + str(fold_mistle_clauses_list))
+        # print("fold_mistle_literals_list = " + str(fold_mistle_literals_list))
+        # print("fold_cnfalgo_accuracy_list = " + str(fold_cnfalgo_accuracy_list))
+        # print("fold_cnfalgo_clauses_list = " + str(fold_cnfalgo_clauses_list))
+        # print("fold_cnfalgo_literals_list = " + str(fold_cnfalgo_literals_list))
+        # print("fold_train_data_literals_list = " + str(fold_train_data_literals_list))
+        # print("fold_randomized_accuracy_list = " + str(fold_randomized_accuracy_list))
 
-        mistle_accuracy_list1.append(sum(fold_mistle_accuracy_list1) / num_folds)
-        mistle_accuracy_list2.append(sum(fold_mistle_accuracy_list2) / num_folds)
-        mistle_accuracy_list3.append(sum(fold_mistle_accuracy_list3) / num_folds)
-        mistle_accuracy_list4.append(sum(fold_mistle_accuracy_list4) / num_folds)
+    print("\nfold_mistle_accuracy_list1 = " + str(fold_mistle_accuracy_list1))
+    print("fold_mistle_accuracy_list2 = " + str(fold_mistle_accuracy_list2))
+    print("fold_mistle_accuracy_list3 = " + str(fold_mistle_accuracy_list3))
+    print("fold_mistle_accuracy_list4 = " + str(fold_mistle_accuracy_list4))
+    print("fold_mistle_clauses_list = " + str(fold_mistle_clauses_list))
+    print("fold_mistle_literals_list = " + str(fold_mistle_literals_list))
+    print("fold_cnfalgo_accuracy_list = " + str(fold_cnfalgo_accuracy_list))
+    print("fold_cnfalgo_clauses_list = " + str(fold_cnfalgo_clauses_list))
+    print("fold_cnfalgo_literals_list = " + str(fold_cnfalgo_literals_list))
+    print("fold_train_data_literals_list = " + str(fold_train_data_literals_list))
+    print("fold_randomized_accuracy_list = " + str(fold_randomized_accuracy_list))
 
-        mistle_clauses_list.append(sum(fold_mistle_clauses_list) / num_folds)
-        mistle_literals_list.append(sum(fold_mistle_literals_list) / num_folds)
+    for i, m in enumerate(missingness_parameters):
+        po_parameters.append(1 - m)
 
-        mistle_total_tests.append(sum(fold_mistle_total_tests) / num_folds)
+        cnfalgo_accuracy_list.append(sum(fold_cnfalgo_accuracy_list[:][i]) / num_folds)
+        cnfalgo_clauses_list.append(sum(fold_cnfalgo_clauses_list[:][i]) / num_folds)
+        cnfalgo_literals_list.append(sum(fold_cnfalgo_literals_list[:][i]) / num_folds)
 
-        train_data_literals_list.append(sum(fold_train_data_literals_list) / num_folds)
-        randomized_accuracy_list.append(sum(fold_randomized_accuracy_list) / num_folds)
+        mistle_accuracy_list1.append(sum(fold_mistle_accuracy_list1[:][i]) / num_folds)
+        mistle_accuracy_list2.append(sum(fold_mistle_accuracy_list2[:][i]) / num_folds)
+        mistle_accuracy_list3.append(sum(fold_mistle_accuracy_list3[:][i]) / num_folds)
+        mistle_accuracy_list4.append(sum(fold_mistle_accuracy_list4[:][i]) / num_folds)
+
+        mistle_clauses_list.append(sum(fold_mistle_clauses_list[:][i]) / num_folds)
+        mistle_literals_list.append(sum(fold_mistle_literals_list[:][i]) / num_folds)
+
+        mistle_total_tests.append(sum(fold_mistle_total_tests[:][i]) / num_folds)
+
+    train_data_literals_list.append(sum(fold_train_data_literals_list) / num_folds)
+    randomized_accuracy_list.append(sum(fold_randomized_accuracy_list) / num_folds)
 
     print(
         "\nSampled Variables\t\t:"
         + str(sorted([abs(x) for x in complete_positives[0]]))
     )
 
-    print("mistle_accuracy_list2 = " + str(mistle_accuracy_list1))
+    print("mistle_accuracy_list1 = " + str(mistle_accuracy_list1))
     print("mistle_accuracy_list2 = " + str(mistle_accuracy_list2))
     print("mistle_accuracy_list3 = " + str(mistle_accuracy_list3))
     print("mistle_accuracy_list4 = " + str(mistle_accuracy_list4))
@@ -1500,6 +1558,7 @@ def plot_exp2_2(
     print("cnfalgo_literals_list = " + str(cnfalgo_literals_list))
 
     print("train_data_literals_list = " + str(train_data_literals_list))
+    print("randomized_accuracy_list = " + str(randomized_accuracy_list))
 
     plt.figure()
     plt.xlabel("Partial Observability Parameter")
@@ -1556,28 +1615,213 @@ def plot_exp2_2(
 
 
 # Sampled Variables		:[2, 7, 9, 10, 12, 13, 14, 16, 17, 21, 25, 27]
-# mistle_accuracy_list2 = [0.7131123396479725, 0.6417820410320259, 0.634364404787649, 0.6070103123512263, 0.6358006847893657]
+# mistle_accuracy_list1 = [0.7131123396479725, 0.6417820410320259, 0.634364404787649, 0.6070103123512263, 0.6358006847893657]
 # mistle_accuracy_list2 = [0.6566931869568483, 0.5659245453083045, 0.48214150653394805, 0.40035810301975133, 0.37318775179134056]
 # mistle_accuracy_list3 = [0.7083985600104221, 0.6947009283186425, 0.7096297159211238, 0.7420750008995574, 0.7576925217842754]
 # mistle_accuracy_list4 = [0.6519794073192979, 0.6188434325949213, 0.5574068176674227, 0.5354227915680825, 0.4950795887862502]
-# mistle_clauses_list = [38.5, 38.5, 38.5, 38.5, 38.5]
-# mistle_literals_list = [225.8, 225.8, 225.8, 225.8, 225.8]
+# mistle_clauses_list = [37.9, 37.9, 37.9, 37.9, 37.9]
+# mistle_literals_list = [222.5, 222.5, 222.5, 222.5, 222.5]
 # cnfalgo_accuracy_list = [0.5144429128901429, 0.4034604312693341, 0.3035038638314072, 0.22273699148413484, 0.1892233525360675]
 # cnfalgo_clauses_list = [6916.4, 6916.4, 6916.4, 6916.4, 6916.4]
 # cnfalgo_literals_list = [30101.2, 30101.2, 30101.2, 30101.2, 30101.2]
 # train_data_literals_list = [10346.4, 10346.4, 10346.4, 10346.4, 10346.4]
-plot_exp2_2(
-    dataset="tictactoe",
-    missingness_parameters=[0.1, 0.2, 0.3, 0.4, 0.5],
-    # missingness_parameters=[0.1],
-    minsup=1,
-    # k=20000,
-    dl="me",
-    version=10,
-    metric="count",
-    sample_vars=12,
-    sample_rows=None,
-)
+# randomized_accuracy_list = [0.35676026507964764, 0.2318938852666804, 0.13733124834369984, 0.06748979068397692, 0.028722446861102684]
+# plot_exp2_2(
+#     dataset="tictactoe",
+#     # missingness_parameters=[0.1, 0.2, 0.3, 0.4, 0.5],
+#     missingness_parameters=[0.1],
+#     minsup=1,
+#     # k=20000,
+#     dl="me",
+#     version=10,
+#     metric="count",
+#     sample_vars=None,
+#     sample_rows=None,
+# )
+
+
+# Sampled Variables		:[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27]
+# mistle_accuracy_list1 = [0.34392969519272765, 0.34749624184581107, 0.31326801328644416, 0.3354382353420065, 0.3335121565863027]
+# mistle_accuracy_list2 = [0.3218787093136355, 0.2998773643498877, 0.3530345490514628, 0.3055932436906864, 0.35433303693664125]
+# mistle_accuracy_list3 = [0.3399682577065785, 0.3841794963001732, 0.29655790277751143, 0.32011409207771674, 0.33013892346099444]
+# mistle_accuracy_list4 = [0.3179172718274863, 0.33656061880424976, 0.3363244385425301, 0.29026910042639675, 0.35095980381133296]
+# mistle_clauses_list = [24.0, 50.0, 19.0, 31.5, 26.5]
+# mistle_literals_list = [434.0, 1149.5, 359.5, 660.0, 514.5]
+# cnfalgo_accuracy_list = [0.00010006214190074515, 0.00013328703151351882, 4.5466557235409665e-05, 0.000165764207916866, 0.00011709102751318702]
+# cnfalgo_clauses_list = [284550.0, 286534.0, 280614.0, 292950.0, 297910.0]
+# cnfalgo_literals_list = [1345519.0, 1354823.0, 1326615.0, 1385711.0, 1410615.0]
+# train_data_literals_list = [23279.4, 23279.4, 23279.4, 23279.4, 23279.4]
+# randomized_accuracy_list = [0.33418195, 0.20357312, 0.10831783, 0.05446911, 0.02636418]
+#
+# plot_exp2_2(
+#     dataset="tictactoe",
+#     missingness_parameters=[0.05, 0.1, 0.15, 0.2, 0.25],
+#     # missingness_parameters=[0.05],
+#     minsup=0.2,
+#     # k=20000,
+#     dl="me",
+#     version=11,
+#     metric="count",
+#     sample_vars=None,
+#     sample_rows=None,
+# )
+
+
+def plot_exp2_2_without_num_folds(
+    dataset, missingness_parameters=[0.05, 0.15, 0.25], train_pct=0.8, minsup=None
+):
+
+    complete_positives, complete_negatives = load_data(dataset, complete=True)
+
+    complete_train_positives, complete_test_positives = split_data_into_train_test(
+        complete_positives, train_pct, seed=seed
+    )
+    complete_train_negatives, complete_test_negatives = split_data_into_train_test(
+        complete_negatives, train_pct, seed=seed
+    )
+
+    if minsup is None:
+        minsup = get_topk_minsup(
+            complete_train_positives + complete_train_negatives, suppress_output=True
+        )
+
+    cnfalgo_accuracy_list = []
+    cnfalgo_clauses_list = []
+    cnfalgo_literals_list = []
+
+    # mistle_clauses_list = []
+    # mistle_literals_list = []
+    mistle_accuracy_list1 = []
+    mistle_accuracy_list2 = []
+    mistle_accuracy_list3 = []
+    mistle_accuracy_list4 = []
+
+    randomized_accuracy_list = []
+    # train_data_literals_list = []
+
+    nb_literls = 0
+    for p_in in complete_train_positives + complete_train_negatives:
+        nb_literls += len(p_in)
+    train_data_literals_list = [nb_literls] * len(missingness_parameters)
+
+    mistle_neg_theory, _ = Mistle(
+        complete_train_positives, complete_train_negatives
+    ).learn(minsup=minsup)
+    mistle_pos_theory, _ = Mistle(
+        complete_train_negatives, complete_train_positives
+    ).learn(minsup=minsup)
+
+    nb_clauses = 0
+    clauses = []
+    if mistle_pos_theory is not None:
+        nb_clauses += len(mistle_pos_theory.clauses)
+        clauses += mistle_pos_theory.clauses
+    if mistle_neg_theory is not None:
+        nb_clauses += len(mistle_neg_theory.clauses)
+        clauses += mistle_neg_theory.clauses
+    mistle_clauses_list = [nb_clauses] * len(missingness_parameters)
+
+    mistle_nb_literals = 0
+    for clause in clauses:
+        mistle_nb_literals += len(clause)
+    mistle_literals_list = [mistle_nb_literals] * len(missingness_parameters)
+
+    cnfalgo_theory = get_cnfalgo_theory(
+        complete_train_positives, complete_train_negatives, suppress_output=True
+    )
+
+    for i, m in enumerate(missingness_parameters):
+
+        (incomplete_test_positives, missing_test_positives) = get_missing_data_mcar(
+            complete_test_positives, m
+        )
+        (incomplete_test_negatives, missing_test_negatives) = get_missing_data_mcar(
+            complete_test_negatives, m
+        )
+
+        fra = 0
+        total = 0
+        for missing_example in missing_test_positives + missing_test_negatives:
+            if len(missing_example) != 0:
+                fra += 1 / (2 ** len(missing_example))
+                total += 1
+        randomized_accuracy_list.append(fra / total)
+
+        a1, a2, a3, a4, _ = get_pct_satisfiable_completions(
+            mistle_pos_theory,
+            mistle_neg_theory,
+            complete_test_positives,
+            complete_test_negatives,
+            incomplete_test_positives,
+            incomplete_test_negatives,
+            missing_test_positives,
+            missing_test_negatives,
+        )
+        mistle_accuracy_list1.append(a1)
+        mistle_accuracy_list2.append(a2)
+        mistle_accuracy_list3.append(a3)
+        mistle_accuracy_list4.append(a4)
+
+        cnfalgo_nb_clauses, cnfalgo_nb_literals, cnfalgo_accuracy = get_pct_completions_cnfalgo(
+            cnfalgo_theory,
+            complete_test_positives,
+            complete_test_negatives,
+            incomplete_test_positives,
+            incomplete_test_negatives,
+            missing_test_positives,
+            missing_test_negatives,
+        )
+
+        cnfalgo_clauses_list.append(cnfalgo_nb_clauses)
+        cnfalgo_literals_list.append(cnfalgo_nb_literals)
+        cnfalgo_accuracy_list.append(cnfalgo_accuracy)
+
+    print("\n\ndataset = " + dataset + " with minsup = " + str(minsup))
+    print("missingness_parameters = " + str(missingness_parameters))
+    print("mistle_accuracy_list1 = " + str(mistle_accuracy_list1))
+    print("mistle_accuracy_list2 = " + str(mistle_accuracy_list2))
+    print("mistle_accuracy_list3 = " + str(mistle_accuracy_list3))
+    print("mistle_accuracy_list4 = " + str(mistle_accuracy_list4))
+    print("mistle_clauses_list = " + str(mistle_clauses_list))
+    print("mistle_literals_list = " + str(mistle_literals_list))
+
+    print("cnfalgo_accuracy_list = " + str(cnfalgo_accuracy_list))
+    print("cnfalgo_clauses_list = " + str(cnfalgo_clauses_list))
+    print("cnfalgo_literals_list = " + str(cnfalgo_literals_list))
+
+    print("train_data_literals_list = " + str(train_data_literals_list))
+    print("randomized_accuracy_list = " + str(randomized_accuracy_list))
+
+
+# dataset = "ticTacToe.dat"
+# missingness_parameters = [0.05]
+# mistle_accuracy_list1 = [0.7474093264248705]
+# mistle_accuracy_list2 = [0.8199481865284974]
+# mistle_accuracy_list3 = [0.49352331606217614]
+# mistle_accuracy_list4 = [0.5660621761658031]
+# mistle_clauses_list = [51]
+# mistle_literals_list = [922]
+# cnfalgo_accuracy_list = [0.0012547051442910915]
+# cnfalgo_clauses_list = [645884]
+# cnfalgo_literals_list = [3058030]
+# train_data_literals_list = [20385]
+# randomized_accuracy_list = [0.327639751552795]
+
+# missingness_parameters = [0.05, 0.15, 0.25]
+# mistle_accuracy_list1 = [0.7097156398104265, 0.6907324757154109, 0.6558425063505504]
+# mistle_accuracy_list2 = [0.7535545023696683, 0.6944079810974009, 0.5989839119390347]
+# mistle_accuracy_list3 = [0.5355450236966824, 0.6509582567603045, 0.6950465707027943]
+# mistle_accuracy_list4 = [0.5793838862559242, 0.6546337621422945, 0.6381879762912785]
+# mistle_clauses_list = [51, 51, 51]
+# mistle_literals_list = [922, 922, 922]
+# cnfalgo_accuracy_list = [0.0, 0.000525003281270508, 0.00029635588107661856]
+# cnfalgo_clauses_list = [645884, 645884, 645884]
+# cnfalgo_literals_list = [3058030, 3058030, 3058030]
+# train_data_literals_list = [20385, 20385, 20385]
+# randomized_accuracy_list = [0.33349609375, 0.1101377876243781, 0.02028059251237624]
+
+dataset = sys.argv[1]
+plot_exp2_2_without_num_folds(dataset=dataset)
 
 
 ###############################################################################
@@ -1782,15 +2026,15 @@ def plot_exp2_3(
 # cnfalgo_clauses = 6916.4
 # cnfalgo_literals = 30101.2
 # train_data_literals = 10346.4
-plot_exp2_3(
-    dataset="tictactoe",
-    minsup=1,
-    # k=20000,
-    dl="me",
-    version=10,
-    sample_vars=12,
-    sample_rows=None,
-)
+# plot_exp2_3(
+#     dataset="tictactoe",
+#     minsup=1,
+#     # k=20000,
+#     dl="me",
+#     version=10,
+#     sample_vars=12,
+#     sample_rows=None,
+# )
 
 ###############################################################################
 # Exp 2.4: Dont complete dataset; %age of test examples that are corrrectly satisfiable
@@ -1965,15 +2209,15 @@ def plot_exp2_4(dataset, dl, version, minsup=None, k=None):
 # cnfalgo_clauses_list = [22700, 22860, 22405, 23338, 23640, 23093, 22693, 22395, 23123, 23022]
 # cnfalgo_literals_list = [103467, 104200, 102091, 106431, 107960, 105294, 103426, 102132, 105434, 105074]
 # train_data_literals_list = [7695, 7884, 7848, 7749, 7650, 7785, 7722, 7848, 7767, 7650]
-plot_exp2_4(
-    dataset="tictactoe",
-    minsup=1,
-    # k=20000,
-    dl="me",
-    version=10,
-)
+# plot_exp2_4(
+#     dataset="tictactoe",
+#     minsup=1,
+#     # k=20000,
+#     dl="me",
+#     version=10,
+# )
 
-# CNFAlgo Accuracy = 73/87 = 0.8390804597701149
+
 # mistle_accuracy_list1 = [0.3037974683544304, 0.3230769230769231, 0.375, 0.3466666666666667, 0.34146341463414637, 0.4050632911392405, 0.37349397590361444, 0.3088235294117647, 0.6046511627906976, 0.3563218390804598]
 # mistle_accuracy_list2 = [0.8987341772151899, 0.8307692307692308, 0.96875, 0.9066666666666666, 0.926829268292683, 0.9367088607594937, 0.8433734939759037, 0.9264705882352942, 0.6511627906976745, 0.8160919540229885]
 # mistle_accuracy_list3 = [0.1518987341772152, 0.2153846153846154, 0.125, 0.10666666666666667, 0.18292682926829268, 0.12658227848101267, 0.26506024096385544, 0.11764705882352941, 0.627906976744186, 0.25287356321839083]
@@ -1984,10 +2228,10 @@ plot_exp2_4(
 # cnfalgo_clauses_list = [4874, 5493, 5737, 5990, 5751, 5662, 5469, 5251, 5001, 5713]
 # cnfalgo_literals_list = [17116, 19700, 20655, 21691, 20810, 20332, 19707, 18744, 17566, 20504]
 # train_data_literals_list = [5512, 5624, 5632, 5544, 5488, 5512, 5480, 5600, 5456, 5448]
-plot_exp2_4(
-    dataset="pima",
-    minsup=1,
-    # k=20000,
-    dl="me",
-    version=10,
-)
+# plot_exp2_4(
+#     dataset="pima",
+#     minsup=1,
+#     # k=20000,
+#     dl="me",
+#     version=10,
+# )
