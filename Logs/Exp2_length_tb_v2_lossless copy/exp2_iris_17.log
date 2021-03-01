@@ -1,0 +1,256 @@
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+Running the DCI-Closed algorithm
+========== DCI_CLOSED - STATS ============
+ Number of transactions: 5
+ Number of frequent closed itemsets: 24
+ Total time ~: 7 ms
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+Running the DCI-Closed algorithm
+========== DCI_CLOSED - STATS ============
+ Number of transactions: 30
+ Number of frequent closed itemsets: 1659
+ Total time ~: 38 ms
+Current Minsup[0.5] yields 12 itemsets.
+Current Minsup[0.25] yields 19 itemsets.
+Top-k minsup for at least 10000 paterns = 0.2 or 1
+DL of initial theory	: 2414.121434418562
+0	itemsets left after W operation 	: [frozenset({4, 5, 6, 8, 13, 14, 16, -15, 17, 18, -12}), frozenset({3, -11, -2, 7, 9, 10, -18}), frozenset({3, -10, 7, -2, 9, 11, -18}), frozenset({2, -11, 7, 9, 10, -3, -18}), frozenset({3, -2, 9, 10, 11, -7, -18}), frozenset({3, 7, -2, -9, 10, 11, -18})]
+# of frequent itemsets	: 25
+Time of DCI Closed		: 0.285811185836792
+9	itemsets left after W operation 	: [frozenset({3, 19, -2, 11, -18}), frozenset({9, -19, -10, 7}), frozenset({9, 10, -19, -7}), frozenset({10, -9, -19, 7})]
+Initial DL				: 7988.860786890473
+Final DL				: 249.61745856983154
+Compression (wrt me)	: 0.9687543111303869
+Operator Counters		: {'D': 0, 'W': 2, 'V': 0, 'S': 0, 'R': 0, 'T': 0}
+Misle Learning Runtime	: 1.3379032611846924
+
+Current Minsup[0.5] yields 110 itemsets.
+Current Minsup[0.25] yields 613 itemsets.
+Current Minsup[0.125] yields 1372 itemsets.
+Current Minsup[0.0625] yields 1629 itemsets.
+Top-k minsup for at least 10000 paterns = 0.03333333333333333 or 1
+DL of initial theory	: 2414.121434418562
+1229	itemsets left after W operation 	: [frozenset({2, 5, 9, 12, 13, 15, -14, 18}), frozenset({3, 6, 7, 8, 10, -18, -17, 16, -11, -4}), frozenset({3, 6, 8, 10, 11, -18, -17, 16, -7, -4}), frozenset({3, 6, 7, 8, 11, -18, -17, 16, -10, -4}), frozenset({3, 4, 7, 8, 10, -18, -17, 16, -11, -6}), frozenset({3, 4, 7, 8, 10, -18, -16, 17, -11, -6}), frozenset({3, 4, 7, 8, 11, -18, -16, 17, -10, -6}), frozenset({4, 6, 7, 10, 11, -18, -17, 16, -8, -3}), frozenset({3, 4, 7, 10, 11, -18, -17, 16, -8, -6}), frozenset({3, 6, 8, 10, 11, -18, -16, 17, -7, -4}), frozenset({4, 6, 8, 10, 11, -18, -17, 16, -7, -3}), frozenset({3, 4, 8, 10, 11, -18, -17, 16, -7, -6}), frozenset({4, 6, 7, 8, 10, -18, -17, 16, -11, -3}), frozenset({4, 6, 7, 8, 11, -18, -17, 16, -10, -3}), frozenset({3, 6, 7, 10, 11, -18, -17, 16, -8, -4}), frozenset({3, 4, 7, 8, 11, -18, -17, 16, -10, -6}), frozenset({3, 4, 7, 10, 11, -18, -16, 17, -8, -6})]
+612	itemsets left after W operation 	: [frozenset({2, 6, 8, 12, 14, 15, -16, 17, -13, 19}), frozenset({3, 4, 7, 10, 11, -19, -9, -5}), frozenset({4, 5, 7, 9, 11, -19, -10, -3}), frozenset({3, 4, 7, 9, 11, -19, -10, -5}), frozenset({4, 5, 7, 9, 10, -19, -11, -3}), frozenset({3, 5, 7, 10, 11, -19, -9, -4}), frozenset({3, 5, 9, 10, 11, -19, -7, -4}), frozenset({3, 5, 7, 9, 10, -19, -11, -4}), frozenset({4, 5, 7, 10, 11, -19, -9, -3}), frozenset({4, 5, 9, 10, 11, -19, -7, -3})]
+16	itemsets left after W operation 	: [frozenset({4, 5, 9, 10, 12, 14, 15, -13, 20}), frozenset({2, 3, 7, 8, -20, -16, 17, -11, -6}), frozenset({3, 6, 8, 11, -20, -16, 17, -7, -2}), frozenset({3, 6, 8, 11, -20, -17, 16, -7, -2}), frozenset({2, 6, 7, 11, -20, -16, 17, -8, -3})]
+# of frequent itemsets	: 531
+Time of DCI Closed		: 0.31651782989501953
+389	itemsets left after W operation 	: [frozenset({16, 21, 8, -18, -17}), frozenset({3, -11, 6, 7, 10, -21, -4}), frozenset({3, 6, -21, -7, 10, 11, -4}), frozenset({3, 6, 7, -10, 11, -21, -4}), frozenset({-6, 3, 4, -11, 7, 10, -21}), frozenset({4, 6, -21, -7, 10, 11, -3}), frozenset({-6, 3, 4, -21, -7, 10, 11}), frozenset({4, -11, 6, 7, 10, -21, -3}), frozenset({4, 6, 7, -10, 11, -21, -3}), frozenset({3, 4, -10, 7, 11, -6, -21})]
+283	itemsets left after W operation 	: [frozenset({11, 4, 22, 7}), frozenset({6, -10, -22, -21, -3}), frozenset({-6, 3, -10, -22, -21}), frozenset({3, 8, -22, -18, -16, 17, -10, -6}), frozenset({6, 10, -22, -18, -17, 16, -8, -3}), frozenset({3, 10, -22, -18, -17, 16, -8, -6}), frozenset({3, 10, -22, -18, -16, 17, -8, -6}), frozenset({3, 10, -9, -22, -5, -19}), frozenset({-19, 5, -10, 9, -22, -3}), frozenset({3, -10, 9, -22, -5, -19}), frozenset({-19, 10, 5, -9, -22, -3})]
+172	itemsets left after W operation 	: [frozenset({3, 23, 10, 11, -4}), frozenset({2, 5, 6, 7, 8, -23, 12, 13, -17, 16, 15, -14, -9}), frozenset({-16, 17, 6, 8, -7, -23, -18}), frozenset({16, 6, 7, -8, -23, -18, -17}), frozenset({-9, 5, 7, -23, -19}), frozenset({-19, -7, 5, 9, -23}), frozenset({-23, -21, -7, 6})]
+128	itemsets left after W operation 	: [frozenset({24, 10, -11, 7}), frozenset({3, 4, 8, -24, -18, -16, 17, -6}), frozenset({-19, 4, 5, -24, 9, -3}), frozenset({3, 5, -24, 9, -4, -19}), frozenset({3, 6, -24, -21, -4}), frozenset({3, 4, -24, -6, -21}), frozenset({4, 6, -24, -21, -3})]
+93	itemsets left after W operation 	: [frozenset({8, -16, 17, 25}), frozenset({2, 6, -25, 12, 14, 15, -13, 19}), frozenset({2, 3, 7, -11, -25, -6, -20}), frozenset({3, 6, -25, -7, 11, -20, -2}), frozenset({-6, 3, -10, -25, -22, -18}), frozenset({6, -25, -23, -7, -18}), frozenset({3, 4, -25, -24, -6, -18})]
+80	itemsets left after W operation 	: [frozenset({9, 5, 26, -19}), frozenset({4, -26, -7, 10, 11, -3}), frozenset({-22, -3, -10, -26}), frozenset({-7, -23, -26}), frozenset({-24, 4, -3, -26}), frozenset({-24, 3, -4, -26})]
+73	itemsets left after W operation 	: [frozenset({3, -6, 27}), frozenset({4, -27, -25, -24, -18}), frozenset({4, -27, 11, -7, 10, -21}), frozenset({-22, -21, -27, -10}), frozenset({16, 10, -27, -8, -22, -18, -17}), frozenset({-16, 17, 10, -27, -8, -22, -18}), frozenset({-24, -21, 4, -27}), frozenset({2, -25, -11, -27, 7, -20}), frozenset({-27, -10, -25, -22, -18})]
+63	itemsets left after W operation 	: [frozenset({4, -7, 10, 11, 28}), frozenset({-21, -28, -27}), frozenset({-28, -3, -26}), frozenset({-21, -28, -3, 6})]
+55	itemsets left after W operation 	: [frozenset({16, 29, -18, -17}), frozenset({-29, 10, 6, -8, -22, -3}), frozenset({-22, -29, -27, -8, 10}), frozenset({8, -29, 21}), frozenset({-29, 6, 7, -8, -23})]
+Initial DL				: 7988.860786890473
+Final DL				: 1496.990303019297
+Compression (wrt me)	: 0.8126152973555602
+Operator Counters		: {'D': 0, 'W': 12, 'V': 0, 'S': 0, 'R': 0, 'T': 0}
+Misle Learning Runtime	: 2.1395790576934814
+
+
+Max Score = 0.0 tied among 8/8 candidates.
+Min Score = 1.4058913308913308 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([6, 7, 12])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.0 tied among 8/8 candidates.
+Min Score = 1.4058913308913308 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([17, 13, 8])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.0 tied among 8/8 candidates.
+Min Score = 1.4058913308913308 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([9, 12, 17])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.0 tied among 8/8 candidates.
+Min Score = 1.4058913308913308 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([12, 14, 7])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.0 tied among 8/8 candidates.
+Min Score = 1.4058913308913308 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([11, 14, 3])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.0 tied among 8/8 candidates.
+Min Score = 1.4058913308913308 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([14, 13, 7])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.0 tied among 8/8 candidates.
+Min Score = 1.4058913308913308 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([6, 13, 5])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.0 tied among 8/8 candidates.
+Min Score = 0.6837662337662338 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([5, 7, 4])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.0 tied among 8/8 candidates.
+Min Score = 0.6837662337662338 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([7, 13, 11])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.0 tied among 8/8 candidates.
+Min Score = 0.6837662337662338 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([5, 10, 13])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.0 tied among 8/8 candidates.
+Min Score = 0.6837662337662338 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([17, 14, 2])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.0 tied among 8/8 candidates.
+Min Score = 0.6837662337662338 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([7, 11, 14])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.0 tied among 8/8 candidates.
+Min Score = 0.6837662337662338 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([6, 4, 2])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.0 tied among 8/8 candidates.
+Min Score = 0.6837662337662338 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([15, 13, 3])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.0 tied among 8/8 candidates.
+Min Score = 0.6837662337662338 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([10, 17, 3])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.0 tied among 8/8 candidates.
+Min Score = 0.6837662337662338 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([14, 15, 4])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.0 tied among 8/8 candidates.
+Min Score = 0.6837662337662338 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([8, 15, 13])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.0 tied among 8/8 candidates.
+Min Score = 0.6837662337662338 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([15, 8, 6])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.0 tied among 8/8 candidates.
+Min Score = 0.6837662337662338 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([2, 7, 9])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.0 tied among 8/8 candidates.
+Min Score = 0.6837662337662338 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([4, 16, 17])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.0 tied among 8/8 candidates.
+Min Score = 0.6837662337662338 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([13, 7, 3])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.0 tied among 8/8 candidates.
+Min Score = 0.6837662337662338 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([9, 16, 5])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.0 tied among 8/8 candidates.
+Min Score = 0.6837662337662338 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([4, 5, 6])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.0 tied among 8/8 candidates.
+Min Score = 0.6837662337662338 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([8, 11, 2])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.0 tied among 8/8 candidates.
+Min Score = 0.6837662337662338 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([10, 15, 13])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.0 tied among 8/8 candidates.
+Min Score = 0.6837662337662338 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([4, 11, 16])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Dataset				: iris_17.dat
+Metric				: length
+Minsups				: [3]
+MF Accuracy			: [(0.6153846153846154, 0.38461538461538464, 26, 26)]
+Mistle Accuracy		: [0.6153846153846154]
+CNFAlgo Accuracy	: []
+Randomized Accuracy	: [0.125]
+
+# Test Examples		: 26
+Mistle # Ties		: [(0, 0)]
+CNFAlgo # Ties		: []

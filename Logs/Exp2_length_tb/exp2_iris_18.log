@@ -1,0 +1,221 @@
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+Running the DCI-Closed algorithm
+========== DCI_CLOSED - STATS ============
+ Number of transactions: 20
+ Number of frequent closed itemsets: 1244
+ Total time ~: 31 ms
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+Running the DCI-Closed algorithm
+========== DCI_CLOSED - STATS ============
+ Number of transactions: 19
+ Number of frequent closed itemsets: 829
+ Total time ~: 27 ms
+Current Minsup[0.5] yields 209 itemsets.
+Current Minsup[0.25] yields 873 itemsets.
+Current Minsup[0.125] yields 1155 itemsets.
+Current Minsup[0.0625] yields 1224 itemsets.
+Top-k minsup for at least 10000 paterns = 0.05 or 1
+1  violations of +ve partial assignments found for the learned theory.
+Violating Clauses	:{frozenset({2, 3, 4, 5, 7, 8, 9, 11, 12, 13, -17, 16, 15, -14, -10, -6})}
+DL of initial theory	: 2619.5914704473685
+586	itemsets left after T operation 	: [frozenset({6, 12, 14, 15, -16, 17, -13})]
+10	itemsets left after W operation 	: [frozenset({2, 5, 9, 12, 13, 15, -14, 18}), frozenset({4, 6, 8, 10, 11, -18, -16, 17, -7, -3}), frozenset({3, 4, 7, 8, 10, -18, -16, 17, -11, -6}), frozenset({3, 6, 8, 10, 11, -18, -16, 17, -7, -4}), frozenset({4, 6, 7, 8, 10, -18, -17, 16, -11, -3}), frozenset({3, 4, 7, 8, 11, -18, -17, 16, -10, -6}), frozenset({3, 4, 7, 10, 11, -18, -16, 17, -8, -6})]
+1	itemsets left after T operation 	: [frozenset({12, 14, 15, -16, 17, -13})]
+# of frequent itemsets	: 47
+Time of DCI Closed		: 0.36463308334350586
+10	itemsets left after T operation 	: [frozenset({-16, 17, 10, -18})]
+Initial DL				: 7988.860786890473
+Final DL				: 291.93507033538737
+Compression (wrt me)	: 0.963457234000817
+Operator Counters		: {'D': 0, 'W': 1, 'V': 0, 'S': 0, 'R': 0, 'T': 3}
+Misle Learning Runtime	: 2.1329100131988525
+
+Current Minsup[0.5] yields 139 itemsets.
+Current Minsup[0.25] yields 552 itemsets.
+Current Minsup[0.125] yields 751 itemsets.
+Current Minsup[0.0625] yields 810 itemsets.
+Top-k minsup for at least 10000 paterns = 0.05263157894736842 or 1
+1  violations of +ve partial assignments found for the learned theory.
+Violating Clauses	:{frozenset({2, 3, 4, 5, 7, 8, 9, 11, 12, 13, -17, 16, 15, -14, -10, -6})}
+DL of initial theory	: 2619.5914704473685
+521	itemsets left after T operation 	: [frozenset({2, 5, 9, 12, 13, 15, 16, -17, -14})]
+175	itemsets left after T operation 	: [frozenset({4, 5, 6, 8, 13, 14, 16, -15, 17, -12})]
+35	itemsets left after T operation 	: [frozenset({2, 3, 5, 7, 8, 11, 12, 13, 15, -14})]
+6	itemsets left after T operation 	: [frozenset({4, 5, 6, 8, 14, 16})]
+1	itemsets left after T operation 	: [frozenset({16, 5})]
+# of frequent itemsets	: 3
+Time of DCI Closed		: 0.29160213470458984
+Initial DL				: 7988.860786890473
+Final DL				: 213.23972837438612
+Compression (wrt me)	: 0.9733078677845649
+Operator Counters		: {'D': 0, 'W': 0, 'V': 0, 'S': 0, 'R': 0, 'T': 5}
+Misle Learning Runtime	: 2.106536865234375
+
+
+Max Score = 0.16666666666666666 tied among 4/8 candidates.
+Min Score = 0.6 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([7, 6])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.16666666666666666 tied among 2/8 candidates.
+Min Score = 0.6 tied among 2/8 candidates.
+Still need to calculate most frequent values for dict_keys([9])
+Tie Breaking: Level 3
+
+Max Score = 0.16666666666666666 tied among 2/8 candidates.
+Min Score = 0.6 tied among 2/8 candidates.
+Still need to calculate most frequent values for dict_keys([10])
+Tie Breaking: Level 3
+
+Max Score = 0.16666666666666666 tied among 2/8 candidates.
+Min Score = 0.6 tied among 2/8 candidates.
+Still need to calculate most frequent values for dict_keys([7])
+Tie Breaking: Level 3
+
+Max Score = 0.16666666666666666 tied among 4/8 candidates.
+Min Score = 0.6 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([11, 2])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3]
+
+Max Score = 0.16666666666666666 tied among 2/8 candidates.
+Min Score = 0.6 tied among 2/8 candidates.
+Still need to calculate most frequent values for dict_keys([7])
+Tie Breaking: Level 3
+
+Max Score = 0.16666666666666666 tied among 4/8 candidates.
+Min Score = 0.6 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([6, 5])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.5 tied among 4/8 candidates.
+Min Score = 0.6416666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([7, 4])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.0 tied among 8/8 candidates.
+Min Score = 0.6416666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([7, 13, 11])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.5 tied among 4/8 candidates.
+Min Score = 0.6416666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([12, 9])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3]
+
+Max Score = 0.5 tied among 8/8 candidates.
+Min Score = 0.6416666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([2, 14, 17])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.0 tied among 8/8 candidates.
+Min Score = 0.6416666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([6, 4, 2])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.5 tied among 4/8 candidates.
+Min Score = 0.6416666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([12, 3])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3]
+
+Max Score = 0.0 tied among 8/8 candidates.
+Min Score = 0.6416666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([10, 17, 3])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.5 tied among 4/8 candidates.
+Min Score = 0.6416666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([4, 12])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3]
+
+Max Score = 0.5 tied among 4/8 candidates.
+Min Score = 0.6416666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([7, 12])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3]
+
+Max Score = 0.5 tied among 8/8 candidates.
+Min Score = 0.6416666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([15, 8, 6])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.5 tied among 8/8 candidates.
+Min Score = 0.6416666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([2, 7, 9])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.5 tied among 8/8 candidates.
+Min Score = 0.6416666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([4, 15, 17])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+Incorrect Prediction at tie level: 0
+
+Max Score = 0.5 tied among 4/8 candidates.
+Min Score = 0.6416666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([15, 8])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3]
+
+Max Score = 0.5 tied among 4/8 candidates.
+Min Score = 0.6416666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([4, 6])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.5 tied among 8/8 candidates.
+Min Score = 0.6416666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([10, 15, 13])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.5 tied among 4/8 candidates.
+Min Score = 0.6416666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([10, 17])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Return Code	: 0
+CNF-cc Accuracy		: 0.7692307692307693
+
+Dataset				: iris_18.dat
+Metric				: length
+Minsups				: [3]
+Mistle Accuracy		: [0.5]
+CNFAlgo Accuracy	: [0.7692307692307693]
+Randomized Accuracy	: [0.125]
+
+# Test Examples		: 26
+Mistle # Ties		: [(0, 0)]
+CNFAlgo # Ties		: [(0, 0)]

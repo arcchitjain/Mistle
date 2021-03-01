@@ -1,0 +1,73 @@
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 2877
+ Total time ~: 84 ms
+ Max memory:14.0
+=====================================
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 19
+ Total time ~: 2 ms
+ Max memory:7.562202453613281
+=====================================
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 1945
+ Total time ~: 55 ms
+ Max memory:14.0
+=====================================
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 4
+ Total time ~: 1 ms
+ Max memory:7.565757751464844
+=====================================
+Length of freq items 1	: 2877
+Time of freq items 1	: 0.5469942092895508
+253262 Frequent Itemsets are mined in 3.999523162841797 seconds.
+Length of freq items 2	: 253262
+Time of freq items 2	: 3.9995882511138916
+DL of initial theory	: 12287.449040084146
+2470	itemsets left after T operation 	: [frozenset({-31, -17, -8, -6, -36, -66})]
+1697	itemsets left after T operation 	: [frozenset({-32, -52, -27, -57})]
+1219	itemsets left after T operation 	: [frozenset({-17, -37, -66, -25})]
+928	itemsets left after T operation 	: [frozenset({-8, -31, -6, -66})]
+655	itemsets left after T operation 	: [frozenset({-57, -33, -52, -25})]
+404	itemsets left after T operation 	: [frozenset({-32, -6, -57, -41})]
+271	itemsets left after T operation 	: [frozenset({-55, -17, -47, -43, -8, -66})]
+141	itemsets left after T operation 	: [frozenset({-32, -58, -9, -42, -41, -2})]
+75	itemsets left after T operation 	: [frozenset({-32, -57, -22, -52, -12, -41, -2})]
+46	itemsets left after T operation 	: [frozenset({-31, -60, -25, -47, -34})]
+17	itemsets left after T operation 	: [frozenset({-32, -22, -52, -12})]
+13	itemsets left after T operation 	: [frozenset({-32, -52})]
+Length of freq items 1	: 19
+Time of freq items 1	: 0.32503795623779297
+111 Frequent Itemsets are mined in 0.0011930465698242188 seconds.
+Length of freq items 2	: 111
+Time of freq items 2	: 0.0012197494506835938
+0 clauses are pruned.
+Initial DL				: 12244.087744499622
+Final DL				: 420.1533887697422
+Compression (wrt me)	: 0.965685202725006
+Operator Counters		: {'D': 0, 'W': 0, 'V': 0, 'S': 0, 'R': 0, 'T': 12}
+Length of freq items 1	: 1945
+Time of freq items 1	: 0.38248395919799805
+181585 Frequent Itemsets are mined in 2.6465330123901367 seconds.
+Length of freq items 2	: 181585
+Time of freq items 2	: 2.6465792655944824
+DL of initial theory	: 12287.449040084146
+1001	itemsets left after T operation 	: [frozenset({-47, -12, -2, -33})]
+142	itemsets left after T operation 	: [frozenset({-47, -2})]
+1	itemsets left after T operation 	: [frozenset({-17, -12, -42, -7, -33})]
+Length of freq items 1	: 4
+Time of freq items 1	: 0.3132491111755371
+4113 Frequent Itemsets are mined in 0.0440981388092041 seconds.
+Length of freq items 2	: 4113
+Time of freq items 2	: 0.044486284255981445
+0 clauses are pruned.
+Initial DL				: 12244.087744499622
+Final DL				: 858.7041118759144
+Compression (wrt me)	: 0.9298678570592841
+Operator Counters		: {'D': 0, 'W': 0, 'V': 0, 'S': 0, 'R': 0, 'T': 3}
+mistle runtime = 8.863285303115845
+cnfalgo runtime = 36.21170496940613

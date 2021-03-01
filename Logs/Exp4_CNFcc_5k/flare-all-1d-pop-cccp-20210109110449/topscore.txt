@@ -1,0 +1,2 @@
+flare;all;1;d;pop;cccp;20210109110449;abs;0.8123;0.7588
+flare;all;1;d;pop;cccp;20210109110449;rel;0.8123;0.7588

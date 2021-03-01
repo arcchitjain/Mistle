@@ -1,0 +1,311 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx</Extensions>
+    </Filter>
+    <Filter Include="Resource Files\templates">
+      <UniqueIdentifier>{8e864a22-9da7-4479-9261-f10fbc5db743}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Source Files\algo">
+      <UniqueIdentifier>{0ff5e768-b31d-4f4b-b5eb-7216c0f71ee9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\algo\coverfull">
+      <UniqueIdentifier>{a5d9f71d-f370-49cf-8602-257f64e738f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\algo\coverpartial">
+      <UniqueIdentifier>{cee37e8b-eea9-44e7-8735-f84242920e38}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\tasks">
+      <UniqueIdentifier>{49274674-bf67-4df6-a91a-39e75ef0a0d2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\blocks">
+      <UniqueIdentifier>{6d51a24a-fd17-48b8-8de5-407bd309f44d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\blocks\classifier">
+      <UniqueIdentifier>{1c65ce7e-d171-40b7-9da9-8df95e8d9403}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\blocks\stream">
+      <UniqueIdentifier>{d163d95f-9a1e-43aa-99f1-e84021467c13}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="analysect.conf">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="analysedb.conf">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="classifyprepare.conf">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="comparegendb.conf">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="compress.conf">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="convertdb.conf">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="convertfis.conf">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="createdepdb.conf">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="generatedb.conf">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="generatedbs.conf">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resume.conf">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="test.conf">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="analysedb.conf.template">
+      <Filter>Resource Files\templates</Filter>
+    </None>
+    <None Include="classdistances.conf.template">
+      <Filter>Resource Files\templates</Filter>
+    </None>
+    <None Include="classify.conf.template">
+      <Filter>Resource Files\templates</Filter>
+    </None>
+    <None Include="classifycompress.conf.template">
+      <Filter>Resource Files\templates</Filter>
+    </None>
+    <None Include="classifyprepare.conf.template">
+      <Filter>Resource Files\templates</Filter>
+    </None>
+    <None Include="comparegendb.conf.template">
+      <Filter>Resource Files\templates</Filter>
+    </None>
+    <None Include="compress.conf.template">
+      <Filter>Resource Files\templates</Filter>
+    </None>
+    <None Include="convertdb.conf.template">
+      <Filter>Resource Files\templates</Filter>
+    </None>
+    <None Include="convertfis.conf.template">
+      <Filter>Resource Files\templates</Filter>
+    </None>
+    <None Include="datadir.conf.template">
+      <Filter>Resource Files\templates</Filter>
+    </None>
+    <None Include="fic.conf.template">
+      <Filter>Resource Files\templates</Filter>
+    </None>
+    <None Include="generatedb.conf.template">
+      <Filter>Resource Files\templates</Filter>
+    </None>
+    <None Include="resume.conf.template">
+      <Filter>Resource Files\templates</Filter>
+    </None>
+    <None Include="swapdb.conf.template">
+      <Filter>Resource Files\templates</Filter>
+    </None>
+    <None Include="fic.conf" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="LocalFic.template.h">
+      <Filter>Resource Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FicConf.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FicMain.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="global.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LocalFic.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="algo\Algo.h">
+      <Filter>Source Files\algo</Filter>
+    </ClInclude>
+    <ClInclude Include="algo\CodeTable.h">
+      <Filter>Source Files\algo</Filter>
+    </ClInclude>
+    <ClInclude Include="algo\CTFile.h">
+      <Filter>Source Files\algo</Filter>
+    </ClInclude>
+    <ClInclude Include="algo\CTISList.h">
+      <Filter>Source Files\algo</Filter>
+    </ClInclude>
+    <ClInclude Include="algo\CTLog.h">
+      <Filter>Source Files\algo</Filter>
+    </ClInclude>
+    <ClInclude Include="algo\coverfull\CFCodeTable.h">
+      <Filter>Source Files\algo\coverfull</Filter>
+    </ClInclude>
+    <ClInclude Include="algo\coverfull\CoverFull.h">
+      <Filter>Source Files\algo\coverfull</Filter>
+    </ClInclude>
+    <ClInclude Include="algo\coverfull\ParallelCoverFull.h">
+      <Filter>Source Files\algo\coverfull</Filter>
+    </ClInclude>
+    <ClInclude Include="algo\coverpartial\CCCPCodeTable.h">
+      <Filter>Source Files\algo\coverpartial</Filter>
+    </ClInclude>
+    <ClInclude Include="algo\coverpartial\CCPCodeTable.h">
+      <Filter>Source Files\algo\coverpartial</Filter>
+    </ClInclude>
+    <ClInclude Include="algo\coverpartial\CoverPartial.h">
+      <Filter>Source Files\algo\coverpartial</Filter>
+    </ClInclude>
+    <ClInclude Include="algo\coverpartial\CPACodeTable.h">
+      <Filter>Source Files\algo\coverpartial</Filter>
+    </ClInclude>
+    <ClInclude Include="algo\coverpartial\CPCodeTable.h">
+      <Filter>Source Files\algo\coverpartial</Filter>
+    </ClInclude>
+    <ClInclude Include="algo\coverpartial\CPOCodeTable.h">
+      <Filter>Source Files\algo\coverpartial</Filter>
+    </ClInclude>
+    <ClInclude Include="algo\coverpartial\CPROCodeTable.h">
+      <Filter>Source Files\algo\coverpartial</Filter>
+    </ClInclude>
+    <ClInclude Include="algo\coverpartial\ParallelCoverPartial.h">
+      <Filter>Source Files\algo\coverpartial</Filter>
+    </ClInclude>
+    <ClInclude Include="tasks\ClassifyTH.h">
+      <Filter>Source Files\tasks</Filter>
+    </ClInclude>
+    <ClInclude Include="tasks\DataTransformTH.h">
+      <Filter>Source Files\tasks</Filter>
+    </ClInclude>
+    <ClInclude Include="tasks\DissimilarityTH.h">
+      <Filter>Source Files\tasks</Filter>
+    </ClInclude>
+    <ClInclude Include="tasks\MainTH.h">
+      <Filter>Source Files\tasks</Filter>
+    </ClInclude>
+    <ClInclude Include="tasks\MineTH.h">
+      <Filter>Source Files\tasks</Filter>
+    </ClInclude>
+    <ClInclude Include="tasks\StreamTH.h">
+      <Filter>Source Files\tasks</Filter>
+    </ClInclude>
+    <ClInclude Include="tasks\TaskHandler.h">
+      <Filter>Source Files\tasks</Filter>
+    </ClInclude>
+    <ClInclude Include="blocks\Blocks.h">
+      <Filter>Source Files\blocks</Filter>
+    </ClInclude>
+    <ClInclude Include="blocks\classifier\Classifier.h">
+      <Filter>Source Files\blocks\classifier</Filter>
+    </ClInclude>
+    <ClInclude Include="blocks\classifier\CtAnalyser.h">
+      <Filter>Source Files\blocks\classifier</Filter>
+    </ClInclude>
+    <ClInclude Include="blocks\stream\Histogram.h">
+      <Filter>Source Files\blocks\stream</Filter>
+    </ClInclude>
+    <ClInclude Include="blocks\stream\StreamAlgo.h">
+      <Filter>Source Files\blocks\stream</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="FicConf.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FicMain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ficmkii.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="algo\Algo.cpp">
+      <Filter>Source Files\algo</Filter>
+    </ClCompile>
+    <ClCompile Include="algo\CodeTable.cpp">
+      <Filter>Source Files\algo</Filter>
+    </ClCompile>
+    <ClCompile Include="algo\CTFile.cpp">
+      <Filter>Source Files\algo</Filter>
+    </ClCompile>
+    <ClCompile Include="algo\CTISList.cpp">
+      <Filter>Source Files\algo</Filter>
+    </ClCompile>
+    <ClCompile Include="algo\CTLog.cpp">
+      <Filter>Source Files\algo</Filter>
+    </ClCompile>
+    <ClCompile Include="algo\coverfull\CFCodeTable.cpp">
+      <Filter>Source Files\algo\coverfull</Filter>
+    </ClCompile>
+    <ClCompile Include="algo\coverfull\CoverFull.cpp">
+      <Filter>Source Files\algo\coverfull</Filter>
+    </ClCompile>
+    <ClCompile Include="algo\coverfull\ParallelCoverFull.cpp">
+      <Filter>Source Files\algo\coverfull</Filter>
+    </ClCompile>
+    <ClCompile Include="algo\coverpartial\CCCPCodeTable.cpp">
+      <Filter>Source Files\algo\coverpartial</Filter>
+    </ClCompile>
+    <ClCompile Include="algo\coverpartial\CCPCodeTable.cpp">
+      <Filter>Source Files\algo\coverpartial</Filter>
+    </ClCompile>
+    <ClCompile Include="algo\coverpartial\CoverPartial.cpp">
+      <Filter>Source Files\algo\coverpartial</Filter>
+    </ClCompile>
+    <ClCompile Include="algo\coverpartial\CPACodeTable.cpp">
+      <Filter>Source Files\algo\coverpartial</Filter>
+    </ClCompile>
+    <ClCompile Include="algo\coverpartial\CPCodeTable.cpp">
+      <Filter>Source Files\algo\coverpartial</Filter>
+    </ClCompile>
+    <ClCompile Include="algo\coverpartial\CPOCodeTable.cpp">
+      <Filter>Source Files\algo\coverpartial</Filter>
+    </ClCompile>
+    <ClCompile Include="algo\coverpartial\CPROCodeTable.cpp">
+      <Filter>Source Files\algo\coverpartial</Filter>
+    </ClCompile>
+    <ClCompile Include="algo\coverpartial\ParallelCoverPartial.cpp">
+      <Filter>Source Files\algo\coverpartial</Filter>
+    </ClCompile>
+    <ClCompile Include="tasks\ClassifyTH.cpp">
+      <Filter>Source Files\tasks</Filter>
+    </ClCompile>
+    <ClCompile Include="tasks\DataTransformTH.cpp">
+      <Filter>Source Files\tasks</Filter>
+    </ClCompile>
+    <ClCompile Include="tasks\DissimilarityTH.cpp">
+      <Filter>Source Files\tasks</Filter>
+    </ClCompile>
+    <ClCompile Include="tasks\MainTH.cpp">
+      <Filter>Source Files\tasks</Filter>
+    </ClCompile>
+    <ClCompile Include="tasks\MineTH.cpp">
+      <Filter>Source Files\tasks</Filter>
+    </ClCompile>
+    <ClCompile Include="tasks\StreamTH.cpp">
+      <Filter>Source Files\tasks</Filter>
+    </ClCompile>
+    <ClCompile Include="tasks\TaskHandler.cpp">
+      <Filter>Source Files\tasks</Filter>
+    </ClCompile>
+    <ClCompile Include="blocks\classifier\Classifier.cpp">
+      <Filter>Source Files\blocks\classifier</Filter>
+    </ClCompile>
+    <ClCompile Include="blocks\classifier\CtAnalyser.cpp">
+      <Filter>Source Files\blocks\classifier</Filter>
+    </ClCompile>
+    <ClCompile Include="blocks\stream\Histogram.cpp">
+      <Filter>Source Files\blocks\stream</Filter>
+    </ClCompile>
+    <ClCompile Include="blocks\stream\StreamAlgo.cpp">
+      <Filter>Source Files\blocks\stream</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

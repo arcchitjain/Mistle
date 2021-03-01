@@ -1,0 +1,14 @@
+:: led-all-1d-pop-cccp-20210109111353
+Absolute matching
+
+;minsup;AvgAccuracy;StdDev;MaxAccuracy
+Best:;1;0.9518;0.0048;0.9576
+Last:;1;0.9518;0.0048;0.9576
+
+:: led-all-1d-pop-cccp-20210109111353
+Relative matching
+
+;%;AvgAccuracy;StdDev;MaxAccuracy
+Best:;100%;0.9518;0.0048;0.9576
+Last:;1%;0.9518;0.0048;0.9576
+

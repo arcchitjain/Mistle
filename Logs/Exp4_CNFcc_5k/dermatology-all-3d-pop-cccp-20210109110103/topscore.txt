@@ -1,0 +1,2 @@
+dermatology;all;3;d;pop;cccp;20210109110103;abs;0.9690;0.9153
+dermatology;all;3;d;pop;cccp;20210109110103;rel;0.9690;0.9153

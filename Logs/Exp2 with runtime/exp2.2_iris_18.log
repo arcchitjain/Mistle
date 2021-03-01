@@ -1,0 +1,89 @@
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 51
+ Total time ~: 3 ms
+ Max memory:7.562202453613281
+=====================================
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 3
+ Total time ~: 1 ms
+ Max memory:7.565773010253906
+=====================================
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 40
+ Total time ~: 3 ms
+ Max memory:7.5620574951171875
+=====================================
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 11
+ Total time ~: 1 ms
+ Max memory:7.562202453613281
+=====================================
+Length of freq items 1	: 51
+Time of freq items 1	: 0.3140602111816406
+88 Frequent Itemsets are mined in 0.0009357929229736328 seconds.
+Length of freq items 2	: 88
+Time of freq items 2	: 0.0009698867797851562
+1  violations of +ve partial assignments found for the learned theory.
+Violating Clauses	:{frozenset({-6, -14, -10, -17})}
+DL of initial theory	: 855.3651110909857
+12	itemsets left after T operation 	: [frozenset({-14, -17})]
+7	itemsets left after T operation 	: [frozenset({-15, -12, -2})]
+4	itemsets left after T operation 	: [frozenset({-16, -14})]
+2	itemsets left after T operation 	: [frozenset({-15, -12})]
+0	itemsets left after T operation 	: [frozenset({-14})]
+Length of freq items 1	: 3
+Time of freq items 1	: 0.3053410053253174
+11 Frequent Itemsets are mined in 0.00014019012451171875 seconds.
+Length of freq items 2	: 11
+Time of freq items 2	: 0.00016570091247558594
+0 clauses are pruned.
+Initial DL				: 2480.042496735852
+Final DL				: 165.303997448279
+Compression (wrt me)	: 0.9333463044823439
+Operator Counters		: {'D': 0, 'W': 0, 'V': 0, 'S': 0, 'R': 0, 'T': 5}
+Length of freq items 1	: 40
+Time of freq items 1	: 0.29717493057250977
+71 Frequent Itemsets are mined in 0.0006399154663085938 seconds.
+Length of freq items 2	: 71
+Time of freq items 2	: 0.0006659030914306641
+1  violations of +ve partial assignments found for the learned theory.
+Violating Clauses	:{frozenset({-6, -14, -10, -17})}
+DL of initial theory	: 855.3651110909857
+8	itemsets left after T operation 	: [frozenset({-16, -13})]
+Length of freq items 1	: 11
+Time of freq items 1	: 0.3211789131164551
+27 Frequent Itemsets are mined in 0.00029206275939941406 seconds.
+Length of freq items 2	: 27
+Time of freq items 2	: 0.0003199577331542969
+0 clauses are pruned.
+Initial DL				: 2480.042496735852
+Final DL				: 154.87317777592824
+Compression (wrt me)	: 0.9375522080852376
+Operator Counters		: {'D': 0, 'W': 0, 'V': 0, 'S': 0, 'R': 0, 'T': 1}
+
+Dataset	: iris_18.dat;	Missingness Parameter	: 0.1
+Mistle Accuracy = 0.35 ; 1.0 ; 0.0 ; 0.65 / 40
+CNFAlgo Accuracy 2 = 41/49 = 0.8367346938775511
+CNFAlgo Accuracy 3 = 36/49 = 0.7346938775510204
+
+
+dataset = iris_18.dat with minsup = 0.006666666666666667
+missingness_parameters = [0.1]
+mistle_accuracy_list1 = [0.35]
+mistle_accuracy_list2 = [1.0]
+mistle_accuracy_list3 = [0.0]
+mistle_accuracy_list4 = [0.65]
+mistle_clauses_list = [8]
+mistle_literals_list = [25]
+cnfalgo_accuracy_list2 = [0.8367346938775511]
+cnfalgo_accuracy_list3 = [0.7346938775510204]
+cnfalgo_clauses_list = [766]
+cnfalgo_literals_list = [2485]
+train_data_literals_list = [420]
+randomized_accuracy_list = [0.4722222222222222]
+mistle runtime = 1.2575981616973877
+cnfalgo runtime = 0.07161188125610352

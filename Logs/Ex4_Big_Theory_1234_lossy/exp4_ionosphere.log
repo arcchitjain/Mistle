@@ -1,0 +1,805 @@
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: 'eaf88853-4563-4101-9335-5dcb0bba7ee9_convertdb.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * Type:		FIMI database
+ * File:		ionosphere.dat
+ * Scanning file:	in progress... * Scanning file: done                       
+ * Database:	351 rows, maximal 35 columns
+ * 		has bin sizes: no
+ * 		has transaction id's: no
+ * Reading database:	in progress... * Reading database:	done          
+
+ * Processing Data:  * Processing Data: Translating Forward * Processing Data: Sorting within Rows * Processing Data: Writing Data              ** Writing FIC database to file
+ * File:		/home/arcchitjain/Documents/Mistle/Data/ionosphere.db
+** Finished writing database.
+
+ * Processing Data: Finished                  
+
+ * Check results in:	/home/arcchitjain/Documents/Mistle/Output/xps/
+
+Task `datatrans`, command `convertdb` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: 'ad053915-8d1e-40e8-a08a-6a50363f1d7a_analysedb.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * File:		ionosphere.db
+ * Database:		351t 351r, 12285i, 81629.72bits
+ * 			pruned below support 0, maximum set length 35
+ * Alphabet:		157 items
+ * Internal datatype:	uint16 value arrays
+
+** Analysing database
+ * Output File:	ionosphere.db.analysis.txt
+ * Writing analysis:	in progress... * Writing analysis:	done          
+
+
+ * Check results in:	/home/arcchitjain/Documents/Mistle/Output/xps/analysedb/
+
+Task `main`, command `analysedb` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: '4319dcde-6b99-4b51-8dee-08972132f01c_classifycompress.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * File:		ionosphere.db
+ * Database:		351t 351r, 12285i, 81629.72bits
+ * 			pruned below support 0, maximum set length 35
+ * Alphabet:		157 items
+ * Internal datatype:	32bit bitmap array
+
+** Classification ::
+ * Seed:				1234
+ * numFolds:			10
+ * Split database:		creating 10 partitions
+ * Creating:			fold 1
+** Writing FIC database to file
+ * File:		test.db
+** Finished writing database.
+
+** Writing FIC database to file
+ * File:		train.db
+** Finished writing database.
+
+ * Compressing:			fold 1
+** Writing FIC database to file
+ * File:		train12.db
+** Finished writing database.
+
+** ItemSetCollection ::
+** Creating Frequent Item Set Collection.
+ * File:		ionosphere-all-88d.bisc.fi
+ * Type:		FIMI
+ * Has # rows:		no
+ * # ItemSets:		50227
+ * Sorting sets:	in progress... * Sorting sets:	sorted on support and descending on length
+** Finished Creating Frequent Item Set Collection
+
+
+ * Start:		(152a,0u,6936,43234,2660,45894)
+ - Progress:		0% (0) ? c/s  		 \ Progress:		1% (503) ? c/s  		 | Progress:		2% (1005) ? c/s  		 / Progress:		3% (1507) ? c/s  		 - Progress:		4% (2010) ? c/s  		 \ Progress:		5% (2512) ? c/s  		 | Progress:		6% (3014) ? c/s  		 / Progress:		7% (3516) ? c/s  		 - Progress:		8% (4019) ? c/s  		 \ Progress:		9% (4521) ? c/s  		 \ Progress:		9% (5000) 5000 c/s (0s +/- 9s)                         | Progress:		10% (5023) 5000 c/s (0s +/- 9s)                        / Progress:		11% (5525) 5000 c/s (0s +/- 8s)                        - Progress:		12% (6028) 5000 c/s (0s +/- 8s)                        \ Progress:		13% (6530) 5000 c/s (0s +/- 8s)                        | Progress:		14% (7032) 5000 c/s (0s +/- 8s)                        / Progress:		15% (7535) 5000 c/s (1s +/- 8s)                        - Progress:		16% (8037) 5000 c/s (1s +/- 8s)                        \ Progress:		17% (8539) 5000 c/s (1s +/- 8s)                        | Progress:		18% (9041) 5000 c/s (1s +/- 8s)                        / Progress:		19% (9544) 5000 c/s (1s +/- 8s)                        - Progress:		20% (10046) 5000 c/s (1s +/- 8s)                       \ Progress:		21% (10548) 5000 c/s (1s +/- 7s)                       | Progress:		22% (11050) 5000 c/s (1s +/- 7s)                       / Progress:		23% (11553) 5000 c/s (1s +/- 7s)                       - Progress:		24% (12055) 5000 c/s (1s +/- 7s)                       \ Progress:		25% (12557) 5000 c/s (1s +/- 7s)                       | Progress:		26% (13060) 5000 c/s (1s +/- 7s)                       / Progress:		27% (13562) 5000 c/s (1s +/- 7s)                       - Progress:		28% (14064) 5000 c/s (1s +/- 7s)                       \ Progress:		29% (14566) 5000 c/s (1s +/- 7s)                       | Progress:		30% (15069) 5000 c/s (1s +/- 7s)                       / Progress:		31% (15571) 5000 c/s (1s +/- 6s)                       - Progress:		32% (16073) 5000 c/s (1s +/- 6s)                       \ Progress:		33% (16575) 5000 c/s (1s +/- 6s)                       | Progress:		34% (17078) 5000 c/s (1s +/- 6s)                       / Progress:		35% (17580) 5000 c/s (1s +/- 6s)                       - Progress:		36% (18082) 5000 c/s (1s +/- 6s)                       \ Progress:		37% (18584) 5000 c/s (1s +/- 6s)                       | Progress:		38% (19087) 5000 c/s (1s +/- 6s)                       / Progress:		39% (19589) 5000 c/s (1s +/- 6s)                       - Progress:		40% (20091) 5000 c/s (1s +/- 6s)                       \ Progress:		41% (20594) 5000 c/s (1s +/- 5s)                       | Progress:		42% (21096) 5000 c/s (1s +/- 5s)                       / Progress:		43% (21598) 5000 c/s (1s +/- 5s)                       - Progress:		44% (22100) 5000 c/s (1s +/- 5s)                       \ Progress:		45% (22603) 5000 c/s (1s +/- 5s)                       | Progress:		46% (23105) 5000 c/s (1s +/- 5s)                       / Progress:		47% (23607) 5000 c/s (1s +/- 5s)                       - Progress:		48% (24109) 5000 c/s (1s +/- 5s)                       \ Progress:		49% (24612) 5000 c/s (1s +/- 5s)                       | Progress:		50% (25114) 5000 c/s (1s +/- 5s)                       / Progress:		51% (25616) 5000 c/s (1s +/- 4s)                       - Progress:		52% (26119) 5000 c/s (1s +/- 4s)                       \ Progress:		53% (26621) 5000 c/s (1s +/- 4s)                       | Progress:		54% (27123) 5000 c/s (1s +/- 4s)                       / Progress:		55% (27625) 5000 c/s (1s +/- 4s)                       - Progress:		56% (28128) 5000 c/s (1s +/- 4s)                       \ Progress:		57% (28630) 5000 c/s (1s +/- 4s)                       | Progress:		58% (29132) 5000 c/s (1s +/- 4s)                       / Progress:		59% (29634) 5000 c/s (1s +/- 4s)                       - Progress:		60% (30137) 5000 c/s (1s +/- 4s)                       \ Progress:		61% (30639) 5000 c/s (1s +/- 3s)                       | Progress:		62% (31141) 5000 c/s (1s +/- 3s)                       / Progress:		63% (31644) 5000 c/s (1s +/- 3s)                       - Progress:		64% (32146) 5000 c/s (1s +/- 3s)                       \ Progress:		65% (32648) 5000 c/s (1s +/- 3s)                       | Progress:		66% (33150) 5000 c/s (1s +/- 3s)                       / Progress:		67% (33653) 5000 c/s (1s +/- 3s)                       - Progress:		68% (34155) 5000 c/s (1s +/- 3s)                       \ Progress:		69% (34657) 5000 c/s (1s +/- 3s)                       | Progress:		70% (35159) 5000 c/s (1s +/- 3s)                       / Progress:		71% (35662) 5000 c/s (1s +/- 2s)                       - Progress:		72% (36164) 5000 c/s (1s +/- 2s)                       \ Progress:		73% (36666) 5000 c/s (1s +/- 2s)                       | Progress:		74% (37168) 5000 c/s (1s +/- 2s)                       / Progress:		75% (37671) 5000 c/s (1s +/- 2s)                       - Progress:		76% (38173) 5000 c/s (1s +/- 2s)                       \ Progress:		77% (38675) 5000 c/s (1s +/- 2s)                       | Progress:		78% (39178) 5000 c/s (1s +/- 2s)                       / Progress:		79% (39680) 5000 c/s (1s +/- 2s)                       - Progress:		80% (40182) 5000 c/s (1s +/- 2s)                       \ Progress:		81% (40684) 5000 c/s (1s +/- 1s)                       | Progress:		82% (41187) 5000 c/s (1s +/- 1s)                       / Progress:		83% (41689) 5000 c/s (1s +/- 1s)                       - Progress:		84% (42191) 5000 c/s (1s +/- 1s)                       \ Progress:		85% (42693) 5000 c/s (1s +/- 1s)                       | Progress:		86% (43196) 5000 c/s (1s +/- 1s)                       / Progress:		87% (43698) 5000 c/s (1s +/- 1s)                       - Progress:		88% (44200) 5000 c/s (1s +/- 1s)                       \ Progress:		89% (44703) 5000 c/s (1s +/- 1s)                       | Progress:		90% (45205) 5000 c/s (1s +/- 1s)                       / Progress:		91% (45707) 5000 c/s (1s +/- <1s)                      - Progress:		92% (46209) 5000 c/s (1s +/- <1s)                      \ Progress:		93% (46712) 5000 c/s (1s +/- <1s)                      | Progress:		94% (47214) 5000 c/s (1s +/- <1s)                      / Progress:		95% (47716) 5000 c/s (1s +/- <1s)                      - Progress:		96% (48218) 5000 c/s (1s +/- <1s)                      \ Progress:		97% (48721) 5000 c/s (1s +/- <1s)                      | Progress:		98% (49223) 5000 c/s (1s +/- <1s)                      / Progress:		99% (49725) 5000 c/s (1s +/- <1s)                      * Time:    		Compressing the database took 1.064027 seconds.		
+ * Result:		(144a,44u,3968,26021,3999,30020)
+** Writing FIC database to file
+ * File:		train36.db
+** Finished writing database.
+
+** ItemSetCollection ::
+** Creating Frequent Item Set Collection.
+ * File:		ionosphere-all-88d.bisc.fi
+ * Type:		FIMI
+ * Has # rows:		no
+ * # ItemSets:		3
+ * Sorting sets:	in progress... * Sorting sets:	sorted on support and descending on length
+** Finished Creating Frequent Item Set Collection
+
+
+ * Start:		(148a,0u,3774,25590,2308,27898)
+ - Progress:		0% (0) ? c/s  		 \ Progress:		33% (1) ? c/s  		 | Progress:		66% (2) ? c/s  		 * Time:    		Compressing the database took 0.006543 seconds.		
+ * Result:		(147a,1u,3680,25024,2311,27334)
+ * Creating:			fold 2
+** Writing FIC database to file
+ * File:		test.db
+** Finished writing database.
+
+** Writing FIC database to file
+ * File:		train.db
+** Finished writing database.
+
+ * Compressing:			fold 2
+** Writing FIC database to file
+ * File:		train12.db
+** Finished writing database.
+
+** ItemSetCollection ::
+** Creating Frequent Item Set Collection.
+ * File:		ionosphere-all-88d.bisc.fi
+ * Type:		FIMI
+ * Has # rows:		no
+ * # ItemSets:		72927
+ * Sorting sets:	in progress... * Sorting sets:	sorted on support and descending on length
+** Finished Creating Frequent Item Set Collection
+
+
+ * Start:		(152a,0u,6800,42233,2671,44905)
+ - Progress:		0% (0) ? c/s  		 \ Progress:		1% (730) ? c/s  		 | Progress:		2% (1459) ? c/s  		 / Progress:		3% (2188) ? c/s  		 - Progress:		4% (2918) ? c/s  		 \ Progress:		5% (3647) ? c/s  		 | Progress:		6% (4376) ? c/s  		 | Progress:		6% (5000) 5000 c/s (0s +/- 13s)                        / Progress:		7% (5105) 5000 c/s (0s +/- 13s)                        - Progress:		8% (5835) 5000 c/s (0s +/- 13s)                        \ Progress:		9% (6564) 5000 c/s (0s +/- 13s)                        | Progress:		10% (7293) 5000 c/s (0s +/- 13s)                       / Progress:		11% (8022) 5000 c/s (0s +/- 12s)                       - Progress:		12% (8752) 5000 c/s (0s +/- 12s)                       \ Progress:		13% (9481) 5000 c/s (0s +/- 12s)                       | Progress:		14% (10210) 5000 c/s (0s +/- 12s)                      / Progress:		15% (10940) 5000 c/s (0s +/- 12s)                      - Progress:		16% (11669) 5000 c/s (0s +/- 12s)                      \ Progress:		17% (12398) 5000 c/s (0s +/- 12s)                      | Progress:		18% (13127) 5000 c/s (0s +/- 11s)                      / Progress:		19% (13857) 5000 c/s (0s +/- 11s)                      - Progress:		20% (14586) 5000 c/s (0s +/- 11s)                      \ Progress:		21% (15315) 5000 c/s (0s +/- 11s)                      | Progress:		22% (16044) 5000 c/s (0s +/- 11s)                      / Progress:		23% (16774) 5000 c/s (0s +/- 11s)                      - Progress:		24% (17503) 5000 c/s (0s +/- 11s)                      \ Progress:		25% (18232) 5000 c/s (0s +/- 10s)                      | Progress:		26% (18962) 5000 c/s (0s +/- 10s)                      / Progress:		27% (19691) 5000 c/s (0s +/- 10s)                      - Progress:		28% (20420) 5000 c/s (0s +/- 10s)                      \ Progress:		29% (21149) 5000 c/s (0s +/- 10s)                      | Progress:		30% (21879) 5000 c/s (0s +/- 10s)                      / Progress:		31% (22608) 5000 c/s (0s +/- 10s)                      - Progress:		32% (23337) 5000 c/s (0s +/- 9s)                       \ Progress:		33% (24066) 5000 c/s (0s +/- 9s)                       | Progress:		34% (24796) 5000 c/s (0s +/- 9s)                       / Progress:		35% (25525) 5000 c/s (0s +/- 9s)                       - Progress:		36% (26254) 5000 c/s (0s +/- 9s)                       \ Progress:		37% (26983) 5000 c/s (0s +/- 9s)                       | Progress:		38% (27713) 5000 c/s (0s +/- 9s)                       / Progress:		39% (28442) 5000 c/s (0s +/- 8s)                       - Progress:		40% (29171) 5000 c/s (0s +/- 8s)                       \ Progress:		41% (29901) 5000 c/s (0s +/- 8s)                       | Progress:		42% (30630) 5000 c/s (0s +/- 8s)                       / Progress:		43% (31359) 5000 c/s (0s +/- 8s)                       - Progress:		44% (32088) 5000 c/s (1s +/- 8s)                       \ Progress:		45% (32818) 5000 c/s (1s +/- 8s)                       | Progress:		46% (33547) 5000 c/s (1s +/- 7s)                       / Progress:		47% (34276) 5000 c/s (1s +/- 7s)                       - Progress:		48% (35005) 5000 c/s (1s +/- 7s)                       \ Progress:		49% (35735) 5000 c/s (1s +/- 7s)                       | Progress:		50% (36464) 5000 c/s (1s +/- 7s)                       / Progress:		51% (37193) 5000 c/s (1s +/- 7s)                       - Progress:		52% (37923) 5000 c/s (1s +/- 7s)                       \ Progress:		53% (38652) 5000 c/s (1s +/- 6s)                       | Progress:		54% (39381) 5000 c/s (1s +/- 6s)                       / Progress:		55% (40110) 5000 c/s (1s +/- 6s)                       - Progress:		56% (40840) 5000 c/s (1s +/- 6s)                       \ Progress:		57% (41569) 5000 c/s (1s +/- 6s)                       | Progress:		58% (42298) 5000 c/s (1s +/- 6s)                       / Progress:		59% (43027) 5000 c/s (1s +/- 5s)                       - Progress:		60% (43757) 5000 c/s (1s +/- 5s)                       \ Progress:		61% (44486) 5000 c/s (1s +/- 5s)                       | Progress:		62% (45215) 5000 c/s (1s +/- 5s)                       / Progress:		63% (45945) 5000 c/s (1s +/- 5s)                       - Progress:		64% (46674) 5000 c/s (1s +/- 5s)                       \ Progress:		65% (47403) 5000 c/s (1s +/- 5s)                       | Progress:		66% (48132) 5000 c/s (1s +/- 4s)                       / Progress:		67% (48862) 5000 c/s (1s +/- 4s)                       - Progress:		68% (49591) 5000 c/s (1s +/- 4s)                       \ Progress:		69% (50320) 5000 c/s (1s +/- 4s)                       | Progress:		70% (51049) 5000 c/s (1s +/- 4s)                       / Progress:		71% (51779) 5000 c/s (1s +/- 4s)                       - Progress:		72% (52508) 5000 c/s (1s +/- 4s)                       \ Progress:		73% (53237) 5000 c/s (1s +/- 3s)                       | Progress:		74% (53966) 5000 c/s (1s +/- 3s)                       / Progress:		75% (54696) 5000 c/s (1s +/- 3s)                       - Progress:		76% (55425) 5000 c/s (1s +/- 3s)                       \ Progress:		77% (56154) 5000 c/s (1s +/- 3s)                       | Progress:		78% (56884) 5000 c/s (2s +/- 3s)                       / Progress:		79% (57613) 5000 c/s (2s +/- 3s)                       - Progress:		80% (58342) 5000 c/s (2s +/- 2s)                       \ Progress:		81% (59071) 5000 c/s (2s +/- 2s)                       | Progress:		82% (59801) 5000 c/s (2s +/- 2s)                       / Progress:		83% (60530) 5000 c/s (2s +/- 2s)                       - Progress:		84% (61259) 5000 c/s (2s +/- 2s)                       \ Progress:		85% (61988) 5000 c/s (2s +/- 2s)                       | Progress:		86% (62718) 5000 c/s (2s +/- 2s)                       / Progress:		87% (63447) 5000 c/s (2s +/- 1s)                       - Progress:		88% (64176) 5000 c/s (2s +/- 1s)                       \ Progress:		89% (64906) 5000 c/s (2s +/- 1s)                       | Progress:		90% (65635) 5000 c/s (2s +/- 1s)                       / Progress:		91% (66364) 5000 c/s (2s +/- 1s)                       - Progress:		92% (67093) 5000 c/s (2s +/- 1s)                       \ Progress:		93% (67823) 5000 c/s (2s +/- 1s)                       | Progress:		94% (68552) 5000 c/s (2s +/- <1s)                      / Progress:		95% (69281) 5000 c/s (2s +/- <1s)                      - Progress:		96% (70010) 5000 c/s (2s +/- <1s)                      \ Progress:		97% (70740) 5000 c/s (2s +/- <1s)                      | Progress:		98% (71469) 5000 c/s (2s +/- <1s)                      / Progress:		99% (72198) 5000 c/s (2s +/- <1s)                      * Time:    		Compressing the database took 2.656243 seconds.		
+ * Result:		(145a,39u,3850,25252,3809,29062)
+** Writing FIC database to file
+ * File:		train36.db
+** Finished writing database.
+
+** ItemSetCollection ::
+** Creating Frequent Item Set Collection.
+ * File:		ionosphere-all-88d.bisc.fi
+ * Type:		FIMI
+ * Has # rows:		no
+ * # ItemSets:		3
+ * Sorting sets:	in progress... * Sorting sets:	sorted on support and descending on length
+** Finished Creating Frequent Item Set Collection
+
+
+ * Start:		(150a,0u,3910,26614,2346,28960)
+ - Progress:		0% (0) ? c/s  		 \ Progress:		33% (1) ? c/s  		 | Progress:		66% (2) ? c/s  		 * Time:    		Compressing the database took 0.006492 seconds.		
+ * Result:		(149a,1u,3820,26083,2348,28431)
+ * Creating:			fold 3
+** Writing FIC database to file
+ * File:		test.db
+** Finished writing database.
+
+** Writing FIC database to file
+ * File:		train.db
+** Finished writing database.
+
+ * Compressing:			fold 3
+** Writing FIC database to file
+ * File:		train12.db
+** Finished writing database.
+
+** ItemSetCollection ::
+** Creating Frequent Item Set Collection.
+ * File:		ionosphere-all-88d.bisc.fi
+ * Type:		FIMI
+ * Has # rows:		no
+ * # ItemSets:		95523
+ * Sorting sets:	in progress... * Sorting sets:	sorted on support and descending on length
+** Finished Creating Frequent Item Set Collection
+
+
+ * Start:		(151a,0u,6970,43271,2657,45928)
+ - Progress:		0% (0) ? c/s  		 \ Progress:		1% (956) ? c/s  		 | Progress:		2% (1911) ? c/s  		 / Progress:		3% (2866) ? c/s  		 - Progress:		4% (3821) ? c/s  		 \ Progress:		5% (4777) ? c/s  		 \ Progress:		5% (5000) 5000 c/s (1s +/- 18s)                        | Progress:		6% (5732) 5000 c/s (1s +/- 17s)                        / Progress:		7% (6687) 5000 c/s (1s +/- 17s)                        - Progress:		8% (7642) 5000 c/s (1s +/- 17s)                        \ Progress:		9% (8598) 5000 c/s (1s +/- 17s)                        | Progress:		10% (9553) 5000 c/s (1s +/- 17s)                       / Progress:		11% (10508) 5000 c/s (1s +/- 17s)                      - Progress:		12% (11463) 5000 c/s (1s +/- 16s)                      \ Progress:		13% (12418) 5000 c/s (1s +/- 16s)                      | Progress:		14% (13374) 5000 c/s (1s +/- 16s)                      / Progress:		15% (14329) 5000 c/s (1s +/- 16s)                      - Progress:		16% (15284) 5000 c/s (1s +/- 16s)                      \ Progress:		17% (16239) 5000 c/s (1s +/- 15s)                      | Progress:		18% (17195) 5000 c/s (1s +/- 15s)                      / Progress:		19% (18150) 5000 c/s (1s +/- 15s)                      - Progress:		20% (19105) 5000 c/s (1s +/- 15s)                      \ Progress:		21% (20060) 5000 c/s (1s +/- 15s)                      | Progress:		22% (21016) 5000 c/s (1s +/- 14s)                      / Progress:		23% (21971) 5000 c/s (1s +/- 14s)                      - Progress:		24% (22926) 5000 c/s (1s +/- 14s)                      \ Progress:		25% (23881) 5000 c/s (1s +/- 14s)                      | Progress:		26% (24836) 5000 c/s (1s +/- 14s)                      / Progress:		27% (25792) 5000 c/s (1s +/- 13s)                      - Progress:		28% (26747) 5000 c/s (1s +/- 13s)                      \ Progress:		29% (27702) 5000 c/s (1s +/- 13s)                      | Progress:		30% (28657) 5000 c/s (1s +/- 13s)                      / Progress:		31% (29613) 5000 c/s (1s +/- 13s)                      - Progress:		32% (30568) 5000 c/s (1s +/- 12s)                      \ Progress:		33% (31523) 5000 c/s (1s +/- 12s)                      | Progress:		34% (32478) 5000 c/s (1s +/- 12s)                      / Progress:		35% (33434) 5000 c/s (1s +/- 12s)                      - Progress:		36% (34389) 5000 c/s (1s +/- 12s)                      \ Progress:		37% (35344) 5000 c/s (1s +/- 12s)                      | Progress:		38% (36299) 5000 c/s (1s +/- 11s)                      / Progress:		39% (37254) 5000 c/s (1s +/- 11s)                      - Progress:		40% (38210) 5000 c/s (1s +/- 11s)                      \ Progress:		41% (39165) 5000 c/s (1s +/- 11s)                      | Progress:		42% (40120) 5000 c/s (1s +/- 11s)                      / Progress:		43% (41075) 5000 c/s (1s +/- 10s)                      - Progress:		44% (42031) 5000 c/s (1s +/- 10s)                      \ Progress:		45% (42986) 5000 c/s (2s +/- 10s)                      | Progress:		46% (43941) 5000 c/s (2s +/- 10s)                      / Progress:		47% (44896) 5000 c/s (2s +/- 10s)                      - Progress:		48% (45852) 5000 c/s (2s +/- 9s)                       \ Progress:		49% (46807) 5000 c/s (2s +/- 9s)                       | Progress:		50% (47762) 5000 c/s (2s +/- 9s)                       / Progress:		51% (48717) 5000 c/s (2s +/- 9s)                       - Progress:		52% (49672) 5000 c/s (2s +/- 9s)                       \ Progress:		53% (50628) 5000 c/s (2s +/- 8s)                       | Progress:		54% (51583) 5000 c/s (2s +/- 8s)                       / Progress:		55% (52538) 5000 c/s (2s +/- 8s)                       - Progress:		56% (53493) 5000 c/s (2s +/- 8s)                       \ Progress:		57% (54449) 5000 c/s (2s +/- 8s)                       | Progress:		58% (55404) 5000 c/s (2s +/- 8s)                       / Progress:		59% (56359) 5000 c/s (2s +/- 7s)                       - Progress:		60% (57314) 5000 c/s (2s +/- 7s)                       \ Progress:		61% (58270) 5000 c/s (3s +/- 7s)                       | Progress:		62% (59225) 5000 c/s (3s +/- 7s)                       / Progress:		63% (60180) 5000 c/s (3s +/- 7s)                       - Progress:		64% (61135) 5000 c/s (3s +/- 6s)                       \ Progress:		65% (62090) 5000 c/s (3s +/- 6s)                       | Progress:		66% (63046) 5000 c/s (3s +/- 6s)                       / Progress:		67% (64001) 5000 c/s (3s +/- 6s)                       - Progress:		68% (64956) 5000 c/s (3s +/- 6s)                       \ Progress:		69% (65911) 5000 c/s (3s +/- 5s)                       | Progress:		70% (66867) 5000 c/s (3s +/- 5s)                       / Progress:		71% (67822) 5000 c/s (3s +/- 5s)                       - Progress:		72% (68777) 5000 c/s (3s +/- 5s)                       \ Progress:		73% (69732) 5000 c/s (3s +/- 5s)                       | Progress:		74% (70688) 5000 c/s (3s +/- 4s)                       / Progress:		75% (71643) 5000 c/s (3s +/- 4s)                       - Progress:		76% (72598) 5000 c/s (3s +/- 4s)                       \ Progress:		77% (73553) 5000 c/s (3s +/- 4s)                       | Progress:		78% (74508) 5000 c/s (4s +/- 4s)                       / Progress:		79% (75464) 5000 c/s (4s +/- 4s)                       - Progress:		80% (76419) 5000 c/s (4s +/- 3s)                       \ Progress:		81% (77374) 5000 c/s (4s +/- 3s)                       | Progress:		82% (78329) 5000 c/s (4s +/- 3s)                       / Progress:		83% (79285) 5000 c/s (4s +/- 3s)                       - Progress:		84% (80240) 5000 c/s (4s +/- 3s)                       \ Progress:		85% (81195) 5000 c/s (4s +/- 2s)                       | Progress:		86% (82150) 5000 c/s (4s +/- 2s)                       / Progress:		87% (83106) 5000 c/s (4s +/- 2s)                       - Progress:		88% (84061) 5000 c/s (4s +/- 2s)                       \ Progress:		89% (85016) 5000 c/s (4s +/- 2s)                       | Progress:		90% (85971) 5000 c/s (4s +/- 1s)                       / Progress:		91% (86926) 5000 c/s (5s +/- 1s)                       - Progress:		92% (87882) 5000 c/s (5s +/- 1s)                       \ Progress:		93% (88837) 5000 c/s (5s +/- 1s)                       | Progress:		94% (89792) 5000 c/s (5s +/- 1s)                       / Progress:		95% (90747) 5000 c/s (5s +/- <1s)                      - Progress:		96% (91703) 5000 c/s (5s +/- <1s)                      \ Progress:		97% (92658) 5000 c/s (5s +/- <1s)                      | Progress:		98% (93613) 5000 c/s (5s +/- <1s)                      / Progress:		99% (94568) 5000 c/s (5s +/- <1s)                      * Time:    		Compressing the database took 4.595314 seconds.		
+ * Result:		(143a,45u,3893,25684,3956,29640)
+** Writing FIC database to file
+ * File:		train36.db
+** Finished writing database.
+
+** ItemSetCollection ::
+** Creating Frequent Item Set Collection.
+ * File:		ionosphere-all-88d.bisc.fi
+ * Type:		FIMI
+ * Has # rows:		no
+ * # ItemSets:		3
+ * Sorting sets:	in progress... * Sorting sets:	sorted on support and descending on length
+** Finished Creating Frequent Item Set Collection
+
+
+ * Start:		(150a,0u,3740,25391,2349,27741)
+ - Progress:		0% (0) ? c/s  		 \ Progress:		33% (1) ? c/s  		 | Progress:		66% (2) ? c/s  		 * Time:    		Compressing the database took 0.006705 seconds.		
+ * Result:		(149a,1u,3652,24869,2352,27221)
+ * Creating:			fold 4
+** Writing FIC database to file
+ * File:		test.db
+** Finished writing database.
+
+** Writing FIC database to file
+ * File:		train.db
+** Finished writing database.
+
+ * Compressing:			fold 4
+** Writing FIC database to file
+ * File:		train12.db
+** Finished writing database.
+
+** ItemSetCollection ::
+** Creating Frequent Item Set Collection.
+ * File:		ionosphere-all-88d.bisc.fi
+ * Type:		FIMI
+ * Has # rows:		no
+ * # ItemSets:		76811
+ * Sorting sets:	in progress... * Sorting sets:	sorted on support and descending on length
+** Finished Creating Frequent Item Set Collection
+
+
+ * Start:		(152a,0u,7038,43755,2676,46431)
+ - Progress:		0% (0) ? c/s  		 \ Progress:		1% (769) ? c/s  		 | Progress:		2% (1537) ? c/s  		 / Progress:		3% (2305) ? c/s  		 - Progress:		4% (3073) ? c/s  		 \ Progress:		5% (3841) ? c/s  		 | Progress:		6% (4609) ? c/s  		 | Progress:		6% (5000) 5000 c/s (0s +/- 14s)                        / Progress:		7% (5377) 5000 c/s (0s +/- 14s)                        - Progress:		8% (6145) 5000 c/s (0s +/- 14s)                        \ Progress:		9% (6913) 5000 c/s (0s +/- 13s)                        | Progress:		10% (7682) 5000 c/s (0s +/- 13s)                       / Progress:		11% (8450) 5000 c/s (0s +/- 13s)                       - Progress:		12% (9218) 5000 c/s (0s +/- 13s)                       \ Progress:		13% (9986) 5000 c/s (0s +/- 13s)                       | Progress:		14% (10754) 5000 c/s (0s +/- 13s)                      / Progress:		15% (11522) 5000 c/s (0s +/- 13s)                      - Progress:		16% (12290) 5000 c/s (0s +/- 12s)                      \ Progress:		17% (13058) 5000 c/s (0s +/- 12s)                      | Progress:		18% (13826) 5000 c/s (0s +/- 12s)                      / Progress:		19% (14595) 5000 c/s (0s +/- 12s)                      - Progress:		20% (15363) 5000 c/s (0s +/- 12s)                      \ Progress:		21% (16131) 5000 c/s (0s +/- 12s)                      | Progress:		22% (16899) 5000 c/s (0s +/- 11s)                      / Progress:		23% (17667) 5000 c/s (0s +/- 11s)                      - Progress:		24% (18435) 5000 c/s (0s +/- 11s)                      \ Progress:		25% (19203) 5000 c/s (0s +/- 11s)                      | Progress:		26% (19971) 5000 c/s (0s +/- 11s)                      / Progress:		27% (20739) 5000 c/s (0s +/- 11s)                      - Progress:		28% (21508) 5000 c/s (0s +/- 11s)                      \ Progress:		29% (22276) 5000 c/s (0s +/- 10s)                      | Progress:		30% (23044) 5000 c/s (1s +/- 10s)                      / Progress:		31% (23812) 5000 c/s (1s +/- 10s)                      - Progress:		32% (24580) 5000 c/s (1s +/- 10s)                      \ Progress:		33% (25348) 5000 c/s (1s +/- 10s)                      | Progress:		34% (26116) 5000 c/s (1s +/- 10s)                      / Progress:		35% (26884) 5000 c/s (1s +/- 9s)                       - Progress:		36% (27652) 5000 c/s (1s +/- 9s)                       \ Progress:		37% (28421) 5000 c/s (1s +/- 9s)                       | Progress:		38% (29189) 5000 c/s (1s +/- 9s)                       / Progress:		39% (29957) 5000 c/s (1s +/- 9s)                       - Progress:		40% (30725) 5000 c/s (1s +/- 9s)                       \ Progress:		41% (31493) 5000 c/s (1s +/- 9s)                       | Progress:		42% (32261) 5000 c/s (1s +/- 8s)                       / Progress:		43% (33029) 5000 c/s (1s +/- 8s)                       - Progress:		44% (33797) 5000 c/s (1s +/- 8s)                       \ Progress:		45% (34565) 5000 c/s (1s +/- 8s)                       | Progress:		46% (35334) 5000 c/s (1s +/- 8s)                       / Progress:		47% (36102) 5000 c/s (1s +/- 8s)                       - Progress:		48% (36870) 5000 c/s (1s +/- 7s)                       \ Progress:		49% (37638) 5000 c/s (1s +/- 7s)                       | Progress:		50% (38406) 5000 c/s (1s +/- 7s)                       / Progress:		51% (39174) 5000 c/s (1s +/- 7s)                       - Progress:		52% (39942) 5000 c/s (1s +/- 7s)                       \ Progress:		53% (40710) 5000 c/s (1s +/- 7s)                       | Progress:		54% (41478) 5000 c/s (1s +/- 7s)                       / Progress:		55% (42247) 5000 c/s (1s +/- 6s)                       - Progress:		56% (43015) 5000 c/s (1s +/- 6s)                       \ Progress:		57% (43783) 5000 c/s (1s +/- 6s)                       | Progress:		58% (44551) 5000 c/s (1s +/- 6s)                       / Progress:		59% (45319) 5000 c/s (1s +/- 6s)                       - Progress:		60% (46087) 5000 c/s (2s +/- 6s)                       \ Progress:		61% (46855) 5000 c/s (2s +/- 5s)                       | Progress:		62% (47623) 5000 c/s (2s +/- 5s)                       / Progress:		63% (48391) 5000 c/s (2s +/- 5s)                       - Progress:		64% (49160) 5000 c/s (2s +/- 5s)                       \ Progress:		65% (49928) 5000 c/s (2s +/- 5s)                       | Progress:		66% (50696) 5000 c/s (2s +/- 5s)                       / Progress:		67% (51464) 5000 c/s (2s +/- 5s)                       - Progress:		68% (52232) 5000 c/s (2s +/- 4s)                       \ Progress:		69% (53000) 5000 c/s (2s +/- 4s)                       | Progress:		70% (53768) 5000 c/s (2s +/- 4s)                       / Progress:		71% (54536) 5000 c/s (2s +/- 4s)                       - Progress:		72% (55304) 5000 c/s (2s +/- 4s)                       \ Progress:		73% (56073) 5000 c/s (2s +/- 4s)                       | Progress:		74% (56841) 5000 c/s (2s +/- 3s)                       / Progress:		75% (57609) 5000 c/s (2s +/- 3s)                       - Progress:		76% (58377) 5000 c/s (2s +/- 3s)                       \ Progress:		77% (59145) 5000 c/s (2s +/- 3s)                       | Progress:		78% (59913) 5000 c/s (2s +/- 3s)                       / Progress:		79% (60681) 5000 c/s (2s +/- 3s)                       - Progress:		80% (61449) 5000 c/s (2s +/- 3s)                       \ Progress:		81% (62217) 5000 c/s (2s +/- 2s)                       | Progress:		82% (62986) 5000 c/s (2s +/- 2s)                       / Progress:		83% (63754) 5000 c/s (2s +/- 2s)                       - Progress:		84% (64522) 5000 c/s (2s +/- 2s)                       \ Progress:		85% (65290) 5000 c/s (2s +/- 2s)                       | Progress:		86% (66058) 5000 c/s (2s +/- 2s)                       / Progress:		87% (66826) 5000 c/s (2s +/- 1s)                       - Progress:		88% (67594) 5000 c/s (3s +/- 1s)                       \ Progress:		89% (68362) 5000 c/s (3s +/- 1s)                       | Progress:		90% (69130) 5000 c/s (3s +/- 1s)                       / Progress:		91% (69899) 5000 c/s (3s +/- 1s)                       - Progress:		92% (70667) 5000 c/s (3s +/- 1s)                       \ Progress:		93% (71435) 5000 c/s (3s +/- 1s)                       | Progress:		94% (72203) 5000 c/s (3s +/- <1s)                      / Progress:		95% (72971) 5000 c/s (3s +/- <1s)                      - Progress:		96% (73739) 5000 c/s (3s +/- <1s)                      \ Progress:		97% (74507) 5000 c/s (3s +/- <1s)                      | Progress:		98% (75275) 5000 c/s (3s +/- <1s)                      / Progress:		99% (76043) 5000 c/s (3s +/- <1s)                      * Time:    		Compressing the database took 2.662352 seconds.		
+ * Result:		(146a,44u,3975,26048,4025,30072)
+** Writing FIC database to file
+ * File:		train36.db
+** Finished writing database.
+
+** ItemSetCollection ::
+** Creating Frequent Item Set Collection.
+ * File:		ionosphere-all-88d.bisc.fi
+ * Type:		FIMI
+ * Has # rows:		no
+ * # ItemSets:		1
+ * Sorting sets:	in progress... * Sorting sets:	sorted on support and descending on length
+** Finished Creating Frequent Item Set Collection
+
+
+ * Start:		(150a,0u,3672,24983,2347,27330)
+ - Progress:		0% (0) ? c/s  		 * Time:    		Compressing the database took 0.006468 seconds.		
+ * Result:		(150a,0u,3672,24983,2347,27330)
+ * Creating:			fold 5
+** Writing FIC database to file
+ * File:		test.db
+** Finished writing database.
+
+** Writing FIC database to file
+ * File:		train.db
+** Finished writing database.
+
+ * Compressing:			fold 5
+** Writing FIC database to file
+ * File:		train12.db
+** Finished writing database.
+
+** ItemSetCollection ::
+** Creating Frequent Item Set Collection.
+ * File:		ionosphere-all-88d.bisc.fi
+ * Type:		FIMI
+ * Has # rows:		no
+ * # ItemSets:		55791
+ * Sorting sets:	in progress... * Sorting sets:	sorted on support and descending on length
+** Finished Creating Frequent Item Set Collection
+
+
+ * Start:		(149a,0u,6834,42451,2601,45052)
+ - Progress:		0% (0) ? c/s  		 \ Progress:		1% (558) ? c/s  		 | Progress:		2% (1116) ? c/s  		 / Progress:		3% (1674) ? c/s  		 - Progress:		4% (2232) ? c/s  		 \ Progress:		5% (2790) ? c/s  		 | Progress:		6% (3348) ? c/s  		 / Progress:		7% (3906) ? c/s  		 - Progress:		8% (4464) ? c/s  		 - Progress:		8% (5000) 5000 c/s (1s +/- 10s)                        \ Progress:		9% (5022) 5000 c/s (1s +/- 10s)                        | Progress:		10% (5580) 5000 c/s (1s +/- 10s)                       / Progress:		11% (6138) 5000 c/s (1s +/- 9s)                        - Progress:		12% (6695) 5000 c/s (1s +/- 9s)                        \ Progress:		13% (7253) 5000 c/s (1s +/- 9s)                        | Progress:		14% (7811) 5000 c/s (1s +/- 9s)                        / Progress:		15% (8369) 5000 c/s (1s +/- 9s)                        - Progress:		16% (8927) 5000 c/s (1s +/- 9s)                        \ Progress:		17% (9485) 5000 c/s (1s +/- 9s)                        | Progress:		18% (10043) 5000 c/s (1s +/- 9s)                       / Progress:		19% (10601) 5000 c/s (1s +/- 9s)                       - Progress:		20% (11159) 5000 c/s (1s +/- 8s)                       \ Progress:		21% (11717) 5000 c/s (1s +/- 8s)                       | Progress:		22% (12275) 5000 c/s (1s +/- 8s)                       / Progress:		23% (12832) 5000 c/s (1s +/- 8s)                       - Progress:		24% (13390) 5000 c/s (1s +/- 8s)                       \ Progress:		25% (13948) 5000 c/s (1s +/- 8s)                       | Progress:		26% (14506) 5000 c/s (1s +/- 8s)                       / Progress:		27% (15064) 5000 c/s (1s +/- 8s)                       - Progress:		28% (15622) 5000 c/s (1s +/- 8s)                       \ Progress:		29% (16180) 5000 c/s (1s +/- 7s)                       | Progress:		30% (16738) 5000 c/s (1s +/- 7s)                       / Progress:		31% (17296) 5000 c/s (1s +/- 7s)                       - Progress:		32% (17854) 5000 c/s (1s +/- 7s)                       \ Progress:		33% (18412) 5000 c/s (1s +/- 7s)                       | Progress:		34% (18969) 5000 c/s (1s +/- 7s)                       / Progress:		35% (19527) 5000 c/s (1s +/- 7s)                       - Progress:		36% (20085) 5000 c/s (1s +/- 7s)                       \ Progress:		37% (20643) 5000 c/s (1s +/- 7s)                       | Progress:		38% (21201) 5000 c/s (1s +/- 6s)                       / Progress:		39% (21759) 5000 c/s (1s +/- 6s)                       - Progress:		40% (22317) 5000 c/s (1s +/- 6s)                       \ Progress:		41% (22875) 5000 c/s (1s +/- 6s)                       | Progress:		42% (23433) 5000 c/s (1s +/- 6s)                       / Progress:		43% (23991) 5000 c/s (1s +/- 6s)                       - Progress:		44% (24549) 5000 c/s (1s +/- 6s)                       \ Progress:		45% (25106) 5000 c/s (1s +/- 6s)                       | Progress:		46% (25664) 5000 c/s (1s +/- 6s)                       / Progress:		47% (26222) 5000 c/s (1s +/- 5s)                       - Progress:		48% (26780) 5000 c/s (1s +/- 5s)                       \ Progress:		49% (27338) 5000 c/s (1s +/- 5s)                       | Progress:		50% (27896) 5000 c/s (1s +/- 5s)                       / Progress:		51% (28454) 5000 c/s (1s +/- 5s)                       - Progress:		52% (29012) 5000 c/s (1s +/- 5s)                       \ Progress:		53% (29570) 5000 c/s (1s +/- 5s)                       | Progress:		54% (30128) 5000 c/s (1s +/- 5s)                       / Progress:		55% (30686) 5000 c/s (1s +/- 5s)                       - Progress:		56% (31243) 5000 c/s (1s +/- 4s)                       \ Progress:		57% (31801) 5000 c/s (1s +/- 4s)                       | Progress:		58% (32359) 5000 c/s (1s +/- 4s)                       / Progress:		59% (32917) 5000 c/s (1s +/- 4s)                       - Progress:		60% (33475) 5000 c/s (1s +/- 4s)                       \ Progress:		61% (34033) 5000 c/s (1s +/- 4s)                       | Progress:		62% (34591) 5000 c/s (1s +/- 4s)                       / Progress:		63% (35149) 5000 c/s (1s +/- 4s)                       - Progress:		64% (35707) 5000 c/s (1s +/- 4s)                       \ Progress:		65% (36265) 5000 c/s (1s +/- 3s)                       | Progress:		66% (36823) 5000 c/s (1s +/- 3s)                       / Progress:		67% (37380) 5000 c/s (1s +/- 3s)                       - Progress:		68% (37938) 5000 c/s (1s +/- 3s)                       \ Progress:		69% (38496) 5000 c/s (1s +/- 3s)                       | Progress:		70% (39054) 5000 c/s (1s +/- 3s)                       / Progress:		71% (39612) 5000 c/s (1s +/- 3s)                       - Progress:		72% (40170) 5000 c/s (1s +/- 3s)                       \ Progress:		73% (40728) 5000 c/s (1s +/- 3s)                       | Progress:		74% (41286) 5000 c/s (1s +/- 2s)                       / Progress:		75% (41844) 5000 c/s (1s +/- 2s)                       - Progress:		76% (42402) 5000 c/s (1s +/- 2s)                       \ Progress:		77% (42960) 5000 c/s (1s +/- 2s)                       | Progress:		78% (43517) 5000 c/s (1s +/- 2s)                       / Progress:		79% (44075) 5000 c/s (1s +/- 2s)                       - Progress:		80% (44633) 5000 c/s (1s +/- 2s)                       \ Progress:		81% (45191) 5000 c/s (1s +/- 2s)                       | Progress:		82% (45749) 5000 c/s (1s +/- 2s)                       / Progress:		83% (46307) 5000 c/s (1s +/- 1s)                       - Progress:		84% (46865) 5000 c/s (1s +/- 1s)                       \ Progress:		85% (47423) 5000 c/s (1s +/- 1s)                       | Progress:		86% (47981) 5000 c/s (1s +/- 1s)                       / Progress:		87% (48539) 5000 c/s (1s +/- 1s)                       - Progress:		88% (49097) 5000 c/s (1s +/- 1s)                       \ Progress:		89% (49654) 5000 c/s (1s +/- 1s)                       | Progress:		90% (50212) 5000 c/s (1s +/- 1s)                       / Progress:		91% (50770) 5000 c/s (1s +/- 1s)                       - Progress:		92% (51328) 5000 c/s (1s +/- <1s)                      \ Progress:		93% (51886) 5000 c/s (1s +/- <1s)                      | Progress:		94% (52444) 5000 c/s (1s +/- <1s)                      / Progress:		95% (53002) 5000 c/s (1s +/- <1s)                      - Progress:		96% (53560) 5000 c/s (1s +/- <1s)                      \ Progress:		97% (54118) 5000 c/s (1s +/- <1s)                      | Progress:		98% (54676) 5000 c/s (1s +/- <1s)                      / Progress:		99% (55234) 5000 c/s (1s +/- <1s)                      * Time:    		Compressing the database took 0.713786 seconds.		
+ * Result:		(142a,46u,3931,25899,3901,29799)
+** Writing FIC database to file
+ * File:		train36.db
+** Finished writing database.
+
+** ItemSetCollection ::
+** Creating Frequent Item Set Collection.
+ * File:		ionosphere-all-88d.bisc.fi
+ * Type:		FIMI
+ * Has # rows:		no
+ * # ItemSets:		3
+ * Sorting sets:	in progress... * Sorting sets:	sorted on support and descending on length
+** Finished Creating Frequent Item Set Collection
+
+
+ * Start:		(150a,0u,3876,26361,2346,28707)
+ - Progress:		0% (0) ? c/s  		 \ Progress:		33% (1) ? c/s  		 | Progress:		66% (2) ? c/s  		 * Time:    		Compressing the database took 0.006700 seconds.		
+ * Result:		(149a,1u,3787,25836,2349,28184)
+ * Creating:			fold 6
+** Writing FIC database to file
+ * File:		test.db
+** Finished writing database.
+
+** Writing FIC database to file
+ * File:		train.db
+** Finished writing database.
+
+ * Compressing:			fold 6
+** Writing FIC database to file
+ * File:		train12.db
+** Finished writing database.
+
+** ItemSetCollection ::
+** Creating Frequent Item Set Collection.
+ * File:		ionosphere-all-88d.bisc.fi
+ * Type:		FIMI
+ * Has # rows:		no
+ * # ItemSets:		71411
+ * Sorting sets:	in progress... * Sorting sets:	sorted on support and descending on length
+** Finished Creating Frequent Item Set Collection
+
+
+ * Start:		(152a,0u,6664,41321,2686,44007)
+ - Progress:		0% (0) ? c/s  		 \ Progress:		1% (715) ? c/s  		 | Progress:		2% (1429) ? c/s  		 / Progress:		3% (2143) ? c/s  		 - Progress:		4% (2857) ? c/s  		 \ Progress:		5% (3571) ? c/s  		 | Progress:		6% (4285) ? c/s  		 / Progress:		7% (4999) ? c/s  		 / Progress:		7% (5000) 5000 c/s (0s +/- 13s)                        - Progress:		8% (5713) 5000 c/s (0s +/- 13s)                        \ Progress:		9% (6427) 5000 c/s (0s +/- 12s)                        | Progress:		10% (7142) 5000 c/s (0s +/- 12s)                       / Progress:		11% (7856) 5000 c/s (0s +/- 12s)                       - Progress:		12% (8570) 5000 c/s (0s +/- 12s)                       \ Progress:		13% (9284) 5000 c/s (0s +/- 12s)                       | Progress:		14% (9998) 5000 c/s (0s +/- 12s)                       / Progress:		15% (10712) 5000 c/s (0s +/- 12s)                      - Progress:		16% (11426) 5000 c/s (0s +/- 11s)                      \ Progress:		17% (12140) 5000 c/s (0s +/- 11s)                      | Progress:		18% (12854) 5000 c/s (0s +/- 11s)                      / Progress:		19% (13569) 5000 c/s (0s +/- 11s)                      - Progress:		20% (14283) 5000 c/s (0s +/- 11s)                      \ Progress:		21% (14997) 5000 c/s (0s +/- 11s)                      | Progress:		22% (15711) 5000 c/s (0s +/- 11s)                      / Progress:		23% (16425) 5000 c/s (0s +/- 10s)                      - Progress:		24% (17139) 5000 c/s (0s +/- 10s)                      \ Progress:		25% (17853) 5000 c/s (0s +/- 10s)                      | Progress:		26% (18567) 5000 c/s (1s +/- 10s)                      / Progress:		27% (19281) 5000 c/s (1s +/- 10s)                      - Progress:		28% (19996) 5000 c/s (1s +/- 10s)                      \ Progress:		29% (20710) 5000 c/s (1s +/- 10s)                      | Progress:		30% (21424) 5000 c/s (1s +/- 9s)                       / Progress:		31% (22138) 5000 c/s (1s +/- 9s)                       - Progress:		32% (22852) 5000 c/s (1s +/- 9s)                       \ Progress:		33% (23566) 5000 c/s (1s +/- 9s)                       | Progress:		34% (24280) 5000 c/s (1s +/- 9s)                       / Progress:		35% (24994) 5000 c/s (1s +/- 9s)                       - Progress:		36% (25708) 5000 c/s (1s +/- 9s)                       \ Progress:		37% (26423) 5000 c/s (1s +/- 8s)                       | Progress:		38% (27137) 5000 c/s (1s +/- 8s)                       / Progress:		39% (27851) 5000 c/s (1s +/- 8s)                       - Progress:		40% (28565) 5000 c/s (1s +/- 8s)                       \ Progress:		41% (29279) 5000 c/s (1s +/- 8s)                       | Progress:		42% (29993) 5000 c/s (1s +/- 8s)                       / Progress:		43% (30707) 5000 c/s (1s +/- 8s)                       - Progress:		44% (31421) 5000 c/s (1s +/- 7s)                       \ Progress:		45% (32135) 5000 c/s (1s +/- 7s)                       | Progress:		46% (32850) 5000 c/s (1s +/- 7s)                       / Progress:		47% (33564) 5000 c/s (1s +/- 7s)                       - Progress:		48% (34278) 5000 c/s (1s +/- 7s)                       \ Progress:		49% (34992) 5000 c/s (1s +/- 7s)                       | Progress:		50% (35706) 5000 c/s (1s +/- 7s)                       / Progress:		51% (36420) 5000 c/s (1s +/- 6s)                       - Progress:		52% (37134) 5000 c/s (1s +/- 6s)                       \ Progress:		53% (37848) 5000 c/s (1s +/- 6s)                       | Progress:		54% (38562) 5000 c/s (1s +/- 6s)                       / Progress:		55% (39277) 5000 c/s (1s +/- 6s)                       - Progress:		56% (39991) 5000 c/s (1s +/- 6s)                       \ Progress:		57% (40705) 5000 c/s (1s +/- 6s)                       | Progress:		58% (41419) 5000 c/s (1s +/- 5s)                       / Progress:		59% (42133) 5000 c/s (1s +/- 5s)                       - Progress:		60% (42847) 5000 c/s (1s +/- 5s)                       \ Progress:		61% (43561) 5000 c/s (2s +/- 5s)                       | Progress:		62% (44275) 5000 c/s (2s +/- 5s)                       / Progress:		63% (44989) 5000 c/s (2s +/- 5s)                       - Progress:		64% (45704) 5000 c/s (2s +/- 5s)                       \ Progress:		65% (46418) 5000 c/s (2s +/- 4s)                       | Progress:		66% (47132) 5000 c/s (2s +/- 4s)                       / Progress:		67% (47846) 5000 c/s (2s +/- 4s)                       - Progress:		68% (48560) 5000 c/s (2s +/- 4s)                       \ Progress:		69% (49274) 5000 c/s (2s +/- 4s)                       | Progress:		70% (49988) 5000 c/s (2s +/- 4s)                       / Progress:		71% (50702) 5000 c/s (2s +/- 4s)                       - Progress:		72% (51416) 5000 c/s (2s +/- 3s)                       \ Progress:		73% (52131) 5000 c/s (2s +/- 3s)                       | Progress:		74% (52845) 5000 c/s (2s +/- 3s)                       / Progress:		75% (53559) 5000 c/s (2s +/- 3s)                       - Progress:		76% (54273) 5000 c/s (2s +/- 3s)                       \ Progress:		77% (54987) 5000 c/s (2s +/- 3s)                       | Progress:		78% (55701) 5000 c/s (2s +/- 3s)                       / Progress:		79% (56415) 5000 c/s (2s +/- 2s)                       - Progress:		80% (57129) 5000 c/s (2s +/- 2s)                       \ Progress:		81% (57843) 5000 c/s (2s +/- 2s)                       | Progress:		82% (58558) 5000 c/s (2s +/- 2s)                       / Progress:		83% (59272) 5000 c/s (2s +/- 2s)                       - Progress:		84% (59986) 5000 c/s (2s +/- 2s)                       \ Progress:		85% (60700) 5000 c/s (2s +/- 2s)                       | Progress:		86% (61414) 5000 c/s (2s +/- 1s)                       / Progress:		87% (62128) 5000 c/s (2s +/- 1s)                       - Progress:		88% (62842) 5000 c/s (2s +/- 1s)                       \ Progress:		89% (63556) 5000 c/s (3s +/- 1s)                       | Progress:		90% (64270) 5000 c/s (3s +/- 1s)                       / Progress:		91% (64985) 5000 c/s (3s +/- 1s)                       - Progress:		92% (65699) 5000 c/s (3s +/- 1s)                       \ Progress:		93% (66413) 5000 c/s (3s +/- <1s)                      | Progress:		94% (67127) 5000 c/s (3s +/- <1s)                      / Progress:		95% (67841) 5000 c/s (3s +/- <1s)                      - Progress:		96% (68555) 5000 c/s (3s +/- <1s)                      \ Progress:		97% (69269) 5000 c/s (3s +/- <1s)                      | Progress:		98% (69983) 5000 c/s (3s +/- <1s)                      / Progress:		99% (70697) 5000 c/s (3s +/- <1s)                      * Time:    		Compressing the database took 2.720137 seconds.		
+ * Result:		(143a,37u,3750,24437,3740,28178)
+** Writing FIC database to file
+ * File:		train36.db
+** Finished writing database.
+
+** ItemSetCollection ::
+** Creating Frequent Item Set Collection.
+ * File:		ionosphere-all-88d.bisc.fi
+ * Type:		FIMI
+ * Has # rows:		no
+ * # ItemSets:		3
+ * Sorting sets:	in progress... * Sorting sets:	sorted on support and descending on length
+** Finished Creating Frequent Item Set Collection
+
+
+ * Start:		(150a,0u,4046,27483,2349,29832)
+ - Progress:		0% (0) ? c/s  		 \ Progress:		33% (1) ? c/s  		 | Progress:		66% (2) ? c/s  		 * Time:    		Compressing the database took 0.005874 seconds.		
+ * Result:		(149a,1u,3950,26913,2351,29264)
+ * Creating:			fold 7
+** Writing FIC database to file
+ * File:		test.db
+** Finished writing database.
+
+** Writing FIC database to file
+ * File:		train.db
+** Finished writing database.
+
+ * Compressing:			fold 7
+** Writing FIC database to file
+ * File:		train12.db
+** Finished writing database.
+
+** ItemSetCollection ::
+** Creating Frequent Item Set Collection.
+ * File:		ionosphere-all-88d.bisc.fi
+ * Type:		FIMI
+ * Has # rows:		no
+ * # ItemSets:		53075
+ * Sorting sets:	in progress... * Sorting sets:	sorted on support and descending on length
+** Finished Creating Frequent Item Set Collection
+
+
+ * Start:		(152a,0u,6902,43012,2662,45673)
+ - Progress:		0% (0) ? c/s  		 \ Progress:		1% (531) ? c/s  		 | Progress:		2% (1062) ? c/s  		 / Progress:		3% (1593) ? c/s  		 - Progress:		4% (2123) ? c/s  		 \ Progress:		5% (2654) ? c/s  		 | Progress:		6% (3185) ? c/s  		 / Progress:		7% (3716) ? c/s  		 - Progress:		8% (4246) ? c/s  		 \ Progress:		9% (4777) ? c/s  		 \ Progress:		9% (5000) 5000 c/s (0s +/- 9s)                         | Progress:		10% (5308) 5000 c/s (0s +/- 9s)                        / Progress:		11% (5839) 5000 c/s (0s +/- 9s)                        - Progress:		12% (6369) 5000 c/s (0s +/- 9s)                        \ Progress:		13% (6900) 5000 c/s (0s +/- 9s)                        | Progress:		14% (7431) 5000 c/s (0s +/- 9s)                        / Progress:		15% (7962) 5000 c/s (0s +/- 9s)                        - Progress:		16% (8492) 5000 c/s (0s +/- 8s)                        \ Progress:		17% (9023) 5000 c/s (0s +/- 8s)                        | Progress:		18% (9554) 5000 c/s (0s +/- 8s)                        / Progress:		19% (10085) 5000 c/s (0s +/- 8s)                       - Progress:		20% (10615) 5000 c/s (0s +/- 8s)                       \ Progress:		21% (11146) 5000 c/s (0s +/- 8s)                       | Progress:		22% (11677) 5000 c/s (0s +/- 8s)                       / Progress:		23% (12208) 5000 c/s (0s +/- 8s)                       - Progress:		24% (12738) 5000 c/s (0s +/- 8s)                       \ Progress:		25% (13269) 5000 c/s (0s +/- 7s)                       | Progress:		26% (13800) 5000 c/s (0s +/- 7s)                       / Progress:		27% (14331) 5000 c/s (0s +/- 7s)                       - Progress:		28% (14861) 5000 c/s (0s +/- 7s)                       \ Progress:		29% (15392) 5000 c/s (0s +/- 7s)                       | Progress:		30% (15923) 5000 c/s (0s +/- 7s)                       / Progress:		31% (16454) 5000 c/s (0s +/- 7s)                       - Progress:		32% (16984) 5000 c/s (0s +/- 7s)                       \ Progress:		33% (17515) 5000 c/s (0s +/- 7s)                       | Progress:		34% (18046) 5000 c/s (0s +/- 7s)                       / Progress:		35% (18577) 5000 c/s (0s +/- 6s)                       - Progress:		36% (19107) 5000 c/s (0s +/- 6s)                       \ Progress:		37% (19638) 5000 c/s (0s +/- 6s)                       | Progress:		38% (20169) 5000 c/s (0s +/- 6s)                       / Progress:		39% (20700) 5000 c/s (0s +/- 6s)                       - Progress:		40% (21230) 5000 c/s (0s +/- 6s)                       \ Progress:		41% (21761) 5000 c/s (0s +/- 6s)                       | Progress:		42% (22292) 5000 c/s (0s +/- 6s)                       / Progress:		43% (22823) 5000 c/s (0s +/- 6s)                       - Progress:		44% (23353) 5000 c/s (0s +/- 5s)                       \ Progress:		45% (23884) 5000 c/s (0s +/- 5s)                       | Progress:		46% (24415) 5000 c/s (0s +/- 5s)                       / Progress:		47% (24946) 5000 c/s (0s +/- 5s)                       - Progress:		48% (25476) 5000 c/s (0s +/- 5s)                       \ Progress:		49% (26007) 5000 c/s (0s +/- 5s)                       | Progress:		50% (26538) 5000 c/s (0s +/- 5s)                       / Progress:		51% (27069) 5000 c/s (0s +/- 5s)                       - Progress:		52% (27599) 5000 c/s (0s +/- 5s)                       \ Progress:		53% (28130) 5000 c/s (0s +/- 4s)                       | Progress:		54% (28661) 5000 c/s (0s +/- 4s)                       / Progress:		55% (29192) 5000 c/s (0s +/- 4s)                       - Progress:		56% (29722) 5000 c/s (0s +/- 4s)                       \ Progress:		57% (30253) 5000 c/s (0s +/- 4s)                       | Progress:		58% (30784) 5000 c/s (1s +/- 4s)                       / Progress:		59% (31315) 5000 c/s (1s +/- 4s)                       - Progress:		60% (31845) 5000 c/s (1s +/- 4s)                       \ Progress:		61% (32376) 5000 c/s (1s +/- 4s)                       | Progress:		62% (32907) 5000 c/s (1s +/- 4s)                       / Progress:		63% (33438) 5000 c/s (1s +/- 3s)                       - Progress:		64% (33968) 5000 c/s (1s +/- 3s)                       \ Progress:		65% (34499) 5000 c/s (1s +/- 3s)                       | Progress:		66% (35030) 5000 c/s (1s +/- 3s)                       / Progress:		67% (35561) 5000 c/s (1s +/- 3s)                       - Progress:		68% (36091) 5000 c/s (1s +/- 3s)                       \ Progress:		69% (36622) 5000 c/s (1s +/- 3s)                       | Progress:		70% (37153) 5000 c/s (1s +/- 3s)                       / Progress:		71% (37684) 5000 c/s (1s +/- 3s)                       - Progress:		72% (38214) 5000 c/s (1s +/- 2s)                       \ Progress:		73% (38745) 5000 c/s (1s +/- 2s)                       | Progress:		74% (39276) 5000 c/s (1s +/- 2s)                       / Progress:		75% (39807) 5000 c/s (1s +/- 2s)                       - Progress:		76% (40337) 5000 c/s (1s +/- 2s)                       \ Progress:		77% (40868) 5000 c/s (1s +/- 2s)                       | Progress:		78% (41399) 5000 c/s (1s +/- 2s)                       / Progress:		79% (41930) 5000 c/s (1s +/- 2s)                       - Progress:		80% (42460) 5000 c/s (1s +/- 2s)                       \ Progress:		81% (42991) 5000 c/s (1s +/- 2s)                       | Progress:		82% (43522) 5000 c/s (1s +/- 1s)                       / Progress:		83% (44053) 5000 c/s (1s +/- 1s)                       - Progress:		84% (44583) 5000 c/s (1s +/- 1s)                       \ Progress:		85% (45114) 5000 c/s (1s +/- 1s)                       | Progress:		86% (45645) 5000 c/s (1s +/- 1s)                       / Progress:		87% (46176) 5000 c/s (1s +/- 1s)                       - Progress:		88% (46706) 5000 c/s (1s +/- 1s)                       \ Progress:		89% (47237) 5000 c/s (1s +/- 1s)                       | Progress:		90% (47768) 5000 c/s (1s +/- 1s)                       / Progress:		91% (48299) 5000 c/s (1s +/- <1s)                      - Progress:		92% (48829) 5000 c/s (1s +/- <1s)                      \ Progress:		93% (49360) 5000 c/s (1s +/- <1s)                      | Progress:		94% (49891) 5000 c/s (1s +/- <1s)                      / Progress:		95% (50422) 5000 c/s (1s +/- <1s)                      - Progress:		96% (50952) 5000 c/s (1s +/- <1s)                      \ Progress:		97% (51483) 5000 c/s (1s +/- <1s)                      | Progress:		98% (52014) 5000 c/s (1s +/- <1s)                      / Progress:		99% (52545) 5000 c/s (1s +/- <1s)                      * Time:    		Compressing the database took 1.812795 seconds.		
+ * Result:		(144a,42u,3993,26169,3824,29992)
+** Writing FIC database to file
+ * File:		train36.db
+** Finished writing database.
+
+** ItemSetCollection ::
+** Creating Frequent Item Set Collection.
+ * File:		ionosphere-all-88d.bisc.fi
+ * Type:		FIMI
+ * Has # rows:		no
+ * # ItemSets:		3
+ * Sorting sets:	in progress... * Sorting sets:	sorted on support and descending on length
+** Finished Creating Frequent Item Set Collection
+
+
+ * Start:		(148a,0u,3808,25798,2308,28106)
+ - Progress:		0% (0) ? c/s  		 \ Progress:		33% (1) ? c/s  		 | Progress:		66% (2) ? c/s  		 * Time:    		Compressing the database took 0.006727 seconds.		
+ * Result:		(147a,1u,3715,25241,2310,27552)
+ * Creating:			fold 8
+** Writing FIC database to file
+ * File:		test.db
+** Finished writing database.
+
+** Writing FIC database to file
+ * File:		train.db
+** Finished writing database.
+
+ * Compressing:			fold 8
+** Writing FIC database to file
+ * File:		train12.db
+** Finished writing database.
+
+** ItemSetCollection ::
+** Creating Frequent Item Set Collection.
+ * File:		ionosphere-all-88d.bisc.fi
+ * Type:		FIMI
+ * Has # rows:		no
+ * # ItemSets:		36287
+ * Sorting sets:	in progress... * Sorting sets:	sorted on support and descending on length
+** Finished Creating Frequent Item Set Collection
+
+
+ * Start:		(151a,0u,6732,41853,2660,44513)
+ - Progress:		0% (0) ? c/s  		 \ Progress:		1% (363) ? c/s  		 | Progress:		2% (726) ? c/s  		 / Progress:		3% (1089) ? c/s  		 - Progress:		4% (1452) ? c/s  		 \ Progress:		5% (1815) ? c/s  		 | Progress:		6% (2178) ? c/s  		 / Progress:		7% (2541) ? c/s  		 - Progress:		8% (2903) ? c/s  		 \ Progress:		9% (3266) ? c/s  		 | Progress:		10% (3629) ? c/s  		 / Progress:		11% (3992) ? c/s  		 - Progress:		12% (4355) ? c/s  		 \ Progress:		13% (4718) ? c/s  		 \ Progress:		13% (5000) 5000 c/s (0s +/- 6s)                        | Progress:		14% (5081) 5000 c/s (0s +/- 6s)                        / Progress:		15% (5444) 5000 c/s (0s +/- 6s)                        - Progress:		16% (5806) 5000 c/s (0s +/- 6s)                        \ Progress:		17% (6169) 5000 c/s (0s +/- 6s)                        | Progress:		18% (6532) 5000 c/s (0s +/- 5s)                        / Progress:		19% (6895) 5000 c/s (0s +/- 5s)                        - Progress:		20% (7258) 5000 c/s (0s +/- 5s)                        \ Progress:		21% (7621) 5000 c/s (0s +/- 5s)                        | Progress:		22% (7984) 5000 c/s (0s +/- 5s)                        / Progress:		23% (8347) 5000 c/s (0s +/- 5s)                        - Progress:		24% (8709) 5000 c/s (0s +/- 5s)                        \ Progress:		25% (9072) 5000 c/s (0s +/- 5s)                        | Progress:		26% (9435) 5000 c/s (0s +/- 5s)                        / Progress:		27% (9798) 5000 c/s (0s +/- 5s)                        - Progress:		28% (10161) 5000 c/s (0s +/- 5s)                       \ Progress:		29% (10524) 5000 c/s (0s +/- 5s)                       | Progress:		30% (10887) 5000 c/s (0s +/- 5s)                       / Progress:		31% (11249) 5000 c/s (0s +/- 5s)                       - Progress:		32% (11612) 5000 c/s (0s +/- 4s)                       \ Progress:		33% (11975) 5000 c/s (0s +/- 4s)                       | Progress:		34% (12338) 5000 c/s (0s +/- 4s)                       / Progress:		35% (12701) 5000 c/s (0s +/- 4s)                       - Progress:		36% (13064) 5000 c/s (0s +/- 4s)                       \ Progress:		37% (13427) 5000 c/s (0s +/- 4s)                       | Progress:		38% (13790) 5000 c/s (0s +/- 4s)                       / Progress:		39% (14152) 5000 c/s (0s +/- 4s)                       - Progress:		40% (14515) 5000 c/s (0s +/- 4s)                       \ Progress:		41% (14878) 5000 c/s (0s +/- 4s)                       | Progress:		42% (15241) 5000 c/s (0s +/- 4s)                       / Progress:		43% (15604) 5000 c/s (0s +/- 4s)                       - Progress:		44% (15967) 5000 c/s (0s +/- 4s)                       \ Progress:		45% (16330) 5000 c/s (0s +/- 3s)                       | Progress:		46% (16693) 5000 c/s (0s +/- 3s)                       / Progress:		47% (17055) 5000 c/s (0s +/- 3s)                       - Progress:		48% (17418) 5000 c/s (0s +/- 3s)                       \ Progress:		49% (17781) 5000 c/s (0s +/- 3s)                       | Progress:		50% (18144) 5000 c/s (0s +/- 3s)                       / Progress:		51% (18507) 5000 c/s (0s +/- 3s)                       - Progress:		52% (18870) 5000 c/s (0s +/- 3s)                       \ Progress:		53% (19233) 5000 c/s (0s +/- 3s)                       | Progress:		54% (19595) 5000 c/s (0s +/- 3s)                       / Progress:		55% (19958) 5000 c/s (0s +/- 3s)                       - Progress:		56% (20321) 5000 c/s (0s +/- 3s)                       \ Progress:		57% (20684) 5000 c/s (0s +/- 3s)                       | Progress:		58% (21047) 5000 c/s (0s +/- 3s)                       / Progress:		59% (21410) 5000 c/s (0s +/- 2s)                       - Progress:		60% (21773) 5000 c/s (0s +/- 2s)                       \ Progress:		61% (22136) 5000 c/s (0s +/- 2s)                       | Progress:		62% (22498) 5000 c/s (0s +/- 2s)                       / Progress:		63% (22861) 5000 c/s (0s +/- 2s)                       - Progress:		64% (23224) 5000 c/s (0s +/- 2s)                       \ Progress:		65% (23587) 5000 c/s (0s +/- 2s)                       | Progress:		66% (23950) 5000 c/s (0s +/- 2s)                       / Progress:		67% (24313) 5000 c/s (0s +/- 2s)                       - Progress:		68% (24676) 5000 c/s (0s +/- 2s)                       \ Progress:		69% (25039) 5000 c/s (0s +/- 2s)                       | Progress:		70% (25401) 5000 c/s (0s +/- 2s)                       / Progress:		71% (25764) 5000 c/s (0s +/- 2s)                       - Progress:		72% (26127) 5000 c/s (0s +/- 2s)                       \ Progress:		73% (26490) 5000 c/s (0s +/- 1s)                       | Progress:		74% (26853) 5000 c/s (0s +/- 1s)                       / Progress:		75% (27216) 5000 c/s (0s +/- 1s)                       - Progress:		76% (27579) 5000 c/s (0s +/- 1s)                       \ Progress:		77% (27941) 5000 c/s (0s +/- 1s)                       | Progress:		78% (28304) 5000 c/s (0s +/- 1s)                       / Progress:		79% (28667) 5000 c/s (0s +/- 1s)                       - Progress:		80% (29030) 5000 c/s (0s +/- 1s)                       \ Progress:		81% (29393) 5000 c/s (0s +/- 1s)                       | Progress:		82% (29756) 5000 c/s (0s +/- 1s)                       / Progress:		83% (30119) 5000 c/s (0s +/- 1s)                       - Progress:		84% (30482) 5000 c/s (0s +/- 1s)                       \ Progress:		85% (30844) 5000 c/s (0s +/- 1s)                       | Progress:		86% (31207) 5000 c/s (0s +/- 1s)                       / Progress:		87% (31570) 5000 c/s (0s +/- <1s)                      - Progress:		88% (31933) 5000 c/s (1s +/- <1s)                      \ Progress:		89% (32296) 5000 c/s (1s +/- <1s)                      | Progress:		90% (32659) 5000 c/s (1s +/- <1s)                      / Progress:		91% (33022) 5000 c/s (1s +/- <1s)                      - Progress:		92% (33385) 5000 c/s (1s +/- <1s)                      \ Progress:		93% (33747) 5000 c/s (1s +/- <1s)                      | Progress:		94% (34110) 5000 c/s (1s +/- <1s)                      / Progress:		95% (34473) 5000 c/s (1s +/- <1s)                      - Progress:		96% (34836) 5000 c/s (1s +/- <1s)                      \ Progress:		97% (35199) 5000 c/s (1s +/- <1s)                      | Progress:		98% (35562) 5000 c/s (1s +/- <1s)                      / Progress:		99% (35925) 5000 c/s (1s +/- <1s)                      * Time:    		Compressing the database took 0.725095 seconds.		
+ * Result:		(146a,35u,3906,25510,3723,29233)
+** Writing FIC database to file
+ * File:		train36.db
+** Finished writing database.
+
+** ItemSetCollection ::
+** Creating Frequent Item Set Collection.
+ * File:		ionosphere-all-88d.bisc.fi
+ * Type:		FIMI
+ * Has # rows:		no
+ * # ItemSets:		3
+ * Sorting sets:	in progress... * Sorting sets:	sorted on support and descending on length
+** Finished Creating Frequent Item Set Collection
+
+
+ * Start:		(150a,0u,3978,27032,2348,29380)
+ - Progress:		0% (0) ? c/s  		 \ Progress:		33% (1) ? c/s  		 | Progress:		66% (2) ? c/s  		 * Time:    		Compressing the database took 0.006814 seconds.		
+ * Result:		(149a,1u,3885,26481,2350,28831)
+ * Creating:			fold 9
+** Writing FIC database to file
+ * File:		test.db
+** Finished writing database.
+
+** Writing FIC database to file
+ * File:		train.db
+** Finished writing database.
+
+ * Compressing:			fold 9
+** Writing FIC database to file
+ * File:		train12.db
+** Finished writing database.
+
+** ItemSetCollection ::
+** Creating Frequent Item Set Collection.
+ * File:		ionosphere-all-88d.bisc.fi
+ * Type:		FIMI
+ * Has # rows:		no
+ * # ItemSets:		54347
+ * Sorting sets:	in progress... * Sorting sets:	sorted on support and descending on length
+** Finished Creating Frequent Item Set Collection
+
+
+ * Start:		(151a,0u,6834,42520,2654,45174)
+ - Progress:		0% (0) ? c/s  		 \ Progress:		1% (544) ? c/s  		 | Progress:		2% (1087) ? c/s  		 / Progress:		3% (1631) ? c/s  		 - Progress:		4% (2174) ? c/s  		 \ Progress:		5% (2718) ? c/s  		 | Progress:		6% (3261) ? c/s  		 / Progress:		7% (3805) ? c/s  		 - Progress:		8% (4348) ? c/s  		 \ Progress:		9% (4892) ? c/s  		 \ Progress:		9% (5000) 5000 c/s (0s +/- 9s)                         | Progress:		10% (5435) 5000 c/s (0s +/- 9s)                        / Progress:		11% (5979) 5000 c/s (0s +/- 9s)                        - Progress:		12% (6522) 5000 c/s (0s +/- 9s)                        \ Progress:		13% (7066) 5000 c/s (0s +/- 9s)                        | Progress:		14% (7609) 5000 c/s (0s +/- 9s)                        / Progress:		15% (8153) 5000 c/s (0s +/- 9s)                        - Progress:		16% (8696) 5000 c/s (0s +/- 9s)                        \ Progress:		17% (9239) 5000 c/s (0s +/- 9s)                        | Progress:		18% (9783) 5000 c/s (0s +/- 8s)                        / Progress:		19% (10326) 5000 c/s (0s +/- 8s)                       - Progress:		20% (10870) 5000 c/s (0s +/- 8s)                       \ Progress:		21% (11413) 5000 c/s (1s +/- 8s)                       | Progress:		22% (11957) 5000 c/s (1s +/- 8s)                       / Progress:		23% (12500) 5000 c/s (1s +/- 8s)                       - Progress:		24% (13044) 5000 c/s (1s +/- 8s)                       \ Progress:		25% (13587) 5000 c/s (1s +/- 8s)                       | Progress:		26% (14131) 5000 c/s (1s +/- 8s)                       / Progress:		27% (14674) 5000 c/s (1s +/- 7s)                       - Progress:		28% (15218) 5000 c/s (1s +/- 7s)                       \ Progress:		29% (15761) 5000 c/s (1s +/- 7s)                       | Progress:		30% (16305) 5000 c/s (1s +/- 7s)                       / Progress:		31% (16848) 5000 c/s (1s +/- 7s)                       - Progress:		32% (17392) 5000 c/s (1s +/- 7s)                       \ Progress:		33% (17935) 5000 c/s (1s +/- 7s)                       | Progress:		34% (18478) 5000 c/s (1s +/- 7s)                       / Progress:		35% (19022) 5000 c/s (1s +/- 7s)                       - Progress:		36% (19565) 5000 c/s (1s +/- 6s)                       \ Progress:		37% (20109) 5000 c/s (1s +/- 6s)                       | Progress:		38% (20652) 5000 c/s (1s +/- 6s)                       / Progress:		39% (21196) 5000 c/s (1s +/- 6s)                       - Progress:		40% (21739) 5000 c/s (1s +/- 6s)                       \ Progress:		41% (22283) 5000 c/s (1s +/- 6s)                       | Progress:		42% (22826) 5000 c/s (1s +/- 6s)                       / Progress:		43% (23370) 5000 c/s (1s +/- 6s)                       - Progress:		44% (23913) 5000 c/s (1s +/- 6s)                       \ Progress:		45% (24457) 5000 c/s (1s +/- 5s)                       | Progress:		46% (25000) 5000 c/s (1s +/- 5s)                       / Progress:		47% (25544) 5000 c/s (1s +/- 5s)                       - Progress:		48% (26087) 5000 c/s (1s +/- 5s)                       \ Progress:		49% (26631) 5000 c/s (1s +/- 5s)                       | Progress:		50% (27174) 5000 c/s (1s +/- 5s)                       / Progress:		51% (27717) 5000 c/s (1s +/- 5s)                       - Progress:		52% (28261) 5000 c/s (1s +/- 5s)                       \ Progress:		53% (28804) 5000 c/s (1s +/- 5s)                       | Progress:		54% (29348) 5000 c/s (1s +/- 4s)                       / Progress:		55% (29891) 5000 c/s (1s +/- 4s)                       - Progress:		56% (30435) 5000 c/s (1s +/- 4s)                       \ Progress:		57% (30978) 5000 c/s (1s +/- 4s)                       | Progress:		58% (31522) 5000 c/s (1s +/- 4s)                       / Progress:		59% (32065) 5000 c/s (1s +/- 4s)                       - Progress:		60% (32609) 5000 c/s (1s +/- 4s)                       \ Progress:		61% (33152) 5000 c/s (1s +/- 4s)                       | Progress:		62% (33696) 5000 c/s (1s +/- 4s)                       / Progress:		63% (34239) 5000 c/s (1s +/- 4s)                       - Progress:		64% (34783) 5000 c/s (1s +/- 3s)                       \ Progress:		65% (35326) 5000 c/s (1s +/- 3s)                       | Progress:		66% (35870) 5000 c/s (1s +/- 3s)                       / Progress:		67% (36413) 5000 c/s (1s +/- 3s)                       - Progress:		68% (36956) 5000 c/s (1s +/- 3s)                       \ Progress:		69% (37500) 5000 c/s (1s +/- 3s)                       | Progress:		70% (38043) 5000 c/s (1s +/- 3s)                       / Progress:		71% (38587) 5000 c/s (1s +/- 3s)                       - Progress:		72% (39130) 5000 c/s (1s +/- 3s)                       \ Progress:		73% (39674) 5000 c/s (1s +/- 2s)                       | Progress:		74% (40217) 5000 c/s (1s +/- 2s)                       / Progress:		75% (40761) 5000 c/s (1s +/- 2s)                       - Progress:		76% (41304) 5000 c/s (1s +/- 2s)                       \ Progress:		77% (41848) 5000 c/s (1s +/- 2s)                       | Progress:		78% (42391) 5000 c/s (1s +/- 2s)                       / Progress:		79% (42935) 5000 c/s (2s +/- 2s)                       - Progress:		80% (43478) 5000 c/s (2s +/- 2s)                       \ Progress:		81% (44022) 5000 c/s (2s +/- 2s)                       | Progress:		82% (44565) 5000 c/s (2s +/- 1s)                       / Progress:		83% (45109) 5000 c/s (2s +/- 1s)                       - Progress:		84% (45652) 5000 c/s (2s +/- 1s)                       \ Progress:		85% (46195) 5000 c/s (2s +/- 1s)                       | Progress:		86% (46739) 5000 c/s (2s +/- 1s)                       / Progress:		87% (47282) 5000 c/s (2s +/- 1s)                       - Progress:		88% (47826) 5000 c/s (2s +/- 1s)                       \ Progress:		89% (48369) 5000 c/s (2s +/- 1s)                       | Progress:		90% (48913) 5000 c/s (2s +/- 1s)                       / Progress:		91% (49456) 5000 c/s (2s +/- <1s)                      - Progress:		92% (50000) 5000 c/s (2s +/- <1s)                      \ Progress:		93% (50543) 5000 c/s (2s +/- <1s)                      | Progress:		94% (51087) 5000 c/s (2s +/- <1s)                      / Progress:		95% (51630) 5000 c/s (2s +/- <1s)                      - Progress:		96% (52174) 5000 c/s (2s +/- <1s)                      \ Progress:		97% (52717) 5000 c/s (2s +/- <1s)                      | Progress:		98% (53261) 5000 c/s (2s +/- <1s)                      / Progress:		99% (53804) 5000 c/s (2s +/- <1s)                      * Time:    		Compressing the database took 1.514613 seconds.		
+ * Result:		(145a,38u,3944,25781,3760,29541)
+** Writing FIC database to file
+ * File:		train36.db
+** Finished writing database.
+
+** ItemSetCollection ::
+** Creating Frequent Item Set Collection.
+ * File:		ionosphere-all-88d.bisc.fi
+ * Type:		FIMI
+ * Has # rows:		no
+ * # ItemSets:		3
+ * Sorting sets:	in progress... * Sorting sets:	sorted on support and descending on length
+** Finished Creating Frequent Item Set Collection
+
+
+ * Start:		(150a,0u,3876,26369,2351,28720)
+ - Progress:		0% (0) ? c/s  		 \ Progress:		33% (1) ? c/s  		 | Progress:		66% (2) ? c/s  		 * Time:    		Compressing the database took 0.006739 seconds.		
+ * Result:		(149a,1u,3786,25837,2353,28190)
+ * Creating:			fold 10
+** Writing FIC database to file
+ * File:		test.db
+** Finished writing database.
+
+** Writing FIC database to file
+ * File:		train.db
+** Finished writing database.
+
+ * Compressing:			fold 10
+** Writing FIC database to file
+ * File:		train12.db
+** Finished writing database.
+
+** ItemSetCollection ::
+** Creating Frequent Item Set Collection.
+ * File:		ionosphere-all-88d.bisc.fi
+ * Type:		FIMI
+ * Has # rows:		no
+ * # ItemSets:		115051
+ * Sorting sets:	in progress... * Sorting sets:	sorted on support and descending on length
+** Finished Creating Frequent Item Set Collection
+
+
+ * Start:		(152a,0u,7140,44376,2672,47048)
+ - Progress:		0% (0) ? c/s  		 \ Progress:		1% (1151) ? c/s  		 | Progress:		2% (2302) ? c/s  		 / Progress:		3% (3452) ? c/s  		 - Progress:		4% (4603) ? c/s  		 - Progress:		4% (5000) 5000 c/s (0s +/- 22s)                        \ Progress:		5% (5753) 5000 c/s (0s +/- 21s)                        | Progress:		6% (6904) 5000 c/s (0s +/- 21s)                        / Progress:		7% (8054) 5000 c/s (0s +/- 21s)                        - Progress:		8% (9205) 5000 c/s (1s +/- 21s)                        \ Progress:		9% (10355) 5000 c/s (1s +/- 20s)                       | Progress:		10% (11506) 5000 c/s (1s +/- 20s)                      / Progress:		11% (12656) 5000 c/s (1s +/- 20s)                      - Progress:		12% (13807) 5000 c/s (1s +/- 20s)                      \ Progress:		13% (14957) 5000 c/s (1s +/- 20s)                      | Progress:		14% (16108) 5000 c/s (1s +/- 19s)                      / Progress:		15% (17258) 5000 c/s (1s +/- 19s)                      - Progress:		16% (18409) 5000 c/s (1s +/- 19s)                      \ Progress:		17% (19559) 5000 c/s (1s +/- 19s)                      | Progress:		18% (20710) 5000 c/s (1s +/- 18s)                      / Progress:		19% (21860) 5000 c/s (1s +/- 18s)                      - Progress:		20% (23011) 5000 c/s (1s +/- 18s)                      \ Progress:		21% (24161) 5000 c/s (1s +/- 18s)                      | Progress:		22% (25312) 5000 c/s (1s +/- 17s)                      / Progress:		23% (26462) 5000 c/s (1s +/- 17s)                      - Progress:		24% (27613) 5000 c/s (1s +/- 17s)                      \ Progress:		25% (28763) 5000 c/s (1s +/- 17s)                      | Progress:		26% (29914) 5000 c/s (1s +/- 17s)                      / Progress:		27% (31064) 5000 c/s (1s +/- 16s)                      - Progress:		28% (32215) 5000 c/s (1s +/- 16s)                      \ Progress:		29% (33365) 5000 c/s (1s +/- 16s)                      | Progress:		30% (34516) 5000 c/s (1s +/- 16s)                      / Progress:		31% (35666) 5000 c/s (1s +/- 15s)                      - Progress:		32% (36817) 5000 c/s (1s +/- 15s)                      \ Progress:		33% (37967) 5000 c/s (1s +/- 15s)                      | Progress:		34% (39118) 5000 c/s (1s +/- 15s)                      / Progress:		35% (40268) 5000 c/s (1s +/- 14s)                      - Progress:		36% (41419) 5000 c/s (1s +/- 14s)                      \ Progress:		37% (42569) 5000 c/s (1s +/- 14s)                      | Progress:		38% (43720) 5000 c/s (2s +/- 14s)                      / Progress:		39% (44870) 5000 c/s (2s +/- 14s)                      - Progress:		40% (46021) 5000 c/s (2s +/- 13s)                      \ Progress:		41% (47171) 5000 c/s (2s +/- 13s)                      | Progress:		42% (48322) 5000 c/s (2s +/- 13s)                      / Progress:		43% (49472) 5000 c/s (2s +/- 13s)                      - Progress:		44% (50623) 5000 c/s (2s +/- 12s)                      \ Progress:		45% (51773) 5000 c/s (2s +/- 12s)                      | Progress:		46% (52924) 5000 c/s (2s +/- 12s)                      / Progress:		47% (54074) 5000 c/s (2s +/- 12s)                      - Progress:		48% (55225) 5000 c/s (2s +/- 11s)                      \ Progress:		49% (56375) 5000 c/s (2s +/- 11s)                      | Progress:		50% (57526) 5000 c/s (2s +/- 11s)                      / Progress:		51% (58677) 5000 c/s (2s +/- 11s)                      - Progress:		52% (59827) 5000 c/s (2s +/- 11s)                      \ Progress:		53% (60978) 5000 c/s (2s +/- 10s)                      | Progress:		54% (62128) 5000 c/s (2s +/- 10s)                      / Progress:		55% (63279) 5000 c/s (2s +/- 10s)                      - Progress:		56% (64429) 5000 c/s (3s +/- 10s)                      \ Progress:		57% (65580) 5000 c/s (3s +/- 9s)                       | Progress:		58% (66730) 5000 c/s (3s +/- 9s)                       / Progress:		59% (67881) 5000 c/s (3s +/- 9s)                       - Progress:		60% (69031) 5000 c/s (3s +/- 9s)                       \ Progress:		61% (70182) 5000 c/s (3s +/- 8s)                       | Progress:		62% (71332) 5000 c/s (3s +/- 8s)                       / Progress:		63% (72483) 5000 c/s (3s +/- 8s)                       - Progress:		64% (73633) 5000 c/s (3s +/- 8s)                       \ Progress:		65% (74784) 5000 c/s (3s +/- 8s)                       | Progress:		66% (75934) 5000 c/s (3s +/- 7s)                       / Progress:		67% (77085) 5000 c/s (3s +/- 7s)                       - Progress:		68% (78235) 5000 c/s (3s +/- 7s)                       \ Progress:		69% (79386) 5000 c/s (3s +/- 7s)                       | Progress:		70% (80536) 5000 c/s (3s +/- 6s)                       / Progress:		71% (81687) 5000 c/s (3s +/- 6s)                       - Progress:		72% (82837) 5000 c/s (4s +/- 6s)                       \ Progress:		73% (83988) 5000 c/s (4s +/- 6s)                       | Progress:		74% (85138) 5000 c/s (4s +/- 5s)                       / Progress:		75% (86289) 5000 c/s (4s +/- 5s)                       - Progress:		76% (87439) 5000 c/s (4s +/- 5s)                       \ Progress:		77% (88590) 5000 c/s (4s +/- 5s)                       | Progress:		78% (89740) 5000 c/s (4s +/- 5s)                       / Progress:		79% (90891) 5000 c/s (4s +/- 4s)                       - Progress:		80% (92041) 5000 c/s (4s +/- 4s)                       \ Progress:		81% (93192) 5000 c/s (4s +/- 4s)                       | Progress:		82% (94342) 5000 c/s (4s +/- 4s)                       / Progress:		83% (95493) 5000 c/s (4s +/- 3s)                       - Progress:		84% (96643) 5000 c/s (4s +/- 3s)                       \ Progress:		85% (97794) 5000 c/s (4s +/- 3s)                       | Progress:		86% (98944) 5000 c/s (4s +/- 3s)                       / Progress:		87% (100095) 5000 c/s (4s +/- 2s)                      - Progress:		88% (101245) 5000 c/s (4s +/- 2s)                      \ Progress:		89% (102396) 5000 c/s (4s +/- 2s)                      | Progress:		90% (103546) 5000 c/s (4s +/- 2s)                      / Progress:		91% (104697) 5000 c/s (4s +/- 2s)                      - Progress:		92% (105847) 5000 c/s (4s +/- 1s)                      \ Progress:		93% (106998) 5000 c/s (4s +/- 1s)                      | Progress:		94% (108148) 5000 c/s (4s +/- 1s)                      / Progress:		95% (109299) 5000 c/s (4s +/- 1s)                      - Progress:		96% (110449) 5000 c/s (4s +/- <1s)                     \ Progress:		97% (111600) 5000 c/s (4s +/- <1s)                     | Progress:		98% (112750) 5000 c/s (4s +/- <1s)                     / Progress:		99% (113901) 5000 c/s (4s +/- <1s)                     * Time:    		Compressing the database took 4.116016 seconds.		
+ * Result:		(146a,43u,3900,25863,3871,29735)
+** Writing FIC database to file
+ * File:		train36.db
+** Finished writing database.
+
+** ItemSetCollection ::
+** Creating Frequent Item Set Collection.
+ * File:		ionosphere-all-88d.bisc.fi
+ * Type:		FIMI
+ * Has # rows:		no
+ * # ItemSets:		3
+ * Sorting sets:	in progress... * Sorting sets:	sorted on support and descending on length
+** Finished Creating Frequent Item Set Collection
+
+
+ * Start:		(148a,0u,3876,26331,2300,28631)
+ - Progress:		0% (0) ? c/s  		 \ Progress:		33% (1) ? c/s  		 | Progress:		66% (2) ? c/s  		 * Time:    		Compressing the database took 0.006465 seconds.		
+ * Result:		(147a,1u,3786,25798,2303,28101)
+
+ * Check results in:	/home/arcchitjain/Documents/Mistle/Output/xps/classify/ionosphere-all-88d-pop-cccp-20210121082749/
+
+Task `classify`, command `classifycompress` finished. This took 32 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: 'classify.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Classification ::
+ * Processing Fold:	1
+Starting classification
+ * Classifying ct sup:	80     * Classifying ct sup:	70     * Classifying ct sup:	60     * Classifying ct sup:	50     * Classifying ct sup:	40     * Classifying ct sup:	30     * Classifying ct sup:	20     * Classifying ct sup:	10     * Classifying ct sup:	0      * Classifying:		done
+ * Processing Fold:	2
+Starting classification
+ * Classifying ct sup:	80     * Classifying ct sup:	70     * Classifying ct sup:	60     * Classifying ct sup:	50     * Classifying ct sup:	40     * Classifying ct sup:	30     * Classifying ct sup:	20     * Classifying ct sup:	10     * Classifying ct sup:	0      * Classifying:		done
+ * Processing Fold:	3
+Starting classification
+ * Classifying ct sup:	80     * Classifying ct sup:	70     * Classifying ct sup:	60     * Classifying ct sup:	50     * Classifying ct sup:	40     * Classifying ct sup:	30     * Classifying ct sup:	20     * Classifying ct sup:	10     * Classifying ct sup:	0      * Classifying:		done
+ * Processing Fold:	4
+Starting classification
+ * Classifying ct sup:	80     * Classifying ct sup:	70     * Classifying ct sup:	60     * Classifying ct sup:	50     * Classifying ct sup:	40     * Classifying ct sup:	30     * Classifying ct sup:	20     * Classifying ct sup:	10     * Classifying ct sup:	0      * Classifying:		done
+ * Processing Fold:	5
+Starting classification
+ * Classifying ct sup:	80     * Classifying ct sup:	70     * Classifying ct sup:	60     * Classifying ct sup:	50     * Classifying ct sup:	40     * Classifying ct sup:	30     * Classifying ct sup:	20     * Classifying ct sup:	10     * Classifying ct sup:	0      * Classifying:		done
+ * Processing Fold:	6
+Starting classification
+ * Classifying ct sup:	80     * Classifying ct sup:	70     * Classifying ct sup:	60     * Classifying ct sup:	50     * Classifying ct sup:	40     * Classifying ct sup:	30     * Classifying ct sup:	20     * Classifying ct sup:	10     * Classifying ct sup:	0      * Classifying:		done
+ * Processing Fold:	7
+Starting classification
+ * Classifying ct sup:	80     * Classifying ct sup:	70     * Classifying ct sup:	60     * Classifying ct sup:	50     * Classifying ct sup:	40     * Classifying ct sup:	30     * Classifying ct sup:	20     * Classifying ct sup:	10     * Classifying ct sup:	0      * Classifying:		done
+ * Processing Fold:	8
+Starting classification
+ * Classifying ct sup:	80     * Classifying ct sup:	70     * Classifying ct sup:	60     * Classifying ct sup:	50     * Classifying ct sup:	40     * Classifying ct sup:	30     * Classifying ct sup:	20     * Classifying ct sup:	10     * Classifying ct sup:	0      * Classifying:		done
+ * Processing Fold:	9
+Starting classification
+ * Classifying ct sup:	80     * Classifying ct sup:	70     * Classifying ct sup:	60     * Classifying ct sup:	50     * Classifying ct sup:	40     * Classifying ct sup:	30     * Classifying ct sup:	20     * Classifying ct sup:	10     * Classifying ct sup:	0      * Classifying:		done
+ * Processing Fold:	10
+Starting classification
+ * Classifying ct sup:	80     * Classifying ct sup:	70     * Classifying ct sup:	60     * Classifying ct sup:	50     * Classifying ct sup:	40     * Classifying ct sup:	30     * Classifying ct sup:	20     * Classifying ct sup:	10     * Classifying ct sup:	0      * Classifying:		done
+ * Processing Fold:	1
+Starting classification
+ * Classifying ct %:	100    * Classifying ct %:	99     * Classifying ct %:	98     * Classifying ct %:	97     * Classifying ct %:	96     * Classifying ct %:	95     * Classifying ct %:	94     * Classifying ct %:	93     * Classifying ct %:	92     * Classifying ct %:	91     * Classifying ct %:	90     * Classifying ct %:	89     * Classifying ct %:	88     * Classifying ct %:	87     * Classifying ct %:	86     * Classifying ct %:	85     * Classifying ct %:	84     * Classifying ct %:	83     * Classifying ct %:	82     * Classifying ct %:	81     * Classifying ct %:	80     * Classifying ct %:	79     * Classifying ct %:	78     * Classifying ct %:	77     * Classifying ct %:	76     * Classifying ct %:	75     * Classifying ct %:	74     * Classifying ct %:	73     * Classifying ct %:	72     * Classifying ct %:	71     * Classifying ct %:	70     * Classifying ct %:	69     * Classifying ct %:	68     * Classifying ct %:	67     * Classifying ct %:	66     * Classifying ct %:	65     * Classifying ct %:	64     * Classifying ct %:	63     * Classifying ct %:	62     * Classifying ct %:	61     * Classifying ct %:	60     * Classifying ct %:	59     * Classifying ct %:	58     * Classifying ct %:	57     * Classifying ct %:	56     * Classifying ct %:	55     * Classifying ct %:	54     * Classifying ct %:	53     * Classifying ct %:	52     * Classifying ct %:	51     * Classifying ct %:	50     * Classifying ct %:	49     * Classifying ct %:	48     * Classifying ct %:	47     * Classifying ct %:	46     * Classifying ct %:	45     * Classifying ct %:	44     * Classifying ct %:	43     * Classifying ct %:	42     * Classifying ct %:	41     * Classifying ct %:	40     * Classifying ct %:	39     * Classifying ct %:	38     * Classifying ct %:	37     * Classifying ct %:	36     * Classifying ct %:	35     * Classifying ct %:	34     * Classifying ct %:	33     * Classifying ct %:	32     * Classifying ct %:	31     * Classifying ct %:	30     * Classifying ct %:	29     * Classifying ct %:	28     * Classifying ct %:	27     * Classifying ct %:	26     * Classifying ct %:	25     * Classifying ct %:	24     * Classifying ct %:	23     * Classifying ct %:	22     * Classifying ct %:	21     * Classifying ct %:	20     * Classifying ct %:	19     * Classifying ct %:	18     * Classifying ct %:	17     * Classifying ct %:	16     * Classifying ct %:	15     * Classifying ct %:	14     * Classifying ct %:	13     * Classifying ct %:	12     * Classifying ct %:	11     * Classifying ct %:	10     * Classifying ct %:	9      * Classifying ct %:	8      * Classifying ct %:	7      * Classifying ct %:	6      * Classifying ct %:	5      * Classifying ct %:	4      * Classifying ct %:	3      * Classifying ct %:	2      * Classifying ct %:	1      * Classifying:		done
+ * Processing Fold:	2
+Starting classification
+ * Classifying ct %:	100    * Classifying ct %:	99     * Classifying ct %:	98     * Classifying ct %:	97     * Classifying ct %:	96     * Classifying ct %:	95     * Classifying ct %:	94     * Classifying ct %:	93     * Classifying ct %:	92     * Classifying ct %:	91     * Classifying ct %:	90     * Classifying ct %:	89     * Classifying ct %:	88     * Classifying ct %:	87     * Classifying ct %:	86     * Classifying ct %:	85     * Classifying ct %:	84     * Classifying ct %:	83     * Classifying ct %:	82     * Classifying ct %:	81     * Classifying ct %:	80     * Classifying ct %:	79     * Classifying ct %:	78     * Classifying ct %:	77     * Classifying ct %:	76     * Classifying ct %:	75     * Classifying ct %:	74     * Classifying ct %:	73     * Classifying ct %:	72     * Classifying ct %:	71     * Classifying ct %:	70     * Classifying ct %:	69     * Classifying ct %:	68     * Classifying ct %:	67     * Classifying ct %:	66     * Classifying ct %:	65     * Classifying ct %:	64     * Classifying ct %:	63     * Classifying ct %:	62     * Classifying ct %:	61     * Classifying ct %:	60     * Classifying ct %:	59     * Classifying ct %:	58     * Classifying ct %:	57     * Classifying ct %:	56     * Classifying ct %:	55     * Classifying ct %:	54     * Classifying ct %:	53     * Classifying ct %:	52     * Classifying ct %:	51     * Classifying ct %:	50     * Classifying ct %:	49     * Classifying ct %:	48     * Classifying ct %:	47     * Classifying ct %:	46     * Classifying ct %:	45     * Classifying ct %:	44     * Classifying ct %:	43     * Classifying ct %:	42     * Classifying ct %:	41     * Classifying ct %:	40     * Classifying ct %:	39     * Classifying ct %:	38     * Classifying ct %:	37     * Classifying ct %:	36     * Classifying ct %:	35     * Classifying ct %:	34     * Classifying ct %:	33     * Classifying ct %:	32     * Classifying ct %:	31     * Classifying ct %:	30     * Classifying ct %:	29     * Classifying ct %:	28     * Classifying ct %:	27     * Classifying ct %:	26     * Classifying ct %:	25     * Classifying ct %:	24     * Classifying ct %:	23     * Classifying ct %:	22     * Classifying ct %:	21     * Classifying ct %:	20     * Classifying ct %:	19     * Classifying ct %:	18     * Classifying ct %:	17     * Classifying ct %:	16     * Classifying ct %:	15     * Classifying ct %:	14     * Classifying ct %:	13     * Classifying ct %:	12     * Classifying ct %:	11     * Classifying ct %:	10     * Classifying ct %:	9      * Classifying ct %:	8      * Classifying ct %:	7      * Classifying ct %:	6      * Classifying ct %:	5      * Classifying ct %:	4      * Classifying ct %:	3      * Classifying ct %:	2      * Classifying ct %:	1      * Classifying:		done
+ * Processing Fold:	3
+Starting classification
+ * Classifying ct %:	100    * Classifying ct %:	99     * Classifying ct %:	98     * Classifying ct %:	97     * Classifying ct %:	96     * Classifying ct %:	95     * Classifying ct %:	94     * Classifying ct %:	93     * Classifying ct %:	92     * Classifying ct %:	91     * Classifying ct %:	90     * Classifying ct %:	89     * Classifying ct %:	88     * Classifying ct %:	87     * Classifying ct %:	86     * Classifying ct %:	85     * Classifying ct %:	84     * Classifying ct %:	83     * Classifying ct %:	82     * Classifying ct %:	81     * Classifying ct %:	80     * Classifying ct %:	79     * Classifying ct %:	78     * Classifying ct %:	77     * Classifying ct %:	76     * Classifying ct %:	75     * Classifying ct %:	74     * Classifying ct %:	73     * Classifying ct %:	72     * Classifying ct %:	71     * Classifying ct %:	70     * Classifying ct %:	69     * Classifying ct %:	68     * Classifying ct %:	67     * Classifying ct %:	66     * Classifying ct %:	65     * Classifying ct %:	64     * Classifying ct %:	63     * Classifying ct %:	62     * Classifying ct %:	61     * Classifying ct %:	60     * Classifying ct %:	59     * Classifying ct %:	58     * Classifying ct %:	57     * Classifying ct %:	56     * Classifying ct %:	55     * Classifying ct %:	54     * Classifying ct %:	53     * Classifying ct %:	52     * Classifying ct %:	51     * Classifying ct %:	50     * Classifying ct %:	49     * Classifying ct %:	48     * Classifying ct %:	47     * Classifying ct %:	46     * Classifying ct %:	45     * Classifying ct %:	44     * Classifying ct %:	43     * Classifying ct %:	42     * Classifying ct %:	41     * Classifying ct %:	40     * Classifying ct %:	39     * Classifying ct %:	38     * Classifying ct %:	37     * Classifying ct %:	36     * Classifying ct %:	35     * Classifying ct %:	34     * Classifying ct %:	33     * Classifying ct %:	32     * Classifying ct %:	31     * Classifying ct %:	30     * Classifying ct %:	29     * Classifying ct %:	28     * Classifying ct %:	27     * Classifying ct %:	26     * Classifying ct %:	25     * Classifying ct %:	24     * Classifying ct %:	23     * Classifying ct %:	22     * Classifying ct %:	21     * Classifying ct %:	20     * Classifying ct %:	19     * Classifying ct %:	18     * Classifying ct %:	17     * Classifying ct %:	16     * Classifying ct %:	15     * Classifying ct %:	14     * Classifying ct %:	13     * Classifying ct %:	12     * Classifying ct %:	11     * Classifying ct %:	10     * Classifying ct %:	9      * Classifying ct %:	8      * Classifying ct %:	7      * Classifying ct %:	6      * Classifying ct %:	5      * Classifying ct %:	4      * Classifying ct %:	3      * Classifying ct %:	2      * Classifying ct %:	1      * Classifying:		done
+ * Processing Fold:	4
+Starting classification
+ * Classifying ct %:	100    * Classifying ct %:	99     * Classifying ct %:	98     * Classifying ct %:	97     * Classifying ct %:	96     * Classifying ct %:	95     * Classifying ct %:	94     * Classifying ct %:	93     * Classifying ct %:	92     * Classifying ct %:	91     * Classifying ct %:	90     * Classifying ct %:	89     * Classifying ct %:	88     * Classifying ct %:	87     * Classifying ct %:	86     * Classifying ct %:	85     * Classifying ct %:	84     * Classifying ct %:	83     * Classifying ct %:	82     * Classifying ct %:	81     * Classifying ct %:	80     * Classifying ct %:	79     * Classifying ct %:	78     * Classifying ct %:	77     * Classifying ct %:	76     * Classifying ct %:	75     * Classifying ct %:	74     * Classifying ct %:	73     * Classifying ct %:	72     * Classifying ct %:	71     * Classifying ct %:	70     * Classifying ct %:	69     * Classifying ct %:	68     * Classifying ct %:	67     * Classifying ct %:	66     * Classifying ct %:	65     * Classifying ct %:	64     * Classifying ct %:	63     * Classifying ct %:	62     * Classifying ct %:	61     * Classifying ct %:	60     * Classifying ct %:	59     * Classifying ct %:	58     * Classifying ct %:	57     * Classifying ct %:	56     * Classifying ct %:	55     * Classifying ct %:	54     * Classifying ct %:	53     * Classifying ct %:	52     * Classifying ct %:	51     * Classifying ct %:	50     * Classifying ct %:	49     * Classifying ct %:	48     * Classifying ct %:	47     * Classifying ct %:	46     * Classifying ct %:	45     * Classifying ct %:	44     * Classifying ct %:	43     * Classifying ct %:	42     * Classifying ct %:	41     * Classifying ct %:	40     * Classifying ct %:	39     * Classifying ct %:	38     * Classifying ct %:	37     * Classifying ct %:	36     * Classifying ct %:	35     * Classifying ct %:	34     * Classifying ct %:	33     * Classifying ct %:	32     * Classifying ct %:	31     * Classifying ct %:	30     * Classifying ct %:	29     * Classifying ct %:	28     * Classifying ct %:	27     * Classifying ct %:	26     * Classifying ct %:	25     * Classifying ct %:	24     * Classifying ct %:	23     * Classifying ct %:	22     * Classifying ct %:	21     * Classifying ct %:	20     * Classifying ct %:	19     * Classifying ct %:	18     * Classifying ct %:	17     * Classifying ct %:	16     * Classifying ct %:	15     * Classifying ct %:	14     * Classifying ct %:	13     * Classifying ct %:	12     * Classifying ct %:	11     * Classifying ct %:	10     * Classifying ct %:	9      * Classifying ct %:	8      * Classifying ct %:	7      * Classifying ct %:	6      * Classifying ct %:	5      * Classifying ct %:	4      * Classifying ct %:	3      * Classifying ct %:	2      * Classifying ct %:	1      * Classifying:		done
+ * Processing Fold:	5
+Starting classification
+ * Classifying ct %:	100    * Classifying ct %:	99     * Classifying ct %:	98     * Classifying ct %:	97     * Classifying ct %:	96     * Classifying ct %:	95     * Classifying ct %:	94     * Classifying ct %:	93     * Classifying ct %:	92     * Classifying ct %:	91     * Classifying ct %:	90     * Classifying ct %:	89     * Classifying ct %:	88     * Classifying ct %:	87     * Classifying ct %:	86     * Classifying ct %:	85     * Classifying ct %:	84     * Classifying ct %:	83     * Classifying ct %:	82     * Classifying ct %:	81     * Classifying ct %:	80     * Classifying ct %:	79     * Classifying ct %:	78     * Classifying ct %:	77     * Classifying ct %:	76     * Classifying ct %:	75     * Classifying ct %:	74     * Classifying ct %:	73     * Classifying ct %:	72     * Classifying ct %:	71     * Classifying ct %:	70     * Classifying ct %:	69     * Classifying ct %:	68     * Classifying ct %:	67     * Classifying ct %:	66     * Classifying ct %:	65     * Classifying ct %:	64     * Classifying ct %:	63     * Classifying ct %:	62     * Classifying ct %:	61     * Classifying ct %:	60     * Classifying ct %:	59     * Classifying ct %:	58     * Classifying ct %:	57     * Classifying ct %:	56     * Classifying ct %:	55     * Classifying ct %:	54     * Classifying ct %:	53     * Classifying ct %:	52     * Classifying ct %:	51     * Classifying ct %:	50     * Classifying ct %:	49     * Classifying ct %:	48     * Classifying ct %:	47     * Classifying ct %:	46     * Classifying ct %:	45     * Classifying ct %:	44     * Classifying ct %:	43     * Classifying ct %:	42     * Classifying ct %:	41     * Classifying ct %:	40     * Classifying ct %:	39     * Classifying ct %:	38     * Classifying ct %:	37     * Classifying ct %:	36     * Classifying ct %:	35     * Classifying ct %:	34     * Classifying ct %:	33     * Classifying ct %:	32     * Classifying ct %:	31     * Classifying ct %:	30     * Classifying ct %:	29     * Classifying ct %:	28     * Classifying ct %:	27     * Classifying ct %:	26     * Classifying ct %:	25     * Classifying ct %:	24     * Classifying ct %:	23     * Classifying ct %:	22     * Classifying ct %:	21     * Classifying ct %:	20     * Classifying ct %:	19     * Classifying ct %:	18     * Classifying ct %:	17     * Classifying ct %:	16     * Classifying ct %:	15     * Classifying ct %:	14     * Classifying ct %:	13     * Classifying ct %:	12     * Classifying ct %:	11     * Classifying ct %:	10     * Classifying ct %:	9      * Classifying ct %:	8      * Classifying ct %:	7      * Classifying ct %:	6      * Classifying ct %:	5      * Classifying ct %:	4      * Classifying ct %:	3      * Classifying ct %:	2      * Classifying ct %:	1      * Classifying:		done
+ * Processing Fold:	6
+Starting classification
+ * Classifying ct %:	100    * Classifying ct %:	99     * Classifying ct %:	98     * Classifying ct %:	97     * Classifying ct %:	96     * Classifying ct %:	95     * Classifying ct %:	94     * Classifying ct %:	93     * Classifying ct %:	92     * Classifying ct %:	91     * Classifying ct %:	90     * Classifying ct %:	89     * Classifying ct %:	88     * Classifying ct %:	87     * Classifying ct %:	86     * Classifying ct %:	85     * Classifying ct %:	84     * Classifying ct %:	83     * Classifying ct %:	82     * Classifying ct %:	81     * Classifying ct %:	80     * Classifying ct %:	79     * Classifying ct %:	78     * Classifying ct %:	77     * Classifying ct %:	76     * Classifying ct %:	75     * Classifying ct %:	74     * Classifying ct %:	73     * Classifying ct %:	72     * Classifying ct %:	71     * Classifying ct %:	70     * Classifying ct %:	69     * Classifying ct %:	68     * Classifying ct %:	67     * Classifying ct %:	66     * Classifying ct %:	65     * Classifying ct %:	64     * Classifying ct %:	63     * Classifying ct %:	62     * Classifying ct %:	61     * Classifying ct %:	60     * Classifying ct %:	59     * Classifying ct %:	58     * Classifying ct %:	57     * Classifying ct %:	56     * Classifying ct %:	55     * Classifying ct %:	54     * Classifying ct %:	53     * Classifying ct %:	52     * Classifying ct %:	51     * Classifying ct %:	50     * Classifying ct %:	49     * Classifying ct %:	48     * Classifying ct %:	47     * Classifying ct %:	46     * Classifying ct %:	45     * Classifying ct %:	44     * Classifying ct %:	43     * Classifying ct %:	42     * Classifying ct %:	41     * Classifying ct %:	40     * Classifying ct %:	39     * Classifying ct %:	38     * Classifying ct %:	37     * Classifying ct %:	36     * Classifying ct %:	35     * Classifying ct %:	34     * Classifying ct %:	33     * Classifying ct %:	32     * Classifying ct %:	31     * Classifying ct %:	30     * Classifying ct %:	29     * Classifying ct %:	28     * Classifying ct %:	27     * Classifying ct %:	26     * Classifying ct %:	25     * Classifying ct %:	24     * Classifying ct %:	23     * Classifying ct %:	22     * Classifying ct %:	21     * Classifying ct %:	20     * Classifying ct %:	19     * Classifying ct %:	18     * Classifying ct %:	17     * Classifying ct %:	16     * Classifying ct %:	15     * Classifying ct %:	14     * Classifying ct %:	13     * Classifying ct %:	12     * Classifying ct %:	11     * Classifying ct %:	10     * Classifying ct %:	9      * Classifying ct %:	8      * Classifying ct %:	7      * Classifying ct %:	6      * Classifying ct %:	5      * Classifying ct %:	4      * Classifying ct %:	3      * Classifying ct %:	2      * Classifying ct %:	1      * Classifying:		done
+ * Processing Fold:	7
+Starting classification
+ * Classifying ct %:	100    * Classifying ct %:	99     * Classifying ct %:	98     * Classifying ct %:	97     * Classifying ct %:	96     * Classifying ct %:	95     * Classifying ct %:	94     * Classifying ct %:	93     * Classifying ct %:	92     * Classifying ct %:	91     * Classifying ct %:	90     * Classifying ct %:	89     * Classifying ct %:	88     * Classifying ct %:	87     * Classifying ct %:	86     * Classifying ct %:	85     * Classifying ct %:	84     * Classifying ct %:	83     * Classifying ct %:	82     * Classifying ct %:	81     * Classifying ct %:	80     * Classifying ct %:	79     * Classifying ct %:	78     * Classifying ct %:	77     * Classifying ct %:	76     * Classifying ct %:	75     * Classifying ct %:	74     * Classifying ct %:	73     * Classifying ct %:	72     * Classifying ct %:	71     * Classifying ct %:	70     * Classifying ct %:	69     * Classifying ct %:	68     * Classifying ct %:	67     * Classifying ct %:	66     * Classifying ct %:	65     * Classifying ct %:	64     * Classifying ct %:	63     * Classifying ct %:	62     * Classifying ct %:	61     * Classifying ct %:	60     * Classifying ct %:	59     * Classifying ct %:	58     * Classifying ct %:	57     * Classifying ct %:	56     * Classifying ct %:	55     * Classifying ct %:	54     * Classifying ct %:	53     * Classifying ct %:	52     * Classifying ct %:	51     * Classifying ct %:	50     * Classifying ct %:	49     * Classifying ct %:	48     * Classifying ct %:	47     * Classifying ct %:	46     * Classifying ct %:	45     * Classifying ct %:	44     * Classifying ct %:	43     * Classifying ct %:	42     * Classifying ct %:	41     * Classifying ct %:	40     * Classifying ct %:	39     * Classifying ct %:	38     * Classifying ct %:	37     * Classifying ct %:	36     * Classifying ct %:	35     * Classifying ct %:	34     * Classifying ct %:	33     * Classifying ct %:	32     * Classifying ct %:	31     * Classifying ct %:	30     * Classifying ct %:	29     * Classifying ct %:	28     * Classifying ct %:	27     * Classifying ct %:	26     * Classifying ct %:	25     * Classifying ct %:	24     * Classifying ct %:	23     * Classifying ct %:	22     * Classifying ct %:	21     * Classifying ct %:	20     * Classifying ct %:	19     * Classifying ct %:	18     * Classifying ct %:	17     * Classifying ct %:	16     * Classifying ct %:	15     * Classifying ct %:	14     * Classifying ct %:	13     * Classifying ct %:	12     * Classifying ct %:	11     * Classifying ct %:	10     * Classifying ct %:	9      * Classifying ct %:	8      * Classifying ct %:	7      * Classifying ct %:	6      * Classifying ct %:	5      * Classifying ct %:	4      * Classifying ct %:	3      * Classifying ct %:	2      * Classifying ct %:	1      * Classifying:		done
+ * Processing Fold:	8
+Starting classification
+ * Classifying ct %:	100    * Classifying ct %:	99     * Classifying ct %:	98     * Classifying ct %:	97     * Classifying ct %:	96     * Classifying ct %:	95     * Classifying ct %:	94     * Classifying ct %:	93     * Classifying ct %:	92     * Classifying ct %:	91     * Classifying ct %:	90     * Classifying ct %:	89     * Classifying ct %:	88     * Classifying ct %:	87     * Classifying ct %:	86     * Classifying ct %:	85     * Classifying ct %:	84     * Classifying ct %:	83     * Classifying ct %:	82     * Classifying ct %:	81     * Classifying ct %:	80     * Classifying ct %:	79     * Classifying ct %:	78     * Classifying ct %:	77     * Classifying ct %:	76     * Classifying ct %:	75     * Classifying ct %:	74     * Classifying ct %:	73     * Classifying ct %:	72     * Classifying ct %:	71     * Classifying ct %:	70     * Classifying ct %:	69     * Classifying ct %:	68     * Classifying ct %:	67     * Classifying ct %:	66     * Classifying ct %:	65     * Classifying ct %:	64     * Classifying ct %:	63     * Classifying ct %:	62     * Classifying ct %:	61     * Classifying ct %:	60     * Classifying ct %:	59     * Classifying ct %:	58     * Classifying ct %:	57     * Classifying ct %:	56     * Classifying ct %:	55     * Classifying ct %:	54     * Classifying ct %:	53     * Classifying ct %:	52     * Classifying ct %:	51     * Classifying ct %:	50     * Classifying ct %:	49     * Classifying ct %:	48     * Classifying ct %:	47     * Classifying ct %:	46     * Classifying ct %:	45     * Classifying ct %:	44     * Classifying ct %:	43     * Classifying ct %:	42     * Classifying ct %:	41     * Classifying ct %:	40     * Classifying ct %:	39     * Classifying ct %:	38     * Classifying ct %:	37     * Classifying ct %:	36     * Classifying ct %:	35     * Classifying ct %:	34     * Classifying ct %:	33     * Classifying ct %:	32     * Classifying ct %:	31     * Classifying ct %:	30     * Classifying ct %:	29     * Classifying ct %:	28     * Classifying ct %:	27     * Classifying ct %:	26     * Classifying ct %:	25     * Classifying ct %:	24     * Classifying ct %:	23     * Classifying ct %:	22     * Classifying ct %:	21     * Classifying ct %:	20     * Classifying ct %:	19     * Classifying ct %:	18     * Classifying ct %:	17     * Classifying ct %:	16     * Classifying ct %:	15     * Classifying ct %:	14     * Classifying ct %:	13     * Classifying ct %:	12     * Classifying ct %:	11     * Classifying ct %:	10     * Classifying ct %:	9      * Classifying ct %:	8      * Classifying ct %:	7      * Classifying ct %:	6      * Classifying ct %:	5      * Classifying ct %:	4      * Classifying ct %:	3      * Classifying ct %:	2      * Classifying ct %:	1      * Classifying:		done
+ * Processing Fold:	9
+Starting classification
+ * Classifying ct %:	100    * Classifying ct %:	99     * Classifying ct %:	98     * Classifying ct %:	97     * Classifying ct %:	96     * Classifying ct %:	95     * Classifying ct %:	94     * Classifying ct %:	93     * Classifying ct %:	92     * Classifying ct %:	91     * Classifying ct %:	90     * Classifying ct %:	89     * Classifying ct %:	88     * Classifying ct %:	87     * Classifying ct %:	86     * Classifying ct %:	85     * Classifying ct %:	84     * Classifying ct %:	83     * Classifying ct %:	82     * Classifying ct %:	81     * Classifying ct %:	80     * Classifying ct %:	79     * Classifying ct %:	78     * Classifying ct %:	77     * Classifying ct %:	76     * Classifying ct %:	75     * Classifying ct %:	74     * Classifying ct %:	73     * Classifying ct %:	72     * Classifying ct %:	71     * Classifying ct %:	70     * Classifying ct %:	69     * Classifying ct %:	68     * Classifying ct %:	67     * Classifying ct %:	66     * Classifying ct %:	65     * Classifying ct %:	64     * Classifying ct %:	63     * Classifying ct %:	62     * Classifying ct %:	61     * Classifying ct %:	60     * Classifying ct %:	59     * Classifying ct %:	58     * Classifying ct %:	57     * Classifying ct %:	56     * Classifying ct %:	55     * Classifying ct %:	54     * Classifying ct %:	53     * Classifying ct %:	52     * Classifying ct %:	51     * Classifying ct %:	50     * Classifying ct %:	49     * Classifying ct %:	48     * Classifying ct %:	47     * Classifying ct %:	46     * Classifying ct %:	45     * Classifying ct %:	44     * Classifying ct %:	43     * Classifying ct %:	42     * Classifying ct %:	41     * Classifying ct %:	40     * Classifying ct %:	39     * Classifying ct %:	38     * Classifying ct %:	37     * Classifying ct %:	36     * Classifying ct %:	35     * Classifying ct %:	34     * Classifying ct %:	33     * Classifying ct %:	32     * Classifying ct %:	31     * Classifying ct %:	30     * Classifying ct %:	29     * Classifying ct %:	28     * Classifying ct %:	27     * Classifying ct %:	26     * Classifying ct %:	25     * Classifying ct %:	24     * Classifying ct %:	23     * Classifying ct %:	22     * Classifying ct %:	21     * Classifying ct %:	20     * Classifying ct %:	19     * Classifying ct %:	18     * Classifying ct %:	17     * Classifying ct %:	16     * Classifying ct %:	15     * Classifying ct %:	14     * Classifying ct %:	13     * Classifying ct %:	12     * Classifying ct %:	11     * Classifying ct %:	10     * Classifying ct %:	9      * Classifying ct %:	8      * Classifying ct %:	7      * Classifying ct %:	6      * Classifying ct %:	5      * Classifying ct %:	4      * Classifying ct %:	3      * Classifying ct %:	2      * Classifying ct %:	1      * Classifying:		done
+ * Processing Fold:	10
+Starting classification
+ * Classifying ct %:	100    * Classifying ct %:	99     * Classifying ct %:	98     * Classifying ct %:	97     * Classifying ct %:	96     * Classifying ct %:	95     * Classifying ct %:	94     * Classifying ct %:	93     * Classifying ct %:	92     * Classifying ct %:	91     * Classifying ct %:	90     * Classifying ct %:	89     * Classifying ct %:	88     * Classifying ct %:	87     * Classifying ct %:	86     * Classifying ct %:	85     * Classifying ct %:	84     * Classifying ct %:	83     * Classifying ct %:	82     * Classifying ct %:	81     * Classifying ct %:	80     * Classifying ct %:	79     * Classifying ct %:	78     * Classifying ct %:	77     * Classifying ct %:	76     * Classifying ct %:	75     * Classifying ct %:	74     * Classifying ct %:	73     * Classifying ct %:	72     * Classifying ct %:	71     * Classifying ct %:	70     * Classifying ct %:	69     * Classifying ct %:	68     * Classifying ct %:	67     * Classifying ct %:	66     * Classifying ct %:	65     * Classifying ct %:	64     * Classifying ct %:	63     * Classifying ct %:	62     * Classifying ct %:	61     * Classifying ct %:	60     * Classifying ct %:	59     * Classifying ct %:	58     * Classifying ct %:	57     * Classifying ct %:	56     * Classifying ct %:	55     * Classifying ct %:	54     * Classifying ct %:	53     * Classifying ct %:	52     * Classifying ct %:	51     * Classifying ct %:	50     * Classifying ct %:	49     * Classifying ct %:	48     * Classifying ct %:	47     * Classifying ct %:	46     * Classifying ct %:	45     * Classifying ct %:	44     * Classifying ct %:	43     * Classifying ct %:	42     * Classifying ct %:	41     * Classifying ct %:	40     * Classifying ct %:	39     * Classifying ct %:	38     * Classifying ct %:	37     * Classifying ct %:	36     * Classifying ct %:	35     * Classifying ct %:	34     * Classifying ct %:	33     * Classifying ct %:	32     * Classifying ct %:	31     * Classifying ct %:	30     * Classifying ct %:	29     * Classifying ct %:	28     * Classifying ct %:	27     * Classifying ct %:	26     * Classifying ct %:	25     * Classifying ct %:	24     * Classifying ct %:	23     * Classifying ct %:	22     * Classifying ct %:	21     * Classifying ct %:	20     * Classifying ct %:	19     * Classifying ct %:	18     * Classifying ct %:	17     * Classifying ct %:	16     * Classifying ct %:	15     * Classifying ct %:	14     * Classifying ct %:	13     * Classifying ct %:	12     * Classifying ct %:	11     * Classifying ct %:	10     * Classifying ct %:	9      * Classifying ct %:	8      * Classifying ct %:	7      * Classifying ct %:	6      * Classifying ct %:	5      * Classifying ct %:	4      * Classifying ct %:	3      * Classifying ct %:	2      * Classifying ct %:	1      * Classifying:		done
+
+
+ * Check results in:	/home/arcchitjain/Documents/Mistle/Output/xps/classify/ionosphere-all-88d-pop-cccp-20210121082749/
+
+Task `classify`, command `classifyanalyse` finished. This took 7 seconds.
+
+
+
+Comparing on ionosphere.dat with nb_rows = 351 and minsup = 0.25
+Running	: ./Resources/Krimp/bin/krimp	eaf88853-4563-4101-9335-5dcb0bba7ee9_convertdb.conf
+Running	: ./Resources/Krimp/bin/krimp	ad053915-8d1e-40e8-a08a-6a50363f1d7a_analysedb.conf
+Running	: ./Resources/Krimp/bin/krimp	4319dcde-6b99-4b51-8dee-08972132f01c_classifycompress.conf
+res_path = /home/arcchitjain/Documents/Mistle/Output/xps/classify/ionosphere-all-88d-pop-cccp-20210121082749
+krimp_item_dict = {0: 3, 1: 2, 2: 150, 3: 11, 4: 16, 5: 124, 6: 34, 7: 102, 8: 141, 9: 48, 10: 7, 11: 20, 12: 156, 13: 121, 14: 57, 15: 38, 16: 25, 17: 29, 18: 67, 19: 131, 20: 154, 21: 111, 22: 43, 23: 97, 24: 77, 25: 52, 26: 87, 27: 82, 28: 136, 29: 92, 30: 106, 31: 145, 32: 72, 33: 62, 34: 116, 35: 114, 36: 157, 37: 143, 38: 104, 39: 85, 40: 134, 41: 152, 42: 95, 43: 75, 44: 122, 45: 65, 46: 4, 47: 44, 48: 13, 49: 36, 50: 53, 51: 23, 52: 55, 53: 91, 54: 46, 55: 73, 56: 63, 57: 22, 58: 61, 59: 112, 60: 93, 61: 27, 62: 83, 63: 140, 64: 132, 65: 70, 66: 130, 67: 80, 68: 71, 69: 33, 70: 18, 71: 101, 72: 51, 73: 110, 74: 60, 75: 148, 76: 81, 77: 100, 78: 90, 79: 42, 80: 50, 81: 123, 82: 109, 83: 41, 84: 26, 85: 1, 86: 8, 87: 5, 88: 146, 89: 45, 90: 54, 91: 98, 92: 74, 93: 113, 94: 103, 95: 139, 96: 127, 97: 39, 98: 30, 99: 17, 100: 119, 101: 133, 102: 84, 103: 12, 104: 137, 105: 107, 106: 21, 107: 155, 108: 142, 109: 117, 110: 88, 111: 64, 112: 138, 113: 129, 114: 58, 115: 35, 116: 128, 117: 32, 118: 94, 119: 79, 120: 78, 121: 68, 122: 59, 123: 108, 124: 89, 125: 49, 126: 151, 127: 99, 128: 76, 129: 28, 130: 126, 131: 115, 132: 19, 133: 56, 134: 40, 135: 37, 136: 31, 137: 147, 138: 135, 139: 69, 140: 9, 141: 105, 142: 66, 143: 47, 144: 153, 145: 86, 146: 144, 147: 118, 148: 96, 149: 14, 150: 149, 151: 6, 152: 120, 153: 125, 154: 10, 155: 24, 156: 15}
+# of frequent itemsets	: 52866
+Time of DCI Closed		: 3.2524569034576416
+DL of initial theory	: 83343.62757623826
+52829	itemsets left after T operation 	: [frozenset({-63, -93, -125, -122, -132, -151, -53, -83, -112, -3, -142, -73, -103, -4, -35})]
+47386	itemsets left after T operation 	: [frozenset({-26, -151, -17, -35, -142, -12, -8, -103, -4, -3})]
+36340	itemsets left after T operation 	: [frozenset({-30, -58, -21, -49, -17, -12, -39, -4, -3})]
+9188	itemsets left after T operation 	: [frozenset({-125, -122, -112, -103, -4, -3})]
+1503	itemsets left after W operation 	: [frozenset({-3, -8, -151, -4, 157, -17}), frozenset({-125, -61, -122, -58, -115, -51, -49, -111, -42, -105, -39, -102, -71, -35, -96, -31, -157, -92, -154, -88, -24, -21, -81, -144, -78, -141, -12, -135, -68, -131}), frozenset({-125, -60, -122, -58, -51, -114, -49, -112, -42, -105, -39, -101, -35, -96, -31, -157, -91, -155, -24, -86, -21, -68, -81, -144, -142, -76, -12, -71, -134, -132}), frozenset({-124, -60, -122, -59, -52, -114, -49, -110, -105, -41, -40, -100, -33, -96, -31, -70, -157, -69, -90, -26, -153, -86, -22, -80, -143, -78, -141, -12, -134, -133}), frozenset({-64, -125, -123, -56, -54, -115, -113, -47, -45, -105, -103, -39, -35, -96, -94, -157, -27, -26, -153, -86, -84, -19, -144, -142, -76, -74, -9, -135, -133, -66}), frozenset({-124, -123, -60, -59, -114, -50, -112, -49, -42, -104, -40, -101, -33, -70, -95, -31, -157, -155, -90, -26, -86, -22, -80, -144, -142, -13, -76, -134, -133, -68}), frozenset({-125, -61, -122, -58, -115, -51, -49, -112, -42, -105, -40, -102, -71, -33, -96, -30, -157, -91, -155, -24, -86, -21, -68, -146, -81, -142, -76, -12, -135, -132}), frozenset({-63, -125, -122, -58, -118, -53, -113, -49, -45, -107, -103, -39, -35, -98, -93, -28, -157, -153, -88, -24, -21, -83, -146, -78, -142, -74, -9, -134, -132, -66}), frozenset({-125, -61, -58, -120, -115, -51, -49, -110, -42, -105, -40, -101, -71, -34, -96, -30, -157, -91, -153, -88, -24, -21, -80, -144, -78, -142, -12, -135, -68, -131}), frozenset({-142, -157, -12, -26, -103, -35})]
+304	itemsets left after T operation 	: [frozenset({-93, -122, -17, -35, -12, -103, -4, -3})]
+10	itemsets left after W operation 	: [frozenset({-30, -39, -21, -4, -3, 158, -49}), frozenset({-125, -61, -59, -119, -117, -53, -109, -44, -107, -101, -71, -35, -98, -158, -91, -26, -89, -153, -149, -81, -17, -79, -144, -13, -139, -135, -6, -69, -129}), frozenset({-62, -125, -122, -58, -116, -52, -111, -43, -106, -72, -102, -35, -98, -158, -92, -155, -88, -24, -151, -146, -81, -15, -78, -141, -12, -136, -5, -68, -131}), frozenset({-158, -12, -58, -17})]
+1	itemsets left after W operation 	: [frozenset({-4, -3, -122, 159}), frozenset({-125, -117, -111, -107, -102, -98, -92, -88, -82, -78, -72, -67, -62, -57, -52, -47, -43, -37, -34, -159, -28, -155, -24, -151, -19, -146, -15, -141, -12, -137, -5, -131}), frozenset({-112, -159, -103, -125}), frozenset({-159, -93, -12, -103, -35, -17})]
+# of frequent itemsets	: 0
+Time of DCI Closed		: 0.19403505325317383
+Initial DL				: 89180.16257633519
+Final DL				: 6300.681978737468
+Compression (wrt me)	: 0.9293488395096353
+Operator Counters		: {'D': 0, 'W': 3, 'V': 0, 'S': 0, 'R': 0, 'T': 5}
+Misle Learning Runtime	: 5.605045557022095
+
+# of frequent itemsets	: 60567
+Time of DCI Closed		: 3.554655075073242
+DL of initial theory	: 83060.2373345782
+60526	itemsets left after T operation 	: [frozenset({-63, -93, -125, -122, -132, -151, -53, -83, -35, -112, -142, -73, -103, -4, -3})]
+54440	itemsets left after T operation 	: [frozenset({-26, -151, -17, -35, -142, -12, -8, -103, -4, -3})]
+38683	itemsets left after T operation 	: [frozenset({-30, -58, -21, -49, -17, -12, -39, -4, -3})]
+19585	itemsets left after T operation 	: [frozenset({-125, -122, -112, -105, -103, -4, -3})]
+4867	itemsets left after T operation 	: [frozenset({-93, -125, -122, -53, -35, -103, -4, -3})]
+238	itemsets left after T operation 	: [frozenset({-151, -4, -49, -17, -142, -8, -68, -3})]
+14	itemsets left after W operation 	: [frozenset({-3, -49, -4, 157, -17}), frozenset({-124, -60, -122, -59, -52, -114, -110, -105, -41, -40, -100, -33, -96, -31, -70, -157, -69, -90, -26, -153, -151, -86, -22, -80, -143, -78, -141, -12, -8, -134, -133}), frozenset({-125, -61, -59, -119, -117, -53, -109, -44, -107, -39, -101, -71, -35, -98, -30, -157, -91, -26, -89, -153, -21, -149, -81, -144, -79, -13, -139, -135, -6, -69, -129}), frozenset({-128, -64, -59, -122, -118, -54, -112, -45, -108, -40, -103, -99, -35, -30, -93, -156, -157, -26, -89, -68, -21, -84, -149, -147, -79, -12, -140, -74, -138, -8, -132}), frozenset({-30, -157, -12, -58, -39, -21}), frozenset({-142, -157, -8, -151, -68})]
+2	itemsets left after W operation 	: [frozenset({-125, -122, -4, -3, 158}), frozenset({-62, -57, -117, -52, -111, -47, -107, -43, -102, -37, -98, -34, -158, -92, -28, -155, -88, -24, -151, -19, -82, -146, -67, -15, -78, -141, -12, -137, -72, -5, -131}), frozenset({-112, -103, -158, -105}), frozenset({-158, -93, -103, -53, -35})]
+# of frequent itemsets	: 0
+Time of DCI Closed		: 0.1898345947265625
+Initial DL				: 89180.16257633519
+Final DL				: 4869.231659623719
+Compression (wrt me)	: 0.9454000585000524
+Operator Counters		: {'D': 0, 'W': 2, 'V': 0, 'S': 0, 'R': 0, 'T': 6}
+Misle Learning Runtime	: 6.122004508972168
+
+# of frequent itemsets	: 44920
+Time of DCI Closed		: 2.7322232723236084
+DL of initial theory	: 82210.06646643026
+44871	itemsets left after T operation 	: [frozenset({-63, -93, -125, -122, -132, -151, -53, -83, -112, -3, -142, -73, -103, -4, -35})]
+40304	itemsets left after T operation 	: [frozenset({-26, -151, -17, -35, -142, -12, -8, -103, -4, -3})]
+32099	itemsets left after T operation 	: [frozenset({-30, -58, -21, -49, -17, -12, -39, -4, -3})]
+15739	itemsets left after T operation 	: [frozenset({-125, -122, -4, -49, -112, -142, -12, -132, -3})]
+2465	itemsets left after T operation 	: [frozenset({-93, -125, -122, -53, -35, -103, -4, -3})]
+465	itemsets left after W operation 	: [frozenset({-3, -8, -151, -4, 157, -17}), frozenset({-125, -61, -122, -58, -115, -51, -49, -111, -42, -105, -39, -102, -71, -35, -96, -31, -157, -92, -154, -88, -24, -21, -81, -144, -78, -141, -12, -135, -68, -131}), frozenset({-124, -60, -122, -59, -52, -114, -49, -110, -105, -41, -40, -100, -33, -96, -31, -70, -157, -69, -90, -26, -153, -86, -22, -80, -143, -78, -141, -12, -134, -133}), frozenset({-64, -125, -123, -56, -54, -115, -113, -47, -45, -105, -103, -39, -35, -96, -94, -157, -27, -26, -153, -86, -84, -19, -144, -142, -76, -74, -9, -135, -133, -66}), frozenset({-124, -123, -60, -59, -114, -50, -112, -49, -42, -104, -40, -101, -33, -70, -95, -31, -157, -155, -90, -26, -86, -22, -80, -144, -142, -13, -76, -134, -133, -68}), frozenset({-125, -61, -58, -120, -115, -51, -49, -110, -42, -105, -40, -101, -71, -34, -96, -30, -157, -91, -153, -88, -24, -21, -80, -144, -78, -142, -12, -135, -68, -131}), frozenset({-142, -157, -12, -26, -103, -35})]
+10	itemsets left after W operation 	: [frozenset({-30, -21, -4, -3, 158, -49}), frozenset({-125, -61, -59, -119, -117, -53, -109, -44, -107, -39, -101, -71, -35, -98, -158, -91, -26, -89, -153, -149, -81, -17, -79, -144, -13, -139, -135, -6, -69, -129}), frozenset({-128, -64, -59, -122, -118, -54, -112, -45, -108, -40, -103, -99, -35, -158, -93, -156, -26, -89, -68, -149, -84, -147, -17, -79, -12, -140, -74, -138, -8, -132}), frozenset({-62, -125, -122, -58, -116, -52, -111, -43, -106, -72, -39, -102, -35, -98, -158, -92, -155, -88, -24, -151, -146, -81, -15, -78, -141, -12, -136, -5, -68, -131}), frozenset({-158, -12, -58, -39, -17})]
+1	itemsets left after W operation 	: [frozenset({-125, -122, -4, -3, 159}), frozenset({-62, -57, -117, -52, -111, -47, -107, -43, -102, -37, -98, -34, -159, -92, -28, -155, -88, -24, -151, -19, -82, -146, -67, -15, -78, -141, -12, -137, -72, -5, -131}), frozenset({-112, -159, -142, -12, -132, -49}), frozenset({-159, -93, -103, -53, -35})]
+# of frequent itemsets	: 0
+Time of DCI Closed		: 0.17796874046325684
+Initial DL				: 89180.16257633519
+Final DL				: 5536.243606645554
+Compression (wrt me)	: 0.9379206827313561
+Operator Counters		: {'D': 0, 'W': 3, 'V': 0, 'S': 0, 'R': 0, 'T': 5}
+Misle Learning Runtime	: 4.7516090869903564
+
+# of frequent itemsets	: 50195
+Time of DCI Closed		: 3.017176866531372
+DL of initial theory	: 83060.2373345782
+50158	itemsets left after T operation 	: [frozenset({-63, -93, -125, -122, -132, -151, -53, -83, -35, -112, -142, -73, -103, -4, -3})]
+45291	itemsets left after T operation 	: [frozenset({-26, -151, -17, -35, -142, -12, -8, -103, -4, -3})]
+35107	itemsets left after T operation 	: [frozenset({-30, -58, -21, -49, -17, -12, -39, -4, -3})]
+8267	itemsets left after T operation 	: [frozenset({-125, -122, -112, -103, -4, -3})]
+1242	itemsets left after T operation 	: [frozenset({-96, -122, -17, -12, -105, -4, -3})]
+303	itemsets left after W operation 	: [frozenset({-3, -142, -8, -151, -4, 157, -17}), frozenset({-64, -125, -123, -56, -54, -115, -113, -47, -45, -105, -103, -39, -35, -96, -94, -157, -27, -26, -153, -86, -84, -19, -144, -76, -74, -9, -135, -133, -66}), frozenset({-124, -123, -60, -59, -114, -50, -112, -49, -42, -104, -40, -101, -33, -70, -95, -31, -157, -155, -90, -26, -86, -22, -80, -144, -13, -76, -134, -133, -68}), frozenset({-63, -125, -122, -58, -118, -53, -113, -49, -45, -107, -103, -39, -35, -98, -93, -28, -157, -153, -88, -24, -21, -83, -146, -78, -74, -9, -134, -132, -66}), frozenset({-157, -12, -26, -103, -35})]
+8	itemsets left after W operation 	: [frozenset({-30, -39, -21, -4, -3, 158, -49}), frozenset({-125, -61, -59, -119, -117, -53, -109, -44, -107, -101, -71, -35, -98, -158, -91, -26, -89, -153, -149, -81, -17, -79, -144, -13, -139, -135, -6, -69, -129}), frozenset({-62, -125, -122, -58, -116, -52, -111, -43, -106, -72, -102, -35, -98, -158, -92, -155, -88, -24, -151, -146, -81, -15, -78, -141, -12, -136, -5, -68, -131}), frozenset({-158, -12, -58, -17})]
+1	itemsets left after W operation 	: [frozenset({-4, -3, -122, 159}), frozenset({-125, -117, -111, -107, -102, -98, -92, -88, -82, -78, -72, -67, -62, -57, -52, -47, -43, -37, -34, -159, -28, -155, -24, -151, -19, -146, -15, -141, -12, -137, -5, -131}), frozenset({-112, -159, -103, -125}), frozenset({-96, -159, -12, -105, -17})]
+# of frequent itemsets	: 0
+Time of DCI Closed		: 0.2145235538482666
+Initial DL				: 89180.16257633519
+Final DL				: 4722.34563889379
+Compression (wrt me)	: 0.9470471290646996
+Operator Counters		: {'D': 0, 'W': 3, 'V': 0, 'S': 0, 'R': 0, 'T': 5}
+Misle Learning Runtime	: 5.181936979293823
+
+# of frequent itemsets	: 62401
+Time of DCI Closed		: 3.6282126903533936
+DL of initial theory	: 83627.01779431806
+62383	itemsets left after T operation 	: [frozenset({-63, -93, -125, -122, -132, -151, -53, -83, -17, -112, -3, -142, -73, -103, -4, -35})]
+59442	itemsets left after T operation 	: [frozenset({-26, -151, -17, -35, -142, -12, -8, -103, -4, -3})]
+52153	itemsets left after T operation 	: [frozenset({-30, -58, -21, -49, -17, -12, -39, -4, -3})]
+12631	itemsets left after T operation 	: [frozenset({-93, -125, -122, -53, -35, -103, -4, -3})]
+1587	itemsets left after T operation 	: [frozenset({-125, -58, -122, -21, -49, -12, -4, -3})]
+489	itemsets left after W operation 	: [frozenset({-3, -12, -21, -4, 157, -49}), frozenset({-125, -60, -122, -56, -117, -50, -112, -105, -41, -103, -39, -33, -96, -31, -157, -92, -156, -23, -85, -149, -83, -147, -17, -142, -75, -137, -71, -6, -132, -66}), frozenset({-128, -64, -59, -122, -118, -54, -112, -45, -108, -40, -103, -99, -35, -30, -93, -156, -157, -26, -89, -68, -149, -84, -147, -17, -79, -140, -74, -138, -8, -132}), frozenset({-125, -61, -58, -120, -115, -51, -110, -42, -105, -40, -101, -71, -34, -96, -30, -157, -91, -153, -88, -24, -151, -17, -80, -144, -78, -142, -8, -135, -68, -131}), frozenset({-30, -157, -58, -39, -17}), frozenset({-125, -122, -58, -157})]
+42	itemsets left after W operation 	: [frozenset({-26, -8, -151, -4, -3, 158, -17}), frozenset({-124, -60, -122, -59, -52, -114, -49, -110, -105, -41, -40, -100, -33, -96, -31, -158, -70, -69, -90, -153, -86, -22, -80, -143, -78, -141, -12, -134, -133}), frozenset({-64, -125, -123, -56, -54, -115, -113, -47, -45, -105, -103, -39, -35, -96, -94, -158, -27, -153, -86, -84, -19, -144, -142, -76, -74, -9, -135, -133, -66}), frozenset({-124, -123, -60, -59, -114, -50, -112, -49, -42, -104, -40, -101, -33, -70, -95, -31, -158, -155, -90, -86, -22, -80, -144, -142, -13, -76, -134, -133, -68}), frozenset({-158, -142, -12, -103, -35})]
+5	itemsets left after W operation 	: [frozenset({-125, -155, -122, -151, -146, -4, -3, 159}), frozenset({-62, -57, -117, -52, -111, -47, -107, -43, -102, -37, -98, -34, -159, -92, -28, -88, -24, -19, -82, -67, -15, -78, -141, -12, -137, -72, -5, -131}), frozenset({-61, -58, -115, -51, -49, -112, -42, -105, -103, -39, -33, -96, -159, -30, -92, -24, -86, -21, -81, -15, -142, -13, -76, -138, -8, -71, -133, -66})]
+# of frequent itemsets	: 0
+Time of DCI Closed		: 0.17694520950317383
+Initial DL				: 89180.16257633519
+Final DL				: 7242.825440524486
+Compression (wrt me)	: 0.9187843436108915
+Operator Counters		: {'D': 0, 'W': 3, 'V': 0, 'S': 0, 'R': 0, 'T': 5}
+Misle Learning Runtime	: 6.422961711883545
+
+# of frequent itemsets	: 56604
+Time of DCI Closed		: 3.2230775356292725
+DL of initial theory	: 83343.62757623826
+56585	itemsets left after T operation 	: [frozenset({-63, -93, -125, -122, -132, -151, -53, -83, -17, -112, -3, -142, -73, -103, -4, -35})]
+53130	itemsets left after T operation 	: [frozenset({-26, -151, -17, -35, -142, -12, -8, -103, -4, -3})]
+48519	itemsets left after T operation 	: [frozenset({-30, -58, -21, -49, -17, -12, -8, -4, -3})]
+7641	itemsets left after T operation 	: [frozenset({-125, -122, -112, -142, -103, -4, -3})]
+1717	itemsets left after T operation 	: [frozenset({-125, -17, -144, -35, -135, -4, -3})]
+44	itemsets left after W operation 	: [frozenset({-3, -30, -12, -21, -4, 157, -49}), frozenset({-125, -61, -122, -58, -117, -51, -110, -43, -105, -39, -102, -71, -34, -96, -157, -92, -155, -24, -151, -86, -68, -81, -17, -144, -78, -142, -135, -6, -132}), frozenset({-128, -64, -59, -122, -118, -54, -112, -45, -108, -40, -103, -99, -35, -93, -156, -157, -26, -89, -68, -149, -84, -147, -17, -79, -140, -74, -138, -8, -132}), frozenset({-62, -125, -122, -58, -116, -52, -111, -43, -106, -72, -39, -102, -35, -98, -157, -92, -155, -88, -24, -151, -146, -81, -15, -78, -141, -136, -5, -68, -131}), frozenset({-62, -125, -122, -58, -117, -51, -112, -42, -105, -103, -37, -33, -96, -93, -157, -153, -23, -86, -149, -82, -146, -14, -76, -140, -137, -71, -5, -131, -66}), frozenset({-8, -157, -58, -17})]
+8	itemsets left after T operation 	: [frozenset({-26, -151, -17, -12, -8, -4, -3})]
+2	itemsets left after W operation 	: [frozenset({-3, -12, -4, 158}), frozenset({-125, -122, -117, -111, -107, -102, -98, -92, -88, -82, -78, -72, -67, -62, -57, -52, -47, -43, -37, -34, -158, -28, -155, -24, -151, -19, -146, -15, -141, -137, -5, -131}), frozenset({-158, -26, -8, -151, -17}), frozenset({-30, -158, -21, 157, -49})]
+# of frequent itemsets	: 0
+Time of DCI Closed		: 0.18303894996643066
+Initial DL				: 89180.16257633519
+Final DL				: 4715.787770761017
+Compression (wrt me)	: 0.9471206641193947
+Operator Counters		: {'D': 0, 'W': 2, 'V': 0, 'S': 0, 'R': 0, 'T': 6}
+Misle Learning Runtime	: 5.664709568023682
+
+# of frequent itemsets	: 57596
+Time of DCI Closed		: 3.4496512413024902
+DL of initial theory	: 84193.79816039898
+57578	itemsets left after T operation 	: [frozenset({-63, -93, -125, -122, -132, -151, -53, -83, -17, -112, -3, -142, -73, -103, -4, -35})]
+54102	itemsets left after T operation 	: [frozenset({-26, -151, -17, -35, -142, -12, -8, -103, -4, -3})]
+46778	itemsets left after T operation 	: [frozenset({-30, -58, -21, -49, -17, -12, -39, -4, -3})]
+16130	itemsets left after T operation 	: [frozenset({-125, -122, -4, -112, -142, -12, -132, -3})]
+3489	itemsets left after T operation 	: [frozenset({-93, -125, -122, -53, -17, -35, -103, -4, -3})]
+512	itemsets left after W operation 	: [frozenset({-3, -30, -21, -4, 157, -49}), frozenset({-125, -61, -59, -119, -117, -53, -109, -44, -107, -39, -101, -71, -35, -98, -157, -91, -26, -89, -153, -149, -81, -17, -79, -144, -13, -139, -135, -6, -69, -129}), frozenset({-128, -64, -59, -122, -118, -54, -112, -45, -108, -40, -103, -99, -35, -93, -156, -157, -26, -89, -68, -149, -84, -147, -17, -79, -12, -140, -74, -138, -8, -132}), frozenset({-62, -125, -122, -58, -116, -52, -111, -43, -106, -72, -39, -102, -35, -98, -157, -92, -155, -88, -24, -151, -146, -81, -15, -78, -141, -12, -136, -5, -68, -131}), frozenset({-62, -125, -122, -58, -117, -51, -112, -42, -105, -103, -37, -33, -96, -93, -157, -153, -23, -86, -149, -82, -146, -14, -76, -12, -140, -137, -71, -5, -131, -66}), frozenset({-125, -61, -58, -120, -115, -51, -110, -42, -105, -40, -101, -71, -34, -96, -157, -91, -153, -88, -24, -151, -17, -80, -144, -78, -142, -12, -8, -135, -68, -131}), frozenset({-125, -61, -122, -58, -115, -51, -112, -42, -105, -103, -39, -33, -96, -157, -92, -155, -24, -151, -86, -146, -81, -15, -142, -13, -76, -138, -8, -71, -133, -66}), frozenset({-157, -12, -58, -39, -17})]
+5	itemsets left after W operation 	: [frozenset({-8, -151, -4, -3, 158, -17}), frozenset({-125, -61, -122, -58, -115, -51, -49, -111, -42, -105, -39, -102, -71, -35, -96, -31, -158, -92, -154, -88, -24, -21, -81, -144, -78, -141, -12, -135, -68, -131}), frozenset({-124, -60, -122, -59, -52, -114, -49, -110, -105, -41, -40, -100, -33, -96, -31, -158, -70, -69, -90, -26, -153, -86, -22, -80, -143, -78, -141, -12, -134, -133}), frozenset({-64, -125, -123, -56, -54, -115, -113, -47, -45, -105, -103, -39, -35, -96, -94, -158, -27, -26, -153, -86, -84, -19, -144, -142, -76, -74, -9, -135, -133, -66}), frozenset({-124, -123, -60, -59, -114, -50, -112, -49, -42, -104, -40, -101, -33, -70, -95, -31, -158, -155, -90, -26, -86, -22, -80, -144, -142, -13, -76, -134, -133, -68}), frozenset({-142, -158, -12, -26, -103, -35})]
+# of frequent itemsets	: 0
+Time of DCI Closed		: 0.18188953399658203
+Initial DL				: 89180.16257633519
+Final DL				: 6341.924915566331
+Compression (wrt me)	: 0.9288863718975859
+Operator Counters		: {'D': 0, 'W': 2, 'V': 0, 'S': 0, 'R': 0, 'T': 5}
+Misle Learning Runtime	: 6.1202075481414795
+
+# of frequent itemsets	: 40526
+Time of DCI Closed		: 2.3556089401245117
+DL of initial theory	: 83343.62757623826
+40503	itemsets left after T operation 	: [frozenset({-63, -93, -125, -122, -132, -151, -53, -83, -35, -112, -142, -73, -103, -4, -3})]
+36765	itemsets left after T operation 	: [frozenset({-26, -151, -17, -35, -142, -12, -8, -103, -4, -3})]
+27017	itemsets left after T operation 	: [frozenset({-30, -58, -21, -49, -17, -12, -39, -4, -3})]
+14601	itemsets left after T operation 	: [frozenset({-96, -125, -122, -105, -4, -3})]
+1887	itemsets left after T operation 	: [frozenset({-93, -125, -122, -151, -53, -35, -142, -103, -4, -3})]
+434	itemsets left after W operation 	: [frozenset({-3, -142, -8, -4, 157, -17}), frozenset({-64, -125, -123, -56, -54, -115, -113, -47, -45, -105, -103, -39, -35, -96, -94, -157, -27, -26, -153, -151, -86, -84, -19, -144, -76, -74, -9, -135, -133, -66}), frozenset({-124, -123, -60, -59, -114, -50, -112, -49, -42, -104, -40, -101, -33, -70, -95, -31, -157, -155, -90, -26, -151, -86, -22, -80, -144, -13, -76, -134, -133, -68}), frozenset({-125, -61, -122, -58, -115, -50, -49, -112, -42, -105, -103, -39, -33, -95, -31, -93, -157, -155, -24, -86, -22, -149, -147, -81, -76, -12, -137, -71, -132, -66}), frozenset({-125, -61, -58, -120, -115, -51, -49, -110, -42, -105, -40, -101, -71, -34, -96, -30, -157, -91, -153, -88, -24, -151, -21, -80, -144, -78, -12, -135, -68, -131}), frozenset({-157, -12, -26, -151, -103, -35})]
+9	itemsets left after W operation 	: [frozenset({-30, -21, -4, -3, 158, -49}), frozenset({-125, -61, -59, -119, -117, -53, -109, -44, -107, -39, -101, -71, -35, -98, -158, -91, -26, -89, -153, -149, -81, -17, -79, -144, -13, -139, -135, -6, -69, -129}), frozenset({-128, -64, -59, -122, -118, -54, -112, -45, -108, -40, -103, -99, -35, -158, -93, -156, -26, -89, -68, -149, -84, -147, -17, -79, -12, -140, -74, -138, -8, -132}), frozenset({-62, -125, -122, -58, -116, -52, -111, -43, -106, -72, -39, -102, -35, -98, -158, -92, -155, -88, -24, -151, -146, -81, -15, -78, -141, -12, -136, -5, -68, -131}), frozenset({-158, -12, -58, -39, -17})]
+1	itemsets left after W operation 	: [frozenset({-125, -122, -4, -3, 159}), frozenset({-62, -57, -117, -52, -111, -47, -107, -43, -102, -37, -98, -34, -159, -92, -28, -155, -88, -24, -151, -19, -82, -146, -67, -15, -78, -141, -12, -137, -72, -5, -131}), frozenset({-96, -159, -105}), frozenset({-159, -142, -93, -151, -103, -53, -35})]
+# of frequent itemsets	: 0
+Time of DCI Closed		: 0.1729421615600586
+Initial DL				: 89180.16257633519
+Final DL				: 5844.294066332919
+Compression (wrt me)	: 0.9344664340420954
+Operator Counters		: {'D': 0, 'W': 3, 'V': 0, 'S': 0, 'R': 0, 'T': 5}
+Misle Learning Runtime	: 4.22365927696228
+
+# of frequent itemsets	: 41180
+Time of DCI Closed		: 2.45595645904541
+DL of initial theory	: 83343.62757623826
+41158	itemsets left after T operation 	: [frozenset({-63, -93, -125, -122, -132, -151, -53, -83, -17, -35, -112, -142, -73, -103, -4, -3})]
+35345	itemsets left after T operation 	: [frozenset({-26, -151, -17, -35, -142, -12, -8, -103, -4, -3})]
+29689	itemsets left after T operation 	: [frozenset({-30, -58, -21, -49, -17, -12, -8, -39, -4, -3})]
+9663	itemsets left after T operation 	: [frozenset({-125, -122, -58, -49, -4, -3})]
+1999	itemsets left after T operation 	: [frozenset({-93, -125, -122, -53, -17, -35, -103, -4, -3})]
+232	itemsets left after T operation 	: [frozenset({-30, -21, -49, -17, -4, -3})]
+7	itemsets left after W operation 	: [frozenset({-3, -26, -8, -151, -4, 157, -17}), frozenset({-124, -60, -122, -59, -52, -114, -49, -110, -105, -41, -40, -100, -33, -96, -31, -70, -157, -69, -90, -153, -86, -22, -80, -143, -78, -141, -12, -134, -133}), frozenset({-64, -125, -123, -56, -54, -115, -113, -47, -45, -105, -103, -39, -35, -96, -94, -157, -27, -153, -86, -84, -19, -144, -142, -76, -74, -9, -135, -133, -66}), frozenset({-124, -123, -60, -59, -114, -50, -112, -49, -42, -104, -40, -101, -33, -70, -95, -31, -157, -155, -90, -86, -22, -80, -144, -142, -13, -76, -134, -133, -68}), frozenset({-142, -157, -12, -103, -35})]
+2	itemsets left after W operation 	: [frozenset({-125, -122, -4, -3, 158}), frozenset({-62, -57, -117, -52, -111, -47, -107, -43, -102, -37, -98, -34, -158, -92, -28, -155, -88, -24, -151, -19, -82, -146, -67, -15, -78, -141, -12, -137, -72, -5, -131}), frozenset({-158, -58, -49}), frozenset({-158, -93, -103, -53, -35, -17})]
+# of frequent itemsets	: 0
+Time of DCI Closed		: 0.18040800094604492
+Initial DL				: 89180.16257633519
+Final DL				: 6735.059014651225
+Compression (wrt me)	: 0.9244780585717565
+Operator Counters		: {'D': 0, 'W': 2, 'V': 0, 'S': 0, 'R': 0, 'T': 6}
+Misle Learning Runtime	: 4.317594289779663
+
+# of frequent itemsets	: 62388
+Time of DCI Closed		: 3.742884635925293
+DL of initial theory	: 85610.74867435428
+62351	itemsets left after T operation 	: [frozenset({-63, -93, -125, -122, -132, -151, -53, -83, -112, -3, -142, -73, -103, -4, -35})]
+56398	itemsets left after T operation 	: [frozenset({-26, -151, -17, -35, -142, -12, -8, -103, -4, -3})]
+49097	itemsets left after T operation 	: [frozenset({-30, -58, -21, -49, -17, -12, -8, -4, -3})]
+8544	itemsets left after T operation 	: [frozenset({-125, -122, -112, -103, -4, -3})]
+980	itemsets left after W operation 	: [frozenset({-125, -58, -21, -49, -3, -39, -4, 157}), frozenset({-61, -122, -115, -51, -111, -42, -105, -102, -71, -35, -96, -31, -157, -92, -154, -88, -24, -151, -81, -17, -144, -78, -141, -12, -8, -135, -68, -131}), frozenset({-60, -122, -51, -114, -112, -42, -105, -101, -35, -96, -31, -157, -91, -155, -24, -151, -86, -68, -81, -17, -144, -142, -76, -12, -8, -71, -134, -132}), frozenset({-62, -122, -116, -52, -111, -43, -106, -72, -102, -35, -98, -30, -157, -92, -155, -88, -24, -151, -146, -81, -15, -78, -141, -12, -136, -5, -68, -131}), frozenset({-62, -120, -117, -53, -110, -44, -107, -101, -35, -98, -30, -157, -91, -153, -88, -24, -149, -146, -81, -17, -78, -12, -140, -137, -72, -5, -68, -130}), frozenset({-63, -122, -118, -53, -113, -45, -107, -103, -35, -98, -93, -28, -157, -153, -88, -24, -151, -83, -146, -17, -78, -142, -74, -9, -8, -134, -132, -66}), frozenset({-62, -122, -117, -52, -111, -107, -43, -102, -98, -34, -30, -157, -92, -155, -88, -24, -151, -82, -146, -17, -78, -141, -12, -137, -72, -5, -68, -131})]
+50	itemsets left after W operation 	: [frozenset({-26, -8, -4, -3, 158, -17}), frozenset({-124, -60, -122, -59, -52, -114, -49, -110, -105, -41, -40, -100, -33, -96, -31, -158, -70, -69, -90, -153, -151, -86, -22, -80, -143, -78, -141, -12, -134, -133}), frozenset({-64, -125, -123, -56, -54, -115, -113, -47, -45, -105, -103, -39, -35, -96, -94, -158, -27, -153, -151, -86, -84, -19, -144, -142, -76, -74, -9, -135, -133, -66}), frozenset({-124, -123, -60, -59, -114, -50, -112, -49, -42, -104, -40, -101, -33, -70, -95, -31, -158, -155, -90, -151, -86, -22, -80, -144, -142, -13, -76, -134, -133, -68}), frozenset({-128, -64, -59, -122, -118, -54, -49, -112, -45, -108, -40, -103, -99, -35, -30, -93, -156, -158, -89, -68, -21, -84, -149, -147, -79, -12, -140, -74, -138, -132}), frozenset({-63, -125, -122, -58, -53, -115, -111, -47, -44, -105, -103, -37, -35, -96, -158, -93, -28, -153, -86, -150, -21, -83, -144, -141, -76, -12, -73, -135, -131, -66}), frozenset({-142, -158, -12, -151, -103, -35})]
+4	itemsets left after W operation 	: [frozenset({159, -21, -4, -3, -49}), frozenset({-125, -61, -59, -119, -117, -53, -109, -44, -107, -39, -101, -71, -35, -98, -159, -30, -91, -26, -89, -153, -149, -81, -17, -79, -144, -13, -139, -135, -6, -69, -129}), frozenset({-159, -30, -12, -58, -8, -17}), frozenset({-159, -125, -58, -39, 157})]
+# of frequent itemsets	: 0
+Time of DCI Closed		: 0.18203425407409668
+Initial DL				: 91727.39420097636
+Final DL				: 7001.082276078996
+Compression (wrt me)	: 0.9236751208615008
+Operator Counters		: {'D': 0, 'W': 3, 'V': 0, 'S': 0, 'R': 0, 'T': 4}
+Misle Learning Runtime	: 6.568231582641602
+
+Running	: ./Resources/Krimp/bin/krimp	/home/arcchitjain/Documents/Mistle/classify.conf
+krimp_accuracy = 0.9031
+mistle_fold_accuracy_list = [0.9444444444444444, 0.8888888888888888, 0.8611111111111112, 0.8611111111111112, 0.9444444444444444, 0.8055555555555556, 0.9444444444444444, 0.9166666666666666, 0.8888888888888888, 0.9259259259259259]
+mistle_attempted_list = [36, 36, 36, 36, 36, 36, 36, 36, 36, 27]
+weighted sum = 315.0
+weighted_mistle_accuracy = 0.8974358974358975
+mistle_atempted = 351
+mistle_coverage = 1.0
+naive_mistle_attempted_list = 0.8981481481481481
+Mistle MDL Selections = []
+krimp_time = 38.675230503082275
+mistle_topk_time = 0
+mistle_time = 55.04683184623718
+krimp_accuracy_dict = {'ionosphere.dat': '0.9031'}
+mistle_accuracy_dict = {'ionosphere.dat': (0.8974358974358975, 351, 1.0)}

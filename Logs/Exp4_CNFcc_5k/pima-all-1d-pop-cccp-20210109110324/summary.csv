@@ -1,0 +1,14 @@
+:: pima-all-1d-pop-cccp-20210109110324
+Absolute matching
+
+;minsup;AvgAccuracy;StdDev;MaxAccuracy
+Best:;1;0.7109;0.0185;0.7403
+Last:;1;0.7109;0.0185;0.7403
+
+:: pima-all-1d-pop-cccp-20210109110324
+Relative matching
+
+;%;AvgAccuracy;StdDev;MaxAccuracy
+Best:;100%;0.7109;0.0185;0.7403
+Last:;1%;0.7109;0.0185;0.7403
+

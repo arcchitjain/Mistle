@@ -1,0 +1,149 @@
+
+##### Build transactions database #####.....[OK]
+nbTransactions = 143
+AVGTransactionsLenght = 28
+##### Execute lcm #####.....[OK]
+##### Parse lcm result & Build classes patterns #####.....[OK]
+
+nbValidPatterns= 28
+nbClasses= 1
+
+##### Reduction of non binaries clauses #####.....[OK]
+##### Writing of output #####.....[OK]
+
+
+##### Build transactions database #####.....[OK]
+no binary clause for the instance NonBinary_Compressed_mining4sat_aeec9979-0b56-4d8c-acc8-e2c7375bd894_L1.cnf
+mining4sat_aeec9979-0b56-4d8c-acc8-e2c7375bd894_ & 1 & 143 & 143 & 0 & 3,9 Ko & 154 & 40 & 114 & 64,04 & 1,4 Ko & 0 & 0 & 0 & 64,04 & 1,4 Ko & 0,08 \\
+
+TotalCPUTime = 0,08
+
+
+
+##### Build transactions database #####.....[OK]
+nbTransactions = 193
+AVGTransactionsLenght = 28
+##### Execute lcm #####.....[OK]
+##### Parse lcm result & Build classes patterns #####.....[OK]
+
+nbValidPatterns= 430
+nbClasses= 1
+
+##### Reduction of non binaries clauses #####.....[OK]
+##### Writing of output #####.....[OK]
+
+
+##### Build transactions database #####.....[OK]
+nbTransactions = 4
+AVGTransactionsLenght = 3
+##### Execute lcm #####.....[OK]
+##### Parse lcm result & Build classes patterns #####.....[OK]
+
+nbValidPatterns = 0
+nbClasses = 0
+no binary reduction for the instance NonBinary_Compressed_mining4sat_6e7a8cac-2ad7-4479-a8cc-311e8dca1a71_L1.cnf
+mining4sat_6e7a8cac-2ad7-4479-a8cc-311e8dca1a71_ & 1 & 193 & 193 & 0 & 5,4 Ko & 261 & 235 & 26 & 53,25 & 2,5 Ko & 0 & 0 & 0 & 53,25 & 2,5 Ko & 0,17 \\
+
+TotalCPUTime = 0,17
+
+
+Input Data	: /Users/arcchit/Docs/Mistle/mining4sat_aeec9979-0b56-4d8c-acc8-e2c7375bd894_.cnf
+Command 	: cd /Users/arcchit/Docs/Mistle/Resources/Mining4SAT && java -Xms8G -Xmx25G -cp bin/ execution.FrequentPatterns /Users/arcchit/Docs/Mistle/mining4sat_aeec9979-0b56-4d8c-acc8-e2c7375bd894_.cnf 1
+Return Code	: 0
+Output Data	: /Users/arcchit/Docs/Mistle/Resources/Mining4SAT/NonBinary_Compressed_mining4sat_aeec9979-0b56-4d8c-acc8-e2c7375bd894_L1.cnf
+Input Data	: /Users/arcchit/Docs/Mistle/mining4sat_6e7a8cac-2ad7-4479-a8cc-311e8dca1a71_.cnf
+Command 	: cd /Users/arcchit/Docs/Mistle/Resources/Mining4SAT && java -Xms8G -Xmx25G -cp bin/ execution.FrequentPatterns /Users/arcchit/Docs/Mistle/mining4sat_6e7a8cac-2ad7-4479-a8cc-311e8dca1a71_.cnf 1
+Return Code	: 0
+Output Data	: /Users/arcchit/Docs/Mistle/Resources/Mining4SAT/NonBinary_Compressed_mining4sat_6e7a8cac-2ad7-4479-a8cc-311e8dca1a71_L1.cnf
+# of frequent itemsets	: 33
+Time of DCI Closed		: 0.33896780014038086
+DL of initial theory	: 537.5733242045449
+1	itemsets left after W operation 	: [frozenset({-14, -12, -26, 27, -20}), frozenset({-16, -8, -27, -2}), frozenset({-11, -27, -2, -17}), frozenset({-16, -7, -5, -27}), frozenset({-16, -11, -27, -2}), frozenset({-16, -7, -27, -3}), frozenset({-16, -11, -4, -27}), frozenset({-7, -27, -19, -2}), frozenset({-16, -7, -27, -2}), frozenset({-16, -5, -27, -10}), frozenset({-16, -27, -10, -2}), frozenset({-7, -27, -2, -17})]
+# of frequent itemsets	: 34
+Time of DCI Closed		: 0.3449578285217285
+10	itemsets left after W operation 	: [frozenset({-16, 28, -27}), frozenset({-8, -28, -2}), frozenset({-7, -5, -28}), frozenset({-28, -11, -2}), frozenset({-7, -28, -3}), frozenset({-28, -4, -11}), frozenset({-7, -28, -2}), frozenset({-5, -28, -10}), frozenset({-28, -10, -2})]
+Initial DL				: 5281.817447315273
+Final DL				: 332.47079262998744
+Compression (wrt me)	: 0.9370537138122824
+Operator Counters		: {'D': 0, 'W': 2, 'V': 0, 'S': 0, 'R': 0, 'T': 0}
+Misle Learning Runtime	: 0.6940040588378906
+
+# of frequent itemsets	: 496
+Time of DCI Closed		: 0.36233997344970703
+DL of initial theory	: 3571.3165801015166
+326	itemsets left after W operation 	: [frozenset({-14, -12, -27, -23, 28}), frozenset({-6, -28, -10, -17}), frozenset({-5, -28, -19, -9}), frozenset({-16, -7, -6, -28}), frozenset({-16, -3, -28, -11}), frozenset({-7, -6, -28, -18}), frozenset({-8, -28, -3, -17}), frozenset({-7, -28, -2, -17}), frozenset({-7, -5, -28, -19}), frozenset({-3, -28, -11, -17}), frozenset({-6, -28, -19, -10}), frozenset({-16, -6, -28, -9}), frozenset({-16, -7, -28, -2}), frozenset({-8, -5, -28, -19}), frozenset({-8, -5, -28, -17}), frozenset({-16, -8, -6, -28}), frozenset({-16, -28, -10, -2}), frozenset({-16, -8, -28, -2}), frozenset({-16, -6, -28, -11}), frozenset({-7, -6, -28, -19}), frozenset({-16, -7, -28, -4}), frozenset({-7, -28, -18, -2}), frozenset({-16, -28, -11, -2}), frozenset({-16, -7, -28, -3}), frozenset({-16, -5, -28, -11}), frozenset({-7, -5, -28, -18}), frozenset({-8, -28, -19, -2}), frozenset({-28, -3, -18, -10}), frozenset({-16, -6, -28, -10}), frozenset({-16, -7, -5, -28}), frozenset({-16, -28, -4, -11}), frozenset({-7, -6, -28, -17})]
+231	itemsets left after W operation 	: [frozenset({-16, -14, -12, -26, 29}), frozenset({-8, -29, -2, -21}), frozenset({-4, -29, -20, -11}), frozenset({-5, -29, -11, -21}), frozenset({-23, -3, -29, -7}), frozenset({-23, -29, -7, -2}), frozenset({-7, -29, -20, -2}), frozenset({-23, -3, -29, -11}), frozenset({-3, -29, -20, -11}), frozenset({-23, -29, -11, -2}), frozenset({-29, -20, -11, -5}), frozenset({-23, -6, -29, -11}), frozenset({-29, -20, -10, -2}), frozenset({-8, -29, -20, -2}), frozenset({-6, -29, -20, -11}), frozenset({-7, -6, -29, -20}), frozenset({-8, -22, -29, -2}), frozenset({-29, -20, -11, -2}), frozenset({-7, -22, -29, -2}), frozenset({-8, -22, -29, -3}), frozenset({-6, -29, -20, -9})]
+162	itemsets left after W operation 	: [frozenset({-14, -12, -27, -21, 30}), frozenset({-16, -7, -30, -5}), frozenset({-7, -30, -19, -2}), frozenset({-16, -7, -30, -6}), frozenset({-11, -30, -19, -2}), frozenset({-16, -7, -30, -2}), frozenset({-16, -30, -6, -10}), frozenset({-11, -30, -6, -19}), frozenset({-7, -30, -4, -19}), frozenset({-16, -30, -5, -9})]
+123	itemsets left after W operation 	: [frozenset({-14, -12, -26, -20, 31}), frozenset({-31, -3, -11, -18}), frozenset({-8, -31, -5, -19}), frozenset({-31, -11, -4, -19}), frozenset({-31, -3, -19, -7}), frozenset({-31, -11, -19, -2}), frozenset({-31, -11, -5, -19}), frozenset({-31, -11, -6, -19}), frozenset({-31, -5, -11, -17})]
+65	itemsets left after W operation 	: [frozenset({32, -16, -14, -13}), frozenset({-32, -26, -5, -7, -21}), frozenset({-32, -26, -7, -5, -20}), frozenset({-32, -27, -11, -23, -2}), frozenset({-32, -11, -25, -6, -20}), frozenset({-32, -27, -23, -7, -2}), frozenset({-32, -27, -23, -5, -7})]
+47	itemsets left after W operation 	: [frozenset({33, -14, -12, -27}), frozenset({-3, -11, -22, -19, -33}), frozenset({-16, -11, -22, -2, -33}), frozenset({-16, -6, -7, -22, -33}), frozenset({-23, 28, -33}), frozenset({-21, 30, -33})]
+42	itemsets left after W operation 	: [frozenset({-16, -6, 34}), frozenset({-15, -13, -26, -10, -20, -34}), frozenset({-7, -28, -34}), frozenset({-28, -34, -9}), frozenset({-8, -28, -34}), frozenset({-7, -22, -34, -33}), frozenset({-28, -11, -34}), frozenset({-7, -30, -34}), frozenset({-30, -34, -10}), frozenset({-28, -34, -10})]
+# of frequent itemsets	: 280
+Time of DCI Closed		: 0.3940579891204834
+174	itemsets left after W operation 	: [frozenset({-7, 35, -28}), frozenset({-6, -35, -18}), frozenset({-35, -2, -17}), frozenset({-19, -5, -35}), frozenset({-16, -35, -2}), frozenset({-35, -34}), frozenset({-19, -6, -35}), frozenset({-16, -4, -35}), frozenset({-35, -18, -2}), frozenset({-16, -3, -35}), frozenset({-5, -35, -18}), frozenset({-16, -5, -35}), frozenset({-6, -35, -17})]
+158	itemsets left after W operation 	: [frozenset({-29, -20, 36}), frozenset({-6, -36, -11}), frozenset({-7, -6, -36}), frozenset({-36, -11, -2}), frozenset({-6, -36, -9}), frozenset({-11, -36, -4}), frozenset({-7, -36, -2}), frozenset({-3, -36, -11}), frozenset({-5, -36, -11}), frozenset({-36, -10, -2}), frozenset({-8, -36, -2})]
+140	itemsets left after W operation 	: [frozenset({-19, 37, -11}), frozenset({-14, -21, -12, -26, -37, -5}), frozenset({-30, -6, -37}), frozenset({-14, -13, -26, -21, -37, -2}), frozenset({-31, -37, -4}), frozenset({-31, -37, -2}), frozenset({-31, -5, -37}), frozenset({-31, -6, -37}), frozenset({-22, -37, -3, -33}), frozenset({-30, -37, -2})]
+136	itemsets left after W operation 	: [frozenset({-16, -28, -11, 38}), frozenset({-38, -3}), frozenset({-38, -2}), frozenset({-38, -5}), frozenset({-38, -4})]
+Initial DL				: 8287.781614223728
+Final DL				: 2557.949630515462
+Compression (wrt me)	: 0.6913589486810999
+Operator Counters		: {'D': 0, 'W': 11, 'V': 0, 'S': 0, 'R': 0, 'T': 0}
+Misle Learning Runtime	: 1.7301318645477295
+
+# of frequent itemsets	: 496
+Time of DCI Closed		: 0.3894929885864258
+5  violations of +ve partial assignments found for the learned theory.
+Violating Clauses	:{frozenset({-26, -20, -16, -14, -12, -8, -2}), frozenset({-26, -20, -16, -14, -12, -7, -2}), frozenset({-26, -20, -16, -14, -12, -11, -2}), frozenset({-26, -20, -16, -14, -12, -11, -4}), frozenset({-26, -20, -16, -14, -12, -10, -2})}
+DL of initial theory	: 3878.192799217182
+326	itemsets left after T operation 	: [frozenset({-23, -14, -12, -27})]
+231	itemsets left after T operation 	: [frozenset({-16, -14, -12, -26})]
+159	itemsets left after T operation 	: [frozenset({-14, -21, -12, -27})]
+120	itemsets left after T operation 	: [frozenset({-14, -20, -12, -26})]
+61	itemsets left after T operation 	: [frozenset({-16, -14, -13})]
+41	itemsets left after T operation 	: [frozenset({-14, -12, -27})]
+12	itemsets left after T operation 	: [frozenset({-14, -21, -19, -26})]
+7	itemsets left after T operation 	: [frozenset({-14, -12, -26})]
+5	itemsets left after T operation 	: [frozenset({-14, -26})]
+1	itemsets left after T operation 	: [frozenset({-16, -13})]
+# of frequent itemsets	: 4
+Time of DCI Closed		: 0.4624791145324707
+Initial DL				: 14582.96604468792
+Final DL				: 561.3390810953416
+Compression (wrt me)	: 0.9615072078358284
+Operator Counters		: {'D': 0, 'W': 0, 'V': 0, 'S': 0, 'R': 0, 'T': 10}
+Misle Learning Runtime	: 0.8821597099304199
+
+# of frequent itemsets	: 33
+Time of DCI Closed		: 0.34240293502807617
+5  violations of +ve partial assignments found for the learned theory.
+Violating Clauses	:{frozenset({-26, -20, -16, -14, -12, -8, -2}), frozenset({-26, -20, -16, -14, -12, -7, -2}), frozenset({-26, -20, -16, -14, -12, -11, -2}), frozenset({-26, -20, -16, -14, -12, -11, -4}), frozenset({-26, -20, -16, -14, -12, -10, -2})}
+DL of initial theory	: 3878.192799217182
+1	itemsets left after W operation 	: [frozenset({-14, -12, -26, -20, 28}), frozenset({-16, -8, -28, -2}), frozenset({-28, -11, -2, -17}), frozenset({-16, -7, -5, -28}), frozenset({-16, -28, -11, -2}), frozenset({-16, -7, -28, -3}), frozenset({-16, -28, -4, -11}), frozenset({-7, -28, -19, -2}), frozenset({-16, -7, -28, -2}), frozenset({-16, -5, -28, -10}), frozenset({-16, -28, -10, -2}), frozenset({-7, -28, -2, -17})]
+# of frequent itemsets	: 34
+Time of DCI Closed		: 0.38382792472839355
+10	itemsets left after W operation 	: [frozenset({-16, -28, 29}), frozenset({-8, -29, -2}), frozenset({-7, -5, -29}), frozenset({-29, -11, -2}), frozenset({-7, -29, -3}), frozenset({-29, -4, -11}), frozenset({-7, -29, -2}), frozenset({-5, -10, -29}), frozenset({-29, -10, -2})]
+6	itemsets left after T operation 	: [frozenset({-7, -28, -2})]
+5	itemsets left after W operation 	: [frozenset({-14, -20, -12, 30}), frozenset({-16, -30, -24, -7, -2}), frozenset({-30, 28, -26})]
+4	itemsets left after V operation 	: [frozenset({7, -11, -17}), frozenset({-7, -28, -2})]
+Initial DL				: 14582.96604468792
+Final DL				: 563.8694635841026
+Compression (wrt me)	: 0.9613336915236458
+Operator Counters		: {'D': 0, 'W': 3, 'V': 1, 'S': 0, 'R': 0, 'T': 1}
+Misle Learning Runtime	: 0.7897207736968994
+
+Comp Theory is T+.
+
+Minsup					: 1
+Initial DL				: 14583.96604468792
+Mining4SAT DL			: 9179.060358725535
+Mistle Lossless Pos DL	: 332.47079262998744
+Mistle Lossless Neg DL	: 2557.949630515462
+Mistle Lossless DL		: 2963.3698664163153
+Mistle Lossy Plus DL	: 561.3390810953432
+Mistle Lossy Minus DL	: 563.8694635841023
+
+Data							: ecoli.dat
+Minsup List						: [1]
+Compression: Mining4SAT			: [0.37060602509638135]
+Compression: Mistle - Lossless	: [0.7968063106197579]
+Compression: Mistle - Lossy		: [0.9615072078358284]

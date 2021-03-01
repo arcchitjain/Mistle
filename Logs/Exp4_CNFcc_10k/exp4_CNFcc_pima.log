@@ -1,0 +1,36 @@
+
+
+Comparing on pima.dat with nb_rows = 768 and minsup = 0.0013020833333333333
+Running CNFAlgo
+Return Code for CNFAlgo	: 0
+CNFAlgo Accuracy = 59/77 = 0.7662337662337663
+Running CNFAlgo
+Return Code for CNFAlgo	: 0
+CNFAlgo Accuracy = 68/77 = 0.8831168831168831
+Running CNFAlgo
+Return Code for CNFAlgo	: 0
+CNFAlgo Accuracy = 66/77 = 0.8571428571428571
+Running CNFAlgo
+Return Code for CNFAlgo	: 0
+CNFAlgo Accuracy = 62/77 = 0.8051948051948052
+Running CNFAlgo
+Return Code for CNFAlgo	: 0
+CNFAlgo Accuracy = 70/77 = 0.9090909090909091
+Running CNFAlgo
+Return Code for CNFAlgo	: 0
+CNFAlgo Accuracy = 63/77 = 0.8181818181818182
+Running CNFAlgo
+Return Code for CNFAlgo	: 0
+CNFAlgo Accuracy = 64/77 = 0.8311688311688312
+Running CNFAlgo
+Return Code for CNFAlgo	: 0
+CNFAlgo Accuracy = 62/77 = 0.8051948051948052
+Running CNFAlgo
+Return Code for CNFAlgo	: 0
+CNFAlgo Accuracy = 68/77 = 0.8831168831168831
+Running CNFAlgo
+Return Code for CNFAlgo	: 0
+CNFAlgo Accuracy = 67/75 = 0.8933333333333333
+cnfalgo_fold_accuracy_list = [0.7662337662337663, 0.8831168831168831, 0.8571428571428571, 0.8051948051948052, 0.9090909090909091, 0.8181818181818182, 0.8311688311688312, 0.8051948051948052, 0.8831168831168831, 0.8933333333333333]
+cnfalgo_time = 5.444814205169678
+cnfalgo_accuracy = 0.8451774891774892

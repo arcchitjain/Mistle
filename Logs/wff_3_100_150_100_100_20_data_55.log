@@ -1,0 +1,846 @@
+>/home/arcchitjain/Documents/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 0
+ Total time ~: 3 ms
+ Max memory:11.342918395996094
+=====================================
+>/home/arcchitjain/Documents/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 3374
+ Total time ~: 264 ms
+ Max memory:54.186668395996094
+=====================================
+>/home/arcchitjain/Documents/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 0
+ Total time ~: 3 ms
+ Max memory:11.342918395996094
+=====================================
+>/home/arcchitjain/Documents/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 2802
+ Total time ~: 235 ms
+ Max memory:50.414306640625
+=====================================
+>/home/arcchitjain/Documents/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 0
+ Total time ~: 3 ms
+ Max memory:11.343238830566406
+=====================================
+>/home/arcchitjain/Documents/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 11673
+ Total time ~: 664 ms
+ Max memory:64.95542907714844
+=====================================
+>/home/arcchitjain/Documents/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 0
+ Total time ~: 3 ms
+ Max memory:11.34320068359375
+=====================================
+>/home/arcchitjain/Documents/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 8171
+ Total time ~: 523 ms
+ Max memory:63.0
+=====================================
+>/home/arcchitjain/Documents/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 0
+ Total time ~: 3 ms
+ Max memory:11.342918395996094
+=====================================
+>/home/arcchitjain/Documents/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 6253
+ Total time ~: 421 ms
+ Max memory:63.0
+=====================================
+>/home/arcchitjain/Documents/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 0
+ Total time ~: 4 ms
+ Max memory:11.342880249023438
+=====================================
+>/home/arcchitjain/Documents/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 8633
+ Total time ~: 534 ms
+ Max memory:63.0
+=====================================
+>/home/arcchitjain/Documents/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 0
+ Total time ~: 3 ms
+ Max memory:11.343170166015625
+=====================================
+>/home/arcchitjain/Documents/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 12024
+ Total time ~: 659 ms
+ Max memory:64.91409301757812
+=====================================
+>/home/arcchitjain/Documents/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 0
+ Total time ~: 3 ms
+ Max memory:11.342880249023438
+=====================================
+>/home/arcchitjain/Documents/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 10338
+ Total time ~: 616 ms
+ Max memory:64.9398193359375
+=====================================
+>/home/arcchitjain/Documents/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 0
+ Total time ~: 3 ms
+ Max memory:11.343391418457031
+=====================================
+>/home/arcchitjain/Documents/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 5054
+ Total time ~: 370 ms
+ Max memory:63.0
+=====================================
+>/home/arcchitjain/Documents/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 0
+ Total time ~: 3 ms
+ Max memory:11.342918395996094
+=====================================
+>/home/arcchitjain/Documents/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 8454
+ Total time ~: 527 ms
+ Max memory:63.0
+=====================================
+Length of freq items 1	: 0
+Time of freq items 1	: 0.21138334274291992
+0 Frequent Itemsets are mined in 0.001950979232788086 seconds.
+Length of freq items 2	: 0
+Time of freq items 2	: 0.0020918846130371094
+DL of initial theory	: 83472.00131869008
+Initial DL				: 83472.00131869008
+Final DL				: 41660.97031964187
+Compression (wrt ce)	: 0.5008988683452875
+Operator Counters		: {'W': 0, 'V': 0, 'S': 0, 'R': 0, 'T': 0}
+Length of freq items 1	: 3374
+Time of freq items 1	: 0.4802696704864502
+3374 Frequent Itemsets are mined in 0.07831573486328125 seconds.
+Length of freq items 2	: 3374
+Time of freq items 2	: 0.07835125923156738
+DL of initial theory	: 83472.00131869008
+3373	frequent itemsets left after applying T operator with output 	: [frozenset({11, 75, 67, 66})]
+3126	frequent itemsets left after applying T operator with output 	: [frozenset({66, -13, -19, -25})]
+0	frequent itemsets left after applying T operator with output 	: [frozenset({98, 27, 44})]
+Initial DL				: 83472.00131869008
+Final DL				: 5354.8853831249235
+Compression (wrt ce)	: 0.9358481251374294
+Operator Counters		: {'W': 0, 'V': 0, 'S': 0, 'R': 0, 'T': 3}
+Confusions 	: TP_s = 0; TN_s = 10; FP_s = 0; FN_s = 2; TP_f = 0; TN_f = 4; FP_f = 0; FN_f = 12
+Accuracy of fold 0	: 0.5
+Coverage of fold 0	: 100.0
+
+Length of freq items 1	: 0
+Time of freq items 1	: 0.2082819938659668
+0 Frequent Itemsets are mined in 0.001983642578125 seconds.
+Length of freq items 2	: 0
+Time of freq items 2	: 0.002123594284057617
+DL of initial theory	: 82498.79582168517
+Initial DL				: 82498.79582168517
+Final DL				: 41175.350794822996
+Compression (wrt ce)	: 0.5008975539010246
+Operator Counters		: {'W': 0, 'V': 0, 'S': 0, 'R': 0, 'T': 0}
+Length of freq items 1	: 2802
+Time of freq items 1	: 0.4510798454284668
+2802 Frequent Itemsets are mined in 0.06737565994262695 seconds.
+Length of freq items 2	: 2802
+Time of freq items 2	: 0.0674123764038086
+DL of initial theory	: 82498.79582168517
+2801	frequent itemsets left after applying T operator with output 	: [frozenset({49, 66, 11})]
+1339	frequent itemsets left after applying T operator with output 	: [frozenset({24, -25, 23})]
+1094	frequent itemsets left after applying W operator with output 	: [frozenset({98, 101, 45, -74}), frozenset({2, 6, 8, 10, 11, 14, 15, 17, 18, 21, 23, 24, 26, 27, 30, 31, 33, 35, 36, 37, 41, 43, 44, 49, 51, 52, 58, 59, 61, 62, 64, 65, 67, 69, 75, 76, 77, 80, 81, 84, 86, 92, 93, 94, 95, 99, -101, -97, -90, -87, -85, -83, -82, -79, -72, -71, -70, -63, -60, -57, -56, -55, -53, -50, -46, -42, -40, -39, -38, -34, -32, -29, -22, -20, -13, -12, -9, -4}), frozenset({2, 5, 7, 8, 10, 11, 15, 18, 21, 26, 27, 28, 30, 31, 33, 35, 36, 41, 43, 44, 47, 49, 51, 52, 58, 61, 62, 64, 67, 68, 69, 73, 76, 77, 78, 81, 84, 86, 87, 88, 89, 90, 93, 95, 96, 99, -101, -97, -92, -91, -85, -83, -82, -71, -63, -60, -57, -56, -55, -54, -53, -50, -46, -42, -40, -39, -38, -34, -32, -29, -25, -22, -20, -19, -12, -9, -4, -3})]
+Ignoring itemset	: Initial DL = 6768.446381632132	; Possible DLs	: [('T', 9656.808136375706), ('W', 6788.839877598816)]
+Ignoring itemset	: Initial DL = 6768.446381632132	; Possible DLs	: [('T', 9656.808136375706), ('W', 6788.839877598816)]
+Ignoring itemset	: Initial DL = 6768.446381632132	; Possible DLs	: [('T', 7723.738728924296), ('W', 6788.839877598816)]
+Ignoring itemset	: Initial DL = 6768.446381632132	; Possible DLs	: [('T', 10623.82665233377), ('W', 6788.839877598816)]
+Ignoring itemset	: Initial DL = 6768.446381632132	; Possible DLs	: [('T', 10623.82665233377), ('W', 6788.839877598816)]
+Ignoring itemset	: Initial DL = 6768.446381632132	; Possible DLs	: [('T', 8206.868110739273), ('W', 6785.669952597374)]
+Ignoring itemset	: Initial DL = 6768.446381632132	; Possible DLs	: [('T', 7723.738728924296), ('W', 6788.839877598816)]
+Ignoring itemset	: Initial DL = 6768.446381632132	; Possible DLs	: [('T', 7240.7032852719085), ('W', 6788.839877598816)]
+Ignoring itemset	: Initial DL = 6768.446381632132	; Possible DLs	: [('T', 8206.868110739273), ('W', 6785.669952597374)]
+Ignoring itemset	: Initial DL = 6768.446381632132	; Possible DLs	: [('T', 8206.868110739273), ('W', 6785.669952597374)]
+Ignoring itemset	: Initial DL = 6768.446381632132	; Possible DLs	: [('T', 7240.7032852719085), ('W', 6788.839877598816)]
+Ignoring itemset	: Initial DL = 6768.446381632132	; Possible DLs	: [('T', 8690.085916833988), ('W', 6788.839877598816)]
+Ignoring itemset	: Initial DL = 6768.446381632132	; Possible DLs	: [('T', 8206.868110739273), ('W', 6788.839877598816)]
+Ignoring itemset	: Initial DL = 6768.446381632132	; Possible DLs	: [('T', 9173.406800153592), ('W', 6785.669952597374)]
+Ignoring itemset	: Initial DL = 6768.446381632132	; Possible DLs	: [('T', 9173.406800153592), ('W', 6785.669952597374)]
+Ignoring itemset	: Initial DL = 6768.446381632132	; Possible DLs	: [('T', 8690.085916833988), ('W', 6785.669952597374)]
+Ignoring itemset	: Initial DL = 6768.446381632132	; Possible DLs	: [('T', 8690.085916833988), ('W', 6785.669952597374)]
+Ignoring itemset	: Initial DL = 6768.446381632132	; Possible DLs	: [('T', 9173.406800153592), ('W', 6785.669952597374)]
+Ignoring itemset	: Initial DL = 6768.446381632132	; Possible DLs	: [('T', 9173.406800153592), ('W', 6785.669952597374)]
+Ignoring itemset	: Initial DL = 6768.446381632132	; Possible DLs	: [('T', 8690.085916833988), ('W', 6788.839877598816)]
+Ignoring itemset	: Initial DL = 6768.446381632132	; Possible DLs	: [('T', 9656.808136375706), ('W', 6785.669952597374)]
+Ignoring itemset	: Initial DL = 6768.446381632132	; Possible DLs	: [('T', 8206.868110739273), ('W', 6785.669952597374)]
+Ignoring itemset	: Initial DL = 6768.446381632132	; Possible DLs	: [('T', 8206.868110739273), ('W', 6785.669952597374)]
+Ignoring itemset	: Initial DL = 6768.446381632132	; Possible DLs	: [('T', 9173.406800153592), ('W', 6788.839877598816)]
+Ignoring itemset	: Initial DL = 6768.446381632132	; Possible DLs	: [('T', 9173.406800153592), ('W', 6785.669952597374)]
+Ignoring itemset	: Initial DL = 6768.446381632132	; Possible DLs	: [('T', 8690.085916833988), ('W', 6785.669952597374)]
+Ignoring itemset	: Initial DL = 6768.446381632132	; Possible DLs	: [('T', 8690.085916833988), ('W', 6785.669952597374)]
+Ignoring itemset	: Initial DL = 6768.446381632132	; Possible DLs	: [('T', 7240.7032852719085), ('W', 6785.669952597374)]
+Ignoring itemset	: Initial DL = 6768.446381632132	; Possible DLs	: [('T', 9656.808136375706), ('W', 6788.839877598816)]
+Ignoring itemset	: Initial DL = 6768.446381632132	; Possible DLs	: [('T', 7723.738728924296), ('W', 6785.669952597374)]
+Ignoring itemset	: Initial DL = 6768.446381632132	; Possible DLs	: [('T', 9656.808136375706), ('W', 6785.669952597374)]
+Ignoring itemset	: Initial DL = 6768.446381632132	; Possible DLs	: [('T', 9173.406800153592), ('W', 6785.669952597374)]
+Ignoring itemset	: Initial DL = 6768.446381632132	; Possible DLs	: [('T', 9173.406800153592), ('W', 6785.669952597374)]
+Ignoring itemset	: Initial DL = 6768.446381632132	; Possible DLs	: [('T', 9173.406800153592), ('W', 6785.669952597374)]
+0	frequent itemsets left after applying T operator with output 	: [frozenset({49, 76, 15})]
+Initial DL				: 82498.79582168517
+Final DL				: 6757.767964193535
+Compression (wrt ce)	: 0.9180864654218719
+Operator Counters		: {'W': 1, 'V': 0, 'S': 0, 'R': 0, 'T': 3}
+Confusions 	: TP_s = 0; TN_s = 6; FP_s = 0; FN_s = 1; TP_f = 0; TN_f = 9; FP_f = 0; FN_f = 14
+Accuracy of fold 1	: 0.5
+Coverage of fold 1	: 100.0
+
+Length of freq items 1	: 0
+Time of freq items 1	: 0.20413446426391602
+0 Frequent Itemsets are mined in 0.0024623870849609375 seconds.
+Length of freq items 2	: 0
+Time of freq items 2	: 0.0026373863220214844
+DL of initial theory	: 90285.34803775501
+Initial DL				: 90285.34803775501
+Final DL				: 45060.755699789
+Compression (wrt ce)	: 0.5009073268350724
+Operator Counters		: {'W': 0, 'V': 0, 'S': 0, 'R': 0, 'T': 0}
+Length of freq items 1	: 11673
+Time of freq items 1	: 0.9256744384765625
+11673 Frequent Itemsets are mined in 0.25639796257019043 seconds.
+Length of freq items 2	: 11673
+Time of freq items 2	: 0.2564399242401123
+DL of initial theory	: 90285.34803775501
+11672	frequent itemsets left after applying T operator with output 	: [frozenset({11, 75, 67, 66})]
+11301	frequent itemsets left after applying T operator with output 	: [frozenset({81, 44, -74, 49})]
+3128	frequent itemsets left after applying T operator with output 	: [frozenset({66, -13, -20, -19})]
+2217	frequent itemsets left after applying W operator with output 	: [frozenset({-9, 101, -25, -19, -82}), frozenset({2, 6, 7, 8, 11, 14, 15, 17, 18, 21, 23, 24, 26, 27, 28, 30, 31, 35, 36, 37, 41, 43, 45, 47, 49, 51, 52, 58, 59, 61, 62, 64, 69, 73, 75, 76, 78, 80, 84, 86, 87, 88, 89, 92, 93, 95, 96, 98, 99, -101, -100, -97, -94, -90, -85, -83, -79, -74, -72, -71, -63, -60, -56, -55, -54, -50, -46, -40, -39, -38, -34, -20, -13, -12, -4, -3, -1}), frozenset({2, 5, 6, 7, 8, 10, 15, 16, 17, 18, 21, 23, 24, 26, 27, 28, 30, 31, 35, 36, 37, 41, 44, 45, 52, 58, 62, 64, 65, 67, 68, 69, 73, 75, 76, 77, 78, 80, 81, 87, 89, 90, 91, 94, 95, 96, 98, -101, -99, -88, -86, -85, -84, -83, -79, -74, -72, -71, -70, -63, -57, -56, -55, -54, -53, -50, -48, -46, -40, -39, -34, -32, -29, -22, -13, -4, -3})]
+Ignoring itemset	: Initial DL = 5812.543541599107	; Possible DLs	: [('T', 7247.494204764534), ('W', 5836.975482418818)]
+Ignoring itemset	: Initial DL = 5812.543541599107	; Possible DLs	: [('T', 7730.623586579511), ('W', 5836.975482418818)]
+Ignoring itemset	: Initial DL = 5812.543541599107	; Possible DLs	: [('T', 6764.458761112146), ('W', 5836.975482418818)]
+0	frequent itemsets left after applying T operator with output 	: [frozenset({-55, 26, 75, -39})]
+Initial DL				: 90285.34803775501
+Final DL				: 5798.695199159067
+Compression (wrt ce)	: 0.9357736850420714
+Operator Counters		: {'W': 1, 'V': 0, 'S': 0, 'R': 0, 'T': 4}
+Confusions 	: TP_s = 0; TN_s = 5; FP_s = 0; FN_s = 0; TP_f = 0; TN_f = 2; FP_f = 0; FN_f = 7
+Accuracy of fold 2	: 0.5
+Coverage of fold 2	: 100.0
+
+Length of freq items 1	: 0
+Time of freq items 1	: 0.21043801307678223
+0 Frequent Itemsets are mined in 0.0022780895233154297 seconds.
+Length of freq items 2	: 0
+Time of freq items 2	: 0.0024445056915283203
+DL of initial theory	: 88338.51894500232
+Initial DL				: 88338.51894500232
+Final DL				: 44089.3100699964
+Compression (wrt ce)	: 0.5009050344454443
+Operator Counters		: {'W': 0, 'V': 0, 'S': 0, 'R': 0, 'T': 0}
+Length of freq items 1	: 8171
+Time of freq items 1	: 0.7844164371490479
+8171 Frequent Itemsets are mined in 0.1862502098083496 seconds.
+Length of freq items 2	: 8171
+Time of freq items 2	: 0.18629121780395508
+DL of initial theory	: 88338.51894500232
+8170	frequent itemsets left after applying T operator with output 	: [frozenset({81, 66, 11, -9})]
+8040	frequent itemsets left after applying T operator with output 	: [frozenset({8, -55, 28, 47})]
+2891	frequent itemsets left after applying T operator with output 	: [frozenset({45, -9, -19, -25})]
+1942	frequent itemsets left after applying W operator with output 	: [frozenset({49, 101, -40, 11, 30}), frozenset({2, 6, 8, 10, 14, 15, 17, 18, 21, 23, 24, 26, 27, 31, 33, 35, 36, 37, 41, 43, 44, 45, 51, 52, 58, 59, 61, 62, 64, 65, 67, 69, 75, 76, 77, 80, 81, 84, 86, 92, 93, 94, 95, 98, 99, -101, -97, -90, -87, -85, -83, -82, -79, -74, -72, -71, -70, -63, -60, -57, -56, -55, -53, -50, -46, -42, -39, -38, -34, -32, -29, -22, -20, -13, -12, -9, -4}), frozenset({2, 6, 7, 10, 14, 15, 16, 17, 18, 21, 23, 24, 26, 31, 33, 35, 36, 37, 43, 44, 45, 47, 51, 52, 58, 59, 62, 64, 65, 66, 67, 68, 69, 73, 75, 76, 77, 78, 80, 84, 86, 89, 90, 91, 92, 95, 96, 98, 99, -101, -100, -88, -85, -83, -82, -79, -74, -72, -71, -70, -63, -60, -57, -56, -50, -48, -42, -38, -34, -29, -22, -20, -13, -12, -9, -4, -3})]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 7726.4831639246495), ('W', 3903.7418426651843)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 5794.970833142508), ('W', 3903.7418426651843)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 4829.925043559596), ('W', 3903.7418426651843)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 7243.447720272262), ('W', 3903.7418426651843)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 6760.512399193888), ('W', 3903.7418426651843)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 6277.684158319183), ('W', 3903.7418426651843)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 7243.447720272262), ('W', 3903.7418426651843)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 7726.4831639246495), ('W', 3903.7418426651843)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 6760.512399193888), ('W', 3903.7418426651843)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 8209.612545739627), ('W', 3903.7418426651843)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 6277.684158319183), ('W', 3900.282411046547)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 7243.447720272262), ('W', 3900.282411046547)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 6760.512399193888), ('W', 3900.282411046547)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 4829.925043559596), ('W', 3900.282411046547)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 6760.512399193888), ('W', 3900.282411046547)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 6277.684158319183), ('W', 3900.282411046547)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 5794.970833142508), ('W', 3900.282411046547)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 7726.4831639246495), ('W', 3900.282411046547)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 6277.684158319183), ('W', 3900.282411046547)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 5312.381217152148), ('W', 3900.282411046547)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 6760.512399193888), ('W', 3900.282411046547)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 6277.684158319183), ('W', 3900.282411046547)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 6277.684158319183), ('W', 3900.282411046547)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 6277.684158319183), ('W', 3900.282411046547)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 6760.512399193888), ('W', 3900.282411046547)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 6277.684158319183), ('W', 3900.282411046547)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 7243.447720272262), ('W', 3900.282411046547)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 7726.4831639246495), ('W', 3900.282411046547)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 6277.684158319183), ('W', 3900.282411046547)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 6277.684158319183), ('W', 3900.282411046547)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 7243.447720272262), ('W', 3900.282411046547)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 5312.381217152148), ('W', 3903.7418426651843)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 4347.612660753196), ('W', 3903.7418426651843)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 7243.447720272262), ('W', 3903.7418426651843)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 7243.447720272262), ('W', 3903.7418426651843)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 6760.512399193888), ('W', 3903.7418426651843)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 5794.970833142508), ('W', 3903.7418426651843)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 5794.970833142508), ('W', 3903.7418426651843)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 5794.970833142508), ('W', 3903.7418426651843)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 6760.512399193888), ('W', 3903.7418426651843)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 6760.512399193888), ('W', 3903.7418426651843)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 5312.381217152148), ('W', 3903.7418426651843)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 4347.612660753196), ('W', 3903.7418426651843)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 5794.970833142508), ('W', 3903.7418426651843)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 7726.4831639246495), ('W', 3903.7418426651843)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 5312.381217152148), ('W', 3903.7418426651843)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 6277.684158319183), ('W', 3903.7418426651843)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 4829.925043559596), ('W', 3903.7418426651843)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 6277.684158319183), ('W', 3903.7418426651843)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 6760.512399193888), ('W', 3903.7418426651843)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 7243.447720272262), ('W', 3903.7418426651843)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 6760.512399193888), ('W', 3903.7418426651843)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 6277.684158319183), ('W', 3903.7418426651843)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 5312.381217152148), ('W', 3903.7418426651843)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 4829.925043559596), ('W', 3903.7418426651843)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 8209.612545739627), ('W', 3903.7418426651843)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 8209.612545739627), ('W', 3903.7418426651843)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 5312.381217152148), ('W', 3903.7418426651843)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 4829.925043559596), ('W', 3903.7418426651843)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 7243.447720272262), ('W', 3903.7418426651843)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 5312.381217152148), ('W', 3903.7418426651843)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 4829.925043559596), ('W', 3903.7418426651843)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 6760.512399193888), ('W', 3903.7418426651843)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 7243.447720272262), ('W', 3903.7418426651843)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 6277.684158319183), ('W', 3903.7418426651843)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 6277.684158319183), ('W', 3903.7418426651843)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 5794.970833142508), ('W', 3903.7418426651843)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 8209.612545739627), ('W', 3903.7418426651843)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 7243.447720272262), ('W', 3903.7418426651843)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 4829.925043559596), ('W', 3903.7418426651843)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 7726.4831639246495), ('W', 3903.7418426651843)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 6277.684158319183), ('W', 3903.7418426651843)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 5794.970833142508), ('W', 3903.7418426651843)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 5312.381217152148), ('W', 3903.7418426651843)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 6760.512399193888), ('W', 3903.7418426651843)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 4829.925043559596), ('W', 3903.7418426651843)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 6760.512399193888), ('W', 3903.7418426651843)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 6277.684158319183), ('W', 3903.7418426651843)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 7243.447720272262), ('W', 3903.7418426651843)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 5794.970833142508), ('W', 3900.282411046547)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 6760.512399193888), ('W', 3900.282411046547)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 5312.381217152148), ('W', 3900.282411046547)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 5794.970833142508), ('W', 3900.282411046547)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 5312.381217152148), ('W', 3900.282411046547)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 6277.684158319183), ('W', 3900.282411046547)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 6760.512399193888), ('W', 3903.7418426651843)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 4829.925043559596), ('W', 3900.282411046547)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 6277.684158319183), ('W', 3900.282411046547)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 4829.925043559596), ('W', 3900.282411046547)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 6277.684158319183), ('W', 3900.282411046547)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 6277.684158319183), ('W', 3900.282411046547)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 4829.925043559596), ('W', 3900.282411046547)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 8209.612545739627), ('W', 3900.282411046547)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 5312.381217152148), ('W', 3900.282411046547)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 6277.684158319183), ('W', 3900.282411046547)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 6760.512399193888), ('W', 3900.282411046547)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 7726.4831639246495), ('W', 3900.282411046547)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 6277.684158319183), ('W', 3900.282411046547)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 5312.381217152148), ('W', 3900.282411046547)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 5794.970833142508), ('W', 3900.282411046547)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 7243.447720272262), ('W', 3900.282411046547)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 6760.512399193888), ('W', 3900.282411046547)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 4829.925043559596), ('W', 3900.282411046547)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 5794.970833142508), ('W', 3900.282411046547)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 6277.684158319183), ('W', 3900.282411046547)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 7243.447720272262), ('W', 3900.282411046547)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 5794.970833142508), ('W', 3900.282411046547)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 7243.447720272262), ('W', 3900.282411046547)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 4829.925043559596), ('W', 3900.282411046547)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 6277.684158319183), ('W', 3900.282411046547)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 6760.512399193888), ('W', 3900.282411046547)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 6760.512399193888), ('W', 3900.282411046547)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 6760.512399193888), ('W', 3900.282411046547)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 6277.684158319183), ('W', 3900.282411046547)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 5312.381217152148), ('W', 3900.282411046547)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 4829.925043559596), ('W', 3900.282411046547)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 5312.381217152148), ('W', 3900.282411046547)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 7243.447720272262), ('W', 3900.282411046547)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 5312.381217152148), ('W', 3900.282411046547)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 6760.512399193888), ('W', 3900.282411046547)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 6277.684158319183), ('W', 3900.282411046547)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 6277.684158319183), ('W', 3900.282411046547)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 7243.447720272262), ('W', 3900.282411046547)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 6760.512399193888), ('W', 3900.282411046547)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 5312.381217152148), ('W', 3900.282411046547)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 6277.684158319183), ('W', 3900.282411046547)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 5794.970833142508), ('W', 3900.282411046547)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 5312.381217152148), ('W', 3900.282411046547)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 6760.512399193888), ('W', 3900.282411046547)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 4829.925043559596), ('W', 3900.282411046547)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 5312.381217152148), ('W', 3903.7418426651843)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 6277.684158319183), ('W', 3903.7418426651843)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 6760.512399193888), ('W', 3903.7418426651843)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 8209.612545739627), ('W', 3903.7418426651843)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 6760.512399193888), ('W', 3903.7418426651843)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 5312.381217152148), ('W', 3903.7418426651843)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 6760.512399193888), ('W', 3903.7418426651843)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 4829.925043559596), ('W', 3903.7418426651843)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 6277.684158319183), ('W', 3903.7418426651843)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 4829.925043559596), ('W', 3903.7418426651843)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 6277.684158319183), ('W', 3903.7418426651843)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 4347.612660753196), ('W', 3903.7418426651843)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 4829.925043559596), ('W', 3903.7418426651843)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 6760.512399193888), ('W', 3903.7418426651843)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 5794.970833142508), ('W', 3903.7418426651843)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 5312.381217152148), ('W', 3903.7418426651843)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 4347.612660753196), ('W', 3903.7418426651843)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 4829.925043559596), ('W', 3903.7418426651843)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 7243.447720272262), ('W', 3903.7418426651843)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 4829.925043559596), ('W', 3903.7418426651843)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 6277.684158319183), ('W', 3903.7418426651843)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 6760.512399193888), ('W', 3903.7418426651843)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 6277.684158319183), ('W', 3903.7418426651843)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 5312.381217152148), ('W', 3903.7418426651843)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 6277.684158319183), ('W', 3903.7418426651843)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 7726.4831639246495), ('W', 3903.7418426651843)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 6760.512399193888), ('W', 3903.7418426651843)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 6760.512399193888), ('W', 3903.7418426651843)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 6760.512399193888), ('W', 3903.7418426651843)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 5794.970833142508), ('W', 3903.7418426651843)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 7243.447720272262), ('W', 3903.7418426651843)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 7726.4831639246495), ('W', 3903.7418426651843)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 6277.684158319183), ('W', 3903.7418426651843)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 6760.512399193888), ('W', 3903.7418426651843)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 6277.684158319183), ('W', 3903.7418426651843)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 5312.381217152148), ('W', 3903.7418426651843)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 6277.684158319183), ('W', 3903.7418426651843)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 6277.684158319183), ('W', 3903.7418426651843)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 7243.447720272262), ('W', 3903.7418426651843)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 5794.970833142508), ('W', 3903.7418426651843)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 6760.512399193888), ('W', 3903.7418426651843)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 5794.970833142508), ('W', 3903.7418426651843)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 7726.4831639246495), ('W', 3903.7418426651843)]
+Ignoring itemset	: Initial DL = 3882.625542677958	; Possible DLs	: [('T', 6277.684158319183), ('W', 3903.7418426651843)]
+0	frequent itemsets left after applying T operator with output 	: [frozenset({-63, 18, 44})]
+Initial DL				: 88338.51894500232
+Final DL				: 3865.4537765916357
+Compression (wrt ce)	: 0.9562427146984638
+Operator Counters		: {'W': 1, 'V': 0, 'S': 0, 'R': 0, 'T': 4}
+Confusions 	: TP_s = 0; TN_s = 6; FP_s = 0; FN_s = 0; TP_f = 0; TN_f = 3; FP_f = 0; FN_f = 9
+Accuracy of fold 3	: 0.5
+Coverage of fold 3	: 100.0
+
+Length of freq items 1	: 0
+Time of freq items 1	: 0.20374035835266113
+0 Frequent Itemsets are mined in 0.0013279914855957031 seconds.
+Length of freq items 2	: 0
+Time of freq items 2	: 0.0014190673828125
+DL of initial theory	: 85418.51144628091
+Initial DL				: 85418.51144628091
+Final DL				: 42632.25833334031
+Compression (wrt ce)	: 0.5009014133879934
+Operator Counters		: {'W': 0, 'V': 0, 'S': 0, 'R': 0, 'T': 0}
+Length of freq items 1	: 6253
+Time of freq items 1	: 0.6756777763366699
+6253 Frequent Itemsets are mined in 0.12130570411682129 seconds.
+Length of freq items 2	: 6253
+Time of freq items 2	: 0.12134647369384766
+DL of initial theory	: 85418.51144628091
+6252	frequent itemsets left after applying T operator with output 	: [frozenset({66, -25, -19, 77, -9})]
+6154	frequent itemsets left after applying T operator with output 	: [frozenset({75, -55, 26, 11})]
+3	frequent itemsets left after applying T operator with output 	: [frozenset({49, 66, -20, 30})]
+Ignoring itemset	: Initial DL = 4877.243196717154	; Possible DLs	: [('T', 11169.98651809919), ('W', 4880.6165997170965)]
+Ignoring itemset	: Initial DL = 4877.243196717154	; Possible DLs	: [('T', 20853.319316793026), ('W', 4885.140161673154)]
+Ignoring itemset	: Initial DL = 4877.243196717154	; Possible DLs	: [('T', 18430.421681878215), ('W', 4892.488889827385)]
+Initial DL				: 85418.51144628091
+Final DL				: 4877.243196717154
+Compression (wrt ce)	: 0.9429018006268534
+Operator Counters		: {'W': 0, 'V': 0, 'S': 0, 'R': 0, 'T': 3}
+Confusions 	: TP_s = 0; TN_s = 7; FP_s = 0; FN_s = 1; TP_f = 0; TN_f = 5; FP_f = 0; FN_f = 11
+Accuracy of fold 4	: 0.5
+Coverage of fold 4	: 100.0
+
+Length of freq items 1	: 0
+Time of freq items 1	: 0.20667409896850586
+0 Frequent Itemsets are mined in 0.002109050750732422 seconds.
+Length of freq items 2	: 0
+Time of freq items 2	: 0.0022733211517333984
+DL of initial theory	: 88338.51894500232
+Initial DL				: 88338.51894500232
+Final DL				: 44089.3100699964
+Compression (wrt ce)	: 0.5009050344454443
+Operator Counters		: {'W': 0, 'V': 0, 'S': 0, 'R': 0, 'T': 0}
+Length of freq items 1	: 8633
+Time of freq items 1	: 0.7875053882598877
+8633 Frequent Itemsets are mined in 0.18011927604675293 seconds.
+Length of freq items 2	: 8633
+Time of freq items 2	: 0.1801619529724121
+DL of initial theory	: 88338.51894500232
+8632	frequent itemsets left after applying T operator with output 	: [frozenset({-39, 75, 11, -55})]
+8465	frequent itemsets left after applying T operator with output 	: [frozenset({66, -29, -20, -9})]
+0	frequent itemsets left after applying T operator with output 	: [frozenset({73, 36, -63})]
+Initial DL				: 88338.51894500232
+Final DL				: 2459.826760522671
+Compression (wrt ce)	: 0.9721545392666804
+Operator Counters		: {'W': 0, 'V': 0, 'S': 0, 'R': 0, 'T': 3}
+Confusions 	: TP_s = 0; TN_s = 8; FP_s = 0; FN_s = 0; TP_f = 0; TN_f = 1; FP_f = 0; FN_f = 9
+Accuracy of fold 5	: 0.5
+Coverage of fold 5	: 100.0
+
+Length of freq items 1	: 0
+Time of freq items 1	: 0.20495390892028809
+0 Frequent Itemsets are mined in 0.002554655075073242 seconds.
+Length of freq items 2	: 0
+Time of freq items 2	: 0.002729654312133789
+DL of initial theory	: 90285.34803775501
+Initial DL				: 90285.34803775501
+Final DL				: 45060.755699789
+Compression (wrt ce)	: 0.5009073268350724
+Operator Counters		: {'W': 0, 'V': 0, 'S': 0, 'R': 0, 'T': 0}
+Length of freq items 1	: 12024
+Time of freq items 1	: 0.901425838470459
+12024 Frequent Itemsets are mined in 0.2393817901611328 seconds.
+Length of freq items 2	: 12024
+Time of freq items 2	: 0.2394258975982666
+DL of initial theory	: 90285.34803775501
+12023	frequent itemsets left after applying T operator with output 	: [frozenset({66, -9, -19, -25})]
+11875	frequent itemsets left after applying T operator with output 	: [frozenset({8, -55, 28, 47})]
+3	frequent itemsets left after applying T operator with output 	: [frozenset({81, 75, -39, -9})]
+Ignoring itemset	: Initial DL = 3427.0145729930964	; Possible DLs	: [('T', 5352.078028202866), ('W', 3430.2297275379487)]
+Ignoring itemset	: Initial DL = 3427.0145729930964	; Possible DLs	: [('T', 16960.07305441288), ('W', 3438.2127211126426)]
+Ignoring itemset	: Initial DL = 3427.0145729930964	; Possible DLs	: [('T', 16475.7108483632), ('W', 3434.7532894940055)]
+Initial DL				: 90285.34803775501
+Final DL				: 3427.0145729930964
+Compression (wrt ce)	: 0.9620424061326096
+Operator Counters		: {'W': 0, 'V': 0, 'S': 0, 'R': 0, 'T': 3}
+Confusions 	: TP_s = 0; TN_s = 6; FP_s = 0; FN_s = 1; TP_f = 0; TN_f = 1; FP_f = 0; FN_f = 6
+Accuracy of fold 6	: 0.5
+Coverage of fold 6	: 100.0
+
+Length of freq items 1	: 0
+Time of freq items 1	: 0.20405268669128418
+0 Frequent Itemsets are mined in 0.0013720989227294922 seconds.
+Length of freq items 2	: 0
+Time of freq items 2	: 0.0014662742614746094
+DL of initial theory	: 89311.91797595918
+Initial DL				: 89311.91797595918
+Final DL				: 44575.02521526759
+Compression (wrt ce)	: 0.5009061923038511
+Operator Counters		: {'W': 0, 'V': 0, 'S': 0, 'R': 0, 'T': 0}
+Length of freq items 1	: 10338
+Time of freq items 1	: 0.862175703048706
+10338 Frequent Itemsets are mined in 0.2169332504272461 seconds.
+Length of freq items 2	: 10338
+Time of freq items 2	: 0.21697282791137695
+DL of initial theory	: 89311.91797595918
+10337	frequent itemsets left after applying T operator with output 	: [frozenset({66, -29, -20, -9})]
+9703	frequent itemsets left after applying T operator with output 	: [frozenset({8, -55, 75, -85})]
+0	frequent itemsets left after applying T operator with output 	: [frozenset({-39, 27, 44, 49})]
+Initial DL				: 89311.91797595918
+Final DL				: 4392.513742074986
+Compression (wrt ce)	: 0.9508182800053925
+Operator Counters		: {'W': 0, 'V': 0, 'S': 0, 'R': 0, 'T': 3}
+Confusions 	: TP_s = 0; TN_s = 5; FP_s = 0; FN_s = 1; TP_f = 0; TN_f = 3; FP_f = 0; FN_f = 7
+Accuracy of fold 7	: 0.5
+Coverage of fold 7	: 100.0
+
+Length of freq items 1	: 0
+Time of freq items 1	: 0.21416759490966797
+0 Frequent Itemsets are mined in 0.002081155776977539 seconds.
+Length of freq items 2	: 0
+Time of freq items 2	: 0.002215862274169922
+DL of initial theory	: 87365.15128206872
+Initial DL				: 87365.15128206872
+Final DL				: 43603.61042854734
+Compression (wrt ce)	: 0.5009038525238979
+Operator Counters		: {'W': 0, 'V': 0, 'S': 0, 'R': 0, 'T': 0}
+Length of freq items 1	: 5054
+Time of freq items 1	: 0.5989813804626465
+6913 Frequent Itemsets are mined in 0.1464064121246338 seconds.
+Length of freq items 2	: 6913
+Time of freq items 2	: 0.1464519500732422
+DL of initial theory	: 87365.15128206872
+5053	frequent itemsets left after applying T operator with output 	: [frozenset({75, 26, 11, 66})]
+5004	frequent itemsets left after applying T operator with output 	: [frozenset({8, -55, 28, 47})]
+3	frequent itemsets left after applying T operator with output 	: [frozenset({98, 44, 62})]
+Ignoring itemset	: Initial DL = 5835.91678126411	; Possible DLs	: [('T', 10195.826583699569), ('W', 5839.290184264052)]
+Ignoring itemset	: Initial DL = 5835.91678126411	; Possible DLs	: [('T', 19877.429967765172), ('W', 5851.16247437434)]
+Ignoring itemset	: Initial DL = 5835.91678126411	; Possible DLs	: [('T', 20846.689960172946), ('W', 5843.813746220108)]
+Initial DL				: 87365.15128206872
+Final DL				: 5835.91678126411
+Compression (wrt ce)	: 0.9332008621787632
+Operator Counters		: {'W': 0, 'V': 0, 'S': 0, 'R': 0, 'T': 3}
+Confusions 	: TP_s = 0; TN_s = 9; FP_s = 0; FN_s = 1; TP_f = 0; TN_f = 1; FP_f = 0; FN_f = 9
+Accuracy of fold 8	: 0.5
+Coverage of fold 8	: 100.0
+
+Length of freq items 1	: 0
+Time of freq items 1	: 0.24555420875549316
+0 Frequent Itemsets are mined in 0.003060579299926758 seconds.
+Length of freq items 2	: 0
+Time of freq items 2	: 0.003270864486694336
+DL of initial theory	: 88338.51894500232
+Initial DL				: 88338.51894500232
+Final DL				: 44089.3100699964
+Compression (wrt ce)	: 0.5009050344454443
+Operator Counters		: {'W': 0, 'V': 0, 'S': 0, 'R': 0, 'T': 0}
+Length of freq items 1	: 8454
+Time of freq items 1	: 0.7698166370391846
+8454 Frequent Itemsets are mined in 0.17970824241638184 seconds.
+Length of freq items 2	: 8454
+Time of freq items 2	: 0.1797502040863037
+DL of initial theory	: 88338.51894500232
+8453	frequent itemsets left after applying T operator with output 	: [frozenset({81, 66, -19, -9})]
+7731	frequent itemsets left after applying T operator with output 	: [frozenset({8, -55, 28, 47})]
+6394	frequent itemsets left after applying W operator with output 	: [frozenset({26, -85, 44, 101}), frozenset({2, 6, 8, 10, 11, 14, 15, 17, 18, 21, 23, 24, 27, 30, 31, 33, 35, 36, 37, 41, 43, 45, 49, 51, 52, 58, 59, 61, 62, 64, 65, 67, 69, 75, 76, 77, 80, 81, 84, 86, 92, 93, 94, 95, 98, 99, -101, -97, -90, -87, -83, -82, -79, -74, -72, -71, -70, -63, -60, -57, -56, -55, -53, -50, -46, -42, -40, -39, -38, -34, -32, -29, -22, -20, -13, -12, -9, -4}), frozenset({2, 6, 7, 10, 11, 14, 15, 16, 17, 18, 21, 23, 24, 30, 31, 33, 35, 36, 37, 43, 45, 47, 49, 51, 52, 58, 59, 62, 64, 65, 66, 67, 68, 69, 73, 75, 76, 77, 78, 80, 84, 86, 89, 90, 91, 92, 95, 96, 98, 99, -101, -100, -88, -83, -82, -79, -74, -72, -71, -70, -63, -60, -57, -56, -50, -48, -42, -40, -38, -34, -29, -22, -20, -13, -12, -9, -4, -3}), frozenset({2, 5, 6, 7, 8, 10, 11, 14, 15, 16, 18, 23, 24, 27, 28, 30, 31, 33, 35, 36, 41, 43, 47, 49, 52, 58, 59, 62, 64, 65, 66, 67, 68, 69, 73, 75, 77, 80, 81, 87, 88, 90, 91, 95, -101, -99, -94, -92, -89, -86, -84, -82, -79, -74, -72, -71, -70, -63, -60, -57, -56, -50, -48, -46, -42, -40, -39, -38, -34, -32, -29, -25, -22, -13, -9, -4, -3, -1}), frozenset({2, 5, 6, 7, 8, 10, 15, 16, 17, 18, 21, 23, 24, 27, 28, 30, 31, 35, 36, 37, 41, 45, 52, 58, 62, 64, 65, 67, 68, 69, 73, 75, 76, 77, 78, 80, 81, 87, 89, 90, 91, 94, 95, 96, 98, -101, -99, -88, -86, -84, -83, -82, -79, -74, -72, -71, -70, -63, -57, -56, -55, -54, -53, -50, -48, -46, -40, -39, -34, -32, -29, -25, -22, -19, -13, -9, -4, -3}), frozenset({5, 6, 7, 8, 11, 15, 16, 17, 18, 21, 23, 24, 27, 28, 30, 31, 33, 35, 36, 43, 45, 49, 51, 52, 58, 59, 61, 62, 64, 66, 67, 73, 75, 76, 77, 80, 81, 86, 88, 93, 94, 95, 96, 98, 99, -101, -100, -97, -92, -91, -87, -83, -79, -74, -72, -71, -60, -56, -55, -54, -50, -48, -46, -42, -40, -39, -38, -34, -32, -29, -25, -20, -13, -12, -9, -4, -3, -1}), frozenset({2, 5, 7, 8, 10, 11, 16, 18, 23, 28, 30, 33, 35, 36, 37, 41, 43, 45, 49, 51, 52, 58, 59, 61, 62, 64, 65, 66, 67, 68, 69, 73, 76, 77, 78, 80, 87, 90, 92, 93, 94, 95, 98, -101, -100, -99, -96, -91, -89, -88, -83, -82, -79, -72, -71, -63, -57, -56, -55, -54, -53, -48, -46, -40, -39, -38, -34, -32, -29, -25, -22, -20, -19, -13, -12, -9, -4, -1})]
+3282	frequent itemsets left after applying W operator with output 	: [frozenset({-72, -13, 102, 23}), frozenset({2, 5, 6, 7, 8, 11, 14, 15, 21, 24, 26, 27, 28, 30, 31, 33, 36, 37, 41, 43, 44, 45, 47, 49, 51, 52, 59, 61, 64, 65, 66, 67, 69, 73, 75, 76, 77, 78, 84, 87, 90, 91, 93, 94, 95, 96, -102, -100, -92, -89, -86, -85, -83, -82, -79, -71, -70, -57, -56, -55, -54, -53, -50, -48, -46, -42, -39, -38, -34, -29, -25, -22, -20, -19, -12, -9, -3, -1}), frozenset({81, 66, -9, -102, -19}), frozenset({8, -55, -102, 28, 47}), frozenset({101, 26, -85, 44, -102}), frozenset({2, 6, 8, 10, 11, 14, 15, 17, 18, 21, 24, 27, 30, 31, 33, 35, 36, 37, 41, 43, 45, 49, 51, 52, 58, 59, 61, 62, 64, 65, 67, 69, 75, 76, 77, 80, 81, 84, 86, 92, 93, 94, 95, 98, 99, -102, -101, -97, -90, -87, -83, -82, -79, -74, -71, -70, -63, -60, -57, -56, -55, -53, -50, -46, -42, -40, -39, -38, -34, -32, -29, -22, -20, -12, -9, -4}), frozenset({2, 6, 7, 10, 11, 14, 15, 16, 17, 18, 21, 24, 30, 31, 33, 35, 36, 37, 43, 45, 47, 49, 51, 52, 58, 59, 62, 64, 65, 66, 67, 68, 69, 73, 75, 76, 77, 78, 80, 84, 86, 89, 90, 91, 92, 95, 96, 98, 99, -102, -101, -100, -88, -83, -82, -79, -74, -71, -70, -63, -60, -57, -56, -50, -48, -42, -40, -38, -34, -29, -22, -20, -12, -9, -4, -3})]
+774	frequent itemsets left after applying W operator with output 	: [frozenset({-29, 77, 30, 103}), frozenset({2, 5, 6, 7, 8, 10, 15, 16, 17, 18, 21, 23, 24, 27, 28, 31, 35, 36, 37, 41, 45, 52, 58, 62, 64, 65, 67, 68, 69, 73, 75, 76, 78, 80, 81, 87, 89, 90, 91, 94, 95, 96, 98, -103, -101, -99, -88, -86, -84, -83, -82, -79, -74, -72, -71, -70, -63, -57, -56, -55, -54, -53, -50, -48, -46, -40, -39, -34, -32, -25, -22, -19, -13, -9, -4, -3}), frozenset({2, 5, 6, 7, 8, 11, 14, 15, 21, 24, 26, 27, 28, 31, 33, 36, 37, 41, 43, 44, 45, 47, 49, 51, 52, 59, 61, 64, 65, 66, 67, 69, 73, 75, 76, 78, 84, 87, 90, 91, 93, 94, 95, 96, -103, -102, -100, -92, -89, -86, -85, -83, -82, -79, -71, -70, -57, -56, -55, -54, -53, -50, -48, -46, -42, -39, -38, -34, -25, -22, -20, -19, -12, -9, -3, -1}), frozenset({81, 66, -9, -103, -102, -19})]
+219	frequent itemsets left after applying W operator with output 	: [frozenset({8, -55, 104, 28}), frozenset({2, 5, 7, 10, 11, 16, 18, 23, 30, 33, 35, 36, 37, 41, 43, 45, 49, 51, 52, 58, 59, 61, 62, 64, 65, 66, 67, 68, 69, 73, 76, 77, 78, 80, 87, 90, 92, 93, 94, 95, 98, -104, -101, -100, -99, -96, -91, -89, -88, -83, -82, -79, -72, -71, -63, -57, -56, -54, -53, -48, -46, -40, -39, -38, -34, -32, -29, -25, -22, -20, -19, -13, -12, -9, -4, -1}), frozenset({101, -104, 26, -85, 44, -102}), frozenset({2, 6, 10, 11, 14, 15, 17, 18, 21, 24, 27, 30, 31, 33, 35, 36, 37, 41, 43, 45, 49, 51, 52, 58, 59, 61, 62, 64, 65, 67, 69, 75, 76, 77, 80, 81, 84, 86, 92, 93, 94, 95, 98, 99, -104, -102, -101, -97, -90, -87, -83, -82, -79, -74, -71, -70, -63, -60, -57, -56, -53, -50, -46, -42, -40, -39, -38, -34, -32, -29, -22, -20, -12, -9, -4})]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 8156.570276373197), ('W', 5723.320826617314)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 7673.856951196523), ('W', 5723.320826617314)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 7191.267335206163), ('W', 5723.320826617314)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 7191.267335206163), ('W', 5723.320826617314)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 8639.398517247902), ('W', 5723.320826617314)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 6708.811161613612), ('W', 5723.320826617314)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 6708.811161613612), ('W', 5723.320826617314)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 7191.267335206163), ('W', 5723.320826617314)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 7191.267335206163), ('W', 5723.320826617314)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 8156.570276373197), ('W', 5723.320826617314)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 7191.267335206163), ('W', 5723.320826617314)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 7673.856951196523), ('W', 5723.320826617314)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 8156.570276373197), ('W', 5723.320826617314)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 7656.478851120299), ('W', 5734.646694197891)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 12004.534982292542), ('W', 5727.352073448998)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 9632.050469422922), ('W', 5723.892641830362)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 11535.631334508018), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 12019.105727446708), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 10085.691308871585), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 12502.649850466081), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 8636.591162325845), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 10085.691308871585), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 9602.561927056606), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 14921.317146639425), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 11535.631334508018), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 11535.631334508018), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 10085.691308871585), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 10085.691308871585), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 12019.105727446708), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 11535.631334508018), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 14921.317146639425), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 11535.631334508018), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 12986.26064175883), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 10568.9091149663), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 12019.105727446708), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 14437.465856578168), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 9119.52648340422), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 10085.691308871585), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 14921.317146639425), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 12019.105727446708), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 11052.229998285904), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 10568.9091149663), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 9602.561927056606), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 11052.229998285904), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 13469.935278798626), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 10085.691308871585), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 13469.935278798626), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 8153.76292145114), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 12019.105727446708), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 11535.631334508018), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 10085.691308871585), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 12019.105727446708), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 10568.9091149663), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 13953.671154666377), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 11535.631334508018), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 14437.465856578168), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 10568.9091149663), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 12986.26064175883), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 13953.671154666377), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 12019.105727446708), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 12502.649850466081), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 12986.26064175883), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 11535.631334508018), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 12019.105727446708), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 12019.105727446708), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 12019.105727446708), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 12986.26064175883), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 10568.9091149663), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 12019.105727446708), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 10568.9091149663), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 9602.561927056606), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 11535.631334508018), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 12986.26064175883), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 11535.631334508018), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 14921.317146639425), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 10568.9091149663), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 11535.631334508018), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 13953.671154666377), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 11535.631334508018), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 13469.935278798626), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 14437.465856578168), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 10568.9091149663), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 9602.561927056606), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 10085.691308871585), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 10085.691308871585), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 12502.649850466081), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 15405.222944705276), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 9602.561927056606), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 15405.222944705276), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 12502.649850466081), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 9119.52648340422), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 8153.76292145114), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 12019.105727446708), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 12502.649850466081), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 11535.631334508018), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 11052.229998285904), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 12019.105727446708), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 15889.181313165614), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 10568.9091149663), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 11535.631334508018), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 14437.465856578168), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 13469.935278798626), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 12502.649850466081), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 15405.222944705276), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 10085.691308871585), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 11535.631334508018), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 8636.591162325845), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 12019.105727446708), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 12502.649850466081), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 12019.105727446708), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 13953.671154666377), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 11535.631334508018), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 11535.631334508018), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 12986.26064175883), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 9119.52648340422), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 10085.691308871585), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 12019.105727446708), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 11052.229998285904), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 10085.691308871585), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 13953.671154666377), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 13953.671154666377), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 13469.935278798626), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 13469.935278798626), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 13953.671154666377), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 11535.631334508018), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 9119.52648340422), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 12986.26064175883), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 11535.631334508018), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 9119.52648340422), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 11052.229998285904), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 13953.671154666377), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 11052.229998285904), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 12502.649850466081), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 11535.631334508018), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 11052.229998285904), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 8153.76292145114), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 12019.105727446708), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 11535.631334508018), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 12986.26064175883), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 9119.52648340422), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 11052.229998285904), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 12019.105727446708), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 13953.671154666377), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 11052.229998285904), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 10085.691308871585), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 11052.229998285904), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 11535.631334508018), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 11535.631334508018), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 8636.591162325845), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 14437.465856578168), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 12986.26064175883), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 9119.52648340422), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 12986.26064175883), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 13469.935278798626), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 11052.229998285904), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 10085.691308871585), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 11535.631334508018), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 10568.9091149663), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 11535.631334508018), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 10085.691308871585), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 12502.649850466081), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 11052.229998285904), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 12986.26064175883), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 10085.691308871585), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 12986.26064175883), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 10085.691308871585), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 12986.26064175883), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 13953.671154666377), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 13953.671154666377), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 10085.691308871585), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 11052.229998285904), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 11535.631334508018), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 12502.649850466081), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 11052.229998285904), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 11052.229998285904), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 13953.671154666377), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 9602.561927056606), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 12986.26064175883), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 12986.26064175883), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 11535.631334508018), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 12502.649850466081), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 10568.9091149663), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 12502.649850466081), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 10568.9091149663), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 13469.935278798626), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 11052.229998285904), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 12019.105727446708), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 11535.631334508018), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 10568.9091149663), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 13469.935278798626), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 12986.26064175883), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 10568.9091149663), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 11052.229998285904), ('W', 5727.389306355197)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 18807.50988094235), ('W', 5731.8393392758335)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 21683.330275203025), ('W', 5739.152222231117)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 22167.841451834214), ('W', 5731.839339275833)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 20759.784843429643), ('W', 5735.65603206247)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 23151.53866286423), ('W', 5731.839339275833)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 19275.90152476134), ('W', 5731.839339275833)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 21213.425682878304), ('W', 5731.839339275833)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 23636.15234709168), ('W', 5731.839339275833)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 15886.859385070728), ('W', 5731.839339275833)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 23151.53866286423), ('W', 5731.839339275833)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 27514.17973359511), ('W', 5731.839339275833)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 26059.696247797212), ('W', 5731.839339275833)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 23151.53866286423), ('W', 5731.839339275833)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 22666.958351550602), ('W', 5731.839339275833)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 22182.41219698838), ('W', 5731.839339275833)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 20728.987088776485), ('W', 5731.839339275833)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 22666.958351550602), ('W', 5731.839339275833)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 20728.987088776485), ('W', 5731.839339275833)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 25090.186308685752), ('W', 5731.839339275833)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 20244.586188535857), ('W', 5731.839339275833)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 22666.958351550602), ('W', 5731.839339275833)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 21213.425682878304), ('W', 5731.839339275833)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 20728.987088776485), ('W', 5731.839339275833)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 22182.41219698838), ('W', 5731.839339275833)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 21697.901020357192), ('W', 5731.839339275833)]
+Ignoring itemset	: Initial DL = 5719.398908458776	; Possible DLs	: [('T', 23151.53866286423), ('W', 5731.839339275833)]
+Initial DL				: 88338.51894500232
+Final DL				: 5719.42402076804
+Compression (wrt ce)	: 0.9352556043606659
+Operator Counters		: {'W': 4, 'V': 0, 'S': 0, 'R': 0, 'T': 2}
+Confusions 	: TP_s = 0; TN_s = 2; FP_s = 0; FN_s = 0; TP_f = 0; TN_f = 7; FP_f = 0; FN_f = 9
+Accuracy of fold 9	: 0.5
+Coverage of fold 9	: 100.0
+
+
+Total Confusions					: defaultdict(<class 'int'>, {'TP_s': 0, 'TN_s': 64, 'FP_s': 0, 'FN_s': 7, 'TP_f': 0, 'TN_f': 36, 'FP_f': 0, 'FN_f': 93})
+Precision							: 0%
+Recall								: 0.0%
+Accuracy							: 50.0%
+Average Coverage 					: 100.0%
+Average Classification Accuracy 	: 50.0%
+Average Compression 				: [0.5009037637468532, 0.9442324482870802]%
+Total Time 							: 20.021175384521484 seconds

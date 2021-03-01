@@ -1,0 +1,17 @@
+Performing C++ SOURCE FILE Test HAVE_FLAG_-Wheader-guard failed with the following output:
+Change Dir: /home/dtai/Downloads/ganak-master/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_23d77/fast"
+/usr/bin/make -f CMakeFiles/cmTC_23d77.dir/build.make CMakeFiles/cmTC_23d77.dir/build
+make[1]: Entering directory '/home/dtai/Downloads/ganak-master/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_23d77.dir/src.cxx.o
+/usr/bin/c++    -mtune=native -Wall -Wextra -Wunused -Wsign-compare -fno-omit-frame-pointer -Wtype-limits -Wuninitialized -Wno-deprecated -Wstrict-aliasing -Wpointer-arith -DHAVE_FLAG_-Wheader-guard   -Wheader-guard -o CMakeFiles/cmTC_23d77.dir/src.cxx.o -c /home/dtai/Downloads/ganak-master/build/CMakeFiles/CMakeTmp/src.cxx
+c++: error: unrecognized command line option '-Wheader-guard'
+CMakeFiles/cmTC_23d77.dir/build.make:65: recipe for target 'CMakeFiles/cmTC_23d77.dir/src.cxx.o' failed
+make[1]: *** [CMakeFiles/cmTC_23d77.dir/src.cxx.o] Error 1
+make[1]: Leaving directory '/home/dtai/Downloads/ganak-master/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_23d77/fast' failed
+make: *** [cmTC_23d77/fast] Error 2
+
+Source file was:
+int main() { return 0; }

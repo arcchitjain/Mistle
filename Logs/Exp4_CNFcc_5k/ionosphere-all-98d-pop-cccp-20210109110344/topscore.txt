@@ -1,0 +1,2 @@
+ionosphere;all;98;d;pop;cccp;20210109110344;abs;0.9111;0.9031
+ionosphere;all;98;d;pop;cccp;20210109110344;rel;0.9111;0.9031

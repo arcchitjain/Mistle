@@ -1,0 +1,14 @@
+:: ionosphere-all-98d-pop-cccp-20210117094022
+Absolute matching
+
+;minsup;AvgAccuracy;StdDev;MaxAccuracy
+Best:;0;0.9031;0.0469;1.0000
+Last:;0;0.9031;0.0469;1.0000
+
+:: ionosphere-all-98d-pop-cccp-20210117094022
+Relative matching
+
+;%;AvgAccuracy;StdDev;MaxAccuracy
+Best:;10%;0.9031;0.0469;1.0000
+Last:;1%;0.9031;0.0469;1.0000
+

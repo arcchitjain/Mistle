@@ -1,0 +1,105 @@
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 5033
+ Total time ~: 110 ms
+ Max memory:14.0
+=====================================
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 0
+ Total time ~: 2 ms
+ Max memory:7.562202453613281
+=====================================
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 3381
+ Total time ~: 83 ms
+ Max memory:14.0
+=====================================
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 457
+ Total time ~: 20 ms
+ Max memory:8.56201171875
+=====================================
+Length of freq items 1	: 5033
+Time of freq items 1	: 0.45560312271118164
+550389 Frequent Itemsets are mined in 10.176969051361084 seconds.
+Length of freq items 2	: 550389
+Time of freq items 2	: 10.177035093307495
+DL of initial theory	: 27468.31325186
+4931	itemsets left after T operation 	: [frozenset({-128, -127, -94, -63, -30, -29, -122, -82, -48, -77, -44, -42, -40, -71})]
+4199	itemsets left after T operation 	: [frozenset({-29, -121, -110, -77, -42, -71})]
+3483	itemsets left after T operation 	: [frozenset({-119, -29, -91, -42})]
+1970	itemsets left after T operation 	: [frozenset({-128, -63, -30, -29, -53, -48, -44, -42, -37, -33})]
+705	itemsets left after T operation 	: [frozenset({-127, -63, -77, -42, -40, -71})]
+364	itemsets left after T operation 	: [frozenset({-29, -44, -42, -37, -33})]
+156	itemsets left after T operation 	: [frozenset({-30, -29, -91, -41, -131, -33})]
+10	itemsets left after T operation 	: [frozenset({-32, -113, -110, -42, -71})]
+6	itemsets left after T operation 	: [frozenset({-71, -110, -42})]
+5	itemsets left after V operation 	: [frozenset({-127, -63, -77, -40, 110}), frozenset({-71, -110, -42})]
+Length of freq items 1	: 0
+Time of freq items 1	: 0.4025118350982666
+0 Frequent Itemsets are mined in 9.703636169433594e-05 seconds.
+Length of freq items 2	: 0
+Time of freq items 2	: 0.00012540817260742188
+0 clauses are pruned.
+Initial DL				: 29953.145857797303
+Final DL				: 5893.635034240298
+Compression (wrt me)	: 0.8032381953394693
+Operator Counters		: {'D': 0, 'W': 0, 'V': 1, 'S': 0, 'R': 0, 'T': 9}
+Length of freq items 1	: 3381
+Time of freq items 1	: 0.3968071937561035
+284933 Frequent Itemsets are mined in 4.579423666000366 seconds.
+Length of freq items 2	: 284933
+Time of freq items 2	: 4.579477071762085
+DL of initial theory	: 27468.31325186
+2415	itemsets left after W operation 	: [frozenset({-32, -30, -29, -110, -77, -42, 132}), frozenset({-128, -127, -63, -60, -121, -54, -113, -48, -44, -107, -40, -37, -99, -94, -25, -88, -82, -71, -132, -3}), frozenset({-128, -127, -63, -60, -122, -54, -113, -48, -44, -107, -40, -36, -99, -94, -25, -88, -82, -71, -132, -3}), frozenset({-128, -63, -124, -60, -121, -54, -113, -49, -45, -107, -39, -36, -99, -96, -88, -24, -4, -83, -72, -132}), frozenset({-62, -124, -56, -119, -52, -113, -47, -106, -41, -100, -35, -96, -91, -83, -14, -70, -132, -67, -129}), frozenset({-128, -127, -63, -60, -121, -54, -114, -50, -45, -106, -40, -102, -37, -96, -88, -4, -83, -19, -71, -132}), frozenset({-62, -124, -56, -119, -52, -113, -47, -106, -41, -35, -99, -96, -91, -83, -131, -14, -70, -132, -67}), frozenset({-63, -125, -60, -121, -54, -116, -50, -47, -106, -41, -36, -99, -96, -91, -83, -9, -71, -6, -132, -131}), frozenset({-127, -63, -61, -121, -56, -50, -113, -46, -106, -40, -101, -37, -96, -88, -4, -83, -15, -71, -132, -129}), frozenset({-128, -63, -125, -60, -121, -54, -50, -113, -45, -107, -39, -99, -35, -96, -88, -24, -83, -72, -132, -2}), frozenset({-62, -124, -56, -119, -50, -113, -47, -106, -41, -100, -36, -96, -91, -83, -67, -14, -70, -5, -132, -131}), frozenset({-128, -127, -63, -60, -121, -54, -114, -50, -45, -106, -40, -102, -36, -96, -88, -4, -83, -19, -71, -132}), frozenset({-63, -125, -60, -121, -54, -116, -50, -45, -107, -40, -103, -36, -94, -91, -83, -12, -71, -132, -2, -129}), frozenset({-128, -127, -63, -59, -122, -53, -115, -48, -108, -44, -40, -100, -36, -94, -88, -82, -10, -71, -132, -2}), frozenset({-128, -127, -63, -60, -121, -54, -50, -113, -45, -107, -40, -99, -35, -96, -88, -24, -83, -72, -132, -2}), frozenset({-128, -127, -63, -60, -121, -54, -116, -50, -45, -107, -40, -103, -36, -94, -87, -83, -12, -71, -132, -2}), frozenset({-128, -127, -63, -60, -122, -54, -113, -48, -44, -107, -40, -37, -99, -94, -25, -88, -82, -71, -132, -3}), frozenset({-128, -127, -63, -60, -121, -54, -114, -50, -45, -107, -40, -99, -35, -96, -91, -24, -83, -72, -132, -2}), frozenset({-124, -60, -119, -55, -50, -113, -47, -106, -41, -100, -36, -97, -91, -84, -4, -15, -71, -132, -131, -65}), frozenset({-128, -127, -63, -62, -122, -117, -53, -48, -45, -107, -40, -101, -35, -94, -87, -82, -12, -71, -132, -2}), frozenset({-127, -60, -121, -56, -116, -50, -47, -107, -40, -101, -35, -94, -91, -26, -83, -129, -71, -132, -65}), frozenset({-62, -124, -56, -119, -50, -113, -47, -106, -41, -100, -36, -96, -91, -83, -14, -70, -5, -132, -67, -129}), frozenset({-128, -127, -63, -60, -121, -53, -116, -50, -45, -107, -40, -103, -36, -94, -87, -83, -12, -71, -132, -2})]
+2259	itemsets left after T operation 	: [frozenset({-30, -29, -91, -123, -118, -86, -131, -112, -47, -42, -41, -106, -36, -67})]
+1860	itemsets left after T operation 	: [frozenset({-96, -32, -28, -90, -113, -47, -110, -77, -108, -42, -41, -103})]
+955	itemsets left after W operation 	: [frozenset({-32, -30, -29, -91, 133, -56, -50, -42, -40}), frozenset({-62, -123, -119, -114, -111, -47, -107, -100, -35, -96, -86, -19, -78, -73, -133, -4, -67, -129}), frozenset({-124, -60, -119, -116, -47, -110, -106, -101, -36, -94, -26, -83, -76, -129, -71, -133, -65}), frozenset({-60, -123, -119, -114, -111, -47, -107, -36, -100, -96, -86, -19, -78, -73, -133, -4, -67, -129}), frozenset({-124, -60, -119, -114, -111, -47, -107, -36, -100, -96, -86, -19, -78, -73, -133, -4, -67, -129}), frozenset({-128, -127, -96, -133, -60, -121, -22, -83, -77, -45, -106, -103, -71, -35, -65})]
+364	itemsets left after T operation 	: [frozenset({-32, -29, -121, -113, -77, -42, -39, -99})]
+101	itemsets left after W operation 	: [frozenset({-128, -127, -63, -30, 134, -83, -77, -42, -40, -71}), frozenset({-60, -122, -54, -113, -48, -109, -108, -44, -37, -101, -32, -95, -28, -90, -25, -134, -3}), frozenset({-60, -121, -54, -116, -48, -110, -45, -107, -103, -37, -33, -94, -29, -87, -12, -134, -4}), frozenset({-96, -61, -28, -122, -90, -56, -50, -113, -15, -46, -109, -108, -134, -101, -36})]
+40	itemsets left after W operation 	: [frozenset({-30, -29, -91, 135, -47, -42, -41, -36, -131}), frozenset({-125, -60, -119, -54, -50, -113, -110, -107, -71, -100, -33, -96, -85, -78, -9, -135, -5, -65}), frozenset({-112, -123, -106, -135, -86, -67, -118})]
+22	itemsets left after W operation 	: [frozenset({-29, -91, -42, -56, 136, -50}), frozenset({-123, -59, -118, -116, -111, -47, -104, -39, -8, -37, -101, -33, -31, -94, -83, -76, -136, -71, -67}), frozenset({-32, -30, 133, -40, -136})]
+5	itemsets left after W operation 	: [frozenset({-32, 137, -77, -42}), frozenset({-30, -29, 132, -110, -137}), frozenset({-29, -121, -113, -39, -99, -137}), frozenset({-96, -28, -90, -113, -47, -110, -41, -108, -137, -103})]
+Length of freq items 1	: 457
+Time of freq items 1	: 0.32050013542175293
+3379 Frequent Itemsets are mined in 0.036399126052856445 seconds.
+Length of freq items 2	: 3379
+Time of freq items 2	: 0.036438941955566406
+439	itemsets left after T operation 	: [frozenset({-128, -127, -63, -60, -121, -83, -50, -45, -40, -132})]
+376	itemsets left after W operation 	: [frozenset({-128, -127, -63, -94, 138, -82, -48, -40, -71, -132}), frozenset({-60, -121, -25, -88, -54, -99, -113, -44, -107, -138, -37, -3}), frozenset({-60, -122, -25, -88, -54, -99, -113, -44, -107, -138, -36, -3}), frozenset({-59, -122, -88, -100, -53, -115, -108, -44, -10, -138, -36, -2}), frozenset({-60, -122, -25, -88, -54, -99, -113, -44, -107, -138, -37, -3}), frozenset({-62, -122, -87, -117, -53, -45, -12, -107, -138, -101, -35, -2})]
+351	itemsets left after T operation 	: [frozenset({-124, -91, -119, -113, -47, -106, -41, -132})]
+226	itemsets left after T operation 	: [frozenset({-60, -121, -116, -83, -50, -71, -132})]
+200	itemsets left after T operation 	: [frozenset({-96, -119, -47, -100, -67, -129})]
+187	itemsets left after W operation 	: [frozenset({-60, -107, -54, 139, -113}), frozenset({-96, -125, -119, -85, -50, -110, -78, -139, -9, -71, -33, -5, -100, -135, -65}), frozenset({-25, -88, -121, -99, -44, -139, -138, -37, -3}), frozenset({-122, -25, -88, -99, -44, -139, -138, -36, -3}), frozenset({-122, -25, -88, -99, -44, -139, -138, -37, -3})]
+135	itemsets left after W operation 	: [frozenset({-127, -63, -121, 140, -83, -50, -40, -132}), frozenset({-96, -61, -101, -56, -88, -113, -15, -46, -140, -106, -71, -37, -4, -129}), frozenset({-128, -140, -45, -60})]
+114	itemsets left after W operation 	: [frozenset({-128, -127, -63, -40, -71, 141}), frozenset({-30, -77, -141, 134, -42, -83}), frozenset({-48, -94, -141, 138, -132, -82})]
+78	itemsets left after W operation 	: [frozenset({-71, -60, -83, 142}), frozenset({-94, -124, -101, -26, -119, -116, -47, -110, -142, -76, -106, -129, -133, -36, -65}), frozenset({-128, -127, -96, -121, -22, -142, -77, -45, -106, -103, -133, -35, -65}), frozenset({-142, -121, -132, -116, -50})]
+0 clauses are pruned.
+Initial DL				: 29953.1458577973
+Final DL				: 2550.7375666244175
+Compression (wrt me)	: 0.9148424149258293
+Operator Counters		: {'D': 0, 'W': 11, 'V': 0, 'S': 0, 'R': 0, 'T': 7}
+
+Dataset	: auto.dat;	Missingness Parameter	: 0.1
+Mistle Accuracy = 0.5730088495575221 ; 0.995575221238938 ; 0.017699115044247787 ; 0.44026548672566373 / 904
+CNFAlgo Accuracy 2 = 521/907 = 0.5744211686879823
+CNFAlgo Accuracy 3 = 386/907 = 0.4255788313120176
+
+
+dataset = auto.dat with minsup = 0.11640381366943867
+missingness_parameters = [0.1]
+mistle_accuracy_list1 = [0.5730088495575221]
+mistle_accuracy_list2 = [0.995575221238938]
+mistle_accuracy_list3 = [0.017699115044247787]
+mistle_accuracy_list4 = [0.44026548672566373]
+mistle_clauses_list = [36]
+mistle_literals_list = [309]
+cnfalgo_accuracy_list2 = [0.5744211686879823]
+cnfalgo_accuracy_list3 = [0.4255788313120176]
+cnfalgo_clauses_list = [3017971]
+cnfalgo_literals_list = [14016259]
+train_data_literals_list = [3676]
+randomized_accuracy_list = [0.174453125]

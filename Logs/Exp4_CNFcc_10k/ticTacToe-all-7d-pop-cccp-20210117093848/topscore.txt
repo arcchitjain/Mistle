@@ -1,0 +1,2 @@
+ticTacToe;all;7;d;pop;cccp;20210117093848;abs;0.9545;0.8768
+ticTacToe;all;7;d;pop;cccp;20210117093848;rel;0.9545;0.8768

@@ -1,0 +1,36 @@
+
+
+Comparing on glass.dat with nb_rows = 214 and minsup = 0.004672897196261682
+Running CNFAlgo
+Return Code for CNFAlgo	: 0
+CNFAlgo Accuracy = 9/22 = 0.4090909090909091
+Running CNFAlgo
+Return Code for CNFAlgo	: 0
+CNFAlgo Accuracy = 9/22 = 0.4090909090909091
+Running CNFAlgo
+Return Code for CNFAlgo	: 0
+CNFAlgo Accuracy = 8/22 = 0.36363636363636365
+Running CNFAlgo
+Return Code for CNFAlgo	: 0
+CNFAlgo Accuracy = 8/22 = 0.36363636363636365
+Running CNFAlgo
+Return Code for CNFAlgo	: 0
+CNFAlgo Accuracy = 4/22 = 0.18181818181818182
+Running CNFAlgo
+Return Code for CNFAlgo	: 0
+CNFAlgo Accuracy = 10/22 = 0.45454545454545453
+Running CNFAlgo
+Return Code for CNFAlgo	: 0
+CNFAlgo Accuracy = 10/22 = 0.45454545454545453
+Running CNFAlgo
+Return Code for CNFAlgo	: 0
+CNFAlgo Accuracy = 9/22 = 0.4090909090909091
+Running CNFAlgo
+Return Code for CNFAlgo	: 0
+CNFAlgo Accuracy = 8/22 = 0.36363636363636365
+Running CNFAlgo
+Return Code for CNFAlgo	: 0
+CNFAlgo Accuracy = 7/16 = 0.4375
+cnfalgo_fold_accuracy_list = [0.4090909090909091, 0.4090909090909091, 0.36363636363636365, 0.36363636363636365, 0.18181818181818182, 0.45454545454545453, 0.45454545454545453, 0.4090909090909091, 0.36363636363636365, 0.4375]
+cnfalgo_time = 45.63070511817932
+cnfalgo_accuracy = 0.3846590909090909

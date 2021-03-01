@@ -4,23 +4,23 @@ import matplotlib.pyplot as plt
 plt.style.use("seaborn")
 matplotlib.rcParams["mathtext.fontset"] = "stix"
 matplotlib.rcParams["font.family"] = "STIXGeneral"
-matplotlib.rc("font", size=20)
-matplotlib.rc("axes", titlesize=14)
-matplotlib.rc("axes", labelsize=18)
-matplotlib.rc("xtick", labelsize=16)
-matplotlib.rc("ytick", labelsize=16)
-matplotlib.rc("legend", fontsize=16)
-matplotlib.rc("figure", titlesize=14)
+matplotlib.rc("font", size=22)
+matplotlib.rc("axes", titlesize=16)
+matplotlib.rc("axes", labelsize=28)
+matplotlib.rc("xtick", labelsize=22)
+matplotlib.rc("ytick", labelsize=22)
+matplotlib.rc("legend", fontsize=20)
+matplotlib.rc("figure", titlesize=16)
 lylim = 0.5
 uylim = 1.0
-version = 4
+version = 5
 
-fig = plt.figure(figsize=(9, 4))
+fig = plt.figure(figsize=(10, 4))
 
 # fig, (ax1, ax2, ax3) = plt.subplots(1, 3, sharey=True, figsize=(9, 3))
 
-ax1 = fig.add_axes([0.1, 0.2, 0.4, 0.75])
-ax1.set_ylabel("Compression wrt Literal Length")
+ax1 = fig.add_axes([0.11, 0.2, 0.4, 0.75])
+ax1.set_ylabel("Compression")
 ax1.set_ylim(bottom=lylim, top=uylim)
 ax1.set_yticks([0, 0.2, 0.4, 0.6, 0.8, 1])
 ax1.set_yticklabels(["0.0", "0.2", "0.4", "0.6", "0.8", "1.0"])
@@ -102,25 +102,110 @@ u_stddev_mistle_prune_list = [
     0.7862510008952424,
 ]
 
-ax1.plot(minsups, mean_mining4sat_list, marker="o", label="Mining4SAT")
-ax1.fill_between(minsups, l_stddev_mining4sat_list, u_stddev_mining4sat_list, alpha=0.3)
-ax1.plot(minsups, mean_mistle_list, marker="o", label="Mistle (without pruning)")
-ax1.fill_between(minsups, l_stddev_mistle_list, u_stddev_mistle_list, alpha=0.3)
-ax1.plot(minsups, mean_mistle_prune_list, marker="o", label="Mistle (with pruning)")
-ax1.fill_between(
-    minsups, l_stddev_mistle_prune_list, u_stddev_mistle_prune_list, alpha=0.3
+ax1.plot(
+    minsups,
+    l_stddev_mining4sat_list,
+    linestyle="--",
+    label="_nolegend_",
+    color="b",
+    alpha=0.3,
 )
-ax1.legend(bbox_to_anchor=(-0.2, 1.02), loc="lower left", ncol=3)
+ax1.plot(
+    minsups,
+    u_stddev_mining4sat_list,
+    linestyle="--",
+    label="_nolegend_",
+    color="b",
+    alpha=0.3,
+)
+ax1.plot(
+    minsups,
+    l_stddev_mistle_list,
+    linestyle=":",
+    label="_nolegend_",
+    color="g",
+    alpha=0.3,
+)
+ax1.plot(
+    minsups,
+    u_stddev_mistle_list,
+    linestyle=":",
+    label="_nolegend_",
+    color="g",
+    alpha=0.3,
+)
+ax1.plot(
+    minsups,
+    l_stddev_mistle_prune_list,
+    linestyle="-.",
+    label="_nolegend_",
+    color="r",
+    alpha=0.3,
+)
+ax1.plot(
+    minsups,
+    u_stddev_mistle_prune_list,
+    linestyle="-.",
+    label="_nolegend_",
+    color="r",
+    alpha=0.3,
+)
+ax1.plot(
+    minsups,
+    mean_mining4sat_list,
+    marker="o",
+    markersize=15,
+    label="Mining4SAT",
+    color="b",
+    alpha=1,
+)
+ax1.fill_between(
+    minsups, l_stddev_mining4sat_list, u_stddev_mining4sat_list, color="b", alpha=0.2
+)
+
+ax1.plot(
+    minsups,
+    mean_mistle_list,
+    marker="^",
+    markersize=15,
+    label="Mistle (without pruning)",
+    color="g",
+    alpha=1,
+)
+ax1.fill_between(
+    minsups, l_stddev_mistle_list, u_stddev_mistle_list, color="g", alpha=0.2
+)
+
+ax1.plot(
+    minsups,
+    mean_mistle_prune_list,
+    marker="s",
+    markersize=15,
+    label="Mistle",
+    color="r",
+    alpha=1,
+)
+ax1.fill_between(
+    minsups,
+    l_stddev_mistle_prune_list,
+    u_stddev_mistle_prune_list,
+    color="r",
+    alpha=0.2,
+)
+
+
+ax1.legend(bbox_to_anchor=(-0.05, 1.02), loc="lower left", ncol=3)
 
 ax2 = fig.add_axes([0.55, 0.2, 0.4, 0.75])
-ax2.set_xlabel("Partial Observability Parameter")
-ax2.set_xticks([0.5, 0.6, 0.7, 0.8, 0.9, 1])
-ax2.set_xticklabels(["0.5", "0.6", "0.7", "0.8", "0.9", "1.0"])
+ax2.set_xlabel("Missingness Parameter")
+ax2.set_xticks([0, 0.1, 0.2, 0.3, 0.4, 0.5])
+ax2.set_xticklabels(["0", "0.1", "0.2", "0.3", "0.4", "0.5"])
 ax2.set_ylim(bottom=lylim, top=uylim)
 ax2.set_yticks([0, 0.2, 0.4, 0.6, 0.8, 1])
 ax2.set_yticklabels([])
 
 po_paramaters = [0.5, 0.6, 0.7, 0.8, 0.9, 1]
+missingness_paramaters = [0.5, 0.4, 0.3, 0.2, 0.1, 0]
 mean_mining4sat_list = [
     0.36167005006254194,
     0.40379115233541973,
@@ -218,16 +303,83 @@ stddev_mistle_prune_list = [
     0.013243997592200876,
 ]
 
-ax2.plot(po_paramaters, mean_mining4sat_list, marker="o")
-ax2.fill_between(
-    po_paramaters, l_stddev_mining4sat_list, u_stddev_mining4sat_list, alpha=0.3
+ax2.plot(
+    missingness_paramaters,
+    l_stddev_mining4sat_list,
+    linestyle="--",
+    color="b",
+    alpha=0.3,
 )
-ax2.plot(po_paramaters, mean_mistle_list, marker="o")
-ax2.fill_between(po_paramaters, l_stddev_mistle_list, u_stddev_mistle_list, alpha=0.3)
-ax2.plot(po_paramaters, mean_mistle_prune_list, marker="o")
-ax2.fill_between(
-    po_paramaters, l_stddev_mistle_prune_list, u_stddev_mistle_prune_list, alpha=0.3
+ax2.plot(
+    missingness_paramaters,
+    u_stddev_mining4sat_list,
+    linestyle="--",
+    color="b",
+    alpha=0.3,
 )
+ax2.plot(
+    missingness_paramaters, l_stddev_mistle_list, linestyle=":", color="g", alpha=0.3
+)
+ax2.plot(
+    missingness_paramaters, u_stddev_mistle_list, linestyle=":", color="g", alpha=0.3
+)
+ax2.plot(
+    missingness_paramaters,
+    l_stddev_mistle_prune_list,
+    linestyle="-.",
+    color="r",
+    alpha=0.3,
+)
+ax2.plot(
+    missingness_paramaters,
+    u_stddev_mistle_prune_list,
+    linestyle="-.",
+    color="r",
+    alpha=0.3,
+)
+
+ax2.plot(
+    missingness_paramaters,
+    mean_mining4sat_list,
+    marker="o",
+    markersize=15,
+    color="b",
+    alpha=1,
+)
+ax2.fill_between(
+    missingness_paramaters,
+    l_stddev_mining4sat_list,
+    u_stddev_mining4sat_list,
+    alpha=0.2,
+)
+
+ax2.plot(
+    missingness_paramaters,
+    mean_mistle_list,
+    marker="^",
+    markersize=15,
+    color="g",
+    alpha=1,
+)
+ax2.fill_between(
+    missingness_paramaters, l_stddev_mistle_list, u_stddev_mistle_list, alpha=0.2
+)
+
+ax2.plot(
+    missingness_paramaters,
+    mean_mistle_prune_list,
+    marker="s",
+    markersize=15,
+    color="r",
+    alpha=1,
+)
+ax2.fill_between(
+    missingness_paramaters,
+    l_stddev_mistle_prune_list,
+    u_stddev_mistle_prune_list,
+    alpha=0.2,
+)
+
 
 plt.savefig("exp3_plots_v" + str(version) + ".pdf", bbox_inches="tight")
 plt.show()

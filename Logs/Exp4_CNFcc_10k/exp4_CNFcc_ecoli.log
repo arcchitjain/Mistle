@@ -1,0 +1,36 @@
+
+
+Comparing on ecoli.dat with nb_rows = 336 and minsup = 0.002976190476190476
+Running CNFAlgo
+Return Code for CNFAlgo	: 0
+CNFAlgo Accuracy = 28/34 = 0.8235294117647058
+Running CNFAlgo
+Return Code for CNFAlgo	: 0
+CNFAlgo Accuracy = 29/34 = 0.8529411764705882
+Running CNFAlgo
+Return Code for CNFAlgo	: 0
+CNFAlgo Accuracy = 30/34 = 0.8823529411764706
+Running CNFAlgo
+Return Code for CNFAlgo	: 0
+CNFAlgo Accuracy = 30/34 = 0.8823529411764706
+Running CNFAlgo
+Return Code for CNFAlgo	: 0
+CNFAlgo Accuracy = 24/34 = 0.7058823529411765
+Running CNFAlgo
+Return Code for CNFAlgo	: 0
+CNFAlgo Accuracy = 23/34 = 0.6764705882352942
+Running CNFAlgo
+Return Code for CNFAlgo	: 0
+CNFAlgo Accuracy = 28/34 = 0.8235294117647058
+Running CNFAlgo
+Return Code for CNFAlgo	: 0
+CNFAlgo Accuracy = 27/34 = 0.7941176470588235
+Running CNFAlgo
+Return Code for CNFAlgo	: 0
+CNFAlgo Accuracy = 30/34 = 0.8823529411764706
+Running CNFAlgo
+Return Code for CNFAlgo	: 0
+CNFAlgo Accuracy = 25/30 = 0.8333333333333334
+cnfalgo_fold_accuracy_list = [0.8235294117647058, 0.8529411764705882, 0.8823529411764706, 0.8823529411764706, 0.7058823529411765, 0.6764705882352942, 0.8235294117647058, 0.7941176470588235, 0.8823529411764706, 0.8333333333333334]
+cnfalgo_time = 3.1937172412872314
+cnfalgo_accuracy = 0.8156862745098039

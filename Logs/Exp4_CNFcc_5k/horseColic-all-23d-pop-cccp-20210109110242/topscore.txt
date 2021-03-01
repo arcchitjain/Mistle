@@ -1,0 +1,2 @@
+horseColic;all;23;d;pop;cccp;20210109110242;abs;0.8551;0.7962
+horseColic;all;23;d;pop;cccp;20210109110242;rel;0.8551;0.7962

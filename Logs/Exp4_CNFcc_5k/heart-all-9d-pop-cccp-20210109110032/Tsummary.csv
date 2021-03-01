@@ -1,0 +1,14 @@
+:: heart-all-9d-pop-cccp-20210109110032
+Absolute matching
+
+;minsup;AvgAccuracy;StdDev;MaxAccuracy
+Best:;9;0.8735;0.0150;0.8934
+Last:;9;0.8735;0.0150;0.8934
+
+:: heart-all-9d-pop-cccp-20210109110032
+Relative matching
+
+;%;AvgAccuracy;StdDev;MaxAccuracy
+Best:;100%;0.8735;0.0150;0.8934
+Last:;1%;0.8735;0.0150;0.8934
+

@@ -1,0 +1,480 @@
+/usr/bin/python3.6 /home/dtai/PycharmProjects/Mistle/10_fold_cv.py
+Reading input file for Chess: 100%|██████████| 3196/3196 [00:00<00:00, 15281.12it/s]
+
+Input Theory (with redundancies and inconsistencies):
+	Literal Length = 2052
+	Number of clauses = 57
+
+Input Theory (without redundancies and inconsistencies):
+	Literal Length = 1872
+	Number of clauses = 52
+Compressing Clauses:  33%|███▎      | 52/157 [00:00<00:03, 32.33it/s]Cannot compress the theory any further.
+Compressing Clauses:  39%|███▉      | 62/157 [00:00<00:00, 141.17it/s]
+
+Resultant Theory:
+	Literal Length = 490
+	# of clauses = 104
+	% Compression (For measure: ll) = 76.12%
+	Operator Count = {'W': 52, 'V': 10, 'S': 0, 'R': 0}
+	Time Taken = 0.4857444763183594 seconds
+
+Input Theory (with redundancies and inconsistencies):
+	Literal Length = 7308
+	Number of clauses = 203
+
+Input Theory (without redundancies and inconsistencies):
+	Literal Length = 7128
+	Number of clauses = 198
+Compressing Clauses:  78%|███████▊  | 247/317 [00:01<00:00, 147.06it/s]Cannot compress the theory any further.
+Compressing Clauses:  85%|████████▌ | 270/317 [00:01<00:00, 141.73it/s]
+
+Resultant Theory:
+	Literal Length = 1859
+	# of clauses = 433
+	% Compression (For measure: ll) = 74.56%
+	Operator Count = {'W': 235, 'V': 35, 'S': 0, 'R': 0}
+	Time Taken = 1.9721100330352783 seconds
+Testing both theories: 100%|██████████| 29/29 [03:58<00:00,  8.23s/it]
+Classification Matrix 	: ff = 1; ft = 1; tf = 10; tt = 0; ft_c = 0; tf_c = 17
+Accuracy of fold 0	: 0.6785714285714286
+Coverage of fold 0	: 96.55
+
+Input Theory (with redundancies and inconsistencies):
+	Literal Length = 2268
+	Number of clauses = 63
+
+Input Theory (without redundancies and inconsistencies):
+	Literal Length = 2052
+	Number of clauses = 57
+Compressing Clauses:  44%|████▍     | 71/162 [00:00<00:00, 153.63it/s]
+Cannot compress the theory any further.
+
+Resultant Theory:
+	Literal Length = 538
+	# of clauses = 118
+	% Compression (For measure: ll) = 76.28%
+	Operator Count = {'W': 61, 'V': 10, 'S': 0, 'R': 0}
+	Time Taken = 0.5223033428192139 seconds
+
+Input Theory (with redundancies and inconsistencies):
+	Literal Length = 7272
+	Number of clauses = 202
+
+Input Theory (without redundancies and inconsistencies):
+	Literal Length = 7056
+	Number of clauses = 196
+Compressing Clauses:  79%|███████▉  | 249/315 [00:01<00:00, 137.92it/s]Cannot compress the theory any further.
+Compressing Clauses:  83%|████████▎ | 261/315 [00:01<00:00, 148.42it/s]
+
+Resultant Theory:
+	Literal Length = 1875
+	# of clauses = 428
+	% Compression (For measure: ll) = 74.22%
+	Operator Count = {'W': 232, 'V': 29, 'S': 0, 'R': 0}
+	Time Taken = 1.829596757888794 seconds
+Testing both theories:  33%|███▎      | 8/24 [07:28<25:32, 95.80s/it] Traceback (most recent call last):
+  File "ganak.py", line 239, in <module>
+    main()
+  File "ganak.py", line 155, in main
+    output = f.read().strip().split("\n")[-1]
+MemoryError
+Testing both theories:  38%|███▊      | 9/24 [20:48<1:16:43, 306.87s/it]No solutions found
+Testing both theories:  71%|███████   | 17/24 [27:28<14:00, 120.10s/it]Killed
+No solutions found
+Testing both theories:  75%|███████▌  | 18/24 [33:35<19:25, 194.29s/it]Traceback (most recent call last):
+  File "ganak.py", line 239, in <module>
+    main()
+  File "ganak.py", line 155, in main
+    output = f.read().strip().split("\n")[-1]
+MemoryError
+No solutions found
+Testing both theories:  92%|█████████▏| 22/24 [47:41<04:42, 141.11s/it]Classification Matrix 	: ff = 0; ft = 1; tf = 10; tt = 0; ft_c = 0; tf_c = 13
+Testing both theories: 100%|██████████| 24/24 [47:58<00:00, 119.92s/it]
+Accuracy of fold 1	: 0.9166666666666666
+Coverage of fold 1	: 100.0
+
+Input Theory (with redundancies and inconsistencies):
+	Literal Length = 2088
+	Number of clauses = 58
+
+Input Theory (without redundancies and inconsistencies):
+	Literal Length = 1908
+	Number of clauses = 53
+Compressing Clauses:  42%|████▏     | 67/158 [00:00<00:00, 162.27it/s]
+Cannot compress the theory any further.
+
+Resultant Theory:
+	Literal Length = 519
+	# of clauses = 111
+	% Compression (For measure: ll) = 75.14%
+	Operator Count = {'W': 58, 'V': 9, 'S': 0, 'R': 0}
+	Time Taken = 0.47695350646972656 seconds
+
+Input Theory (with redundancies and inconsistencies):
+	Literal Length = 7452
+	Number of clauses = 207
+
+Input Theory (without redundancies and inconsistencies):
+	Literal Length = 7272
+	Number of clauses = 202
+Compressing Clauses:  85%|████████▍ | 273/322 [00:01<00:00, 143.96it/s]
+Cannot compress the theory any further.
+
+Resultant Theory:
+	Literal Length = 1928
+	# of clauses = 441
+	% Compression (For measure: ll) = 74.13%
+	Operator Count = {'W': 239, 'V': 34, 'S': 0, 'R': 0}
+	Time Taken = 1.9677305221557617 seconds
+Testing both theories:   0%|          | 0/24 [00:00<?, ?it/s]Traceback (most recent call last):
+  File "ganak.py", line 239, in <module>
+    main()
+  File "ganak.py", line 155, in main
+    output = f.read().strip().split("\n")[-1]
+MemoryError
+No solutions found
+Testing both theories:   4%|▍         | 1/24 [25:16<9:41:16, 1516.39s/it]Traceback (most recent call last):
+  File "ganak.py", line 239, in <module>
+    main()
+  File "ganak.py", line 155, in main
+    output = f.read().strip().split("\n")[-1]
+MemoryError
+Testing both theories:  12%|█▎        | 3/24 [36:09<6:45:46, 1159.37s/it]No solutions found
+Testing both theories:  17%|█▋        | 4/24 [36:31<4:32:45, 818.29s/it] Traceback (most recent call last):
+  File "ganak.py", line 239, in <module>
+    main()
+  File "ganak.py", line 155, in main
+    output = f.read().strip().split("\n")[-1]
+MemoryError
+No solutions found
+Testing both theories:  25%|██▌       | 6/24 [55:26<3:42:54, 743.01s/it]Traceback (most recent call last):
+  File "ganak.py", line 239, in <module>
+    main()
+  File "ganak.py", line 155, in main
+    output = f.read().strip().split("\n")[-1]
+MemoryError
+No solutions found
+Testing both theories:  42%|████▏     | 10/24 [1:06:53<1:24:46, 363.30s/it]Traceback (most recent call last):
+  File "ganak.py", line 239, in <module>
+    main()
+  File "ganak.py", line 155, in main
+    output = f.read().strip().split("\n")[-1]
+MemoryError
+No solutions found
+Testing both theories:  54%|█████▍    | 13/24 [1:32:35<1:31:56, 501.54s/it]Traceback (most recent call last):
+  File "ganak.py", line 239, in <module>
+    main()
+  File "ganak.py", line 155, in main
+    output = f.read().strip().split("\n")[-1]
+MemoryError
+No solutions found
+Testing both theories:  96%|█████████▌| 23/24 [2:14:04<03:31, 211.79s/it]Classification Matrix 	: ff = 0; ft = 1; tf = 8; tt = 0; ft_c = 0; tf_c = 15
+Accuracy of fold 2	: 0.7083333333333334
+Coverage of fold 2	: 100.0
+
+Input Theory (with redundancies and inconsistencies):
+	Literal Length = 2196
+	Number of clauses = 61
+
+Input Theory (without redundancies and inconsistencies):
+Testing both theories: 100%|██████████| 24/24 [2:18:47<00:00, 346.97s/it]
+	Literal Length = 2052
+	Number of clauses = 57
+Compressing Clauses:  45%|████▌     | 73/162 [00:00<00:00, 120.71it/s]
+Cannot compress the theory any further.
+
+Resultant Theory:
+	Literal Length = 536
+	# of clauses = 117
+	% Compression (For measure: ll) = 75.59%
+	Operator Count = {'W': 60, 'V': 13, 'S': 0, 'R': 0}
+	Time Taken = 0.6669082641601562 seconds
+
+Input Theory (with redundancies and inconsistencies):
+	Literal Length = 7272
+	Number of clauses = 202
+
+Input Theory (without redundancies and inconsistencies):
+	Literal Length = 7128
+	Number of clauses = 198
+Compressing Clauses:  82%|████████▏ | 261/317 [00:01<00:00, 112.39it/s]Cannot compress the theory any further.
+
+Resultant Theory:
+	Literal Length = 1864
+	# of clauses = 427
+	% Compression (For measure: ll) = 74.37%
+	Operator Count = {'W': 229, 'V': 33, 'S': 0, 'R': 0}
+	Time Taken = 2.0204432010650635 seconds
+Compressing Clauses:  83%|████████▎ | 262/317 [00:01<00:00, 134.67it/s]
+Testing both theories:  96%|█████████▌| 25/26 [05:28<00:06,  6.44s/it]Classification Matrix 	: ff = 0; ft = 1; tf = 12; tt = 0; ft_c = 1; tf_c = 12
+Accuracy of fold 3	: 0.8076923076923077
+Coverage of fold 3	: 100.0
+
+Input Theory (with redundancies and inconsistencies):
+	Literal Length = 2124
+	Number of clauses = 59
+Testing both theories: 100%|██████████| 26/26 [05:33<00:00, 12.84s/it]
+
+Input Theory (without redundancies and inconsistencies):
+	Literal Length = 1980
+	Number of clauses = 55
+Compressing Clauses:  42%|████▎     | 68/160 [00:00<00:00, 172.79it/s]
+Cannot compress the theory any further.
+
+Resultant Theory:
+	Literal Length = 531
+	# of clauses = 115
+	% Compression (For measure: ll) = 75.0%
+	Operator Count = {'W': 60, 'V': 8, 'S': 0, 'R': 0}
+	Time Taken = 0.7311379909515381 seconds
+
+Input Theory (with redundancies and inconsistencies):
+	Literal Length = 7236
+	Number of clauses = 201
+
+Input Theory (without redundancies and inconsistencies):
+	Literal Length = 7092
+	Number of clauses = 197
+Compressing Clauses:  82%|████████▏ | 260/316 [00:01<00:00, 107.75it/s]Cannot compress the theory any further.
+
+Resultant Theory:
+	Literal Length = 1857
+	# of clauses = 421
+	% Compression (For measure: ll) = 74.34%
+	Operator Count = {'W': 225, 'V': 36, 'S': 1, 'R': 0}
+	Time Taken = 2.1052639484405518 seconds
+Compressing Clauses:  83%|████████▎ | 262/316 [00:02<00:00, 129.38it/s]
+Testing both theories:  10%|█         | 3/29 [00:01<00:13,  1.94it/s]Killed
+No solutions found
+Testing both theories: 100%|██████████| 29/29 [25:29<00:00, 44.56s/it]Classification Matrix 	: ff = 0; ft = 4; tf = 9; tt = 0; ft_c = 0; tf_c = 16
+Accuracy of fold 4	: 0.7586206896551724
+Coverage of fold 4	: 100.0
+
+Input Theory (with redundancies and inconsistencies):
+	Literal Length = 2160
+	Number of clauses = 60
+Testing both theories: 100%|██████████| 29/29 [25:29<00:00, 52.76s/it]
+
+Input Theory (without redundancies and inconsistencies):
+	Literal Length = 1980
+	Number of clauses = 55
+Compressing Clauses:  43%|████▎     | 69/160 [00:00<00:02, 30.67it/s]Cannot compress the theory any further.
+Compressing Clauses:  43%|████▎     | 69/160 [00:00<00:00, 178.30it/s]
+
+Resultant Theory:
+	Literal Length = 523
+	# of clauses = 116
+	% Compression (For measure: ll) = 75.79%
+	Operator Count = {'W': 61, 'V': 8, 'S': 0, 'R': 0}
+	Time Taken = 0.49035024642944336 seconds
+
+Input Theory (with redundancies and inconsistencies):
+	Literal Length = 7128
+	Number of clauses = 198
+
+Input Theory (without redundancies and inconsistencies):
+	Literal Length = 6948
+	Number of clauses = 193
+Compressing Clauses:  84%|████████▍ | 263/312 [00:01<00:00, 118.47it/s]Cannot compress the theory any further.
+
+Resultant Theory:
+	Literal Length = 1832
+	# of clauses = 424
+	% Compression (For measure: ll) = 74.3%
+	Operator Count = {'W': 231, 'V': 39, 'S': 0, 'R': 0}
+	Time Taken = 2.1552951335906982 seconds
+Compressing Clauses:  87%|████████▋ | 270/312 [00:02<00:00, 130.10it/s]
+Testing both theories: 100%|██████████| 31/31 [19:20<00:00, 37.44s/it]
+Classification Matrix 	: ff = 1; ft = 2; tf = 9; tt = 0; ft_c = 0; tf_c = 19
+Accuracy of fold 5	: 0.7333333333333333
+Coverage of fold 5	: 96.77
+
+Input Theory (with redundancies and inconsistencies):
+	Literal Length = 1980
+	Number of clauses = 55
+
+Input Theory (without redundancies and inconsistencies):
+	Literal Length = 1800
+	Number of clauses = 50
+Compressing Clauses:   4%|▍         | 6/155 [00:00<00:05, 24.88it/s]Cannot compress the theory any further.
+Compressing Clauses:  41%|████▏     | 64/155 [00:00<00:02, 34.89it/s]
+Resultant Theory:
+	Literal Length = 502
+	# of clauses = 107
+	% Compression (For measure: ll) = 74.65%
+	Operator Count = {'W': 57, 'V': 7, 'S': 0, 'R': 0}
+	Time Taken = 0.4137418270111084 seconds
+Compressing Clauses:  41%|████▏     | 64/155 [00:00<00:00, 180.20it/s]
+
+Input Theory (with redundancies and inconsistencies):
+	Literal Length = 7056
+	Number of clauses = 196
+
+Input Theory (without redundancies and inconsistencies):
+	Literal Length = 6876
+	Number of clauses = 191
+Compressing Clauses:  85%|████████▍ | 263/310 [00:01<00:00, 146.94it/s]
+Cannot compress the theory any further.
+
+Resultant Theory:
+	Literal Length = 1865
+	# of clauses = 421
+	% Compression (For measure: ll) = 73.57%
+	Operator Count = {'W': 230, 'V': 33, 'S': 0, 'R': 0}
+	Time Taken = 1.8835821151733398 seconds
+Testing both theories:   5%|▌         | 2/38 [00:28<08:37, 14.37s/it]Traceback (most recent call last):
+  File "ganak.py", line 239, in <module>
+    main()
+  File "ganak.py", line 155, in main
+    output = f.read().strip().split("\n")[-1]
+MemoryError
+Testing both theories:  11%|█         | 4/38 [08:14<45:20, 80.01s/it]No solutions found
+Testing both theories:  16%|█▌        | 6/38 [09:21<30:49, 57.79s/it]Traceback (most recent call last):
+  File "ganak.py", line 239, in <module>
+    main()
+  File "ganak.py", line 155, in main
+    output = f.read().strip().split("\n")[-1]
+MemoryError
+No solutions found
+Testing both theories:  18%|█▊        | 7/38 [23:56<2:36:34, 303.05s/it]Traceback (most recent call last):
+  File "ganak.py", line 239, in <module>
+    main()
+  File "ganak.py", line 155, in main
+    output = f.read().strip().split("\n")[-1]
+MemoryError
+No solutions found
+Testing both theories:  24%|██▎       | 9/38 [42:52<3:04:54, 382.55s/it]Killed
+No solutions found
+Testing both theories:  92%|█████████▏| 35/38 [1:02:26<03:10, 63.40s/it]Classification Matrix 	: ff = 0; ft = 3; tf = 11; tt = 0; ft_c = 0; tf_c = 24
+Accuracy of fold 6	: 0.7368421052631579
+Coverage of fold 6	: 100.0
+Testing both theories: 100%|██████████| 38/38 [1:02:43<00:00, 99.04s/it]
+
+Input Theory (with redundancies and inconsistencies):
+	Literal Length = 2088
+	Number of clauses = 58
+
+Input Theory (without redundancies and inconsistencies):
+	Literal Length = 1944
+	Number of clauses = 54
+Compressing Clauses:  44%|████▍     | 70/159 [00:00<00:03, 29.18it/s]Cannot compress the theory any further.
+Compressing Clauses:  47%|████▋     | 75/159 [00:00<00:00, 113.56it/s]
+
+Resultant Theory:
+	Literal Length = 530
+	# of clauses = 118
+	% Compression (For measure: ll) = 74.62%
+	Operator Count = {'W': 64, 'V': 11, 'S': 0, 'R': 0}
+	Time Taken = 0.8446252346038818 seconds
+
+Input Theory (with redundancies and inconsistencies):
+	Literal Length = 7200
+	Number of clauses = 200
+
+Input Theory (without redundancies and inconsistencies):
+	Literal Length = 7056
+	Number of clauses = 196
+Compressing Clauses:  83%|████████▎ | 263/315 [00:01<00:00, 117.07it/s]Cannot compress the theory any further.
+Compressing Clauses:  84%|████████▍ | 266/315 [00:01<00:00, 134.16it/s]
+
+Resultant Theory:
+	Literal Length = 1855
+	# of clauses = 427
+	% Compression (For measure: ll) = 74.24%
+	Operator Count = {'W': 231, 'V': 35, 'S': 0, 'R': 0}
+	Time Taken = 2.064563035964966 seconds
+Testing both theories: 100%|██████████| 31/31 [14:28<00:00, 28.03s/it]
+Classification Matrix 	: ff = 0; ft = 1; tf = 13; tt = 0; ft_c = 1; tf_c = 16
+Accuracy of fold 7	: 0.6774193548387096
+Coverage of fold 7	: 100.0
+
+Input Theory (with redundancies and inconsistencies):
+	Literal Length = 2196
+	Number of clauses = 61
+
+Input Theory (without redundancies and inconsistencies):
+	Literal Length = 2016
+	Number of clauses = 56
+Compressing Clauses:  45%|████▍     | 72/161 [00:00<00:00, 154.83it/s]
+Cannot compress the theory any further.
+
+Resultant Theory:
+	Literal Length = 530
+	# of clauses = 119
+	% Compression (For measure: ll) = 75.87%
+	Operator Count = {'W': 63, 'V': 9, 'S': 0, 'R': 0}
+	Time Taken = 0.5801064968109131 seconds
+
+Input Theory (with redundancies and inconsistencies):
+	Literal Length = 7272
+	Number of clauses = 202
+
+Input Theory (without redundancies and inconsistencies):
+	Literal Length = 7092
+	Number of clauses = 197
+Compressing Clauses:  85%|████████▌ | 270/316 [00:02<00:00, 134.96it/s]
+Cannot compress the theory any further.
+
+Resultant Theory:
+	Literal Length = 1913
+	# of clauses = 441
+	% Compression (For measure: ll) = 73.69%
+	Operator Count = {'W': 244, 'V': 26, 'S': 0, 'R': 0}
+	Time Taken = 2.0843253135681152 seconds
+Testing both theories: 100%|██████████| 26/26 [11:12<00:00, 15.48s/it]Classification Matrix 	: ff = 0; ft = 1; tf = 8; tt = 0; ft_c = 0; tf_c = 17
+Accuracy of fold 8	: 0.7692307692307693
+Coverage of fold 8	: 100.0
+
+Input Theory (with redundancies and inconsistencies):
+	Literal Length = 2232
+	Number of clauses = 62
+Testing both theories: 100%|██████████| 26/26 [11:12<00:00, 25.88s/it]
+
+Input Theory (without redundancies and inconsistencies):
+	Literal Length = 2052
+	Number of clauses = 57
+Compressing Clauses:  45%|████▌     | 73/162 [00:00<00:00, 189.83it/s]
+Cannot compress the theory any further.
+
+Resultant Theory:
+	Literal Length = 559
+	# of clauses = 122
+	% Compression (For measure: ll) = 74.96%
+	Operator Count = {'W': 65, 'V': 8, 'S': 0, 'R': 0}
+	Time Taken = 0.4415302276611328 seconds
+
+Input Theory (with redundancies and inconsistencies):
+	Literal Length = 7056
+	Number of clauses = 196
+
+Input Theory (without redundancies and inconsistencies):
+	Literal Length = 6876
+	Number of clauses = 191
+Compressing Clauses:  77%|███████▋  | 240/310 [00:01<00:00, 130.25it/s]Cannot compress the theory any further.
+Compressing Clauses:  83%|████████▎ | 257/310 [00:01<00:00, 140.93it/s]
+
+Resultant Theory:
+	Literal Length = 1797
+	# of clauses = 418
+	% Compression (For measure: ll) = 74.53%
+	Operator Count = {'W': 227, 'V': 30, 'S': 0, 'R': 0}
+	Time Taken = 1.894120454788208 seconds
+Testing both theories:  84%|████████▍ | 26/31 [10:43<01:08, 13.71s/it]Killed
+No solutions found
+Testing both theories:  94%|█████████▎| 29/31 [21:08<04:29, 134.91s/it]Traceback (most recent call last):
+  File "ganak.py", line 239, in <module>
+    main()
+  File "ganak.py", line 155, in main
+    output = f.read().strip().split("\n")[-1]
+MemoryError
+No solutions found
+Testing both theories: 100%|██████████| 31/31 [34:32<00:00, 235.86s/it]Classification Matrix 	: ff = 0; ft = 1; tf = 5; tt = 0; ft_c = 2; tf_c = 23
+Testing both theories: 100%|██████████| 31/31 [34:32<00:00, 66.86s/it] 
+Accuracy of fold 9	: 0.7741935483870968
+Coverage of fold 9	: 100.0
+Average Coverage 					: 99.33%
+Average Classification Accuracy 	: 75.61%
+Average Compression 				: [75.40200000000002, 74.19500000000001]%
+Total Time 							: 21872.980960845947 seconds
+
+Process finished with exit code 0

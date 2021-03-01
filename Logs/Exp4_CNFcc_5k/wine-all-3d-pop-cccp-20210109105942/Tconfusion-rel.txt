@@ -1,0 +1,7 @@
+Confusion matrix for last reported CT match
+
+	    1	   10	actual class
+1	  961	    2	
+10	    2	  637	
+	  963	  639		1602
+classified

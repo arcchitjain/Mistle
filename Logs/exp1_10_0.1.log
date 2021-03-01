@@ -1,0 +1,908 @@
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 57600
+ Total time ~: 341 ms
+ Max memory:66.11376953125
+=====================================
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 1
+ Total time ~: 1 ms
+ Max memory:7.565773010253906
+=====================================
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 50171
+ Total time ~: 290 ms
+ Max memory:53.80615234375
+=====================================
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 6
+ Total time ~: 1 ms
+ Max memory:7.565757751464844
+=====================================
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 64955
+ Total time ~: 330 ms
+ Max memory:69.140625
+=====================================
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 0
+ Total time ~: 0 ms
+ Max memory:7.562202453613281
+=====================================
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 25964
+ Total time ~: 228 ms
+ Max memory:33.12060546875
+=====================================
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 88
+ Total time ~: 5 ms
+ Max memory:8.0
+=====================================
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+Length of freq items 1	: 57600
+Time of freq items 1	: 0.9479460716247559
+98557 Frequent Itemsets are mined in 1.191964864730835 seconds.
+Length of freq items 2	: 98557
+Time of freq items 2	: 1.1919989585876465
+DL of initial theory	: 20703.234166574588
+51681	itemsets left after T operation 	: [frozenset({-7, -4, 6})]
+43241	itemsets left after T operation 	: [frozenset({-6, 13, -9})]
+28538	itemsets left after T operation 	: [frozenset({-7, 4, 6})]
+15870	itemsets left after T operation 	: [frozenset({-6, -13, -9})]
+9109	itemsets left after T operation 	: [frozenset({8, -12, -4, 14})]
+5422	itemsets left after T operation 	: [frozenset({3, 9, 14, -13, -8})]
+2692	itemsets left after T operation 	: [frozenset({3, 13, -12, -9, -7})]
+1780	itemsets left after T operation 	: [frozenset({5, -14, -10, -9, -7})]
+646	itemsets left after T operation 	: [frozenset({7, 14, -5, -4, -2})]
+228	itemsets left after T operation 	: [frozenset({4, 7, 8, 10, -9, -6, -3, -2})]
+52	itemsets left after T operation 	: [frozenset({5, 10, 14, -13, -8, -2})]
+27	itemsets left after T operation 	: [frozenset({-7, -14, -9})]
+17	itemsets left after R operation 	: [frozenset({-6, -9})]
+14	itemsets left after T operation 	: [frozenset({-7, -9})]
+8	itemsets left after R operation 	: [frozenset({-7, 6})]
+Length of freq items 1	: 1
+Time of freq items 1	: 0.2928030490875244
+1 Frequent Itemsets are mined in 0.00010824203491210938 seconds.
+Length of freq items 2	: 1
+Time of freq items 2	: 0.0001327991485595703
+1 clauses are pruned.
+Initial DL				: 20865.70023833328
+Final DL				: 208.2061688210502
+Compression (wrt me)	: 0.9900216064429727
+Operator Counters		: {'D': 0, 'W': 0, 'V': 0, 'S': 0, 'R': 2, 'T': 13}
+Length of freq items 1	: 50171
+Time of freq items 1	: 0.814849853515625
+62020 Frequent Itemsets are mined in 0.6600492000579834 seconds.
+Length of freq items 2	: 62020
+Time of freq items 2	: 0.6600792407989502
+1  violations of +ve partial assignments found for the learned theory.
+Violating Clauses	:{frozenset({2, 4, 5, 9, 10, 11, 12, 13, 14, -8, -7, -3, -1}), frozenset({2, 5, 6, 9, 10, 12, 13, 14, -8, -3, -1})}
+DL of initial theory	: 20703.234166574588
+46829	itemsets left after T operation 	: [frozenset({-8, 3, 7})]
+41943	itemsets left after T operation 	: [frozenset({9, 12, 13})]
+35098	itemsets left after T operation 	: [frozenset({4, -3, 7})]
+30574	itemsets left after T operation 	: [frozenset({6, 7, -10, -4, -1})]
+23929	itemsets left after T operation 	: [frozenset({9, -6, 1})]
+20015	itemsets left after T operation 	: [frozenset({1, -12, 7})]
+17197	itemsets left after T operation 	: [frozenset({2, 3, 9, 11, -13})]
+11775	itemsets left after T operation 	: [frozenset({-11, -1, -2})]
+9750	itemsets left after T operation 	: [frozenset({2, 4, 6, 12, -13, -9})]
+6254	itemsets left after T operation 	: [frozenset({9, 11, 4, -2})]
+5209	itemsets left after T operation 	: [frozenset({2, 6, 7, 13, 14, -10, -5})]
+4064	itemsets left after T operation 	: [frozenset({3, 10, -7, -5, -2})]
+2714	itemsets left after T operation 	: [frozenset({9, 12, -13, -6, -5, -1})]
+1859	itemsets left after T operation 	: [frozenset({7, 8, 13, -14, -12, -4})]
+1155	itemsets left after T operation 	: [frozenset({5, 11, 12, 14, -8, -2})]
+593	itemsets left after T operation 	: [frozenset({4, 8, 10, -14, -11})]
+152	itemsets left after T operation 	: [frozenset({-11, 5, -10, 14})]
+113	itemsets left after T operation 	: [frozenset({6, -10, 7})]
+49	itemsets left after T operation 	: [frozenset({6, 7})]
+40	itemsets left after V operation 	: [frozenset({5, 6, 11, 13, -14, -12, -10, -9, -1, -7, -4, -2}), frozenset({-8, 3, 7})]
+33	itemsets left after V operation 	: [frozenset({-11, -1, -2}), frozenset({5, 6, 11, 13, -14, -12, -10, -9, -7, -4})]
+Length of freq items 1	: 6
+Time of freq items 1	: 0.3149290084838867
+6 Frequent Itemsets are mined in 0.0001938343048095703 seconds.
+Length of freq items 2	: 6
+Time of freq items 2	: 0.0002193450927734375
+0 clauses are pruned.
+Initial DL				: 20865.700238333273
+Final DL				: 3684.3864740941917
+Compression (wrt me)	: 0.8234237800787798
+Operator Counters		: {'D': 0, 'W': 0, 'V': 2, 'S': 0, 'R': 0, 'T': 19}
+Length of freq items 1	: 64955
+Time of freq items 1	: 0.93595290184021
+69354 Frequent Itemsets are mined in 0.6546480655670166 seconds.
+Length of freq items 2	: 69354
+Time of freq items 2	: 0.6546800136566162
+DL of initial theory	: 20753.049686380673
+62672	itemsets left after T operation 	: [frozenset({-5, 12, -2})]
+59634	itemsets left after T operation 	: [frozenset({2, -4, -9})]
+53932	itemsets left after T operation 	: [frozenset({-14, 5, -2})]
+44246	itemsets left after T operation 	: [frozenset({8, -4, 13})]
+35864	itemsets left after T operation 	: [frozenset({-5, 4, -12, -2})]
+26843	itemsets left after T operation 	: [frozenset({9, -13, -4, -11})]
+17321	itemsets left after T operation 	: [frozenset({5, -2, 14})]
+9417	itemsets left after T operation 	: [frozenset({3, 11, -4})]
+5967	itemsets left after T operation 	: [frozenset({7, -8, -4, -3, -1})]
+3649	itemsets left after T operation 	: [frozenset({-6, -2, -1})]
+1744	itemsets left after T operation 	: [frozenset({9, 11, -14, -10, -4})]
+656	itemsets left after T operation 	: [frozenset({1, -3, -2, 6})]
+131	itemsets left after T operation 	: [frozenset({3, -9, -2, 6})]
+43	itemsets left after T operation 	: [frozenset({5, 6, 10, 13, 14, -4})]
+21	itemsets left after T operation 	: [frozenset({-5, -12, -2})]
+19	itemsets left after R operation 	: [frozenset({-5, -2})]
+15	itemsets left after T operation 	: [frozenset({-4, 13})]
+10	itemsets left after T operation 	: [frozenset({9, -4})]
+5	itemsets left after T operation 	: [frozenset({-2, 6})]
+3	itemsets left after R operation 	: [frozenset({5, -2})]
+1	itemsets left after T operation 	: [frozenset({-4})]
+0	itemsets left after R operation 	: [frozenset({-2})]
+Length of freq items 1	: 0
+Time of freq items 1	: 0.3104689121246338
+0 Frequent Itemsets are mined in 7.486343383789062e-05 seconds.
+Length of freq items 2	: 0
+Time of freq items 2	: 0.00010180473327636719
+0 clauses are pruned.
+Initial DL				: 20860.36038833039
+Final DL				: 27.950393783825064
+Compression (wrt me)	: 0.9986601193237553
+Operator Counters		: {'D': 0, 'W': 0, 'V': 0, 'S': 0, 'R': 3, 'T': 19}
+Length of freq items 1	: 25964
+Time of freq items 1	: 0.7108829021453857
+95063 Frequent Itemsets are mined in 1.3737468719482422 seconds.
+Length of freq items 2	: 95063
+Time of freq items 2	: 1.3737750053405762
+1  violations of +ve partial assignments found for the learned theory.
+Violating Clauses	:{frozenset({1, 5, 6, 7, 8, 9, 13, -10})}
+DL of initial theory	: 20753.049686380673
+19472	itemsets left after T operation 	: [frozenset({9, 2, 4})]
+11036	itemsets left after T operation 	: [frozenset({2, 4, -9})]
+8402	itemsets left after T operation 	: [frozenset({2, 5, 12, -14, -3})]
+6532	itemsets left after T operation 	: [frozenset({5, 8, 11, 13, -12, -3, -1})]
+5515	itemsets left after T operation 	: [frozenset({1, 4, 7, 9, 14, -13, -10, -8, -5})]
+4594	itemsets left after T operation 	: [frozenset({3, 4, 7, 10, 12, -14, -11})]
+3574	itemsets left after T operation 	: [frozenset({6, 8, 10, -13, -12, -11, -9})]
+3025	itemsets left after T operation 	: [frozenset({1, 10, 11, 12, 14, -9, -7, -6, -5})]
+2496	itemsets left after T operation 	: [frozenset({4, 7, 14, -10, -8})]
+1700	itemsets left after T operation 	: [frozenset({5, -13, -9, -7, -1})]
+1301	itemsets left after T operation 	: [frozenset({1, 8, 9, 12, 13, -11, -5, -3})]
+918	itemsets left after T operation 	: [frozenset({1, 4, 5, 8, 11, 14, -13, -7})]
+593	itemsets left after T operation 	: [frozenset({6, 9, 10, 13, -14, -8, -1})]
+426	itemsets left after T operation 	: [frozenset({2, 4, -12, -10, -5, -1})]
+199	itemsets left after T operation 	: [frozenset({6, 8, 10, -11, -9})]
+110	itemsets left after R operation 	: [frozenset({2, 4})]
+Length of freq items 1	: 88
+Time of freq items 1	: 0.36151981353759766
+133 Frequent Itemsets are mined in 0.0010769367218017578 seconds.
+Length of freq items 2	: 133
+Time of freq items 2	: 0.0011022090911865234
+0 clauses are pruned.
+Initial DL				: 20860.360388330388
+Final DL				: 1136.9054154106243
+Compression (wrt me)	: 0.9454992438171573>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 63522
+ Total time ~: 348 ms
+ Max memory:69.13671875
+=====================================
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 0
+ Total time ~: 1 ms
+ Max memory:7.562202453613281
+=====================================
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 28486
+ Total time ~: 209 ms
+ Max memory:36.6142578125
+=====================================
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 53
+ Total time ~: 4 ms
+ Max memory:7.565757751464844
+=====================================
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 54624
+ Total time ~: 304 ms
+ Max memory:58.66796875
+=====================================
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 0
+ Total time ~: 1 ms
+ Max memory:7.5620574951171875
+=====================================
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 50297
+ Total time ~: 306 ms
+ Max memory:55.611328125
+=====================================
+
+Operator Counters		: {'D': 0, 'W': 0, 'V': 0, 'S': 0, 'R': 1, 'T': 15}
+Length of freq items 1	: 63522
+Time of freq items 1	: 0.9662189483642578
+68204 Frequent Itemsets are mined in 0.6379668712615967 seconds.
+Length of freq items 2	: 68204
+Time of freq items 2	: 0.6380009651184082
+DL of initial theory	: 20840.290328799056
+61519	itemsets left after T operation 	: [frozenset({9, -3, 6})]
+58408	itemsets left after T operation 	: [frozenset({-8, 12, -11})]
+53793	itemsets left after T operation 	: [frozenset({8, 9, -6})]
+49803	itemsets left after T operation 	: [frozenset({-8, 1, 3, 11})]
+42693	itemsets left after T operation 	: [frozenset({-8, -3, -9})]
+34554	itemsets left after T operation 	: [frozenset({3, 9, -5, 6})]
+30187	itemsets left after T operation 	: [frozenset({5, 6, 11, -8, -1})]
+26938	itemsets left after T operation 	: [frozenset({7, 9, 11, -6, -5, -1})]
+21902	itemsets left after T operation 	: [frozenset({-8, 3, 14, -9})]
+18304	itemsets left after T operation 	: [frozenset({2, 9, 13, -12, -5})]
+12678	itemsets left after T operation 	: [frozenset({9, -4, 5})]
+8810	itemsets left after T operation 	: [frozenset({9, 10, -13, -7, -3, -2})]
+4603	itemsets left after T operation 	: [frozenset({-7, 2, 12, 14})]
+2295	itemsets left after T operation 	: [frozenset({3, 4, 5, 9, -14, -10})]
+1210	itemsets left after T operation 	: [frozenset({7, -14, -10, -8, -5, -4})]
+408	itemsets left after T operation 	: [frozenset({3, 10, -14, -8, -6})]
+139	itemsets left after T operation 	: [frozenset({1, 4, 5, 11, 14, -10})]
+46	itemsets left after T operation 	: [frozenset({4, 7, 9, 10, 12, -3})]
+40	itemsets left after T operation 	: [frozenset({9, 10, -3})]
+30	itemsets left after T operation 	: [frozenset({9, -5})]
+21	itemsets left after T operation 	: [frozenset({-8, 3})]
+19	itemsets left after T operation 	: [frozenset({9, -3})]
+10	itemsets left after T operation 	: [frozenset({9, 5})]
+3	itemsets left after T operation 	: [frozenset({-8})]
+1	itemsets left after R operation 	: [frozenset({9})]
+Length of freq items 1	: 0
+Time of freq items 1	: 0.3029031753540039
+0 Frequent Itemsets are mined in 7.390975952148438e-05 seconds.
+Length of freq items 2	: 0
+Time of freq items 2	: 0.00010204315185546875
+2 clauses are pruned.
+Initial DL				: 20840.29032879906
+Final DL				: 195.78763097586878
+Compression (wrt me)	: 0.9906053309293243
+Operator Counters		: {'D': 0, 'W': 0, 'V': 0, 'S': 0, 'R': 1, 'T': 24}
+Length of freq items 1	: 28486
+Time of freq items 1	: 0.6458859443664551
+97806 Frequent Itemsets are mined in 1.3281371593475342 seconds.
+Length of freq items 2	: 97806
+Time of freq items 2	: 1.3281691074371338
+3  violations of +ve partial assignments found for the learned theory.
+Violating Clauses	:{frozenset({5, 6, 7, 8, 10, 11, 14, -2, -4, -3, -1}), frozenset({1, 6, 7, -14, -13, -12, -11, -10, -9, -3, -2}), frozenset({2, 4, 6, 8, 11, -14, -12, -7, -5, -1})}
+DL of initial theory	: 20840.290328799056
+21152	itemsets left after T operation 	: [frozenset({8, -5, -9})]
+11449	itemsets left after T operation 	: [frozenset({8, 5, -9})]
+10173	itemsets left after T operation 	: [frozenset({1, 3, 8, 12, 13, -14, -11, -4})]
+8256	itemsets left after T operation 	: [frozenset({2, 14, -13, -6, -1})]
+6886	itemsets left after T operation 	: [frozenset({4, 7, 10, -12, -9})]
+5463	itemsets left after T operation 	: [frozenset({1, -11, -10, -9, -3, -2})]
+4538	itemsets left after T operation 	: [frozenset({2, 4, 6, -11, -10, -7, -3})]
+3224	itemsets left after T operation 	: [frozenset({-13, -12, -9, -7, -4})]
+2299	itemsets left after T operation 	: [frozenset({7, 12, 13, -9, -2})]
+1518	itemsets left after T operation 	: [frozenset({7, 8, 13, 14, -12, -11, -10, -6, -1})]
+872	itemsets left after T operation 	: [frozenset({10, 11, 14, -4, -2})]
+557	itemsets left after T operation 	: [frozenset({2, 6, 8, 11, -14, -12, -5, -1})]
+367	itemsets left after T operation 	: [frozenset({4, 11, -12, -1, -9, -3, -2})]
+180	itemsets left after T operation 	: [frozenset({2, 3, 4, 6, 12, -13, -11})]
+132	itemsets left after V operation 	: [frozenset({1, 3, 7, 8, 11, 12, -10, -9}), frozenset({2, -13, -1, -6, 14})]
+70	itemsets left after R operation 	: [frozenset({8, -9})]
+Length of freq items 1	: 53
+Time of freq items 1	: 0.3279891014099121
+86 Frequent Itemsets are mined in 0.0007600784301757812 seconds.
+Length of freq items 2	: 86
+Time of freq items 2	: 0.00078582763671875
+0 clauses are pruned.
+Initial DL				: 20840.290328799052
+Final DL				: 1274.9030425296844
+Compression (wrt me)	: 0.9388250824525268
+Operator Counters		: {'D': 0, 'W': 0, 'V': 1, 'S': 0, 'R': 1, 'T': 14}
+Length of freq items 1	: 54624
+Time of freq items 1	: 0.882159948348999
+67928 Frequent Itemsets are mined in 0.686995267868042 seconds.
+Length of freq items 2	: 67928
+Time of freq items 2	: 0.6870319843292236
+DL of initial theory	: 20731.61845301047
+51357	itemsets left after T operation 	: [frozenset({8, -7, 2})]
+44571	itemsets left after T operation 	: [frozenset({8, -13, 7})]
+37587	itemsets left after T operation 	: [frozenset({-8, 2, 14, -9})]
+26416	itemsets left after T operation 	: [frozenset({8, -7, -2})]
+15798	itemsets left after T operation 	: [frozenset({8, 13, 7})]
+8367	itemsets left after T operation 	: [frozenset({-2, 14, -9})]
+7166	itemsets left after T operation 	: [frozenset({3, 8, 13, -14, -11, -6, -5})]
+5433	itemsets left after T operation 	: [frozenset({3, 4, 13, -10, -9, -5, -1})]
+4009	itemsets left after T operation 	: [frozenset({2, 7, 11, 12, -9, -3})]
+2172	itemsets left after T operation 	: [frozenset({2, 6, 14, -13, -12, -5})]
+1287	itemsets left after T operation 	: [frozenset({4, 8, 9, 10, 14, -12, -6})]
+535	itemsets left after T operation 	: [frozenset({8, 14, -7, -6, -4, -3})]
+156	itemsets left after T operation 	: [frozenset({1, 8, -12, -10, -3})]
+87	itemsets left after T operation 	: [frozenset({4, 8, 9, 10, -12})]
+38	itemsets left after T operation 	: [frozenset({8, -6, -14, -5})]
+22	itemsets left after T operation 	: [frozenset({8, 10, -12})]
+16	itemsets left after R operation 	: [frozenset({8, -7})]
+13	itemsets left after T operation 	: [frozenset({8, -12})]
+10	itemsets left after R operation 	: [frozenset({8, 7})]
+7	itemsets left after T operation 	: [frozenset({14, -9})]
+4	itemsets left after R operation 	: [frozenset({8})]
+Length of freq items 1	: 0
+Time of freq items 1	: 0.31490159034729004
+0 Frequent Itemsets are mined in 0.00011682510375976562 seconds.
+Length of freq items 2	: 0
+Time of freq items 2	: 0.00014209747314453125
+2 clauses are pruned.
+Initial DL				: 20785.773797729016
+Final DL				: 237.17384118085047
+Compression (wrt me)	: 0.9885896073204278
+Operator Counters		: {'D': 0, 'W': 0, 'V': 0, 'S': 0, 'R': 3, 'T': 18}
+Length of freq items 1	: 50297
+Time of freq items 1	: 0.8212299346923828
+82646 Frequent Itemsets are mined in 1.0393550395965576 seconds.
+Length of freq items 2	: 82646
+Time of freq items 2	: 1.039391279220581
+3  violations of +ve partial assignments found for the learned theory.
+Violating Clauses	:{frozenset({3, 4, 7, 9, 11, 13, 14, -12, -10, -5, -2}), frozenset({2, 5, 12, 14, -13, -11, -8, -4, -1}), frozenset({1, 3, 5, 10, 14, -13, -12, -11, -8, -7, -6, -4, -2})}
+DL of initial theory	: 20731.61845301047
+43456	itemsets left after T operation 	: [frozenset({-8, 9, 11})]
+37003	itemsets left after T operation 	: [frozenset({-8, -14, 7, -9})]
+26587	itemsets left after T operation 	: [frozenset({-8, 9, -11})]
+20659	itemsets left after T operation 	: [frozenset({-8, -6, 4})]
+15300	itemsets left after T operation 	: [frozenset({10, -4, 5, -2})]
+12146	itemsets left after T operation 	: [frozenset({-5, 4, 12, -10})]
+9488	itemsets left after T operation 	: [frozenset({-8, 3, -4, 6})]
+7633	itemsets left after T operation 	: [frozenset({-14, -9, -7, -5, -1})]
+6574	itemsets left after T operation 	: [frozenset({2, 7, -14, -6, -3, -1})]
+4937	itemsets left after T operation 	: [frozenset({4, 5, 6, 11, -8, -7})]
+3484	itemsets left after T operation 	: [frozenset({4, 6, 7, 10, 13, -11, -2, -1})]
+2075	itemsets left after T operation 	: [frozenset({1, 2, 5, 10, 13, -14, -12})]
+1190	itemsets left after T operation 	: [frozenset({3, 4, 7, 11, -10, -2})]
+448	itemsets left after T operation 	: [frozenset({1, 6, -14, -13, -12, -2})]>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 28
+ Total time ~: 3 ms
+ Max memory:7.565757751464844
+=====================================
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 44990
+ Total time ~: 274 ms
+ Max memory:49.8828125
+=====================================
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 0
+ Total time ~: 1 ms
+ Max memory:7.562202453613281
+=====================================
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 53692
+ Total time ~: 303 ms
+ Max memory:58.64208984375
+=====================================
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 44
+ Total time ~: 2 ms
+ Max memory:7.565757751464844
+=====================================
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 27801
+ Total time ~: 220 ms
+ Max memory:36.66162109375
+=====================================
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 8
+ Total time ~: 1 ms
+ Max memory:7.565757751464844
+=====================================
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 61348
+ Total time ~: 366 ms
+ Max memory:65.638671875
+=====================================
+
+293	itemsets left after T operation 	: [frozenset({10, 13, -12, -8, -2})]
+139	itemsets left after T operation 	: [frozenset({9, -14, -13, -10, -6})]
+75	itemsets left after R operation 	: [frozenset({-8, 9})]
+Length of freq items 1	: 28
+Time of freq items 1	: 0.3244600296020508
+28 Frequent Itemsets are mined in 0.0004680156707763672 seconds.
+Length of freq items 2	: 28
+Time of freq items 2	: 0.0004978179931640625
+0 clauses are pruned.
+Initial DL				: 20785.773797729013
+Final DL				: 2140.374035380411
+Compression (wrt me)	: 0.8970269735344536
+Operator Counters		: {'D': 0, 'W': 0, 'V': 0, 'S': 0, 'R': 1, 'T': 16}
+Length of freq items 1	: 44990
+Time of freq items 1	: 0.8026988506317139
+56355 Frequent Itemsets are mined in 0.6307251453399658 seconds.
+Length of freq items 2	: 56355
+Time of freq items 2	: 0.6307590007781982
+DL of initial theory	: 20740.18712170385
+40535	itemsets left after T operation 	: [frozenset({-4, -11, 14})]
+34442	itemsets left after T operation 	: [frozenset({-5, 12, -4})]
+26413	itemsets left after T operation 	: [frozenset({11, -4, 5})]
+22317	itemsets left after T operation 	: [frozenset({10, 4, -11, -2})]
+13558	itemsets left after T operation 	: [frozenset({-14, -4, -12})]
+10511	itemsets left after T operation 	: [frozenset({6, 10, -7, -4, -2})]
+7124	itemsets left after T operation 	: [frozenset({2, -4, -10, -9})]
+2502	itemsets left after T operation 	: [frozenset({-8, 9, -4})]
+1583	itemsets left after T operation 	: [frozenset({12, -11, -9, -4, -3, -1})]
+574	itemsets left after T operation 	: [frozenset({1, 8, 10, 14, -11, -2})]
+180	itemsets left after T operation 	: [frozenset({3, 6, 7, -9, -4})]
+35	itemsets left after T operation 	: [frozenset({8, -7, -6, -4})]
+20	itemsets left after T operation 	: [frozenset({3, -4, 6})]
+14	itemsets left after T operation 	: [frozenset({10, -11, -2})]
+11	itemsets left after V operation 	: [frozenset({10, -11, -2}), frozenset({-7, 11, -4, 6})]
+7	itemsets left after T operation 	: [frozenset({-7, -4})]
+2	itemsets left after T operation 	: [frozenset({-4, -9})]
+0	itemsets left after T operation 	: [frozenset({-4})]
+Length of freq items 1	: 0
+Time of freq items 1	: 0.28946685791015625
+0 Frequent Itemsets are mined in 4.8160552978515625e-05 seconds.
+Length of freq items 2	: 0
+Time of freq items 2	: 7.510185241699219e-05
+0 clauses are pruned.
+Initial DL				: 20794.3424664224
+Final DL				: 37.23579600268731
+Compression (wrt me)	: 0.9982093304434698
+Operator Counters		: {'D': 0, 'W': 0, 'V': 1, 'S': 0, 'R': 0, 'T': 17}
+Length of freq items 1	: 53692
+Time of freq items 1	: 0.8171441555023193
+84073 Frequent Itemsets are mined in 0.9152061939239502 seconds.
+Length of freq items 2	: 84073
+Time of freq items 2	: 0.9152350425720215
+1  violations of +ve partial assignments found for the learned theory.
+Violating Clauses	:{frozenset({2, 3, 8, 9, 14, -11, -10, -7, -6})}
+DL of initial theory	: 20740.18712170385
+48303	itemsets left after T operation 	: [frozenset({-3, 4, 5})]
+43279	itemsets left after T operation 	: [frozenset({3, 4, 13, 6})]
+33399	itemsets left after T operation 	: [frozenset({-5, 4, -3})]
+24084	itemsets left after T operation 	: [frozenset({3, 4, -13})]
+20978	itemsets left after T operation 	: [frozenset({1, 8, 11, -12, -7})]
+18508	itemsets left after T operation 	: [frozenset({1, 5, 13, -12, -10, -8, -7, -6})]
+15443	itemsets left after T operation 	: [frozenset({4, -1, -10, 7})]
+12322	itemsets left after T operation 	: [frozenset({3, 4, 10, 14, -8, -6})]
+9924	itemsets left after T operation 	: [frozenset({8, 11, 6, -9})]
+7845	itemsets left after T operation 	: [frozenset({5, -14, -10, -2, -1})]
+5955	itemsets left after T operation 	: [frozenset({9, 11, -5, -3, -2})]
+4738	itemsets left after T operation 	: [frozenset({2, 4, 9, 10, -14, -13, -12, -7})]
+3561	itemsets left after T operation 	: [frozenset({1, 3, 7, 8, 12, -11, -10})]
+2240	itemsets left after T operation 	: [frozenset({2, 3, 10, 13, 14, -11})]
+1432	itemsets left after T operation 	: [frozenset({1, -14, -10, -8, -2})]
+1077	itemsets left after T operation 	: [frozenset({1, 3, 8, 10, 12, 14, -7, -2})]
+695	itemsets left after T operation 	: [frozenset({4, 5, 7, 8, 14, -12, -1})]
+469	itemsets left after T operation 	: [frozenset({1, 2, 5, 13, -8, -3})]
+335	itemsets left after T operation 	: [frozenset({2, 4, 10, -14, -12})]
+246	itemsets left after V operation 	: [frozenset({-5, 9, 11, -3, -2}), frozenset({2, 10, 12, -14, -13, -8, -7, -1})]
+149	itemsets left after V operation 	: [frozenset({3, 10, 14, -13, -12, -8, -5, -2}), frozenset({8, 11, 6, -9})]
+101	itemsets left after T operation 	: [frozenset({-13, 4})]
+57	itemsets left after T operation 	: [frozenset({4, 14})]
+26	itemsets left after R operation 	: [frozenset({4, -3})]
+Length of freq items 1	: 44
+Time of freq items 1	: 0.323106050491333
+46 Frequent Itemsets are mined in 0.0007050037384033203 seconds.
+Length of freq items 2	: 46
+Time of freq items 2	: 0.0007309913635253906
+1 clauses are pruned.
+Initial DL				: 20794.34246642239
+Final DL				: 2420.578143359924
+Compression (wrt me)	: 0.8835943888454976
+Operator Counters		: {'D': 0, 'W': 0, 'V': 2, 'S': 0, 'R': 1, 'T': 21}
+Length of freq items 1	: 27801
+Time of freq items 1	: 0.6288611888885498
+108908 Frequent Itemsets are mined in 1.604511022567749 seconds.
+Length of freq items 2	: 108908
+Time of freq items 2	: 1.6045441627502441
+DL of initial theory	: 20813.77542582967
+21394	itemsets left after T operation 	: [frozenset({-6, -5, 13})]
+14569	itemsets left after T operation 	: [frozenset({-8, 9, 6})]
+6335	itemsets left after T operation 	: [frozenset({-8, 9, -6})]
+4222	itemsets left after T operation 	: [frozenset({1, 3, 4, 14, -9, -8, -6, -2})]
+2677	itemsets left after T operation 	: [frozenset({1, 4, -12, -10, -8, -5})]
+1619	itemsets left after T operation 	: [frozenset({2, 4, 5, 10, -11, -9, -7, -6})]
+582	itemsets left after T operation 	: [frozenset({7, 9, 12, -8, -4, -3, -2})]
+227	itemsets left after T operation 	: [frozenset({3, 11, -14, -13, -12, -8, -7, -5})]
+98	itemsets left after T operation 	: [frozenset({-8, 9, -4, -3})]
+19	itemsets left after T operation 	: [frozenset({1, 3, 4, 14, -8, -2})]
+15	itemsets left after R operation 	: [frozenset({-8, 9})]
+Length of freq items 1	: 8
+Time of freq items 1	: 0.3278810977935791
+12 Frequent Itemsets are mined in 0.0002090930938720703 seconds.
+Length of freq items 2	: 12
+Time of freq items 2	: 0.0002319812774658203
+0 clauses are pruned.
+Initial DL				: 20813.775425829674
+Final DL				: 356.78816506593944
+Compression (wrt me)	: 0.9828580755885753
+Operator Counters		: {'D': 0, 'W': 0, 'V': 0, 'S': 0, 'R': 1, 'T': 10}
+Length of freq items 1	: 61348
+Time of freq items 1	: 0.9295439720153809
+65929 Frequent Itemsets are mined in 0.6577510833740234 seconds.
+Length of freq items 2	: 65929
+Time of freq items 2	: 0.6577789783477783
+1  violations of +ve partial assignments found for the learned theory.
+Violating Clauses	:{frozenset({1, 2, 4, 5, 10, 12, -14, -13, -11, -9, -8, -6, -3})}
+DL of initial theory	: 20813.775425829674
+58833	itemsets left after T operation 	: [frozenset({-13, -11, -9})]
+55296	itemsets left after T operation 	: [frozenset({8, 2, 6})]
+48911	itemsets left after T operation 	: [frozenset({11, -9, 7})]
+44763	itemsets left after T operation 	: [frozenset({-6, -14, 5})]
+40289	itemsets left after T operation 	: [frozenset({-11, 13, 6, -9})]
+32853	itemsets left after T operation 	: [frozenset({8, 9, 11})]
+24975	itemsets left after T operation 	: [frozenset({-6, -4, 14})]
+20294	itemsets left after T operation 	: [frozenset({-7, -5, -2, -9})]
+14894	itemsets left after T operation 	: [frozenset({-7, 5, 6})]
+11570	itemsets left after T operation 	: [frozenset({10, 12, 14, 7})]
+9112	itemsets left after T operation 	: [frozenset({-14, -12, -10, -7, -5})]
+7145	itemsets left after T operation 	: [frozenset({1, 5, 6, -14, -12, -10})]
+5698	itemsets left after T operation 	: [frozenset({2, 7, 8, 12, -10, -6, -5})]
+4416	itemsets left after T operation 	: [frozenset({3, 4, 5, -9, -2})]
+3156	itemsets left after T operation 	: [frozenset({6, 7, -11, -5, -3})]
+1522	itemsets left after T operation 	: [frozenset({1, 10, -14, -13, -5})]
+882	itemsets left after T operation 	: [frozenset({3, 6, 10, 11, 14, -4})]>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 8
+ Total time ~: 1 ms
+ Max memory:7.565757751464844
+=====================================
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 64651
+ Total time ~: 1356 ms
+ Max memory:71.20361328125
+=====================================
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 0
+ Total time ~: 0 ms
+ Max memory:7.565757751464844
+=====================================
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 24968
+ Total time ~: 544 ms
+ Max memory:28.1083984375
+=====================================
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 87
+ Total time ~: 4 ms
+ Max memory:7.8457794189453125
+=====================================
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 55
+ Total time ~: 7 ms
+ Max memory:7.8457794189453125
+=====================================
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 1
+ Total time ~: 1 ms
+ Max memory:7.577728271484375
+=====================================
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 60955
+ Total time ~: 420 ms
+ Max memory:71.14697265625
+=====================================
+
+506	itemsets left after T operation 	: [frozenset({6, 8, 12, -14, -11, -7, -4, -2})]
+208	itemsets left after T operation 	: [frozenset({-7, -12, -10})]
+149	itemsets left after T operation 	: [frozenset({5, -2, -6, -3, -1})]
+110	itemsets left after V operation 	: [frozenset({3, 4, 8, 9, 13, -7, -5, -1}), frozenset({10, 12, 14, 7})]
+79	itemsets left after V operation 	: [frozenset({1, 4, -10, 9, -6, -5, -2}), frozenset({10, 12, 14, 7})]
+56	itemsets left after V operation 	: [frozenset({-14, -11, 8, -5, 12, -4, -2}), frozenset({-7, 5, 6})]
+27	itemsets left after V operation 	: [frozenset({1, 3, 4, 6, 9, 14, -13, -10, -5}), frozenset({11, -9, 7})]
+Length of freq items 1	: 8
+Time of freq items 1	: 0.3385930061340332
+8 Frequent Itemsets are mined in 0.00022101402282714844 seconds.
+Length of freq items 2	: 8
+Time of freq items 2	: 0.0002460479736328125
+0 clauses are pruned.
+Initial DL				: 20813.77542582967
+Final DL				: 3637.899355736002
+Compression (wrt me)	: 0.8252167479802147
+Operator Counters		: {'D': 0, 'W': 0, 'V': 4, 'S': 0, 'R': 0, 'T': 20}
+Length of freq items 1	: 64651
+Time of freq items 1	: 2.443382978439331
+69258 Frequent Itemsets are mined in 0.8109970092773438 seconds.
+Length of freq items 2	: 69258
+Time of freq items 2	: 0.8110752105712891
+DL of initial theory	: 20755.680688324617
+61934	itemsets left after T operation 	: [frozenset({-8, 2, 7})]
+57027	itemsets left after T operation 	: [frozenset({9, -1, -10})]
+50760	itemsets left after T operation 	: [frozenset({8, 2, 14})]
+43563	itemsets left after T operation 	: [frozenset({9, 10, 13})]
+36641	itemsets left after T operation 	: [frozenset({-7, 2, -9})]
+29848	itemsets left after T operation 	: [frozenset({9, -5, -7, 1})]
+22057	itemsets left after T operation 	: [frozenset({9, 3, -2})]
+17763	itemsets left after T operation 	: [frozenset({2, 10, 12, -1})]
+14113	itemsets left after T operation 	: [frozenset({4, 9, -13, -12, -8, -3})]
+10160	itemsets left after T operation 	: [frozenset({1, 2, 3, -14, -4})]
+8249	itemsets left after T operation 	: [frozenset({10, 11, -14, -13, -7, -5, -2})]
+5969	itemsets left after T operation 	: [frozenset({9, 12, 14, -6, -4})]
+3894	itemsets left after T operation 	: [frozenset({-8, 2, 4, -10})]
+2976	itemsets left after T operation 	: [frozenset({2, 3, 6, 13, -14, -12, -1})]
+1877	itemsets left after T operation 	: [frozenset({5, 9, 11, 12, -14, -7})]
+839	itemsets left after T operation 	: [frozenset({9, -13, -12})]
+367	itemsets left after T operation 	: [frozenset({-11, 2, -6, -3})]
+65	itemsets left after T operation 	: [frozenset({8, 2, -14, -10})]
+52	itemsets left after T operation 	: [frozenset({3, 2, -14})]
+42	itemsets left after T operation 	: [frozenset({2, -14})]
+20	itemsets left after T operation 	: [frozenset({2, 7})]
+12	itemsets left after T operation 	: [frozenset({9, 12})]
+6	itemsets left after T operation 	: [frozenset({2})]
+0	itemsets left after T operation 	: [frozenset({9})]
+Length of freq items 1	: 0
+Time of freq items 1	: 0.4104499816894531
+0 Frequent Itemsets are mined in 0.0001277923583984375 seconds.
+Length of freq items 2	: 0
+Time of freq items 2	: 0.00015091896057128906
+0 clauses are pruned.
+Initial DL				: 20755.680688324624
+Final DL				: 124.92278066187089
+Compression (wrt me)	: 0.9939812727639359
+Operator Counters		: {'D': 0, 'W': 0, 'V': 0, 'S': 0, 'R': 0, 'T': 24}
+Length of freq items 1	: 24968
+Time of freq items 1	: 2.761859178543091
+82378 Frequent Itemsets are mined in 2.069546937942505 seconds.
+Length of freq items 2	: 82378
+Time of freq items 2	: 2.0695838928222656
+2  violations of +ve partial assignments found for the learned theory.
+Violating Clauses	:{frozenset({1, 3, 4, 6, 8, 13, 14, -12, -10, -7, -5, -2}), frozenset({4, 6, 8, 11, 14, -13, -12, -9, -7, -3})}
+DL of initial theory	: 20755.680688324617
+20519	itemsets left after T operation 	: [frozenset({-6, -2, -9})]
+13819	itemsets left after T operation 	: [frozenset({-2, 6, -9})]
+11776	itemsets left after T operation 	: [frozenset({5, 13, 6, -9})]
+10173	itemsets left after T operation 	: [frozenset({7, 12, -10, -8, -2})]
+8419	itemsets left after T operation 	: [frozenset({4, 8, 13, -14, -10, -9, -5})]
+6453	itemsets left after T operation 	: [frozenset({7, 10, 13, -2, -1})]
+5331	itemsets left after T operation 	: [frozenset({1, 4, 6, 8, 14, -7, -5})]
+4195	itemsets left after T operation 	: [frozenset({1, 14, -11, -10, -8, -7, -4})]
+3187	itemsets left after T operation 	: [frozenset({3, -14, -10, -9, -7, -6})]
+2406	itemsets left after T operation 	: [frozenset({10, 12, -9, -8, -3, -1})]
+1811	itemsets left after T operation 	: [frozenset({1, 7, 8, 13, 14, -10, -5, -4, -3})]
+1208	itemsets left after T operation 	: [frozenset({1, 10, -14, -13, -12, -8, -7, -3, -2})]
+805	itemsets left after T operation 	: [frozenset({3, 4, 5, 13, -12, -6, -1})]
+608	itemsets left after T operation 	: [frozenset({7, 8, 11, 13, -14, -6})]
+392	itemsets left after T operation 	: [frozenset({8, -13, -10, -7, -4, -2})]
+284	itemsets left after T operation 	: [frozenset({4, 6, 8, 11, -13, -9})]
+167	itemsets left after T operation 	: [frozenset({10, -1, -2, 7})]
+43	itemsets left after V operation 	: [frozenset({1, 3, 7, 9, 10, 12, 13, 14, -11, -8, -5}), frozenset({-6, -2, -9})]
+28	itemsets left after R operation 	: [frozenset({-2, -9})]
+Length of freq items 1	: 87
+Time of freq items 1	: 0.4126451015472412
+126 Frequent Itemsets are mined in 0.0008718967437744141 seconds.
+Length of freq items 2	: 126
+Time of freq items 2	: 0.0008938312530517578
+0 clauses are pruned.
+Initial DL				: 20755.680688324624
+Final DL				: 1859.0050475102248
+Compression (wrt me)	: 0.9104339156385296
+Operator Counters		: {'D': 0, 'W': 0, 'V': 1, 'S': 0, 'R': 1, 'T': 17}
+Length of freq items 1	: 55
+Time of freq items 1	: 0.32947587966918945
+37696 Frequent Itemsets are mined in 0.599959135055542 seconds.
+Length of freq items 2	: 37696
+Time of freq items 2	: 0.5999999046325684
+DL of initial theory	: 20779.723288206333
+0	itemsets left after T operation 	: [frozenset({2, 3, 6, 8, -13, -1})]
+Length of freq items 1	: 1
+Time of freq items 1	: 0.3489689826965332
+32 Frequent Itemsets are mined in 0.0003619194030761719 seconds.
+Length of freq items 2	: 32
+Time of freq items 2	: 0.0003838539123535156
+1 clauses are pruned.
+Initial DL				: 20779.723288206336
+Final DL				: 0
+Compression (wrt me)	: 1.0
+Operator Counters		: {'D': 0, 'W': 0, 'V': 0, 'S': 0, 'R': 0, 'T': 1}
+Length of freq items 1	: 60955
+Time of freq items 1	: 0.9829521179199219
+61341 Frequent Itemsets are mined in 0.5624220371246338 seconds.
+Length of freq items 2	: 61341
+Time of freq items 2	: 0.562453031539917
+DL of initial theory	: 20779.723288206333
+60145	itemsets left after T operation 	: [frozenset({2, 12, -11})]
+59168	itemsets left after T operation 	: [frozenset({9, -14, 4})]
+57399	itemsets left after T operation 	: [frozenset({-8, -13, 5})]
+55557	itemsets left after T operation 	: [frozenset({11, -3, 14})]
+52322	itemsets left after T operation 	: [frozenset({3, -12, -9})]
+48817	itemsets left after T operation 	: [frozenset({-7, 12, -11, -2})]
+44013	itemsets left after T operation 	: [frozenset({-14, -4, 13})]
+37960	itemsets left after T operation 	: [frozenset({8, -3, -1})]
+31468	itemsets left after T operation 	: [frozenset({1, 14, 7})]
+27987	itemsets left after T operation 	: [frozenset({4, 6, 11, -14, -9})]
+22203	itemsets left after T operation 	: [frozenset({-7, -5, 1})]
+15249	itemsets left after T operation 	: [frozenset({11, 12, -1})]
+11286	itemsets left after T operation 	: [frozenset({8, 5, -11, -10})]
+8832	itemsets left after T operation 	: [frozenset({10, -5, 6, 7})]
+4930	itemsets left after T operation 	: [frozenset({-7, -12, -1})]
+3139	itemsets left after T operation 	: [frozenset({1, 5, 8, 12, -6})]
+2019	itemsets left after T operation 	: [frozenset({2, 5, 13, 14, -4})]
+945	itemsets left after T operation 	: [frozenset({3, 4, 7, -13, -2})]
+377	itemsets left after T operation 	: [frozenset({1, 7, 10, -4, -3})]
+129	itemsets left after T operation 	: [frozenset({-8, -3, -5, -11})]
+45	itemsets left after T operation 	: [frozenset({3, 6, 10, 14, -12})]
+32	itemsets left after T operation 	: [frozenset({8, 1, -6})]
+30	itemsets left after T operation 	: [frozenset({1, 7})]>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 0
+ Total time ~: 2 ms
+ Max memory:7.565757751464844
+=====================================
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 65152
+ Total time ~: 495 ms
+ Max memory:69.2578125
+=====================================
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 2
+ Total time ~: 1 ms
+ Max memory:7.562202453613281
+=====================================
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 49658
+ Total time ~: 296 ms
+ Max memory:55.61669921875
+=====================================
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 37
+ Total time ~: 2 ms
+ Max memory:7.842262268066406
+=====================================
+
+27	itemsets left after T operation 	: [frozenset({10, 6})]
+24	itemsets left after T operation 	: [frozenset({-14, 4})]
+21	itemsets left after T operation 	: [frozenset({12, -11})]
+16	itemsets left after T operation 	: [frozenset({-4, 13})]
+11	itemsets left after T operation 	: [frozenset({1})]
+7	itemsets left after T operation 	: [frozenset({-3})]
+4	itemsets left after T operation 	: [frozenset({5})]
+3	itemsets left after T operation 	: [frozenset({12})]
+1	itemsets left after T operation 	: [frozenset({4})]
+Length of freq items 1	: 0
+Time of freq items 1	: 0.4960289001464844
+0 Frequent Itemsets are mined in 0.00011420249938964844 seconds.
+Length of freq items 2	: 0
+Time of freq items 2	: 0.00013589859008789062
+1 clauses are pruned.
+Initial DL				: 20779.723288206333
+Final DL				: 539.7495693862588
+Compression (wrt me)	: 0.9740251801287173
+Operator Counters		: {'D': 0, 'W': 0, 'V': 0, 'S': 0, 'R': 0, 'T': 32}
+8 Sampled Negatives are empty
+Length of freq items 1	: 65152
+Time of freq items 1	: 1.157167911529541
+79185 Frequent Itemsets are mined in 1.064619779586792 seconds.
+Length of freq items 2	: 79185
+Time of freq items 2	: 1.064650058746338
+DL of initial theory	: 20926.608757029542
+60951	itemsets left after T operation 	: [frozenset({4, -10, -1})]
+55080	itemsets left after T operation 	: [frozenset({10, 3, -13})]
+41733	itemsets left after T operation 	: [frozenset({-4, -10, -1})]
+25845	itemsets left after T operation 	: [frozenset({10, 13, -9})]
+19037	itemsets left after T operation 	: [frozenset({11, -7, 3, 13})]
+14863	itemsets left after T operation 	: [frozenset({3, 9, 10, 12, 13, -11})]
+12059	itemsets left after T operation 	: [frozenset({1, 2, 8, 13, 14, -10, -6, -5, -3})]
+9837	itemsets left after T operation 	: [frozenset({1, 4, 6, 8, 13, -9, -5})]
+7710	itemsets left after T operation 	: [frozenset({5, 13, -11, -10, -9})]
+4514	itemsets left after T operation 	: [frozenset({4, 7, 10, -12, -8, -1})]
+3392	itemsets left after T operation 	: [frozenset({13, -12, -5, -3, -2})]
+1938	itemsets left after T operation 	: [frozenset({7, 9, 11, 13, -8, -2})]
+948	itemsets left after T operation 	: [frozenset({-14, 3, 12, 6})]
+583	itemsets left after T operation 	: [frozenset({2, 8, 14, -10, -6, -5, -3})]
+334	itemsets left after T operation 	: [frozenset({2, 11, 12, 13, -9, -4, -3})]
+169	itemsets left after T operation 	: [frozenset({2, 3, -14, -12, -9, -1})]
+85	itemsets left after T operation 	: [frozenset({13, -9})]
+51	itemsets left after T operation 	: [frozenset({9, 11, 13, -2})]
+23	itemsets left after R operation 	: [frozenset({-10, -1})]
+14	itemsets left after T operation 	: [frozenset({10, 3})]
+Length of freq items 1	: 2
+Time of freq items 1	: 0.4746990203857422
+2 Frequent Itemsets are mined in 0.00017690658569335938 seconds.
+Length of freq items 2	: 2
+Time of freq items 2	: 0.00020265579223632812
+4 clauses are pruned.
+Initial DL				: 20926.608757029546
+Final DL				: 564.2366007936926
+Compression (wrt me)	: 0.973037360838308
+Operator Counters		: {'D': 0, 'W': 0, 'V': 0, 'S': 0, 'R': 1, 'T': 19}
+Length of freq items 1	: 49658
+Time of freq items 1	: 0.8591141700744629
+84642 Frequent Itemsets are mined in 1.0227160453796387 seconds.
+Length of freq items 2	: 84642
+Time of freq items 2	: 1.02274489402771
+2  violations of +ve partial assignments found for the learned theory.
+Violating Clauses	:{frozenset({3, 5, 9, 11, -14, -12, -10, -8, -7, -6, -2}), frozenset({1, 2, 3, 4, 8, 11, 12, 14, -13, -6})}
+DL of initial theory	: 20926.608757029542
+44358	itemsets left after T operation 	: [frozenset({1, 3, -10})]
+39271	itemsets left after T operation 	: [frozenset({-7, -13, 4, -3})]
+31689	itemsets left after T operation 	: [frozenset({-13, -3, -5})]
+25703	itemsets left after T operation 	: [frozenset({9, -3, 13, -11})]
+20428	itemsets left after T operation 	: [frozenset({-7, -6, 11, 5})]
+16138	itemsets left after T operation 	: [frozenset({5, 6, 7, 12, -3})]
+13021	itemsets left after T operation 	: [frozenset({-8, 9, -11, 6})]
+10804	itemsets left after T operation 	: [frozenset({6, 10, 11, 14, -12, -3, -2})]
+8084	itemsets left after T operation 	: [frozenset({8, 2, 11, -12})]
+6268	itemsets left after T operation 	: [frozenset({1, 5, 12, -14, -9, -3})]
+4775	itemsets left after T operation 	: [frozenset({1, 3, 8, 9, 14, -12, -4})]
+3731	itemsets left after T operation 	: [frozenset({1, 2, 7, 9, 11, 12})]
+2976	itemsets left after T operation 	: [frozenset({10, 14, -13, -12, -11, -7})]
+1861	itemsets left after T operation 	: [frozenset({1, -14, -7, -6, -2})]
+1196	itemsets left after T operation 	: [frozenset({6, -8, -7, -5, -3})]
+908	itemsets left after T operation 	: [frozenset({2, 10, -14, -12, -9, -6, -5})]
+580	itemsets left after T operation 	: [frozenset({3, 9, -12, -11, -10, -6, -4})]
+273	itemsets left after T operation 	: [frozenset({2, 3, 4, 8, 12, 14, -6})]
+157	itemsets left after T operation 	: [frozenset({1, 9, 12, 14, -2})]
+86	itemsets left after V operation 	: [frozenset({4, 9, 12, 13, -11, -7, -6, -1}), frozenset({1, 3, -10}), frozenset({-12, -11, 9, -6, -4, -1})]
+57	itemsets left after V operation 	: [frozenset({-12, 8, 9, 10, -4, 14}), frozenset({1, 3, -10})]
+Length of freq items 1	: 37
+Time of freq items 1	: 0.33014893531799316
+38 Frequent Itemsets are mined in 0.0004038810729980469 seconds.
+Length of freq items 2	: 38
+Time of freq items 2	: 0.0004279613494873047
+0 clauses are pruned.
+Initial DL				: 20926.60875702954
+Final DL				: 3609.101637497592
+Compression (wrt me)	: 0.8275352839343716
+Operator Counters		: {'D': 0, 'W': 0, 'V': 2, 'S': 0, 'R': 0, 'T': 19}
+similarity_plus_list
+[0.954833984375, 1.0, 1.0, 0.9949951171875, 0.99609375, 0.9461669921875, 0.9921875, 0.967041015625, 0.0, 0.9814453125]
+similarity_minus_list
+[0.3414306640625, 0.10137939453125, 0.1168212890625, 0.20428466796875, 0.1923828125, 0.28857421875, 0.14959716796875, 0.0367431640625, 0.0, 0.3291015625]
+similarity_mf_list
+[0.3414306640625, 1.0, 1.0, 0.9949951171875, 0.99609375, 0.28857421875, 0.9921875, 0.0367431640625, 0.0, 0.9814453125]
+similarity_comp_list
+[0.954833984375, 1.0, 1.0, 0.9949951171875, 0.99609375, 0.9461669921875, 0.9921875, 0.967041015625, 0.0, 0.9814453125]
+similarity_common_list
+[0.9536448598130841, 1.0, 1.0, 0.9834172342315665, 1.0, 0.9384404924760602, 0.9865940511101802, 0.8229166666666666, 0.0, 0.9707623982235382]
+used_theory_list
+[[[7, -1, -5, 9, -8, -14, -12, -4, 3, -10, -2, -6, 13], [6, -7], [9, -8, -13, 14], [-14, 7, -12, 11, -1, 8, -6, -2, -9, 3, 10, 4], [-9, -6], [-10, 9, -14, 5, 8, -2, 7, 3, 11, 13, -12, -1, -4], [-9, 5, -14, -4, 11, -7, 13, 10, -12, 3, -1, 2], [14, -12, -4]], [[-2], [14, -10, -2, 7, -12, 6, -13, -1, -5, -11], [-4, 2]], [[9], [-2, 12, -7, -4, 5, 6, -8, 13, -10, -14], [-8], [14, 9, -5, -11, 6, -7, 12, -2, -8, -1]], [[-5, 7, -12, -13, 2, 1, -4, 6, -3, 10, 14, 9], [-8, -9, 14], [8], [1, -13, 7, 4, -9, 2, -3, -14]], [[-2, 10, -11, 4], [11, -2, -1, 5, -8, 13, 14], [-4]], [[-10, 1, -12, 14, -8, 11], [-5, -6, 13], [1, 14, 5, 3, 11, -12, 6, 4, 9, 2], [9, -8], [-6, -2, 8, -13, 12, 7, 1, 3, -9, 11, -5, -14, -4], [-7, 2, -6, 4], [-2, 14, 12, 1, -9, -8]], [[3, 2, -4, -8, 7, -6, 14, 1, 5, -12], [9, -10, -4, -1], [9], [10, -13, 3, -7, -14], [2]], [[-1, -13, 8, 6, 3], [9, -1, 10, -2, -14, -11, -7, 8, -12]], [[-1, 12, 3, 5, -9, 11, -6, 14, -4, 13, 10], [12, 2, -11, 3, -6, 7, 1, -5, -4, 10]], [[-1, -10], [-11, 2, 14, -10, -5, -3], [-9, 13], [-8, 6, 4, 14, -13, -2, -1], [-2, 13, 11, 9], [10, 7, -2, -12, 13, 11, 9], [12, 5, 2, 6, -14, -10], [10, 3], [12, 2, -14, 1, 5, 6, 11, -10, 13, -9, -7]]]
+t_plus_list
+[[frozenset({8, -12, -4, 14}), frozenset({3, 9, 14, -13, -8}), frozenset({7, 14, -5, -4, -2}), frozenset({5, 10, 14, -13, -8, -2}), frozenset({-6, -9}), frozenset({-7, 6})], [frozenset({-4}), frozenset({-2})], [frozenset({-8}), frozenset({9})], [frozenset({2, 7, 11, 12, -9, -3}), frozenset({14, -9}), frozenset({8})], [frozenset({10, -11, -2}), frozenset({-4})], [frozenset({-6, -5, 13}), frozenset({1, 4, -12, -10, -8, -5}), frozenset({2, 4, 5, 10, -11, -9, -7, -6}), frozenset({3, 11, -14, -13, -12, -8, -7, -5}), frozenset({1, 3, 4, 14, -8, -2}), frozenset({-8, 9})], [frozenset({10, 11, -14, -13, -7, -5, -2}), frozenset({2}), frozenset({9})], [], None, [frozenset({-14, 3, 12, 6}), frozenset({2, 8, 14, -10, -6, -5, -3}), frozenset({13, -9}), frozenset({9, 11, 13, -2}), frozenset({-10, -1}), frozenset({10, 3})]]
+mf_list
+['T-', 'T+', 'T+', 'T+', 'T+', 'T-', 'T+', 'T-', 'T-', 'T+']
+comp_list
+['T+', 'T+', 'T+', 'T+', 'T+', 'T+', 'T+', 'T+', 'T-', 'T+']
+t_plus_comp_list
+[0.9900216064429727, 0.9986601193237553, 0.9906053309293243, 0.9885896073204278, 0.9982093304434698, 0.9828580755885753, 0.9939812727639359, 1.0, 0, 0.973037360838308]
+t_minus_comp_list
+[0.8234237800787798, 0.9454992438171573, 0.9388250824525268, 0.8970269735344536, 0.8835943888454976, 0.8252167479802147, 0.9104339156385296, 0.9740251801287173, 0, 0.8275352839343716]
+samp_positives_list
+[210, 120, 130, 186, 194, 271, 114, 391, 400, 181]
+samp_negatives_list
+[190, 280, 270, 214, 206, 129, 286, 9, 0, 219]
+samp_unique_positives_list
+[208, 119, 130, 185, 194, 271, 114, 391, 400, 181]
+samp_unique_negatives_list
+[189, 279, 270, 214, 205, 129, 286, 9, 0, 219]

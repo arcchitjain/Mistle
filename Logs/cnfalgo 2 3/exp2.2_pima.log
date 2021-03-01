@@ -1,0 +1,121 @@
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 699
+ Total time ~: 23 ms
+ Max memory:9.562049865722656
+=====================================
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 33
+ Total time ~: 3 ms
+ Max memory:7.565757751464844
+=====================================
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 677
+ Total time ~: 25 ms
+ Max memory:9.562004089355469
+=====================================
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 125
+ Total time ~: 5 ms
+ Max memory:7.8457794189453125
+=====================================
+Length of freq items 1	: 699
+Time of freq items 1	: 0.35239219665527344
+3689 Frequent Itemsets are mined in 0.037667036056518555 seconds.
+Length of freq items 2	: 3689
+Time of freq items 2	: 0.037719011306762695
+27  violations of +ve partial assignments found for the learned theory.
+Violating Clauses	:{frozenset({-29, -24, -20, -15, -10, -6, -2, -33}), frozenset({-28, -24, -20, -15, -10, -6, -2, -33}), frozenset({-28, -24, -20, -15, -10, -6, -3, -33}), frozenset({-30, -24, -20, -15, -10, -6, -2, -33}), frozenset({-28, -24, -20, -15, -10, -6, -36, -2}), frozenset({-28, -24, -20, -15, -10, -7, -37, -2}), frozenset({-28, -24, -20, -15, -10, -6, -5, -34}), frozenset({-28, -24, -20, -15, -10, -9, -37, -2}), frozenset({-28, -24, -23, -18, -10, -9, -2, -33}), frozenset({-28, -24, -20, -15, -10, -6, -5, -33}), frozenset({-28, -24, -20, -18, -10, -6, -2, -33}), frozenset({-32, -24, -20, -15, -10, -6, -2, -33}), frozenset({-28, -24, -20, -15, -10, -6, -37, -2}), frozenset({-28, -24, -20, -15, -10, -9, -3, -33}), frozenset({-28, -24, -20, -15, -10, -7, -2, -33}), frozenset({-31, -24, -20, -15, -10, -6, -2, -33}), frozenset({-28, -24, -22, -15, -10, -9, -2, -33}), frozenset({-28, -24, -20, -17, -10, -6, -2, -33}), frozenset({-28, -24, -20, -15, -9, -10, -2, -34}), frozenset({-28, -24, -20, -15, -10, -6, -4, -33}), frozenset({-28, -24, -20, -15, -11, -6, -2, -33}), frozenset({-28, -24, -20, -15, -10, -9, -2, -33}), frozenset({-28, -24, -20, -15, -10, -6, -37, -4}), frozenset({-28, -27, -20, -15, -11, -6, -2, -33}), frozenset({-28, -24, -20, -16, -10, -6, -2, -33}), frozenset({-28, -24, -20, -15, -2, -10, -6, -34}), frozenset({-28, -27, -20, -18, -10, -9, -2, -33})}
+DL of initial theory	: 5770.78902811308
+473	itemsets left after T operation 	: [frozenset({-24, -15, -20, -10})]
+310	itemsets left after T operation 	: [frozenset({-28, -20, -2, -33})]
+203	itemsets left after T operation 	: [frozenset({-28, -24, -10, -9, -2})]
+114	itemsets left after V operation 	: [frozenset({-28, -37, -6, -5, -18, 15}), frozenset({-16, -30, -6, 15, -2, -33}), frozenset({-31, -2, -9, 15, -18, -33}), frozenset({-16, -28, -8, -5, 15, -33}), frozenset({-32, -2, -6, -37, -18, 15}), frozenset({-28, -9, -5, 15, -34, -17}), frozenset({-24, -15, -20, -10})]
+76	itemsets left after T operation 	: [frozenset({-28, -15, -10, -6, -2})]
+55	itemsets left after V operation 	: [frozenset({-32, -27, -10, -9, 28, -19}), frozenset({-31, -11, -24, -6, 28, -17}), frozenset({-20, -28, -2, -33})]
+33	itemsets left after V operation 	: [frozenset({-15, 2, -11, -24, -6, -3}), frozenset({-16, 2, -27, -10, -6, -5}), frozenset({-28, -20, -2, -33})]
+25	itemsets left after T operation 	: [frozenset({-15, -6, -10})]
+18	itemsets left after T operation 	: [frozenset({-28, -9})]
+16	itemsets left after V operation 	: [frozenset({-16, 2, -27, -5, 15}), frozenset({-15, -6, -10})]
+14	itemsets left after V operation 	: [frozenset({-15, -6, -10}), frozenset({-24, -20, 6})]
+11	itemsets left after V operation 	: [frozenset({-15, -6, -10}), frozenset({2, -11, -24, 10, -3})]
+9	itemsets left after T operation 	: [frozenset({-2, -18})]
+3	itemsets left after V operation 	: [frozenset({-32, -27, -10, 28, -19}), frozenset({-28, -9})]
+Length of freq items 1	: 33
+Time of freq items 1	: 0.2819192409515381
+187 Frequent Itemsets are mined in 0.0016429424285888672 seconds.
+Length of freq items 2	: 187
+Time of freq items 2	: 0.0016701221466064453
+15	itemsets left after T operation 	: [frozenset({-16, -33, 15})]
+13	itemsets left after V operation 	: [frozenset({-16, -33, 15}), frozenset({33, 2, -5, -27})]
+0	itemsets left after T operation 	: [frozenset({-27})]
+0 clauses are pruned.
+Initial DL				: 31752.422179034667
+Final DL				: 3024.611943176953
+Compression (wrt me)	: 0.9047438987135279
+Operator Counters		: {'D': 0, 'W': 0, 'V': 8, 'S': 0, 'R': 0, 'T': 9}
+Length of freq items 1	: 677
+Time of freq items 1	: 0.31766390800476074
+3599 Frequent Itemsets are mined in 0.039031982421875 seconds.
+Length of freq items 2	: 3599
+Time of freq items 2	: 0.03907012939453125
+27  violations of +ve partial assignments found for the learned theory.
+Violating Clauses	:{frozenset({-29, -24, -20, -15, -10, -6, -2, -33}), frozenset({-28, -24, -20, -15, -10, -6, -2, -33}), frozenset({-28, -24, -20, -15, -10, -6, -3, -33}), frozenset({-30, -24, -20, -15, -10, -6, -2, -33}), frozenset({-28, -24, -20, -15, -10, -6, -36, -2}), frozenset({-28, -24, -20, -15, -10, -7, -37, -2}), frozenset({-28, -24, -20, -15, -10, -6, -5, -34}), frozenset({-28, -24, -20, -15, -10, -9, -37, -2}), frozenset({-28, -24, -23, -18, -10, -9, -2, -33}), frozenset({-28, -24, -20, -15, -10, -6, -5, -33}), frozenset({-28, -24, -20, -18, -10, -6, -2, -33}), frozenset({-32, -24, -20, -15, -10, -6, -2, -33}), frozenset({-28, -24, -20, -15, -10, -6, -37, -2}), frozenset({-28, -24, -20, -15, -10, -9, -3, -33}), frozenset({-28, -24, -20, -15, -10, -7, -2, -33}), frozenset({-31, -24, -20, -15, -10, -6, -2, -33}), frozenset({-28, -24, -22, -15, -10, -9, -2, -33}), frozenset({-28, -24, -20, -17, -10, -6, -2, -33}), frozenset({-28, -24, -20, -15, -9, -10, -2, -34}), frozenset({-28, -24, -20, -15, -10, -6, -4, -33}), frozenset({-28, -24, -20, -15, -11, -6, -2, -33}), frozenset({-28, -24, -20, -15, -10, -9, -2, -33}), frozenset({-28, -24, -20, -15, -10, -6, -37, -4}), frozenset({-28, -27, -20, -15, -11, -6, -2, -33}), frozenset({-28, -24, -20, -16, -10, -6, -2, -33}), frozenset({-28, -24, -20, -15, -2, -10, -6, -34}), frozenset({-28, -27, -20, -18, -10, -9, -2, -33})}
+DL of initial theory	: 5770.78902811308
+456	itemsets left after T operation 	: [frozenset({-24, -28, -20, -10})]
+373	itemsets left after T operation 	: [frozenset({-24, -20, -15, -2, -33})]
+208	itemsets left after W operation 	: [frozenset({-28, 38, -10, -2, -33}), frozenset({-6, -24, -23, -38, -17}), frozenset({-6, -25, -38, -20, -17}), frozenset({-15, -22, -6, -24, -38}), frozenset({-15, -6, -25, -38, -20}), frozenset({-15, -38, -9, -24, -22}), frozenset({-24, -8, -38, -21, -18}), frozenset({-26, -9, -38, -20, -17}), frozenset({-9, -24, -23, -38, -18}), frozenset({-16, -6, -26, -38, -20}), frozenset({-15, -27, -9, -23, -38}), frozenset({-27, -9, -38, -20, -18})]
+130	itemsets left after W operation 	: [frozenset({-24, -15, -20, 39}), frozenset({-32, -10, -39, -6, -37, -4}), frozenset({-31, -11, -39, -6, -4, -33}), frozenset({-28, -12, -39, -6, -5, -34}), frozenset({-28, -11, -9, -39, -37, -2}), frozenset({-31, -10, -9, -39, -5, -33}), frozenset({-39, -2, -33})]
+90	itemsets left after T operation 	: [frozenset({-28, -20, -11, -6, -2, -33})]
+68	itemsets left after V operation 	: [frozenset({-16, -26, 24, -6, -5, -33}), frozenset({-15, -34, -25, 24, -7, -2}), frozenset({-24, -28, -20, -10})]
+38	itemsets left after V operation 	: [frozenset({-31, -10, 39, -24, -6, -20, -19}), frozenset({-32, -15, 39, -10, -9, -24, -23}), frozenset({-28, 39, 38, -10}), frozenset({-39, -2, -33}), frozenset({-28, -11, 39, -6, -20})]
+28	itemsets left after V operation 	: [frozenset({-24, -20, -28, -10}), frozenset({-31, 39, -6, 28, -19})]
+23	itemsets left after V operation 	: [frozenset({-15, -6, 20, -22, -3, -33}), frozenset({-24, -28, -20, -10})]
+Length of freq items 1	: 125
+Time of freq items 1	: 0.3018360137939453
+603 Frequent Itemsets are mined in 0.006545066833496094 seconds.
+Length of freq items 2	: 603
+Time of freq items 2	: 0.006577014923095703
+75	itemsets left after T operation 	: [frozenset({-24, -38})]
+69	itemsets left after T operation 	: [frozenset({-38, -6, -20, -25})]
+58	itemsets left after T operation 	: [frozenset({-20, -26, -9})]
+53	itemsets left after T operation 	: [frozenset({-16, -6, -26})]
+42	itemsets left after T operation 	: [frozenset({-15, -23, -9})]
+34	itemsets left after T operation 	: [frozenset({-39, -6, -4})]
+30	itemsets left after V operation 	: [frozenset({-39, -6, -4}), frozenset({4, -28, -12, -5, -34})]
+28	itemsets left after V operation 	: [frozenset({-31, 2, -10, -9, -5}), frozenset({-39, -2, -33})]
+26	itemsets left after V operation 	: [frozenset({-38, 26, -27, -18}), frozenset({-20, -26, -9})]
+21	itemsets left after V operation 	: [frozenset({33, -28, -11, -9, -37}), frozenset({-39, -2, -33})]
+17	itemsets left after T operation 	: [frozenset({-28, -11})]
+9	itemsets left after V operation 	: [frozenset({24, 26, -27, -18}), frozenset({-24, -38}), frozenset({24, -6, -20, -25})]
+1	itemsets left after T operation 	: [frozenset({-5})]
+0	itemsets left after T operation 	: [frozenset({-25})]
+0 clauses are pruned.
+Initial DL				: 31752.422179034667
+Final DL				: 2851.1023742750826
+Compression (wrt me)	: 0.910208350147297
+Operator Counters		: {'D': 0, 'W': 2, 'V': 9, 'S': 0, 'R': 0, 'T': 12}
+
+Dataset	: pima.dat;	Missingness Parameter	: 0.1
+Mistle Accuracy = 0.7151162790697675 ; 1.0 ; 0.0 ; 0.28488372093023256 / 344
+CNFAlgo Accuracy 2 = 156/394 = 0.39593908629441626
+CNFAlgo Accuracy 3 = 251/394 = 0.6370558375634517
+
+
+dataset = pima.dat with minsup = 0.0013020833333333333
+missingness_parameters = [0.1]
+mistle_accuracy_list1 = [0.7151162790697675]
+mistle_accuracy_list2 = [1.0]
+mistle_accuracy_list3 = [0.0]
+mistle_accuracy_list4 = [0.28488372093023256]
+mistle_clauses_list = [25]
+mistle_literals_list = [83]
+cnfalgo_accuracy_list2 = [0.39593908629441626]
+cnfalgo_accuracy_list3 = [0.6370558375634517]
+cnfalgo_clauses_list = [4666]
+cnfalgo_literals_list = [16210]
+train_data_literals_list = [4760]
+randomized_accuracy_list = [0.3646907216494845]

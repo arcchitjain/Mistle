@@ -1,0 +1,297 @@
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+Running the DCI-Closed algorithm
+========== DCI_CLOSED - STATS ============
+ Number of transactions: 5
+ Number of frequent closed itemsets: 24
+ Total time ~: 5 ms
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+Running the DCI-Closed algorithm
+========== DCI_CLOSED - STATS ============
+ Number of transactions: 30
+ Number of frequent closed itemsets: 1659
+ Total time ~: 38 ms
+Current Minsup[0.5] yields 12 itemsets.
+Current Minsup[0.25] yields 19 itemsets.
+Top-k minsup for at least 10000 paterns = 0.2 or 1
+DL of initial theory	: 2414.121434418562
+0	itemsets left after T operation 	: [frozenset({4, 5, 6, 8, 13, 14, 16, -15, 17, -12})]
+# of frequent itemsets	: 1
+Time of DCI Closed		: 0.3061089515686035
+Initial DL				: 7988.860786890473
+Final DL				: 58.795422106282636
+Compression (wrt me)	: 0.9926403246126451
+Operator Counters		: {'D': 0, 'W': 0, 'V': 0, 'S': 0, 'R': 0, 'T': 1}
+Misle Learning Runtime	: 1.2324419021606445
+
+Current Minsup[0.5] yields 110 itemsets.
+Current Minsup[0.25] yields 613 itemsets.
+Current Minsup[0.125] yields 1372 itemsets.
+Current Minsup[0.0625] yields 1629 itemsets.
+Top-k minsup for at least 10000 paterns = 0.03333333333333333 or 1
+DL of initial theory	: 2414.121434418562
+1229	itemsets left after T operation 	: [frozenset({2, 5, 9, 12, 13, 15, -14})]
+612	itemsets left after T operation 	: [frozenset({2, 6, 8, 12, 14, 15, -16, 17, -13})]
+16	itemsets left after T operation 	: [frozenset({4, 5, 9, 10, 12, 14, 15, -13})]
+4	itemsets left after T operation 	: [frozenset({2, 5, 12, 13, 15, -14})]
+1	itemsets left after T operation 	: [frozenset({-13, 12, 14, 15})]
+0	itemsets left after T operation 	: [frozenset({12, 15})]
+# of frequent itemsets	: 1
+Time of DCI Closed		: 0.3038971424102783
+Initial DL				: 7988.860786890473
+Final DL				: 23.944025328338217
+Compression (wrt me)	: 0.997002823560572
+Operator Counters		: {'D': 0, 'W': 0, 'V': 0, 'S': 0, 'R': 0, 'T': 6}
+Misle Learning Runtime	: 2.050980806350708
+
+
+[0, 1, 2, 3, 4, 5, 6, 7]
+[0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5]
+Min Score = 0.5 tied among 8/8 candidates.
+[2, 6]
+[0.0, 0.0, 0.1, 0.0, 0.0, 0.0, 0.1, 0.0]
+Max Score = 0.1 tied among 2/8 candidates.
+Still need to calculate most frequent values for dict_keys([7])
+Tie Breaking Levels	: [3]; Predicted Values	: {12: True, 6: False, 7: False}
+
+[0, 1, 2, 3, 4, 5, 6, 7]
+[0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5]
+Min Score = 0.5 tied among 8/8 candidates.
+[7]
+[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.1]
+Tie Breaking: Level 1
+
+[0, 1, 2, 3, 4, 5, 6, 7]
+[0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5]
+Min Score = 0.5 tied among 8/8 candidates.
+[1, 5]
+[0.0, 0.1, 0.0, 0.0, 0.0, 0.1, 0.0, 0.0]
+Max Score = 0.1 tied among 2/8 candidates.
+Still need to calculate most frequent values for dict_keys([9])
+Tie Breaking Levels	: [3]; Predicted Values	: {12: True, 17: False, 9: False}
+
+[0, 1, 2, 3, 4, 5, 6, 7]
+[0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5]
+Min Score = 0.5 tied among 8/8 candidates.
+[2, 6]
+[0.0, 0.0, 0.1, 0.0, 0.0, 0.0, 0.1, 0.0]
+Max Score = 0.1 tied among 2/8 candidates.
+Still need to calculate most frequent values for dict_keys([7])
+Tie Breaking Levels	: [3]; Predicted Values	: {12: True, 14: False, 7: False}
+
+[0, 1, 2, 3, 4, 5, 6, 7]
+[0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5]
+Min Score = 0.5 tied among 8/8 candidates.
+[4, 5, 6, 7]
+[0.0, 0.0, 0.0, 0.0, 0.1, 0.1, 0.1, 0.1]
+Max Score = 0.1 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([11, 3])
+Tie Breaking Levels	: [3, 3]; Predicted Values	: {14: False, 11: True, 3: False}
+
+[0, 1, 2, 3, 4, 5, 6, 7]
+[0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5]
+Min Score = 0.5 tied among 8/8 candidates.
+[3, 7]
+[0.0, 0.0, 0.0, 0.1, 0.0, 0.0, 0.0, 0.1]
+Max Score = 0.1 tied among 2/8 candidates.
+Still need to calculate most frequent values for dict_keys([7])
+Tie Breaking Levels	: [3]; Predicted Values	: {14: False, 13: False, 7: False}
+
+[0, 1, 2, 3, 4, 5, 6, 7]
+[0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5]
+Min Score = 0.5 tied among 8/8 candidates.
+[7]
+[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.1]
+Tie Breaking: Level 1
+
+[0, 1, 2, 3, 4, 5, 6, 7]
+[0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1]
+Min Score = 0.1 tied among 8/8 candidates.
+[0, 1, 2, 3, 4, 5, 6, 7]
+[0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5]
+Max Score = 0.5 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([5, 7, 4])
+Tie Breaking Levels	: [3, 3, 3]; Predicted Values	: {5: False, 7: False, 4: False}
+
+[0, 1, 2, 3, 4, 5, 6, 7]
+[0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1]
+Min Score = 0.1 tied among 8/8 candidates.
+[0, 1, 2, 3, 4, 5, 6, 7]
+[0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5]
+Max Score = 0.5 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([7, 13, 11])
+Tie Breaking Levels	: [3, 3, 3]; Predicted Values	: {7: False, 13: False, 11: False}
+
+[0, 1, 2, 3, 4, 5, 6, 7]
+[0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1]
+Min Score = 0.1 tied among 8/8 candidates.
+[0, 1, 2, 3, 4, 5, 6, 7]
+[0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5]
+Max Score = 0.5 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([5, 10, 13])
+Tie Breaking Levels	: [3, 3, 3]; Predicted Values	: {5: False, 10: False, 13: False}
+INCORRECT Prediction at tie levels: [3, 3, 3]
+
+[0, 1, 2, 3, 4, 5, 6, 7]
+[0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1]
+Min Score = 0.1 tied among 8/8 candidates.
+[0, 1, 2, 3, 4, 5, 6, 7]
+[0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5]
+Max Score = 0.5 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([17, 14, 2])
+Tie Breaking Levels	: [3, 3, 3]; Predicted Values	: {17: True, 14: True, 2: False}
+INCORRECT Prediction at tie levels: [3, 3, 3]
+
+[0, 1, 2, 3, 4, 5, 6, 7]
+[0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1]
+Min Score = 0.1 tied among 8/8 candidates.
+[0, 1, 2, 3, 4, 5, 6, 7]
+[0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5]
+Max Score = 0.5 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([7, 11, 14])
+Tie Breaking Levels	: [3, 3, 3]; Predicted Values	: {7: False, 11: False, 14: True}
+
+[0, 1, 2, 3, 4, 5, 6, 7]
+[0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1]
+Min Score = 0.1 tied among 8/8 candidates.
+[0, 1, 2, 3, 4, 5, 6, 7]
+[0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5]
+Max Score = 0.5 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([6, 4, 2])
+Tie Breaking Levels	: [3, 3, 3]; Predicted Values	: {6: False, 4: False, 2: False}
+
+[0, 1, 2, 3, 4, 5, 6, 7]
+[0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1]
+Min Score = 0.1 tied among 8/8 candidates.
+[4, 5, 6, 7]
+[0.0, 0.0, 0.0, 0.0, 0.5, 0.5, 0.5, 0.5]
+Max Score = 0.5 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([3, 13])
+Tie Breaking Levels	: [3, 3]; Predicted Values	: {15: False, 3: False, 13: False}
+INCORRECT Prediction at tie levels: [3, 3]
+
+[0, 1, 2, 3, 4, 5, 6, 7]
+[0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1]
+Min Score = 0.1 tied among 8/8 candidates.
+[0, 1, 2, 3, 4, 5, 6, 7]
+[0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5]
+Max Score = 0.5 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([10, 17, 3])
+Tie Breaking Levels	: [3, 3, 3]; Predicted Values	: {10: False, 17: True, 3: False}
+INCORRECT Prediction at tie levels: [3, 3, 3]
+
+[0, 1, 2, 3, 4, 5, 6, 7]
+[0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1]
+Min Score = 0.1 tied among 8/8 candidates.
+[4, 5, 6, 7]
+[0.0, 0.0, 0.0, 0.0, 0.5, 0.5, 0.5, 0.5]
+Max Score = 0.5 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([14, 4])
+Tie Breaking Levels	: [3, 3]; Predicted Values	: {15: False, 14: True, 4: False}
+
+[0, 1, 2, 3, 4, 5, 6, 7]
+[0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1]
+Min Score = 0.1 tied among 8/8 candidates.
+[4, 5, 6, 7]
+[0.0, 0.0, 0.0, 0.0, 0.5, 0.5, 0.5, 0.5]
+Max Score = 0.5 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([8, 13])
+Tie Breaking Levels	: [3, 3]; Predicted Values	: {15: False, 8: False, 13: False}
+INCORRECT Prediction at tie levels: [3, 3]
+
+[0, 1, 2, 3, 4, 5, 6, 7]
+[0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1]
+Min Score = 0.1 tied among 8/8 candidates.
+[4, 5, 6, 7]
+[0.0, 0.0, 0.0, 0.0, 0.5, 0.5, 0.5, 0.5]
+Max Score = 0.5 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([8, 6])
+Tie Breaking Levels	: [3, 3]; Predicted Values	: {15: False, 8: False, 6: False}
+INCORRECT Prediction at tie levels: [3, 3]
+
+[0, 1, 2, 3, 4, 5, 6, 7]
+[0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1]
+Min Score = 0.1 tied among 8/8 candidates.
+[0, 1, 2, 3, 4, 5, 6, 7]
+[0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5]
+Max Score = 0.5 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([2, 7, 9])
+Tie Breaking Levels	: [3, 3, 3]; Predicted Values	: {2: False, 7: False, 9: False}
+INCORRECT Prediction at tie levels: [3, 3, 3]
+
+[0, 1, 2, 3, 4, 5, 6, 7]
+[0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1]
+Min Score = 0.1 tied among 8/8 candidates.
+[0, 1, 2, 3, 4, 5, 6, 7]
+[0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5]
+Max Score = 0.5 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([4, 16, 17])
+Tie Breaking Levels	: [3, 3, 3]; Predicted Values	: {4: False, 16: False, 17: True}
+INCORRECT Prediction at tie levels: [3, 3, 3]
+
+[0, 1, 2, 3, 4, 5, 6, 7]
+[0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1]
+Min Score = 0.1 tied among 8/8 candidates.
+[0, 1, 2, 3, 4, 5, 6, 7]
+[0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5]
+Max Score = 0.5 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([13, 7, 3])
+Tie Breaking Levels	: [3, 3, 3]; Predicted Values	: {13: False, 7: False, 3: False}
+INCORRECT Prediction at tie levels: [3, 3, 3]
+
+[0, 1, 2, 3, 4, 5, 6, 7]
+[0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1]
+Min Score = 0.1 tied among 8/8 candidates.
+[0, 1, 2, 3, 4, 5, 6, 7]
+[0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5]
+Max Score = 0.5 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([9, 16, 5])
+Tie Breaking Levels	: [3, 3, 3]; Predicted Values	: {9: False, 16: False, 5: False}
+INCORRECT Prediction at tie levels: [3, 3, 3]
+
+[0, 1, 2, 3, 4, 5, 6, 7]
+[0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1]
+Min Score = 0.1 tied among 8/8 candidates.
+[0, 1, 2, 3, 4, 5, 6, 7]
+[0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5]
+Max Score = 0.5 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([4, 5, 6])
+Tie Breaking Levels	: [3, 3, 3]; Predicted Values	: {4: False, 5: False, 6: False}
+
+[0, 1, 2, 3, 4, 5, 6, 7]
+[0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1]
+Min Score = 0.1 tied among 8/8 candidates.
+[0, 1, 2, 3, 4, 5, 6, 7]
+[0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5]
+Max Score = 0.5 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([8, 11, 2])
+Tie Breaking Levels	: [3, 3, 3]; Predicted Values	: {8: False, 11: False, 2: False}
+
+[0, 1, 2, 3, 4, 5, 6, 7]
+[0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1]
+Min Score = 0.1 tied among 8/8 candidates.
+[4, 5, 6, 7]
+[0.0, 0.0, 0.0, 0.0, 0.5, 0.5, 0.5, 0.5]
+Max Score = 0.5 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([10, 13])
+Tie Breaking Levels	: [3, 3]; Predicted Values	: {15: False, 10: False, 13: False}
+
+[0, 1, 2, 3, 4, 5, 6, 7]
+[0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1]
+Min Score = 0.1 tied among 8/8 candidates.
+[0, 1, 2, 3, 4, 5, 6, 7]
+[0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5]
+Max Score = 0.5 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([4, 11, 16])
+Tie Breaking Levels	: [3, 3, 3]; Predicted Values	: {4: False, 11: False, 16: False}
+
+Dataset				: iris_17.dat
+Metric				: length
+Minsups				: [3]
+MF Accuracy			: [(0.6153846153846154, 0.38461538461538464, 26, 26)]
+Mistle Accuracy		: [0.6153846153846154]
+CNFAlgo Accuracy	: []
+Randomized Accuracy	: [0.125]
+
+# Test Examples		: 26
+Mistle # Ties		: [(0, 0)]
+CNFAlgo # Ties		: []

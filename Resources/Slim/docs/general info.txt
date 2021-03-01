@@ -1,0 +1,10 @@
+# If you want to run sweep over multiple values for a variable you can use 
+# attribute = [val1|val2|val3]
+# this works for multiple attributes -- the cartesian product is ran. Eg
+# 	attr1 = [1|2]
+# 	attr2 = [1|2]
+# will run 'attr1 = 1; attr2 = 1', 'attr1 = 1; attr2 = 2', 'attr1 = 2; attr2 = 1', 'attr1 = 2; attr2 = 2'
+# If you want to explicitly adjust two variables at the same time, you can use
+#	attr1 = {1|2}
+#	attr2 = {1|2}
+# which will run 'attr1 = 1; attr2 = 1', and 'attr1 = 2; attr2 = 2'

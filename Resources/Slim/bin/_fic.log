@@ -1,0 +1,476 @@
+[1585578803] -- 30/03/2020 16:33:23 * Initiating (compress_ng,compress)
+[1585579668] -- 30/03/2020 16:47:48 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.86 Mb
+[1585579668] -- 30/03/2020 16:47:48 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585579668] -- 30/03/2020 16:47:48 * Finished (compress_ng,compress)
+						This took about 0 seconds, peak mem usage: 62.79 Mb
+[1585579712] -- 30/03/2020 16:48:32 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.86 Mb
+[1585579712] -- 30/03/2020 16:48:32 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585579712] -- 30/03/2020 16:48:32 * Finished (compress_ng,compress)
+						This took about 0 seconds, peak mem usage: 62.80 Mb
+[1585579995] -- 30/03/2020 16:53:15 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.86 Mb
+[1585579995] -- 30/03/2020 16:53:15 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585579995] -- 30/03/2020 16:53:15 * Finished (compress_ng,compress)
+						This took about 0 seconds, peak mem usage: 62.80 Mb
+[1585580217] -- 30/03/2020 16:56:57 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.86 Mb
+[1585580217] -- 30/03/2020 16:56:57 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585580217] -- 30/03/2020 16:56:57 * Finished (compress_ng,compress)
+						This took about 0 seconds, peak mem usage: 62.80 Mb
+[1585580288] -- 30/03/2020 16:58:08 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.86 Mb
+[1585580288] -- 30/03/2020 16:58:08 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585580288] -- 30/03/2020 16:58:08 * Finished (compress_ng,compress)
+						This took about 0 seconds, peak mem usage: 62.80 Mb
+[1585580440] -- 30/03/2020 17:00:40 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.98 Mb
+[1585580440] -- 30/03/2020 17:00:40 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585580440] -- 30/03/2020 17:00:40 * Finished (compress_ng,compress)
+						This took about 0 seconds, peak mem usage: 62.80 Mb
+[1585580477] -- 30/03/2020 17:01:17 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.98 Mb
+[1585580477] -- 30/03/2020 17:01:17 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585580477] -- 30/03/2020 17:01:17 * Finished (compress_ng,compress)
+						This took about 0 seconds, peak mem usage: 62.79 Mb
+[1585581331] -- 30/03/2020 17:15:31 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 24.11 Mb
+[1585581331] -- 30/03/2020 17:15:31 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.40 Mb
+[1585581331] -- 30/03/2020 17:15:31 * Finished (compress_ng,compress)
+						This took about 0 seconds, peak mem usage: 78.12 Mb
+[1585581482] -- 30/03/2020 17:18:02 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.98 Mb
+[1585581482] -- 30/03/2020 17:18:02 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585581482] -- 30/03/2020 17:18:02 * Finished (compress_ng,compress)
+						This took about 0 seconds, peak mem usage: 62.69 Mb
+[1585581571] -- 30/03/2020 17:19:31 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.98 Mb
+[1585581571] -- 30/03/2020 17:19:31 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585581571] -- 30/03/2020 17:19:31 * Finished (compress_ng,compress)
+						This took about 0 seconds, peak mem usage: 62.80 Mb
+[1585585687] -- 30/03/2020 18:28:07 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.98 Mb
+[1585585687] -- 30/03/2020 18:28:07 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585585687] -- 30/03/2020 18:28:07 * Finished (compress_ng,compress)
+						This took about 0 seconds, peak mem usage: 77.99 Mb
+[1585587785] -- 30/03/2020 19:03:05 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.98 Mb
+[1585587785] -- 30/03/2020 19:03:05 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585587785] -- 30/03/2020 19:03:05 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.86 Mb
+[1585587785] -- 30/03/2020 19:03:05 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.98 Mb
+[1585587785] -- 30/03/2020 19:03:05 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.98 Mb
+[1585587785] -- 30/03/2020 19:03:05 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.98 Mb
+[1585587785] -- 30/03/2020 19:03:05 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.86 Mb
+[1585587785] -- 30/03/2020 19:03:05 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585587785] -- 30/03/2020 19:03:05 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585587785] -- 30/03/2020 19:03:05 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.98 Mb
+[1585587785] -- 30/03/2020 19:03:05 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.98 Mb
+[1585587785] -- 30/03/2020 19:03:05 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.98 Mb
+[1585587785] -- 30/03/2020 19:03:05 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.98 Mb
+[1585587785] -- 30/03/2020 19:03:05 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.98 Mb
+[1585587785] -- 30/03/2020 19:03:05 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.86 Mb
+[1585587785] -- 30/03/2020 19:03:05 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585587785] -- 30/03/2020 19:03:05 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.86 Mb
+[1585587785] -- 30/03/2020 19:03:05 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.98 Mb
+[1585587785] -- 30/03/2020 19:03:05 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.98 Mb
+[1585587785] -- 30/03/2020 19:03:05 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.86 Mb
+[1585587785] -- 30/03/2020 19:03:05 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.98 Mb
+[1585587785] -- 30/03/2020 19:03:05 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585587785] -- 30/03/2020 19:03:05 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585587785] -- 30/03/2020 19:03:05 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585587785] -- 30/03/2020 19:03:05 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585587785] -- 30/03/2020 19:03:05 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585587785] -- 30/03/2020 19:03:05 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585587785] -- 30/03/2020 19:03:05 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585587785] -- 30/03/2020 19:03:06 * Finished (main,analysedb)
+						This took about 1 seconds, peak mem usage: 24.27 Mb
+[1585587785] -- 30/03/2020 19:03:06 * Finished (main,analysedb)
+						This took about 1 seconds, peak mem usage: 24.27 Mb
+[1585587785] -- 30/03/2020 19:03:06 * Finished (main,analysedb)
+						This took about 1 seconds, peak mem usage: 24.27 Mb
+[1585587786] -- 30/03/2020 19:03:06 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585587785] -- 30/03/2020 19:03:06 * Finished (main,analysedb)
+						This took about 1 seconds, peak mem usage: 24.27 Mb
+[1585587785] -- 30/03/2020 19:03:06 * Finished (main,analysedb)
+						This took about 1 seconds, peak mem usage: 24.27 Mb
+[1585593015] -- 30/03/2020 20:30:15 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.86 Mb
+[1585593015] -- 30/03/2020 20:30:15 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585593537] -- 30/03/2020 20:38:57 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.86 Mb
+[1585593537] -- 30/03/2020 20:38:57 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585593632] -- 30/03/2020 20:40:32 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.98 Mb
+[1585593632] -- 30/03/2020 20:40:32 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585593669] -- 30/03/2020 20:41:09 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.98 Mb
+[1585593669] -- 30/03/2020 20:41:09 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585593705] -- 30/03/2020 20:41:45 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.98 Mb
+[1585593705] -- 30/03/2020 20:41:45 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585593855] -- 30/03/2020 20:44:15 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.86 Mb
+[1585593855] -- 30/03/2020 20:44:15 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585594016] -- 30/03/2020 20:46:56 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.86 Mb
+[1585594016] -- 30/03/2020 20:46:56 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585594062] -- 30/03/2020 20:47:42 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.98 Mb
+[1585594062] -- 30/03/2020 20:47:42 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585594265] -- 30/03/2020 20:51:05 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.98 Mb
+[1585594265] -- 30/03/2020 20:51:05 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585594336] -- 30/03/2020 20:52:16 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.86 Mb
+[1585594336] -- 30/03/2020 20:52:16 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585594365] -- 30/03/2020 20:52:45 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.98 Mb
+[1585594365] -- 30/03/2020 20:52:45 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585594375] -- 30/03/2020 20:52:55 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.98 Mb
+[1585594376] -- 30/03/2020 20:52:56 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585594384] -- 30/03/2020 20:53:04 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.98 Mb
+[1585594384] -- 30/03/2020 20:53:04 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585594399] -- 30/03/2020 20:53:19 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.98 Mb
+[1585594399] -- 30/03/2020 20:53:19 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585594408] -- 30/03/2020 20:53:28 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.86 Mb
+[1585594408] -- 30/03/2020 20:53:28 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585594433] -- 30/03/2020 20:53:53 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.98 Mb
+[1585594433] -- 30/03/2020 20:53:53 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585594442] -- 30/03/2020 20:54:02 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.86 Mb
+[1585594442] -- 30/03/2020 20:54:02 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585594453] -- 30/03/2020 20:54:13 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.98 Mb
+[1585594453] -- 30/03/2020 20:54:13 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585594461] -- 30/03/2020 20:54:21 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.86 Mb
+[1585594461] -- 30/03/2020 20:54:21 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585594472] -- 30/03/2020 20:54:32 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.98 Mb
+[1585594472] -- 30/03/2020 20:54:32 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585594479] -- 30/03/2020 20:54:39 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.98 Mb
+[1585594479] -- 30/03/2020 20:54:39 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585594492] -- 30/03/2020 20:54:52 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.98 Mb
+[1585594492] -- 30/03/2020 20:54:52 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585594499] -- 30/03/2020 20:54:59 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.98 Mb
+[1585594499] -- 30/03/2020 20:54:59 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585594509] -- 30/03/2020 20:55:09 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.98 Mb
+[1585594509] -- 30/03/2020 20:55:09 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585594516] -- 30/03/2020 20:55:16 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.86 Mb
+[1585594516] -- 30/03/2020 20:55:16 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585594526] -- 30/03/2020 20:55:26 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.98 Mb
+[1585594526] -- 30/03/2020 20:55:26 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585594533] -- 30/03/2020 20:55:33 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.98 Mb
+[1585594533] -- 30/03/2020 20:55:33 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585595167] -- 30/03/2020 21:06:07 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.86 Mb
+[1585595167] -- 30/03/2020 21:06:07 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585595167] -- 30/03/2020 21:06:07 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.86 Mb
+[1585595167] -- 30/03/2020 21:06:07 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.98 Mb
+[1585595167] -- 30/03/2020 21:06:07 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585595167] -- 30/03/2020 21:06:07 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585595167] -- 30/03/2020 21:06:07 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.98 Mb
+[1585595167] -- 30/03/2020 21:06:07 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585595167] -- 30/03/2020 21:06:07 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.98 Mb
+[1585595167] -- 30/03/2020 21:06:07 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585595448] -- 30/03/2020 21:10:48 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.98 Mb
+[1585595448] -- 30/03/2020 21:10:48 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.86 Mb
+[1585595448] -- 30/03/2020 21:10:48 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585595448] -- 30/03/2020 21:10:48 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585595448] -- 30/03/2020 21:10:48 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.98 Mb
+[1585595448] -- 30/03/2020 21:10:48 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585595448] -- 30/03/2020 21:10:48 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.86 Mb
+[1585595448] -- 30/03/2020 21:10:48 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585595570] -- 30/03/2020 21:12:50 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.98 Mb
+[1585595570] -- 30/03/2020 21:12:50 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.86 Mb
+[1585595570] -- 30/03/2020 21:12:50 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.98 Mb
+[1585595570] -- 30/03/2020 21:12:50 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585595570] -- 30/03/2020 21:12:50 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585595570] -- 30/03/2020 21:12:50 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585595570] -- 30/03/2020 21:12:50 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.86 Mb
+[1585595570] -- 30/03/2020 21:12:50 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.98 Mb
+[1585595570] -- 30/03/2020 21:12:50 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585595570] -- 30/03/2020 21:12:50 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585595798] -- 30/03/2020 21:16:38 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.86 Mb
+[1585595798] -- 30/03/2020 21:16:38 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.98 Mb
+[1585595798] -- 30/03/2020 21:16:38 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.86 Mb
+[1585595798] -- 30/03/2020 21:16:38 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.98 Mb
+[1585595798] -- 30/03/2020 21:16:38 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.98 Mb
+[1585595798] -- 30/03/2020 21:16:38 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.98 Mb
+[1585595798] -- 30/03/2020 21:16:38 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.98 Mb
+[1585595798] -- 30/03/2020 21:16:38 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585595798] -- 30/03/2020 21:16:38 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585595798] -- 30/03/2020 21:16:38 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.98 Mb
+[1585595798] -- 30/03/2020 21:16:38 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585595798] -- 30/03/2020 21:16:38 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585595798] -- 30/03/2020 21:16:38 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.98 Mb
+[1585595798] -- 30/03/2020 21:16:38 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585595798] -- 30/03/2020 21:16:38 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585595798] -- 30/03/2020 21:16:38 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585595798] -- 30/03/2020 21:16:38 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585595798] -- 30/03/2020 21:16:38 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.86 Mb
+[1585595798] -- 30/03/2020 21:16:38 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.98 Mb
+[1585595798] -- 30/03/2020 21:16:38 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.86 Mb
+[1585595798] -- 30/03/2020 21:16:38 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.98 Mb
+[1585595798] -- 30/03/2020 21:16:38 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.98 Mb
+[1585595798] -- 30/03/2020 21:16:38 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.98 Mb
+[1585595798] -- 30/03/2020 21:16:38 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585595798] -- 30/03/2020 21:16:38 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585595798] -- 30/03/2020 21:16:38 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585595798] -- 30/03/2020 21:16:38 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585595798] -- 30/03/2020 21:16:38 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.86 Mb
+[1585595798] -- 30/03/2020 21:16:38 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585595798] -- 30/03/2020 21:16:38 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.98 Mb
+[1585595798] -- 30/03/2020 21:16:38 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585595798] -- 30/03/2020 21:16:38 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585595798] -- 30/03/2020 21:16:38 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.86 Mb
+[1585595799] -- 30/03/2020 21:16:39 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585595799] -- 30/03/2020 21:16:39 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585595799] -- 30/03/2020 21:16:39 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585595915] -- 30/03/2020 21:18:35 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.98 Mb
+[1585595915] -- 30/03/2020 21:18:35 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585595926] -- 30/03/2020 21:18:46 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.98 Mb
+[1585595926] -- 30/03/2020 21:18:46 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585598480] -- 30/03/2020 22:01:20 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.98 Mb
+[1585598480] -- 30/03/2020 22:01:20 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585598541] -- 30/03/2020 22:02:21 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.86 Mb
+[1585598541] -- 30/03/2020 22:02:21 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585598550] -- 30/03/2020 22:02:30 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.98 Mb
+[1585598550] -- 30/03/2020 22:02:30 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585598559] -- 30/03/2020 22:02:39 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.86 Mb
+[1585598559] -- 30/03/2020 22:02:39 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585598578] -- 30/03/2020 22:02:58 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.98 Mb
+[1585598578] -- 30/03/2020 22:02:58 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585598585] -- 30/03/2020 22:03:05 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.98 Mb
+[1585598585] -- 30/03/2020 22:03:05 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585598602] -- 30/03/2020 22:03:22 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.98 Mb
+[1585598602] -- 30/03/2020 22:03:22 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585598609] -- 30/03/2020 22:03:29 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.86 Mb
+[1585598609] -- 30/03/2020 22:03:29 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585598616] -- 30/03/2020 22:03:36 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.98 Mb
+[1585598616] -- 30/03/2020 22:03:36 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585598622] -- 30/03/2020 22:03:42 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.86 Mb
+[1585598622] -- 30/03/2020 22:03:42 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585598627] -- 30/03/2020 22:03:47 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.98 Mb
+[1585598627] -- 30/03/2020 22:03:47 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585598632] -- 30/03/2020 22:03:52 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.86 Mb
+[1585598632] -- 30/03/2020 22:03:52 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585598639] -- 30/03/2020 22:03:59 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.98 Mb
+[1585598639] -- 30/03/2020 22:03:59 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585598644] -- 30/03/2020 22:04:04 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.98 Mb
+[1585598644] -- 30/03/2020 22:04:04 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585598650] -- 30/03/2020 22:04:10 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.98 Mb
+[1585598650] -- 30/03/2020 22:04:10 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585598655] -- 30/03/2020 22:04:15 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.98 Mb
+[1585598655] -- 30/03/2020 22:04:15 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585598660] -- 30/03/2020 22:04:20 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.98 Mb
+[1585598660] -- 30/03/2020 22:04:20 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585598665] -- 30/03/2020 22:04:25 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.86 Mb
+[1585598665] -- 30/03/2020 22:04:25 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585598671] -- 30/03/2020 22:04:31 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.98 Mb
+[1585598671] -- 30/03/2020 22:04:31 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585598676] -- 30/03/2020 22:04:36 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.98 Mb
+[1585598676] -- 30/03/2020 22:04:36 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585598805] -- 30/03/2020 22:06:45 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.98 Mb
+[1585598805] -- 30/03/2020 22:06:45 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585598951] -- 30/03/2020 22:09:11 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.98 Mb
+[1585598951] -- 30/03/2020 22:09:11 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585599156] -- 30/03/2020 22:12:36 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.98 Mb
+[1585599189] -- 30/03/2020 22:13:09 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585600139] -- 30/03/2020 22:28:59 * Finished (datatrans,convertdb)
+						This took about 0 seconds, peak mem usage: 23.98 Mb
+[1585600139] -- 30/03/2020 22:28:59 * Finished (main,analysedb)
+						This took about 0 seconds, peak mem usage: 24.27 Mb
+[1585603131] -- 30/03/2020 23:18:51 * Initiating (compress_ng,compress)

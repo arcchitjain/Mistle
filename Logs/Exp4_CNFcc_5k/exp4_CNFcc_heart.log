@@ -1,0 +1,36 @@
+
+
+Comparing on heart.dat with nb_rows = 303 and minsup = 0.03125
+Running CNFAlgo
+Return Code for CNFAlgo	: 0
+CNFAlgo Accuracy = 7/31 = 0.22580645161290322
+Running CNFAlgo
+Return Code for CNFAlgo	: 0
+CNFAlgo Accuracy = 7/31 = 0.22580645161290322
+Running CNFAlgo
+Return Code for CNFAlgo	: 0
+CNFAlgo Accuracy = 9/31 = 0.2903225806451613
+Running CNFAlgo
+Return Code for CNFAlgo	: 0
+CNFAlgo Accuracy = 13/31 = 0.41935483870967744
+Running CNFAlgo
+Return Code for CNFAlgo	: 0
+CNFAlgo Accuracy = 10/31 = 0.3225806451612903
+Running CNFAlgo
+Return Code for CNFAlgo	: 0
+CNFAlgo Accuracy = 12/31 = 0.3870967741935484
+Running CNFAlgo
+Return Code for CNFAlgo	: 0
+CNFAlgo Accuracy = 10/31 = 0.3225806451612903
+Running CNFAlgo
+Return Code for CNFAlgo	: 0
+CNFAlgo Accuracy = 9/31 = 0.2903225806451613
+Running CNFAlgo
+Return Code for CNFAlgo	: 0
+CNFAlgo Accuracy = 13/31 = 0.41935483870967744
+Running CNFAlgo
+Return Code for CNFAlgo	: 0
+CNFAlgo Accuracy = 7/24 = 0.2916666666666667
+cnfalgo_fold_accuracy_list = [0.22580645161290322, 0.22580645161290322, 0.2903225806451613, 0.41935483870967744, 0.3225806451612903, 0.3870967741935484, 0.3225806451612903, 0.2903225806451613, 0.41935483870967744, 0.2916666666666667]
+cnfalgo_time = 80.38731122016907
+cnfalgo_accuracy = 0.319489247311828

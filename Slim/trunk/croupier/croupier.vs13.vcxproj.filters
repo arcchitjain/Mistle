@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Source Files\afopt">
+      <UniqueIdentifier>{b88945f6-331e-4260-ae1d-a2d743b65ce5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\afopt\closed">
+      <UniqueIdentifier>{3e911cff-0a75-4145-867e-66dac352546d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ndi">
+      <UniqueIdentifier>{f67c4f49-e489-4062-8a25-7b9cd2a5a009}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\tiles">
+      <UniqueIdentifier>{d7046d95-fd4b-417b-aada-aa98ee191796}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\lesets">
+      <UniqueIdentifier>{1bc7e597-6783-40ae-aa7b-98c8cea5bd98}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\apriori">
+      <UniqueIdentifier>{0df2eb1a-1131-4457-ab09-205429ef692c}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="clobal.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Croupier.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CroupierApi.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="afopt\AfoptCroupier.h">
+      <Filter>Source Files\afopt</Filter>
+    </ClInclude>
+    <ClInclude Include="afopt\AFOPTMine.h">
+      <Filter>Source Files\afopt</Filter>
+    </ClInclude>
+    <ClInclude Include="afopt\AfoptMiner.h">
+      <Filter>Source Files\afopt</Filter>
+    </ClInclude>
+    <ClInclude Include="afopt\data.h">
+      <Filter>Source Files\afopt</Filter>
+    </ClInclude>
+    <ClInclude Include="afopt\fsout.h">
+      <Filter>Source Files\afopt</Filter>
+    </ClInclude>
+    <ClInclude Include="afopt\Global.h">
+      <Filter>Source Files\afopt</Filter>
+    </ClInclude>
+    <ClInclude Include="afopt\hash_map.h">
+      <Filter>Source Files\afopt</Filter>
+    </ClInclude>
+    <ClInclude Include="afopt\parameters.h">
+      <Filter>Source Files\afopt</Filter>
+    </ClInclude>
+    <ClInclude Include="afopt\ScanDBMine.h">
+      <Filter>Source Files\afopt</Filter>
+    </ClInclude>
+    <ClInclude Include="afopt\closed\cfptree_outbuf.h">
+      <Filter>Source Files\afopt\closed</Filter>
+    </ClInclude>
+    <ClInclude Include="tiles\TileMiner.h">
+      <Filter>Source Files\tiles</Filter>
+    </ClInclude>
+    <ClInclude Include="tiles\TileOut.h">
+      <Filter>Source Files\tiles</Filter>
+    </ClInclude>
+    <ClInclude Include="lesets\LESetMiner.h">
+      <Filter>Source Files\lesets</Filter>
+    </ClInclude>
+    <ClInclude Include="apriori\AprioriCroupier.h">
+      <Filter>Source Files\apriori</Filter>
+    </ClInclude>
+    <ClInclude Include="apriori\AprioriMiner.h">
+      <Filter>Source Files\apriori</Filter>
+    </ClInclude>
+    <ClInclude Include="apriori\AprioriNode.h">
+      <Filter>Source Files\apriori</Filter>
+    </ClInclude>
+    <ClInclude Include="apriori\AprioriTree.h">
+      <Filter>Source Files\apriori</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Croupier.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="afopt\AfoptCroupier.cpp">
+      <Filter>Source Files\afopt</Filter>
+    </ClCompile>
+    <ClCompile Include="afopt\AFOPTMine.cpp">
+      <Filter>Source Files\afopt</Filter>
+    </ClCompile>
+    <ClCompile Include="afopt\AfoptMiner.cpp">
+      <Filter>Source Files\afopt</Filter>
+    </ClCompile>
+    <ClCompile Include="afopt\data.cpp">
+      <Filter>Source Files\afopt</Filter>
+    </ClCompile>
+    <ClCompile Include="afopt\fsout.cpp">
+      <Filter>Source Files\afopt</Filter>
+    </ClCompile>
+    <ClCompile Include="afopt\Global.cpp">
+      <Filter>Source Files\afopt</Filter>
+    </ClCompile>
+    <ClCompile Include="afopt\hash_map.cpp">
+      <Filter>Source Files\afopt</Filter>
+    </ClCompile>
+    <ClCompile Include="afopt\parameters.cpp">
+      <Filter>Source Files\afopt</Filter>
+    </ClCompile>
+    <ClCompile Include="afopt\ScanDBMine.cpp">
+      <Filter>Source Files\afopt</Filter>
+    </ClCompile>
+    <ClCompile Include="afopt\closed\cfptree_outbuf.cpp">
+      <Filter>Source Files\afopt\closed</Filter>
+    </ClCompile>
+    <ClCompile Include="tiles\TileMiner.cpp">
+      <Filter>Source Files\tiles</Filter>
+    </ClCompile>
+    <ClCompile Include="tiles\TileOut.cpp">
+      <Filter>Source Files\tiles</Filter>
+    </ClCompile>
+    <ClCompile Include="lesets\LESetMiner.cpp">
+      <Filter>Source Files\lesets</Filter>
+    </ClCompile>
+    <ClCompile Include="apriori\AprioriCroupier.cpp">
+      <Filter>Source Files\apriori</Filter>
+    </ClCompile>
+    <ClCompile Include="apriori\AprioriMiner.cpp">
+      <Filter>Source Files\apriori</Filter>
+    </ClCompile>
+    <ClCompile Include="apriori\AprioriNode.cpp">
+      <Filter>Source Files\apriori</Filter>
+    </ClCompile>
+    <ClCompile Include="apriori\AprioriTree.cpp">
+      <Filter>Source Files\apriori</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,92 @@
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 2877
+ Total time ~: 66 ms
+ Max memory:14.0
+=====================================
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 19
+ Total time ~: 3 ms
+ Max memory:7.562202453613281
+=====================================
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 1945
+ Total time ~: 49 ms
+ Max memory:14.0
+=====================================
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 4
+ Total time ~: 1 ms
+ Max memory:7.565757751464844
+=====================================
+Length of freq items 1	: 2877
+Time of freq items 1	: 0.4033479690551758
+253262 Frequent Itemsets are mined in 4.026768207550049 seconds.
+Length of freq items 2	: 253262
+Time of freq items 2	: 4.026809215545654
+DL of initial theory	: 12287.449040084146
+2470	itemsets left after T operation 	: [frozenset({-31, -17, -8, -6, -36, -66})]
+1697	itemsets left after T operation 	: [frozenset({-32, -52, -27, -57})]
+1219	itemsets left after T operation 	: [frozenset({-17, -37, -66, -25})]
+928	itemsets left after T operation 	: [frozenset({-8, -31, -6, -66})]
+655	itemsets left after T operation 	: [frozenset({-57, -33, -52, -25})]
+404	itemsets left after T operation 	: [frozenset({-32, -6, -57, -41})]
+271	itemsets left after T operation 	: [frozenset({-55, -17, -47, -43, -8, -66})]
+141	itemsets left after T operation 	: [frozenset({-32, -58, -9, -42, -41, -2})]
+75	itemsets left after T operation 	: [frozenset({-32, -57, -22, -52, -12, -41, -2})]
+46	itemsets left after T operation 	: [frozenset({-31, -60, -25, -47, -34})]
+17	itemsets left after T operation 	: [frozenset({-32, -22, -52, -12})]
+13	itemsets left after T operation 	: [frozenset({-32, -52})]
+Length of freq items 1	: 19
+Time of freq items 1	: 0.356583833694458
+111 Frequent Itemsets are mined in 0.0013430118560791016 seconds.
+Length of freq items 2	: 111
+Time of freq items 2	: 0.0013980865478515625
+0 clauses are pruned.
+Initial DL				: 12244.087744499622
+Final DL				: 420.1533887697422
+Compression (wrt me)	: 0.965685202725006
+Operator Counters		: {'D': 0, 'W': 0, 'V': 0, 'S': 0, 'R': 0, 'T': 12}
+Length of freq items 1	: 1945
+Time of freq items 1	: 0.33592915534973145
+181585 Frequent Itemsets are mined in 2.647151231765747 seconds.
+Length of freq items 2	: 181585
+Time of freq items 2	: 2.6471920013427734
+DL of initial theory	: 12287.449040084146
+1001	itemsets left after T operation 	: [frozenset({-47, -12, -2, -33})]
+142	itemsets left after T operation 	: [frozenset({-47, -2})]
+1	itemsets left after T operation 	: [frozenset({-17, -12, -42, -7, -33})]
+Length of freq items 1	: 4
+Time of freq items 1	: 0.29915809631347656
+4113 Frequent Itemsets are mined in 0.047267913818359375 seconds.
+Length of freq items 2	: 4113
+Time of freq items 2	: 0.0473020076751709
+0 clauses are pruned.
+Initial DL				: 12244.087744499622
+Final DL				: 858.7041118759144
+Compression (wrt me)	: 0.9298678570592841
+Operator Counters		: {'D': 0, 'W': 0, 'V': 0, 'S': 0, 'R': 0, 'T': 3}
+
+Dataset	: wine.dat;	Missingness Parameter	: 0.1
+Mistle Accuracy = 0.25384615384615383 ; 0.9846153846153847 ; 0.0 ; 0.7307692307692307 / 260
+CNFAlgo Accuracy 2 = 261/261 = 1.0
+CNFAlgo Accuracy 3 = 1/261 = 0.0038314176245210726
+
+
+dataset = wine.dat with minsup = 0.015625
+missingness_parameters = [0.1]
+mistle_accuracy_list1 = [0.25384615384615383]
+mistle_accuracy_list2 = [0.9846153846153847]
+mistle_accuracy_list3 = [0.0]
+mistle_accuracy_list4 = [0.7307692307692307]
+mistle_clauses_list = [11]
+mistle_literals_list = [55]
+cnfalgo_accuracy_list2 = [1.0]
+cnfalgo_accuracy_list3 = [0.0038314176245210726]
+cnfalgo_clauses_list = [388098]
+cnfalgo_literals_list = [1755333]
+train_data_literals_list = [1664]
+randomized_accuracy_list = [0.30849358974358976]

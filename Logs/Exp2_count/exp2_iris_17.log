@@ -1,0 +1,72 @@
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+Running the DCI-Closed algorithm
+========== DCI_CLOSED - STATS ============
+ Number of transactions: 5
+ Number of frequent closed itemsets: 24
+ Total time ~: 6 ms
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+Running the DCI-Closed algorithm
+========== DCI_CLOSED - STATS ============
+ Number of transactions: 30
+ Number of frequent closed itemsets: 1659
+ Total time ~: 49 ms
+Current Minsup[0.5] yields 12 itemsets.
+Current Minsup[0.25] yields 19 itemsets.
+Top-k minsup for at least 5000 paterns = 0.2 or 1
+DL of initial theory	: 2414.121434418562
+0	itemsets left after T operation 	: [frozenset({4, 5, 6, 8, 13, 14, 16, -15, 17, -12})]
+# of frequent itemsets	: 1
+Time of DCI Closed		: 0.31679296493530273
+Initial DL				: 7988.860786890473
+Final DL				: 58.795422106282636
+Compression (wrt me)	: 0.9926403246126451
+Operator Counters		: {'D': 0, 'W': 0, 'V': 0, 'S': 0, 'R': 0, 'T': 1}
+Misle Learning Runtime	: 1.275068759918213
+
+Current Minsup[0.5] yields 110 itemsets.
+Current Minsup[0.25] yields 613 itemsets.
+Current Minsup[0.125] yields 1372 itemsets.
+Current Minsup[0.0625] yields 1629 itemsets.
+Top-k minsup for at least 5000 paterns = 0.03333333333333333 or 1
+DL of initial theory	: 2414.121434418562
+1229	itemsets left after T operation 	: [frozenset({2, 5, 9, 12, 13, 15, -14})]
+612	itemsets left after T operation 	: [frozenset({2, 6, 8, 12, 14, 15, -16, 17, -13})]
+16	itemsets left after T operation 	: [frozenset({4, 5, 9, 10, 12, 14, 15, -13})]
+4	itemsets left after T operation 	: [frozenset({2, 5, 12, 13, 15, -14})]
+1	itemsets left after T operation 	: [frozenset({-13, 12, 14, 15})]
+0	itemsets left after T operation 	: [frozenset({12, 15})]
+# of frequent itemsets	: 1
+Time of DCI Closed		: 0.27482128143310547
+Initial DL				: 7988.860786890473
+Final DL				: 23.944025328338217
+Compression (wrt me)	: 0.997002823560572
+Operator Counters		: {'D': 0, 'W': 0, 'V': 0, 'S': 0, 'R': 0, 'T': 6}
+Misle Learning Runtime	: 2.259552001953125
+
+Max Score = 0.5; Max Indices = [0, 1, 2, 3, 4, 5, 6, 7]; # failed_clauses_list = ["defaultdict(<class 'int'>, {2: 1})", "defaultdict(<class 'int'>, {2: 1})", "defaultdict(<class 'int'>, {2: 1})", "defaultdict(<class 'int'>, {2: 1})", "defaultdict(<class 'int'>, {2: 1})", "defaultdict(<class 'int'>, {2: 1})", "defaultdict(<class 'int'>, {2: 1})", "defaultdict(<class 'int'>, {2: 1})"]
+Max Score = 0.5; Max Indices = [0, 1, 2, 3, 4, 5, 6, 7]; # failed_clauses_list = ["defaultdict(<class 'int'>, {2: 1})", "defaultdict(<class 'int'>, {2: 1})", "defaultdict(<class 'int'>, {2: 1})", "defaultdict(<class 'int'>, {2: 1})", "defaultdict(<class 'int'>, {2: 1})", "defaultdict(<class 'int'>, {2: 1})", "defaultdict(<class 'int'>, {2: 1})", "defaultdict(<class 'int'>, {2: 1})"]
+Max Score = 0.5; Max Indices = [0, 1, 2, 3, 4, 5, 6, 7]; # failed_clauses_list = ["defaultdict(<class 'int'>, {2: 1})", "defaultdict(<class 'int'>, {2: 1})", "defaultdict(<class 'int'>, {2: 1})", "defaultdict(<class 'int'>, {2: 1})", "defaultdict(<class 'int'>, {2: 1})", "defaultdict(<class 'int'>, {2: 1})", "defaultdict(<class 'int'>, {2: 1})", "defaultdict(<class 'int'>, {2: 1})"]
+Max Score = 0.5; Max Indices = [0, 1, 2, 3, 4, 5, 6, 7]; # failed_clauses_list = ["defaultdict(<class 'int'>, {2: 1})", "defaultdict(<class 'int'>, {2: 1})", "defaultdict(<class 'int'>, {2: 1})", "defaultdict(<class 'int'>, {2: 1})", "defaultdict(<class 'int'>, {2: 1})", "defaultdict(<class 'int'>, {2: 1})", "defaultdict(<class 'int'>, {2: 1})", "defaultdict(<class 'int'>, {2: 1})"]
+Max Score = 0.5; Max Indices = [0, 1, 2, 3, 4, 5, 6, 7]; # failed_clauses_list = ["defaultdict(<class 'int'>, {2: 1})", "defaultdict(<class 'int'>, {2: 1})", "defaultdict(<class 'int'>, {2: 1})", "defaultdict(<class 'int'>, {2: 1})", "defaultdict(<class 'int'>, {2: 1})", "defaultdict(<class 'int'>, {2: 1})", "defaultdict(<class 'int'>, {2: 1})", "defaultdict(<class 'int'>, {2: 1})"]
+Max Score = 0.5; Max Indices = [0, 1, 2, 3, 4, 5, 6, 7]; # failed_clauses_list = ["defaultdict(<class 'int'>, {2: 1})", "defaultdict(<class 'int'>, {2: 1})", "defaultdict(<class 'int'>, {2: 1})", "defaultdict(<class 'int'>, {2: 1})", "defaultdict(<class 'int'>, {2: 1})", "defaultdict(<class 'int'>, {2: 1})", "defaultdict(<class 'int'>, {2: 1})", "defaultdict(<class 'int'>, {2: 1})"]
+Max Score = 0.5; Max Indices = [0, 1, 2, 3, 4, 5, 6, 7]; # failed_clauses_list = ["defaultdict(<class 'int'>, {2: 1})", "defaultdict(<class 'int'>, {2: 1})", "defaultdict(<class 'int'>, {2: 1})", "defaultdict(<class 'int'>, {2: 1})", "defaultdict(<class 'int'>, {2: 1})", "defaultdict(<class 'int'>, {2: 1})", "defaultdict(<class 'int'>, {2: 1})", "defaultdict(<class 'int'>, {2: 1})"]
+Max Score = 0.5; Max Indices = [0, 1, 2, 3, 4, 5, 6, 7]; # failed_clauses_list = ["defaultdict(<class 'int'>, {2: 1})", "defaultdict(<class 'int'>, {2: 1})", "defaultdict(<class 'int'>, {2: 1})", "defaultdict(<class 'int'>, {2: 1})", "defaultdict(<class 'int'>, {2: 1})", "defaultdict(<class 'int'>, {2: 1})", "defaultdict(<class 'int'>, {2: 1})", "defaultdict(<class 'int'>, {2: 1})"]
+Max Score = 0.5; Max Indices = [0, 1, 2, 3, 4, 5, 6, 7]; # failed_clauses_list = ["defaultdict(<class 'int'>, {2: 1})", "defaultdict(<class 'int'>, {2: 1})", "defaultdict(<class 'int'>, {2: 1})", "defaultdict(<class 'int'>, {2: 1})", "defaultdict(<class 'int'>, {2: 1})", "defaultdict(<class 'int'>, {2: 1})", "defaultdict(<class 'int'>, {2: 1})", "defaultdict(<class 'int'>, {2: 1})"]
+Max Score = 0.5; Max Indices = [0, 1, 2, 3, 4, 5, 6, 7]; # failed_clauses_list = ["defaultdict(<class 'int'>, {2: 1})", "defaultdict(<class 'int'>, {2: 1})", "defaultdict(<class 'int'>, {2: 1})", "defaultdict(<class 'int'>, {2: 1})", "defaultdict(<class 'int'>, {2: 1})", "defaultdict(<class 'int'>, {2: 1})", "defaultdict(<class 'int'>, {2: 1})", "defaultdict(<class 'int'>, {2: 1})"]
+Max Score = 0.5; Max Indices = [0, 1, 2, 3, 4, 5, 6, 7]; # failed_clauses_list = ["defaultdict(<class 'int'>, {2: 1})", "defaultdict(<class 'int'>, {2: 1})", "defaultdict(<class 'int'>, {2: 1})", "defaultdict(<class 'int'>, {2: 1})", "defaultdict(<class 'int'>, {2: 1})", "defaultdict(<class 'int'>, {2: 1})", "defaultdict(<class 'int'>, {2: 1})", "defaultdict(<class 'int'>, {2: 1})"]
+Max Score = 0.5; Max Indices = [0, 1, 2, 3, 4, 5, 6, 7]; # failed_clauses_list = ["defaultdict(<class 'int'>, {2: 1})", "defaultdict(<class 'int'>, {2: 1})", "defaultdict(<class 'int'>, {2: 1})", "defaultdict(<class 'int'>, {2: 1})", "defaultdict(<class 'int'>, {2: 1})", "defaultdict(<class 'int'>, {2: 1})", "defaultdict(<class 'int'>, {2: 1})", "defaultdict(<class 'int'>, {2: 1})"]
+Max Score = 0.5; Max Indices = [0, 1, 2, 3, 4, 5, 6, 7]; # failed_clauses_list = ["defaultdict(<class 'int'>, {2: 1})", "defaultdict(<class 'int'>, {2: 1})", "defaultdict(<class 'int'>, {2: 1})", "defaultdict(<class 'int'>, {2: 1})", "defaultdict(<class 'int'>, {2: 1})", "defaultdict(<class 'int'>, {2: 1})", "defaultdict(<class 'int'>, {2: 1})", "defaultdict(<class 'int'>, {2: 1})"]
+Max Score = 0.5; Max Indices = [0, 1, 2, 3, 4, 5, 6, 7]; # failed_clauses_list = ["defaultdict(<class 'int'>, {2: 1})", "defaultdict(<class 'int'>, {2: 1})", "defaultdict(<class 'int'>, {2: 1})", "defaultdict(<class 'int'>, {2: 1})", "defaultdict(<class 'int'>, {2: 1})", "defaultdict(<class 'int'>, {2: 1})", "defaultdict(<class 'int'>, {2: 1})", "defaultdict(<class 'int'>, {2: 1})"]
+Return Code	: 0
+CNF-cc Accuracy		: 0.7692307692307693
+
+Dataset				: iris_17.dat
+Metric				: length
+Minsups				: [3]
+Mistle Accuracy		: [1.0]
+CNFAlgo Accuracy	: [0.7692307692307693]
+Randomized Accuracy	: [0.125]
+
+# Test Examples		: 26
+Mistle # Ties		: [(24, 120)]
+CNFAlgo # Ties		: [(0, 0)]

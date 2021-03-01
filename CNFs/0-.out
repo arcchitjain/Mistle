@@ -1,0 +1,168 @@
+c Outputting solution to console
+c GANAK version 1.0.0
+The value of delta is 0.05
+The value of hashrange is 64x1
+Solving ../../CNFs/0-.cnf
+variables (all/used/free): 	157/157/0
+clauses (all/long/binary/unit): 44/10/0/34
+Sampling set is present, performing projected model counting 
+Sampling set size: 153
+Sampling set:  1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120 121 122 123 124 125 126 127 128 129 130 131 132 133 134 135 136 137 138 139 140 141 142 143 144 145 146 147 148 149 150 151 152 153
+
+Preprocessing ..
+ DONE
+variables (all/used/free): 	123/75/48
+clauses (all/long/binary/unit): 10/9/1/0
+Maximum cache size:	2000 MB
+
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+Max decision level :25
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+We have solved halfed
+We have solved halfed
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+archetype_.stack_level().includeSolution(2) 1
+
+
+variables (total / active / free)	123/75/48
+clauses (removed) 			44 (34)
+decisions 				401
+Max. decision level 			33
+conflicts 				0
+conflict clauses (all/bin/unit) 	0/0/0
+
+failed literals found by implicit BCP 	 0
+implicit BCP miss rate 	 100%
+bytes cache size     	20273024	
+bytes cache (overall) 	20273024
+bytes cache components (overall) 	38616
+bytes cache (infra / comps) 20234408/38616	
+bytes pure comp data (curr)    5908
+bytes pure comp data (overall) 5908
+bytes cache with sysoverh (curr)    64320
+bytes cache with sysoverh (overall) 64320
+cache (lookup / stores / hits) 			677/402/276
+cache miss rate 59.2319%
+ avg. variable count (stores / hits) 	22.9179/11.8877
+
+
+# solutions 
+996917448902742096903233698709635072
+# END
+
+time: 0.005682s
+
+('The total user time taken by ganak is: ', 0.0)

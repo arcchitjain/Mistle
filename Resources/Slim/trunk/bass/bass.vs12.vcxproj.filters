@@ -1,0 +1,190 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Source Files\db">
+      <UniqueIdentifier>{c440dc36-737b-4dc3-85b8-ae8c05bc288a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\isc">
+      <UniqueIdentifier>{e61bddd3-fd47-45a4-950c-2cd55d15f2a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\itemstructs">
+      <UniqueIdentifier>{4ef9021d-b4a0-40a4-902b-69061a0bc8fb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\itemstructs\bai32">
+      <UniqueIdentifier>{a4ba8afb-396c-454b-9245-4ee60f46a0cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\itemstructs\uint16">
+      <UniqueIdentifier>{1a2abf28-660e-4b63-9fad-f5877687ee6b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\itemstructs\bm128">
+      <UniqueIdentifier>{47084768-d6ba-4c40-972d-013d2e91f81e}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="db\ClassedDatabase.cpp">
+      <Filter>Source Files\db</Filter>
+    </ClCompile>
+    <ClCompile Include="db\Database.cpp">
+      <Filter>Source Files\db</Filter>
+    </ClCompile>
+    <ClCompile Include="db\DbAnalyser.cpp">
+      <Filter>Source Files\db</Filter>
+    </ClCompile>
+    <ClCompile Include="db\DbFile.cpp">
+      <Filter>Source Files\db</Filter>
+    </ClCompile>
+    <ClCompile Include="db\FicDbFile.cpp">
+      <Filter>Source Files\db</Filter>
+    </ClCompile>
+    <ClCompile Include="db\FimiDbFile.cpp">
+      <Filter>Source Files\db</Filter>
+    </ClCompile>
+    <ClCompile Include="isc\BinaryFicIscFile.cpp">
+      <Filter>Source Files\isc</Filter>
+    </ClCompile>
+    <ClCompile Include="isc\BinaryFicIscFileAsync.cpp">
+      <Filter>Source Files\isc</Filter>
+    </ClCompile>
+    <ClCompile Include="isc\FicIscFile.cpp">
+      <Filter>Source Files\isc</Filter>
+    </ClCompile>
+    <ClCompile Include="isc\FicIscFileAsync.cpp">
+      <Filter>Source Files\isc</Filter>
+    </ClCompile>
+    <ClCompile Include="isc\FimiIscFile.cpp">
+      <Filter>Source Files\isc</Filter>
+    </ClCompile>
+    <ClCompile Include="isc\IscFile.cpp">
+      <Filter>Source Files\isc</Filter>
+    </ClCompile>
+    <ClCompile Include="isc\ItemSetCollection.cpp">
+      <Filter>Source Files\isc</Filter>
+    </ClCompile>
+    <ClCompile Include="isc\ItemTranslator.cpp">
+      <Filter>Source Files\isc</Filter>
+    </ClCompile>
+    <ClCompile Include="itemstructs\CoverNode.cpp">
+      <Filter>Source Files\itemstructs</Filter>
+    </ClCompile>
+    <ClCompile Include="itemstructs\CoverSet.cpp">
+      <Filter>Source Files\itemstructs</Filter>
+    </ClCompile>
+    <ClCompile Include="itemstructs\ItemSet.cpp">
+      <Filter>Source Files\itemstructs</Filter>
+    </ClCompile>
+    <ClCompile Include="itemstructs\BAI32CoverSet.cpp">
+      <Filter>Source Files\itemstructs\bai32</Filter>
+    </ClCompile>
+    <ClCompile Include="itemstructs\BAI32ItemSet.cpp">
+      <Filter>Source Files\itemstructs\bai32</Filter>
+    </ClCompile>
+    <ClCompile Include="itemstructs\Uint16CoverSet.cpp">
+      <Filter>Source Files\itemstructs\uint16</Filter>
+    </ClCompile>
+    <ClCompile Include="itemstructs\Uint16ItemSet.cpp">
+      <Filter>Source Files\itemstructs\uint16</Filter>
+    </ClCompile>
+    <ClCompile Include="itemstructs\BM128CoverSet.cpp">
+      <Filter>Source Files\itemstructs\bm128</Filter>
+    </ClCompile>
+    <ClCompile Include="itemstructs\BM128ItemSet.cpp">
+      <Filter>Source Files\itemstructs\bm128</Filter>
+    </ClCompile>
+    <ClCompile Include="itemstructs\CoverMask.cpp">
+      <Filter>Source Files\itemstructs</Filter>
+    </ClCompile>
+    <ClCompile Include="Bass.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Bass.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BassApi.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="blobal.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="db\ClassedDatabase.h">
+      <Filter>Source Files\db</Filter>
+    </ClInclude>
+    <ClInclude Include="db\Database.h">
+      <Filter>Source Files\db</Filter>
+    </ClInclude>
+    <ClInclude Include="db\DbAnalyser.h">
+      <Filter>Source Files\db</Filter>
+    </ClInclude>
+    <ClInclude Include="db\DbFile.h">
+      <Filter>Source Files\db</Filter>
+    </ClInclude>
+    <ClInclude Include="db\FicDbFile.h">
+      <Filter>Source Files\db</Filter>
+    </ClInclude>
+    <ClInclude Include="db\FimiDbFile.h">
+      <Filter>Source Files\db</Filter>
+    </ClInclude>
+    <ClInclude Include="isc\BinaryFicIscFile.h">
+      <Filter>Source Files\isc</Filter>
+    </ClInclude>
+    <ClInclude Include="isc\BinaryFicIscFileAsync.h">
+      <Filter>Source Files\isc</Filter>
+    </ClInclude>
+    <ClInclude Include="isc\FicIscFile.h">
+      <Filter>Source Files\isc</Filter>
+    </ClInclude>
+    <ClInclude Include="isc\FicIscFileAsync.h">
+      <Filter>Source Files\isc</Filter>
+    </ClInclude>
+    <ClInclude Include="isc\FimiIscFile.h">
+      <Filter>Source Files\isc</Filter>
+    </ClInclude>
+    <ClInclude Include="isc\IscFile.h">
+      <Filter>Source Files\isc</Filter>
+    </ClInclude>
+    <ClInclude Include="isc\ItemSetCollection.h">
+      <Filter>Source Files\isc</Filter>
+    </ClInclude>
+    <ClInclude Include="isc\ItemTranslator.h">
+      <Filter>Source Files\isc</Filter>
+    </ClInclude>
+    <ClInclude Include="itemstructs\CoverNode.h">
+      <Filter>Source Files\itemstructs</Filter>
+    </ClInclude>
+    <ClInclude Include="itemstructs\CoverSet.h">
+      <Filter>Source Files\itemstructs</Filter>
+    </ClInclude>
+    <ClInclude Include="itemstructs\ItemSet.h">
+      <Filter>Source Files\itemstructs</Filter>
+    </ClInclude>
+    <ClInclude Include="itemstructs\BAI32CoverSet.h">
+      <Filter>Source Files\itemstructs\bai32</Filter>
+    </ClInclude>
+    <ClInclude Include="itemstructs\BAI32ItemSet.h">
+      <Filter>Source Files\itemstructs\bai32</Filter>
+    </ClInclude>
+    <ClInclude Include="itemstructs\Uint16CoverSet.h">
+      <Filter>Source Files\itemstructs\uint16</Filter>
+    </ClInclude>
+    <ClInclude Include="itemstructs\Uint16ItemSet.h">
+      <Filter>Source Files\itemstructs\uint16</Filter>
+    </ClInclude>
+    <ClInclude Include="itemstructs\BM128CoverSet.h">
+      <Filter>Source Files\itemstructs\bm128</Filter>
+    </ClInclude>
+    <ClInclude Include="itemstructs\BM128ItemSet.h">
+      <Filter>Source Files\itemstructs\bm128</Filter>
+    </ClInclude>
+    <ClInclude Include="itemstructs\CoverMask.h">
+      <Filter>Source Files\itemstructs</Filter>
+    </ClInclude>
+    <ClInclude Include="itemstructs\CoverMaskArray.h">
+      <Filter>Source Files\itemstructs</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

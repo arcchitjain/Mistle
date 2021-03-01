@@ -1,0 +1,4133 @@
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+Running the DCI-Closed algorithm
+========== DCI_CLOSED - STATS ============
+ Number of transactions: 33
+ Number of frequent closed itemsets: 564
+ Total time ~: 28 ms
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+Running the DCI-Closed algorithm
+========== DCI_CLOSED - STATS ============
+ Number of transactions: 100
+ Number of frequent closed itemsets: 1771
+ Total time ~: 43 ms
+Current Minsup[0.5] yields 17 itemsets.
+Current Minsup[0.25] yields 76 itemsets.
+Current Minsup[0.125] yields 277 itemsets.
+Current Minsup[0.0625] yields 470 itemsets.
+Current Minsup[0.03125] yields 531 itemsets.
+Top-k minsup for at least 10000 paterns = 0.030303030303030304 or 1
+27  violations of +ve partial assignments found for the learned theory.
+Violating Clauses	:{frozenset({3, 5, 6, 8, 11, 12, 14, -15, -13, -10, -9, -7, -4, -2}), frozenset({3, 4, 6, 9, 11, 12, 14, -15, -13, -10, -8, -7, -5, -2}), frozenset({3, 4, 6, 8, 11, 12, 15, -14, -13, -10, -9, -7, -5, -2}), frozenset({3, 4, 6, 8, 11, 13, 15, -14, -12, -10, -9, -7, -5, -2}), frozenset({3, 5, 6, 9, 11, 12, 14, -15, -13, -10, -8, -7, -4, -2}), frozenset({2, 5, 6, 9, 11, 12, 14, -15, -13, -10, -8, -7, -4, -3}), frozenset({3, 4, 7, 9, 11, 12, 15, -14, -13, -10, -8, -6, -5, -2}), frozenset({3, 5, 6, 9, 11, 13, 15, -14, -12, -10, -8, -7, -4, -2}), frozenset({3, 4, 6, 9, 10, 12, 14, -15, -13, -11, -8, -7, -5, -2}), frozenset({2, 5, 6, 9, 10, 12, 15, -14, -13, -11, -8, -7, -4, -3}), frozenset({3, 5, 6, 8, 10, 12, 15, -14, -13, -11, -9, -7, -4, -2}), frozenset({3, 5, 6, 9, 10, 12, 14, -15, -13, -11, -8, -7, -4, -2}), frozenset({3, 5, 6, 8, 11, 12, 15, -14, -13, -10, -9, -7, -4, -2}), frozenset({3, 5, 6, 9, 11, 13, 14, -15, -12, -10, -8, -7, -4, -2}), frozenset({3, 4, 6, 9, 11, 12, 15, -14, -13, -10, -8, -7, -5, -2}), frozenset({3, 4, 6, 8, 11, 12, 14, -15, -13, -10, -9, -7, -5, -2}), frozenset({3, 5, 6, 9, 11, 12, 15, -14, -13, -10, -8, -7, -4, -2}), frozenset({3, 4, 6, 9, 10, 12, 15, -14, -13, -11, -8, -7, -5, -2}), frozenset({2, 5, 6, 9, 11, 12, 15, -14, -13, -10, -8, -7, -4, -3}), frozenset({3, 5, 6, 9, 10, 12, 15, -14, -13, -11, -8, -7, -4, -2}), frozenset({2, 5, 6, 8, 10, 12, 15, -14, -13, -11, -9, -7, -4, -3}), frozenset({3, 5, 7, 9, 11, 12, 15, -14, -13, -10, -8, -6, -4, -2}), frozenset({3, 4, 6, 9, 11, 13, 14, -15, -12, -10, -8, -7, -5, -2}), frozenset({3, 5, 7, 8, 11, 12, 15, -14, -13, -10, -9, -6, -4, -2}), frozenset({2, 5, 7, 9, 11, 12, 15, -14, -13, -10, -8, -6, -4, -3}), frozenset({2, 4, 6, 9, 11, 12, 15, -14, -13, -10, -8, -7, -5, -3}), frozenset({2, 5, 6, 9, 11, 13, 15, -14, -12, -10, -8, -7, -4, -3})}
+DL of initial theory	: 6186.0137046740365
+384	itemsets left after T operation 	: [frozenset({3, 6, 9, -8, -7, -2})]
+245	itemsets left after T operation 	: [frozenset({5, 12, 15, -14, -13, -4})]
+160	itemsets left after T operation 	: [frozenset({3, 6, 8, 11, -10, -9, -7, -2})]
+39	itemsets left after T operation 	: [frozenset({9, 11, 15, -14, -10, -8})]
+10	itemsets left after T operation 	: [frozenset({5, 9, 11, 12, 14, -15, -13, -10, -8, -4})]
+# of frequent itemsets	: 11
+Time of DCI Closed		: 0.3085157871246338
+Initial DL				: 137298.97181860954
+Final DL				: 2321.2026457816423
+Compression (wrt me)	: 0.9830938089700462
+Operator Counters		: {'D': 0, 'W': 0, 'V': 0, 'S': 0, 'R': 0, 'T': 5}
+Misle Learning Runtime	: 2.5649659633636475
+
+Current Minsup[0.5] yields 7 itemsets.
+Current Minsup[0.25] yields 64 itemsets.
+Current Minsup[0.125] yields 263 itemsets.
+Current Minsup[0.0625] yields 681 itemsets.
+Current Minsup[0.03125] yields 1217 itemsets.
+Current Minsup[0.015625] yields 1671 itemsets.
+Top-k minsup for at least 10000 paterns = 0.01 or 1
+27  violations of +ve partial assignments found for the learned theory.
+Violating Clauses	:{frozenset({3, 5, 6, 8, 11, 12, 14, -15, -13, -10, -9, -7, -4, -2}), frozenset({3, 4, 6, 9, 11, 12, 14, -15, -13, -10, -8, -7, -5, -2}), frozenset({3, 4, 6, 8, 11, 12, 15, -14, -13, -10, -9, -7, -5, -2}), frozenset({3, 4, 6, 8, 11, 13, 15, -14, -12, -10, -9, -7, -5, -2}), frozenset({3, 5, 6, 9, 11, 12, 14, -15, -13, -10, -8, -7, -4, -2}), frozenset({2, 5, 6, 9, 11, 12, 14, -15, -13, -10, -8, -7, -4, -3}), frozenset({3, 4, 7, 9, 11, 12, 15, -14, -13, -10, -8, -6, -5, -2}), frozenset({3, 5, 6, 9, 11, 13, 15, -14, -12, -10, -8, -7, -4, -2}), frozenset({3, 4, 6, 9, 10, 12, 14, -15, -13, -11, -8, -7, -5, -2}), frozenset({2, 5, 6, 9, 10, 12, 15, -14, -13, -11, -8, -7, -4, -3}), frozenset({3, 5, 6, 8, 10, 12, 15, -14, -13, -11, -9, -7, -4, -2}), frozenset({3, 5, 6, 9, 10, 12, 14, -15, -13, -11, -8, -7, -4, -2}), frozenset({3, 5, 6, 8, 11, 12, 15, -14, -13, -10, -9, -7, -4, -2}), frozenset({3, 5, 6, 9, 11, 13, 14, -15, -12, -10, -8, -7, -4, -2}), frozenset({3, 4, 6, 9, 11, 12, 15, -14, -13, -10, -8, -7, -5, -2}), frozenset({3, 4, 6, 8, 11, 12, 14, -15, -13, -10, -9, -7, -5, -2}), frozenset({3, 5, 6, 9, 11, 12, 15, -14, -13, -10, -8, -7, -4, -2}), frozenset({3, 4, 6, 9, 10, 12, 15, -14, -13, -11, -8, -7, -5, -2}), frozenset({2, 5, 6, 9, 11, 12, 15, -14, -13, -10, -8, -7, -4, -3}), frozenset({3, 5, 6, 9, 10, 12, 15, -14, -13, -11, -8, -7, -4, -2}), frozenset({2, 5, 6, 8, 10, 12, 15, -14, -13, -11, -9, -7, -4, -3}), frozenset({3, 5, 7, 9, 11, 12, 15, -14, -13, -10, -8, -6, -4, -2}), frozenset({2, 5, 7, 9, 11, 12, 15, -14, -13, -10, -8, -6, -4, -3}), frozenset({3, 5, 7, 8, 11, 12, 15, -14, -13, -10, -9, -6, -4, -2}), frozenset({3, 4, 6, 9, 11, 13, 14, -15, -12, -10, -8, -7, -5, -2}), frozenset({2, 4, 6, 9, 11, 12, 15, -14, -13, -10, -8, -7, -5, -3}), frozenset({2, 5, 6, 9, 11, 13, 15, -14, -12, -10, -8, -7, -4, -3})}
+DL of initial theory	: 6186.0137046740365
+1357	itemsets left after T operation 	: [frozenset({-15, 2, -3, 14})]
+965	itemsets left after T operation 	: [frozenset({-14, -13, 12, 15})]
+670	itemsets left after T operation 	: [frozenset({3, 6, 14, -15, -7, -2})]
+358	itemsets left after T operation 	: [frozenset({2, 13, 15, -14, -12, -3})]
+180	itemsets left after T operation 	: [frozenset({3, 7, 8, 14, -15, -9, -6, -2})]
+64	itemsets left after T operation 	: [frozenset({3, 11, 13, 15, -14, -12, -10, -2})]
+12	itemsets left after T operation 	: [frozenset({3, 4, 7, 9, 12, 14, -15, -13, -8, -6, -5, -2})]
+6	itemsets left after T operation 	: [frozenset({-15, 3, -2, 14})]
+1	itemsets left after T operation 	: [frozenset({-14, 15})]
+0	itemsets left after T operation 	: [frozenset({-15, 14})]
+# of frequent itemsets	: 2
+Time of DCI Closed		: 0.3049638271331787
+Initial DL				: 137298.97181860954
+Final DL				: 1842.9351964665282
+Compression (wrt me)	: 0.9865772105059802
+Operator Counters		: {'D': 0, 'W': 0, 'V': 0, 'S': 0, 'R': 0, 'T': 10}
+Misle Learning Runtime	: 3.0099148750305176
+
+
+Max Score = 0.1111111111111111 tied among 4/8 candidates.
+Min Score = 0.25 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([6, 7])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.1111111111111111 tied among 2/8 candidates.
+Min Score = 0.25 tied among 2/8 candidates.
+Still need to calculate most frequent values for dict_keys([3])
+Tie Breaking: Level 3
+
+Max Score = 0.05555555555555555 tied among 4/8 candidates.
+Min Score = 0.25 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([2, 8])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3]
+Incorrect Prediction at tie level: 0
+
+Max Score = 0.1111111111111111 tied among 2/8 candidates.
+Min Score = 0.25 tied among 2/8 candidates.
+Still need to calculate most frequent values for dict_keys([10])
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3]
+
+Max Score = 0.1111111111111111 tied among 4/8 candidates.
+Min Score = 0.25 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([7, 2])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3]
+
+Max Score = 0.1111111111111111 tied among 4/8 candidates.
+Min Score = 0.25 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([12, 4])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3]
+
+Max Score = 0.1111111111111111 tied among 4/8 candidates.
+Min Score = 0.25 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([7, 2])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3]
+
+Max Score = 0.0 tied among 8/8 candidates.
+Min Score = 0.25 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([6, 8, 13])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.05555555555555555 tied among 4/8 candidates.
+Min Score = 0.25 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([13, 2])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.05555555555555555 tied among 2/8 candidates.
+Min Score = 0.25 tied among 2/8 candidates.
+Still need to calculate most frequent values for dict_keys([11])
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3]
+
+Max Score = 0.0 tied among 8/8 candidates.
+Min Score = 0.25 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([4, 5, 12])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.1111111111111111 tied among 2/8 candidates.
+Min Score = 0.25 tied among 2/8 candidates.
+Still need to calculate most frequent values for dict_keys([6])
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3]
+
+Max Score = 0.1111111111111111 tied among 4/8 candidates.
+Min Score = 0.25 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([6, 7])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.05555555555555555 tied among 4/8 candidates.
+Min Score = 0.25 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([13, 3])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.1111111111111111 tied among 2/8 candidates.
+Min Score = 0.25 tied among 2/8 candidates.
+Still need to calculate most frequent values for dict_keys([4])
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3]
+
+Max Score = 0.1111111111111111 tied among 2/8 candidates.
+Min Score = 0.25 tied among 2/8 candidates.
+Still need to calculate most frequent values for dict_keys([5])
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3]
+
+Max Score = 0.05555555555555555 tied among 8/8 candidates.
+Min Score = 0.25 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([11, 9, 2])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.1111111111111111 tied among 2/8 candidates.
+Min Score = 0.25 tied among 2/8 candidates.
+Still need to calculate most frequent values for dict_keys([6])
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3]
+
+Max Score = 0.05555555555555555 tied among 4/8 candidates.
+Min Score = 0.25 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([3, 2])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.1111111111111111 tied among 4/8 candidates.
+Min Score = 0.25 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([12, 4])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3]
+
+Max Score = 0.05555555555555555 tied among 2/8 candidates.
+Min Score = 0.25 tied among 2/8 candidates.
+Still need to calculate most frequent values for dict_keys([11])
+Tie Breaking: Level 3
+
+Max Score = 0.1 tied among 4/8 candidates.
+Min Score = 0.25 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([6, 2])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3]
+Incorrect Prediction at tie level: 0
+
+Max Score = 0.05555555555555555 tied among 4/8 candidates.
+Min Score = 0.25 tied among 2/8 candidates.
+Still need to calculate most frequent values for dict_keys([12])
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3]
+
+Max Score = 0.1111111111111111 tied among 2/8 candidates.
+Min Score = 0.25 tied among 2/8 candidates.
+Still need to calculate most frequent values for dict_keys([5])
+Tie Breaking: Level 3
+
+Max Score = 0.1111111111111111 tied among 2/8 candidates.
+Min Score = 0.25 tied among 2/8 candidates.
+Still need to calculate most frequent values for dict_keys([5])
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3]
+
+Max Score = 0.1111111111111111 tied among 2/8 candidates.
+Min Score = 0.25 tied among 2/8 candidates.
+Still need to calculate most frequent values for dict_keys([11])
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3]
+Incorrect Prediction at tie level: 0
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([4, 7, 13])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.28055555555555556 tied among 2/8 candidates.
+Still need to calculate most frequent values for dict_keys([3])
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([3, 13])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([7, 11, 5])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([2, 7, 11])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([7, 13, 3])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([5, 9, 4])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([12, 6, 2])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Tie Breaking: Level 1
+Incorrect Prediction at tie level: 1
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([8, 11, 5])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([12, 9, 6])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.33611111111111114 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([4, 2])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([10, 12, 8])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([10, 6])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Tie Breaking: Level 1
+Incorrect Prediction at tie level: 1
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([3, 10])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([10, 8])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.26666666666666666 tied among 2/8 candidates.
+Still need to calculate most frequent values for dict_keys([4])
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([11, 2])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([7, 8, 5])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([3, 5, 12])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Tie Breaking: Level 1
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([6, 8, 3])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([4, 9, 8])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([11, 7, 4])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([4, 10, 13])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([10, 9, 6])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([3, 5, 7])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([6, 10, 8])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([7, 8, 9])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([13, 12, 10])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.26666666666666666 tied among 2/8 candidates.
+Still need to calculate most frequent values for dict_keys([4])
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([6, 11, 9])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.33611111111111114 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([7, 11])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([4, 12, 8])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([7, 8, 2])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([10, 5])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.28055555555555556 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([3, 6])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([7, 5, 4])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.26666666666666666 tied among 2/8 candidates.
+Still need to calculate most frequent values for dict_keys([5])
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Tie Breaking: Level 1
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([2, 12])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.26666666666666666 tied among 2/8 candidates.
+Still need to calculate most frequent values for dict_keys([4])
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.28055555555555556 tied among 2/8 candidates.
+Still need to calculate most frequent values for dict_keys([2])
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([7, 12])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([12, 11, 9])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([4, 7])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([7, 12, 6])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([13, 10, 2])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.26666666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([4, 5])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.33611111111111114 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([10, 9, 7])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([10, 12])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([6, 7, 3])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([11, 13, 5])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([11, 8, 2])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([5, 7, 4])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Tie Breaking: Level 1
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.28055555555555556 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([6, 2])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.26666666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([5, 12])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([3, 5, 4])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([9, 8])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([6, 9, 2])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Tie Breaking: Level 1
+
+Max Score = 0.25 tied among 8/8 candidates.
+Tie Breaking: Level 1
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([10, 8, 4])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([3, 8, 5])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([6, 12, 9])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([13, 12, 6])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([11, 9, 4])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([2, 4, 11])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.33611111111111114 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([5, 4])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([5, 8])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.26666666666666666 tied among 2/8 candidates.
+Still need to calculate most frequent values for dict_keys([4])
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([10, 3])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([3, 5, 6])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([13, 7])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([10, 8])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([5, 6])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([2, 6, 11])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([5, 13, 10])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.28055555555555556 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([3, 6])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([10, 8, 3])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([10, 8])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([8, 13, 5])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([3, 7])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Tie Breaking: Level 1
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.33611111111111114 tied among 2/8 candidates.
+Still need to calculate most frequent values for dict_keys([3])
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([14, 15, 10])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([3, 9, 13])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.28055555555555556 tied among 2/8 candidates.
+Still need to calculate most frequent values for dict_keys([6])
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([12, 13])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.28055555555555556 tied among 2/8 candidates.
+Still need to calculate most frequent values for dict_keys([7])
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.33611111111111114 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([6, 8])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([4, 13, 9])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([2, 13, 4])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.33611111111111114 tied among 2/8 candidates.
+Still need to calculate most frequent values for dict_keys([13])
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Tie Breaking: Level 1
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([8, 7])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([5, 10, 11])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([8, 10])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Tie Breaking: Level 1
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([5, 11])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([11, 8])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([12, 5])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([7, 10, 12])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([11, 13, 7])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([4, 10, 12])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.26666666666666666 tied among 2/8 candidates.
+Still need to calculate most frequent values for dict_keys([5])
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([7, 9, 10])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([3, 5, 2])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.26666666666666666 tied among 2/8 candidates.
+Still need to calculate most frequent values for dict_keys([5])
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.33611111111111114 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([12, 2])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.28055555555555556 tied among 2/8 candidates.
+Still need to calculate most frequent values for dict_keys([2])
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([10, 6, 4])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([4, 9])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([4, 2])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Tie Breaking: Level 1
+Incorrect Prediction at tie level: 1
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([2, 9, 10])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([8, 10, 5])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([3, 12])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([2, 7, 4])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([9, 3])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([14, 15, 3])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([11, 8, 7])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([11, 4, 2])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.26666666666666666 tied among 2/8 candidates.
+Still need to calculate most frequent values for dict_keys([5])
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([2, 15, 14])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([2, 6, 8])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Tie Breaking: Level 1
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([8, 4, 3])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([3, 4, 8])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Tie Breaking: Level 1
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([11, 8, 3])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([4, 10])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([6, 9, 8])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([7, 8, 11])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([13, 9, 4])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([7, 9, 13])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([6, 9, 2])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([5, 8, 2])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([10, 13, 9])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Tie Breaking: Level 1
+Incorrect Prediction at tie level: 1
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([8, 13, 11])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([6, 12])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([5, 7, 8])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([5, 9, 4])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([13, 8, 3])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([2, 9, 8])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Tie Breaking: Level 1
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([10, 9, 4])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([11, 6, 4])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([2, 11, 8])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([7, 9, 12])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.26666666666666666 tied among 2/8 candidates.
+Still need to calculate most frequent values for dict_keys([13])
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([3, 11, 6])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([7, 13, 2])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([4, 6, 8])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([7, 10])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([9, 3])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([12, 8])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([9, 13, 10])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.28055555555555556 tied among 2/8 candidates.
+Still need to calculate most frequent values for dict_keys([6])
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([12, 8, 3])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([12, 10])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.28055555555555556 tied among 2/8 candidates.
+Still need to calculate most frequent values for dict_keys([11])
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.28055555555555556 tied among 2/8 candidates.
+Still need to calculate most frequent values for dict_keys([7])
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([3, 9])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([7, 9, 4])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.28055555555555556 tied among 2/8 candidates.
+Still need to calculate most frequent values for dict_keys([7])
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([8, 3])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([12, 13, 11])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([5, 9])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([3, 6, 5])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([11, 10])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([6, 10])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([2, 4, 9])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([4, 13, 2])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([3, 12, 4])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Tie Breaking: Level 1
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([2, 5, 10])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([3, 5])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([5, 13, 2])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([9, 3])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Tie Breaking: Level 1
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([7, 13, 9])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.33611111111111114 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([2, 10])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([2, 6])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([13, 12, 4])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Tie Breaking: Level 1
+
+Max Score = 0.25 tied among 8/8 candidates.
+Tie Breaking: Level 1
+Incorrect Prediction at tie level: 1
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.26666666666666666 tied among 2/8 candidates.
+Still need to calculate most frequent values for dict_keys([5])
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([3, 6])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.33611111111111114 tied among 2/8 candidates.
+Still need to calculate most frequent values for dict_keys([4])
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([3, 7, 6])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([10, 12])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([4, 6])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([6, 7, 2])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.33611111111111114 tied among 2/8 candidates.
+Still need to calculate most frequent values for dict_keys([4])
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.26666666666666666 tied among 2/8 candidates.
+Still need to calculate most frequent values for dict_keys([5])
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([12, 8, 3])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.26666666666666666 tied among 2/8 candidates.
+Still need to calculate most frequent values for dict_keys([4])
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([3, 11])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([7, 3])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([5, 10])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.26666666666666666 tied among 2/8 candidates.
+Still need to calculate most frequent values for dict_keys([4])
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([10, 8, 4])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([11, 12, 10])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Tie Breaking: Level 1
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([4, 10, 12])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.33611111111111114 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([9, 2])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([3, 7])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.28055555555555556 tied among 2/8 candidates.
+Still need to calculate most frequent values for dict_keys([2])
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([2, 10])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([9, 10, 8])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.33611111111111114 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([7, 12])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Tie Breaking: Level 1
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([12, 10, 7])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Tie Breaking: Level 1
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([7, 10, 11])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([7, 10, 2])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([13, 12])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([7, 9, 10])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.26666666666666666 tied among 2/8 candidates.
+Still need to calculate most frequent values for dict_keys([13])
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Tie Breaking: Level 1
+
+Max Score = 0.25 tied among 8/8 candidates.
+Tie Breaking: Level 1
+Incorrect Prediction at tie level: 1
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.28055555555555556 tied among 2/8 candidates.
+Still need to calculate most frequent values for dict_keys([3])
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([3, 8, 4])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([3, 7, 11])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([4, 11, 3])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.29166666666666663 tied among 2/8 candidates.
+Still need to calculate most frequent values for dict_keys([2])
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([6, 10, 7])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([11, 6, 2])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([15, 14, 9])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([11, 4])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.26666666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([4, 13])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.33611111111111114 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([6, 10])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Tie Breaking: Level 1
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([9, 13, 3])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([2, 10, 6])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([11, 10, 4])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([2, 9])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([5, 12, 6])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([8, 10])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([4, 13])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Tie Breaking: Level 1
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([6, 9, 13])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([13, 11, 6])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([13, 10, 4])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([11, 12, 2])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([5, 4])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Tie Breaking: Level 1
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([10, 11, 9])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([7, 8, 2])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([4, 7])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.26666666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([4, 5])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([11, 12, 5])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([3, 12, 9])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([8, 4, 2])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.26666666666666666 tied among 2/8 candidates.
+Still need to calculate most frequent values for dict_keys([12])
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Tie Breaking: Level 1
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([8, 4, 2])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([12, 8])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([4, 8, 7])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.26666666666666666 tied among 2/8 candidates.
+Still need to calculate most frequent values for dict_keys([12])
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([7, 8])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.33611111111111114 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([7, 8])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([7, 8])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([5, 7])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.28055555555555556 tied among 2/8 candidates.
+Still need to calculate most frequent values for dict_keys([2])
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([4, 5, 6])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([11, 13, 3])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([10, 4])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([9, 8, 7])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Tie Breaking: Level 1
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([9, 6, 5])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([6, 13, 4])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([9, 10])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Tie Breaking: Level 1
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([7, 6, 2])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([2, 6, 8])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([6, 9, 7])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([10, 5])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([10, 13, 8])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.28055555555555556 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([12, 4])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([2, 10, 6])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([9, 2])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([4, 5, 7])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.33611111111111114 tied among 2/8 candidates.
+Still need to calculate most frequent values for dict_keys([4])
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([6, 9, 7])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([9, 7])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([6, 9])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([13, 5])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([8, 13])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([5, 6, 13])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([8, 4])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([7, 10, 12])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([4, 10, 2])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.33611111111111114 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([5, 7, 6])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.26666666666666666 tied among 2/8 candidates.
+Still need to calculate most frequent values for dict_keys([13])
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([10, 11])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([10, 8, 7])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.28055555555555556 tied among 2/8 candidates.
+Still need to calculate most frequent values for dict_keys([7])
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([6, 10, 3])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([10, 3, 2])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([9, 6])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([4, 6, 13])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.28055555555555556 tied among 2/8 candidates.
+Still need to calculate most frequent values for dict_keys([6])
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.26666666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([5, 14, 15])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([4, 13, 3])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([4, 6, 10])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([11, 4])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([5, 13])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([11, 7, 5])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([5, 4, 2])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([12, 13, 2])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([7, 12, 2])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Tie Breaking: Level 1
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([7, 12])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([2, 7, 12])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([8, 5, 2])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.33611111111111114 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([10, 3])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([7, 5, 3])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([2, 12, 10])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([10, 7])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([9, 11])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([11, 2])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.28055555555555556 tied among 2/8 candidates.
+Still need to calculate most frequent values for dict_keys([2])
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([4, 5, 13])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([11, 9])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([2, 6])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([3, 9, 7])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.33611111111111114 tied among 2/8 candidates.
+Still need to calculate most frequent values for dict_keys([5])
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([11, 5, 4])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([6, 9, 11])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([5, 10])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.33611111111111114 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([3, 5])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([8, 5])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Tie Breaking: Level 1
+Incorrect Prediction at tie level: 1
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([13, 9, 3])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([7, 13, 11])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([8, 10])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.28055555555555556 tied among 2/8 candidates.
+Still need to calculate most frequent values for dict_keys([3])
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([7, 10, 9])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.33611111111111114 tied among 2/8 candidates.
+Still need to calculate most frequent values for dict_keys([7])
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([4, 9])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([6, 8, 13])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([13, 12, 7])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.33611111111111114 tied among 2/8 candidates.
+Still need to calculate most frequent values for dict_keys([5])
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.26666666666666666 tied among 2/8 candidates.
+Still need to calculate most frequent values for dict_keys([5])
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.26666666666666666 tied among 2/8 candidates.
+Still need to calculate most frequent values for dict_keys([13])
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([6, 10, 4])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([3, 8])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([12, 8, 7])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([8, 10])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([13, 8])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([3, 6])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([10, 5])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([9, 2])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([6, 4])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Tie Breaking: Level 1
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([10, 5, 4])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([7, 11])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Tie Breaking: Level 1
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([8, 7])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.26666666666666666 tied among 2/8 candidates.
+Still need to calculate most frequent values for dict_keys([12])
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([11, 10, 4])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([8, 5, 3])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([10, 7, 6])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([2, 13, 11])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Tie Breaking: Level 1
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([5, 12, 7])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.26666666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([13, 12])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.33611111111111114 tied among 2/8 candidates.
+Still need to calculate most frequent values for dict_keys([10])
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([5, 12, 8])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.26666666666666666 tied among 2/8 candidates.
+Still need to calculate most frequent values for dict_keys([5])
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([4, 6, 2])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([4, 10])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([2, 5])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.26666666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([4, 13])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.33611111111111114 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([13, 11])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([6, 9])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([2, 9])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.26666666666666666 tied among 2/8 candidates.
+Still need to calculate most frequent values for dict_keys([5])
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([12, 7])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([3, 8, 2])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([2, 5, 8])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([9, 8, 5])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([8, 9])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([12, 11])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([13, 12, 6])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([3, 13])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([2, 13, 9])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([3, 13])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.33611111111111114 tied among 2/8 candidates.
+Still need to calculate most frequent values for dict_keys([2])
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([6, 11])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([4, 8, 11])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([7, 11, 3])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.26666666666666666 tied among 2/8 candidates.
+Still need to calculate most frequent values for dict_keys([4])
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([10, 2])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([2, 13, 6])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([10, 12])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([6, 4])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.33611111111111114 tied among 2/8 candidates.
+Still need to calculate most frequent values for dict_keys([13])
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([4, 7, 10])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([10, 3])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([3, 13])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([10, 7])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([3, 6, 4])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([5, 6])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([8, 7, 3])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([6, 9])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([6, 11])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([8, 13, 4])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([11, 6])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.28055555555555556 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([2, 7])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([11, 6, 4])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([10, 9, 8])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([2, 6, 13])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.26666666666666666 tied among 2/8 candidates.
+Still need to calculate most frequent values for dict_keys([12])
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.26666666666666666 tied among 2/8 candidates.
+Still need to calculate most frequent values for dict_keys([13])
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.26666666666666666 tied among 2/8 candidates.
+Still need to calculate most frequent values for dict_keys([12])
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([2, 8, 4])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Tie Breaking: Level 1
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([5, 11])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.33611111111111114 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([6, 10])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([2, 13, 11])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([9, 11, 10])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([13, 10])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.26666666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([4, 5])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([2, 5])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([12, 11, 9])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([3, 6, 8])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([3, 7])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.28055555555555556 tied among 2/8 candidates.
+Still need to calculate most frequent values for dict_keys([13])
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([2, 7, 5])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([13, 10, 3])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([3, 5, 9])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([5, 13])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([8, 3])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([6, 12, 9])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([6, 9])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([8, 13])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([6, 11, 4])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.26666666666666666 tied among 2/8 candidates.
+Still need to calculate most frequent values for dict_keys([5])
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.26666666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([12, 4])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([5, 12, 4])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([6, 7, 13])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([2, 8])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([10, 8])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Tie Breaking: Level 1
+Incorrect Prediction at tie level: 1
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([3, 5])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.28055555555555556 tied among 2/8 candidates.
+Still need to calculate most frequent values for dict_keys([7])
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([13, 10, 9])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([11, 5])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([8, 12, 5])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([10, 6, 4])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([7, 13, 4])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([11, 8])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.28055555555555556 tied among 2/8 candidates.
+Still need to calculate most frequent values for dict_keys([7])
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([12, 5])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.26666666666666666 tied among 2/8 candidates.
+Still need to calculate most frequent values for dict_keys([13])
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([14, 15, 6])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([2, 6, 11])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([12, 9, 2])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([2, 12, 11])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([4, 7, 3])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Tie Breaking: Level 1
+Incorrect Prediction at tie level: 1
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([3, 13])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.26666666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([13, 12])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([7, 14, 15])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([9, 13])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([5, 13, 11])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([11, 13])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([4, 10])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([5, 13])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.33611111111111114 tied among 2/8 candidates.
+Still need to calculate most frequent values for dict_keys([11])
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([5, 6, 9])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([9, 11, 2])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.33611111111111114 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([7, 10])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([2, 13, 3])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([6, 11])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Tie Breaking: Level 1
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.26666666666666666 tied among 2/8 candidates.
+Still need to calculate most frequent values for dict_keys([4])
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([5, 2])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([2, 11, 4])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Tie Breaking: Level 1
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.33611111111111114 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([7, 4])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([4, 15, 14])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([2, 10, 7])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([2, 11, 8])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Tie Breaking: Level 1
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([2, 6])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([9, 12])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.26666666666666666 tied among 2/8 candidates.
+Still need to calculate most frequent values for dict_keys([13])
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([7, 3])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([2, 5, 10])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.33611111111111114 tied among 2/8 candidates.
+Still need to calculate most frequent values for dict_keys([11])
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([3, 7])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([3, 7, 10])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([2, 7, 5])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.33611111111111114 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([6, 7])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([7, 12, 13])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([7, 12, 2])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([5, 6, 7])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.28055555555555556 tied among 2/8 candidates.
+Still need to calculate most frequent values for dict_keys([7])
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([6, 9, 3])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([6, 2])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Tie Breaking: Level 1
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([2, 3])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([13, 3])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([12, 9, 2])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([11, 14, 15])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([10, 13, 11])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([2, 6, 8])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Tie Breaking: Level 1
+Incorrect Prediction at tie level: 1
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([4, 8, 3])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Tie Breaking: Level 1
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([7, 10])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([6, 7])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([12, 10, 5])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([15, 14, 9])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([9, 11])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Tie Breaking: Level 1
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([12, 11, 8])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.26666666666666666 tied among 2/8 candidates.
+Still need to calculate most frequent values for dict_keys([12])
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([3, 12])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.28055555555555556 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([6, 7])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([8, 2])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([13, 12])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([6, 12, 9])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([8, 13, 3])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([6, 11, 5])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([2, 5, 8])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Tie Breaking: Level 1
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([5, 7, 13])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Tie Breaking: Level 1
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([3, 7])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([7, 12, 8])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([5, 7])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([12, 6])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Tie Breaking: Level 1
+Incorrect Prediction at tie level: 1
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.26666666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([4, 13])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([8, 9])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([9, 5])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.28055555555555556 tied among 2/8 candidates.
+Still need to calculate most frequent values for dict_keys([6])
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([3, 7, 9])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([10, 11])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([13, 10, 5])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([6, 8, 5])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([13, 9, 4])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([4, 6, 3])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([14, 15, 10])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([10, 13, 3])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([4, 5, 6])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([8, 10, 2])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.26666666666666666 tied among 2/8 candidates.
+Still need to calculate most frequent values for dict_keys([4])
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([9, 10, 11])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([6, 8, 9])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([2, 3, 5])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.33611111111111114 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([9, 3])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([7, 13])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.28055555555555556 tied among 2/8 candidates.
+Still need to calculate most frequent values for dict_keys([7])
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([2, 11, 5])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([12, 10, 5])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([13, 11])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([11, 9, 5])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([13, 3])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([7, 5])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([7, 6])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.33611111111111114 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([10, 11])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([11, 7, 5])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([7, 11, 2])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([3, 12, 6])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([10, 13, 7])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Tie Breaking: Level 1
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([2, 8])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([13, 6])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([9, 11])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.28055555555555556 tied among 2/8 candidates.
+Still need to calculate most frequent values for dict_keys([2])
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([3, 11, 5])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([4, 12])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([5, 13, 2])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.33611111111111114 tied among 2/8 candidates.
+Still need to calculate most frequent values for dict_keys([6])
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([3, 7, 4])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Tie Breaking: Level 1
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([12, 2])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 8/8 candidates.
+Min Score = 0.3916666666666666 tied among 8/8 candidates.
+Still need to calculate most frequent values for dict_keys([5, 7, 4])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([11, 14, 15])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3, 3]
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([10, 5])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Incorrect Prediction at tie level: [3, 3]
+
+Max Score = 0.25 tied among 8/8 candidates.
+Tie Breaking: Level 1
+
+Max Score = 0.25 tied among 4/8 candidates.
+Min Score = 0.3916666666666666 tied among 4/8 candidates.
+Still need to calculate most frequent values for dict_keys([14, 15, 3])
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Tie Breaking: Level 3
+Return Code	: 0
+103 2, 2002, 3001, 4002, 5001, 6002, 7001, 8001, 9002, 10002, 11001, 12002, 13001, 14002, 15001
+134 2, 2002, 3001, 4002, 5001, 6002, 7001, 8002, 9001, 10001, 11002, 12002, 13001, 14002, 15001
+208 2, 2002, 3001, 4002, 5001, 6002, 7001, 8002, 9001, 10002, 11001, 12002, 13001, 14002, 15001
+247 2, 2002, 3001, 4002, 5001, 6001, 7002, 8002, 9001, 10002, 11001, 12002, 13001, 14002, 15001
+262 2, 2001, 3002, 4002, 5001, 6002, 7001, 8002, 9001, 10001, 11002, 12002, 13001, 14001, 15002
+280 2, 2002, 3001, 4002, 5001, 6001, 7002, 8002, 9001, 10001, 11002, 12002, 13001, 14002, 15001
+292 2, 2002, 3001, 4002, 5001, 6001, 7002, 8002, 9001, 10002, 11001, 12002, 13001, 14002, 15001
+354 2, 2002, 3001, 4002, 5001, 6002, 7001, 8002, 9001, 10002, 11001, 12002, 13001, 14002, 15001
+360 2, 2002, 3001, 4002, 5001, 6002, 7001, 8002, 9001, 10001, 11002, 12002, 13001, 14002, 15001
+362 2, 2002, 3001, 4002, 5001, 6002, 7001, 8002, 9001, 10002, 11001, 12002, 13001, 14002, 15001
+373 2, 2002, 3001, 4002, 5001, 6002, 7001, 8002, 9001, 10002, 11001, 12002, 13001, 14002, 15001
+401 2, 2002, 3001, 4001, 5002, 6002, 7001, 8002, 9001, 10001, 11002, 12002, 13001, 14002, 15001
+460 2, 2002, 3001, 4002, 5001, 6002, 7001, 8002, 9001, 10001, 11002, 12002, 13001, 14002, 15001
+461 2, 2002, 3001, 4002, 5001, 6002, 7001, 8002, 9001, 10002, 11001, 12002, 13001, 14002, 15001
+520 2, 2002, 3001, 4002, 5001, 6001, 7002, 8002, 9001, 10001, 11002, 12002, 13001, 14002, 15001
+549 2, 2002, 3001, 4001, 5002, 6002, 7001, 8002, 9001, 10001, 11002, 12002, 13001, 14002, 15001
+577 2, 2002, 3001, 4002, 5001, 6001, 7002, 8002, 9001, 10001, 11002, 12002, 13001, 14002, 15001
+586 2, 2002, 3001, 4002, 5001, 6002, 7001, 8002, 9001, 10001, 11002, 12002, 13001, 14002, 15001
+620 2, 2002, 3001, 4002, 5001, 6002, 7001, 8001, 9002, 10002, 11001, 12002, 13001, 14002, 15001
+629 2, 2001, 3002, 4002, 5001, 6002, 7001, 8002, 9001, 10001, 11002, 12002, 13001, 14001, 15002
+630 2, 2002, 3001, 4002, 5001, 6002, 7001, 8002, 9001, 10001, 11002, 12002, 13001, 14002, 15001
+642 2, 2002, 3001, 4002, 5001, 6001, 7002, 8002, 9001, 10001, 11002, 12002, 13001, 14002, 15001
+CNF-cc Accuracy		: 0.9488721804511279
+
+Dataset				: led.dat
+Metric				: length
+Minsups				: [3]
+MF Accuracy			: [(0.4105263157894737, 0.3609022556390977, 665, 665)]
+Mistle Accuracy		: [0.5578947368421052]
+CNFAlgo Accuracy	: [0.9488721804511279]
+Randomized Accuracy	: [0.125]
+
+# Test Examples		: 665
+Mistle # Ties		: [(0, 0)]
+CNFAlgo # Ties		: [(22, 44)]

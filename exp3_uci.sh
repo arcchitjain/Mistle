@@ -1,0 +1,17 @@
+python3 exp3_uci.py iris_17.dat > Logs/Exp3_uci_ll/exp3_iris_17.log &&
+python3 exp3_uci.py iris_18.dat > Logs/Exp3_uci_ll/exp3_iris_18.log &&
+python3 exp3_uci.py iris_19.dat > Logs/Exp3_uci_ll/exp3_iris_19.log &&
+python3 exp3_uci.py glass.dat > Logs/Exp3_uci_ll/exp3_glass.log &&
+python3 exp3_uci.py wine.dat > Logs/Exp3_uci_ll/exp3_wine.log &&
+python3 exp3_uci.py ecoli.dat > Logs/Exp3_uci_ll/exp3_ecoli.log &&
+python3 exp3_uci.py hepatitis.dat > Logs/Exp3_uci_ll/exp3_hepatitis.log &&
+python3 exp3_uci.py heart.dat > Logs/Exp3_uci_ll/exp3_heart.log &&
+python3 exp3_uci.py dermatology.dat > Logs/Exp3_uci_ll/exp3_dermatology.log &&
+python3 exp3_uci.py auto.dat > Logs/Exp3_uci_ll/exp3_auto.log &&
+python3 exp3_uci.py horseColic.dat > Logs/Exp3_uci_ll/exp3_horseColic.log &&
+python3 exp3_uci.py pima.dat > Logs/Exp3_uci_ll/exp3_pima.log &&
+python3 exp3_uci.py ticTacToe.dat > Logs/Exp3_uci_ll/exp3_ticTacToe.log &&
+python3 exp3_uci.py ionosphere.dat > Logs/Exp3_uci_ll/exp3_ionosphere.log &&
+python3 exp3_uci.py flare.dat > Logs/Exp3_uci_ll/exp3_flare.log &&
+python3 exp3_uci.py cylBands.dat > Logs/Exp3_uci_ll/exp3_cylBands.log &&
+python3 exp3_uci.py led.dat > Logs/Exp3_uci_ll/exp3_led.log &

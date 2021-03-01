@@ -1,0 +1,116 @@
+
+================== Getting started with Krimp ======================
+
+
+=== 0. Configure Krimp on your system ===
+
+- Modify datadir.conf such that the [dataDir] and [expDir] directives point to your data 
+resp. experiment output directories. Please note that these should always be full paths,
+not relative!
+- On a 32-bits x86 Windows system, try running bin\krimp.exe (or bin\krimp_x86.exe). If 
+it raises an error or terminates without any message, you may have to install the Microsoft 
+Visual C++ 2010 SP1 Redistributable Package.
+The x86 version is available for download here:
+http://www.microsoft.com/download/en/details.aspx?id=8328
+- On a 64-bits x64 Windows system, bin\krimp_x64.exe should also work. If it gives an error 
+or terminates without any message, you may have to install the Microsoft Visual C++ 2010 
+SP1 Redistributable Package.
+The x64 version is available for download here:
+http://www.microsoft.com/download/en/details.aspx?id=13523
+- On a Linux system, try running bin\krimp. If it does not work, compile your own executable
+using the included source (see README).
+
+
+=== 1. Prepare your database ===
+
+- Databases can be in either [dataDir] or [dataDir]\datasets.
+- Krimp accepts currently only item data. For now, items should be positive integers.
+- Krimp has its own database file format. Files in this format generally end with .db. See
+the datasets directory for some example databases (mostly from the UCI repository).
+- Use convertdb.conf to convert your own database to the correct format. The data should be
+formatted as the example databases chess.dat and mushroom.dat (in the datasets directory).
+Each row is a transaction, each number is an item that is present in that particular 
+transaction. Modify convertdb.conf to suit your needs and run it from the command line or
+drag-an-drop the config file onto krimp.exe. Commandline:
+
+	C:\Krimp\bin> krimp convertdb
+
+- Use analysedb.conf to get some basic statistics about your database, if you like.
+The analysis textfile also gives you the translation from the original item numbers to
+the numbers as used in the converted database. (Left column: [after]=>[before])
+
+
+=== 2. Find those itemsets that matter ===
+
+- Open up compress.conf.
+- The most important configuration directives are:
+	* iscName = chess-all-2500d
+	This directive tells Krimp which candidates are to be used. Also, the database name is 
+	extracted from this directive is not given separately (which is the easiest way to go).
+
+	Format: [dbName]-[itemsetType]-[minSup][candidateOrder]
+	
+	dbName			- chess, mushroom, ...
+	itemsetType		- all, closed
+	minSup			- absolute minimum support level
+	candidateOrder	- the standard order as described in our papers is 'd'
+	
+	The program first looks for existing item set collection files. If the correct file does
+	not exist, candidates are automatically mined. Whether this file is kept after compression
+	is determined by the following directive:
+	
+	* iscIfMined = zap
+	zap				- Do not keep file if created for this compression run.
+	store			- Store file in [dataDir]\candidates if created for this 
+						compression run.
+	
+	* pruneStrategy = nop
+	Determine whether on-the-fly code table pruning has to be applied or not. nop means no
+	pruning, pop means post-pruning which is the regular pruning method we described in our
+	paper.
+
+
+=== 3. Inspect your results ===
+
+- Compression results are stored in Krimp\xps\compress. Each run gets its own directory,
+based on configuration and a timestamp.
+- In such a directory, you'll find (amongst some unimportant files):
+	* compress-[timestamp].conf
+		The configuration you used to run this particular experiment.
+	* ct-[candidateSet]-[pruneStrategy]-[timestamp]-[support]-[candNum].ct
+		The code table at support level [support], which was outputted after processing
+		[candNum] candidate item sets.
+		In such a file, you'll find the complete code table. Except for the first two 
+		rows (which make up a header, with info on the number of code table elements and
+		the number of singleton item sets), each row is a code table element. The pattern
+		is represented by the space-separated items. Between brackets is some meta info:
+		first the current count of this particular pattern in the cover, second the total
+		number of occurences of this pattern in the original database.
+	* report-[candidateSet]-[pruneStrategy]-[timestamp].csv
+		A full report, summarizing what happened during the run. Comma-separated data, so
+		open with Excel or something like that. You'll find the following columns:
+			minSup		- Support level reported on.
+			numCands	- Number of candidates processed so far.
+			numAlphUsed 	- Number of singleton item sets required in the cover.
+			numSetsUsed 	- Number of non-singleton code table elements with non-zero count.
+			numSets		- Number of non-singleton code table elements.
+							(Always equal to numSetsUsed when pruning is enabled.)
+			countSum	- Total number of times a code table element is used in the cover.
+							(Used to determine code lengths.)
+			dbSize		- Encoded database size, in bits. (Without code table!)
+			ctSize		- Code table size, in bits.
+			totalSize	- dbSize + ctSize, in bits.
+			seconds		- Number of seconds it took to reach this point.
+
+- Enjoy! :)
+
+References:
+- A. Siebes, J. Vreeken, & M. van Leeuwen, Item Sets That Compress, SIAM Intl. Conf. on Data
+Mining, pp.393-404, 2006.
+- J. Vreeken, M. van Leeuwen, & A. Siebes. Krimp: Mining Itemsets that Compress. In: Data 
+Mining and Knowledge Discovery, vol.23(1), Springer, 2011.
+http://www.springerlink.com/content/g436881660846127/ (open access)
+
+Contact: 
+- Matthijs van Leeuwen 	@ matthijs.vanleeuwen@cs.kuleuven.be
+- Jilles Vreeken 		@ jilles.vreeken@ua.ac.be

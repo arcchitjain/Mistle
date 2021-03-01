@@ -1,0 +1,84 @@
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 96
+ Total time ~: 3 ms
+ Max memory:7.8458251953125
+=====================================
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 2
+ Total time ~: 1 ms
+ Max memory:7.8578948974609375
+=====================================
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 8
+ Total time ~: 1 ms
+ Max memory:7.562202453613281
+=====================================
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 1
+ Total time ~: 1 ms
+ Max memory:7.562164306640625
+=====================================
+Length of freq items 1	: 96
+Time of freq items 1	: 0.2964489459991455
+121 Frequent Itemsets are mined in 0.0010991096496582031 seconds.
+Length of freq items 2	: 121
+Time of freq items 2	: 0.0011420249938964844
+DL of initial theory	: 855.3651110909857
+45	itemsets left after T operation 	: [frozenset({-16, -13})]
+21	itemsets left after T operation 	: [frozenset({-14, -17})]
+4	itemsets left after T operation 	: [frozenset({-16, -14})]
+1	itemsets left after T operation 	: [frozenset({-14})]
+0	itemsets left after T operation 	: [frozenset({-13})]
+Length of freq items 1	: 2
+Time of freq items 1	: 0.2591850757598877
+2 Frequent Itemsets are mined in 4.38690185546875e-05 seconds.
+Length of freq items 2	: 2
+Time of freq items 2	: 6.890296936035156e-05
+0 clauses are pruned.
+Initial DL				: 2480.042496735852
+Final DL				: 29.037134732729697
+Compression (wrt me)	: 0.9882916785615782
+Operator Counters		: {'D': 0, 'W': 0, 'V': 0, 'S': 0, 'R': 0, 'T': 5}
+Length of freq items 1	: 8
+Time of freq items 1	: 0.26778173446655273
+24 Frequent Itemsets are mined in 0.0002808570861816406 seconds.
+Length of freq items 2	: 24
+Time of freq items 2	: 0.0003261566162109375
+DL of initial theory	: 855.3651110909857
+1	itemsets left after T operation 	: [frozenset({-15, -12, -2})]
+0	itemsets left after T operation 	: [frozenset({-15, -12})]
+Length of freq items 1	: 1
+Time of freq items 1	: 0.2708439826965332
+2 Frequent Itemsets are mined in 7.700920104980469e-05 seconds.
+Length of freq items 2	: 2
+Time of freq items 2	: 0.00012111663818359375
+1 clauses are pruned.
+Initial DL				: 2480.042496735852
+Final DL				: 0
+Compression (wrt me)	: 1.0
+Operator Counters		: {'D': 0, 'W': 0, 'V': 0, 'S': 0, 'R': 0, 'T': 2}
+
+Dataset	: iris_17.dat;	Missingness Parameter	: 0.1
+Mistle Accuracy = 0.0 ; 0.65 ; 0.0 ; 0.65 / 40
+CNFAlgo Accuracy 2 = 23/49 = 0.46938775510204084
+CNFAlgo Accuracy 3 = 26/49 = 0.5306122448979592
+
+
+dataset = iris_17.dat with minsup = 0.006666666666666667
+missingness_parameters = [0.1]
+mistle_accuracy_list1 = [0.0]
+mistle_accuracy_list2 = [0.65]
+mistle_accuracy_list3 = [0.0]
+mistle_accuracy_list4 = [0.65]
+mistle_clauses_list = [2]
+mistle_literals_list = [2]
+cnfalgo_accuracy_list2 = [0.46938775510204084]
+cnfalgo_accuracy_list3 = [0.5306122448979592]
+cnfalgo_clauses_list = [426]
+cnfalgo_literals_list = [1398]
+train_data_literals_list = [420]
+randomized_accuracy_list = [0.4722222222222222]

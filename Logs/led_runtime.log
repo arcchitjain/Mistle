@@ -1,0 +1,81 @@
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 1824
+ Total time ~: 27 ms
+ Max memory:9.562049865722656
+=====================================
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 5
+ Total time ~: 1 ms
+ Max memory:7.562202453613281
+=====================================
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 515
+ Total time ~: 13 ms
+ Max memory:8.281974792480469
+=====================================
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 18
+ Total time ~: 1 ms
+ Max memory:7.565773010253906
+=====================================
+Length of freq items 1	: 1824
+Time of freq items 1	: 0.5536918640136719
+1891 Frequent Itemsets are mined in 0.011494874954223633 seconds.
+Length of freq items 2	: 1891
+Time of freq items 2	: 0.011527776718139648
+27  violations of +ve partial assignments found for the learned theory.
+Violating Clauses	:{frozenset({-14, -13, -10, -8, -7, -4, -3}), frozenset({-14, -13, -10, -8, -6, -5, -2}), frozenset({-14, -13, -10, -9, -7, -4, -2}), frozenset({-14, -13, -11, -8, -7, -5, -2}), frozenset({-15, -13, -10, -8, -7, -5, -2}), frozenset({-14, -13, -10, -9, -7, -5, -2}), frozenset({-15, -13, -10, -9, -6, -4, -2}), frozenset({-15, -13, -10, -8, -7, -4, -2}), frozenset({-14, -13, -10, -9, -7, -4, -3}), frozenset({-14, -13, -11, -8, -7, -4, -3}), frozenset({-14, -13, -11, -9, -7, -4, -2}), frozenset({-14, -13, -10, -8, -7, -5, -2}), frozenset({-14, -13, -10, -8, -6, -4, -2}), frozenset({-15, -13, -10, -8, -7, -4, -3}), frozenset({-15, -13, -10, -9, -7, -5, -2}), frozenset({-14, -13, -10, -8, -7, -4, -2}), frozenset({-14, -13, -10, -8, -7, -5, -3}), frozenset({-14, -13, -11, -9, -7, -4, -3}), frozenset({-14, -13, -10, -9, -6, -4, -2}), frozenset({-15, -13, -11, -8, -7, -5, -2}), frozenset({-14, -13, -11, -8, -7, -4, -2}), frozenset({-15, -12, -10, -8, -7, -5, -2}), frozenset({-14, -12, -10, -9, -7, -5, -2}), frozenset({-15, -12, -10, -8, -7, -4, -2}), frozenset({-14, -12, -10, -8, -7, -4, -3}), frozenset({-15, -13, -10, -9, -7, -4, -2}), frozenset({-14, -12, -10, -8, -7, -4, -2})}
+DL of initial theory	: 3929.9289544993594
+1415	itemsets left after T operation 	: [frozenset({-13, -9})]
+1243	itemsets left after T operation 	: [frozenset({-7, -12, -3})]
+973	itemsets left after T operation 	: [frozenset({-8, -7, -13})]
+711	itemsets left after T operation 	: [frozenset({-8, -6, -3})]
+444	itemsets left after T operation 	: [frozenset({-15, -12, -9})]
+289	itemsets left after T operation 	: [frozenset({-7, -12, -10, -2})]
+157	itemsets left after T operation 	: [frozenset({-14, -6, -12, -9})]
+31	itemsets left after T operation 	: [frozenset({-8, -6, -13, -2})]
+16	itemsets left after V operation 	: [frozenset({-14, -11, -9, 10, -4}), frozenset({-15, -11, -8, 10, -5}), frozenset({-7, -12, -2, -10})]
+11	itemsets left after T operation 	: [frozenset({-12, -9})]
+8	itemsets left after V operation 	: [frozenset({-8, -6, -3}), frozenset({3, -13, -2})]
+4	itemsets left after T operation 	: [frozenset({-9})]
+1	itemsets left after T operation 	: [frozenset({-13})]
+0	itemsets left after T operation 	: [frozenset({-3})]
+Length of freq items 1	: 5
+Time of freq items 1	: 0.3359370231628418
+27 Frequent Itemsets are mined in 0.0002579689025878906 seconds.
+Length of freq items 2	: 27
+Time of freq items 2	: 0.0002818107604980469
+0 clauses are pruned.
+Initial DL				: 88898.2608453799
+Final DL				: 1152.3487403101094
+Compression (wrt me)	: 0.9870374433723246
+Operator Counters		: {'D': 0, 'W': 0, 'V': 2, 'S': 0, 'R': 0, 'T': 12}
+Length of freq items 1	: 515
+Time of freq items 1	: 0.31533169746398926
+835 Frequent Itemsets are mined in 0.006490945816040039 seconds.
+Length of freq items 2	: 835
+Time of freq items 2	: 0.006518125534057617
+27  violations of +ve partial assignments found for the learned theory.
+Violating Clauses	:{frozenset({-14, -13, -10, -8, -7, -4, -3}), frozenset({-14, -13, -10, -8, -6, -5, -2}), frozenset({-14, -13, -10, -9, -7, -4, -2}), frozenset({-14, -13, -11, -8, -7, -5, -2}), frozenset({-15, -13, -10, -8, -7, -5, -2}), frozenset({-14, -13, -10, -9, -7, -5, -2}), frozenset({-15, -13, -10, -9, -6, -4, -2}), frozenset({-15, -13, -10, -8, -7, -4, -2}), frozenset({-14, -13, -10, -9, -7, -4, -3}), frozenset({-14, -13, -11, -8, -7, -4, -3}), frozenset({-14, -13, -11, -9, -7, -4, -2}), frozenset({-14, -13, -10, -8, -7, -5, -2}), frozenset({-14, -13, -10, -8, -6, -4, -2}), frozenset({-15, -13, -10, -8, -7, -4, -3}), frozenset({-15, -13, -10, -9, -7, -5, -2}), frozenset({-14, -13, -10, -8, -7, -4, -2}), frozenset({-14, -13, -10, -8, -7, -5, -3}), frozenset({-14, -13, -11, -9, -7, -4, -3}), frozenset({-14, -13, -10, -9, -6, -4, -2}), frozenset({-15, -13, -11, -8, -7, -5, -2}), frozenset({-14, -13, -11, -8, -7, -4, -2}), frozenset({-15, -12, -10, -8, -7, -5, -2}), frozenset({-14, -12, -10, -9, -7, -5, -2}), frozenset({-15, -12, -10, -8, -7, -4, -2}), frozenset({-14, -12, -10, -8, -7, -4, -3}), frozenset({-15, -13, -10, -9, -7, -4, -2}), frozenset({-14, -12, -10, -8, -7, -4, -2})}
+DL of initial theory	: 3929.9289544993594
+354	itemsets left after T operation 	: [frozenset({-7, -10, -2})]
+242	itemsets left after T operation 	: [frozenset({-14, -13, -4})]
+146	itemsets left after T operation 	: [frozenset({-8, -7, -11, -2})]
+75	itemsets left after T operation 	: [frozenset({-6, -4, -10, -2})]
+46	itemsets left after T operation 	: [frozenset({-10, -8, -7, -4, -3})]
+14	itemsets left after T operation 	: [frozenset({-14, -13, -10, -8, -5})]
+Length of freq items 1	: 18
+Time of freq items 1	: 0.30315709114074707
+51 Frequent Itemsets are mined in 0.00039386749267578125 seconds.
+Length of freq items 2	: 51
+Time of freq items 2	: 0.00041675567626953125
+0 clauses are pruned.
+Initial DL				: 88898.2608453799
+Final DL				: 1526.2280449379105
+Compression (wrt me)	: 0.9828317446210508
+Operator Counters		: {'D': 0, 'W': 0, 'V': 0, 'S': 0, 'R': 0, 'T': 6}
+mistle runtime = 1.777503252029419

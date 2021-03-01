@@ -1,0 +1,13 @@
+
+
+
+## Unix
+# Compilation instruction GNU/Linux, Mac OS X, ...
+# - resulting executable can be found in the /bin/ directory
+./bootstrap.sh
+make -Cbuild install
+
+# Compilation on Windows, using Visual C++ 2010 or 2012 or 2013
+# - simply open the correct solution (.sln) file, and compile the desired target (Release or Release64)
+# - resulting executable can be found in the /trunk/ directory
+

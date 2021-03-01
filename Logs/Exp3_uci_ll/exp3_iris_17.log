@@ -1,0 +1,143 @@
+
+##### Build transactions database #####.....[OK]
+nbTransactions = 50
+AVGTransactionsLenght = 12
+##### Execute lcm #####.....[OK]
+##### Parse lcm result & Build classes patterns #####.....[OK]
+
+nbValidPatterns= 6
+nbClasses= 1
+
+##### Reduction of non binaries clauses #####.....[OK]
+##### Writing of output #####.....[OK]
+
+
+##### Build transactions database #####.....[OK]
+nbTransactions = 1
+AVGTransactionsLenght = 3
+##### Execute lcm #####.....[OK]
+##### Parse lcm result & Build classes patterns #####.....[OK]
+
+nbValidPatterns = 0
+nbClasses = 0
+no binary reduction for the instance NonBinary_Compressed_mining4sat_1355a90d-a155-46eb-a73a-07e3cdb3ecce_L1.cnf
+mining4sat_1355a90d-a155-46eb-a73a-07e3cdb3ecce_ & 1 & 50 & 50 & 0 & 0,8 Ko & 54 & 15 & 39 & 45,17 & 0,5 Ko & 0 & 0 & 0 & 45,17 & 0,5 Ko & 0,06 \\
+
+TotalCPUTime = 0,06
+
+
+
+##### Build transactions database #####.....[OK]
+nbTransactions = 100
+AVGTransactionsLenght = 16
+##### Execute lcm #####.....[OK]
+##### Parse lcm result & Build classes patterns #####.....[OK]
+
+nbValidPatterns= 75
+nbClasses= 1
+
+##### Reduction of non binaries clauses #####.....[OK]
+##### Writing of output #####.....[OK]
+
+
+##### Build transactions database #####.....[OK]
+nbTransactions = 1
+AVGTransactionsLenght = 3
+##### Execute lcm #####.....[OK]
+##### Parse lcm result & Build classes patterns #####.....[OK]
+
+nbValidPatterns = 0
+nbClasses = 0
+no binary reduction for the instance NonBinary_Compressed_mining4sat_a72b8375-127d-49df-8a71-3b8fbe52ed9b_L1.cnf
+mining4sat_a72b8375-127d-49df-8a71-3b8fbe52ed9b_ & 1 & 100 & 100 & 0 & 1,6 Ko & 131 & 110 & 21 & 29,73 & 1,1 Ko & 0 & 0 & 0 & 29,73 & 1,1 Ko & 0,07 \\
+
+TotalCPUTime = 0,07
+
+
+Input Data	: /Users/arcchit/Docs/Mistle/mining4sat_1355a90d-a155-46eb-a73a-07e3cdb3ecce_.cnf
+Command 	: cd /Users/arcchit/Docs/Mistle/Resources/Mining4SAT && java -Xms8G -Xmx25G -cp bin/ execution.FrequentPatterns /Users/arcchit/Docs/Mistle/mining4sat_1355a90d-a155-46eb-a73a-07e3cdb3ecce_.cnf 1
+Return Code	: 0
+Output Data	: /Users/arcchit/Docs/Mistle/Resources/Mining4SAT/NonBinary_Compressed_mining4sat_1355a90d-a155-46eb-a73a-07e3cdb3ecce_L1.cnf
+Input Data	: /Users/arcchit/Docs/Mistle/mining4sat_a72b8375-127d-49df-8a71-3b8fbe52ed9b_.cnf
+Command 	: cd /Users/arcchit/Docs/Mistle/Resources/Mining4SAT && java -Xms8G -Xmx25G -cp bin/ execution.FrequentPatterns /Users/arcchit/Docs/Mistle/mining4sat_a72b8375-127d-49df-8a71-3b8fbe52ed9b_.cnf 1
+Return Code	: 0
+Output Data	: /Users/arcchit/Docs/Mistle/Resources/Mining4SAT/NonBinary_Compressed_mining4sat_a72b8375-127d-49df-8a71-3b8fbe52ed9b_L1.cnf
+# of frequent itemsets	: 8
+Time of DCI Closed		: 0.32445502281188965
+DL of initial theory	: 20
+1	itemsets left after W operation 	: [frozenset({16, -15, -12, -2}), frozenset({-16, -11}), frozenset({-16, -7}), frozenset({-16, -9}), frozenset({-16, -10})]
+# of frequent itemsets	: 9
+Time of DCI Closed		: 0.29320597648620605
+Initial DL				: 200
+Final DL				: 16
+Compression (wrt ll)	: 0.92
+Operator Counters		: {'D': 0, 'W': 1, 'V': 0, 'S': 0, 'R': 0, 'T': 0}
+Misle Learning Runtime	: 0.6193768978118896
+
+# of frequent itemsets	: 108
+Time of DCI Closed		: 0.30089402198791504
+DL of initial theory	: 140
+54	itemsets left after W operation 	: [frozenset({-14, 18, -17}), frozenset({-6, -11, -18}), frozenset({-7, -6, -18}), frozenset({-7, -3, -18}), frozenset({-7, -4, -18}), frozenset({-4, -10, -18}), frozenset({-8, -4, -18}), frozenset({-3, -10, -18}), frozenset({-6, -10, -18}), frozenset({-8, -6, -18}), frozenset({-6, -18, -9}), frozenset({-8, -3, -18}), frozenset({-4, -18, -9}), frozenset({-3, -11, -18}), frozenset({-4, -11, -18})]
+34	itemsets left after W operation 	: [frozenset({-16, 19, -13}), frozenset({-3, -19, -9}), frozenset({-4, -19, -9}), frozenset({-11, -6, -19}), frozenset({-5, -19, -9}), frozenset({-11, -4, -19}), frozenset({-19, -3, -11}), frozenset({-7, -4, -19}), frozenset({-7, -3, -19}), frozenset({-8, -3, -19}), frozenset({-5, -19, -10}), frozenset({-7, -19, -2}), frozenset({-19, -2, -10}), frozenset({-3, -19, -10}), frozenset({-8, -4, -19})]
+21	itemsets left after W operation 	: [frozenset({-16, -14, 20}), frozenset({-6, -20, -10}), frozenset({-7, -20, -3}), frozenset({-7, -4, -20}), frozenset({-8, -6, -20}), frozenset({-6, -20, -11}), frozenset({-8, -4, -20})]
+# of frequent itemsets	: 87
+Time of DCI Closed		: 0.2831430435180664
+45	itemsets left after W operation 	: [frozenset({-6, 21, -18}), frozenset({-21, -11}), frozenset({-7, -21}), frozenset({-21, -10}), frozenset({-8, -21}), frozenset({-21, -9})]
+40	itemsets left after W operation 	: [frozenset({-19, -3, 22}), frozenset({-22, -9}), frozenset({-22, -11}), frozenset({-7, -22}), frozenset({-8, -22}), frozenset({-22, -10})]
+33	itemsets left after W operation 	: [frozenset({-4, -18, 23}), frozenset({-7, -23}), frozenset({-23, -10}), frozenset({-8, -23}), frozenset({-23, -9}), frozenset({-23, -11})]
+31	itemsets left after W operation 	: [frozenset({24, -3, -18}), frozenset({-24, -7}), frozenset({-24, -10}), frozenset({-8, -24}), frozenset({-24, -11})]
+25	itemsets left after W operation 	: [frozenset({25, -4, -19}), frozenset({-8, -25}), frozenset({-25, -9}), frozenset({-11, -25}), frozenset({-7, -25})]
+Initial DL				: 400
+Final DL				: 107
+Compression (wrt ll)	: 0.7325
+Operator Counters		: {'D': 0, 'W': 8, 'V': 0, 'S': 0, 'R': 0, 'T': 0}
+Misle Learning Runtime	: 0.6514720916748047
+
+# of frequent itemsets	: 108
+Time of DCI Closed		: 0.30309605598449707
+DL of initial theory	: 160
+49	itemsets left after T operation 	: [frozenset({-14, -17})]
+21	itemsets left after T operation 	: [frozenset({-16, -13})]
+4	itemsets left after T operation 	: [frozenset({-16, -14})]
+1	itemsets left after T operation 	: [frozenset({-16})]
+0	itemsets left after T operation 	: [frozenset({-17})]
+# of frequent itemsets	: 2
+Time of DCI Closed		: 0.28647613525390625
+Initial DL				: 600
+Final DL				: 2
+Compression (wrt ll)	: 0.9966666666666667
+Operator Counters		: {'D': 0, 'W': 0, 'V': 0, 'S': 0, 'R': 0, 'T': 5}
+Misle Learning Runtime	: 0.593299150466919
+
+# of frequent itemsets	: 8
+Time of DCI Closed		: 0.3044707775115967
+DL of initial theory	: 160
+1	itemsets left after T operation 	: [frozenset({-15, -12, -2})]
+0	itemsets left after T operation 	: [frozenset({-15, -12})]
+# of frequent itemsets	: 1
+Time of DCI Closed		: 0.29074883460998535
+Initial DL				: 600
+Final DL				: 2
+Compression (wrt ll)	: 0.9966666666666667
+Operator Counters		: {'D': 0, 'W': 0, 'V': 0, 'S': 0, 'R': 0, 'T': 2}
+Misle Learning Runtime	: 0.5999879837036133
+
+Comp Theory is T-.
+
+Minsup					: 1
+Initial DL				: 601
+Mining4SAT Time			: 0.7204360961914062
+Mining4SAT DL			: 329
+Mistle Lossless Time			: 1.2737736701965332
+Mistle Lossless Pos DL	: 16
+Mistle Lossless Neg DL	: 107
+Mistle Lossless DL		: 124
+Mistle Lossy Time			: 1.1934471130371094
+Mistle Lossy Plus DL	: 1.9999999999999796
+Mistle Lossy Minus DL	: 1.9999999999999796
+
+Data							: iris_17.dat
+Minsup List						: [1]
+Compression: Mining4SAT			: [0.4525790349417637]
+Compression: Mistle - Lossless	: [0.7936772046589018]
+Compression: Mistle - Lossy		: [0.9966666666666667]

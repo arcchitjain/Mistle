@@ -1,0 +1,36 @@
+
+
+Comparing on dermatology.dat with nb_rows = 366 and minsup = 0.0078125
+Running CNFAlgo
+Return Code for CNFAlgo	: 0
+CNFAlgo Accuracy = 7/37 = 0.1891891891891892
+Running CNFAlgo
+Return Code for CNFAlgo	: 0
+CNFAlgo Accuracy = 8/37 = 0.21621621621621623
+Running CNFAlgo
+Return Code for CNFAlgo	: 0
+CNFAlgo Accuracy = 12/37 = 0.32432432432432434
+Running CNFAlgo
+Return Code for CNFAlgo	: 0
+CNFAlgo Accuracy = 11/37 = 0.2972972972972973
+Running CNFAlgo
+Return Code for CNFAlgo	: 0
+CNFAlgo Accuracy = 9/37 = 0.24324324324324326
+Running CNFAlgo
+Return Code for CNFAlgo	: 0
+CNFAlgo Accuracy = 10/37 = 0.2702702702702703
+Running CNFAlgo
+Return Code for CNFAlgo	: 0
+CNFAlgo Accuracy = 13/37 = 0.35135135135135137
+Running CNFAlgo
+Return Code for CNFAlgo	: 0
+CNFAlgo Accuracy = 11/37 = 0.2972972972972973
+Running CNFAlgo
+Return Code for CNFAlgo	: 0
+CNFAlgo Accuracy = 9/37 = 0.24324324324324326
+Running CNFAlgo
+Return Code for CNFAlgo	: 0
+CNFAlgo Accuracy = 10/33 = 0.30303030303030304
+cnfalgo_fold_accuracy_list = [0.1891891891891892, 0.21621621621621623, 0.32432432432432434, 0.2972972972972973, 0.24324324324324326, 0.2702702702702703, 0.35135135135135137, 0.2972972972972973, 0.24324324324324326, 0.30303030303030304]
+cnfalgo_time = 80.9039306640625
+cnfalgo_accuracy = 0.2735462735462736

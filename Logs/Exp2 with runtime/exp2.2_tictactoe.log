@@ -1,0 +1,82 @@
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 8361
+ Total time ~: 89 ms
+ Max memory:14.0
+=====================================
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 14
+ Total time ~: 1 ms
+ Max memory:7.565773010253906
+=====================================
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 14257
+ Total time ~: 105 ms
+ Max memory:15.64111328125
+=====================================
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 5
+ Total time ~: 1 ms
+ Max memory:7.5620574951171875
+=====================================
+Length of freq items 1	: 8361
+Time of freq items 1	: 0.43675804138183594
+14156 Frequent Itemsets are mined in 0.1410200595855713 seconds.
+Length of freq items 2	: 14156
+Time of freq items 2	: 0.14106178283691406
+DL of initial theory	: 41548.86891331585
+7497	itemsets left after T operation 	: [frozenset({-15, -3, -27})]
+6587	itemsets left after T operation 	: [frozenset({-15, -21, -9})]
+5755	itemsets left after T operation 	: [frozenset({-21, -12, -3})]
+4746	itemsets left after T operation 	: [frozenset({-24, -21, -27})]
+3762	itemsets left after T operation 	: [frozenset({-27, -18, -9})]
+2941	itemsets left after T operation 	: [frozenset({-24, -15, -6})]
+1935	itemsets left after T operation 	: [frozenset({-6, -3, -9})]
+1362	itemsets left after T operation 	: [frozenset({-8, -15, -12, -18})]
+932	itemsets left after T operation 	: [frozenset({-15, -20, -12, -2})]
+602	itemsets left after T operation 	: [frozenset({-26, -21, -18, -11, -8})]
+460	itemsets left after T operation 	: [frozenset({-26, -23, -18, -15, -12, -10})]
+274	itemsets left after T operation 	: [frozenset({-27, -23, -17, -6, -2})]
+43	itemsets left after T operation 	: [frozenset({-24, -20, -17, -9, -5})]
+29	itemsets left after V operation 	: [frozenset({-15, 21, -24, -5, -20, -3}), frozenset({-11, -26, -8, -21, -18})]
+20	itemsets left after T operation 	: [frozenset({-15, -12, -18})]
+13	itemsets left after V operation 	: [frozenset({-15, -27, -3}), frozenset({21, -24, 27, -5, -20})]
+Length of freq items 1	: 14
+Time of freq items 1	: 0.307110071182251
+16 Frequent Itemsets are mined in 0.00020194053649902344 seconds.
+Length of freq items 2	: 16
+Time of freq items 2	: 0.00022792816162109375
+0 clauses are pruned.
+Initial DL				: 41086.797471537226
+Final DL				: 913.1890134768262
+Compression (wrt me)	: 0.977774149613159
+Operator Counters		: {'D': 0, 'W': 0, 'V': 2, 'S': 0, 'R': 0, 'T': 14}
+Length of freq items 1	: 14257
+Time of freq items 1	: 0.4696497917175293
+16559 Frequent Itemsets are mined in 0.19196391105651855 seconds.
+Length of freq items 2	: 16559
+Time of freq items 2	: 0.19199800491333008
+DL of initial theory	: 41548.86891331585
+13323	itemsets left after T operation 	: [frozenset({-8, -14, -20})]
+12174	itemsets left after T operation 	: [frozenset({-23, -14, -5})]
+10814	itemsets left after T operation 	: [frozenset({-14, -26, -2})]
+8947	itemsets left after T operation 	: [frozenset({-8, -5, -2})]
+7056	itemsets left after T operation 	: [frozenset({-20, -11, -2})]
+4926	itemsets left after T operation 	: [frozenset({-14, -11, -17})]
+2703	itemsets left after T operation 	: [frozenset({-8, -26, -17})]
+9	itemsets left after T operation 	: [frozenset({-23, -20, -26})]
+Length of freq items 1	: 5
+Time of freq items 1	: 0.3080871105194092
+5 Frequent Itemsets are mined in 0.00010991096496582031 seconds.
+Length of freq items 2	: 5
+Time of freq items 2	: 0.0001399517059326172
+0 clauses are pruned.
+Initial DL				: 41086.797471537226
+Final DL				: 191.51890972703094
+Compression (wrt me)	: 0.9953386751581281
+Operator Counters		: {'D': 0, 'W': 0, 'V': 0, 'S': 0, 'R': 0, 'T': 8}
+mistle runtime = 4.692664861679077
+cnfalgo runtime = 8.866777181625366

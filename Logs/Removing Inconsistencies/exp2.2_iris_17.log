@@ -1,0 +1,143 @@
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 1
+ Total time ~: 32 ms
+ Max memory:7.842124938964844
+=====================================
+Current Minsup[0.99] yields 1 itemsets.
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 11
+ Total time ~: 6 ms
+ Max memory:7.845008850097656
+=====================================
+Current Minsup[0.792] yields 11 itemsets.
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 582
+ Total time ~: 47 ms
+ Max memory:10.562271118164062
+=====================================
+Current Minsup[0.396] yields 582 itemsets.
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 1765
+ Total time ~: 149 ms
+ Max memory:14.0
+=====================================
+Current Minsup[0.198] yields 1765 itemsets.
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 2760
+ Total time ~: 161 ms
+ Max memory:14.0
+=====================================
+Current Minsup[0.099] yields 2760 itemsets.
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 3301
+ Total time ~: 212 ms
+ Max memory:14.0830078125
+=====================================
+Current Minsup[0.0495] yields 3301 itemsets.
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 3528
+ Total time ~: 183 ms
+ Max memory:15.58056640625
+=====================================
+Current Minsup[0.02475] yields 3528 itemsets.
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 3566
+ Total time ~: 251 ms
+ Max memory:16.0869140625
+=====================================
+Current Minsup[0.012375] yields 3566 itemsets.
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 1722
+ Total time ~: 104 ms
+ Max memory:12.842071533203125
+=====================================
+Length of freq items 1	: 1722
+Time of freq items 1	: 0.6023192405700684
+573906 Frequent Itemsets are mined in 19.35643219947815 seconds.
+Length of freq items 2	: 573906
+Time of freq items 2	: 19.356527090072632
+DL of initial theory	: 2414.121434418562
+1288	itemsets left after T operation 	: [frozenset({2, 5, 9, 12, 13, 15, -14})]
+608	itemsets left after T operation 	: [frozenset({5, 6, 8, 12, 14, 15, -16, 17, -13})]
+119	itemsets left after T operation 	: [frozenset({2, 4, 7, 10, 12, 14, 15, -16, 17, -13})]
+13	itemsets left after T operation 	: [frozenset({3, 5, 6, 8, 10, 11, 12, -17, 16, 15})]
+2	itemsets left after T operation 	: [frozenset({12, 14, 15, -16, 17, -13})]
+1	itemsets left after T operation 	: [frozenset({12, 5, 15})]
+0	itemsets left after T operation 	: [frozenset({12, 15})]
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 1
+ Total time ~: 2 ms
+ Max memory:7.577720642089844
+=====================================
+Length of freq items 1	: 1
+Time of freq items 1	: 0.6167078018188477
+2 Frequent Itemsets are mined in 8.678436279296875e-05 seconds.
+Length of freq items 2	: 2
+Time of freq items 2	: 0.00013208389282226562
+1 clauses are pruned.
+Initial DL				: 6767.765296313812
+Final DL				: 0
+Compression (wrt me)	: 1.0
+Operator Counters		: {'D': 0, 'W': 0, 'V': 0, 'S': 0, 'R': 0, 'T': 7}
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 24
+ Total time ~: 6 ms
+ Max memory:7.562065124511719
+=====================================
+Length of freq items 1	: 24
+Time of freq items 1	: 0.46565771102905273
+120832 Frequent Itemsets are mined in 3.066577196121216 seconds.
+Length of freq items 2	: 120832
+Time of freq items 2	: 3.0666391849517822
+DL of initial theory	: 2414.121434418562
+0	itemsets left after T operation 	: [frozenset({4, 5, 6, 8, 13, 14, 16, -15, 17, -12})]
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 1
+ Total time ~: 2 ms
+ Max memory:7.577728271484375
+=====================================
+Length of freq items 1	: 1
+Time of freq items 1	: 1.5042471885681152
+512 Frequent Itemsets are mined in 0.01115107536315918 seconds.
+Length of freq items 2	: 512
+Time of freq items 2	: 0.011208057403564453
+1 clauses are pruned.
+Initial DL				: 6767.765296313812
+Final DL				: 0
+Compression (wrt me)	: 1.0
+Operator Counters		: {'D': 0, 'W': 0, 'V': 0, 'S': 0, 'R': 0, 'T': 1}
+
+Dataset	: iris_17.dat;	Missingness Parameter	: 0.05
+Mistle Accuracy = 0.3620689655172414 ; 1.0 ; 0.0 ; 0.6379310344827587 / 116
+CNFAlgo Accuracy = 34/119 = 0.2857142857142857
+
+Dataset	: iris_17.dat;	Missingness Parameter	: 0.1
+Mistle Accuracy = 0.297029702970297 ; 1.0 ; 0.0 ; 0.7029702970297029 / 202
+CNFAlgo Accuracy = 40/205 = 0.1951219512195122
+
+
+dataset = iris_17.dat with minsup = 0.009523809523809525
+missingness_parameters = [0.05, 0.1]
+mistle_accuracy_list1 = [0.3620689655172414, 0.297029702970297]
+mistle_accuracy_list2 = [1.0, 1.0]
+mistle_accuracy_list3 = [0.0, 0.0]
+mistle_accuracy_list4 = [0.6379310344827587, 0.7029702970297029]
+mistle_clauses_list = [0, 0]
+mistle_literals_list = [0, 0]
+cnfalgo_accuracy_list = [0.2857142857142857, 0.1951219512195122]
+cnfalgo_clauses_list = [5546, 5546]
+cnfalgo_literals_list = [22490, 22490]
+train_data_literals_list = [1680, 1680]
+randomized_accuracy_list = [0.361328125, 0.2878289473684211]

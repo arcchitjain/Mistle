@@ -1,0 +1,36 @@
+
+
+Comparing on hepatitis.dat with nb_rows = 155 and minsup = 0.25
+Running CNFAlgo
+Return Code for CNFAlgo	: 0
+CNFAlgo Accuracy = 3/16 = 0.1875
+Running CNFAlgo
+Return Code for CNFAlgo	: 0
+CNFAlgo Accuracy = 5/16 = 0.3125
+Running CNFAlgo
+Return Code for CNFAlgo	: 0
+CNFAlgo Accuracy = 4/16 = 0.25
+Running CNFAlgo
+Return Code for CNFAlgo	: 0
+CNFAlgo Accuracy = 0/16 = 0.0
+Running CNFAlgo
+Return Code for CNFAlgo	: 0
+CNFAlgo Accuracy = 6/16 = 0.375
+Running CNFAlgo
+Return Code for CNFAlgo	: 0
+CNFAlgo Accuracy = 5/16 = 0.3125
+Running CNFAlgo
+Return Code for CNFAlgo	: 0
+CNFAlgo Accuracy = 8/16 = 0.5
+Running CNFAlgo
+Return Code for CNFAlgo	: 0
+CNFAlgo Accuracy = 5/16 = 0.3125
+Running CNFAlgo
+Return Code for CNFAlgo	: 0
+CNFAlgo Accuracy = 4/16 = 0.25
+Running CNFAlgo
+Return Code for CNFAlgo	: 0
+CNFAlgo Accuracy = 3/11 = 0.2727272727272727
+cnfalgo_fold_accuracy_list = [0.1875, 0.3125, 0.25, 0.0, 0.375, 0.3125, 0.5, 0.3125, 0.25, 0.2727272727272727]
+cnfalgo_time = 198.8282127380371
+cnfalgo_accuracy = 0.2772727272727272

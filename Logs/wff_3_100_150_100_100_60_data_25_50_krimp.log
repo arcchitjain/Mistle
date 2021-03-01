@@ -1,0 +1,1920 @@
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: '98620e7e-a828-4e21-827b-3eff6d929d37_convertdb.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * Type:		FIMI database
+ * File:		wff_3_100_150_100_100_60_data_0_train_pos.dat
+ * Scanning file:	in progress... * Scanning file: done                       
+ * Database:	86 rows, maximal 49 columns
+ * 		has bin sizes: no
+ * 		has transaction id's: no
+ * Reading database:	in progress... * Reading database:	done          
+
+ * Processing Data:  * Processing Data: Translating Forward * Processing Data: Sorting within Rows * Processing Data: Writing Data              ** Writing FIC database to file
+ * File:		wff_3_100_150_100_100_60_data_0_train_pos.db
+** Finished writing database.
+
+ * Processing Data: Finished                  
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/
+
+Task `datatrans`, command `convertdb` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: '2dbd41d9-569e-4179-b7e3-0e124fcdd6d1_analysedb.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * File:		wff_3_100_150_100_100_60_data_0_train_pos.db
+ * Database:		86t 86r, 3443i, 26180.63bits
+ * 			pruned below support 0, maximum set length 49
+ * Alphabet:		200 items
+ * Internal datatype:	uint16 value arrays
+
+** Analysing database
+ * Output File:	wff_3_100_150_100_100_60_data_0_train_pos.db.analysis.txt
+ * Writing analysis:	in progress... * Writing analysis:	done          
+
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/analysedb/
+
+Task `main`, command `analysedb` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: '0d9f3d03-cb1d-4980-bbbb-e94d3036720c_compress.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * File:		wff_3_100_150_100_100_60_data_0_train_pos.db
+ * Database:		86t 86r, 3443i, 26180.63bits
+ * 			pruned below support 0, maximum set length 49
+ * Alphabet:		200 items
+ * Internal datatype:	128bit bitmap
+ ** WARNING : |ab| > 128 : won't fit in BM128, using Uint16 **
+
+
+** ItemSetCollection ::
+** Creating Frequent Item Set Collection.
+ * File:		wff_3_100_150_100_100_60_data_0_train_pos-all-25d.bisc.fi
+ * Type:		FIMI
+ * Has # rows:		no
+ * # ItemSets:		5
+ * Sorting sets:	in progress... * Sorting sets:	sorted on support and descending on length
+** Finished Creating Frequent Item Set Collection
+
+
+** Compression :: 
+ * Experiment tag	wff_3_100_150_100_100_60_data_0_train_pos-all-25d-pop-20200331161440
+ * Algorithm:		coverpartial post-accept-prune
+ * Candidates:		5p
+ * Start:		(200a,0u,3443,26181,3074,29255)
+ - Progress:		0% (0) ? c/s  		 - Progress:		20% (1) ? c/s  		 - Progress:		40% (2) ? c/s  		 - Progress:		60% (3) ? c/s  		 - Progress:		80% (4) ? c/s  		 * Time:    		Compressing the database took 0.000247 seconds.		
+ * Result:		(200a,0u,3443,26181,3074,29255)
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/compress/
+
+Task `main`, command `compress` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: '71bac7ef-026e-4b26-b6f6-dd6796e1617f_convertdb.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * Type:		FIMI database
+ * File:		wff_3_100_150_100_100_60_data_0_train_neg.dat
+ * Scanning file:	in progress... * Scanning file: done                       
+ * Database:	86 rows, maximal 53 columns
+ * 		has bin sizes: no
+ * 		has transaction id's: no
+ * Reading database:	in progress... * Reading database:	done          
+
+ * Processing Data:  * Processing Data: Translating Forward * Processing Data: Sorting within Rows * Processing Data: Writing Data              ** Writing FIC database to file
+ * File:		wff_3_100_150_100_100_60_data_0_train_neg.db
+** Finished writing database.
+
+ * Processing Data: Finished                  
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/
+
+Task `datatrans`, command `convertdb` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: '7033ce85-906e-4048-a7c6-0631f00d42e8_analysedb.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * File:		wff_3_100_150_100_100_60_data_0_train_neg.db
+ * Database:		86t 86r, 3414i, 23037.72bits
+ * 			pruned below support 0, maximum set length 53
+ * Alphabet:		112 items
+ * Internal datatype:	uint16 value arrays
+
+** Analysing database
+ * Output File:	wff_3_100_150_100_100_60_data_0_train_neg.db.analysis.txt
+ * Writing analysis:	in progress... * Writing analysis:	done          
+
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/analysedb/
+
+Task `main`, command `analysedb` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: '5e910983-169f-46d1-90ce-3ab279072beb_compress.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * File:		wff_3_100_150_100_100_60_data_0_train_neg.db
+ * Database:		86t 86r, 3414i, 23037.72bits
+ * 			pruned below support 0, maximum set length 53
+ * Alphabet:		112 items
+ * Internal datatype:	128bit bitmap
+
+** ItemSetCollection ::
+** Creating Frequent Item Set Collection.
+ * File:		wff_3_100_150_100_100_60_data_0_train_neg-all-50d.bisc.fi
+ * Type:		FIMI
+ * Has # rows:		no
+ * # ItemSets:		0
+Error removing Isc conversion input file.** Finished Creating Frequent Item Set Collection
+
+
+** Compression :: 
+ * Experiment tag	wff_3_100_150_100_100_60_data_0_train_neg-all-50d-pop-20200331161440
+ * Algorithm:		coverpartial post-accept-prune
+ * Candidates:		0p
+ * Start:		(112a,0u,3414,23038,1541,24579)
+ * Time:    		Compressing the database took 0.000055 seconds.		
+ * Result:		(112a,0u,3414,23038,1541,24579)
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/compress/
+
+Task `main`, command `compress` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: '0f5bc904-d111-431b-b9f8-05eaf4d58e82_convertdb.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * Type:		FIMI database
+ * File:		wff_3_100_150_100_100_60_data_1_train_pos.dat
+ * Scanning file:	in progress... * Scanning file: done                       
+ * Database:	85 rows, maximal 50 columns
+ * 		has bin sizes: no
+ * 		has transaction id's: no
+ * Reading database:	in progress... * Reading database:	done          
+
+ * Processing Data:  * Processing Data: Translating Forward * Processing Data: Sorting within Rows * Processing Data: Writing Data              ** Writing FIC database to file
+ * File:		wff_3_100_150_100_100_60_data_1_train_pos.db
+** Finished writing database.
+
+ * Processing Data: Finished                  
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/
+
+Task `datatrans`, command `convertdb` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: '19e14077-cc7b-4c17-af5c-f2efdf3d0907_analysedb.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * File:		wff_3_100_150_100_100_60_data_1_train_pos.db
+ * Database:		85t 85r, 3412i, 25950.69bits
+ * 			pruned below support 0, maximum set length 50
+ * Alphabet:		200 items
+ * Internal datatype:	uint16 value arrays
+
+** Analysing database
+ * Output File:	wff_3_100_150_100_100_60_data_1_train_pos.db.analysis.txt
+ * Writing analysis:	in progress... * Writing analysis:	done          
+
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/analysedb/
+
+Task `main`, command `analysedb` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: '83b90ea8-50cc-4781-af8c-66733f985053_compress.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * File:		wff_3_100_150_100_100_60_data_1_train_pos.db
+ * Database:		85t 85r, 3412i, 25950.69bits
+ * 			pruned below support 0, maximum set length 50
+ * Alphabet:		200 items
+ * Internal datatype:	128bit bitmap
+ ** WARNING : |ab| > 128 : won't fit in BM128, using Uint16 **
+
+
+** ItemSetCollection ::
+** Creating Frequent Item Set Collection.
+ * File:		wff_3_100_150_100_100_60_data_1_train_pos-all-25d.bisc.fi
+ * Type:		FIMI
+ * Has # rows:		no
+ * # ItemSets:		5
+ * Sorting sets:	in progress... * Sorting sets:	sorted on support and descending on length
+** Finished Creating Frequent Item Set Collection
+
+
+** Compression :: 
+ * Experiment tag	wff_3_100_150_100_100_60_data_1_train_pos-all-25d-pop-20200331161440
+ * Algorithm:		coverpartial post-accept-prune
+ * Candidates:		5p
+ * Start:		(200a,0u,3412,25951,3074,29024)
+ - Progress:		0% (0) ? c/s  		 - Progress:		20% (1) ? c/s  		 - Progress:		40% (2) ? c/s  		 - Progress:		60% (3) ? c/s  		 - Progress:		80% (4) ? c/s  		 * Time:    		Compressing the database took 0.000139 seconds.		
+ * Result:		(200a,0u,3412,25951,3074,29024)
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/compress/
+
+Task `main`, command `compress` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: '1662524b-78df-4332-b962-b148dc8ca215_convertdb.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * Type:		FIMI database
+ * File:		wff_3_100_150_100_100_60_data_1_train_neg.dat
+ * Scanning file:	in progress... * Scanning file: done                       
+ * Database:	85 rows, maximal 52 columns
+ * 		has bin sizes: no
+ * 		has transaction id's: no
+ * Reading database:	in progress... * Reading database:	done          
+
+ * Processing Data:  * Processing Data: Translating Forward * Processing Data: Sorting within Rows * Processing Data: Writing Data              ** Writing FIC database to file
+ * File:		wff_3_100_150_100_100_60_data_1_train_neg.db
+** Finished writing database.
+
+ * Processing Data: Finished                  
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/
+
+Task `datatrans`, command `convertdb` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: 'b23cb409-e2bc-49ca-aa85-dab3cb9d7408_analysedb.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * File:		wff_3_100_150_100_100_60_data_1_train_neg.db
+ * Database:		85t 85r, 3399i, 22919.22bits
+ * 			pruned below support 0, maximum set length 52
+ * Alphabet:		112 items
+ * Internal datatype:	uint16 value arrays
+
+** Analysing database
+ * Output File:	wff_3_100_150_100_100_60_data_1_train_neg.db.analysis.txt
+ * Writing analysis:	in progress... * Writing analysis:	done          
+
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/analysedb/
+
+Task `main`, command `analysedb` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: '5d9d225d-bbcc-4347-af6c-31ea6dff59d3_compress.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * File:		wff_3_100_150_100_100_60_data_1_train_neg.db
+ * Database:		85t 85r, 3399i, 22919.22bits
+ * 			pruned below support 0, maximum set length 52
+ * Alphabet:		112 items
+ * Internal datatype:	128bit bitmap
+
+** ItemSetCollection ::
+** Creating Frequent Item Set Collection.
+ * File:		wff_3_100_150_100_100_60_data_1_train_neg-all-50d.bisc.fi
+ * Type:		FIMI
+ * Has # rows:		no
+ * # ItemSets:		0
+Error removing Isc conversion input file.** Finished Creating Frequent Item Set Collection
+
+
+** Compression :: 
+ * Experiment tag	wff_3_100_150_100_100_60_data_1_train_neg-all-50d-pop-20200331161440
+ * Algorithm:		coverpartial post-accept-prune
+ * Candidates:		0p
+ * Start:		(112a,0u,3399,22919,1543,24462)
+ * Time:    		Compressing the database took 0.000051 seconds.		
+ * Result:		(112a,0u,3399,22919,1543,24462)
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/compress/
+
+Task `main`, command `compress` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: 'ca9b1da6-81c2-41e8-9ba0-6dc4845d6c56_convertdb.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * Type:		FIMI database
+ * File:		wff_3_100_150_100_100_60_data_2_train_pos.dat
+ * Scanning file:	in progress... * Scanning file: done                       
+ * Database:	93 rows, maximal 50 columns
+ * 		has bin sizes: no
+ * 		has transaction id's: no
+ * Reading database:	in progress... * Reading database:	done          
+
+ * Processing Data:  * Processing Data: Translating Forward * Processing Data: Sorting within Rows * Processing Data: Writing Data              ** Writing FIC database to file
+ * File:		wff_3_100_150_100_100_60_data_2_train_pos.db
+** Finished writing database.
+
+ * Processing Data: Finished                  
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/
+
+Task `datatrans`, command `convertdb` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: 'c78ecf61-14fb-49ae-a1ea-13ba78b43ef3_analysedb.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * File:		wff_3_100_150_100_100_60_data_2_train_pos.db
+ * Database:		93t 93r, 3701i, 28172.37bits
+ * 			pruned below support 0, maximum set length 50
+ * Alphabet:		200 items
+ * Internal datatype:	uint16 value arrays
+
+** Analysing database
+ * Output File:	wff_3_100_150_100_100_60_data_2_train_pos.db.analysis.txt
+ * Writing analysis:	in progress... * Writing analysis:	done          
+
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/analysedb/
+
+Task `main`, command `analysedb` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: '5b6110bc-da9d-4450-be9b-d6492ed3e14b_compress.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * File:		wff_3_100_150_100_100_60_data_2_train_pos.db
+ * Database:		93t 93r, 3701i, 28172.37bits
+ * 			pruned below support 0, maximum set length 50
+ * Alphabet:		200 items
+ * Internal datatype:	128bit bitmap
+ ** WARNING : |ab| > 128 : won't fit in BM128, using Uint16 **
+
+
+** ItemSetCollection ::
+** Creating Frequent Item Set Collection.
+ * File:		wff_3_100_150_100_100_60_data_2_train_pos-all-25d.bisc.fi
+ * Type:		FIMI
+ * Has # rows:		no
+ * # ItemSets:		12
+ * Sorting sets:	in progress... * Sorting sets:	sorted on support and descending on length
+** Finished Creating Frequent Item Set Collection
+
+
+** Compression :: 
+ * Experiment tag	wff_3_100_150_100_100_60_data_2_train_pos-all-25d-pop-20200331161440
+ * Algorithm:		coverpartial post-accept-prune
+ * Candidates:		12p
+ * Start:		(200a,0u,3701,28172,3071,31243)
+ - Progress:		0% (0) ? c/s  		 - Progress:		8% (1) ? c/s  		 - Progress:		16% (2) ? c/s  		 \ Progress:		25% (3) ? c/s  		 \ Progress:		33% (4) ? c/s  		 \ Progress:		41% (5) ? c/s  		 | Progress:		50% (6) ? c/s  		 | Progress:		58% (7) ? c/s  		 | Progress:		66% (8) ? c/s  		 / Progress:		75% (9) ? c/s  		 / Progress:		83% (10) ? c/s  		 / Progress:		91% (11) ? c/s  		 * Time:    		Compressing the database took 0.000159 seconds.		
+ * Result:		(200a,0u,3701,28172,3071,31243)
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/compress/
+
+Task `main`, command `compress` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: '105c3173-093f-4657-9ee4-f682d94aac39_convertdb.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * Type:		FIMI database
+ * File:		wff_3_100_150_100_100_60_data_2_train_neg.dat
+ * Scanning file:	in progress... * Scanning file: done                       
+ * Database:	93 rows, maximal 53 columns
+ * 		has bin sizes: no
+ * 		has transaction id's: no
+ * Reading database:	in progress... * Reading database:	done          
+
+ * Processing Data:  * Processing Data: Translating Forward * Processing Data: Sorting within Rows * Processing Data: Writing Data              ** Writing FIC database to file
+ * File:		wff_3_100_150_100_100_60_data_2_train_neg.db
+** Finished writing database.
+
+ * Processing Data: Finished                  
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/
+
+Task `datatrans`, command `convertdb` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: 'ddbdfee2-e903-4b62-ba3b-a1176a8f383a_analysedb.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * File:		wff_3_100_150_100_100_60_data_2_train_neg.db
+ * Database:		93t 93r, 3722i, 25118.82bits
+ * 			pruned below support 0, maximum set length 53
+ * Alphabet:		112 items
+ * Internal datatype:	uint16 value arrays
+
+** Analysing database
+ * Output File:	wff_3_100_150_100_100_60_data_2_train_neg.db.analysis.txt
+ * Writing analysis:	in progress... * Writing analysis:	done          
+
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/analysedb/
+
+Task `main`, command `analysedb` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: 'cac21c6b-028d-4fb2-8a55-9e6ddd12f8a8_compress.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * File:		wff_3_100_150_100_100_60_data_2_train_neg.db
+ * Database:		93t 93r, 3722i, 25118.82bits
+ * 			pruned below support 0, maximum set length 53
+ * Alphabet:		112 items
+ * Internal datatype:	128bit bitmap
+
+** ItemSetCollection ::
+** Creating Frequent Item Set Collection.
+ * File:		wff_3_100_150_100_100_60_data_2_train_neg-all-50d.bisc.fi
+ * Type:		FIMI
+ * Has # rows:		no
+ * # ItemSets:		1
+ * Sorting sets:	in progress... * Sorting sets:	sorted on support and descending on length
+** Finished Creating Frequent Item Set Collection
+
+
+** Compression :: 
+ * Experiment tag	wff_3_100_150_100_100_60_data_2_train_neg-all-50d-pop-20200331161440
+ * Algorithm:		coverpartial post-accept-prune
+ * Candidates:		1p
+ * Start:		(112a,0u,3722,25119,1541,26660)
+ - Progress:		0% (0) ? c/s  		 * Time:    		Compressing the database took 0.000176 seconds.		
+ * Result:		(112a,0u,3722,25119,1541,26660)
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/compress/
+
+Task `main`, command `compress` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: '93bd98d9-29cf-4251-8528-bb71755ee59f_convertdb.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * Type:		FIMI database
+ * File:		wff_3_100_150_100_100_60_data_3_train_pos.dat
+ * Scanning file:	in progress... * Scanning file: done                       
+ * Database:	91 rows, maximal 50 columns
+ * 		has bin sizes: no
+ * 		has transaction id's: no
+ * Reading database:	in progress... * Reading database:	done          
+
+ * Processing Data:  * Processing Data: Translating Forward * Processing Data: Sorting within Rows * Processing Data: Writing Data              ** Writing FIC database to file
+ * File:		wff_3_100_150_100_100_60_data_3_train_pos.db
+** Finished writing database.
+
+ * Processing Data: Finished                  
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/
+
+Task `datatrans`, command `convertdb` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: 'c3bb875a-0ad8-4cfd-8c49-b0ee3ac43bcd_analysedb.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * File:		wff_3_100_150_100_100_60_data_3_train_pos.db
+ * Database:		91t 91r, 3665i, 27898.40bits
+ * 			pruned below support 0, maximum set length 50
+ * Alphabet:		200 items
+ * Internal datatype:	uint16 value arrays
+
+** Analysing database
+ * Output File:	wff_3_100_150_100_100_60_data_3_train_pos.db.analysis.txt
+ * Writing analysis:	in progress... * Writing analysis:	done          
+
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/analysedb/
+
+Task `main`, command `analysedb` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: '32355898-431f-4fae-9865-80920281374d_compress.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * File:		wff_3_100_150_100_100_60_data_3_train_pos.db
+ * Database:		91t 91r, 3665i, 27898.40bits
+ * 			pruned below support 0, maximum set length 50
+ * Alphabet:		200 items
+ * Internal datatype:	128bit bitmap
+ ** WARNING : |ab| > 128 : won't fit in BM128, using Uint16 **
+
+
+** ItemSetCollection ::
+** Creating Frequent Item Set Collection.
+ * File:		wff_3_100_150_100_100_60_data_3_train_pos-all-25d.bisc.fi
+ * Type:		FIMI
+ * Has # rows:		no
+ * # ItemSets:		11
+ * Sorting sets:	in progress... * Sorting sets:	sorted on support and descending on length
+** Finished Creating Frequent Item Set Collection
+
+
+** Compression :: 
+ * Experiment tag	wff_3_100_150_100_100_60_data_3_train_pos-all-25d-pop-20200331161440
+ * Algorithm:		coverpartial post-accept-prune
+ * Candidates:		11p
+ * Start:		(200a,0u,3665,27898,3071,30969)
+ - Progress:		0% (0) ? c/s  		 \ Progress:		9% (1) ? c/s  		 | Progress:		18% (2) ? c/s  		 / Progress:		27% (3) ? c/s  		 - Progress:		36% (4) ? c/s  		 \ Progress:		45% (5) ? c/s  		 | Progress:		54% (6) ? c/s  		 / Progress:		63% (7) ? c/s  		 - Progress:		72% (8) ? c/s  		 \ Progress:		81% (9) ? c/s  		 | Progress:		90% (10) ? c/s  		 * Time:    		Compressing the database took 0.000155 seconds.		
+ * Result:		(200a,0u,3665,27898,3071,30969)
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/compress/
+
+Task `main`, command `compress` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: 'e5e91ed1-1cbf-4644-9093-062e6c0d8f7b_convertdb.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * Type:		FIMI database
+ * File:		wff_3_100_150_100_100_60_data_3_train_neg.dat
+ * Scanning file:	in progress... * Scanning file: done                       
+ * Database:	91 rows, maximal 53 columns
+ * 		has bin sizes: no
+ * 		has transaction id's: no
+ * Reading database:	in progress... * Reading database:	done          
+
+ * Processing Data:  * Processing Data: Translating Forward * Processing Data: Sorting within Rows * Processing Data: Writing Data              ** Writing FIC database to file
+ * File:		wff_3_100_150_100_100_60_data_3_train_neg.db
+** Finished writing database.
+
+ * Processing Data: Finished                  
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/
+
+Task `datatrans`, command `convertdb` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: '65ab9a59-fd2f-43ed-b5c4-bc25f88a8075_analysedb.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * File:		wff_3_100_150_100_100_60_data_3_train_neg.db
+ * Database:		91t 91r, 3617i, 24406.77bits
+ * 			pruned below support 0, maximum set length 53
+ * Alphabet:		112 items
+ * Internal datatype:	uint16 value arrays
+
+** Analysing database
+ * Output File:	wff_3_100_150_100_100_60_data_3_train_neg.db.analysis.txt
+ * Writing analysis:	in progress... * Writing analysis:	done          
+
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/analysedb/
+
+Task `main`, command `analysedb` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: 'd0a5ca28-9185-4df2-9c7c-ed2d4819241e_compress.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * File:		wff_3_100_150_100_100_60_data_3_train_neg.db
+ * Database:		91t 91r, 3617i, 24406.77bits
+ * 			pruned below support 0, maximum set length 53
+ * Alphabet:		112 items
+ * Internal datatype:	128bit bitmap
+
+** ItemSetCollection ::
+** Creating Frequent Item Set Collection.
+ * File:		wff_3_100_150_100_100_60_data_3_train_neg-all-50d.bisc.fi
+ * Type:		FIMI
+ * Has # rows:		no
+ * # ItemSets:		1
+ * Sorting sets:	in progress... * Sorting sets:	sorted on support and descending on length
+** Finished Creating Frequent Item Set Collection
+
+
+** Compression :: 
+ * Experiment tag	wff_3_100_150_100_100_60_data_3_train_neg-all-50d-pop-20200331161440
+ * Algorithm:		coverpartial post-accept-prune
+ * Candidates:		1p
+ * Start:		(112a,0u,3617,24407,1541,25948)
+ - Progress:		0% (0) ? c/s  		 * Time:    		Compressing the database took 0.000113 seconds.		
+ * Result:		(112a,0u,3617,24407,1541,25948)
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/compress/
+
+Task `main`, command `compress` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: 'b5bcade3-3e6c-426c-808a-4d172d161acf_convertdb.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * Type:		FIMI database
+ * File:		wff_3_100_150_100_100_60_data_4_train_pos.dat
+ * Scanning file:	in progress... * Scanning file: done                       
+ * Database:	88 rows, maximal 50 columns
+ * 		has bin sizes: no
+ * 		has transaction id's: no
+ * Reading database:	in progress... * Reading database:	done          
+
+ * Processing Data:  * Processing Data: Translating Forward * Processing Data: Sorting within Rows * Processing Data: Writing Data              ** Writing FIC database to file
+ * File:		wff_3_100_150_100_100_60_data_4_train_pos.db
+** Finished writing database.
+
+ * Processing Data: Finished                  
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/
+
+Task `datatrans`, command `convertdb` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: '0e00679b-5392-43f2-a23c-b37b578ece4a_analysedb.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * File:		wff_3_100_150_100_100_60_data_4_train_pos.db
+ * Database:		88t 88r, 3508i, 26687.81bits
+ * 			pruned below support 0, maximum set length 50
+ * Alphabet:		200 items
+ * Internal datatype:	uint16 value arrays
+
+** Analysing database
+ * Output File:	wff_3_100_150_100_100_60_data_4_train_pos.db.analysis.txt
+ * Writing analysis:	in progress... * Writing analysis:	done          
+
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/analysedb/
+
+Task `main`, command `analysedb` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: 'a532ce88-e338-4fb0-bf40-4b1919d7695d_compress.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * File:		wff_3_100_150_100_100_60_data_4_train_pos.db
+ * Database:		88t 88r, 3508i, 26687.81bits
+ * 			pruned below support 0, maximum set length 50
+ * Alphabet:		200 items
+ * Internal datatype:	128bit bitmap
+ ** WARNING : |ab| > 128 : won't fit in BM128, using Uint16 **
+
+
+** ItemSetCollection ::
+** Creating Frequent Item Set Collection.
+ * File:		wff_3_100_150_100_100_60_data_4_train_pos-all-25d.bisc.fi
+ * Type:		FIMI
+ * Has # rows:		no
+ * # ItemSets:		5
+ * Sorting sets:	in progress... * Sorting sets:	sorted on support and descending on length
+** Finished Creating Frequent Item Set Collection
+
+
+** Compression :: 
+ * Experiment tag	wff_3_100_150_100_100_60_data_4_train_pos-all-25d-pop-20200331161440
+ * Algorithm:		coverpartial post-accept-prune
+ * Candidates:		5p
+ * Start:		(200a,0u,3508,26688,3073,29761)
+ - Progress:		0% (0) ? c/s  		 - Progress:		20% (1) ? c/s  		 - Progress:		40% (2) ? c/s  		 - Progress:		60% (3) ? c/s  		 - Progress:		80% (4) ? c/s  		 * Time:    		Compressing the database took 0.000148 seconds.		
+ * Result:		(200a,0u,3508,26688,3073,29761)
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/compress/
+
+Task `main`, command `compress` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: '1ebb3813-8599-4630-973d-ce43f17ea245_convertdb.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * Type:		FIMI database
+ * File:		wff_3_100_150_100_100_60_data_4_train_neg.dat
+ * Scanning file:	in progress... * Scanning file: done                       
+ * Database:	88 rows, maximal 53 columns
+ * 		has bin sizes: no
+ * 		has transaction id's: no
+ * Reading database:	in progress... * Reading database:	done          
+
+ * Processing Data:  * Processing Data: Translating Forward * Processing Data: Sorting within Rows * Processing Data: Writing Data              ** Writing FIC database to file
+ * File:		wff_3_100_150_100_100_60_data_4_train_neg.db
+** Finished writing database.
+
+ * Processing Data: Finished                  
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/
+
+Task `datatrans`, command `convertdb` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: '5c154c3e-eace-4eca-bcf9-4ff6301e824f_analysedb.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * File:		wff_3_100_150_100_100_60_data_4_train_neg.db
+ * Database:		88t 88r, 3523i, 23775.30bits
+ * 			pruned below support 0, maximum set length 53
+ * Alphabet:		112 items
+ * Internal datatype:	uint16 value arrays
+
+** Analysing database
+ * Output File:	wff_3_100_150_100_100_60_data_4_train_neg.db.analysis.txt
+ * Writing analysis:	in progress... * Writing analysis:	done          
+
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/analysedb/
+
+Task `main`, command `analysedb` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: 'cf77e681-49fb-4123-bc79-19e7dce4587d_compress.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * File:		wff_3_100_150_100_100_60_data_4_train_neg.db
+ * Database:		88t 88r, 3523i, 23775.30bits
+ * 			pruned below support 0, maximum set length 53
+ * Alphabet:		112 items
+ * Internal datatype:	128bit bitmap
+
+** ItemSetCollection ::
+** Creating Frequent Item Set Collection.
+ * File:		wff_3_100_150_100_100_60_data_4_train_neg-all-50d.bisc.fi
+ * Type:		FIMI
+ * Has # rows:		no
+ * # ItemSets:		0
+Error removing Isc conversion input file.** Finished Creating Frequent Item Set Collection
+
+
+** Compression :: 
+ * Experiment tag	wff_3_100_150_100_100_60_data_4_train_neg-all-50d-pop-20200331161440
+ * Algorithm:		coverpartial post-accept-prune
+ * Candidates:		0p
+ * Start:		(112a,0u,3523,23775,1541,25316)
+ * Time:    		Compressing the database took 0.000048 seconds.		
+ * Result:		(112a,0u,3523,23775,1541,25316)
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/compress/
+
+Task `main`, command `compress` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: '4f097dd2-fd56-4af0-a87a-1e3d548767f2_convertdb.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * Type:		FIMI database
+ * File:		wff_3_100_150_100_100_60_data_5_train_pos.dat
+ * Scanning file:	in progress... * Scanning file: done                       
+ * Database:	91 rows, maximal 50 columns
+ * 		has bin sizes: no
+ * 		has transaction id's: no
+ * Reading database:	in progress... * Reading database:	done          
+
+ * Processing Data:  * Processing Data: Translating Forward * Processing Data: Sorting within Rows * Processing Data: Writing Data              ** Writing FIC database to file
+ * File:		wff_3_100_150_100_100_60_data_5_train_pos.db
+** Finished writing database.
+
+ * Processing Data: Finished                  
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/
+
+Task `datatrans`, command `convertdb` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: '0a666d26-f402-4838-9c44-a1b42d59bd43_analysedb.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * File:		wff_3_100_150_100_100_60_data_5_train_pos.db
+ * Database:		91t 91r, 3641i, 27717.20bits
+ * 			pruned below support 0, maximum set length 50
+ * Alphabet:		200 items
+ * Internal datatype:	uint16 value arrays
+
+** Analysing database
+ * Output File:	wff_3_100_150_100_100_60_data_5_train_pos.db.analysis.txt
+ * Writing analysis:	in progress... * Writing analysis:	done          
+
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/analysedb/
+
+Task `main`, command `analysedb` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: 'a59fe4da-1d6d-4f18-aa51-0ef6b60c9641_compress.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * File:		wff_3_100_150_100_100_60_data_5_train_pos.db
+ * Database:		91t 91r, 3641i, 27717.20bits
+ * 			pruned below support 0, maximum set length 50
+ * Alphabet:		200 items
+ * Internal datatype:	128bit bitmap
+ ** WARNING : |ab| > 128 : won't fit in BM128, using Uint16 **
+
+
+** ItemSetCollection ::
+** Creating Frequent Item Set Collection.
+ * File:		wff_3_100_150_100_100_60_data_5_train_pos-all-25d.bisc.fi
+ * Type:		FIMI
+ * Has # rows:		no
+ * # ItemSets:		9
+ * Sorting sets:	in progress... * Sorting sets:	sorted on support and descending on length
+** Finished Creating Frequent Item Set Collection
+
+
+** Compression :: 
+ * Experiment tag	wff_3_100_150_100_100_60_data_5_train_pos-all-25d-pop-20200331161440
+ * Algorithm:		coverpartial post-accept-prune
+ * Candidates:		9p
+ * Start:		(200a,0u,3641,27717,3071,30788)
+ - Progress:		0% (0) ? c/s  		 / Progress:		11% (1) ? c/s  		 | Progress:		22% (2) ? c/s  		 \ Progress:		33% (3) ? c/s  		 - Progress:		44% (4) ? c/s  		 / Progress:		55% (5) ? c/s  		 | Progress:		66% (6) ? c/s  		 \ Progress:		77% (7) ? c/s  		 - Progress:		88% (8) ? c/s  		 * Time:    		Compressing the database took 0.000149 seconds.		
+ * Result:		(200a,0u,3641,27717,3071,30788)
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/compress/
+
+Task `main`, command `compress` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: 'cc807cf5-2904-4194-a030-2ae9cb9bddf8_convertdb.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * Type:		FIMI database
+ * File:		wff_3_100_150_100_100_60_data_5_train_neg.dat
+ * Scanning file:	in progress... * Scanning file: done                       
+ * Database:	91 rows, maximal 53 columns
+ * 		has bin sizes: no
+ * 		has transaction id's: no
+ * Reading database:	in progress... * Reading database:	done          
+
+ * Processing Data:  * Processing Data: Translating Forward * Processing Data: Sorting within Rows * Processing Data: Writing Data              ** Writing FIC database to file
+ * File:		wff_3_100_150_100_100_60_data_5_train_neg.db
+** Finished writing database.
+
+ * Processing Data: Finished                  
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/
+
+Task `datatrans`, command `convertdb` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: '8f48ee53-8b7c-44ed-8f8f-b909d6277a89_analysedb.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * File:		wff_3_100_150_100_100_60_data_5_train_neg.db
+ * Database:		91t 91r, 3673i, 24785.01bits
+ * 			pruned below support 0, maximum set length 53
+ * Alphabet:		112 items
+ * Internal datatype:	uint16 value arrays
+
+** Analysing database
+ * Output File:	wff_3_100_150_100_100_60_data_5_train_neg.db.analysis.txt
+ * Writing analysis:	in progress... * Writing analysis:	done          
+
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/analysedb/
+
+Task `main`, command `analysedb` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: '18f95d7c-f122-4278-b4d2-47f7fcca9c12_compress.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * File:		wff_3_100_150_100_100_60_data_5_train_neg.db
+ * Database:		91t 91r, 3673i, 24785.01bits
+ * 			pruned below support 0, maximum set length 53
+ * Alphabet:		112 items
+ * Internal datatype:	128bit bitmap
+
+** ItemSetCollection ::
+** Creating Frequent Item Set Collection.
+ * File:		wff_3_100_150_100_100_60_data_5_train_neg-all-50d.bisc.fi
+ * Type:		FIMI
+ * Has # rows:		no
+ * # ItemSets:		0
+Error removing Isc conversion input file.** Finished Creating Frequent Item Set Collection
+
+
+** Compression :: 
+ * Experiment tag	wff_3_100_150_100_100_60_data_5_train_neg-all-50d-pop-20200331161440
+ * Algorithm:		coverpartial post-accept-prune
+ * Candidates:		0p
+ * Start:		(112a,0u,3673,24785,1541,26326)
+ * Time:    		Compressing the database took 0.000077 seconds.		
+ * Result:		(112a,0u,3673,24785,1541,26326)
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/compress/
+
+Task `main`, command `compress` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: 'fa651447-2a46-4365-8367-d04205d7aaa3_convertdb.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * Type:		FIMI database
+ * File:		wff_3_100_150_100_100_60_data_6_train_pos.dat
+ * Scanning file:	in progress... * Scanning file: done                       
+ * Database:	93 rows, maximal 50 columns
+ * 		has bin sizes: no
+ * 		has transaction id's: no
+ * Reading database:	in progress... * Reading database:	done          
+
+ * Processing Data:  * Processing Data: Translating Forward * Processing Data: Sorting within Rows * Processing Data: Writing Data              ** Writing FIC database to file
+ * File:		wff_3_100_150_100_100_60_data_6_train_pos.db
+** Finished writing database.
+
+ * Processing Data: Finished                  
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/
+
+Task `datatrans`, command `convertdb` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: '762ebdab-e7db-414d-8f7c-194a95679f6e_analysedb.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * File:		wff_3_100_150_100_100_60_data_6_train_pos.db
+ * Database:		93t 93r, 3731i, 28402.09bits
+ * 			pruned below support 0, maximum set length 50
+ * Alphabet:		200 items
+ * Internal datatype:	uint16 value arrays
+
+** Analysing database
+ * Output File:	wff_3_100_150_100_100_60_data_6_train_pos.db.analysis.txt
+ * Writing analysis:	in progress... * Writing analysis:	done          
+
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/analysedb/
+
+Task `main`, command `analysedb` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: '4cfba485-86c5-4327-8da0-e490893a00bd_compress.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * File:		wff_3_100_150_100_100_60_data_6_train_pos.db
+ * Database:		93t 93r, 3731i, 28402.09bits
+ * 			pruned below support 0, maximum set length 50
+ * Alphabet:		200 items
+ * Internal datatype:	128bit bitmap
+ ** WARNING : |ab| > 128 : won't fit in BM128, using Uint16 **
+
+
+** ItemSetCollection ::
+** Creating Frequent Item Set Collection.
+ * File:		wff_3_100_150_100_100_60_data_6_train_pos-all-25d.bisc.fi
+ * Type:		FIMI
+ * Has # rows:		no
+ * # ItemSets:		13
+ * Sorting sets:	in progress... * Sorting sets:	sorted on support and descending on length
+** Finished Creating Frequent Item Set Collection
+
+
+** Compression :: 
+ * Experiment tag	wff_3_100_150_100_100_60_data_6_train_pos-all-25d-pop-20200331161441
+ * Algorithm:		coverpartial post-accept-prune
+ * Candidates:		13p
+ * Start:		(200a,0u,3731,28402,3071,31473)
+ - Progress:		0% (0) ? c/s  		 / Progress:		7% (1) ? c/s  		 / Progress:		15% (2) ? c/s  		 / Progress:		23% (3) ? c/s  		 | Progress:		30% (4) ? c/s  		 | Progress:		38% (5) ? c/s  		 | Progress:		46% (6) ? c/s  		 \ Progress:		53% (7) ? c/s  		 \ Progress:		61% (8) ? c/s  		 \ Progress:		69% (9) ? c/s  		 - Progress:		76% (10) ? c/s  		 - Progress:		84% (11) ? c/s  		 - Progress:		92% (12) ? c/s  		 * Time:    		Compressing the database took 0.000151 seconds.		
+ * Result:		(200a,0u,3731,28402,3071,31473)
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/compress/
+
+Task `main`, command `compress` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: '78f03eb9-adf9-4878-a1ee-a84fa7bc7002_convertdb.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * Type:		FIMI database
+ * File:		wff_3_100_150_100_100_60_data_6_train_neg.dat
+ * Scanning file:	in progress... * Scanning file: done                       
+ * Database:	93 rows, maximal 53 columns
+ * 		has bin sizes: no
+ * 		has transaction id's: no
+ * Reading database:	in progress... * Reading database:	done          
+
+ * Processing Data:  * Processing Data: Translating Forward * Processing Data: Sorting within Rows * Processing Data: Writing Data              ** Writing FIC database to file
+ * File:		wff_3_100_150_100_100_60_data_6_train_neg.db
+** Finished writing database.
+
+ * Processing Data: Finished                  
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/
+
+Task `datatrans`, command `convertdb` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: 'e7b7ccfa-4ce3-4d72-97b2-9648d9883ef9_analysedb.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * File:		wff_3_100_150_100_100_60_data_6_train_neg.db
+ * Database:		93t 93r, 3726i, 25143.46bits
+ * 			pruned below support 0, maximum set length 53
+ * Alphabet:		112 items
+ * Internal datatype:	uint16 value arrays
+
+** Analysing database
+ * Output File:	wff_3_100_150_100_100_60_data_6_train_neg.db.analysis.txt
+ * Writing analysis:	in progress... * Writing analysis:	done          
+
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/analysedb/
+
+Task `main`, command `analysedb` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: '863d8d61-bdc8-4a67-8f37-afd873c061fb_compress.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * File:		wff_3_100_150_100_100_60_data_6_train_neg.db
+ * Database:		93t 93r, 3726i, 25143.46bits
+ * 			pruned below support 0, maximum set length 53
+ * Alphabet:		112 items
+ * Internal datatype:	128bit bitmap
+
+** ItemSetCollection ::
+** Creating Frequent Item Set Collection.
+ * File:		wff_3_100_150_100_100_60_data_6_train_neg-all-50d.bisc.fi
+ * Type:		FIMI
+ * Has # rows:		no
+ * # ItemSets:		0
+Error removing Isc conversion input file.** Finished Creating Frequent Item Set Collection
+
+
+** Compression :: 
+ * Experiment tag	wff_3_100_150_100_100_60_data_6_train_neg-all-50d-pop-20200331161441
+ * Algorithm:		coverpartial post-accept-prune
+ * Candidates:		0p
+ * Start:		(112a,0u,3726,25143,1541,26684)
+ * Time:    		Compressing the database took 0.000056 seconds.		
+ * Result:		(112a,0u,3726,25143,1541,26684)
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/compress/
+
+Task `main`, command `compress` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: '8685d094-5b33-4293-8673-263d5210aee1_convertdb.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * Type:		FIMI database
+ * File:		wff_3_100_150_100_100_60_data_7_train_pos.dat
+ * Scanning file:	in progress... * Scanning file: done                       
+ * Database:	92 rows, maximal 50 columns
+ * 		has bin sizes: no
+ * 		has transaction id's: no
+ * Reading database:	in progress... * Reading database:	done          
+
+ * Processing Data:  * Processing Data: Translating Forward * Processing Data: Sorting within Rows * Processing Data: Writing Data              ** Writing FIC database to file
+ * File:		wff_3_100_150_100_100_60_data_7_train_pos.db
+** Finished writing database.
+
+ * Processing Data: Finished                  
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/
+
+Task `datatrans`, command `convertdb` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: '4def44a9-6279-43c4-a6d9-3aed1e76e8ad_analysedb.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * File:		wff_3_100_150_100_100_60_data_7_train_pos.db
+ * Database:		92t 92r, 3681i, 28025.11bits
+ * 			pruned below support 0, maximum set length 50
+ * Alphabet:		200 items
+ * Internal datatype:	uint16 value arrays
+
+** Analysing database
+ * Output File:	wff_3_100_150_100_100_60_data_7_train_pos.db.analysis.txt
+ * Writing analysis:	in progress... * Writing analysis:	done          
+
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/analysedb/
+
+Task `main`, command `analysedb` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: '7571c09a-a301-408d-9669-da8abce8b461_compress.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * File:		wff_3_100_150_100_100_60_data_7_train_pos.db
+ * Database:		92t 92r, 3681i, 28025.11bits
+ * 			pruned below support 0, maximum set length 50
+ * Alphabet:		200 items
+ * Internal datatype:	128bit bitmap
+ ** WARNING : |ab| > 128 : won't fit in BM128, using Uint16 **
+
+
+** ItemSetCollection ::
+** Creating Frequent Item Set Collection.
+ * File:		wff_3_100_150_100_100_60_data_7_train_pos-all-25d.bisc.fi
+ * Type:		FIMI
+ * Has # rows:		no
+ * # ItemSets:		10
+ * Sorting sets:	in progress... * Sorting sets:	sorted on support and descending on length
+** Finished Creating Frequent Item Set Collection
+
+
+** Compression :: 
+ * Experiment tag	wff_3_100_150_100_100_60_data_7_train_pos-all-25d-pop-20200331161441
+ * Algorithm:		coverpartial post-accept-prune
+ * Candidates:		10p
+ * Start:		(200a,0u,3681,28025,3070,31095)
+ - Progress:		0% (0) ? c/s  		 | Progress:		10% (1) ? c/s  		 - Progress:		20% (2) ? c/s  		 | Progress:		30% (3) ? c/s  		 - Progress:		40% (4) ? c/s  		 | Progress:		50% (5) ? c/s  		 - Progress:		60% (6) ? c/s  		 | Progress:		70% (7) ? c/s  		 - Progress:		80% (8) ? c/s  		 | Progress:		90% (9) ? c/s  		 * Time:    		Compressing the database took 0.000149 seconds.		
+ * Result:		(200a,0u,3681,28025,3070,31095)
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/compress/
+
+Task `main`, command `compress` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: '36cf8018-8db7-445a-b683-d3756a16bd0b_convertdb.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * Type:		FIMI database
+ * File:		wff_3_100_150_100_100_60_data_7_train_neg.dat
+ * Scanning file:	in progress... * Scanning file: done                       
+ * Database:	92 rows, maximal 53 columns
+ * 		has bin sizes: no
+ * 		has transaction id's: no
+ * Reading database:	in progress... * Reading database:	done          
+
+ * Processing Data:  * Processing Data: Translating Forward * Processing Data: Sorting within Rows * Processing Data: Writing Data              ** Writing FIC database to file
+ * File:		wff_3_100_150_100_100_60_data_7_train_neg.db
+** Finished writing database.
+
+ * Processing Data: Finished                  
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/
+
+Task `datatrans`, command `convertdb` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: 'a364e92e-b449-4fa5-87ca-70e2a7f780a2_analysedb.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * File:		wff_3_100_150_100_100_60_data_7_train_neg.db
+ * Database:		92t 92r, 3684i, 24850.62bits
+ * 			pruned below support 0, maximum set length 53
+ * Alphabet:		112 items
+ * Internal datatype:	uint16 value arrays
+
+** Analysing database
+ * Output File:	wff_3_100_150_100_100_60_data_7_train_neg.db.analysis.txt
+ * Writing analysis:	in progress... * Writing analysis:	done          
+
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/analysedb/
+
+Task `main`, command `analysedb` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: '6c8b569c-3a10-4eb3-a98c-ebe135f0e69b_compress.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * File:		wff_3_100_150_100_100_60_data_7_train_neg.db
+ * Database:		92t 92r, 3684i, 24850.62bits
+ * 			pruned below support 0, maximum set length 53
+ * Alphabet:		112 items
+ * Internal datatype:	128bit bitmap
+
+** ItemSetCollection ::
+** Creating Frequent Item Set Collection.
+ * File:		wff_3_100_150_100_100_60_data_7_train_neg-all-50d.bisc.fi
+ * Type:		FIMI
+ * Has # rows:		no
+ * # ItemSets:		0
+Error removing Isc conversion input file.** Finished Creating Frequent Item Set Collection
+
+
+** Compression :: 
+ * Experiment tag	wff_3_100_150_100_100_60_data_7_train_neg-all-50d-pop-20200331161441
+ * Algorithm:		coverpartial post-accept-prune
+ * Candidates:		0p
+ * Start:		(112a,0u,3684,24851,1542,26392)
+ * Time:    		Compressing the database took 0.000064 seconds.		
+ * Result:		(112a,0u,3684,24851,1542,26392)
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/compress/
+
+Task `main`, command `compress` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: '147f9eae-c147-4584-8dc4-17fcec961804_convertdb.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * Type:		FIMI database
+ * File:		wff_3_100_150_100_100_60_data_8_train_pos.dat
+ * Scanning file:	in progress... * Scanning file: done                       
+ * Database:	90 rows, maximal 50 columns
+ * 		has bin sizes: no
+ * 		has transaction id's: no
+ * Reading database:	in progress... * Reading database:	done          
+
+ * Processing Data:  * Processing Data: Translating Forward * Processing Data: Sorting within Rows * Processing Data: Writing Data              ** Writing FIC database to file
+ * File:		wff_3_100_150_100_100_60_data_8_train_pos.db
+** Finished writing database.
+
+ * Processing Data: Finished                  
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/
+
+Task `datatrans`, command `convertdb` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: '263017f0-49a4-4672-81a2-54b030b231a8_analysedb.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * File:		wff_3_100_150_100_100_60_data_8_train_pos.db
+ * Database:		90t 90r, 3604i, 27434.49bits
+ * 			pruned below support 0, maximum set length 50
+ * Alphabet:		200 items
+ * Internal datatype:	uint16 value arrays
+
+** Analysing database
+ * Output File:	wff_3_100_150_100_100_60_data_8_train_pos.db.analysis.txt
+ * Writing analysis:	in progress... * Writing analysis:	done          
+
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/analysedb/
+
+Task `main`, command `analysedb` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: '86d2dedc-79aa-4175-a02d-6bed51cdc751_compress.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * File:		wff_3_100_150_100_100_60_data_8_train_pos.db
+ * Database:		90t 90r, 3604i, 27434.49bits
+ * 			pruned below support 0, maximum set length 50
+ * Alphabet:		200 items
+ * Internal datatype:	128bit bitmap
+ ** WARNING : |ab| > 128 : won't fit in BM128, using Uint16 **
+
+
+** ItemSetCollection ::
+** Creating Frequent Item Set Collection.
+ * File:		wff_3_100_150_100_100_60_data_8_train_pos-all-25d.bisc.fi
+ * Type:		FIMI
+ * Has # rows:		no
+ * # ItemSets:		6
+ * Sorting sets:	in progress... * Sorting sets:	sorted on support and descending on length
+** Finished Creating Frequent Item Set Collection
+
+
+** Compression :: 
+ * Experiment tag	wff_3_100_150_100_100_60_data_8_train_pos-all-25d-pop-20200331161441
+ * Algorithm:		coverpartial post-accept-prune
+ * Candidates:		6p
+ * Start:		(200a,0u,3604,27434,3071,30505)
+ - Progress:		0% (0) ? c/s  		 - Progress:		16% (1) ? c/s  		 \ Progress:		33% (2) ? c/s  		 | Progress:		50% (3) ? c/s  		 | Progress:		66% (4) ? c/s  		 / Progress:		83% (5) ? c/s  		 * Time:    		Compressing the database took 0.000163 seconds.		
+ * Result:		(200a,0u,3604,27434,3071,30505)
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/compress/
+
+Task `main`, command `compress` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: '98147420-f000-4cec-9b46-366a1f0ce088_convertdb.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * Type:		FIMI database
+ * File:		wff_3_100_150_100_100_60_data_8_train_neg.dat
+ * Scanning file:	in progress... * Scanning file: done                       
+ * Database:	90 rows, maximal 53 columns
+ * 		has bin sizes: no
+ * 		has transaction id's: no
+ * Reading database:	in progress... * Reading database:	done          
+
+ * Processing Data:  * Processing Data: Translating Forward * Processing Data: Sorting within Rows * Processing Data: Writing Data              ** Writing FIC database to file
+ * File:		wff_3_100_150_100_100_60_data_8_train_neg.db
+** Finished writing database.
+
+ * Processing Data: Finished                  
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/
+
+Task `datatrans`, command `convertdb` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: '9d9ca704-9f6b-42d1-81cf-2585018d4304_analysedb.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * File:		wff_3_100_150_100_100_60_data_8_train_neg.db
+ * Database:		90t 90r, 3612i, 24367.12bits
+ * 			pruned below support 0, maximum set length 53
+ * Alphabet:		112 items
+ * Internal datatype:	uint16 value arrays
+
+** Analysing database
+ * Output File:	wff_3_100_150_100_100_60_data_8_train_neg.db.analysis.txt
+ * Writing analysis:	in progress... * Writing analysis:	done          
+
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/analysedb/
+
+Task `main`, command `analysedb` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: '51fe2256-bf4c-4184-a928-8aaf81b57c58_compress.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * File:		wff_3_100_150_100_100_60_data_8_train_neg.db
+ * Database:		90t 90r, 3612i, 24367.12bits
+ * 			pruned below support 0, maximum set length 53
+ * Alphabet:		112 items
+ * Internal datatype:	128bit bitmap
+
+** ItemSetCollection ::
+** Creating Frequent Item Set Collection.
+ * File:		wff_3_100_150_100_100_60_data_8_train_neg-all-50d.bisc.fi
+ * Type:		FIMI
+ * Has # rows:		no
+ * # ItemSets:		1
+ * Sorting sets:	in progress... * Sorting sets:	sorted on support and descending on length
+** Finished Creating Frequent Item Set Collection
+
+
+** Compression :: 
+ * Experiment tag	wff_3_100_150_100_100_60_data_8_train_neg-all-50d-pop-20200331161441
+ * Algorithm:		coverpartial post-accept-prune
+ * Candidates:		1p
+ * Start:		(112a,0u,3612,24367,1542,25909)
+ - Progress:		0% (0) ? c/s  		 * Time:    		Compressing the database took 0.000110 seconds.		
+ * Result:		(112a,0u,3612,24367,1542,25909)
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/compress/
+
+Task `main`, command `compress` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: '687d057f-5c54-4d10-8711-5af93a33ad10_convertdb.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * Type:		FIMI database
+ * File:		wff_3_100_150_100_100_60_data_9_train_pos.dat
+ * Scanning file:	in progress... * Scanning file: done                       
+ * Database:	91 rows, maximal 50 columns
+ * 		has bin sizes: no
+ * 		has transaction id's: no
+ * Reading database:	in progress... * Reading database:	done          
+
+ * Processing Data:  * Processing Data: Translating Forward * Processing Data: Sorting within Rows * Processing Data: Writing Data              ** Writing FIC database to file
+ * File:		wff_3_100_150_100_100_60_data_9_train_pos.db
+** Finished writing database.
+
+ * Processing Data: Finished                  
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/
+
+Task `datatrans`, command `convertdb` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: '48e71d63-546f-49cf-bee9-340f3a05f250_analysedb.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * File:		wff_3_100_150_100_100_60_data_9_train_pos.db
+ * Database:		91t 91r, 3623i, 27580.39bits
+ * 			pruned below support 0, maximum set length 50
+ * Alphabet:		200 items
+ * Internal datatype:	uint16 value arrays
+
+** Analysing database
+ * Output File:	wff_3_100_150_100_100_60_data_9_train_pos.db.analysis.txt
+ * Writing analysis:	in progress... * Writing analysis:	done          
+
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/analysedb/
+
+Task `main`, command `analysedb` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: '1fd98882-d85e-412b-ae65-28e4cdc7d47b_compress.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * File:		wff_3_100_150_100_100_60_data_9_train_pos.db
+ * Database:		91t 91r, 3623i, 27580.39bits
+ * 			pruned below support 0, maximum set length 50
+ * Alphabet:		200 items
+ * Internal datatype:	128bit bitmap
+ ** WARNING : |ab| > 128 : won't fit in BM128, using Uint16 **
+
+
+** ItemSetCollection ::
+** Creating Frequent Item Set Collection.
+ * File:		wff_3_100_150_100_100_60_data_9_train_pos-all-25d.bisc.fi
+ * Type:		FIMI
+ * Has # rows:		no
+ * # ItemSets:		7
+ * Sorting sets:	in progress... * Sorting sets:	sorted on support and descending on length
+** Finished Creating Frequent Item Set Collection
+
+
+** Compression :: 
+ * Experiment tag	wff_3_100_150_100_100_60_data_9_train_pos-all-25d-pop-20200331161441
+ * Algorithm:		coverpartial post-accept-prune
+ * Candidates:		7p
+ * Start:		(200a,0u,3623,27580,3070,30651)
+ - Progress:		0% (0) ? c/s  		 | Progress:		14% (1) ? c/s  		 - Progress:		28% (2) ? c/s  		 | Progress:		42% (3) ? c/s  		 \ Progress:		57% (4) ? c/s  		 / Progress:		71% (5) ? c/s  		 \ Progress:		85% (6) ? c/s  		 * Time:    		Compressing the database took 0.000186 seconds.		
+ * Result:		(200a,0u,3623,27580,3070,30651)
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/compress/
+
+Task `main`, command `compress` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: 'e110f7e7-4d89-4499-aef8-e7c0cd7f627b_convertdb.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * Type:		FIMI database
+ * File:		wff_3_100_150_100_100_60_data_9_train_neg.dat
+ * Scanning file:	in progress... * Scanning file: done                       
+ * Database:	91 rows, maximal 53 columns
+ * 		has bin sizes: no
+ * 		has transaction id's: no
+ * Reading database:	in progress... * Reading database:	done          
+
+ * Processing Data:  * Processing Data: Translating Forward * Processing Data: Sorting within Rows * Processing Data: Writing Data              ** Writing FIC database to file
+ * File:		wff_3_100_150_100_100_60_data_9_train_neg.db
+** Finished writing database.
+
+ * Processing Data: Finished                  
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/
+
+Task `datatrans`, command `convertdb` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: '9c84ce01-7ab9-4ef6-ba69-d56ccdac810b_analysedb.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * File:		wff_3_100_150_100_100_60_data_9_train_neg.db
+ * Database:		91t 91r, 3621i, 24438.43bits
+ * 			pruned below support 0, maximum set length 53
+ * Alphabet:		112 items
+ * Internal datatype:	uint16 value arrays
+
+** Analysing database
+ * Output File:	wff_3_100_150_100_100_60_data_9_train_neg.db.analysis.txt
+ * Writing analysis:	in progress... * Writing analysis:	done          
+
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/analysedb/
+
+Task `main`, command `analysedb` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: '2caac4b1-c3b8-48a3-a251-bd9a18a6cfb2_compress.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * File:		wff_3_100_150_100_100_60_data_9_train_neg.db
+ * Database:		91t 91r, 3621i, 24438.43bits
+ * 			pruned below support 0, maximum set length 53
+ * Alphabet:		112 items
+ * Internal datatype:	128bit bitmap
+
+** ItemSetCollection ::
+** Creating Frequent Item Set Collection.
+ * File:		wff_3_100_150_100_100_60_data_9_train_neg-all-50d.bisc.fi
+ * Type:		FIMI
+ * Has # rows:		no
+ * # ItemSets:		0
+Error removing Isc conversion input file.** Finished Creating Frequent Item Set Collection
+
+
+** Compression :: 
+ * Experiment tag	wff_3_100_150_100_100_60_data_9_train_neg-all-50d-pop-20200331161441
+ * Algorithm:		coverpartial post-accept-prune
+ * Candidates:		0p
+ * Start:		(112a,0u,3621,24438,1541,25979)
+ * Time:    		Compressing the database took 0.000044 seconds.		
+ * Result:		(112a,0u,3621,24438,1541,25979)
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/compress/
+
+Task `main`, command `compress` finished. This took 0 seconds.
+
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	98620e7e-a828-4e21-827b-3eff6d929d37_convertdb.conf
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	2dbd41d9-569e-4179-b7e3-0e124fcdd6d1_analysedb.conf
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	0d9f3d03-cb1d-4980-bbbb-e94d3036720c_compress.conf
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	71bac7ef-026e-4b26-b6f6-dd6796e1617f_convertdb.conf
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	7033ce85-906e-4048-a7c6-0631f00d42e8_analysedb.conf
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	5e910983-169f-46d1-90ce-3ab279072beb_compress.conf
+Confusion Matrix 	: TP_c = 0; TN_c = 0; FP_c = 0; FN_c = 0; TP_f = 0; TN_f = 0; FP_f = 0; FN_f = 28
+Accuracy of fold 0	: 0.5
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	0f5bc904-d111-431b-b9f8-05eaf4d58e82_convertdb.conf
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	19e14077-cc7b-4c17-af5c-f2efdf3d0907_analysedb.conf
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	83b90ea8-50cc-4781-af8c-66733f985053_compress.conf
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	1662524b-78df-4332-b962-b148dc8ca215_convertdb.conf
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	b23cb409-e2bc-49ca-aa85-dab3cb9d7408_analysedb.conf
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	5d9d225d-bbcc-4347-af6c-31ea6dff59d3_compress.conf
+Confusion Matrix 	: TP_c = 0; TN_c = 0; FP_c = 0; FN_c = 0; TP_f = 0; TN_f = 0; FP_f = 0; FN_f = 30
+Accuracy of fold 1	: 0.5
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	ca9b1da6-81c2-41e8-9ba0-6dc4845d6c56_convertdb.conf
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	c78ecf61-14fb-49ae-a1ea-13ba78b43ef3_analysedb.conf
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	5b6110bc-da9d-4450-be9b-d6492ed3e14b_compress.conf
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	105c3173-093f-4657-9ee4-f682d94aac39_convertdb.conf
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	ddbdfee2-e903-4b62-ba3b-a1176a8f383a_analysedb.conf
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	cac21c6b-028d-4fb2-8a55-9e6ddd12f8a8_compress.conf
+Confusion Matrix 	: TP_c = 0; TN_c = 0; FP_c = 0; FN_c = 0; TP_f = 0; TN_f = 0; FP_f = 0; FN_f = 14
+Accuracy of fold 2	: 0.5
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	93bd98d9-29cf-4251-8528-bb71755ee59f_convertdb.conf
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	c3bb875a-0ad8-4cfd-8c49-b0ee3ac43bcd_analysedb.conf
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	32355898-431f-4fae-9865-80920281374d_compress.conf
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	e5e91ed1-1cbf-4644-9093-062e6c0d8f7b_convertdb.conf
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	65ab9a59-fd2f-43ed-b5c4-bc25f88a8075_analysedb.conf
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	d0a5ca28-9185-4df2-9c7c-ed2d4819241e_compress.conf
+Confusion Matrix 	: TP_c = 0; TN_c = 0; FP_c = 0; FN_c = 0; TP_f = 0; TN_f = 0; FP_f = 0; FN_f = 18
+Accuracy of fold 3	: 0.5
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	b5bcade3-3e6c-426c-808a-4d172d161acf_convertdb.conf
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	0e00679b-5392-43f2-a23c-b37b578ece4a_analysedb.conf
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	a532ce88-e338-4fb0-bf40-4b1919d7695d_compress.conf
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	1ebb3813-8599-4630-973d-ce43f17ea245_convertdb.conf
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	5c154c3e-eace-4eca-bcf9-4ff6301e824f_analysedb.conf
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	cf77e681-49fb-4123-bc79-19e7dce4587d_compress.conf
+Confusion Matrix 	: TP_c = 0; TN_c = 0; FP_c = 0; FN_c = 0; TP_f = 0; TN_f = 0; FP_f = 0; FN_f = 24
+Accuracy of fold 4	: 0.5
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	4f097dd2-fd56-4af0-a87a-1e3d548767f2_convertdb.conf
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	0a666d26-f402-4838-9c44-a1b42d59bd43_analysedb.conf
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	a59fe4da-1d6d-4f18-aa51-0ef6b60c9641_compress.conf
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	cc807cf5-2904-4194-a030-2ae9cb9bddf8_convertdb.conf
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	8f48ee53-8b7c-44ed-8f8f-b909d6277a89_analysedb.conf
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	18f95d7c-f122-4278-b4d2-47f7fcca9c12_compress.conf
+Confusion Matrix 	: TP_c = 0; TN_c = 0; FP_c = 0; FN_c = 0; TP_f = 0; TN_f = 0; FP_f = 0; FN_f = 18
+Accuracy of fold 5	: 0.5
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	fa651447-2a46-4365-8367-d04205d7aaa3_convertdb.conf
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	762ebdab-e7db-414d-8f7c-194a95679f6e_analysedb.conf
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	4cfba485-86c5-4327-8da0-e490893a00bd_compress.conf
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	78f03eb9-adf9-4878-a1ee-a84fa7bc7002_convertdb.conf
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	e7b7ccfa-4ce3-4d72-97b2-9648d9883ef9_analysedb.conf
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	863d8d61-bdc8-4a67-8f37-afd873c061fb_compress.conf
+Confusion Matrix 	: TP_c = 0; TN_c = 0; FP_c = 0; FN_c = 0; TP_f = 0; TN_f = 0; FP_f = 0; FN_f = 14
+Accuracy of fold 6	: 0.5
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	8685d094-5b33-4293-8673-263d5210aee1_convertdb.conf
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	4def44a9-6279-43c4-a6d9-3aed1e76e8ad_analysedb.conf
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	7571c09a-a301-408d-9669-da8abce8b461_compress.conf
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	36cf8018-8db7-445a-b683-d3756a16bd0b_convertdb.conf
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	a364e92e-b449-4fa5-87ca-70e2a7f780a2_analysedb.conf
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	6c8b569c-3a10-4eb3-a98c-ebe135f0e69b_compress.conf
+Confusion Matrix 	: TP_c = 0; TN_c = 0; FP_c = 0; FN_c = 0; TP_f = 0; TN_f = 0; FP_f = 0; FN_f = 16
+Accuracy of fold 7	: 0.5
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	147f9eae-c147-4584-8dc4-17fcec961804_convertdb.conf
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	263017f0-49a4-4672-81a2-54b030b231a8_analysedb.conf
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	86d2dedc-79aa-4175-a02d-6bed51cdc751_compress.conf
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	98147420-f000-4cec-9b46-366a1f0ce088_convertdb.conf
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	9d9ca704-9f6b-42d1-81cf-2585018d4304_analysedb.conf
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	51fe2256-bf4c-4184-a928-8aaf81b57c58_compress.conf
+Confusion Matrix 	: TP_c = 0; TN_c = 0; FP_c = 0; FN_c = 0; TP_f = 0; TN_f = 0; FP_f = 0; FN_f = 20
+Accuracy of fold 8	: 0.5
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	687d057f-5c54-4d10-8711-5af93a33ad10_convertdb.conf
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	48e71d63-546f-49cf-bee9-340f3a05f250_analysedb.conf
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	1fd98882-d85e-412b-ae65-28e4cdc7d47b_compress.conf
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	e110f7e7-4d89-4499-aef8-e7c0cd7f627b_convertdb.conf
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	9c84ce01-7ab9-4ef6-ba69-d56ccdac810b_analysedb.conf
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	2caac4b1-c3b8-48a3-a251-bd9a18a6cfb2_compress.conf
+Confusion Matrix 	: TP_c = 0; TN_c = 0; FP_c = 0; FN_c = 0; TP_f = 0; TN_f = 0; FP_f = 0; FN_f = 18
+Accuracy of fold 9	: 0.5
+
+Total Confusions					: defaultdict(<class 'int'>, {'TP_c': 0, 'TN_c': 0, 'FP_c': 0, 'FN_c': 0, 'TP_f': 0, 'TN_f': 0, 'FP_f': 0, 'FN_f': 200})
+Precision							: 0%
+Recall								: 0.0%
+Accuracy							: 0.0%
+Average Classification Accuracy 	: 0.0%
+Total Time 							: 0.6911585330963135 seconds

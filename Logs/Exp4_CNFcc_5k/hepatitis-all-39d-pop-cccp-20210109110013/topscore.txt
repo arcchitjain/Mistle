@@ -1,0 +1,2 @@
+hepatitis;all;39;d;pop;cccp;20210109110013;abs;0.8767;0.8323
+hepatitis;all;39;d;pop;cccp;20210109110013;rel;0.8767;0.8323

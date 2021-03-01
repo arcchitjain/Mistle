@@ -1,0 +1,36 @@
+
+
+Comparing on led.dat with nb_rows = 3200 and minsup = 0.0003125
+Running CNFAlgo
+Return Code for CNFAlgo	: 0
+CNFAlgo Accuracy = 317/320 = 0.990625
+Running CNFAlgo
+Return Code for CNFAlgo	: 0
+CNFAlgo Accuracy = 320/320 = 1.0
+Running CNFAlgo
+Return Code for CNFAlgo	: 0
+CNFAlgo Accuracy = 318/320 = 0.99375
+Running CNFAlgo
+Return Code for CNFAlgo	: 0
+CNFAlgo Accuracy = 319/320 = 0.996875
+Running CNFAlgo
+Return Code for CNFAlgo	: 0
+CNFAlgo Accuracy = 316/320 = 0.9875
+Running CNFAlgo
+Return Code for CNFAlgo	: 0
+CNFAlgo Accuracy = 317/320 = 0.990625
+Running CNFAlgo
+Return Code for CNFAlgo	: 0
+CNFAlgo Accuracy = 319/320 = 0.996875
+Running CNFAlgo
+Return Code for CNFAlgo	: 0
+CNFAlgo Accuracy = 316/320 = 0.9875
+Running CNFAlgo
+Return Code for CNFAlgo	: 0
+CNFAlgo Accuracy = 320/320 = 1.0
+Running CNFAlgo
+Return Code for CNFAlgo	: 0
+CNFAlgo Accuracy = 316/320 = 0.9875
+cnfalgo_fold_accuracy_list = [0.990625, 1.0, 0.99375, 0.996875, 0.9875, 0.990625, 0.996875, 0.9875, 1.0, 0.9875]
+cnfalgo_time = 5.102921724319458
+cnfalgo_accuracy = 0.993125

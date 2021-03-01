@@ -1,11 +1,18 @@
 from mistle_v2 import *
 from cnfalgo_wrapper import *
 import random
+import numpy as np
+from time import time
 import os
 import sys
 import matplotlib
 import matplotlib.pyplot as plt
 from collections import defaultdict
+from data_generators import TheoryNoisyGeneratorOnDataset, GeneratedTheory
+
+seed = 1234
+random.seed(seed)
+np.random.seed(seed)
 
 plt.style.use("seaborn")
 matplotlib.rcParams["mathtext.fontset"] = "stix"
@@ -17,9 +24,6 @@ matplotlib.rc("xtick", labelsize=28)
 matplotlib.rc("ytick", labelsize=28)
 matplotlib.rc("legend", fontsize=22)
 matplotlib.rc("figure", titlesize=28)
-
-seed = 0
-random.seed(seed)
 
 ###############################################################################
 # Helping/Auxilliary Functions
@@ -160,13 +164,14 @@ def get_uci_mcar(dataset, missing_parameter=0.0):
     return incomplete_positives, incomplete_negatives
 
 
-def get_uci_nb_missing(dataset, M=0):
+def get_uci_nb_missing(complete_positives, complete_negatives, M=0):
     """
     :param dataset: Name of the uci dataset in string: ["adult", "breast", "chess", "ionoshphere", "mushroom", "pima", "tictactoe"]
     :param M: a positive integer fixating on the exact number of values to be made missing in each row
     :return: a tuple of incomplete positives and incomplete negatives
     """
-    complete_positives, complete_negatives = load_complete_dataset(dataset)
+    # complete_positives, complete_negatives = load_complete_dataset(dataset)
+    # complete_positives, complete_negatives = load_data(dataset, complete=True)
 
     incomplete_positives = []
     missing_positives = []
@@ -246,8 +251,9 @@ def impute_missing_values(
     max_theory,
     min_theory,
     missing_attributes,
+    same_class_freq,
+    opposite_class_freq,
     metric="count",
-    nb_clauses=None,
 ):
     """
     A function that predicts the most suitable completion of 'incomplete_pa' wrt a theory.
@@ -255,45 +261,122 @@ def impute_missing_values(
     If more than one completion fail the most number of clauses in that theory, then one of them is selected at random.
 
     :param incomplete_pa: An incomplete partial assignment that is needed to be completed
-    :param theory: A theory
     :param missing_attributes:
     :return: complete_pa
     """
-    completed_pas = get_all_completions(list(incomplete_pa), missing_attributes, [])
+    completed_pas = get_all_completions(
+        list(incomplete_pa), copy(missing_attributes), []
+    )
 
     if metric == "count":
+        # Deprecated for now (Jan 2021)
+
         max_indices = []
-        max_value = -1
+        max_score = -1
+        nb_failed_clauses_list = []
         for i, completed_pa in enumerate(completed_pas):
             nb_failed_clauses = 0
             for clause in get_clauses(max_theory):
                 if solve([tuple(clause)] + [(a,) for a in completed_pa]) == "UNSAT":
                     nb_failed_clauses += 1
+            nb_failed_clauses_list.append(nb_failed_clauses)
 
-            if nb_failed_clauses > max_value:
+            if nb_failed_clauses > max_score:
                 max_indices = [i]
-                max_value = nb_failed_clauses
-            elif nb_failed_clauses == max_value:
+                max_score = nb_failed_clauses
+            elif nb_failed_clauses == max_score:
                 max_indices.append(i)
-        if len(max_indices) == 1:
-            return completed_pas[max_indices[0]]
-        else:
-            min_indices = []
-            min_value = 1000
-            for i, completed_pa in enumerate(completed_pas):
-                nb_failed_clauses = 0
-                for clause in get_clauses(min_theory):
-                    if solve([tuple(clause)] + [(a,) for a in completed_pa]) != "UNSAT":
-                        nb_failed_clauses += 1
 
-                if nb_failed_clauses < min_value:
-                    min_indices = [i]
-                    min_value = nb_failed_clauses
-                elif nb_failed_clauses == min_value:
-                    min_indices.append(i)
-            return completed_pas[random.choice(min_indices)]
+        result = set([frozenset(completed_pas[i]) for i in max_indices])
+
+        if len(result) > 1:
+            print(
+                "Max Score = "
+                + str(max_score)
+                + " tied among "
+                + str(len(max_indices))
+                + "/"
+                + str(len(completed_pas))
+                + " candidates."
+                # + "; Max Indices = "
+                # + str(max_indices)
+                # + "; # failed_clauses_list = "
+                # + str(nb_failed_clauses_list)
+            )
+
+        return result, 0
+
+        # if len(max_indices) == 1:
+        #     return completed_pas[max_indices[0]]
+        # else:
+        #     min_indices = []
+        #     min_value = 1000
+        #     for i, completed_pa in enumerate(completed_pas):
+        #         nb_failed_clauses = 0
+        #         for clause in get_clauses(min_theory):
+        #             if solve([tuple(clause)] + [(a,) for a in completed_pa]) != "UNSAT":
+        #                 nb_failed_clauses += 1
+        #
+        #         if nb_failed_clauses < min_value:
+        #             min_indices = [i]
+        #             min_value = nb_failed_clauses
+        #         elif nb_failed_clauses == min_value:
+        #             min_indices.append(i)
+        #     return completed_pas[random.choice(min_indices)]
 
     elif metric == "length":
+
+        # TODO: First order all candidates based on:
+        # nb of failed clauses in max theory (desc),
+        # nb of failed clauses in min theory (asc.),
+
+        # Calculate number of clauses in the theory for different lengths
+        nb_clauses = defaultdict(int)
+
+        for clause in get_clauses(min_theory):
+            nb_clauses[len(clause)] += 1
+
+        # For each completion of the given example, calculate number of failing clauses of different lengths
+        min_indices = []
+        length_metric_list = []
+        nb_failed_clauses_list = []
+        min_score = 1000
+        for i, completed_pa in enumerate(completed_pas):
+            nb_failing_clauses = defaultdict(int)
+            for clause in get_clauses(min_theory):
+                if solve([tuple(clause)] + [(a,) for a in completed_pa]) != "UNSAT":
+                    nb_failing_clauses[len(clause)] += 1
+            nb_failed_clauses_list.append(nb_failing_clauses)
+            # Referred from Page 3 of 'Mining predictive kCNF expressions - Anton, Luc, Siegfried
+            length_metric = 0.0
+            for length, nb_clause in nb_clauses.items():
+                if length in nb_failing_clauses:
+                    length_metric += nb_failing_clauses[length] / (length * nb_clause)
+
+            length_metric_list.append(length_metric)
+            if length_metric < min_score:
+                min_indices = [i]
+                min_score = length_metric
+            elif length_metric == min_score:
+                min_indices.append(i)
+
+        # print(nb_failed_clauses_list)
+        print("\n" + str(min_indices))
+        print(length_metric_list)
+        result1 = set([frozenset(completed_pas[i]) for i in min_indices])
+
+        if len(result1) == 1:
+            return result1, 0
+        elif len(result1) > 1:
+            print(
+                "Min Score = "
+                + str(min_score)
+                + " tied among "
+                + str(len(min_indices))
+                + "/"
+                + str(len(completed_pas))
+                + " candidates."
+            )
 
         # Calculate number of clauses in the theory for different lengths
         nb_clauses = defaultdict(int)
@@ -303,12 +386,17 @@ def impute_missing_values(
 
         # For each completion of the given example, calculate number of failing clauses of different lengths
         max_indices = []
-        max_score = 0
+        max_score = -1
+        nb_failed_clauses_list = []
+        length_metric_list = []
         for i, completed_pa in enumerate(completed_pas):
+            if i not in min_indices:
+                continue
             nb_failing_clauses = defaultdict(int)
             for clause in get_clauses(max_theory):
                 if solve([tuple(clause)] + [(a,) for a in completed_pa]) == "UNSAT":
                     nb_failing_clauses[len(clause)] += 1
+            nb_failed_clauses_list.append(str(nb_failing_clauses))
 
             # Referred from Page 3 of 'Mining predictive kCNF expressions - Anton, Luc, Siegfried
             length_metric = 0.0
@@ -316,45 +404,136 @@ def impute_missing_values(
                 if length in nb_failing_clauses:
                     length_metric += nb_failing_clauses[length] / (length * nb_clause)
 
+            length_metric_list.append(length_metric)
+
             if length_metric > max_score:
                 max_indices = [i]
                 max_score = length_metric
             elif length_metric == max_score:
                 max_indices.append(i)
 
-        if len(max_indices) == 1:
-            return completed_pas[max_indices[0]]
+        # print(nb_failed_clauses_list)
+        print(max_indices)
+        print(length_metric_list)
+        result2 = set([frozenset(completed_pas[i]) for i in max_indices])
+
+        if len(result2) == 1:
+            print("Tie Breaking: Level 1")
+            return result2, 1
+        elif len(result2) > 1:
+            print(
+                "Max Score = "
+                + str(max_score)
+                + " tied among "
+                + str(len(max_indices))
+                + "/"
+                + str(len(completed_pas))
+                + " candidates."
+                # + "; Max Indices = "
+                # + str(max_indices)
+                # + "; # failed_clauses_list = "
+                # + str(nb_failed_clauses_list)
+            )
+
+        # TODO: Option1: Impute the misisng values using the most frequent value in result2
+
+        missing_attributes_freq1 = defaultdict(int)
+
+        for i, pa in enumerate(result2):
+            for literal in pa:
+                if abs(literal) in missing_attributes:
+                    if literal > 0:
+                        missing_attributes_freq1[abs(literal)] += 1
+                    else:
+                        missing_attributes_freq1[abs(literal)] -= 1
+
+        # print(missing_attributes_freq1)
+
+        predicted_attributes = dict()
+        missing_attributes_freq2 = defaultdict(int)
+
+        for attribute, freq in missing_attributes_freq1.items():
+            if freq > 0:
+                predicted_attributes[attribute] = True
+            elif freq < 0:
+                predicted_attributes[attribute] = False
+            else:
+                missing_attributes_freq2[attribute] = 0
+
+        if len(predicted_attributes) == len(missing_attributes):
+            print("Tie Breaking: Level 2")
+            completed_pa = copy(set(incomplete_pa))
+            for attribute, value in predicted_attributes.items():
+                if value is True:
+                    completed_pa.add(attribute)
+                else:
+                    completed_pa.add(-attribute)
+
+            return {frozenset(completed_pa)}, 2
         else:
-            # Calculate number of clauses in the theory for different lengths
-            nb_clauses = defaultdict(int)
+            print(
+                "Still need to calculate most frequent values for "
+                + str(missing_attributes_freq2.keys())
+            )
 
-            for clause in get_clauses(min_theory):
-                nb_clauses[len(clause)] += 1
+        # TODO: Option2: Impute the misisng values using the most frequent value in same local class, either P or N
 
-            # For each completion of the given example, calculate number of failing clauses of different lengths
-            min_indices = []
-            min_score = 1000
-            for i, completed_pa in enumerate(completed_pas):
-                nb_failing_clauses = defaultdict(int)
-                for clause in get_clauses(min_theory):
-                    if solve([tuple(clause)] + [(a,) for a in completed_pa]) != "UNSAT":
-                        nb_failing_clauses[len(clause)] += 1
+        tie_levels = []
+        for attribute, freq in missing_attributes_freq2.items():
+            if same_class_freq[attribute] > 0:
+                # print("Tie Breaking: Level 3")
+                tie_levels.append(3)
+                predicted_attributes[attribute] = True
+            elif same_class_freq[attribute] < 0:
+                # print("Tie Breaking: Level 3")
+                tie_levels.append(3)
+                predicted_attributes[attribute] = False
+            elif opposite_class_freq[attribute] > 0:
+                # print("Tie Breaking: Level 4")
+                tie_levels.append(4)
+                predicted_attributes[attribute] = False
+            elif opposite_class_freq[attribute] < 0:
+                # print("Tie Breaking: Level 4")
+                tie_levels.append(4)
+                predicted_attributes[attribute] = True
+            else:
+                freq = 0
+                for pa in result1:
+                    if attribute in pa:
+                        freq += 1
+                    else:
+                        freq -= 1
 
-                # Referred from Page 3 of 'Mining predictive kCNF expressions - Anton, Luc, Siegfried
-                length_metric = 0.0
-                for length, nb_clause in nb_clauses.items():
-                    if length in nb_failing_clauses:
-                        length_metric += nb_failing_clauses[length] / (
-                            length * nb_clause
-                        )
+                if freq > 0:
+                    # print("Tie Breaking: Level 5")
+                    tie_levels.append(5)
+                    predicted_attributes[attribute] = True
+                elif freq < 0:
+                    # print("Tie Breaking: Level 5")
+                    tie_levels.append(5)
+                    predicted_attributes[attribute] = False
+                else:
+                    # print("Tie Breaking: Level 6")
+                    tie_levels.append(6)
+                    predicted_attributes[attribute] = random.choice([True, False])
 
-                if length_metric < min_score:
-                    min_indices = [i]
-                    min_score = length_metric
-                elif length_metric == min_score:
-                    min_indices.append(i)
+        assert len(predicted_attributes) == len(missing_attributes)
+        completed_pa = copy(set(incomplete_pa))
+        for attribute, value in predicted_attributes.items():
+            if value is True:
+                completed_pa.add(attribute)
+            else:
+                completed_pa.add(-attribute)
 
-        return completed_pas[random.choice(min_indices)]
+        print(
+            "Tie Breaking Levels\t: "
+            + str(tie_levels)
+            + "; Predicted Values\t: "
+            + str(predicted_attributes)
+        )
+        return {frozenset(completed_pa)}, tie_levels
+
+        # TODO: Option3: Impute the misisng values using the most frequent value in full training data, icluding both P and N
 
 
 def get_accuracy(
@@ -366,26 +545,34 @@ def get_accuracy(
     incomplete_negatives,
     missing_positives,
     missing_negatives,
+    pos_freq,
+    neg_freq,
     metric="count",
 ):
-    if metric == "length":
-        # Calculate number of clauses in the +ve theory for different lengths
-        nb_clauses_p = defaultdict(int)
+    # if metric == "length":
+    #     # Calculate number of clauses in the +ve theory for different lengths
+    #     nb_clauses_p = defaultdict(int)
+    #
+    #     for clause in get_clauses(mistle_pos_theory):
+    #         nb_clauses_p[len(clause)] += 1
+    #
+    #     # Calculate number of clauses in the -ve theory for different lengths
+    #     nb_clauses_n = defaultdict(int)
+    #
+    #     for clause in get_clauses(mistle_neg_theory):
+    #         nb_clauses_n[len(clause)] += 1
+    # else:
+    #     nb_clauses_p = None
+    #     nb_clauses_n = None
 
-        for clause in get_clauses(mistle_pos_theory):
-            nb_clauses_p[len(clause)] += 1
-
-        # Calculate number of clauses in the -ve theory for different lengths
-        nb_clauses_n = defaultdict(int)
-
-        for clause in get_clauses(mistle_neg_theory):
-            nb_clauses_n[len(clause)] += 1
-    else:
-        nb_clauses_p = None
-        nb_clauses_n = None
-
-    accuracy = 0
-    total = 0
+    mistle_accuracy = 0
+    mistle_total = 0
+    mf_same_one_accuracy = 0
+    mf_same_one_total = 0
+    mf_both_one_accuracy = 0
+    mf_both_one_total = 0
+    nb_ties = 0
+    nb_tied_examples = 0
     for c_p, i_p, m_p in zip(
         complete_positives, incomplete_positives, missing_positives
     ):
@@ -394,21 +581,50 @@ def get_accuracy(
 
         assert c_p == i_p | m_p
         missing_attributes = set()
+        mf_same_one_c_p = copy(set(i_p))
+        mf_both_one_c_p = copy(set(i_p))
         for literal in m_p:
             missing_attributes.add(abs(literal))
 
-        predicted_c_p = impute_missing_values(
+            if pos_freq[abs(literal)] > 0:
+                mf_same_one_c_p.add(abs(literal))
+            elif pos_freq[abs(literal)] < 0:
+                mf_same_one_c_p.add(-abs(literal))
+
+            if pos_freq[abs(literal)] - neg_freq[abs(literal)] > 0:
+                mf_both_one_c_p.add(abs(literal))
+            elif pos_freq[abs(literal)] - neg_freq[abs(literal)] < 0:
+                mf_both_one_c_p.add(-abs(literal))
+
+        if len(c_p) == len(mf_same_one_c_p):
+            mf_same_one_total += 1
+            if c_p == frozenset(mf_same_one_c_p):
+                mf_same_one_accuracy += 1
+
+        if len(c_p) == len(mf_both_one_c_p):
+            mf_both_one_total += 1
+            if c_p == frozenset(mf_both_one_c_p):
+                mf_both_one_accuracy += 1
+
+        predicted_c_p, tie_level = impute_missing_values(
             i_p,
             mistle_pos_theory,
             mistle_neg_theory,
             missing_attributes,
+            pos_freq,
+            neg_freq,
             metric,
-            nb_clauses_p,
         )
 
-        if set(predicted_c_p) == set(c_p):
-            accuracy += 1
-        total += 1
+        if len(predicted_c_p) > 1:
+            nb_ties += len(predicted_c_p)
+            nb_tied_examples += 1
+        if c_p in predicted_c_p:
+            mistle_accuracy += 1
+        else:
+            print("INCORRECT Prediction at tie levels: " + str(tie_level))
+
+        mistle_total += 1
 
     for c_n, i_n, m_n in zip(
         complete_negatives, incomplete_negatives, missing_negatives
@@ -417,26 +633,65 @@ def get_accuracy(
             continue
         assert c_n == i_n | m_n
         missing_attributes = set()
+        mf_same_one_c_n = copy(set(i_n))
+        mf_both_one_c_n = copy(set(i_n))
         for literal in m_n:
             missing_attributes.add(abs(literal))
 
-        predicted_c_n = impute_missing_values(
+            if neg_freq[abs(literal)] > 0:
+                mf_same_one_c_n.add(abs(literal))
+            elif neg_freq[abs(literal)] < 0:
+                mf_same_one_c_n.add(-abs(literal))
+
+            if neg_freq[abs(literal)] - pos_freq[abs(literal)] > 0:
+                mf_both_one_c_n.add(abs(literal))
+            elif neg_freq[abs(literal)] - pos_freq[abs(literal)] < 0:
+                mf_both_one_c_n.add(-abs(literal))
+
+        if len(c_n) == len(mf_same_one_c_n):
+            mf_same_one_total += 1
+            if c_n == frozenset(mf_same_one_c_n):
+                mf_same_one_accuracy += 1
+
+        if len(c_n) == len(mf_both_one_c_n):
+            mf_both_one_total += 1
+            if c_n == frozenset(mf_both_one_c_n):
+                mf_both_one_accuracy += 1
+
+        predicted_c_n, tie_level = impute_missing_values(
             i_n,
             mistle_neg_theory,
             mistle_pos_theory,
             missing_attributes,
+            neg_freq,
+            pos_freq,
             metric,
-            nb_clauses_n,
         )
 
-        if set(predicted_c_n) == set(c_n):
-            accuracy += 1
-        total += 1
+        if len(predicted_c_n) > 1:
+            nb_ties += len(predicted_c_n)
+            nb_tied_examples += 1
 
-    return accuracy / total
+        if c_n in predicted_c_n:
+            mistle_accuracy += 1
+        else:
+            print("INCORRECT Prediction at tie levels: " + str(tie_level))
+
+        mistle_total += 1
+
+    return (
+        mistle_accuracy / mistle_total,
+        (
+            mf_same_one_accuracy / mf_same_one_total,
+            mf_both_one_accuracy / mf_both_one_total,
+            mf_same_one_total,
+            mf_both_one_total,
+        ),
+        (nb_tied_examples, nb_ties),
+    )
 
 
-def split_data_into_train_test(data, train_pct=0.7, seed=0):
+def split_data_into_train_test(data, train_pct=0.7, seed=1234):
     random.seed(seed)
 
     train_data = []
@@ -451,7 +706,7 @@ def split_data_into_train_test(data, train_pct=0.7, seed=0):
     return train_data, test_data
 
 
-def split_data_into_num_folds(data, num_folds=10, seed=0):
+def split_data_into_num_folds(data, num_folds=10, seed=1234):
     random.seed(seed)
 
     split_data = [[] for _ in range(num_folds)]
@@ -507,7 +762,6 @@ def get_missing_data_mcar(complete_data, m):
 
 def get_artificial_missing(complete_positives, complete_negatives, M=0):
     """
-    :param dataset: Name of the uci dataset in string: ["adult", "breast", "chess", "ionoshphere", "mushroom", "pima", "tictactoe"]
     :param M: a positive integer fixating on the exact number of values to be made missing in each row
     :return: a tuple of incomplete positives and incomplete negatives
     """
@@ -700,6 +954,12 @@ def get_pct_completions_cnfalgo(
     for clause in cnfalgo_theory:
         modified_cnfalgo_theory.add(clause)
 
+    pos_cnfalgo_theory = copy(modified_cnfalgo_theory)
+    pos_cnfalgo_theory.add(frozenset([pos_literal]))
+
+    neg_cnfalgo_theory = copy(modified_cnfalgo_theory)
+    neg_cnfalgo_theory.add(frozenset([-pos_literal]))
+
     cnfalgo_nb_literals = 0
     for clause in cnfalgo_theory:
         if pos_literal in clause or -pos_literal in clause:
@@ -707,7 +967,8 @@ def get_pct_completions_cnfalgo(
         else:
             cnfalgo_nb_literals += len(clause)
 
-    accuracy = 0
+    accuracy2 = 0
+    accuracy3 = 0
     total = 0
     for c_p, i_p, m_p in zip(
         complete_test_positives, incomplete_test_positives, missing_test_positives
@@ -720,11 +981,18 @@ def get_pct_completions_cnfalgo(
         completed_pas = get_all_completions(list(i_p), missing_attributes, [])
 
         for completion in completed_pas:
-            completion.append(pos_literal)
             if check_pa_satisfiability(
-                completion, modified_cnfalgo_theory, pa_is_complete=True
+                completion, pos_cnfalgo_theory, pa_is_complete=False
             ):
-                accuracy += 1
+                accuracy3 += 1
+
+            if (
+                check_pa_satisfiability(
+                    completion, neg_cnfalgo_theory, pa_is_complete=False
+                )
+                is False
+            ):
+                accuracy2 += 1
             total += 1
 
     for c_n, i_n, m_n in zip(
@@ -738,23 +1006,39 @@ def get_pct_completions_cnfalgo(
         completed_pas = get_all_completions_recursive(list(i_n), missing_attributes, [])
 
         for completion in completed_pas:
-            completion.append(-pos_literal)
-            if check_pa_satisfiability(
-                completion, modified_cnfalgo_theory, pa_is_complete=True
+            if (
+                check_pa_satisfiability(
+                    completion, pos_cnfalgo_theory, pa_is_complete=False
+                )
+                is False
             ):
-                accuracy += 1
+                accuracy2 += 1
+
+            if check_pa_satisfiability(
+                completion, neg_cnfalgo_theory, pa_is_complete=False
+            ):
+                accuracy3 += 1
             total += 1
 
     print(
-        "CNFAlgo Accuracy = "
-        + str(accuracy)
+        "CNFAlgo Accuracy 2 = "
+        + str(accuracy2)
         + "/"
         + str(total)
         + " = "
-        + str(accuracy / total)
+        + str(accuracy2 / total)
     )
-    accuracy = accuracy / total
-    return cnfalgo_nb_clauses, cnfalgo_nb_literals, accuracy
+    print(
+        "CNFAlgo Accuracy 3 = "
+        + str(accuracy3)
+        + "/"
+        + str(total)
+        + " = "
+        + str(accuracy3 / total)
+    )
+    accuracy2 = accuracy2 / total
+    accuracy3 = accuracy3 / total
+    return cnfalgo_nb_clauses, cnfalgo_nb_literals, accuracy2, accuracy3
 
 
 def get_pct_test_cnfalgo(
@@ -798,6 +1082,17 @@ def get_pct_test_cnfalgo(
 def avlen(l):
     # Returns the average length of elements in the list 'l'
     return sum([len(x) for x in l]) / len(l)
+
+
+def get_freq(examples):
+    freq = defaultdict(int)
+    for example in examples:
+        for literal in example:
+            if literal < 0:
+                freq[abs(literal)] -= 1
+            else:
+                freq[abs(literal)] += 1
+    return freq
 
 
 ###############################################################################
@@ -981,14 +1276,6 @@ def plot_artificial(M_list, dl, version, minsup=None, k=None, metric="length"):
     print("CNF-cc Literals List\t:" + str(cnfalgo_literals_list))
 
 
-from data_generators import TheoryNoisyGeneratorOnDataset, GeneratedTheory
-
-import random
-
-seed = 0
-random.seed(seed)
-np.random.seed(seed)
-
 # ################################ Plot 1: Count ################################
 # plot_artificial(
 #     M_list=[1, 2, 3, 4, 5, 6], minsup=0.05, dl="me", version=2, metric="count"
@@ -1001,111 +1288,107 @@ np.random.seed(seed)
 
 
 ###############################################################################
-# Exp 2.0: Dont split data into train/test; No 10 fold CVl; Impute missing values on the full data
+# Exp 2.0: Split data into train/test; No 10 fold CVl; Impute missing values on the full data
 ###############################################################################
 
 
 def plot_uci_nb_missing(
-    dataset, M_list, version, dl="me", minsup=None, k=None, metric="count"
+    dataset,
+    M_list,
+    version=1,
+    dl="me",
+    minsup=None,
+    k=None,
+    metric="count",
+    train_pct=0.8,
 ):
     # this is the function that learns a theory without splitting the data and then tries to complete all the training examples.
     # Randomly make some values missing on whole 100% of the data. Learn theory on ‘incomplete’ 100% of data. Try to impute all missing values.
 
-    complete_positives, complete_negatives = load_complete_dataset(dataset)
+    # complete_positives, complete_negatives = load_complete_dataset(dataset)
+    complete_positives, complete_negatives = load_data(dataset, complete=True)
+
+    complete_train_positives, complete_test_positives = split_data_into_train_test(
+        complete_positives, train_pct, seed=seed
+    )
+    complete_train_negatives, complete_test_negatives = split_data_into_train_test(
+        complete_negatives, train_pct, seed=seed
+    )
+
     out_path = "Output/CNFs/" + dataset
     cnfalgo_accuracy_list = []
+    cnfalgo_nb_ties_list = []
+    mf_accuracy_list = []
     mistle_accuracy_list = []
+    mistle_nb_ties_list = []
     randomized_accuracy_list = []
+
+    mistle_pos_theory, _ = Mistle(
+        complete_train_negatives, complete_train_positives
+    ).learn(dl_measure=dl, minsup=minsup, k=k, lossy=True)
+    mistle_neg_theory, _ = Mistle(
+        complete_train_positives, complete_train_negatives
+    ).learn(dl_measure=dl, minsup=minsup, k=k, lossy=True)
+
+    pos_freq = get_freq(complete_train_positives)
+    neg_freq = get_freq(complete_train_negatives)
 
     for m in M_list:
         (
-            incomplete_positives,
-            incomplete_negatives,
-            missing_positives,
-            missing_negatives,
-        ) = get_uci_nb_missing(dataset, m)
+            incomplete_test_positives,
+            incomplete_test_negatives,
+            missing_test_positives,
+            missing_test_negatives,
+        ) = get_uci_nb_missing(complete_test_positives, complete_test_negatives, m)
 
-        mistle_pos_theory, _ = Mistle(incomplete_negatives, incomplete_positives).learn(
-            dl_measure=dl, minsup=minsup, k=k
-        )
-        mistle_neg_theory, _ = Mistle(incomplete_positives, incomplete_negatives).learn(
-            dl_measure=dl, minsup=minsup, k=k
-        )
-        write_cnf(
-            get_clauses(mistle_pos_theory),
-            out_path + "_L" + str(minsup) + "_M" + str(m) + "_pos.cnf",
-        )
-        write_cnf(
-            get_clauses(mistle_neg_theory),
-            out_path + "_L" + str(minsup) + "_M" + str(m) + "_neg.cnf",
-        )
-
-        accuracy = get_accuracy(
+        mistle_accuracy, mf_accuracy, mistle_nb_ties = get_accuracy(
             mistle_pos_theory,
             mistle_neg_theory,
-            complete_positives,
-            complete_negatives,
-            incomplete_positives,
-            incomplete_negatives,
-            missing_positives,
-            missing_negatives,
+            complete_test_positives,
+            complete_test_negatives,
+            incomplete_test_positives,
+            incomplete_test_negatives,
+            missing_test_positives,
+            missing_test_negatives,
+            pos_freq,
+            neg_freq,
             metric,
         )
+        mistle_accuracy_list.append(mistle_accuracy)
+        mf_accuracy_list.append(mf_accuracy)
+        mistle_nb_ties_list.append(mistle_nb_ties)
 
-        nb_clauses, nb_literals, cnfalgo_accuracy = complete_cnfalgo(
-            incomplete_positives,
-            incomplete_negatives,
-            incomplete_positives,
-            incomplete_negatives,
-            missing_positives,
-            missing_negatives,
-            metric=metric,
-        )
-        cnfalgo_accuracy_list.append(cnfalgo_accuracy)
+        # nb_clauses, nb_literals, cnfalgo_accuracy, cnfalgo_nb_ties = complete_cnfalgo(
+        #     incomplete_test_positives,
+        #     incomplete_test_negatives,
+        #     incomplete_test_positives,
+        #     incomplete_test_negatives,
+        #     missing_test_positives,
+        #     missing_test_negatives,
+        #     metric=metric,
+        # )
+        # cnfalgo_accuracy_list.append(cnfalgo_accuracy)
+        # cnfalgo_nb_ties_list.append(cnfalgo_nb_ties)
 
-        mistle_accuracy_list.append(accuracy)
         randomized_accuracy_list.append(1 / (2 ** m))
 
-    plt.figure()
-    plt.xlabel("Number of missing literals / row")
-    plt.ylabel("Completion Accuracy")
-
-    plt.plot(M_list, mistle_accuracy_list, marker="o", label="Mistle")
-    plt.plot(M_list, cnfalgo_accuracy_list, marker="o", label="CNF-cc")
-    plt.plot(M_list, randomized_accuracy_list, marker="o", label="Random Completion")
-
-    plt.ylim(bottom=0, top=1)
-    plt.legend()
-    plt.savefig(
-        "Experiments/exp2_uci_nb_missing_" + dataset + "_v" + str(version) + ".pdf",
-        bbox_inches="tight",
+    print("\nDataset\t\t\t\t: " + str(dataset))
+    print("Metric\t\t\t\t: " + str(metric))
+    print("Minsups\t\t\t\t: " + str(M_list))
+    print("MF Accuracy\t\t\t: " + str(mf_accuracy_list))
+    print("Mistle Accuracy\t\t: " + str(mistle_accuracy_list))
+    print("CNFAlgo Accuracy\t: " + str(cnfalgo_accuracy_list))
+    print("Randomized Accuracy\t: " + str(randomized_accuracy_list))
+    print(
+        "\n# Test Examples\t\t: "
+        + str(len(complete_test_positives) + len(complete_test_negatives))
     )
-    plt.show()
-    plt.close()
+    print("Mistle # Ties\t\t: " + str(mistle_nb_ties_list))
+    print("CNFAlgo # Ties\t\t: " + str(cnfalgo_nb_ties_list))
 
 
-# ############################# Plot 1: UCI: Breast #############################
-# plot_uci_nb_missing(
-#     dataset="breast",
-#     M_list=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
-#     minsup=0.05,
-#     dl="me",
-#     version=1,
-# )
-#
-# ############################ Plot 2: UCI: TicTactoe ###########################
-# plot_uci_nb_missing(
-#     dataset="tictactoe", M_list=[1, 2, 3, 4, 5], minsup=0.2, dl="me", version=1
-# )
-# ############################## Plot 2: UCI: Pima ##############################
-# plot_uci_nb_missing(
-#     dataset="pima", M_list=[1, 2, 3, 4, 5], minsup=0.9, dl="me", version=1
-# )
-#
-# ########################### Plot 2: UCI: Ionosphere ###########################
-# plot_uci_nb_missing(
-#     dataset="ionosphere", M_list=[1, 2, 3, 4, 5], k=2000, dl="me", version=1
-# )
+dataset = sys.argv[1]
+plot_uci_nb_missing(dataset=dataset, M_list=[3], k=10000, metric="length")
 
 
 ###############################################################################
@@ -1483,7 +1766,7 @@ def plot_exp2_2(
             fold_mistle_accuracy_list4[fold][i] = a4
             fold_mistle_total_tests[fold][i] = total
 
-            cnfalgo_nb_clauses, cnfalgo_nb_literals, cnfalgo_accuracy = get_pct_completions_cnfalgo(
+            cnfalgo_nb_clauses, cnfalgo_nb_literals, cnfalgo_accuracy, cnfalgo_accuracy3 = get_pct_completions_cnfalgo(
                 cnfalgo_theory,
                 complete_test_positives,
                 complete_test_negatives,
@@ -1668,10 +1951,14 @@ def plot_exp2_2(
 
 
 def plot_exp2_2_without_num_folds(
-    dataset, missingness_parameters=[0.05, 0.10], train_pct=0.8, minsup=None
+    dataset,
+    missingness_parameters=[0.10],
+    train_pct=0.8,
+    minsup=None,
+    load_complete=False,
 ):
 
-    complete_positives, complete_negatives = load_data(dataset, complete=True)
+    complete_positives, complete_negatives = load_data(dataset, complete=load_complete)
 
     complete_train_positives, complete_test_positives = split_data_into_train_test(
         complete_positives, train_pct, seed=seed
@@ -1681,14 +1968,16 @@ def plot_exp2_2_without_num_folds(
     )
 
     if minsup is None:
-        minsup = get_topk_minsup(
-            complete_train_positives + complete_train_negatives,
-            current_minsup=0.99,
-            decrement_factor=5,
-            suppress_output=False,
-        )
+        # minsup = get_topk_minsup(
+        #     complete_train_positives + complete_train_negatives,
+        #     current_minsup=0.99,
+        #     decrement_factor=5,
+        #     suppress_output=False,
+        # )
+        minsup = minsup_dict[dataset]
 
-    cnfalgo_accuracy_list = []
+    cnfalgo_accuracy_list2 = []
+    cnfalgo_accuracy_list3 = []
     cnfalgo_clauses_list = []
     cnfalgo_literals_list = []
 
@@ -1707,25 +1996,27 @@ def plot_exp2_2_without_num_folds(
         nb_literls += len(p_in)
     train_data_literals_list = [nb_literls] * len(missingness_parameters)
 
+    start = time()
     mistle_neg_theory, _ = Mistle(
         complete_train_positives, complete_train_negatives
     ).learn(minsup=minsup)
     mistle_pos_theory, _ = Mistle(
         complete_train_negatives, complete_train_positives
     ).learn(minsup=minsup)
+    mistle_runtime = time() - start
 
     nb_clauses = 0
     clauses = []
     if mistle_pos_theory is not None:
         nb_clauses += len(mistle_pos_theory.clauses)
         clauses += mistle_pos_theory.clauses
-        print("mistle_pos_theory.clauses = " + str(mistle_pos_theory.clauses))
+        # print("mistle_pos_theory.clauses = " + str(mistle_pos_theory.clauses))
     else:
         print("Mistle_pos_theory is None")
     if mistle_neg_theory is not None:
         nb_clauses += len(mistle_neg_theory.clauses)
         clauses += mistle_neg_theory.clauses
-        print("mistle_neg_theory.clauses = " + str(mistle_neg_theory.clauses))
+        # print("mistle_neg_theory.clauses = " + str(mistle_neg_theory.clauses))
     else:
         print("Mistle_neg_theory is None")
     mistle_clauses_list = [nb_clauses] * len(missingness_parameters)
@@ -1735,9 +2026,11 @@ def plot_exp2_2_without_num_folds(
         mistle_nb_literals += len(clause)
     mistle_literals_list = [mistle_nb_literals] * len(missingness_parameters)
 
+    start = time()
     cnfalgo_theory = get_cnfalgo_theory(
         complete_train_positives, complete_train_negatives, suppress_output=True
     )
+    cnfalgo_runtime = time() - start
 
     for i, m in enumerate(missingness_parameters):
 
@@ -1772,7 +2065,7 @@ def plot_exp2_2_without_num_folds(
         mistle_accuracy_list3.append(a3)
         mistle_accuracy_list4.append(a4)
 
-        cnfalgo_nb_clauses, cnfalgo_nb_literals, cnfalgo_accuracy = get_pct_completions_cnfalgo(
+        cnfalgo_nb_clauses, cnfalgo_nb_literals, cnfalgo_accuracy2, cnfalgo_accuracy3 = get_pct_completions_cnfalgo(
             cnfalgo_theory,
             complete_test_positives,
             complete_test_negatives,
@@ -1784,7 +2077,8 @@ def plot_exp2_2_without_num_folds(
 
         cnfalgo_clauses_list.append(cnfalgo_nb_clauses)
         cnfalgo_literals_list.append(cnfalgo_nb_literals)
-        cnfalgo_accuracy_list.append(cnfalgo_accuracy)
+        cnfalgo_accuracy_list2.append(cnfalgo_accuracy2)
+        cnfalgo_accuracy_list3.append(cnfalgo_accuracy3)
 
     print("\n\ndataset = " + dataset + " with minsup = " + str(minsup))
     print("missingness_parameters = " + str(missingness_parameters))
@@ -1795,12 +2089,16 @@ def plot_exp2_2_without_num_folds(
     print("mistle_clauses_list = " + str(mistle_clauses_list))
     print("mistle_literals_list = " + str(mistle_literals_list))
 
-    print("cnfalgo_accuracy_list = " + str(cnfalgo_accuracy_list))
+    print("cnfalgo_accuracy_list2 = " + str(cnfalgo_accuracy_list2))
+    print("cnfalgo_accuracy_list3 = " + str(cnfalgo_accuracy_list3))
     print("cnfalgo_clauses_list = " + str(cnfalgo_clauses_list))
     print("cnfalgo_literals_list = " + str(cnfalgo_literals_list))
 
     print("train_data_literals_list = " + str(train_data_literals_list))
     print("randomized_accuracy_list = " + str(randomized_accuracy_list))
+
+    print("mistle runtime = " + str(mistle_runtime))
+    print("cnfalgo runtime = " + str(cnfalgo_runtime))
 
 
 # dataset = "ticTacToe.dat"
@@ -1830,8 +2128,8 @@ def plot_exp2_2_without_num_folds(
 # train_data_literals_list = [20385, 20385, 20385]
 # randomized_accuracy_list = [0.33349609375, 0.1101377876243781, 0.02028059251237624]
 
-dataset = sys.argv[1]
-plot_exp2_2_without_num_folds(dataset=dataset)
+# dataset = sys.argv[1]
+# plot_exp2_2_without_num_folds(dataset=dataset)
 
 
 ###############################################################################
@@ -1839,18 +2137,17 @@ plot_exp2_2_without_num_folds(dataset=dataset)
 ###############################################################################
 
 
-def plot_exp2_3(
-    dataset, dl, version, minsup=None, k=None, sample_vars=None, sample_rows=None
-):
+def plot_exp2_3(dataset, dl="me", version=1, minsup=None, k=None):
 
-    complete_positives, complete_negatives = load_complete_dataset(
-        dataset, sample=sample_vars
-    )
+    # complete_positives, complete_negatives = load_complete_dataset(
+    #     dataset, sample=sample_vars
+    # )
+    #
+    # if sample_rows is not None:
+    #     complete_positives = random.sample(complete_positives, sample_rows)
+    #     complete_negatives = random.sample(complete_negatives, sample_rows)
 
-    if sample_rows is not None:
-        complete_positives = random.sample(complete_positives, sample_rows)
-        complete_negatives = random.sample(complete_negatives, sample_rows)
-
+    complete_positives, complete_negatives = load_data(dataset, complete=True)
     num_folds = 10
 
     split_positives = split_data_into_num_folds(
@@ -1870,6 +2167,7 @@ def plot_exp2_3(
     fold_mistle_accuracy_list2 = []
     fold_mistle_accuracy_list3 = []
     fold_mistle_accuracy_list4 = []
+    fold_mistle_accuracy_comp_list = []
 
     fold_train_data_literals_list = []
 
@@ -1892,31 +2190,16 @@ def plot_exp2_3(
             nb_literls += len(p_in)
         fold_train_data_literals_list.append(nb_literls)
 
-        mistle_neg_theory, _ = Mistle(
+        mistle_minus_theory, comp_minus = Mistle(
             complete_train_positives, complete_train_negatives
         ).learn(dl_measure=dl, minsup=minsup, k=k)
-        mistle_pos_theory, _ = Mistle(
+        mistle_plus_theory, comp_plus = Mistle(
             complete_train_negatives, complete_train_positives
         ).learn(dl_measure=dl, minsup=minsup, k=k)
 
-        nb_clauses = 0
-        clauses = []
-        if mistle_pos_theory is not None:
-            nb_clauses += len(mistle_pos_theory.clauses)
-            clauses += mistle_pos_theory.clauses
-        if mistle_neg_theory is not None:
-            nb_clauses += len(mistle_neg_theory.clauses)
-            clauses += mistle_neg_theory.clauses
-        fold_mistle_clauses_list.append(nb_clauses)
-
-        mistle_nb_literals = 0
-        for clause in clauses:
-            mistle_nb_literals += len(clause)
-        fold_mistle_literals_list.append(mistle_nb_literals)
-
         a1, a2, a3, a4, total = check_test_completions(
-            mistle_pos_theory,
-            mistle_neg_theory,
+            mistle_minus_theory,
+            mistle_plus_theory,
             complete_test_positives,
             complete_test_negatives,
         )
@@ -1924,6 +2207,33 @@ def plot_exp2_3(
         fold_mistle_accuracy_list2.append(a2)
         fold_mistle_accuracy_list3.append(a3)
         fold_mistle_accuracy_list4.append(a4)
+
+        nb_clauses = 0
+        clauses = []
+        if comp_plus > comp_minus:
+            nb_clauses += len(mistle_plus_theory.clauses)
+            clauses += mistle_plus_theory.clauses
+            mistle_comp_accuracy = a4
+        else:
+            nb_clauses += len(mistle_minus_theory.clauses)
+            clauses += mistle_minus_theory.clauses
+            mistle_comp_accuracy = a1
+
+        fold_mistle_accuracy_comp_list.append(mistle_comp_accuracy)
+
+        # if mistle_pos_theory is not None:
+        #     nb_clauses += len(mistle_pos_theory.clauses)
+        #     clauses += mistle_pos_theory.clauses
+        # if mistle_neg_theory is not None:
+        #     nb_clauses += len(mistle_neg_theory.clauses)
+        #     clauses += mistle_neg_theory.clauses
+
+        fold_mistle_clauses_list.append(nb_clauses)
+
+        mistle_nb_literals = 0
+        for clause in clauses:
+            mistle_nb_literals += len(clause)
+        fold_mistle_literals_list.append(mistle_nb_literals)
 
         cnfalgo_theory = get_cnfalgo_theory(
             complete_train_positives, complete_train_negatives
@@ -1945,6 +2255,7 @@ def plot_exp2_3(
     mistle_accuracy2 = sum(fold_mistle_accuracy_list2) / num_folds
     mistle_accuracy3 = sum(fold_mistle_accuracy_list3) / num_folds
     mistle_accuracy4 = sum(fold_mistle_accuracy_list4) / num_folds
+    mistle_comp_accuracy = sum(fold_mistle_accuracy_comp_list) / num_folds
 
     cnfalgo_clauses = sum(fold_cnfalgo_clauses_list) / num_folds
     cnfalgo_literals = sum(fold_cnfalgo_literals_list) / num_folds
@@ -1955,63 +2266,67 @@ def plot_exp2_3(
         + str(sorted([abs(x) for x in complete_positives[0]]))
     )
 
+    print("mistle_clauses = " + str(mistle_clauses))
+    print("mistle_literals = " + str(mistle_literals))
     print("mistle_accuracy1 = " + str(mistle_accuracy1))
     print("mistle_accuracy2 = " + str(mistle_accuracy2))
     print("mistle_accuracy3 = " + str(mistle_accuracy3))
     print("mistle_accuracy4 = " + str(mistle_accuracy4))
-    print("mistle_clauses = " + str(mistle_clauses))
-    print("mistle_literals = " + str(mistle_literals))
+    print("mistle_comp_accuracy = " + str(mistle_comp_accuracy))
 
-    print("cnfalgo_accuracy = " + str(cnfalgo_accuracy))
+    print("\ncnfalgo_accuracy = " + str(cnfalgo_accuracy))
     print("cnfalgo_clauses = " + str(cnfalgo_clauses))
     print("cnfalgo_literals = " + str(cnfalgo_literals))
 
     print("train_data_literals = " + str(train_data_literals))
 
-    plt.figure()
-    plt.ylabel("Completion Accuracy")
+    # plt.figure()
+    # plt.ylabel("Completion Accuracy")
+    #
+    # plt.bar(
+    #     ["M1", "M2", "M3", "M4", "CNF-cc"],
+    #     [
+    #         mistle_accuracy1,
+    #         mistle_accuracy2,
+    #         mistle_accuracy3,
+    #         mistle_accuracy4,
+    #         cnfalgo_accuracy,
+    #     ],
+    # )
+    # plt.ylim(bottom=0, top=1)
+    # plt.savefig(
+    #     "Experiments/exp2.3_plot1_" + dataset + "_v" + str(version) + ".pdf",
+    #     bbox_inches="tight",
+    # )
+    # plt.show()
+    # plt.close()
+    #
+    # plt.figure()
+    # plt.ylabel("# of clauses in learned theory")
+    # plt.bar(["Mistle", "CNF-cc"], [mistle_clauses, cnfalgo_clauses])
+    # plt.savefig(
+    #     "Experiments/exp2.3_plot2_" + dataset + "_v" + str(version) + ".pdf",
+    #     bbox_inches="tight",
+    # )
+    # plt.show()
+    # plt.close()
 
-    plt.bar(
-        ["M1", "M2", "M3", "M4", "CNF-cc"],
-        [
-            mistle_accuracy1,
-            mistle_accuracy2,
-            mistle_accuracy3,
-            mistle_accuracy4,
-            cnfalgo_accuracy,
-        ],
-    )
-    plt.ylim(bottom=0, top=1)
-    plt.savefig(
-        "Experiments/exp2.3_plot1_" + dataset + "_v" + str(version) + ".pdf",
-        bbox_inches="tight",
-    )
-    plt.show()
-    plt.close()
+    # plt.figure()
+    # plt.ylabel("# of literals")
+    # plt.bar(
+    #     ["Mistle", "CNF-cc", "Train Data"],
+    #     [mistle_literals, cnfalgo_literals, train_data_literals],
+    # )
+    # plt.savefig(
+    #     "Experiments/exp2.3_plot3_" + dataset + "_v" + str(version) + ".pdf",
+    #     bbox_inches="tight",
+    # )
+    # plt.show()
+    # plt.close()
 
-    plt.figure()
-    plt.ylabel("# of clauses in learned theory")
-    plt.bar(["Mistle", "CNF-cc"], [mistle_clauses, cnfalgo_clauses])
-    plt.savefig(
-        "Experiments/exp2.3_plot2_" + dataset + "_v" + str(version) + ".pdf",
-        bbox_inches="tight",
-    )
-    plt.show()
-    plt.close()
 
-    plt.figure()
-    plt.ylabel("# of literals")
-    plt.bar(
-        ["Mistle", "CNF-cc", "Train Data"],
-        [mistle_literals, cnfalgo_literals, train_data_literals],
-    )
-    plt.savefig(
-        "Experiments/exp2.3_plot3_" + dataset + "_v" + str(version) + ".pdf",
-        bbox_inches="tight",
-    )
-    plt.show()
-    plt.close()
-
+# dataset = sys.argv[1]
+# plot_exp2_3(dataset=dataset, k=5000)
 
 # Sampled Variables		:[2, 7, 9, 10, 12, 13, 14, 16, 17, 21, 25, 27]
 # mistle_accuracy_list2 = [0.7420315225852726, 0.7420315225852726, 0.7420315225852726, 0.7420315225852726, 0.7420315225852726]

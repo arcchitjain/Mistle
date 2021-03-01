@@ -21,7 +21,7 @@ matplotlib.rc("ytick", labelsize=22)
 matplotlib.rc("legend", fontsize=18)
 matplotlib.rc("figure", titlesize=22)
 
-num_iterations = 10
+num_iterations = 2
 version = 4
 seed = 0
 random.seed(seed)
@@ -76,13 +76,28 @@ def generate_theory(alphabet_size):
     return cnf
 
 
+def generate_complex_theory(alphabet_size=14, clause_size=(2, 14), nb_clauses=(2, 10)):
+    cnf = []
+    all_vars = list(range(1, alphabet_size + 1))
+    sampled_nb_clauses = random.choice(range(*nb_clauses))
+    for clause_id in range(sampled_nb_clauses):
+        sampled_clause_size = random.choice(range(*clause_size))
+        sampled_vars = random.sample(all_vars, k=sampled_clause_size)
+        sampled_signs = random.choices((1, -1), k=sampled_clause_size)
+        sampled_clause = [
+            sampled_vars[i] * sampled_signs[i] for i in range(sampled_clause_size)
+        ]
+        cnf.append(sampled_clause)
+    return cnf
+
+
 ###############################################################################
 # Plot 1: Minsup Plot: Increase minimum support threshold (with LL)
 ###############################################################################
 
 
-def plot1(minsup_list, alphabet_size=10, data_size=400, dl="ll", po_parameter=0.9):
-    actual_theory = generate_theory(alphabet_size)
+def plot1(minsup_list, alphabet_size=14, data_size=400, dl="ll", po_parameter=0.9):
+    actual_theory = generate_complex_theory(alphabet_size)
     theory_object = GeneratedTheory(actual_theory)
     generator = TheoryNoisyGeneratorOnDataset(
         theory_object, data_size, 1 - po_parameter
@@ -119,7 +134,7 @@ def plot1(minsup_list, alphabet_size=10, data_size=400, dl="ll", po_parameter=0.
         mistle = Mistle([], negatives)
         mistle_theory, compression = mistle.learn(
             dl_measure=dl,
-            minsup=support,
+            minsup=m,
             lossy=False,
             prune=False,
             allow_empty_positives=True,
@@ -130,11 +145,7 @@ def plot1(minsup_list, alphabet_size=10, data_size=400, dl="ll", po_parameter=0.
 
         mistle = Mistle([], negatives)
         mistle_theory, compression = mistle.learn(
-            dl_measure=dl,
-            minsup=support,
-            lossy=False,
-            prune=True,
-            allow_empty_positives=True,
+            dl_measure=dl, minsup=m, lossy=False, prune=True, allow_empty_positives=True
         )
         if mistle_theory is None:
             raise ("Empty Theory Learned")
@@ -147,74 +158,75 @@ def plot1(minsup_list, alphabet_size=10, data_size=400, dl="ll", po_parameter=0.
     )
 
 
-# minsup_list = [0.05, 0.1, 0.15, 0.2, 0.25, 0.3]
-# m4s_list = []
-# m_list = []
-# m_prune_list = []
-# for i in range(num_iterations):
-#     m4s, m, m_prune = plot1(minsup_list)
-#     m4s_list.append(m4s)
-#     m_list.append(m)
-#     m_prune_list.append(m_prune)
-#
-# m4s_list = np.array(m4s_list)
-# m_list = np.array(m_list)
-# m_prune_list = np.array(m_prune_list)
-#
-# mean_mining4sat_list = []
-# l_stddev_mining4sat_list = []
-# u_stddev_mining4sat_list = []
-# stddev_mining4sat_list = []
-#
-# mean_mistle_list = []
-# l_stddev_mistle_list = []
-# u_stddev_mistle_list = []
-# stddev_mistle_list = []
-#
-# mean_mistle_prune_list = []
-# l_stddev_mistle_prune_list = []
-# u_stddev_mistle_prune_list = []
-# stddev_mistle_prune_list = []
-#
-# for i in range(len(minsup_list)):
-#     m = mean(m4s_list[:, i])
-#     std_dev = stdev(m4s_list[:, i])
-#     mean_mining4sat_list.append(m)
-#     stddev_mining4sat_list.append(std_dev)
-#     l_stddev_mining4sat_list.append(
-#         max(m - std_dev, -1)
-#     )  # Compression is a fraction between -1 to 1
-#     u_stddev_mining4sat_list.append(min(m + std_dev, 1))
-#
-#     m = mean(m_list[:, i])
-#     std_dev = stdev(m_list[:, i])
-#     mean_mistle_list.append(m)
-#     stddev_mistle_list.append(std_dev)
-#     l_stddev_mistle_list.append(max(m - std_dev, -1))
-#     u_stddev_mistle_list.append(min(m + std_dev, 1))
-#
-#     m = mean(m_prune_list[:, i])
-#     std_dev = stdev(m_prune_list[:, i])
-#     mean_mistle_prune_list.append(m)
-#     stddev_mistle_prune_list.append(std_dev)
-#     l_stddev_mistle_prune_list.append(max(m - std_dev, -1))
-#     u_stddev_mistle_prune_list.append(min(m + std_dev, 1))
-#
-# print("mean_mining4sat_list = " + str(mean_mining4sat_list))
-# print("l_stddev_mining4sat_list = " + str(l_stddev_mining4sat_list))
-# print("u_stddev_mining4sat_list = " + str(u_stddev_mining4sat_list))
-# print("stddev_mining4sat_list = " + str(stddev_mining4sat_list))
-#
-# print("mean_mistle_list = " + str(mean_mistle_list))
-# print("l_stddev_mistle_list = " + str(l_stddev_mistle_list))
-# print("u_stddev_mistle_list = " + str(u_stddev_mistle_list))
-# print("stddev_mistle_list = " + str(stddev_mistle_list))
-#
-# print("mean_mistle_prune_list = " + str(mean_mistle_prune_list))
-# print("l_stddev_mistle_prune_list = " + str(l_stddev_mistle_prune_list))
-# print("u_stddev_mistle_prune_list = " + str(u_stddev_mistle_prune_list))
-# print("stddev_mistle_prune_list = " + str(stddev_mistle_prune_list))
-#
+# minsup_list = [0.2]
+minsup_list = [0.05, 0.1, 0.15, 0.2, 0.25, 0.3]
+m4s_list = []
+m_list = []
+m_prune_list = []
+for i in range(num_iterations):
+    m4s, m, m_prune = plot1(minsup_list)
+    m4s_list.append(m4s)
+    m_list.append(m)
+    m_prune_list.append(m_prune)
+
+m4s_list = np.array(m4s_list)
+m_list = np.array(m_list)
+m_prune_list = np.array(m_prune_list)
+
+mean_mining4sat_list = []
+l_stddev_mining4sat_list = []
+u_stddev_mining4sat_list = []
+stddev_mining4sat_list = []
+
+mean_mistle_list = []
+l_stddev_mistle_list = []
+u_stddev_mistle_list = []
+stddev_mistle_list = []
+
+mean_mistle_prune_list = []
+l_stddev_mistle_prune_list = []
+u_stddev_mistle_prune_list = []
+stddev_mistle_prune_list = []
+
+for i in range(len(minsup_list)):
+    m = mean(m4s_list[:, i])
+    std_dev = stdev(m4s_list[:, i])
+    mean_mining4sat_list.append(m)
+    stddev_mining4sat_list.append(std_dev)
+    l_stddev_mining4sat_list.append(
+        max(m - std_dev, -1)
+    )  # Compression is a fraction between -1 to 1
+    u_stddev_mining4sat_list.append(min(m + std_dev, 1))
+
+    m = mean(m_list[:, i])
+    std_dev = stdev(m_list[:, i])
+    mean_mistle_list.append(m)
+    stddev_mistle_list.append(std_dev)
+    l_stddev_mistle_list.append(max(m - std_dev, -1))
+    u_stddev_mistle_list.append(min(m + std_dev, 1))
+
+    m = mean(m_prune_list[:, i])
+    std_dev = stdev(m_prune_list[:, i])
+    mean_mistle_prune_list.append(m)
+    stddev_mistle_prune_list.append(std_dev)
+    l_stddev_mistle_prune_list.append(max(m - std_dev, -1))
+    u_stddev_mistle_prune_list.append(min(m + std_dev, 1))
+
+print("mean_mining4sat_list = " + str(mean_mining4sat_list))
+print("l_stddev_mining4sat_list = " + str(l_stddev_mining4sat_list))
+print("u_stddev_mining4sat_list = " + str(u_stddev_mining4sat_list))
+print("stddev_mining4sat_list = " + str(stddev_mining4sat_list))
+
+print("mean_mistle_list = " + str(mean_mistle_list))
+print("l_stddev_mistle_list = " + str(l_stddev_mistle_list))
+print("u_stddev_mistle_list = " + str(u_stddev_mistle_list))
+print("stddev_mistle_list = " + str(stddev_mistle_list))
+
+print("mean_mistle_prune_list = " + str(mean_mistle_prune_list))
+print("l_stddev_mistle_prune_list = " + str(l_stddev_mistle_prune_list))
+print("u_stddev_mistle_prune_list = " + str(u_stddev_mistle_prune_list))
+print("stddev_mistle_prune_list = " + str(stddev_mistle_prune_list))
+
 # # version 4; num_iterations 10
 # # mean_mining4sat_list = [0.5308517044630887, 0.4759440853010015, 0.4217773666562703, 0.3584949553384384, 0.19162045415675605, 0.10470237599836019]
 # # l_stddev_mining4sat_list = [0.47220980076381663, 0.4144441885517034, 0.34788779407969517, 0.3001622560098504, 0.09602451364613619, 0.007897513610471196]
@@ -251,7 +263,7 @@ def plot1(minsup_list, alphabet_size=10, data_size=400, dl="ll", po_parameter=0.
 # plt.close()
 
 ###############################################################################
-# Plot 2: Noise PLot: Increase partial observability paramter (with ME)
+# Plot 2: Noise PLot: Increase partial observability parameter (with ME)
 ###############################################################################
 
 

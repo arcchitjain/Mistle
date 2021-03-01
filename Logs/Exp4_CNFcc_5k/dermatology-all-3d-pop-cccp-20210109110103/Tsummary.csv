@@ -1,0 +1,14 @@
+:: dermatology-all-3d-pop-cccp-20210109110103
+Absolute matching
+
+;minsup;AvgAccuracy;StdDev;MaxAccuracy
+Best:;3;0.9690;0.0099;0.9878
+Last:;3;0.9690;0.0099;0.9878
+
+:: dermatology-all-3d-pop-cccp-20210109110103
+Relative matching
+
+;%;AvgAccuracy;StdDev;MaxAccuracy
+Best:;100%;0.9690;0.0099;0.9878
+Last:;1%;0.9690;0.0099;0.9878
+

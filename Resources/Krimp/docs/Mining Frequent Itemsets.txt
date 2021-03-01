@@ -1,0 +1,47 @@
+
+*** Mining frequent itemsets ***
+
+When doing a `regular Krimp run' (command `compress'), the Krimp implementation
+automatically mines all itemsets to be used as candidates for the Krimp selection
+process. By default, this collection of itemsets is not stored for further usage.
+
+However, it is also possible to mine a collection of frequent itemsets *without*
+running Krimp -- just save the itemsets to disk.
+
+For this, use mine.conf configuration file, it only has one important directive
+that needs modification, as follows:
+
+iscName = <dbName>-<itemsetType>-<minSup><itemsetOrder>
+
+itemsetType can be any of the following:
+	all		-- Mine all frequent itemsets
+	closed	-- Mine closed frequent itemsets
+	maxlen[<maxlen>] -- Mine all frequent itemsets up to the specified maximum length
+						(i.e. the maximum number of items an itemset may contain)
+
+minSup can have 2 formats:
+	<integer>		-- Absolute minsup (i.e. 10, 42, 512)
+	<float < 1.0> 	-- Relative minsup (i.e. 0.1 would be 10% of database size)
+
+itemsetOrder:
+	d	-- The default order as used by Krimp
+
+Examples:
+	wine-all-5d					-- All itemsets with minsup 5
+	nursery-closed-0.01d		-- Closed itemsets with minsup 1%
+	tictactoe-maxlen[3]-0.1d	-- All itemsets with minsup 10% and maximum length 3
+
+Mined frequent itemsets are stored in .isc-format in xps/mine/.
+After the 2-line header, each line contains a single itemset, as follows:
+	<length>: <items, space-separated, sorted ascending on item #> (<support>)
+For example:
+	3: 1 2 9 (64)
+Itemset {1,2,9}, length 3, support 64.
+
+
+Note: keep an eye on the memory usage when using maxlen[]. Apriori is used to mine
+this type of itemsets and a full tree of itemsets is constructed in memory. Low
+minsups and/or high maxlens can lead to memory problems. The maxmemusage config 
+directive in fic.user.conf can be used to specify the maximum amount of memory Krimp 
+is allowed to use. (maxmemusage = <maxusage in Mb's>, 32-bit applications are usually 
+not more memory than about 1800Mb.)

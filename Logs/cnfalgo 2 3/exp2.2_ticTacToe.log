@@ -1,0 +1,101 @@
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 8361
+ Total time ~: 83 ms
+ Max memory:14.0
+=====================================
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 14
+ Total time ~: 1 ms
+ Max memory:7.565757751464844
+=====================================
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 14257
+ Total time ~: 111 ms
+ Max memory:16.1494140625
+=====================================
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 5
+ Total time ~: 1 ms
+ Max memory:7.562202453613281
+=====================================
+Length of freq items 1	: 8361
+Time of freq items 1	: 0.4706542491912842
+14156 Frequent Itemsets are mined in 0.13826417922973633 seconds.
+Length of freq items 2	: 14156
+Time of freq items 2	: 0.13831019401550293
+DL of initial theory	: 41548.86891331585
+7497	itemsets left after T operation 	: [frozenset({-15, -3, -27})]
+6587	itemsets left after T operation 	: [frozenset({-15, -21, -9})]
+5755	itemsets left after T operation 	: [frozenset({-21, -12, -3})]
+4746	itemsets left after T operation 	: [frozenset({-24, -21, -27})]
+3762	itemsets left after T operation 	: [frozenset({-27, -18, -9})]
+2941	itemsets left after T operation 	: [frozenset({-24, -15, -6})]
+1935	itemsets left after T operation 	: [frozenset({-6, -3, -9})]
+1362	itemsets left after T operation 	: [frozenset({-8, -15, -12, -18})]
+932	itemsets left after T operation 	: [frozenset({-15, -20, -12, -2})]
+602	itemsets left after T operation 	: [frozenset({-26, -21, -18, -11, -8})]
+460	itemsets left after T operation 	: [frozenset({-26, -23, -18, -15, -12, -10})]
+274	itemsets left after T operation 	: [frozenset({-27, -23, -17, -6, -2})]
+43	itemsets left after T operation 	: [frozenset({-24, -20, -17, -9, -5})]
+29	itemsets left after V operation 	: [frozenset({-15, 21, -24, -5, -20, -3}), frozenset({-11, -26, -8, -21, -18})]
+20	itemsets left after T operation 	: [frozenset({-15, -12, -18})]
+13	itemsets left after V operation 	: [frozenset({-15, -27, -3}), frozenset({21, -24, 27, -5, -20})]
+Length of freq items 1	: 14
+Time of freq items 1	: 0.2771892547607422
+16 Frequent Itemsets are mined in 0.00020194053649902344 seconds.
+Length of freq items 2	: 16
+Time of freq items 2	: 0.0002288818359375
+0 clauses are pruned.
+Initial DL				: 41086.797471537226
+Final DL				: 913.1890134768262
+Compression (wrt me)	: 0.977774149613159
+Operator Counters		: {'D': 0, 'W': 0, 'V': 2, 'S': 0, 'R': 0, 'T': 14}
+Length of freq items 1	: 14257
+Time of freq items 1	: 0.4565548896789551
+16559 Frequent Itemsets are mined in 0.19074320793151855 seconds.
+Length of freq items 2	: 16559
+Time of freq items 2	: 0.19077301025390625
+DL of initial theory	: 41548.86891331585
+13323	itemsets left after T operation 	: [frozenset({-8, -14, -20})]
+12174	itemsets left after T operation 	: [frozenset({-23, -14, -5})]
+10814	itemsets left after T operation 	: [frozenset({-14, -26, -2})]
+8947	itemsets left after T operation 	: [frozenset({-8, -5, -2})]
+7056	itemsets left after T operation 	: [frozenset({-20, -11, -2})]
+4926	itemsets left after T operation 	: [frozenset({-14, -11, -17})]
+2703	itemsets left after T operation 	: [frozenset({-8, -26, -17})]
+9	itemsets left after T operation 	: [frozenset({-23, -20, -26})]
+Length of freq items 1	: 5
+Time of freq items 1	: 0.28948307037353516
+5 Frequent Itemsets are mined in 0.00010895729064941406 seconds.
+Length of freq items 2	: 5
+Time of freq items 2	: 0.00014019012451171875
+0 clauses are pruned.
+Initial DL				: 41086.797471537226
+Final DL				: 191.51890972703094
+Compression (wrt me)	: 0.9953386751581281
+Operator Counters		: {'D': 0, 'W': 0, 'V': 0, 'S': 0, 'R': 0, 'T': 8}
+
+Dataset	: ticTacToe.dat;	Missingness Parameter	: 0.1
+Mistle Accuracy = 0.711864406779661 ; 1.0 ; 0.0 ; 0.288135593220339 / 472
+CNFAlgo Accuracy 2 = 501/521 = 0.9616122840690979
+CNFAlgo Accuracy 3 = 51/521 = 0.09788867562380038
+
+
+dataset = ticTacToe.dat with minsup = 0.0078125
+missingness_parameters = [0.1]
+mistle_accuracy_list1 = [0.711864406779661]
+mistle_accuracy_list2 = [1.0]
+mistle_accuracy_list3 = [0.0]
+mistle_accuracy_list4 = [0.288135593220339]
+mistle_clauses_list = [21]
+mistle_literals_list = [72]
+cnfalgo_accuracy_list2 = [0.9616122840690979]
+cnfalgo_accuracy_list3 = [0.09788867562380038]
+cnfalgo_clauses_list = [25635]
+cnfalgo_literals_list = [117058]
+train_data_literals_list = [6795]
+randomized_accuracy_list = [0.3806594488188976]

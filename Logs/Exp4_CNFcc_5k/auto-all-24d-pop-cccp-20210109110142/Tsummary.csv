@@ -1,0 +1,14 @@
+:: auto-all-24d-pop-cccp-20210109110142
+Absolute matching
+
+;minsup;AvgAccuracy;StdDev;MaxAccuracy
+Best:;20;0.8461;0.0275;0.8750
+Last:;0;0.8049;0.0141;0.8315
+
+:: auto-all-24d-pop-cccp-20210109110142
+Relative matching
+
+;%;AvgAccuracy;StdDev;MaxAccuracy
+Best:;100%;0.8461;0.0275;0.8750
+Last:;1%;0.8049;0.0141;0.8315
+

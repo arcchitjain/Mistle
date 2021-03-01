@@ -1,0 +1,14 @@
+:: flare-all-1d-pop-cccp-20210117094125
+Absolute matching
+
+;minsup;AvgAccuracy;StdDev;MaxAccuracy
+Best:;1;0.8123;0.0126;0.8272
+Last:;1;0.8123;0.0126;0.8272
+
+:: flare-all-1d-pop-cccp-20210117094125
+Relative matching
+
+;%;AvgAccuracy;StdDev;MaxAccuracy
+Best:;100%;0.8123;0.0126;0.8272
+Last:;1%;0.8123;0.0126;0.8272
+

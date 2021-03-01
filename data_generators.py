@@ -288,7 +288,7 @@ class TheoryNoisyGeneratorOnExample(TheoryNoisyGenerator):
 
 
 class TheoryNoisyGeneratorOnDataset:
-    def __init__(self, theory, nb_examples=100, noise=0.1):
+    def __init__(self, theory, nb_examples=100, noise=0.1, seed=0):
         """
         Generates a dataset of partial examples.
         First, partial examples are generated. If it is SAT with the theory, it belongs to the positive examples. Otherwise, it is in the negative.
@@ -301,6 +301,9 @@ class TheoryNoisyGeneratorOnDataset:
         self.theory = theory
         self.nb_examples = nb_examples
         self.noise = noise
+
+        np.random.seed(seed)
+        random.seed(seed)
 
     def generate_partial_example(self):
         partial_example = []
@@ -319,7 +322,7 @@ class TheoryNoisyGeneratorOnDataset:
     def generate_dataset(self, generate_only_negatives=False):
         """
         Generates the dataset given corresponding to the created generator.
-        :return: 2 list. The first list contains positive examples in DIMACS format (as a frozenset), the second contains the negative examples
+        :return: 2 lists: The first list contains positive examples in DIMACS format (as a frozenset), the second contains the negative examples
         """
 
         partial_neg = []

@@ -1,0 +1,14 @@
+:: iris_18-all-1d-pop-cccp-20210117093437
+Absolute matching
+
+;minsup;AvgAccuracy;StdDev;MaxAccuracy
+Best:;1;0.9533;0.0846;1.0000
+Last:;1;0.9533;0.0846;1.0000
+
+:: iris_18-all-1d-pop-cccp-20210117093437
+Relative matching
+
+;%;AvgAccuracy;StdDev;MaxAccuracy
+Best:;100%;0.9533;0.0846;1.0000
+Last:;1%;0.9533;0.0846;1.0000
+

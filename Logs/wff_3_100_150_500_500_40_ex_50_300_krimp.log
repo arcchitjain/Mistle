@@ -1,0 +1,1919 @@
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: '916c0921-5e14-4fe4-9a56-988b5c355586_convertdb.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * Type:		FIMI database
+ * File:		wff_3_100_150_500_500_40_ex_0_train_pos.dat
+ * Scanning file:	in progress... * Scanning file: done                       
+ * Database:	459 rows, maximal 60 columns
+ * 		has bin sizes: no
+ * 		has transaction id's: no
+ * Reading database:	in progress... * Reading database:	done          
+
+ * Processing Data:  * Processing Data: Translating Forward * Processing Data: Sorting within Rows * Processing Data: Writing Data              ** Writing FIC database to file
+ * File:		wff_3_100_150_500_500_40_ex_0_train_pos.db
+** Finished writing database.
+
+ * Processing Data: Finished                  
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/
+
+Task `datatrans`, command `convertdb` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: '2ce07e12-87b0-4197-bbbb-2bd1a99c4955_analysedb.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * File:		wff_3_100_150_500_500_40_ex_0_train_pos.db
+ * Database:		459t 459r, 27540i, 210423.87bits
+ * 			pruned below support 0, maximum set length 60
+ * Alphabet:		200 items
+ * Internal datatype:	uint16 value arrays
+
+** Analysing database
+ * Output File:	wff_3_100_150_500_500_40_ex_0_train_pos.db.analysis.txt
+ * Writing analysis:	in progress... * Writing analysis:	done          
+
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/analysedb/
+
+Task `main`, command `analysedb` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: 'bfbced00-fb8e-455c-9537-456be735960d_compress.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * File:		wff_3_100_150_500_500_40_ex_0_train_pos.db
+ * Database:		459t 459r, 27540i, 210423.87bits
+ * 			pruned below support 0, maximum set length 60
+ * Alphabet:		200 items
+ * Internal datatype:	128bit bitmap
+ ** WARNING : |ab| > 128 : won't fit in BM128, using Uint16 **
+
+
+** ItemSetCollection ::
+** Creating Frequent Item Set Collection.
+ * File:		wff_3_100_150_500_500_40_ex_0_train_pos-all-50d.bisc.fi
+ * Type:		FIMI
+ * Has # rows:		no
+ * # ItemSets:		1787
+ * Sorting sets:	in progress... * Sorting sets:	sorted on support and descending on length
+** Finished Creating Frequent Item Set Collection
+
+
+** Compression :: 
+ * Experiment tag	wff_3_100_150_500_500_40_ex_0_train_pos-all-50d-pop-20200331161343
+ * Algorithm:		coverpartial post-accept-prune
+ * Candidates:		1787p
+ * Start:		(200a,0u,27540,210424,3059,213483)
+ - Progress:		0% (0) ? c/s  		 \ Progress:		1% (18) ? c/s  		 | Progress:		2% (36) ? c/s  		 / Progress:		3% (54) ? c/s  		 - Progress:		4% (72) ? c/s  		 \ Progress:		5% (90) ? c/s  		 | Progress:		6% (108) ? c/s  		 / Progress:		7% (126) ? c/s  		 - Progress:		8% (143) ? c/s  		 \ Progress:		9% (161) ? c/s  		 | Progress:		10% (179) ? c/s  		 / Progress:		11% (197) ? c/s  		 - Progress:		12% (215) ? c/s  		 \ Progress:		13% (233) ? c/s  		 | Progress:		14% (251) ? c/s  		 / Progress:		15% (269) ? c/s  		 - Progress:		16% (286) ? c/s  		 \ Progress:		17% (304) ? c/s  		 | Progress:		18% (322) ? c/s  		 / Progress:		19% (340) ? c/s  		 - Progress:		20% (358) ? c/s  		 \ Progress:		21% (376) ? c/s  		 | Progress:		22% (394) ? c/s  		 / Progress:		23% (412) ? c/s  		 - Progress:		24% (429) ? c/s  		 \ Progress:		25% (447) ? c/s  		 | Progress:		26% (465) ? c/s  		 / Progress:		27% (483) ? c/s  		 - Progress:		28% (501) ? c/s  		 \ Progress:		29% (519) ? c/s  		 | Progress:		30% (537) ? c/s  		 / Progress:		31% (554) ? c/s  		 - Progress:		32% (572) ? c/s  		 \ Progress:		33% (590) ? c/s  		 | Progress:		34% (608) ? c/s  		 / Progress:		35% (626) ? c/s  		 - Progress:		36% (644) ? c/s  		 \ Progress:		37% (662) ? c/s  		 | Progress:		38% (680) ? c/s  		 / Progress:		39% (697) ? c/s  		 - Progress:		40% (715) ? c/s  		 \ Progress:		41% (733) ? c/s  		 | Progress:		42% (751) ? c/s  		 / Progress:		43% (769) ? c/s  		 - Progress:		44% (787) ? c/s  		 \ Progress:		45% (805) ? c/s  		 | Progress:		46% (823) ? c/s  		 / Progress:		47% (840) ? c/s  		 - Progress:		48% (858) ? c/s  		 \ Progress:		49% (876) ? c/s  		 | Progress:		50% (894) ? c/s  		 / Progress:		51% (912) ? c/s  		 - Progress:		52% (930) ? c/s  		 \ Progress:		53% (948) ? c/s  		 | Progress:		54% (965) ? c/s  		 / Progress:		55% (983) ? c/s  		 - Progress:		56% (1001) ? c/s  		 \ Progress:		57% (1019) ? c/s  		 | Progress:		58% (1037) ? c/s  		 / Progress:		59% (1055) ? c/s  		 - Progress:		60% (1073) ? c/s  		 \ Progress:		61% (1091) ? c/s  		 | Progress:		62% (1108) ? c/s  		 / Progress:		63% (1126) ? c/s  		 - Progress:		64% (1144) ? c/s  		 \ Progress:		65% (1162) ? c/s  		 | Progress:		66% (1180) ? c/s  		 / Progress:		67% (1198) ? c/s  		 - Progress:		68% (1216) ? c/s  		 \ Progress:		69% (1234) ? c/s  		 | Progress:		70% (1251) ? c/s  		 / Progress:		71% (1269) ? c/s  		 - Progress:		72% (1287) ? c/s  		 \ Progress:		73% (1305) ? c/s  		 | Progress:		74% (1323) ? c/s  		 / Progress:		75% (1341) ? c/s  		 - Progress:		76% (1359) ? c/s  		 \ Progress:		77% (1376) ? c/s  		 | Progress:		78% (1394) ? c/s  		 / Progress:		79% (1412) ? c/s  		 - Progress:		80% (1430) ? c/s  		 \ Progress:		81% (1448) ? c/s  		 | Progress:		82% (1466) ? c/s  		 / Progress:		83% (1484) ? c/s  		 - Progress:		84% (1502) ? c/s  		 \ Progress:		85% (1519) ? c/s  		 | Progress:		86% (1537) ? c/s  		 / Progress:		87% (1555) ? c/s  		 - Progress:		88% (1573) ? c/s  		 \ Progress:		89% (1591) ? c/s  		 | Progress:		90% (1609) ? c/s  		 / Progress:		91% (1627) ? c/s  		 - Progress:		92% (1645) ? c/s  		 \ Progress:		93% (1662) ? c/s  		 | Progress:		94% (1680) ? c/s  		 / Progress:		95% (1698) ? c/s  		 - Progress:		96% (1716) ? c/s  		 \ Progress:		97% (1734) ? c/s  		 | Progress:		98% (1752) ? c/s  		 / Progress:		99% (1770) ? c/s  		 * Time:    		Compressing the database took 0.027556 seconds.		
+ * Result:		(198a,465u,19204,168059,15213,183272)
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/compress/
+
+Task `main`, command `compress` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: '1aaaf23b-78e0-4d12-a4ea-d61dae6a319b_convertdb.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * Type:		FIMI database
+ * File:		wff_3_100_150_500_500_40_ex_0_train_neg.dat
+ * Scanning file:	in progress... * Scanning file: done                       
+ * Database:	459 rows, maximal 60 columns
+ * 		has bin sizes: no
+ * 		has transaction id's: no
+ * Reading database:	in progress... * Reading database:	done          
+
+ * Processing Data:  * Processing Data: Translating Forward * Processing Data: Sorting within Rows * Processing Data: Writing Data              ** Writing FIC database to file
+ * File:		wff_3_100_150_500_500_40_ex_0_train_neg.db
+** Finished writing database.
+
+ * Processing Data: Finished                  
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/
+
+Task `datatrans`, command `convertdb` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: 'dc286531-eaf3-4d38-b576-e69f198790e2_analysedb.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * File:		wff_3_100_150_500_500_40_ex_0_train_neg.db
+ * Database:		459t 459r, 27540i, 186790.24bits
+ * 			pruned below support 0, maximum set length 60
+ * Alphabet:		115 items
+ * Internal datatype:	uint16 value arrays
+
+** Analysing database
+ * Output File:	wff_3_100_150_500_500_40_ex_0_train_neg.db.analysis.txt
+ * Writing analysis:	in progress... * Writing analysis:	done          
+
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/analysedb/
+
+Task `main`, command `analysedb` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: '8d1045ee-d8f0-47a0-81af-245af1914966_compress.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * File:		wff_3_100_150_500_500_40_ex_0_train_neg.db
+ * Database:		459t 459r, 27540i, 186790.24bits
+ * 			pruned below support 0, maximum set length 60
+ * Alphabet:		115 items
+ * Internal datatype:	128bit bitmap
+
+** ItemSetCollection ::
+** Creating Frequent Item Set Collection.
+ * File:		wff_3_100_150_500_500_40_ex_0_train_neg-all-300d.bisc.fi
+ * Type:		FIMI
+ * Has # rows:		no
+ * # ItemSets:		1
+ * Sorting sets:	in progress... * Sorting sets:	sorted on support and descending on length
+** Finished Creating Frequent Item Set Collection
+
+
+** Compression :: 
+ * Experiment tag	wff_3_100_150_500_500_40_ex_0_train_neg-all-300d-pop-20200331161343
+ * Algorithm:		coverpartial post-accept-prune
+ * Candidates:		1p
+ * Start:		(115a,0u,27540,186790,1593,188383)
+ - Progress:		0% (0) ? c/s  		 * Time:    		Compressing the database took 0.000137 seconds.		
+ * Result:		(115a,0u,27540,186790,1593,188383)
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/compress/
+
+Task `main`, command `compress` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: 'e8f37157-5cf9-4ab3-b719-358dc79867de_convertdb.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * Type:		FIMI database
+ * File:		wff_3_100_150_500_500_40_ex_1_train_pos.dat
+ * Scanning file:	in progress... * Scanning file: done                       
+ * Database:	447 rows, maximal 60 columns
+ * 		has bin sizes: no
+ * 		has transaction id's: no
+ * Reading database:	in progress... * Reading database:	done          
+
+ * Processing Data:  * Processing Data: Translating Forward * Processing Data: Sorting within Rows * Processing Data: Writing Data              ** Writing FIC database to file
+ * File:		wff_3_100_150_500_500_40_ex_1_train_pos.db
+** Finished writing database.
+
+ * Processing Data: Finished                  
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/
+
+Task `datatrans`, command `convertdb` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: '30e4a4c3-8c86-4134-843f-ca000cb008ac_analysedb.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * File:		wff_3_100_150_500_500_40_ex_1_train_pos.db
+ * Database:		447t 447r, 26820i, 204920.55bits
+ * 			pruned below support 0, maximum set length 60
+ * Alphabet:		200 items
+ * Internal datatype:	uint16 value arrays
+
+** Analysing database
+ * Output File:	wff_3_100_150_500_500_40_ex_1_train_pos.db.analysis.txt
+ * Writing analysis:	in progress... * Writing analysis:	done          
+
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/analysedb/
+
+Task `main`, command `analysedb` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: '2fa44cdc-fbd6-4cf3-a9c9-97952e42e7f9_compress.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * File:		wff_3_100_150_500_500_40_ex_1_train_pos.db
+ * Database:		447t 447r, 26820i, 204920.55bits
+ * 			pruned below support 0, maximum set length 60
+ * Alphabet:		200 items
+ * Internal datatype:	128bit bitmap
+ ** WARNING : |ab| > 128 : won't fit in BM128, using Uint16 **
+
+
+** ItemSetCollection ::
+** Creating Frequent Item Set Collection.
+ * File:		wff_3_100_150_500_500_40_ex_1_train_pos-all-50d.bisc.fi
+ * Type:		FIMI
+ * Has # rows:		no
+ * # ItemSets:		1298
+ * Sorting sets:	in progress... * Sorting sets:	sorted on support and descending on length
+** Finished Creating Frequent Item Set Collection
+
+
+** Compression :: 
+ * Experiment tag	wff_3_100_150_500_500_40_ex_1_train_pos-all-50d-pop-20200331161343
+ * Algorithm:		coverpartial post-accept-prune
+ * Candidates:		1298p
+ * Start:		(200a,0u,26820,204921,3059,207979)
+ - Progress:		0% (0) ? c/s  		 \ Progress:		1% (13) ? c/s  		 | Progress:		2% (26) ? c/s  		 / Progress:		3% (39) ? c/s  		 - Progress:		4% (52) ? c/s  		 \ Progress:		5% (65) ? c/s  		 | Progress:		6% (78) ? c/s  		 / Progress:		7% (91) ? c/s  		 - Progress:		8% (104) ? c/s  		 \ Progress:		9% (117) ? c/s  		 | Progress:		10% (130) ? c/s  		 / Progress:		11% (143) ? c/s  		 - Progress:		12% (156) ? c/s  		 \ Progress:		13% (169) ? c/s  		 | Progress:		14% (182) ? c/s  		 / Progress:		15% (195) ? c/s  		 - Progress:		16% (208) ? c/s  		 \ Progress:		17% (221) ? c/s  		 | Progress:		18% (234) ? c/s  		 / Progress:		19% (247) ? c/s  		 - Progress:		20% (260) ? c/s  		 \ Progress:		21% (273) ? c/s  		 | Progress:		22% (286) ? c/s  		 / Progress:		23% (299) ? c/s  		 - Progress:		24% (312) ? c/s  		 \ Progress:		25% (325) ? c/s  		 | Progress:		26% (338) ? c/s  		 / Progress:		27% (351) ? c/s  		 - Progress:		28% (364) ? c/s  		 \ Progress:		29% (377) ? c/s  		 | Progress:		30% (390) ? c/s  		 / Progress:		31% (403) ? c/s  		 - Progress:		32% (416) ? c/s  		 \ Progress:		33% (429) ? c/s  		 | Progress:		34% (442) ? c/s  		 / Progress:		35% (455) ? c/s  		 - Progress:		36% (468) ? c/s  		 \ Progress:		37% (481) ? c/s  		 | Progress:		38% (494) ? c/s  		 / Progress:		39% (507) ? c/s  		 - Progress:		40% (520) ? c/s  		 \ Progress:		41% (533) ? c/s  		 | Progress:		42% (546) ? c/s  		 / Progress:		43% (559) ? c/s  		 - Progress:		44% (572) ? c/s  		 \ Progress:		45% (585) ? c/s  		 | Progress:		46% (598) ? c/s  		 / Progress:		47% (611) ? c/s  		 - Progress:		48% (624) ? c/s  		 \ Progress:		49% (637) ? c/s  		 | Progress:		50% (649) ? c/s  		 / Progress:		51% (662) ? c/s  		 - Progress:		52% (675) ? c/s  		 \ Progress:		53% (688) ? c/s  		 | Progress:		54% (701) ? c/s  		 / Progress:		55% (714) ? c/s  		 - Progress:		56% (727) ? c/s  		 \ Progress:		57% (740) ? c/s  		 | Progress:		58% (753) ? c/s  		 / Progress:		59% (766) ? c/s  		 - Progress:		60% (779) ? c/s  		 \ Progress:		61% (792) ? c/s  		 | Progress:		62% (805) ? c/s  		 / Progress:		63% (818) ? c/s  		 - Progress:		64% (831) ? c/s  		 \ Progress:		65% (844) ? c/s  		 | Progress:		66% (857) ? c/s  		 / Progress:		67% (870) ? c/s  		 - Progress:		68% (883) ? c/s  		 \ Progress:		69% (896) ? c/s  		 | Progress:		70% (909) ? c/s  		 / Progress:		71% (922) ? c/s  		 - Progress:		72% (935) ? c/s  		 \ Progress:		73% (948) ? c/s  		 | Progress:		74% (961) ? c/s  		 / Progress:		75% (974) ? c/s  		 - Progress:		76% (987) ? c/s  		 \ Progress:		77% (1000) ? c/s  		 | Progress:		78% (1013) ? c/s  		 / Progress:		79% (1026) ? c/s  		 - Progress:		80% (1039) ? c/s  		 \ Progress:		81% (1052) ? c/s  		 | Progress:		82% (1065) ? c/s  		 / Progress:		83% (1078) ? c/s  		 - Progress:		84% (1091) ? c/s  		 \ Progress:		85% (1104) ? c/s  		 | Progress:		86% (1117) ? c/s  		 / Progress:		87% (1130) ? c/s  		 - Progress:		88% (1143) ? c/s  		 \ Progress:		89% (1156) ? c/s  		 | Progress:		90% (1169) ? c/s  		 / Progress:		91% (1182) ? c/s  		 - Progress:		92% (1195) ? c/s  		 \ Progress:		93% (1208) ? c/s  		 | Progress:		94% (1221) ? c/s  		 / Progress:		95% (1234) ? c/s  		 - Progress:		96% (1247) ? c/s  		 \ Progress:		97% (1260) ? c/s  		 | Progress:		98% (1273) ? c/s  		 / Progress:		99% (1286) ? c/s  		 * Time:    		Compressing the database took 0.016358 seconds.		
+ * Result:		(200a,365u,19817,169068,12607,181675)
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/compress/
+
+Task `main`, command `compress` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: 'a7a74801-254a-4201-8a1a-1683ee618f78_convertdb.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * Type:		FIMI database
+ * File:		wff_3_100_150_500_500_40_ex_1_train_neg.dat
+ * Scanning file:	in progress... * Scanning file: done                       
+ * Database:	447 rows, maximal 60 columns
+ * 		has bin sizes: no
+ * 		has transaction id's: no
+ * Reading database:	in progress... * Reading database:	done          
+
+ * Processing Data:  * Processing Data: Translating Forward * Processing Data: Sorting within Rows * Processing Data: Writing Data              ** Writing FIC database to file
+ * File:		wff_3_100_150_500_500_40_ex_1_train_neg.db
+** Finished writing database.
+
+ * Processing Data: Finished                  
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/
+
+Task `datatrans`, command `convertdb` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: '15f5838e-70ab-46b6-a9e5-74bfb6a7a053_analysedb.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * File:		wff_3_100_150_500_500_40_ex_1_train_neg.db
+ * Database:		447t 447r, 26820i, 181920.73bits
+ * 			pruned below support 0, maximum set length 60
+ * Alphabet:		115 items
+ * Internal datatype:	uint16 value arrays
+
+** Analysing database
+ * Output File:	wff_3_100_150_500_500_40_ex_1_train_neg.db.analysis.txt
+ * Writing analysis:	in progress... * Writing analysis:	done          
+
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/analysedb/
+
+Task `main`, command `analysedb` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: 'ac8cb123-827b-4c76-9627-0efdbfe1c9c4_compress.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * File:		wff_3_100_150_500_500_40_ex_1_train_neg.db
+ * Database:		447t 447r, 26820i, 181920.73bits
+ * 			pruned below support 0, maximum set length 60
+ * Alphabet:		115 items
+ * Internal datatype:	128bit bitmap
+
+** ItemSetCollection ::
+** Creating Frequent Item Set Collection.
+ * File:		wff_3_100_150_500_500_40_ex_1_train_neg-all-300d.bisc.fi
+ * Type:		FIMI
+ * Has # rows:		no
+ * # ItemSets:		0
+Error removing Isc conversion input file.** Finished Creating Frequent Item Set Collection
+
+
+** Compression :: 
+ * Experiment tag	wff_3_100_150_500_500_40_ex_1_train_neg-all-300d-pop-20200331161343
+ * Algorithm:		coverpartial post-accept-prune
+ * Candidates:		0p
+ * Start:		(115a,0u,26820,181921,1592,183513)
+ * Time:    		Compressing the database took 0.000082 seconds.		
+ * Result:		(115a,0u,26820,181921,1592,183513)
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/compress/
+
+Task `main`, command `compress` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: '3fe1be64-34c8-4fc7-9ffb-f6ed63f9421d_convertdb.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * Type:		FIMI database
+ * File:		wff_3_100_150_500_500_40_ex_2_train_pos.dat
+ * Scanning file:	in progress... * Scanning file: done                       
+ * Database:	460 rows, maximal 60 columns
+ * 		has bin sizes: no
+ * 		has transaction id's: no
+ * Reading database:	in progress... * Reading database:	done          
+
+ * Processing Data:  * Processing Data: Translating Forward * Processing Data: Sorting within Rows * Processing Data: Writing Data              ** Writing FIC database to file
+ * File:		wff_3_100_150_500_500_40_ex_2_train_pos.db
+** Finished writing database.
+
+ * Processing Data: Finished                  
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/
+
+Task `datatrans`, command `convertdb` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: '738ddd58-180b-4bc8-b5d6-027263519776_analysedb.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * File:		wff_3_100_150_500_500_40_ex_2_train_pos.db
+ * Database:		460t 460r, 27600i, 210880.55bits
+ * 			pruned below support 0, maximum set length 60
+ * Alphabet:		200 items
+ * Internal datatype:	uint16 value arrays
+
+** Analysing database
+ * Output File:	wff_3_100_150_500_500_40_ex_2_train_pos.db.analysis.txt
+ * Writing analysis:	in progress... * Writing analysis:	done          
+
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/analysedb/
+
+Task `main`, command `analysedb` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: '481df2f3-d110-485c-ab8d-51f7d40f76f2_compress.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * File:		wff_3_100_150_500_500_40_ex_2_train_pos.db
+ * Database:		460t 460r, 27600i, 210880.55bits
+ * 			pruned below support 0, maximum set length 60
+ * Alphabet:		200 items
+ * Internal datatype:	128bit bitmap
+ ** WARNING : |ab| > 128 : won't fit in BM128, using Uint16 **
+
+
+** ItemSetCollection ::
+** Creating Frequent Item Set Collection.
+ * File:		wff_3_100_150_500_500_40_ex_2_train_pos-all-50d.bisc.fi
+ * Type:		FIMI
+ * Has # rows:		no
+ * # ItemSets:		1910
+ * Sorting sets:	in progress... * Sorting sets:	sorted on support and descending on length
+** Finished Creating Frequent Item Set Collection
+
+
+** Compression :: 
+ * Experiment tag	wff_3_100_150_500_500_40_ex_2_train_pos-all-50d-pop-20200331161343
+ * Algorithm:		coverpartial post-accept-prune
+ * Candidates:		1910p
+ * Start:		(200a,0u,27600,210881,3059,213939)
+ - Progress:		0% (0) ? c/s  		 \ Progress:		1% (20) ? c/s  		 | Progress:		2% (39) ? c/s  		 / Progress:		3% (58) ? c/s  		 - Progress:		4% (77) ? c/s  		 \ Progress:		5% (96) ? c/s  		 | Progress:		6% (115) ? c/s  		 / Progress:		7% (134) ? c/s  		 - Progress:		8% (153) ? c/s  		 \ Progress:		9% (172) ? c/s  		 | Progress:		10% (191) ? c/s  		 / Progress:		11% (211) ? c/s  		 - Progress:		12% (230) ? c/s  		 \ Progress:		13% (249) ? c/s  		 | Progress:		14% (268) ? c/s  		 / Progress:		15% (287) ? c/s  		 - Progress:		16% (306) ? c/s  		 \ Progress:		17% (325) ? c/s  		 | Progress:		18% (344) ? c/s  		 / Progress:		19% (363) ? c/s  		 - Progress:		20% (382) ? c/s  		 \ Progress:		21% (402) ? c/s  		 | Progress:		22% (421) ? c/s  		 / Progress:		23% (440) ? c/s  		 - Progress:		24% (459) ? c/s  		 \ Progress:		25% (478) ? c/s  		 | Progress:		26% (497) ? c/s  		 / Progress:		27% (516) ? c/s  		 - Progress:		28% (535) ? c/s  		 \ Progress:		29% (554) ? c/s  		 | Progress:		30% (573) ? c/s  		 / Progress:		31% (593) ? c/s  		 - Progress:		32% (612) ? c/s  		 \ Progress:		33% (631) ? c/s  		 | Progress:		34% (650) ? c/s  		 / Progress:		35% (669) ? c/s  		 - Progress:		36% (688) ? c/s  		 \ Progress:		37% (707) ? c/s  		 | Progress:		38% (726) ? c/s  		 / Progress:		39% (745) ? c/s  		 - Progress:		40% (764) ? c/s  		 \ Progress:		41% (784) ? c/s  		 | Progress:		42% (803) ? c/s  		 / Progress:		43% (822) ? c/s  		 - Progress:		44% (841) ? c/s  		 \ Progress:		45% (860) ? c/s  		 | Progress:		46% (879) ? c/s  		 / Progress:		47% (898) ? c/s  		 - Progress:		48% (917) ? c/s  		 \ Progress:		49% (936) ? c/s  		 | Progress:		50% (955) ? c/s  		 / Progress:		51% (975) ? c/s  		 - Progress:		52% (994) ? c/s  		 \ Progress:		53% (1013) ? c/s  		 | Progress:		54% (1032) ? c/s  		 / Progress:		55% (1051) ? c/s  		 - Progress:		56% (1070) ? c/s  		 \ Progress:		57% (1089) ? c/s  		 | Progress:		58% (1108) ? c/s  		 / Progress:		59% (1127) ? c/s  		 - Progress:		60% (1146) ? c/s  		 \ Progress:		61% (1166) ? c/s  		 | Progress:		62% (1185) ? c/s  		 / Progress:		63% (1204) ? c/s  		 - Progress:		64% (1223) ? c/s  		 \ Progress:		65% (1242) ? c/s  		 | Progress:		66% (1261) ? c/s  		 / Progress:		67% (1280) ? c/s  		 - Progress:		68% (1299) ? c/s  		 \ Progress:		69% (1318) ? c/s  		 | Progress:		70% (1337) ? c/s  		 / Progress:		71% (1357) ? c/s  		 - Progress:		72% (1376) ? c/s  		 \ Progress:		73% (1395) ? c/s  		 | Progress:		74% (1414) ? c/s  		 / Progress:		75% (1433) ? c/s  		 - Progress:		76% (1452) ? c/s  		 \ Progress:		77% (1471) ? c/s  		 | Progress:		78% (1490) ? c/s  		 / Progress:		79% (1509) ? c/s  		 - Progress:		80% (1528) ? c/s  		 \ Progress:		81% (1548) ? c/s  		 | Progress:		82% (1567) ? c/s  		 / Progress:		83% (1586) ? c/s  		 - Progress:		84% (1605) ? c/s  		 \ Progress:		85% (1624) ? c/s  		 | Progress:		86% (1643) ? c/s  		 / Progress:		87% (1662) ? c/s  		 - Progress:		88% (1681) ? c/s  		 \ Progress:		89% (1700) ? c/s  		 | Progress:		90% (1719) ? c/s  		 / Progress:		91% (1739) ? c/s  		 - Progress:		92% (1758) ? c/s  		 \ Progress:		93% (1777) ? c/s  		 | Progress:		94% (1796) ? c/s  		 / Progress:		95% (1815) ? c/s  		 - Progress:		96% (1834) ? c/s  		 \ Progress:		97% (1853) ? c/s  		 | Progress:		98% (1872) ? c/s  		 / Progress:		99% (1891) ? c/s  		 * Time:    		Compressing the database took 0.021254 seconds.		
+ * Result:		(197a,450u,19471,169163,14819,183982)
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/compress/
+
+Task `main`, command `compress` finished. This took 1 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: '77489775-4487-47c1-a24d-af64951d2d3c_convertdb.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * Type:		FIMI database
+ * File:		wff_3_100_150_500_500_40_ex_2_train_neg.dat
+ * Scanning file:	in progress... * Scanning file: done                       
+ * Database:	460 rows, maximal 60 columns
+ * 		has bin sizes: no
+ * 		has transaction id's: no
+ * Reading database:	in progress... * Reading database:	done          
+
+ * Processing Data:  * Processing Data: Translating Forward * Processing Data: Sorting within Rows * Processing Data: Writing Data              ** Writing FIC database to file
+ * File:		wff_3_100_150_500_500_40_ex_2_train_neg.db
+** Finished writing database.
+
+ * Processing Data: Finished                  
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/
+
+Task `datatrans`, command `convertdb` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: 'a1e413a6-fb8f-41b1-9295-f7e5b07a13c7_analysedb.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * File:		wff_3_100_150_500_500_40_ex_2_train_neg.db
+ * Database:		460t 460r, 27600i, 187207.23bits
+ * 			pruned below support 0, maximum set length 60
+ * Alphabet:		115 items
+ * Internal datatype:	uint16 value arrays
+
+** Analysing database
+ * Output File:	wff_3_100_150_500_500_40_ex_2_train_neg.db.analysis.txt
+ * Writing analysis:	in progress... * Writing analysis:	done          
+
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/analysedb/
+
+Task `main`, command `analysedb` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: '054a64bf-a0d0-4ab0-bb55-b4d34349c9ab_compress.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * File:		wff_3_100_150_500_500_40_ex_2_train_neg.db
+ * Database:		460t 460r, 27600i, 187207.23bits
+ * 			pruned below support 0, maximum set length 60
+ * Alphabet:		115 items
+ * Internal datatype:	128bit bitmap
+
+** ItemSetCollection ::
+** Creating Frequent Item Set Collection.
+ * File:		wff_3_100_150_500_500_40_ex_2_train_neg-all-300d.bisc.fi
+ * Type:		FIMI
+ * Has # rows:		no
+ * # ItemSets:		1
+ * Sorting sets:	in progress... * Sorting sets:	sorted on support and descending on length
+** Finished Creating Frequent Item Set Collection
+
+
+** Compression :: 
+ * Experiment tag	wff_3_100_150_500_500_40_ex_2_train_neg-all-300d-pop-20200331161344
+ * Algorithm:		coverpartial post-accept-prune
+ * Candidates:		1p
+ * Start:		(115a,0u,27600,187207,1593,188800)
+ - Progress:		0% (0) ? c/s  		 * Time:    		Compressing the database took 0.000115 seconds.		
+ * Result:		(115a,0u,27600,187207,1593,188800)
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/compress/
+
+Task `main`, command `compress` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: '5c8571d9-29b5-420e-bd04-a2f3d72bdead_convertdb.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * Type:		FIMI database
+ * File:		wff_3_100_150_500_500_40_ex_3_train_pos.dat
+ * Scanning file:	in progress... * Scanning file: done                       
+ * Database:	443 rows, maximal 60 columns
+ * 		has bin sizes: no
+ * 		has transaction id's: no
+ * Reading database:	in progress... * Reading database:	done          
+
+ * Processing Data:  * Processing Data: Translating Forward * Processing Data: Sorting within Rows * Processing Data: Writing Data              ** Writing FIC database to file
+ * File:		wff_3_100_150_500_500_40_ex_3_train_pos.db
+** Finished writing database.
+
+ * Processing Data: Finished                  
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/
+
+Task `datatrans`, command `convertdb` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: '29617ca1-f591-4ff0-820a-b3ad94024960_analysedb.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * File:		wff_3_100_150_500_500_40_ex_3_train_pos.db
+ * Database:		443t 443r, 26580i, 203085.90bits
+ * 			pruned below support 0, maximum set length 60
+ * Alphabet:		200 items
+ * Internal datatype:	uint16 value arrays
+
+** Analysing database
+ * Output File:	wff_3_100_150_500_500_40_ex_3_train_pos.db.analysis.txt
+ * Writing analysis:	in progress... * Writing analysis:	done          
+
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/analysedb/
+
+Task `main`, command `analysedb` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: '947f8323-83a0-4805-a51f-c39888da8948_compress.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * File:		wff_3_100_150_500_500_40_ex_3_train_pos.db
+ * Database:		443t 443r, 26580i, 203085.90bits
+ * 			pruned below support 0, maximum set length 60
+ * Alphabet:		200 items
+ * Internal datatype:	128bit bitmap
+ ** WARNING : |ab| > 128 : won't fit in BM128, using Uint16 **
+
+
+** ItemSetCollection ::
+** Creating Frequent Item Set Collection.
+ * File:		wff_3_100_150_500_500_40_ex_3_train_pos-all-50d.bisc.fi
+ * Type:		FIMI
+ * Has # rows:		no
+ * # ItemSets:		1165
+ * Sorting sets:	in progress... * Sorting sets:	sorted on support and descending on length
+** Finished Creating Frequent Item Set Collection
+
+
+** Compression :: 
+ * Experiment tag	wff_3_100_150_500_500_40_ex_3_train_pos-all-50d-pop-20200331161344
+ * Algorithm:		coverpartial post-accept-prune
+ * Candidates:		1165p
+ * Start:		(200a,0u,26580,203086,3059,206145)
+ - Progress:		0% (0) ? c/s  		 \ Progress:		1% (12) ? c/s  		 | Progress:		2% (24) ? c/s  		 / Progress:		3% (35) ? c/s  		 - Progress:		4% (47) ? c/s  		 \ Progress:		5% (59) ? c/s  		 | Progress:		6% (70) ? c/s  		 / Progress:		7% (82) ? c/s  		 - Progress:		8% (94) ? c/s  		 \ Progress:		9% (105) ? c/s  		 | Progress:		10% (117) ? c/s  		 / Progress:		11% (129) ? c/s  		 - Progress:		12% (140) ? c/s  		 \ Progress:		13% (152) ? c/s  		 | Progress:		14% (164) ? c/s  		 / Progress:		15% (175) ? c/s  		 - Progress:		16% (187) ? c/s  		 \ Progress:		17% (199) ? c/s  		 | Progress:		18% (210) ? c/s  		 / Progress:		19% (222) ? c/s  		 - Progress:		20% (233) ? c/s  		 \ Progress:		21% (245) ? c/s  		 | Progress:		22% (257) ? c/s  		 / Progress:		23% (268) ? c/s  		 - Progress:		24% (280) ? c/s  		 \ Progress:		25% (292) ? c/s  		 | Progress:		26% (303) ? c/s  		 / Progress:		27% (315) ? c/s  		 - Progress:		28% (327) ? c/s  		 \ Progress:		29% (338) ? c/s  		 | Progress:		30% (350) ? c/s  		 / Progress:		31% (362) ? c/s  		 - Progress:		32% (373) ? c/s  		 \ Progress:		33% (385) ? c/s  		 | Progress:		34% (397) ? c/s  		 / Progress:		35% (408) ? c/s  		 - Progress:		36% (420) ? c/s  		 \ Progress:		37% (432) ? c/s  		 | Progress:		38% (443) ? c/s  		 / Progress:		39% (455) ? c/s  		 - Progress:		40% (466) ? c/s  		 \ Progress:		41% (478) ? c/s  		 | Progress:		42% (490) ? c/s  		 / Progress:		43% (501) ? c/s  		 - Progress:		44% (513) ? c/s  		 \ Progress:		45% (525) ? c/s  		 | Progress:		46% (536) ? c/s  		 / Progress:		47% (548) ? c/s  		 - Progress:		48% (560) ? c/s  		 \ Progress:		49% (571) ? c/s  		 | Progress:		50% (583) ? c/s  		 / Progress:		51% (595) ? c/s  		 - Progress:		52% (606) ? c/s  		 \ Progress:		53% (618) ? c/s  		 | Progress:		54% (630) ? c/s  		 / Progress:		55% (641) ? c/s  		 - Progress:		56% (653) ? c/s  		 \ Progress:		57% (665) ? c/s  		 | Progress:		58% (676) ? c/s  		 / Progress:		59% (688) ? c/s  		 - Progress:		60% (699) ? c/s  		 \ Progress:		61% (711) ? c/s  		 | Progress:		62% (723) ? c/s  		 / Progress:		63% (734) ? c/s  		 - Progress:		64% (746) ? c/s  		 \ Progress:		65% (758) ? c/s  		 | Progress:		66% (769) ? c/s  		 / Progress:		67% (781) ? c/s  		 - Progress:		68% (793) ? c/s  		 \ Progress:		69% (804) ? c/s  		 | Progress:		70% (816) ? c/s  		 / Progress:		71% (828) ? c/s  		 - Progress:		72% (839) ? c/s  		 \ Progress:		73% (851) ? c/s  		 | Progress:		74% (863) ? c/s  		 / Progress:		75% (874) ? c/s  		 - Progress:		76% (886) ? c/s  		 \ Progress:		77% (898) ? c/s  		 | Progress:		78% (909) ? c/s  		 / Progress:		79% (921) ? c/s  		 - Progress:		80% (932) ? c/s  		 \ Progress:		81% (944) ? c/s  		 | Progress:		82% (956) ? c/s  		 / Progress:		83% (967) ? c/s  		 - Progress:		84% (979) ? c/s  		 \ Progress:		85% (991) ? c/s  		 | Progress:		86% (1002) ? c/s  		 / Progress:		87% (1014) ? c/s  		 - Progress:		88% (1026) ? c/s  		 \ Progress:		89% (1037) ? c/s  		 | Progress:		90% (1049) ? c/s  		 / Progress:		91% (1061) ? c/s  		 - Progress:		92% (1072) ? c/s  		 \ Progress:		93% (1084) ? c/s  		 | Progress:		94% (1096) ? c/s  		 / Progress:		95% (1107) ? c/s  		 - Progress:		96% (1119) ? c/s  		 \ Progress:		97% (1131) ? c/s  		 | Progress:		98% (1142) ? c/s  		 / Progress:		99% (1154) ? c/s  		 * Time:    		Compressing the database took 0.016022 seconds.		
+ * Result:		(198a,368u,19739,168149,12657,180806)
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/compress/
+
+Task `main`, command `compress` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: '226b3d95-f3a5-437e-a4c2-bf48a6435604_convertdb.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * Type:		FIMI database
+ * File:		wff_3_100_150_500_500_40_ex_3_train_neg.dat
+ * Scanning file:	in progress... * Scanning file: done                       
+ * Database:	443 rows, maximal 60 columns
+ * 		has bin sizes: no
+ * 		has transaction id's: no
+ * Reading database:	in progress... * Reading database:	done          
+
+ * Processing Data:  * Processing Data: Translating Forward * Processing Data: Sorting within Rows * Processing Data: Writing Data              ** Writing FIC database to file
+ * File:		wff_3_100_150_500_500_40_ex_3_train_neg.db
+** Finished writing database.
+
+ * Processing Data: Finished                  
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/
+
+Task `datatrans`, command `convertdb` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: 'b71181ea-abab-4d3e-8462-15a4eca345cc_analysedb.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * File:		wff_3_100_150_500_500_40_ex_3_train_neg.db
+ * Database:		443t 443r, 26580i, 180284.10bits
+ * 			pruned below support 0, maximum set length 60
+ * Alphabet:		115 items
+ * Internal datatype:	uint16 value arrays
+
+** Analysing database
+ * Output File:	wff_3_100_150_500_500_40_ex_3_train_neg.db.analysis.txt
+ * Writing analysis:	in progress... * Writing analysis:	done          
+
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/analysedb/
+
+Task `main`, command `analysedb` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: '05c498c6-03c7-4788-a463-fee488440b00_compress.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * File:		wff_3_100_150_500_500_40_ex_3_train_neg.db
+ * Database:		443t 443r, 26580i, 180284.10bits
+ * 			pruned below support 0, maximum set length 60
+ * Alphabet:		115 items
+ * Internal datatype:	128bit bitmap
+
+** ItemSetCollection ::
+** Creating Frequent Item Set Collection.
+ * File:		wff_3_100_150_500_500_40_ex_3_train_neg-all-300d.bisc.fi
+ * Type:		FIMI
+ * Has # rows:		no
+ * # ItemSets:		0
+Error removing Isc conversion input file.** Finished Creating Frequent Item Set Collection
+
+
+** Compression :: 
+ * Experiment tag	wff_3_100_150_500_500_40_ex_3_train_neg-all-300d-pop-20200331161344
+ * Algorithm:		coverpartial post-accept-prune
+ * Candidates:		0p
+ * Start:		(115a,0u,26580,180284,1593,181877)
+ * Time:    		Compressing the database took 0.000045 seconds.		
+ * Result:		(115a,0u,26580,180284,1593,181877)
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/compress/
+
+Task `main`, command `compress` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: '587e0c33-36fe-4312-a13f-fb78d07d6343_convertdb.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * Type:		FIMI database
+ * File:		wff_3_100_150_500_500_40_ex_4_train_pos.dat
+ * Scanning file:	in progress... * Scanning file: done                       
+ * Database:	454 rows, maximal 60 columns
+ * 		has bin sizes: no
+ * 		has transaction id's: no
+ * Reading database:	in progress... * Reading database:	done          
+
+ * Processing Data:  * Processing Data: Translating Forward * Processing Data: Sorting within Rows * Processing Data: Writing Data              ** Writing FIC database to file
+ * File:		wff_3_100_150_500_500_40_ex_4_train_pos.db
+** Finished writing database.
+
+ * Processing Data: Finished                  
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/
+
+Task `datatrans`, command `convertdb` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: 'b9193e18-e3e7-48a4-8d5a-c6701c480ded_analysedb.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * File:		wff_3_100_150_500_500_40_ex_4_train_pos.db
+ * Database:		454t 454r, 27240i, 208119.40bits
+ * 			pruned below support 0, maximum set length 60
+ * Alphabet:		200 items
+ * Internal datatype:	uint16 value arrays
+
+** Analysing database
+ * Output File:	wff_3_100_150_500_500_40_ex_4_train_pos.db.analysis.txt
+ * Writing analysis:	in progress... * Writing analysis:	done          
+
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/analysedb/
+
+Task `main`, command `analysedb` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: 'ad72d433-9d77-40d8-a73d-83a7d81bc64e_compress.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * File:		wff_3_100_150_500_500_40_ex_4_train_pos.db
+ * Database:		454t 454r, 27240i, 208119.40bits
+ * 			pruned below support 0, maximum set length 60
+ * Alphabet:		200 items
+ * Internal datatype:	128bit bitmap
+ ** WARNING : |ab| > 128 : won't fit in BM128, using Uint16 **
+
+
+** ItemSetCollection ::
+** Creating Frequent Item Set Collection.
+ * File:		wff_3_100_150_500_500_40_ex_4_train_pos-all-50d.bisc.fi
+ * Type:		FIMI
+ * Has # rows:		no
+ * # ItemSets:		1694
+ * Sorting sets:	in progress... * Sorting sets:	sorted on support and descending on length
+** Finished Creating Frequent Item Set Collection
+
+
+** Compression :: 
+ * Experiment tag	wff_3_100_150_500_500_40_ex_4_train_pos-all-50d-pop-20200331161344
+ * Algorithm:		coverpartial post-accept-prune
+ * Candidates:		1694p
+ * Start:		(200a,0u,27240,208119,3059,211178)
+ - Progress:		0% (0) ? c/s  		 \ Progress:		1% (17) ? c/s  		 | Progress:		2% (34) ? c/s  		 / Progress:		3% (51) ? c/s  		 - Progress:		4% (68) ? c/s  		 \ Progress:		5% (85) ? c/s  		 | Progress:		6% (102) ? c/s  		 / Progress:		7% (119) ? c/s  		 - Progress:		8% (136) ? c/s  		 \ Progress:		9% (153) ? c/s  		 | Progress:		10% (170) ? c/s  		 / Progress:		11% (187) ? c/s  		 - Progress:		12% (204) ? c/s  		 \ Progress:		13% (221) ? c/s  		 | Progress:		14% (238) ? c/s  		 / Progress:		15% (255) ? c/s  		 - Progress:		16% (272) ? c/s  		 \ Progress:		17% (288) ? c/s  		 | Progress:		18% (305) ? c/s  		 / Progress:		19% (322) ? c/s  		 - Progress:		20% (339) ? c/s  		 \ Progress:		21% (356) ? c/s  		 | Progress:		22% (373) ? c/s  		 / Progress:		23% (390) ? c/s  		 - Progress:		24% (407) ? c/s  		 \ Progress:		25% (424) ? c/s  		 | Progress:		26% (441) ? c/s  		 / Progress:		27% (458) ? c/s  		 - Progress:		28% (475) ? c/s  		 \ Progress:		29% (492) ? c/s  		 | Progress:		30% (509) ? c/s  		 / Progress:		31% (526) ? c/s  		 - Progress:		32% (543) ? c/s  		 \ Progress:		33% (560) ? c/s  		 | Progress:		34% (576) ? c/s  		 / Progress:		35% (593) ? c/s  		 - Progress:		36% (610) ? c/s  		 \ Progress:		37% (627) ? c/s  		 | Progress:		38% (644) ? c/s  		 / Progress:		39% (661) ? c/s  		 - Progress:		40% (678) ? c/s  		 \ Progress:		41% (695) ? c/s  		 | Progress:		42% (712) ? c/s  		 / Progress:		43% (729) ? c/s  		 - Progress:		44% (746) ? c/s  		 \ Progress:		45% (763) ? c/s  		 | Progress:		46% (780) ? c/s  		 / Progress:		47% (797) ? c/s  		 - Progress:		48% (814) ? c/s  		 \ Progress:		49% (831) ? c/s  		 | Progress:		50% (847) ? c/s  		 / Progress:		51% (864) ? c/s  		 - Progress:		52% (881) ? c/s  		 \ Progress:		53% (898) ? c/s  		 | Progress:		54% (915) ? c/s  		 / Progress:		55% (932) ? c/s  		 - Progress:		56% (949) ? c/s  		 \ Progress:		57% (966) ? c/s  		 | Progress:		58% (983) ? c/s  		 / Progress:		59% (1000) ? c/s  		 - Progress:		60% (1017) ? c/s  		 \ Progress:		61% (1034) ? c/s  		 | Progress:		62% (1051) ? c/s  		 / Progress:		63% (1068) ? c/s  		 - Progress:		64% (1085) ? c/s  		 \ Progress:		65% (1102) ? c/s  		 | Progress:		66% (1119) ? c/s  		 / Progress:		67% (1135) ? c/s  		 - Progress:		68% (1152) ? c/s  		 \ Progress:		69% (1169) ? c/s  		 | Progress:		70% (1186) ? c/s  		 / Progress:		71% (1203) ? c/s  		 - Progress:		72% (1220) ? c/s  		 \ Progress:		73% (1237) ? c/s  		 | Progress:		74% (1254) ? c/s  		 / Progress:		75% (1271) ? c/s  		 - Progress:		76% (1288) ? c/s  		 \ Progress:		77% (1305) ? c/s  		 | Progress:		78% (1322) ? c/s  		 / Progress:		79% (1339) ? c/s  		 - Progress:		80% (1356) ? c/s  		 \ Progress:		81% (1373) ? c/s  		 | Progress:		82% (1390) ? c/s  		 / Progress:		83% (1407) ? c/s  		 - Progress:		84% (1423) ? c/s  		 \ Progress:		85% (1440) ? c/s  		 | Progress:		86% (1457) ? c/s  		 / Progress:		87% (1474) ? c/s  		 - Progress:		88% (1491) ? c/s  		 \ Progress:		89% (1508) ? c/s  		 | Progress:		90% (1525) ? c/s  		 / Progress:		91% (1542) ? c/s  		 - Progress:		92% (1559) ? c/s  		 \ Progress:		93% (1576) ? c/s  		 | Progress:		94% (1593) ? c/s  		 / Progress:		95% (1610) ? c/s  		 - Progress:		96% (1627) ? c/s  		 \ Progress:		97% (1644) ? c/s  		 | Progress:		98% (1661) ? c/s  		 / Progress:		99% (1678) ? c/s  		 * Time:    		Compressing the database took 0.021871 seconds.		
+ * Result:		(199a,426u,19559,168857,14221,183078)
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/compress/
+
+Task `main`, command `compress` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: '0a98bce9-021a-44bc-a8c2-5da80cf16ca0_convertdb.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * Type:		FIMI database
+ * File:		wff_3_100_150_500_500_40_ex_4_train_neg.dat
+ * Scanning file:	in progress... * Scanning file: done                       
+ * Database:	454 rows, maximal 60 columns
+ * 		has bin sizes: no
+ * 		has transaction id's: no
+ * Reading database:	in progress... * Reading database:	done          
+
+ * Processing Data:  * Processing Data: Translating Forward * Processing Data: Sorting within Rows * Processing Data: Writing Data              ** Writing FIC database to file
+ * File:		wff_3_100_150_500_500_40_ex_4_train_neg.db
+** Finished writing database.
+
+ * Processing Data: Finished                  
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/
+
+Task `datatrans`, command `convertdb` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: '0cd6b06b-3993-47e7-a006-bf03b1bd0919_analysedb.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * File:		wff_3_100_150_500_500_40_ex_4_train_neg.db
+ * Database:		454t 454r, 27240i, 184749.22bits
+ * 			pruned below support 0, maximum set length 60
+ * Alphabet:		115 items
+ * Internal datatype:	uint16 value arrays
+
+** Analysing database
+ * Output File:	wff_3_100_150_500_500_40_ex_4_train_neg.db.analysis.txt
+ * Writing analysis:	in progress... * Writing analysis:	done          
+
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/analysedb/
+
+Task `main`, command `analysedb` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: '2034e463-2fb4-47e9-b999-50cccaaec625_compress.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * File:		wff_3_100_150_500_500_40_ex_4_train_neg.db
+ * Database:		454t 454r, 27240i, 184749.22bits
+ * 			pruned below support 0, maximum set length 60
+ * Alphabet:		115 items
+ * Internal datatype:	128bit bitmap
+
+** ItemSetCollection ::
+** Creating Frequent Item Set Collection.
+ * File:		wff_3_100_150_500_500_40_ex_4_train_neg-all-300d.bisc.fi
+ * Type:		FIMI
+ * Has # rows:		no
+ * # ItemSets:		0
+Error removing Isc conversion input file.** Finished Creating Frequent Item Set Collection
+
+
+** Compression :: 
+ * Experiment tag	wff_3_100_150_500_500_40_ex_4_train_neg-all-300d-pop-20200331161344
+ * Algorithm:		coverpartial post-accept-prune
+ * Candidates:		0p
+ * Start:		(115a,0u,27240,184749,1593,186342)
+ * Time:    		Compressing the database took 0.000044 seconds.		
+ * Result:		(115a,0u,27240,184749,1593,186342)
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/compress/
+
+Task `main`, command `compress` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: '658fdaa9-016f-4208-bc80-c900a71523a3_convertdb.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * Type:		FIMI database
+ * File:		wff_3_100_150_500_500_40_ex_5_train_pos.dat
+ * Scanning file:	in progress... * Scanning file: done                       
+ * Database:	439 rows, maximal 60 columns
+ * 		has bin sizes: no
+ * 		has transaction id's: no
+ * Reading database:	in progress... * Reading database:	done          
+
+ * Processing Data:  * Processing Data: Translating Forward * Processing Data: Sorting within Rows * Processing Data: Writing Data              ** Writing FIC database to file
+ * File:		wff_3_100_150_500_500_40_ex_5_train_pos.db
+** Finished writing database.
+
+ * Processing Data: Finished                  
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/
+
+Task `datatrans`, command `convertdb` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: '2fe83f65-ac4c-4042-832d-4de3a5a579da_analysedb.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * File:		wff_3_100_150_500_500_40_ex_5_train_pos.db
+ * Database:		439t 439r, 26340i, 201242.83bits
+ * 			pruned below support 0, maximum set length 60
+ * Alphabet:		200 items
+ * Internal datatype:	uint16 value arrays
+
+** Analysing database
+ * Output File:	wff_3_100_150_500_500_40_ex_5_train_pos.db.analysis.txt
+ * Writing analysis:	in progress... * Writing analysis:	done          
+
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/analysedb/
+
+Task `main`, command `analysedb` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: '3beeca6d-c216-46ac-8918-ebc7b2c2718a_compress.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * File:		wff_3_100_150_500_500_40_ex_5_train_pos.db
+ * Database:		439t 439r, 26340i, 201242.83bits
+ * 			pruned below support 0, maximum set length 60
+ * Alphabet:		200 items
+ * Internal datatype:	128bit bitmap
+ ** WARNING : |ab| > 128 : won't fit in BM128, using Uint16 **
+
+
+** ItemSetCollection ::
+** Creating Frequent Item Set Collection.
+ * File:		wff_3_100_150_500_500_40_ex_5_train_pos-all-50d.bisc.fi
+ * Type:		FIMI
+ * Has # rows:		no
+ * # ItemSets:		1125
+ * Sorting sets:	in progress... * Sorting sets:	sorted on support and descending on length
+** Finished Creating Frequent Item Set Collection
+
+
+** Compression :: 
+ * Experiment tag	wff_3_100_150_500_500_40_ex_5_train_pos-all-50d-pop-20200331161344
+ * Algorithm:		coverpartial post-accept-prune
+ * Candidates:		1125p
+ * Start:		(200a,0u,26340,201243,3059,204302)
+ - Progress:		0% (0) ? c/s  		 \ Progress:		1% (12) ? c/s  		 | Progress:		2% (23) ? c/s  		 / Progress:		3% (34) ? c/s  		 - Progress:		4% (45) ? c/s  		 \ Progress:		5% (57) ? c/s  		 | Progress:		6% (68) ? c/s  		 / Progress:		7% (79) ? c/s  		 - Progress:		8% (90) ? c/s  		 \ Progress:		9% (102) ? c/s  		 | Progress:		10% (113) ? c/s  		 / Progress:		11% (124) ? c/s  		 - Progress:		12% (135) ? c/s  		 \ Progress:		13% (147) ? c/s  		 | Progress:		14% (158) ? c/s  		 / Progress:		15% (169) ? c/s  		 - Progress:		16% (180) ? c/s  		 \ Progress:		17% (192) ? c/s  		 | Progress:		18% (203) ? c/s  		 / Progress:		19% (214) ? c/s  		 - Progress:		20% (225) ? c/s  		 \ Progress:		21% (237) ? c/s  		 | Progress:		22% (248) ? c/s  		 / Progress:		23% (259) ? c/s  		 - Progress:		24% (270) ? c/s  		 \ Progress:		25% (282) ? c/s  		 | Progress:		26% (293) ? c/s  		 / Progress:		27% (304) ? c/s  		 - Progress:		28% (315) ? c/s  		 \ Progress:		29% (327) ? c/s  		 | Progress:		30% (338) ? c/s  		 / Progress:		31% (349) ? c/s  		 - Progress:		32% (360) ? c/s  		 \ Progress:		33% (372) ? c/s  		 | Progress:		34% (383) ? c/s  		 / Progress:		35% (394) ? c/s  		 - Progress:		36% (405) ? c/s  		 \ Progress:		37% (417) ? c/s  		 | Progress:		38% (428) ? c/s  		 / Progress:		39% (439) ? c/s  		 - Progress:		40% (450) ? c/s  		 \ Progress:		41% (462) ? c/s  		 | Progress:		42% (473) ? c/s  		 / Progress:		43% (484) ? c/s  		 - Progress:		44% (495) ? c/s  		 \ Progress:		45% (507) ? c/s  		 | Progress:		46% (518) ? c/s  		 / Progress:		47% (529) ? c/s  		 - Progress:		48% (540) ? c/s  		 \ Progress:		49% (552) ? c/s  		 | Progress:		50% (563) ? c/s  		 / Progress:		51% (574) ? c/s  		 - Progress:		52% (585) ? c/s  		 \ Progress:		53% (597) ? c/s  		 | Progress:		54% (608) ? c/s  		 / Progress:		55% (619) ? c/s  		 - Progress:		56% (630) ? c/s  		 \ Progress:		57% (642) ? c/s  		 | Progress:		58% (653) ? c/s  		 / Progress:		59% (664) ? c/s  		 - Progress:		60% (675) ? c/s  		 \ Progress:		61% (687) ? c/s  		 | Progress:		62% (698) ? c/s  		 / Progress:		63% (709) ? c/s  		 - Progress:		64% (720) ? c/s  		 \ Progress:		65% (732) ? c/s  		 | Progress:		66% (743) ? c/s  		 / Progress:		67% (754) ? c/s  		 - Progress:		68% (765) ? c/s  		 \ Progress:		69% (777) ? c/s  		 | Progress:		70% (788) ? c/s  		 / Progress:		71% (799) ? c/s  		 - Progress:		72% (810) ? c/s  		 \ Progress:		73% (822) ? c/s  		 | Progress:		74% (833) ? c/s  		 / Progress:		75% (844) ? c/s  		 - Progress:		76% (855) ? c/s  		 \ Progress:		77% (867) ? c/s  		 | Progress:		78% (878) ? c/s  		 / Progress:		79% (889) ? c/s  		 - Progress:		80% (900) ? c/s  		 \ Progress:		81% (912) ? c/s  		 | Progress:		82% (923) ? c/s  		 / Progress:		83% (934) ? c/s  		 - Progress:		84% (945) ? c/s  		 \ Progress:		85% (957) ? c/s  		 | Progress:		86% (968) ? c/s  		 / Progress:		87% (979) ? c/s  		 - Progress:		88% (990) ? c/s  		 \ Progress:		89% (1002) ? c/s  		 | Progress:		90% (1013) ? c/s  		 / Progress:		91% (1024) ? c/s  		 - Progress:		92% (1035) ? c/s  		 \ Progress:		93% (1047) ? c/s  		 | Progress:		94% (1058) ? c/s  		 / Progress:		95% (1069) ? c/s  		 - Progress:		96% (1080) ? c/s  		 \ Progress:		97% (1092) ? c/s  		 | Progress:		98% (1103) ? c/s  		 / Progress:		99% (1114) ? c/s  		 * Time:    		Compressing the database took 0.015207 seconds.		
+ * Result:		(198a,328u,19903,168071,11585,179656)
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/compress/
+
+Task `main`, command `compress` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: '62b0b659-30b0-4194-944b-0bc939f47c79_convertdb.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * Type:		FIMI database
+ * File:		wff_3_100_150_500_500_40_ex_5_train_neg.dat
+ * Scanning file:	in progress... * Scanning file: done                       
+ * Database:	439 rows, maximal 60 columns
+ * 		has bin sizes: no
+ * 		has transaction id's: no
+ * Reading database:	in progress... * Reading database:	done          
+
+ * Processing Data:  * Processing Data: Translating Forward * Processing Data: Sorting within Rows * Processing Data: Writing Data              ** Writing FIC database to file
+ * File:		wff_3_100_150_500_500_40_ex_5_train_neg.db
+** Finished writing database.
+
+ * Processing Data: Finished                  
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/
+
+Task `datatrans`, command `convertdb` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: 'e4bf5268-4120-4432-9946-27d55db96255_analysedb.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * File:		wff_3_100_150_500_500_40_ex_5_train_neg.db
+ * Database:		439t 439r, 26340i, 178646.45bits
+ * 			pruned below support 0, maximum set length 60
+ * Alphabet:		115 items
+ * Internal datatype:	uint16 value arrays
+
+** Analysing database
+ * Output File:	wff_3_100_150_500_500_40_ex_5_train_neg.db.analysis.txt
+ * Writing analysis:	in progress... * Writing analysis:	done          
+
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/analysedb/
+
+Task `main`, command `analysedb` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: '2b3fc867-c0ee-4a5f-9f83-484137187f04_compress.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * File:		wff_3_100_150_500_500_40_ex_5_train_neg.db
+ * Database:		439t 439r, 26340i, 178646.45bits
+ * 			pruned below support 0, maximum set length 60
+ * Alphabet:		115 items
+ * Internal datatype:	128bit bitmap
+
+** ItemSetCollection ::
+** Creating Frequent Item Set Collection.
+ * File:		wff_3_100_150_500_500_40_ex_5_train_neg-all-300d.bisc.fi
+ * Type:		FIMI
+ * Has # rows:		no
+ * # ItemSets:		0
+Error removing Isc conversion input file.** Finished Creating Frequent Item Set Collection
+
+
+** Compression :: 
+ * Experiment tag	wff_3_100_150_500_500_40_ex_5_train_neg-all-300d-pop-20200331161344
+ * Algorithm:		coverpartial post-accept-prune
+ * Candidates:		0p
+ * Start:		(115a,0u,26340,178646,1593,180239)
+ * Time:    		Compressing the database took 0.000060 seconds.		
+ * Result:		(115a,0u,26340,178646,1593,180239)
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/compress/
+
+Task `main`, command `compress` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: '9607fcd1-65eb-4953-9c6d-be06f22e5b1d_convertdb.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * Type:		FIMI database
+ * File:		wff_3_100_150_500_500_40_ex_6_train_pos.dat
+ * Scanning file:	in progress... * Scanning file: done                       
+ * Database:	450 rows, maximal 60 columns
+ * 		has bin sizes: no
+ * 		has transaction id's: no
+ * Reading database:	in progress... * Reading database:	done          
+
+ * Processing Data:  * Processing Data: Translating Forward * Processing Data: Sorting within Rows * Processing Data: Writing Data              ** Writing FIC database to file
+ * File:		wff_3_100_150_500_500_40_ex_6_train_pos.db
+** Finished writing database.
+
+ * Processing Data: Finished                  
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/
+
+Task `datatrans`, command `convertdb` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: 'b370c297-a86b-4e90-b99f-326eb8353be4_analysedb.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * File:		wff_3_100_150_500_500_40_ex_6_train_pos.db
+ * Database:		450t 450r, 27000i, 206294.45bits
+ * 			pruned below support 0, maximum set length 60
+ * Alphabet:		200 items
+ * Internal datatype:	uint16 value arrays
+
+** Analysing database
+ * Output File:	wff_3_100_150_500_500_40_ex_6_train_pos.db.analysis.txt
+ * Writing analysis:	in progress... * Writing analysis:	done          
+
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/analysedb/
+
+Task `main`, command `analysedb` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: '58a59060-3106-460e-bd80-6774f01f32db_compress.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * File:		wff_3_100_150_500_500_40_ex_6_train_pos.db
+ * Database:		450t 450r, 27000i, 206294.45bits
+ * 			pruned below support 0, maximum set length 60
+ * Alphabet:		200 items
+ * Internal datatype:	128bit bitmap
+ ** WARNING : |ab| > 128 : won't fit in BM128, using Uint16 **
+
+
+** ItemSetCollection ::
+** Creating Frequent Item Set Collection.
+ * File:		wff_3_100_150_500_500_40_ex_6_train_pos-all-50d.bisc.fi
+ * Type:		FIMI
+ * Has # rows:		no
+ * # ItemSets:		1458
+ * Sorting sets:	in progress... * Sorting sets:	sorted on support and descending on length
+** Finished Creating Frequent Item Set Collection
+
+
+** Compression :: 
+ * Experiment tag	wff_3_100_150_500_500_40_ex_6_train_pos-all-50d-pop-20200331161344
+ * Algorithm:		coverpartial post-accept-prune
+ * Candidates:		1458p
+ * Start:		(200a,0u,27000,206294,3059,209353)
+ - Progress:		0% (0) ? c/s  		 \ Progress:		1% (15) ? c/s  		 | Progress:		2% (30) ? c/s  		 / Progress:		3% (44) ? c/s  		 - Progress:		4% (59) ? c/s  		 \ Progress:		5% (73) ? c/s  		 | Progress:		6% (88) ? c/s  		 / Progress:		7% (103) ? c/s  		 - Progress:		8% (117) ? c/s  		 \ Progress:		9% (132) ? c/s  		 | Progress:		10% (146) ? c/s  		 / Progress:		11% (161) ? c/s  		 - Progress:		12% (175) ? c/s  		 \ Progress:		13% (190) ? c/s  		 | Progress:		14% (205) ? c/s  		 / Progress:		15% (219) ? c/s  		 - Progress:		16% (234) ? c/s  		 \ Progress:		17% (248) ? c/s  		 | Progress:		18% (263) ? c/s  		 / Progress:		19% (278) ? c/s  		 - Progress:		20% (292) ? c/s  		 \ Progress:		21% (307) ? c/s  		 | Progress:		22% (321) ? c/s  		 / Progress:		23% (336) ? c/s  		 - Progress:		24% (350) ? c/s  		 \ Progress:		25% (365) ? c/s  		 | Progress:		26% (380) ? c/s  		 / Progress:		27% (394) ? c/s  		 - Progress:		28% (409) ? c/s  		 \ Progress:		29% (423) ? c/s  		 | Progress:		30% (438) ? c/s  		 / Progress:		31% (452) ? c/s  		 - Progress:		32% (467) ? c/s  		 \ Progress:		33% (482) ? c/s  		 | Progress:		34% (496) ? c/s  		 / Progress:		35% (511) ? c/s  		 - Progress:		36% (525) ? c/s  		 \ Progress:		37% (540) ? c/s  		 | Progress:		38% (555) ? c/s  		 / Progress:		39% (569) ? c/s  		 - Progress:		40% (584) ? c/s  		 \ Progress:		41% (598) ? c/s  		 | Progress:		42% (613) ? c/s  		 / Progress:		43% (627) ? c/s  		 - Progress:		44% (642) ? c/s  		 \ Progress:		45% (657) ? c/s  		 | Progress:		46% (671) ? c/s  		 / Progress:		47% (686) ? c/s  		 - Progress:		48% (700) ? c/s  		 \ Progress:		49% (715) ? c/s  		 | Progress:		50% (729) ? c/s  		 / Progress:		51% (744) ? c/s  		 - Progress:		52% (759) ? c/s  		 \ Progress:		53% (773) ? c/s  		 | Progress:		54% (788) ? c/s  		 / Progress:		55% (802) ? c/s  		 - Progress:		56% (817) ? c/s  		 \ Progress:		57% (832) ? c/s  		 | Progress:		58% (846) ? c/s  		 / Progress:		59% (861) ? c/s  		 - Progress:		60% (875) ? c/s  		 \ Progress:		61% (890) ? c/s  		 | Progress:		62% (904) ? c/s  		 / Progress:		63% (919) ? c/s  		 - Progress:		64% (934) ? c/s  		 \ Progress:		65% (948) ? c/s  		 | Progress:		66% (963) ? c/s  		 / Progress:		67% (977) ? c/s  		 - Progress:		68% (992) ? c/s  		 \ Progress:		69% (1007) ? c/s  		 | Progress:		70% (1021) ? c/s  		 / Progress:		71% (1036) ? c/s  		 - Progress:		72% (1050) ? c/s  		 \ Progress:		73% (1065) ? c/s  		 | Progress:		74% (1079) ? c/s  		 / Progress:		75% (1094) ? c/s  		 - Progress:		76% (1109) ? c/s  		 \ Progress:		77% (1123) ? c/s  		 | Progress:		78% (1138) ? c/s  		 / Progress:		79% (1152) ? c/s  		 - Progress:		80% (1167) ? c/s  		 \ Progress:		81% (1181) ? c/s  		 | Progress:		82% (1196) ? c/s  		 / Progress:		83% (1211) ? c/s  		 - Progress:		84% (1225) ? c/s  		 \ Progress:		85% (1240) ? c/s  		 | Progress:		86% (1254) ? c/s  		 / Progress:		87% (1269) ? c/s  		 - Progress:		88% (1284) ? c/s  		 \ Progress:		89% (1298) ? c/s  		 | Progress:		90% (1313) ? c/s  		 / Progress:		91% (1327) ? c/s  		 - Progress:		92% (1342) ? c/s  		 \ Progress:		93% (1356) ? c/s  		 | Progress:		94% (1371) ? c/s  		 / Progress:		95% (1386) ? c/s  		 - Progress:		96% (1400) ? c/s  		 \ Progress:		97% (1415) ? c/s  		 | Progress:		98% (1429) ? c/s  		 / Progress:		99% (1444) ? c/s  		 * Time:    		Compressing the database took 0.021407 seconds.		
+ * Result:		(199a,396u,19591,168464,13407,181871)
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/compress/
+
+Task `main`, command `compress` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: '724774e8-1d49-4238-bcf7-a73f36e22bf1_convertdb.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * Type:		FIMI database
+ * File:		wff_3_100_150_500_500_40_ex_6_train_neg.dat
+ * Scanning file:	in progress... * Scanning file: done                       
+ * Database:	450 rows, maximal 60 columns
+ * 		has bin sizes: no
+ * 		has transaction id's: no
+ * Reading database:	in progress... * Reading database:	done          
+
+ * Processing Data:  * Processing Data: Translating Forward * Processing Data: Sorting within Rows * Processing Data: Writing Data              ** Writing FIC database to file
+ * File:		wff_3_100_150_500_500_40_ex_6_train_neg.db
+** Finished writing database.
+
+ * Processing Data: Finished                  
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/
+
+Task `datatrans`, command `convertdb` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: '5276ee24-925d-4923-ac8f-4d469f3cb90b_analysedb.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * File:		wff_3_100_150_500_500_40_ex_6_train_neg.db
+ * Database:		450t 450r, 27000i, 183117.28bits
+ * 			pruned below support 0, maximum set length 60
+ * Alphabet:		115 items
+ * Internal datatype:	uint16 value arrays
+
+** Analysing database
+ * Output File:	wff_3_100_150_500_500_40_ex_6_train_neg.db.analysis.txt
+ * Writing analysis:	in progress... * Writing analysis:	done          
+
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/analysedb/
+
+Task `main`, command `analysedb` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: '3a70a1c9-842e-4ab2-acb6-44ee0fae4db1_compress.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * File:		wff_3_100_150_500_500_40_ex_6_train_neg.db
+ * Database:		450t 450r, 27000i, 183117.28bits
+ * 			pruned below support 0, maximum set length 60
+ * Alphabet:		115 items
+ * Internal datatype:	128bit bitmap
+
+** ItemSetCollection ::
+** Creating Frequent Item Set Collection.
+ * File:		wff_3_100_150_500_500_40_ex_6_train_neg-all-300d.bisc.fi
+ * Type:		FIMI
+ * Has # rows:		no
+ * # ItemSets:		0
+Error removing Isc conversion input file.** Finished Creating Frequent Item Set Collection
+
+
+** Compression :: 
+ * Experiment tag	wff_3_100_150_500_500_40_ex_6_train_neg-all-300d-pop-20200331161344
+ * Algorithm:		coverpartial post-accept-prune
+ * Candidates:		0p
+ * Start:		(115a,0u,27000,183117,1593,184710)
+ * Time:    		Compressing the database took 0.000056 seconds.		
+ * Result:		(115a,0u,27000,183117,1593,184710)
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/compress/
+
+Task `main`, command `compress` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: '7ae03eb5-372f-40ee-9dc4-859a9feb9f67_convertdb.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * Type:		FIMI database
+ * File:		wff_3_100_150_500_500_40_ex_7_train_pos.dat
+ * Scanning file:	in progress... * Scanning file: done                       
+ * Database:	454 rows, maximal 60 columns
+ * 		has bin sizes: no
+ * 		has transaction id's: no
+ * Reading database:	in progress... * Reading database:	done          
+
+ * Processing Data:  * Processing Data: Translating Forward * Processing Data: Sorting within Rows * Processing Data: Writing Data              ** Writing FIC database to file
+ * File:		wff_3_100_150_500_500_40_ex_7_train_pos.db
+** Finished writing database.
+
+ * Processing Data: Finished                  
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/
+
+Task `datatrans`, command `convertdb` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: 'b28ff628-079e-4a54-90fd-4c6c5c3c683e_analysedb.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * File:		wff_3_100_150_500_500_40_ex_7_train_pos.db
+ * Database:		454t 454r, 27240i, 208125.14bits
+ * 			pruned below support 0, maximum set length 60
+ * Alphabet:		200 items
+ * Internal datatype:	uint16 value arrays
+
+** Analysing database
+ * Output File:	wff_3_100_150_500_500_40_ex_7_train_pos.db.analysis.txt
+ * Writing analysis:	in progress... * Writing analysis:	done          
+
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/analysedb/
+
+Task `main`, command `analysedb` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: '450597e7-e720-42fa-bf6c-be556337cfae_compress.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * File:		wff_3_100_150_500_500_40_ex_7_train_pos.db
+ * Database:		454t 454r, 27240i, 208125.14bits
+ * 			pruned below support 0, maximum set length 60
+ * Alphabet:		200 items
+ * Internal datatype:	128bit bitmap
+ ** WARNING : |ab| > 128 : won't fit in BM128, using Uint16 **
+
+
+** ItemSetCollection ::
+** Creating Frequent Item Set Collection.
+ * File:		wff_3_100_150_500_500_40_ex_7_train_pos-all-50d.bisc.fi
+ * Type:		FIMI
+ * Has # rows:		no
+ * # ItemSets:		1606
+ * Sorting sets:	in progress... * Sorting sets:	sorted on support and descending on length
+** Finished Creating Frequent Item Set Collection
+
+
+** Compression :: 
+ * Experiment tag	wff_3_100_150_500_500_40_ex_7_train_pos-all-50d-pop-20200331161344
+ * Algorithm:		coverpartial post-accept-prune
+ * Candidates:		1606p
+ * Start:		(200a,0u,27240,208125,3059,211184)
+ - Progress:		0% (0) ? c/s  		 \ Progress:		1% (17) ? c/s  		 | Progress:		2% (33) ? c/s  		 / Progress:		3% (49) ? c/s  		 - Progress:		4% (65) ? c/s  		 \ Progress:		5% (81) ? c/s  		 | Progress:		6% (97) ? c/s  		 / Progress:		7% (113) ? c/s  		 - Progress:		8% (129) ? c/s  		 \ Progress:		9% (145) ? c/s  		 | Progress:		10% (161) ? c/s  		 / Progress:		11% (177) ? c/s  		 - Progress:		12% (193) ? c/s  		 \ Progress:		13% (209) ? c/s  		 | Progress:		14% (225) ? c/s  		 / Progress:		15% (241) ? c/s  		 - Progress:		16% (257) ? c/s  		 \ Progress:		17% (274) ? c/s  		 | Progress:		18% (290) ? c/s  		 / Progress:		19% (306) ? c/s  		 - Progress:		20% (322) ? c/s  		 \ Progress:		21% (338) ? c/s  		 | Progress:		22% (354) ? c/s  		 / Progress:		23% (370) ? c/s  		 - Progress:		24% (386) ? c/s  		 \ Progress:		25% (402) ? c/s  		 | Progress:		26% (418) ? c/s  		 / Progress:		27% (434) ? c/s  		 - Progress:		28% (450) ? c/s  		 \ Progress:		29% (466) ? c/s  		 | Progress:		30% (482) ? c/s  		 / Progress:		31% (498) ? c/s  		 - Progress:		32% (514) ? c/s  		 \ Progress:		33% (530) ? c/s  		 | Progress:		34% (547) ? c/s  		 / Progress:		35% (563) ? c/s  		 - Progress:		36% (579) ? c/s  		 \ Progress:		37% (595) ? c/s  		 | Progress:		38% (611) ? c/s  		 / Progress:		39% (627) ? c/s  		 - Progress:		40% (643) ? c/s  		 \ Progress:		41% (659) ? c/s  		 | Progress:		42% (675) ? c/s  		 / Progress:		43% (691) ? c/s  		 - Progress:		44% (707) ? c/s  		 \ Progress:		45% (723) ? c/s  		 | Progress:		46% (739) ? c/s  		 / Progress:		47% (755) ? c/s  		 - Progress:		48% (771) ? c/s  		 \ Progress:		49% (787) ? c/s  		 | Progress:		50% (803) ? c/s  		 / Progress:		51% (820) ? c/s  		 - Progress:		52% (836) ? c/s  		 \ Progress:		53% (852) ? c/s  		 | Progress:		54% (868) ? c/s  		 / Progress:		55% (884) ? c/s  		 - Progress:		56% (900) ? c/s  		 \ Progress:		57% (916) ? c/s  		 | Progress:		58% (932) ? c/s  		 / Progress:		59% (948) ? c/s  		 - Progress:		60% (964) ? c/s  		 \ Progress:		61% (980) ? c/s  		 | Progress:		62% (996) ? c/s  		 / Progress:		63% (1012) ? c/s  		 - Progress:		64% (1028) ? c/s  		 \ Progress:		65% (1044) ? c/s  		 | Progress:		66% (1060) ? c/s  		 / Progress:		67% (1077) ? c/s  		 - Progress:		68% (1093) ? c/s  		 \ Progress:		69% (1109) ? c/s  		 | Progress:		70% (1125) ? c/s  		 / Progress:		71% (1141) ? c/s  		 - Progress:		72% (1157) ? c/s  		 \ Progress:		73% (1173) ? c/s  		 | Progress:		74% (1189) ? c/s  		 / Progress:		75% (1205) ? c/s  		 - Progress:		76% (1221) ? c/s  		 \ Progress:		77% (1237) ? c/s  		 | Progress:		78% (1253) ? c/s  		 / Progress:		79% (1269) ? c/s  		 - Progress:		80% (1285) ? c/s  		 \ Progress:		81% (1301) ? c/s  		 | Progress:		82% (1317) ? c/s  		 / Progress:		83% (1333) ? c/s  		 - Progress:		84% (1350) ? c/s  		 \ Progress:		85% (1366) ? c/s  		 | Progress:		86% (1382) ? c/s  		 / Progress:		87% (1398) ? c/s  		 - Progress:		88% (1414) ? c/s  		 \ Progress:		89% (1430) ? c/s  		 | Progress:		90% (1446) ? c/s  		 / Progress:		91% (1462) ? c/s  		 - Progress:		92% (1478) ? c/s  		 \ Progress:		93% (1494) ? c/s  		 | Progress:		94% (1510) ? c/s  		 / Progress:		95% (1526) ? c/s  		 - Progress:		96% (1542) ? c/s  		 \ Progress:		97% (1558) ? c/s  		 | Progress:		98% (1574) ? c/s  		 / Progress:		99% (1590) ? c/s  		 * Time:    		Compressing the database took 0.018843 seconds.		
+ * Result:		(197a,416u,19551,168721,13901,182622)
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/compress/
+
+Task `main`, command `compress` finished. This took 1 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: '5413a61b-7957-49ed-9a9e-e144e371ad32_convertdb.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * Type:		FIMI database
+ * File:		wff_3_100_150_500_500_40_ex_7_train_neg.dat
+ * Scanning file:	in progress... * Scanning file: done                       
+ * Database:	454 rows, maximal 60 columns
+ * 		has bin sizes: no
+ * 		has transaction id's: no
+ * Reading database:	in progress... * Reading database:	done          
+
+ * Processing Data:  * Processing Data: Translating Forward * Processing Data: Sorting within Rows * Processing Data: Writing Data              ** Writing FIC database to file
+ * File:		wff_3_100_150_500_500_40_ex_7_train_neg.db
+** Finished writing database.
+
+ * Processing Data: Finished                  
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/
+
+Task `datatrans`, command `convertdb` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: '5a038c25-7d5e-4fd0-a8e0-be4a19f3a273_analysedb.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * File:		wff_3_100_150_500_500_40_ex_7_train_neg.db
+ * Database:		454t 454r, 27240i, 184749.92bits
+ * 			pruned below support 0, maximum set length 60
+ * Alphabet:		115 items
+ * Internal datatype:	uint16 value arrays
+
+** Analysing database
+ * Output File:	wff_3_100_150_500_500_40_ex_7_train_neg.db.analysis.txt
+ * Writing analysis:	in progress... * Writing analysis:	done          
+
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/analysedb/
+
+Task `main`, command `analysedb` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: '0e91f9e8-4c43-4a79-862e-026492731ff6_compress.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * File:		wff_3_100_150_500_500_40_ex_7_train_neg.db
+ * Database:		454t 454r, 27240i, 184749.92bits
+ * 			pruned below support 0, maximum set length 60
+ * Alphabet:		115 items
+ * Internal datatype:	128bit bitmap
+
+** ItemSetCollection ::
+** Creating Frequent Item Set Collection.
+ * File:		wff_3_100_150_500_500_40_ex_7_train_neg-all-300d.bisc.fi
+ * Type:		FIMI
+ * Has # rows:		no
+ * # ItemSets:		0
+Error removing Isc conversion input file.** Finished Creating Frequent Item Set Collection
+
+
+** Compression :: 
+ * Experiment tag	wff_3_100_150_500_500_40_ex_7_train_neg-all-300d-pop-20200331161345
+ * Algorithm:		coverpartial post-accept-prune
+ * Candidates:		0p
+ * Start:		(115a,0u,27240,184750,1593,186343)
+ * Time:    		Compressing the database took 0.000059 seconds.		
+ * Result:		(115a,0u,27240,184750,1593,186343)
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/compress/
+
+Task `main`, command `compress` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: '945b534f-16af-4bc3-8b83-28fe23d03a14_convertdb.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * Type:		FIMI database
+ * File:		wff_3_100_150_500_500_40_ex_8_train_pos.dat
+ * Scanning file:	in progress... * Scanning file: done                       
+ * Database:	453 rows, maximal 60 columns
+ * 		has bin sizes: no
+ * 		has transaction id's: no
+ * Reading database:	in progress... * Reading database:	done          
+
+ * Processing Data:  * Processing Data: Translating Forward * Processing Data: Sorting within Rows * Processing Data: Writing Data              ** Writing FIC database to file
+ * File:		wff_3_100_150_500_500_40_ex_8_train_pos.db
+** Finished writing database.
+
+ * Processing Data: Finished                  
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/
+
+Task `datatrans`, command `convertdb` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: 'ff92846e-9093-4ead-b585-74e0f3494e72_analysedb.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * File:		wff_3_100_150_500_500_40_ex_8_train_pos.db
+ * Database:		453t 453r, 27180i, 207669.65bits
+ * 			pruned below support 0, maximum set length 60
+ * Alphabet:		200 items
+ * Internal datatype:	uint16 value arrays
+
+** Analysing database
+ * Output File:	wff_3_100_150_500_500_40_ex_8_train_pos.db.analysis.txt
+ * Writing analysis:	in progress... * Writing analysis:	done          
+
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/analysedb/
+
+Task `main`, command `analysedb` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: 'ed370622-1e86-4c43-af81-8b4bc9a9372c_compress.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * File:		wff_3_100_150_500_500_40_ex_8_train_pos.db
+ * Database:		453t 453r, 27180i, 207669.65bits
+ * 			pruned below support 0, maximum set length 60
+ * Alphabet:		200 items
+ * Internal datatype:	128bit bitmap
+ ** WARNING : |ab| > 128 : won't fit in BM128, using Uint16 **
+
+
+** ItemSetCollection ::
+** Creating Frequent Item Set Collection.
+ * File:		wff_3_100_150_500_500_40_ex_8_train_pos-all-50d.bisc.fi
+ * Type:		FIMI
+ * Has # rows:		no
+ * # ItemSets:		1588
+ * Sorting sets:	in progress... * Sorting sets:	sorted on support and descending on length
+** Finished Creating Frequent Item Set Collection
+
+
+** Compression :: 
+ * Experiment tag	wff_3_100_150_500_500_40_ex_8_train_pos-all-50d-pop-20200331161345
+ * Algorithm:		coverpartial post-accept-prune
+ * Candidates:		1588p
+ * Start:		(200a,0u,27180,207670,3059,210729)
+ - Progress:		0% (0) ? c/s  		 \ Progress:		1% (16) ? c/s  		 | Progress:		2% (32) ? c/s  		 / Progress:		3% (48) ? c/s  		 - Progress:		4% (64) ? c/s  		 \ Progress:		5% (80) ? c/s  		 | Progress:		6% (96) ? c/s  		 / Progress:		7% (112) ? c/s  		 - Progress:		8% (128) ? c/s  		 \ Progress:		9% (143) ? c/s  		 | Progress:		10% (159) ? c/s  		 / Progress:		11% (175) ? c/s  		 - Progress:		12% (191) ? c/s  		 \ Progress:		13% (207) ? c/s  		 | Progress:		14% (223) ? c/s  		 / Progress:		15% (239) ? c/s  		 - Progress:		16% (255) ? c/s  		 \ Progress:		17% (270) ? c/s  		 | Progress:		18% (286) ? c/s  		 / Progress:		19% (302) ? c/s  		 - Progress:		20% (318) ? c/s  		 \ Progress:		21% (334) ? c/s  		 | Progress:		22% (350) ? c/s  		 / Progress:		23% (366) ? c/s  		 - Progress:		24% (382) ? c/s  		 \ Progress:		25% (397) ? c/s  		 | Progress:		26% (413) ? c/s  		 / Progress:		27% (429) ? c/s  		 - Progress:		28% (445) ? c/s  		 \ Progress:		29% (461) ? c/s  		 | Progress:		30% (477) ? c/s  		 / Progress:		31% (493) ? c/s  		 - Progress:		32% (509) ? c/s  		 \ Progress:		33% (525) ? c/s  		 | Progress:		34% (540) ? c/s  		 / Progress:		35% (556) ? c/s  		 - Progress:		36% (572) ? c/s  		 \ Progress:		37% (588) ? c/s  		 | Progress:		38% (604) ? c/s  		 / Progress:		39% (620) ? c/s  		 - Progress:		40% (636) ? c/s  		 \ Progress:		41% (652) ? c/s  		 | Progress:		42% (667) ? c/s  		 / Progress:		43% (683) ? c/s  		 - Progress:		44% (699) ? c/s  		 \ Progress:		45% (715) ? c/s  		 | Progress:		46% (731) ? c/s  		 / Progress:		47% (747) ? c/s  		 - Progress:		48% (763) ? c/s  		 \ Progress:		49% (779) ? c/s  		 | Progress:		50% (794) ? c/s  		 / Progress:		51% (810) ? c/s  		 - Progress:		52% (826) ? c/s  		 \ Progress:		53% (842) ? c/s  		 | Progress:		54% (858) ? c/s  		 / Progress:		55% (874) ? c/s  		 - Progress:		56% (890) ? c/s  		 \ Progress:		57% (906) ? c/s  		 | Progress:		58% (922) ? c/s  		 / Progress:		59% (937) ? c/s  		 - Progress:		60% (953) ? c/s  		 \ Progress:		61% (969) ? c/s  		 | Progress:		62% (985) ? c/s  		 / Progress:		63% (1001) ? c/s  		 - Progress:		64% (1017) ? c/s  		 \ Progress:		65% (1033) ? c/s  		 | Progress:		66% (1049) ? c/s  		 / Progress:		67% (1064) ? c/s  		 - Progress:		68% (1080) ? c/s  		 \ Progress:		69% (1096) ? c/s  		 | Progress:		70% (1112) ? c/s  		 / Progress:		71% (1128) ? c/s  		 - Progress:		72% (1144) ? c/s  		 \ Progress:		73% (1160) ? c/s  		 | Progress:		74% (1176) ? c/s  		 / Progress:		75% (1191) ? c/s  		 - Progress:		76% (1207) ? c/s  		 \ Progress:		77% (1223) ? c/s  		 | Progress:		78% (1239) ? c/s  		 / Progress:		79% (1255) ? c/s  		 - Progress:		80% (1271) ? c/s  		 \ Progress:		81% (1287) ? c/s  		 | Progress:		82% (1303) ? c/s  		 / Progress:		83% (1319) ? c/s  		 - Progress:		84% (1334) ? c/s  		 \ Progress:		85% (1350) ? c/s  		 | Progress:		86% (1366) ? c/s  		 / Progress:		87% (1382) ? c/s  		 - Progress:		88% (1398) ? c/s  		 \ Progress:		89% (1414) ? c/s  		 | Progress:		90% (1430) ? c/s  		 / Progress:		91% (1446) ? c/s  		 - Progress:		92% (1461) ? c/s  		 \ Progress:		93% (1477) ? c/s  		 | Progress:		94% (1493) ? c/s  		 / Progress:		95% (1509) ? c/s  		 - Progress:		96% (1525) ? c/s  		 \ Progress:		97% (1541) ? c/s  		 | Progress:		98% (1557) ? c/s  		 / Progress:		99% (1573) ? c/s  		 * Time:    		Compressing the database took 0.019349 seconds.		
+ * Result:		(196a,418u,19657,169148,13958,183106)
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/compress/
+
+Task `main`, command `compress` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: 'b80eb152-bc19-4788-b75d-b51cce222e56_convertdb.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * Type:		FIMI database
+ * File:		wff_3_100_150_500_500_40_ex_8_train_neg.dat
+ * Scanning file:	in progress... * Scanning file: done                       
+ * Database:	453 rows, maximal 60 columns
+ * 		has bin sizes: no
+ * 		has transaction id's: no
+ * Reading database:	in progress... * Reading database:	done          
+
+ * Processing Data:  * Processing Data: Translating Forward * Processing Data: Sorting within Rows * Processing Data: Writing Data              ** Writing FIC database to file
+ * File:		wff_3_100_150_500_500_40_ex_8_train_neg.db
+** Finished writing database.
+
+ * Processing Data: Finished                  
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/
+
+Task `datatrans`, command `convertdb` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: '3b4ed702-75cd-4216-b77e-ad81bf594eb4_analysedb.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * File:		wff_3_100_150_500_500_40_ex_8_train_neg.db
+ * Database:		453t 453r, 27180i, 184345.12bits
+ * 			pruned below support 0, maximum set length 60
+ * Alphabet:		115 items
+ * Internal datatype:	uint16 value arrays
+
+** Analysing database
+ * Output File:	wff_3_100_150_500_500_40_ex_8_train_neg.db.analysis.txt
+ * Writing analysis:	in progress... * Writing analysis:	done          
+
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/analysedb/
+
+Task `main`, command `analysedb` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: '5935e292-6787-4b4b-b4f9-1f9fe23dd925_compress.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * File:		wff_3_100_150_500_500_40_ex_8_train_neg.db
+ * Database:		453t 453r, 27180i, 184345.12bits
+ * 			pruned below support 0, maximum set length 60
+ * Alphabet:		115 items
+ * Internal datatype:	128bit bitmap
+
+** ItemSetCollection ::
+** Creating Frequent Item Set Collection.
+ * File:		wff_3_100_150_500_500_40_ex_8_train_neg-all-300d.bisc.fi
+ * Type:		FIMI
+ * Has # rows:		no
+ * # ItemSets:		0
+Error removing Isc conversion input file.** Finished Creating Frequent Item Set Collection
+
+
+** Compression :: 
+ * Experiment tag	wff_3_100_150_500_500_40_ex_8_train_neg-all-300d-pop-20200331161345
+ * Algorithm:		coverpartial post-accept-prune
+ * Candidates:		0p
+ * Start:		(115a,0u,27180,184345,1593,185938)
+ * Time:    		Compressing the database took 0.000048 seconds.		
+ * Result:		(115a,0u,27180,184345,1593,185938)
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/compress/
+
+Task `main`, command `compress` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: 'f31d68e4-89af-45f3-a6bb-345316d7735f_convertdb.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * Type:		FIMI database
+ * File:		wff_3_100_150_500_500_40_ex_9_train_pos.dat
+ * Scanning file:	in progress... * Scanning file: done                       
+ * Database:	441 rows, maximal 60 columns
+ * 		has bin sizes: no
+ * 		has transaction id's: no
+ * Reading database:	in progress... * Reading database:	done          
+
+ * Processing Data:  * Processing Data: Translating Forward * Processing Data: Sorting within Rows * Processing Data: Writing Data              ** Writing FIC database to file
+ * File:		wff_3_100_150_500_500_40_ex_9_train_pos.db
+** Finished writing database.
+
+ * Processing Data: Finished                  
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/
+
+Task `datatrans`, command `convertdb` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: '5fe10394-d988-41a8-8af5-4316185e25a2_analysedb.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * File:		wff_3_100_150_500_500_40_ex_9_train_pos.db
+ * Database:		441t 441r, 26460i, 202160.86bits
+ * 			pruned below support 0, maximum set length 60
+ * Alphabet:		200 items
+ * Internal datatype:	uint16 value arrays
+
+** Analysing database
+ * Output File:	wff_3_100_150_500_500_40_ex_9_train_pos.db.analysis.txt
+ * Writing analysis:	in progress... * Writing analysis:	done          
+
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/analysedb/
+
+Task `main`, command `analysedb` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: 'b98de7de-9a53-4cf9-9e4f-cbe59a33534c_compress.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * File:		wff_3_100_150_500_500_40_ex_9_train_pos.db
+ * Database:		441t 441r, 26460i, 202160.86bits
+ * 			pruned below support 0, maximum set length 60
+ * Alphabet:		200 items
+ * Internal datatype:	128bit bitmap
+ ** WARNING : |ab| > 128 : won't fit in BM128, using Uint16 **
+
+
+** ItemSetCollection ::
+** Creating Frequent Item Set Collection.
+ * File:		wff_3_100_150_500_500_40_ex_9_train_pos-all-50d.bisc.fi
+ * Type:		FIMI
+ * Has # rows:		no
+ * # ItemSets:		1180
+ * Sorting sets:	in progress... * Sorting sets:	sorted on support and descending on length
+** Finished Creating Frequent Item Set Collection
+
+
+** Compression :: 
+ * Experiment tag	wff_3_100_150_500_500_40_ex_9_train_pos-all-50d-pop-20200331161345
+ * Algorithm:		coverpartial post-accept-prune
+ * Candidates:		1180p
+ * Start:		(200a,0u,26460,202161,3059,205220)
+ - Progress:		0% (0) ? c/s  		 \ Progress:		1% (12) ? c/s  		 | Progress:		2% (24) ? c/s  		 / Progress:		3% (36) ? c/s  		 - Progress:		4% (48) ? c/s  		 \ Progress:		5% (59) ? c/s  		 | Progress:		6% (71) ? c/s  		 / Progress:		7% (83) ? c/s  		 - Progress:		8% (95) ? c/s  		 \ Progress:		9% (107) ? c/s  		 | Progress:		10% (118) ? c/s  		 / Progress:		11% (130) ? c/s  		 - Progress:		12% (142) ? c/s  		 \ Progress:		13% (154) ? c/s  		 | Progress:		14% (166) ? c/s  		 / Progress:		15% (177) ? c/s  		 - Progress:		16% (189) ? c/s  		 \ Progress:		17% (201) ? c/s  		 | Progress:		18% (213) ? c/s  		 / Progress:		19% (225) ? c/s  		 - Progress:		20% (236) ? c/s  		 \ Progress:		21% (248) ? c/s  		 | Progress:		22% (260) ? c/s  		 / Progress:		23% (272) ? c/s  		 - Progress:		24% (284) ? c/s  		 \ Progress:		25% (295) ? c/s  		 | Progress:		26% (307) ? c/s  		 / Progress:		27% (319) ? c/s  		 - Progress:		28% (331) ? c/s  		 \ Progress:		29% (343) ? c/s  		 | Progress:		30% (354) ? c/s  		 / Progress:		31% (366) ? c/s  		 - Progress:		32% (378) ? c/s  		 \ Progress:		33% (390) ? c/s  		 | Progress:		34% (402) ? c/s  		 / Progress:		35% (413) ? c/s  		 - Progress:		36% (425) ? c/s  		 \ Progress:		37% (437) ? c/s  		 | Progress:		38% (449) ? c/s  		 / Progress:		39% (461) ? c/s  		 - Progress:		40% (472) ? c/s  		 \ Progress:		41% (484) ? c/s  		 | Progress:		42% (496) ? c/s  		 / Progress:		43% (508) ? c/s  		 - Progress:		44% (520) ? c/s  		 \ Progress:		45% (531) ? c/s  		 | Progress:		46% (543) ? c/s  		 / Progress:		47% (555) ? c/s  		 - Progress:		48% (567) ? c/s  		 \ Progress:		49% (579) ? c/s  		 | Progress:		50% (590) ? c/s  		 / Progress:		51% (602) ? c/s  		 - Progress:		52% (614) ? c/s  		 \ Progress:		53% (626) ? c/s  		 | Progress:		54% (638) ? c/s  		 / Progress:		55% (649) ? c/s  		 - Progress:		56% (661) ? c/s  		 \ Progress:		57% (673) ? c/s  		 | Progress:		58% (685) ? c/s  		 / Progress:		59% (697) ? c/s  		 - Progress:		60% (708) ? c/s  		 \ Progress:		61% (720) ? c/s  		 | Progress:		62% (732) ? c/s  		 / Progress:		63% (744) ? c/s  		 - Progress:		64% (756) ? c/s  		 \ Progress:		65% (767) ? c/s  		 | Progress:		66% (779) ? c/s  		 / Progress:		67% (791) ? c/s  		 - Progress:		68% (803) ? c/s  		 \ Progress:		69% (815) ? c/s  		 | Progress:		70% (826) ? c/s  		 / Progress:		71% (838) ? c/s  		 - Progress:		72% (850) ? c/s  		 \ Progress:		73% (862) ? c/s  		 | Progress:		74% (874) ? c/s  		 / Progress:		75% (885) ? c/s  		 - Progress:		76% (897) ? c/s  		 \ Progress:		77% (909) ? c/s  		 | Progress:		78% (921) ? c/s  		 / Progress:		79% (933) ? c/s  		 - Progress:		80% (944) ? c/s  		 \ Progress:		81% (956) ? c/s  		 | Progress:		82% (968) ? c/s  		 / Progress:		83% (980) ? c/s  		 - Progress:		84% (992) ? c/s  		 \ Progress:		85% (1003) ? c/s  		 | Progress:		86% (1015) ? c/s  		 / Progress:		87% (1027) ? c/s  		 - Progress:		88% (1039) ? c/s  		 \ Progress:		89% (1051) ? c/s  		 | Progress:		90% (1062) ? c/s  		 / Progress:		91% (1074) ? c/s  		 - Progress:		92% (1086) ? c/s  		 \ Progress:		93% (1098) ? c/s  		 | Progress:		94% (1110) ? c/s  		 / Progress:		95% (1121) ? c/s  		 - Progress:		96% (1133) ? c/s  		 \ Progress:		97% (1145) ? c/s  		 | Progress:		98% (1157) ? c/s  		 / Progress:		99% (1169) ? c/s  		 * Time:    		Compressing the database took 0.019826 seconds.		
+ * Result:		(200a,339u,19809,167789,11922,179711)
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/compress/
+
+Task `main`, command `compress` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: '140f07bd-6efe-41ed-8cd5-2a0e84f1f0db_convertdb.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * Type:		FIMI database
+ * File:		wff_3_100_150_500_500_40_ex_9_train_neg.dat
+ * Scanning file:	in progress... * Scanning file: done                       
+ * Database:	441 rows, maximal 60 columns
+ * 		has bin sizes: no
+ * 		has transaction id's: no
+ * Reading database:	in progress... * Reading database:	done          
+
+ * Processing Data:  * Processing Data: Translating Forward * Processing Data: Sorting within Rows * Processing Data: Writing Data              ** Writing FIC database to file
+ * File:		wff_3_100_150_500_500_40_ex_9_train_neg.db
+** Finished writing database.
+
+ * Processing Data: Finished                  
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/
+
+Task `datatrans`, command `convertdb` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: '110626e8-9fe1-460d-ba27-903382e470be_analysedb.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * File:		wff_3_100_150_500_500_40_ex_9_train_neg.db
+ * Database:		441t 441r, 26460i, 179479.72bits
+ * 			pruned below support 0, maximum set length 60
+ * Alphabet:		115 items
+ * Internal datatype:	uint16 value arrays
+
+** Analysing database
+ * Output File:	wff_3_100_150_500_500_40_ex_9_train_neg.db.analysis.txt
+ * Writing analysis:	in progress... * Writing analysis:	done          
+
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/analysedb/
+
+Task `main`, command `analysedb` finished. This took 0 seconds.
+
+ ---------------------------------- FIC mkIII ---------------------------------
+
+** Processing conf: 'f60cd0b0-a2db-4df1-b34e-a1458db55134_compress.conf'
+ * Verbosity:		2
+ * Max Mem Usage:	512mb
+ * Priority:		Opzij, opzij, opzij!
+			Maak plaats, maak plaats, maak plaats!
+			Wij hebben ongelovelijke haast!
+
+** Database :: 
+ * File:		wff_3_100_150_500_500_40_ex_9_train_neg.db
+ * Database:		441t 441r, 26460i, 179479.72bits
+ * 			pruned below support 0, maximum set length 60
+ * Alphabet:		115 items
+ * Internal datatype:	128bit bitmap
+
+** ItemSetCollection ::
+** Creating Frequent Item Set Collection.
+ * File:		wff_3_100_150_500_500_40_ex_9_train_neg-all-300d.bisc.fi
+ * Type:		FIMI
+ * Has # rows:		no
+ * # ItemSets:		0
+Error removing Isc conversion input file.** Finished Creating Frequent Item Set Collection
+
+
+** Compression :: 
+ * Experiment tag	wff_3_100_150_500_500_40_ex_9_train_neg-all-300d-pop-20200331161345
+ * Algorithm:		coverpartial post-accept-prune
+ * Candidates:		0p
+ * Start:		(115a,0u,26460,179480,1593,181072)
+ * Time:    		Compressing the database took 0.000049 seconds.		
+ * Result:		(115a,0u,26460,179480,1593,181072)
+
+ * Check results in:	/home/dtai/PycharmProjects/Mistle/Output/xps/compress/
+
+Task `main`, command `compress` finished. This took 0 seconds.
+
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	916c0921-5e14-4fe4-9a56-988b5c355586_convertdb.conf
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	2ce07e12-87b0-4197-bbbb-2bd1a99c4955_analysedb.conf
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	bfbced00-fb8e-455c-9537-456be735960d_compress.conf
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	1aaaf23b-78e0-4d12-a4ea-d61dae6a319b_convertdb.conf
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	dc286531-eaf3-4d38-b576-e69f198790e2_analysedb.conf
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	8d1045ee-d8f0-47a0-81af-245af1914966_compress.conf
+Confusion Matrix 	: TP_c = 41; TN_c = 0; FP_c = 41; FN_c = 0; TP_f = 0; TN_f = 0; FP_f = 0; FN_f = 0
+Accuracy of fold 0	: 0.5
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	e8f37157-5cf9-4ab3-b719-358dc79867de_convertdb.conf
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	30e4a4c3-8c86-4134-843f-ca000cb008ac_analysedb.conf
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	2fa44cdc-fbd6-4cf3-a9c9-97952e42e7f9_compress.conf
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	a7a74801-254a-4201-8a1a-1683ee618f78_convertdb.conf
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	15f5838e-70ab-46b6-a9e5-74bfb6a7a053_analysedb.conf
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	ac8cb123-827b-4c76-9627-0efdbfe1c9c4_compress.conf
+Confusion Matrix 	: TP_c = 53; TN_c = 0; FP_c = 53; FN_c = 0; TP_f = 0; TN_f = 0; FP_f = 0; FN_f = 0
+Accuracy of fold 1	: 0.5
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	3fe1be64-34c8-4fc7-9ffb-f6ed63f9421d_convertdb.conf
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	738ddd58-180b-4bc8-b5d6-027263519776_analysedb.conf
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	481df2f3-d110-485c-ab8d-51f7d40f76f2_compress.conf
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	77489775-4487-47c1-a24d-af64951d2d3c_convertdb.conf
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	a1e413a6-fb8f-41b1-9295-f7e5b07a13c7_analysedb.conf
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	054a64bf-a0d0-4ab0-bb55-b4d34349c9ab_compress.conf
+Confusion Matrix 	: TP_c = 40; TN_c = 0; FP_c = 40; FN_c = 0; TP_f = 0; TN_f = 0; FP_f = 0; FN_f = 0
+Accuracy of fold 2	: 0.5
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	5c8571d9-29b5-420e-bd04-a2f3d72bdead_convertdb.conf
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	29617ca1-f591-4ff0-820a-b3ad94024960_analysedb.conf
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	947f8323-83a0-4805-a51f-c39888da8948_compress.conf
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	226b3d95-f3a5-437e-a4c2-bf48a6435604_convertdb.conf
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	b71181ea-abab-4d3e-8462-15a4eca345cc_analysedb.conf
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	05c498c6-03c7-4788-a463-fee488440b00_compress.conf
+Confusion Matrix 	: TP_c = 57; TN_c = 0; FP_c = 57; FN_c = 0; TP_f = 0; TN_f = 0; FP_f = 0; FN_f = 0
+Accuracy of fold 3	: 0.5
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	587e0c33-36fe-4312-a13f-fb78d07d6343_convertdb.conf
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	b9193e18-e3e7-48a4-8d5a-c6701c480ded_analysedb.conf
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	ad72d433-9d77-40d8-a73d-83a7d81bc64e_compress.conf
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	0a98bce9-021a-44bc-a8c2-5da80cf16ca0_convertdb.conf
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	0cd6b06b-3993-47e7-a006-bf03b1bd0919_analysedb.conf
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	2034e463-2fb4-47e9-b999-50cccaaec625_compress.conf
+Confusion Matrix 	: TP_c = 46; TN_c = 0; FP_c = 46; FN_c = 0; TP_f = 0; TN_f = 0; FP_f = 0; FN_f = 0
+Accuracy of fold 4	: 0.5
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	658fdaa9-016f-4208-bc80-c900a71523a3_convertdb.conf
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	2fe83f65-ac4c-4042-832d-4de3a5a579da_analysedb.conf
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	3beeca6d-c216-46ac-8918-ebc7b2c2718a_compress.conf
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	62b0b659-30b0-4194-944b-0bc939f47c79_convertdb.conf
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	e4bf5268-4120-4432-9946-27d55db96255_analysedb.conf
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	2b3fc867-c0ee-4a5f-9f83-484137187f04_compress.conf
+Confusion Matrix 	: TP_c = 61; TN_c = 0; FP_c = 61; FN_c = 0; TP_f = 0; TN_f = 0; FP_f = 0; FN_f = 0
+Accuracy of fold 5	: 0.5
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	9607fcd1-65eb-4953-9c6d-be06f22e5b1d_convertdb.conf
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	b370c297-a86b-4e90-b99f-326eb8353be4_analysedb.conf
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	58a59060-3106-460e-bd80-6774f01f32db_compress.conf
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	724774e8-1d49-4238-bcf7-a73f36e22bf1_convertdb.conf
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	5276ee24-925d-4923-ac8f-4d469f3cb90b_analysedb.conf
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	3a70a1c9-842e-4ab2-acb6-44ee0fae4db1_compress.conf
+Confusion Matrix 	: TP_c = 50; TN_c = 0; FP_c = 50; FN_c = 0; TP_f = 0; TN_f = 0; FP_f = 0; FN_f = 0
+Accuracy of fold 6	: 0.5
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	7ae03eb5-372f-40ee-9dc4-859a9feb9f67_convertdb.conf
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	b28ff628-079e-4a54-90fd-4c6c5c3c683e_analysedb.conf
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	450597e7-e720-42fa-bf6c-be556337cfae_compress.conf
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	5413a61b-7957-49ed-9a9e-e144e371ad32_convertdb.conf
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	5a038c25-7d5e-4fd0-a8e0-be4a19f3a273_analysedb.conf
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	0e91f9e8-4c43-4a79-862e-026492731ff6_compress.conf
+Confusion Matrix 	: TP_c = 46; TN_c = 0; FP_c = 46; FN_c = 0; TP_f = 0; TN_f = 0; FP_f = 0; FN_f = 0
+Accuracy of fold 7	: 0.5
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	945b534f-16af-4bc3-8b83-28fe23d03a14_convertdb.conf
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	ff92846e-9093-4ead-b585-74e0f3494e72_analysedb.conf
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	ed370622-1e86-4c43-af81-8b4bc9a9372c_compress.conf
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	b80eb152-bc19-4788-b75d-b51cce222e56_convertdb.conf
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	3b4ed702-75cd-4216-b77e-ad81bf594eb4_analysedb.conf
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	5935e292-6787-4b4b-b4f9-1f9fe23dd925_compress.conf
+Confusion Matrix 	: TP_c = 47; TN_c = 0; FP_c = 47; FN_c = 0; TP_f = 0; TN_f = 0; FP_f = 0; FN_f = 0
+Accuracy of fold 8	: 0.5
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	f31d68e4-89af-45f3-a6bb-345316d7735f_convertdb.conf
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	5fe10394-d988-41a8-8af5-4316185e25a2_analysedb.conf
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	b98de7de-9a53-4cf9-9e4f-cbe59a33534c_compress.conf
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	140f07bd-6efe-41ed-8cd5-2a0e84f1f0db_convertdb.conf
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	110626e8-9fe1-460d-ba27-903382e470be_analysedb.conf
+Running	: /home/dtai/PycharmProjects/Mistle/Krimp/bin/krimp	f60cd0b0-a2db-4df1-b34e-a1458db55134_compress.conf
+Confusion Matrix 	: TP_c = 59; TN_c = 0; FP_c = 59; FN_c = 0; TP_f = 0; TN_f = 0; FP_f = 0; FN_f = 0
+Accuracy of fold 9	: 0.5
+
+Total Confusions					: defaultdict(<class 'int'>, {'TP_c': 500, 'TN_c': 0, 'FP_c': 500, 'FN_c': 0, 'TP_f': 0, 'TN_f': 0, 'FP_f': 0, 'FN_f': 0})
+Precision							: 50.0%
+Recall								: 100.0%
+Accuracy							: 50.0%
+Average Classification Accuracy 	: 0.0%
+Total Time 							: 1.939925193786621 seconds

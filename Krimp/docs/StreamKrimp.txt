@@ -1,0 +1,124 @@
+
+================== Detecting Change in Data Streams with StreamKrimp ======================
+
+
+=== 0. Get started with Krimp ===
+
+Follow the instructions in 'My First Krimp Experiment.txt', which should be in the same
+directory as this file.
+As StreamKrimp is built upon Krimp, it is probably a good thing to run some Krimp
+experiments first to become familiar with the basics.
+
+
+=== 1. Run StreamKrimp ===
+
+- For information on how the algorithm works and additional information on the parameters, 
+please see the paper [1].
+- Open up streamkrimp.conf.
+- The most important configuration directives are:
+	* iscName = chess-all-2500d
+	This directive tells Krimp which dataset and candidate patterns are to be used.
+
+	Format: [dbName]-[itemsetType]-[minSup][candidateOrder]
+	
+	dbName			- chess, mushroom, ...
+	itemsetType		- all, closed
+	minSup			- absolute minimum support level
+	candidateOrder	- the default Krimp order as described in our papers is 'd'
+	
+	Candidate patterns are mined on each substream on which FindCodeTableOnStream is 
+	invoked.
+	
+	* classedDbAsStream = 1
+	* randomizeDb = 41421324
+	If your dataset is already a stream (i.e., the transactions are ordered), you do not
+	need this directives and you can simply comment them:
+		#classedDbAsStream = 1
+		#randomizeDb = 41421324
+	However, if you have an unordered database that does have class labels, you can use
+	these directives to load your database as a 'stream' in which 1) single-class substreams 
+	are concatenated and 2) the order of the transactions within these substreams is
+	randomized.
+	To load a database with class info as a stream, simply set:
+		classedDbAsStream = 1
+	and choose a seed for randomization:
+		randomizeDb = 1895727832
+	For a more detailed explanation, see Section 5.1 of the paper, as we used this mechanism
+	for the experiments with the UCI datasets. For more information on adding class info to
+	your database in Krimp format, see 'Krimp Classification.txt'.
+	
+	* streamOffsetBase = 0
+	This parameter provides the opportunity to resume from a specified transaction in a 
+	substream. (E.g., if you have a db4165-4997.ct, specify streamOffsetBase = 4165)
+	Note that you'll have to specify the starting point of a previously accepted code table
+	if you want to ensure that you'll end up with exactly the same results as when running
+	StreamKrimp just once on the entire stream.
+	
+	* Other parameters
+	In our experience, it is often not necessary to modify the other parameters. However,
+	feel free to do so.
+- Run streamkrimp.conf
+
+Note: to speedup subsequent runs of StreamKrimp, all code tables computed on a particular 
+dataset are cached in Krimp\xps\streamkrimp\[iscName]\. Whenever a code table for a certain
+substream is needed, StreamKrimp first checks whether it is present in this cache. If it is,
+it is loaded and used. If not, the regular Krimp algorithm is used to build it.
+No checks are done to verify whether cached code tables were built on the same dataset as the
+current dataset. The only identifier is the name of the dataset. Therefore, a code table cache 
+for a particular dataset should be manually emptied when the dataset is changed but its name 
+is not.
+
+
+=== 2. Inspect your results ===
+
+- Results are stored in Krimp\xps\StreamKrimp. Each run gets its own directory, based on 
+the specified iscName and a timestamp.
+- In a result directory, you'll find:
+	* _summary.log
+		A log that summarizes everything that happened during the StreamKrimp run.
+		When classedDbAsStream is used, it starts with information on the class sizes.
+		Then, it gives an overview of the parameter settings and a code table to start with
+		is built.
+		After this, each block is compressed and skipped when it obviously belongs to the 
+		current distribution. When it doesn't, a new code table is built and may be either
+		accepted or rejected based on its CTD with the current code table.
+		When the end of the stream has been reached, some statistics are given. These are
+		repeated a second time but then without the 'legend' to facilitate easy copy-pasting
+		to a spreadsheet.
+	* _splits.csv
+		A CSV file that gives the detected splits / substreams. When 'classedDbAsStream' is
+		used, actual class boundaries are given first.
+	* db[from]-[to].ct
+		An accepted code table built on the substream S(from,to).
+	* db[from]-[to].stdlen
+		Standard lengths computed on the substream S(from,to). (Not important for analysis.)
+	* hist[from]-[to].csv
+		Histogram of block sizes sampled from S(from,to). These sizes are used for the 
+		statistical test that is described as the 'second optimisation' in Section 4.4.
+		'lowerBoundary' and 'upperBoundary' are the boundaries used in the statistical test:
+		whenever the size of a new block is within these limits, it is considered to belong
+		to the same distribution.
+- You may be happy with the results you obtained so far, but you may also be interested in
+creating a figure like Figure 4 in the paper. To be able to do this, we need to encode each
+block of the entire stream with each accepted code table. This is explained in the next 
+section.
+
+
+=== 3. Compute encoded block sizes ===
+
+- Open streamencode.conf.
+- First, define the stream and its division into blocks that you would like to encode. In
+most cases, simply enter the same parameter values that you used in streamkrimp.conf.
+- Secondly, lookup the directory name where the results of your StreamKrimp were stored,
+i.e. Krimp\xps\StreamKrimp\[iscName-timestamp]\. The part between brackets is the 'expName'
+you're looking for. Fill it in, e.g. expName = mushroom-closed-200d-20081104164149
+- Run streamencode.conf
+- The results are stored in encoded_[numBlocks]x[blockSize].csv.
+
+
+Reference:
+[1] M. van Leeuwen & A. Siebes, StreamKrimp: Detecting Change in Data Streams, ECML PKDD 2008, 
+pp.672-687, 2008.
+
+Contact: 
+- Matthijs van Leeuwen 	@ matthijs.vanleeuwen@cs.kuleuven.be

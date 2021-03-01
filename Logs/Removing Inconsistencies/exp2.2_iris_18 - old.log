@@ -1,0 +1,87 @@
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 1062
+ Total time ~: 59 ms
+ Max memory:11.282005310058594
+=====================================
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 3
+ Total time ~: 2 ms
+ Max memory:7.562202453613281
+=====================================
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 696
+ Total time ~: 33 ms
+ Max memory:9.842124938964844
+=====================================
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 7
+ Total time ~: 2 ms
+ Max memory:7.565757751464844
+=====================================
+Current Minsup[0.5] yields 340 itemsets.
+Current Minsup[0.25] yields 1523 itemsets.
+Current Minsup[0.125] yields 2524 itemsets.
+Current Minsup[0.0625] yields 3306 itemsets.
+Current Minsup[0.03125] yields 3613 itemsets.
+Current Minsup[0.015625] yields 3727 itemsets.
+Length of freq items 1	: 1062
+Time of freq items 1	: 0.4294581413269043
+427088 Frequent Itemsets are mined in 8.875761270523071 seconds.
+Length of freq items 2	: 427088
+Time of freq items 2	: 8.875815868377686
+DL of initial theory	: 2345.627031159262
+623	itemsets left after T operation 	: [frozenset({2, 5, 9, 12, 13, 15, -14})]
+135	itemsets left after T operation 	: [frozenset({4, 5, 6, 8, 13, 14, 16, -15, 17, -12})]
+10	itemsets left after T operation 	: [frozenset({3, 5, 6, 8, 10, 11, 12, -17, 16, 15})]
+1	itemsets left after T operation 	: [frozenset({16, 8, 5, 6})]
+Length of freq items 1	: 3
+Time of freq items 1	: 0.42686891555786133
+71 Frequent Itemsets are mined in 0.0010318756103515625 seconds.
+Length of freq items 2	: 71
+Time of freq items 2	: 0.0010819435119628906
+0 clauses are pruned.
+Initial DL				: 6767.765296313812
+Final DL				: 276.2697947691426
+Compression (wrt me)	: 0.9591785792394991
+Operator Counters		: {'D': 0, 'W': 0, 'V': 0, 'S': 0, 'R': 0, 'T': 4}
+Length of freq items 1	: 696
+Time of freq items 1	: 0.45540928840637207
+329384 Frequent Itemsets are mined in 5.803071022033691 seconds.
+Length of freq items 2	: 329384
+Time of freq items 2	: 5.803115129470825
+DL of initial theory	: 2345.627031159262
+452	itemsets left after T operation 	: [frozenset({2, 6, 11, 12, 14, 15, -16, 17, -13})]
+18	itemsets left after T operation 	: [frozenset({3, 5, 8, 9, 10, 12, 15, -16, 17})]
+Length of freq items 1	: 7
+Time of freq items 1	: 0.3099398612976074
+33234 Frequent Itemsets are mined in 0.38604283332824707 seconds.
+Length of freq items 2	: 33234
+Time of freq items 2	: 0.38608407974243164
+0 clauses are pruned.
+Initial DL				: 6767.765296313812
+Final DL				: 166.4385513137781
+Compression (wrt me)	: 0.9754071626265717
+Operator Counters		: {'D': 0, 'W': 0, 'V': 0, 'S': 0, 'R': 0, 'T': 2}
+Mistle Accuracy = 0.8103448275862069 ; 0.5948275862068966 ; 0.9655172413793104 ; 0.75 / 116
+CNFAlgo Accuracy = 29/119 = 0.24369747899159663
+Mistle Accuracy = 0.8262032085561497 ; 0.43315508021390375 ; 0.9518716577540107 ; 0.5588235294117647 / 374
+CNFAlgo Accuracy = 39/375 = 0.104
+Mistle Accuracy = 0.5435413642960812 ; 0.27866473149492016 ; 0.9317851959361393 ; 0.6669085631349783 / 1378
+CNFAlgo Accuracy = 48/1379 = 0.03480783176214648
+dataset = iris_18.dat with minsup = 0.009523809523809525
+missingness_parameters = [0.05, 0.15, 0.25]
+mistle_accuracy_list1 = [0.8103448275862069, 0.8262032085561497, 0.5435413642960812]
+mistle_accuracy_list2 = [0.5948275862068966, 0.43315508021390375, 0.27866473149492016]
+mistle_accuracy_list3 = [0.9655172413793104, 0.9518716577540107, 0.9317851959361393]
+mistle_accuracy_list4 = [0.75, 0.5588235294117647, 0.6669085631349783]
+mistle_clauses_list = [5, 5, 5]
+mistle_literals_list = [45, 45, 45]
+cnfalgo_accuracy_list = [0.24369747899159663, 0.104, 0.03480783176214648]
+cnfalgo_clauses_list = [8822, 8822, 8822]
+cnfalgo_literals_list = [33422, 33422, 33422]
+train_data_literals_list = [1680, 1680, 1680]
+randomized_accuracy_list = [0.361328125, 0.22172619047619047, 0.10569069602272728]

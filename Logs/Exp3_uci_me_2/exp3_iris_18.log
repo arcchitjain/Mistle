@@ -1,0 +1,134 @@
+
+##### Build transactions database #####.....[OK]
+nbTransactions = 50
+AVGTransactionsLenght = 12
+##### Execute lcm #####.....[OK]
+##### Parse lcm result & Build classes patterns #####.....[OK]
+
+nbValidPatterns= 28
+nbClasses= 1
+
+##### Reduction of non binaries clauses #####.....[OK]
+##### Writing of output #####.....[OK]
+
+
+##### Build transactions database #####.....[OK]
+no binary clause for the instance NonBinary_Compressed_mining4sat_e38a25e4-3557-487b-823d-fbf92cb0e525_L1.cnf
+mining4sat_e38a25e4-3557-487b-823d-fbf92cb0e525_ & 1 & 50 & 50 & 0 & 0,8 Ko & 63 & 49 & 14 & 34,7 & 0,5 Ko & 0 & 0 & 0 & 34,7 & 0,5 Ko & 0,06 \\
+
+TotalCPUTime = 0,06
+
+
+
+##### Build transactions database #####.....[OK]
+nbTransactions = 100
+AVGTransactionsLenght = 16
+##### Execute lcm #####.....[OK]
+##### Parse lcm result & Build classes patterns #####.....[OK]
+
+nbValidPatterns= 37
+nbClasses= 1
+
+##### Reduction of non binaries clauses #####.....[OK]
+##### Writing of output #####.....[OK]
+
+
+##### Build transactions database #####.....[OK]
+nbTransactions = 1
+AVGTransactionsLenght = 3
+##### Execute lcm #####.....[OK]
+##### Parse lcm result & Build classes patterns #####.....[OK]
+
+nbValidPatterns = 0
+nbClasses = 0
+no binary reduction for the instance NonBinary_Compressed_mining4sat_063a86d0-9a93-4e34-8b3b-988de8e762d5_L1.cnf
+mining4sat_063a86d0-9a93-4e34-8b3b-988de8e762d5_ & 1 & 100 & 100 & 0 & 1,7 Ko & 121 & 80 & 41 & 34,5 & 1,1 Ko & 0 & 0 & 0 & 34,5 & 1,1 Ko & 0,06 \\
+
+TotalCPUTime = 0,06
+
+
+Input Data	: /Users/arcchit/Docs/Mistle/mining4sat_e38a25e4-3557-487b-823d-fbf92cb0e525_.cnf
+Command 	: cd /Users/arcchit/Docs/Mistle/Resources/Mining4SAT && java -Xms8G -Xmx25G -cp bin/ execution.FrequentPatterns /Users/arcchit/Docs/Mistle/mining4sat_e38a25e4-3557-487b-823d-fbf92cb0e525_.cnf 1
+Return Code	: 0
+Output Data	: /Users/arcchit/Docs/Mistle/Resources/Mining4SAT/NonBinary_Compressed_mining4sat_e38a25e4-3557-487b-823d-fbf92cb0e525_L1.cnf
+Input Data	: /Users/arcchit/Docs/Mistle/mining4sat_063a86d0-9a93-4e34-8b3b-988de8e762d5_.cnf
+Command 	: cd /Users/arcchit/Docs/Mistle/Resources/Mining4SAT && java -Xms8G -Xmx25G -cp bin/ execution.FrequentPatterns /Users/arcchit/Docs/Mistle/mining4sat_063a86d0-9a93-4e34-8b3b-988de8e762d5_.cnf 1
+Return Code	: 0
+Output Data	: /Users/arcchit/Docs/Mistle/Resources/Mining4SAT/NonBinary_Compressed_mining4sat_063a86d0-9a93-4e34-8b3b-988de8e762d5_L1.cnf
+# of frequent itemsets	: 53
+Time of DCI Closed		: 0.2867450714111328
+DL of initial theory	: 495.6143005017033
+16	itemsets left after W operation 	: [frozenset({-16, 18, -13}), frozenset({-3, -18, -9}), frozenset({-4, -18, -9}), frozenset({-5, -18, -9}), frozenset({-6, -11, -18}), frozenset({-4, -11, -18}), frozenset({-3, -11, -18}), frozenset({-7, -4, -18}), frozenset({-7, -3, -18}), frozenset({-8, -3, -18}), frozenset({-5, -10, -18}), frozenset({-7, -2, -18}), frozenset({-10, -18, -2}), frozenset({-3, -10, -18}), frozenset({-8, -4, -18})]
+# of frequent itemsets	: 51
+Time of DCI Closed		: 0.2884950637817383
+Initial DL				: 1137.5592578677044
+Final DL				: 429.899624402957
+Compression (wrt me)	: 0.6220859516287692
+Operator Counters		: {'D': 0, 'W': 1, 'V': 0, 'S': 0, 'R': 0, 'T': 0}
+Misle Learning Runtime	: 0.5907227993011475
+
+# of frequent itemsets	: 54
+Time of DCI Closed		: 0.31339502334594727
+DL of initial theory	: 543.6461710678151
+13	itemsets left after W operation 	: [frozenset({-14, 18, -17}), frozenset({-6, -11, -18}), frozenset({-7, -6, -18}), frozenset({-7, -3, -18}), frozenset({-7, -4, -18}), frozenset({-4, -10, -18}), frozenset({-8, -4, -18}), frozenset({-3, -10, -18}), frozenset({-6, -10, -18}), frozenset({-8, -6, -18}), frozenset({-6, -18, -9}), frozenset({-8, -3, -18}), frozenset({-4, -18, -9}), frozenset({-4, -11, -18})]
+10	itemsets left after W operation 	: [frozenset({-15, 19, -12, -2}), frozenset({-19, -11}), frozenset({-7, -19}), frozenset({-19, -10}), frozenset({-19, -9})]
+# of frequent itemsets	: 50
+Time of DCI Closed		: 0.298389196395874
+Initial DL				: 2311.9010251021787
+Final DL				: 485.4908121630704
+Compression (wrt me)	: 0.7900036347180506
+Operator Counters		: {'D': 0, 'W': 2, 'V': 0, 'S': 0, 'R': 0, 'T': 0}
+Misle Learning Runtime	: 0.6324059963226318
+
+# of frequent itemsets	: 54
+Time of DCI Closed		: 0.2783820629119873
+2  violations of +ve partial assignments found for the learned theory.
+Violating Clauses	:{frozenset({-6, -14, -10, -17}), frozenset({-16, -7, -14, -3})}
+DL of initial theory	: 975.1259888548162
+12	itemsets left after T operation 	: [frozenset({-14, -17})]
+7	itemsets left after T operation 	: [frozenset({-15, -12, -2})]
+3	itemsets left after T operation 	: [frozenset({-15, -12})]
+0	itemsets left after T operation 	: [frozenset({-14})]
+# of frequent itemsets	: 3
+Time of DCI Closed		: 0.2919909954071045
+Initial DL				: 3534.4326449280866
+Final DL				: 213.5428006163466
+Compression (wrt me)	: 0.9395821558736505
+Operator Counters		: {'D': 0, 'W': 0, 'V': 0, 'S': 0, 'R': 0, 'T': 4}
+Misle Learning Runtime	: 0.5801846981048584
+
+# of frequent itemsets	: 53
+Time of DCI Closed		: 0.2941009998321533
+2  violations of +ve partial assignments found for the learned theory.
+Violating Clauses	:{frozenset({-6, -14, -10, -17}), frozenset({-16, -7, -14, -3})}
+DL of initial theory	: 975.1259888548162
+14	itemsets left after T operation 	: [frozenset({-16, -13})]
+3	itemsets left after T operation 	: [frozenset({-16, -14})]
+0	itemsets left after T operation 	: [frozenset({-16})]
+# of frequent itemsets	: 4
+Time of DCI Closed		: 0.2846229076385498
+Initial DL				: 3534.4326449280866
+Final DL				: 174.81179208847772
+Compression (wrt me)	: 0.9505403526816862
+Operator Counters		: {'D': 0, 'W': 0, 'V': 0, 'S': 0, 'R': 0, 'T': 3}
+Misle Learning Runtime	: 0.5887410640716553
+
+Comp Theory is T-.
+
+Minsup					: 1
+Initial DL				: 3535.4326449280866
+Mining4SAT Time			: 0.6682760715484619
+Mining4SAT DL			: 3297.7600550280627
+Mistle Lossless Time			: 1.225005865097046
+Mistle Lossless Pos DL	: 429.899624402957
+Mistle Lossless Neg DL	: 485.4908121630704
+Mistle Lossless DL		: 934.1032458252121
+Mistle Lossy Time			: 1.16902494430542
+Mistle Lossy Plus DL	: 213.54280061634645
+Mistle Lossy Minus DL	: 174.81179208847806
+
+Data							: iris_18.dat
+Minsup List						: [1]
+Compression: Mining4SAT			: [0.06722588542055462]
+Compression: Mistle - Lossless	: [0.7357881369440677]
+Compression: Mistle - Lossy		: [0.9505403526816862]

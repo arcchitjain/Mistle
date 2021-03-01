@@ -1,0 +1,14 @@
+:: horseColic-all-23d-pop-cccp-20210109110242
+Absolute matching
+
+;minsup;AvgAccuracy;StdDev;MaxAccuracy
+Best:;23;0.7962;0.0634;0.8857
+Last:;23;0.7962;0.0634;0.8857
+
+:: horseColic-all-23d-pop-cccp-20210109110242
+Relative matching
+
+;%;AvgAccuracy;StdDev;MaxAccuracy
+Best:;100%;0.7962;0.0634;0.8857
+Last:;1%;0.7962;0.0634;0.8857
+

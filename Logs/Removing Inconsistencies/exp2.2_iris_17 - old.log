@@ -1,0 +1,89 @@
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 1722
+ Total time ~: 53 ms
+ Max memory:13.0
+=====================================
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 1
+ Total time ~: 1 ms
+ Max memory:7.577720642089844
+=====================================
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 24
+ Total time ~: 5 ms
+ Max memory:7.562065124511719
+=====================================
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 1
+ Total time ~: 2 ms
+ Max memory:7.577720642089844
+=====================================
+Current Minsup[0.5] yields 263 itemsets.
+Current Minsup[0.25] yields 1313 itemsets.
+Current Minsup[0.125] yields 2417 itemsets.
+Current Minsup[0.0625] yields 3196 itemsets.
+Current Minsup[0.03125] yields 3474 itemsets.
+Current Minsup[0.015625] yields 3566 itemsets.
+Length of freq items 1	: 1722
+Time of freq items 1	: 0.38359594345092773
+573906 Frequent Itemsets are mined in 11.72718596458435 seconds.
+Length of freq items 2	: 573906
+Time of freq items 2	: 11.727240085601807
+DL of initial theory	: 2414.121434418562
+1288	itemsets left after T operation 	: [frozenset({2, 5, 9, 12, 13, 15, -14})]
+608	itemsets left after T operation 	: [frozenset({5, 6, 8, 12, 14, 15, -16, 17, -13})]
+119	itemsets left after T operation 	: [frozenset({2, 4, 7, 10, 12, 14, 15, -16, 17, -13})]
+13	itemsets left after T operation 	: [frozenset({3, 5, 6, 8, 10, 11, 12, -17, 16, 15})]
+2	itemsets left after T operation 	: [frozenset({12, 14, 15, -16, 17, -13})]
+1	itemsets left after T operation 	: [frozenset({12, 5, 15})]
+0	itemsets left after T operation 	: [frozenset({12, 15})]
+Length of freq items 1	: 1
+Time of freq items 1	: 0.3509049415588379
+2 Frequent Itemsets are mined in 5.078315734863281e-05 seconds.
+Length of freq items 2	: 2
+Time of freq items 2	: 9.5367431640625e-05
+1 clauses are pruned.
+Initial DL				: 6767.765296313812
+Final DL				: 0
+Compression (wrt me)	: 1.0
+Operator Counters		: {'D': 0, 'W': 0, 'V': 0, 'S': 0, 'R': 0, 'T': 7}
+Length of freq items 1	: 24
+Time of freq items 1	: 0.3546888828277588
+120832 Frequent Itemsets are mined in 2.203023910522461 seconds.
+Length of freq items 2	: 120832
+Time of freq items 2	: 2.2030630111694336
+DL of initial theory	: 2414.121434418562
+0	itemsets left after T operation 	: [frozenset({4, 5, 6, 8, 13, 14, 16, -15, 17, -12})]
+Length of freq items 1	: 1
+Time of freq items 1	: 0.36203598976135254
+512 Frequent Itemsets are mined in 0.006829977035522461 seconds.
+Length of freq items 2	: 512
+Time of freq items 2	: 0.00685882568359375
+1 clauses are pruned.
+Initial DL				: 6767.765296313812
+Final DL				: 0
+Compression (wrt me)	: 1.0
+Operator Counters		: {'D': 0, 'W': 0, 'V': 0, 'S': 0, 'R': 0, 'T': 1}
+Mistle Accuracy = 0.3620689655172414 ; 1.0 ; 0.0 ; 0.6379310344827587 / 116
+CNFAlgo Accuracy = 34/119 = 0.2857142857142857
+Mistle Accuracy = 0.24064171122994651 ; 1.0 ; 0.0 ; 0.7593582887700535 / 374
+CNFAlgo Accuracy = 43/375 = 0.11466666666666667
+Mistle Accuracy = 0.5007256894049347 ; 1.0 ; 0.0 ; 0.49927431059506533 / 1378
+CNFAlgo Accuracy = 50/1379 = 0.03625815808556925
+dataset = iris_17.dat with minsup = 0.009523809523809525
+missingness_parameters = [0.05, 0.15, 0.25]
+mistle_accuracy_list1 = [0.3620689655172414, 0.24064171122994651, 0.5007256894049347]
+mistle_accuracy_list2 = [1.0, 1.0, 1.0]
+mistle_accuracy_list3 = [0.0, 0.0, 0.0]
+mistle_accuracy_list4 = [0.6379310344827587, 0.7593582887700535, 0.49927431059506533]
+mistle_clauses_list = [0, 0, 0]
+mistle_literals_list = [0, 0, 0]
+cnfalgo_accuracy_list = [0.2857142857142857, 0.11466666666666667, 0.03625815808556925]
+cnfalgo_clauses_list = [5546, 5546, 5546]
+cnfalgo_literals_list = [22490, 22490, 22490]
+train_data_literals_list = [1680, 1680, 1680]
+randomized_accuracy_list = [0.361328125, 0.22172619047619047, 0.10569069602272728]

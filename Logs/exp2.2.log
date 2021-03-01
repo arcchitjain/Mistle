@@ -1,0 +1,26 @@
+pydev debugger: process 64656 is connecting
+
+Traceback (most recent call last):
+  File "/Users/arcchit/Docs/Mistle/exp2.py", line 2075, in <module>
+    plot_exp2_3(dataset=dataset, k=5000)
+  File "/Users/arcchit/Docs/Mistle/exp2.py", line 1941, in plot_exp2_3
+    ).learn(dl_measure=dl, minsup=minsup, k=k)
+  File "/Users/arcchit/Docs/Mistle/mistle_v2.py", line 998, in learn
+    allow_empty_positives,
+  File "/Users/arcchit/Docs/Mistle/mistle_v2.py", line 1153, in intialize
+    self.clauses, k
+  File "/Users/arcchit/Docs/Mistle/mistle_v2.py", line 1255, in get_frequent_itemsets_topk
+    rel_minsup = get_topk_minsup(clauses, suppress_output=True)
+  File "/Users/arcchit/Docs/Mistle/mistle_v2.py", line 543, in get_topk_minsup
+    data, current_minsup, "LCM", suppress_output=suppress_output
+  File "/Users/arcchit/Docs/Mistle/pattern_mining.py", line 85, in compute_itemsets
+    stderr=subprocess.STDOUT,
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/subprocess.py", line 325, in call
+    return p.wait(timeout=timeout)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/subprocess.py", line 990, in wait
+    return self._wait(timeout=timeout)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/subprocess.py", line 1624, in _wait
+    (pid, sts) = self._try_wait(0)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/subprocess.py", line 1582, in _try_wait
+    (pid, sts) = os.waitpid(self.pid, wait_flags)
+KeyboardInterrupt

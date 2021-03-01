@@ -1,0 +1,113 @@
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 4
+ Total time ~: 5 ms
+ Max memory:8.56207275390625
+=====================================
+Current Minsup[0.99] yields 4 itemsets.
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 2152
+ Total time ~: 201 ms
+ Max memory:30.6630859375
+=====================================
+Current Minsup[0.792] yields 2152 itemsets.
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 52924
+ Total time ~: 1878 ms
+ Max memory:153.64501953125
+=====================================
+Current Minsup[0.396] yields 52924 itemsets.
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 16644
+ Total time ~: 643 ms
+ Max memory:153.70458984375
+=====================================
+Current Minsup[0.6020427898344108] yields 16644 itemsets.
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 861
+ Total time ~: 45 ms
+ Max memory:13.562149047851562
+=====================================
+Length of freq items 1	: 861
+Time of freq items 1	: 0.3541259765625
+7798 Frequent Itemsets are mined in 0.13712406158447266 seconds.
+Length of freq items 2	: 7798
+Time of freq items 2	: 0.1372661590576172
+DL of initial theory	: 8818.384710451483
+860	itemsets left after T operation 	: [frozenset({4, 9, 10, 13, 15, 18, -14, -12, 24, 25})]
+443	itemsets left after T operation 	: [frozenset({3, 8, 15, 17, -14, 22, 24, 25})]
+20	itemsets left after T operation 	: [frozenset({4, 9, 13, 15, -14, -12, 24, 25})]
+1	itemsets left after T operation 	: [frozenset({3, 8, 17, 22, 24, 25})]
+0	itemsets left after T operation 	: [frozenset({24, 25})]
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 0
+ Total time ~: 1 ms
+ Max memory:7.577720642089844
+=====================================
+Length of freq items 1	: 0
+Time of freq items 1	: 0.28017210960388184
+0 Frequent Itemsets are mined in 3.3855438232421875e-05 seconds.
+Length of freq items 2	: 0
+Time of freq items 2	: 6.866455078125e-05
+1 clauses are pruned.
+Initial DL				: 30152.413869509157
+Final DL				: 490.67148903880076
+Compression (wrt me)	: 0.9837269582739783
+Operator Counters		: {'D': 0, 'W': 0, 'V': 0, 'S': 0, 'R': 0, 'T': 5}
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 12
+ Total time ~: 3 ms
+ Max memory:7.5620574951171875
+=====================================
+Length of freq items 1	: 12
+Time of freq items 1	: 0.2982170581817627
+4390912 Frequent Itemsets are mined in 79.51826882362366 seconds.
+Length of freq items 2	: 4390912
+Time of freq items 2	: 79.5183207988739
+DL of initial theory	: 8818.384710451483
+0	itemsets left after T operation 	: [frozenset({4, 6, 8, 9, 11, -20, 13, 15, 17, 18, -14, -12, 21, 22, 23, 25, 27})]
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 0
+ Total time ~: 2 ms
+ Max memory:7.577690124511719
+=====================================
+Length of freq items 1	: 0
+Time of freq items 1	: 0.4281589984893799
+0 Frequent Itemsets are mined in 9.083747863769531e-05 seconds.
+Length of freq items 2	: 0
+Time of freq items 2	: 0.00013518333435058594
+1 clauses are pruned.
+Initial DL				: 30152.413869509157
+Final DL				: 0
+Compression (wrt me)	: 1.0
+Operator Counters		: {'D': 0, 'W': 0, 'V': 0, 'S': 0, 'R': 0, 'T': 1}
+
+Dataset	: ecoli.dat;	Missingness Parameter	: 0.05
+Mistle Accuracy = 0.5425531914893617 ; 1.0 ; 0.0 ; 0.4574468085106383 / 376
+CNFAlgo Accuracy = 64/380 = 0.16842105263157894
+
+Dataset	: ecoli.dat;	Missingness Parameter	: 0.1
+Mistle Accuracy = 0.565947242206235 ; 1.0 ; 0.0 ; 0.434052757793765 / 834
+CNFAlgo Accuracy = 74/836 = 0.08851674641148326
+
+
+dataset = ecoli.dat with minsup = 0.6020427898344108
+missingness_parameters = [0.05, 0.1]
+mistle_accuracy_list1 = [0.5425531914893617, 0.565947242206235]
+mistle_accuracy_list2 = [1.0, 1.0]
+mistle_accuracy_list3 = [0.0, 0.0]
+mistle_accuracy_list4 = [0.4574468085106383, 0.434052757793765]
+mistle_clauses_list = [0, 0]
+mistle_literals_list = [0, 0]
+cnfalgo_accuracy_list = [0.16842105263157894, 0.08851674641148326]
+cnfalgo_clauses_list = [41905, 41905]
+cnfalgo_literals_list = [187287, 187287]
+train_data_literals_list = [6578, 6578]
+randomized_accuracy_list = [0.3134057971014493, 0.22355769230769232]

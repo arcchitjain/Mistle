@@ -1,0 +1,80 @@
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 1
+ Total time ~: 13 ms
+ Max memory:9.0
+=====================================
+Current Minsup[0.99] yields 1 itemsets.
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 2
+ Total time ~: 13 ms
+ Max memory:9.281974792480469
+=====================================
+Current Minsup[0.792] yields 2 itemsets.
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 40
+ Total time ~: 47 ms
+ Max memory:11.562919616699219
+=====================================
+Current Minsup[0.396] yields 40 itemsets.
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 123
+ Total time ~: 59 ms
+ Max memory:13.843048095703125
+=====================================
+Current Minsup[0.198] yields 123 itemsets.
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 170
+ Total time ~: 77 ms
+ Max memory:14.0
+=====================================
+Current Minsup[0.099] yields 170 itemsets.
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 213
+ Total time ~: 77 ms
+ Max memory:14.0
+=====================================
+Current Minsup[0.0495] yields 213 itemsets.
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 258
+ Total time ~: 78 ms
+ Max memory:14.0
+=====================================
+Current Minsup[0.02475] yields 258 itemsets.
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 306
+ Total time ~: 69 ms
+ Max memory:14.0
+=====================================
+Current Minsup[0.012375] yields 306 itemsets.
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 335
+ Total time ~: 100 ms
+ Max memory:14.0
+=====================================
+Current Minsup[0.0061875] yields 335 itemsets.
+>/Users/arcchit/Docs/Mistle/Resources/spmf.jar
+========== LCM - STATS ============
+ Freq. closed itemsets count: 352
+ Total time ~: 73 ms
+ Max memory:14.0
+=====================================
+Current Minsup[0.00309375] yields 352 itemsets.
+Traceback (most recent call last):
+
+  File "/Users/arcchit/Docs/Mistle/exp2.py", line 1828, in <module>
+Dataset	: breast.dat;	Missingness Parameter	: 0.05
+    plot_exp2_2_without_num_folds(dataset=dataset)
+  File "/Users/arcchit/Docs/Mistle/exp2.py", line 1762, in plot_exp2_2_without_num_folds
+    missing_test_negatives,
+  File "/Users/arcchit/Docs/Mistle/exp2.py", line 573, in get_pct_satisfiable_completions
+    completion, mistle_pos_theory.clauses, pa_is_complete=True
+AttributeError: 'NoneType' object has no attribute 'clauses'

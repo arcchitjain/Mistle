@@ -1,0 +1,10 @@
+pydev debugger: process 44211 is connecting
+
+Traceback (most recent call last):
+  File "/Applications/PyCharm.app/Contents/plugins/python/helpers/pydev/pydevd.py", line 1448, in _exec
+    pydev_imports.execfile(file, globals, locals)  # execute the script
+  File "/Applications/PyCharm.app/Contents/plugins/python/helpers/pydev/_pydev_imps/_pydev_execfile.py", line 11, in execfile
+    stream = tokenize.open(file)  # @UndefinedVariable
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/tokenize.py", line 447, in open
+    buffer = _builtin_open(filename, 'rb')
+FileNotFoundError: [Errno 2] No such file or directory: '/Users/arcchit/Docs/Mistle/Experiments/exp2_aug.py'

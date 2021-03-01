@@ -1,0 +1,14 @@
+:: ecoli-all-1d-pop-cccp-20210109110001
+Absolute matching
+
+;minsup;AvgAccuracy;StdDev;MaxAccuracy
+Best:;1;0.9345;0.0432;1.0000
+Last:;1;0.9345;0.0432;1.0000
+
+:: ecoli-all-1d-pop-cccp-20210109110001
+Relative matching
+
+;%;AvgAccuracy;StdDev;MaxAccuracy
+Best:;100%;0.9345;0.0432;1.0000
+Last:;1%;0.9345;0.0432;1.0000
+

@@ -1,0 +1,36 @@
+
+
+Comparing on flare.dat with nb_rows = 1389 and minsup = 0.0007199424046076314
+Running CNFAlgo
+Return Code for CNFAlgo	: 0
+CNFAlgo Accuracy = 111/139 = 0.7985611510791367
+Running CNFAlgo
+Return Code for CNFAlgo	: 0
+CNFAlgo Accuracy = 114/139 = 0.8201438848920863
+Running CNFAlgo
+Return Code for CNFAlgo	: 0
+CNFAlgo Accuracy = 120/139 = 0.8633093525179856
+Running CNFAlgo
+Return Code for CNFAlgo	: 0
+CNFAlgo Accuracy = 116/139 = 0.8345323741007195
+Running CNFAlgo
+Return Code for CNFAlgo	: 0
+CNFAlgo Accuracy = 107/139 = 0.7697841726618705
+Running CNFAlgo
+Return Code for CNFAlgo	: 0
+CNFAlgo Accuracy = 125/139 = 0.8992805755395683
+Running CNFAlgo
+Return Code for CNFAlgo	: 0
+CNFAlgo Accuracy = 115/139 = 0.8273381294964028
+Running CNFAlgo
+Return Code for CNFAlgo	: 0
+CNFAlgo Accuracy = 119/139 = 0.8561151079136691
+Running CNFAlgo
+Return Code for CNFAlgo	: 0
+CNFAlgo Accuracy = 114/139 = 0.8201438848920863
+Running CNFAlgo
+Return Code for CNFAlgo	: 0
+CNFAlgo Accuracy = 116/138 = 0.8405797101449275
+cnfalgo_fold_accuracy_list = [0.7985611510791367, 0.8201438848920863, 0.8633093525179856, 0.8345323741007195, 0.7697841726618705, 0.8992805755395683, 0.8273381294964028, 0.8561151079136691, 0.8201438848920863, 0.8405797101449275]
+cnfalgo_time = 24.591188192367554
+cnfalgo_accuracy = 0.8329788343238453

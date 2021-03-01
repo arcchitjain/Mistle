@@ -1,0 +1,2 @@
+cylBands;all;243;d;pop;cccp;20210117094338;abs;0.6796;0.6778
+cylBands;all;243;d;pop;cccp;20210117094338;rel;0.7632;0.7296

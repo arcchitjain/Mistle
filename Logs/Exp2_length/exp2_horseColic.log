@@ -1,0 +1,14 @@
+Return Code	: 0
+CNF-cc Accuracy		: 0.6027397260273972
+
+Dataset				: horseColic.dat
+Metric				: length
+Minsups				: [3]
+MF Accuracy			: []
+Mistle Accuracy		: []
+CNFAlgo Accuracy	: [0.6027397260273972]
+Randomized Accuracy	: [0.125]
+
+# Test Examples		: 73
+Mistle # Ties		: []
+CNFAlgo # Ties		: [(0, 0)]

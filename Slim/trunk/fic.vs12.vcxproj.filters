@@ -1,0 +1,725 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx</Extensions>
+    </Filter>
+    <Filter Include="Resource Files\templates">
+      <UniqueIdentifier>{8e864a22-9da7-4479-9261-f10fbc5db743}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Source Files\tasks">
+      <UniqueIdentifier>{49274674-bf67-4df6-a91a-39e75ef0a0d2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\blocks">
+      <UniqueIdentifier>{6d51a24a-fd17-48b8-8de5-407bd309f44d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\blocks\emm">
+      <UniqueIdentifier>{ec27b0f5-2029-46d1-9283-101a0d187d38}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\blocks\less">
+      <UniqueIdentifier>{23c4743d-b93a-4b8a-9fa5-95e22a20a39f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\blocks\dgen">
+      <UniqueIdentifier>{5be35a9f-5f1d-4d46-a591-1eb646578b22}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\blocks\dgen\cover">
+      <UniqueIdentifier>{29ec8503-fb52-452d-a04e-b165f002b844}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\blocks\dgen\codetable">
+      <UniqueIdentifier>{7dc43b5f-3cf1-44a3-b657-95ca6459f905}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\blocks\cluster">
+      <UniqueIdentifier>{54427635-f86b-4912-a7c1-df76d74ff94f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\blocks\classifier">
+      <UniqueIdentifier>{1c65ce7e-d171-40b7-9da9-8df95e8d9403}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\blocks\ptree">
+      <UniqueIdentifier>{0fe3f247-ce7e-45d9-a654-7c424a8b3a2a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\blocks\stream">
+      <UniqueIdentifier>{d163d95f-9a1e-43aa-99f1-e84021467c13}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\blocks\tile">
+      <UniqueIdentifier>{e1fc24c1-647c-4d3f-a475-650db1fe4297}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\blocks\slim">
+      <UniqueIdentifier>{d20a1a66-4fd1-41ac-9baf-98f38fd6764d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\blocks\slim\codetable">
+      <UniqueIdentifier>{e60b7815-e9e4-43db-854d-1be5e10ab83b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\blocks\less\lesc">
+      <UniqueIdentifier>{b34c311a-ff99-470f-b078-dad8b86c3bf9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\blocks\less\codetable">
+      <UniqueIdentifier>{cf45c03f-30b6-4e48-8130-4b74260b7131}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\blocks\less\leset">
+      <UniqueIdentifier>{f141d3c2-ae21-4572-9d7b-e8c9a091633d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\blocks\krimp">
+      <UniqueIdentifier>{c5ed197b-445c-4a60-a0b0-604a5b2d96e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\blocks\krimp\codetable">
+      <UniqueIdentifier>{8c9f4c5f-5185-4d4b-a1bb-4192e43f066d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\blocks\krimp\codetable\coverfull">
+      <UniqueIdentifier>{a5d9f71d-f370-49cf-8602-257f64e738f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\blocks\krimp\codetable\coverpartial">
+      <UniqueIdentifier>{cee37e8b-eea9-44e7-8735-f84242920e38}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\blocks\slim\structs">
+      <UniqueIdentifier>{9333d6e8-98fe-4904-8105-5362f3bc7e03}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\blocks\occlassifier">
+      <UniqueIdentifier>{91f42b52-ca7f-4ac2-bcdf-0f79971586a5}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="analysect.conf">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="analysedb.conf">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="classifyprepare.conf">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="comparegendb.conf">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="compress.conf">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="convertdb.conf">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="convertfis.conf">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="createdepdb.conf">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="generatedb.conf">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="generatedbs.conf">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resume.conf">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="test.conf">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="analysedb.conf.template">
+      <Filter>Resource Files\templates</Filter>
+    </None>
+    <None Include="classdistances.conf.template">
+      <Filter>Resource Files\templates</Filter>
+    </None>
+    <None Include="classify.conf.template">
+      <Filter>Resource Files\templates</Filter>
+    </None>
+    <None Include="classifycompress.conf.template">
+      <Filter>Resource Files\templates</Filter>
+    </None>
+    <None Include="classifyprepare.conf.template">
+      <Filter>Resource Files\templates</Filter>
+    </None>
+    <None Include="comparegendb.conf.template">
+      <Filter>Resource Files\templates</Filter>
+    </None>
+    <None Include="compress.conf.template">
+      <Filter>Resource Files\templates</Filter>
+    </None>
+    <None Include="convertdb.conf.template">
+      <Filter>Resource Files\templates</Filter>
+    </None>
+    <None Include="convertfis.conf.template">
+      <Filter>Resource Files\templates</Filter>
+    </None>
+    <None Include="datadir.conf.template">
+      <Filter>Resource Files\templates</Filter>
+    </None>
+    <None Include="fic.conf.template">
+      <Filter>Resource Files\templates</Filter>
+    </None>
+    <None Include="generatedb.conf.template">
+      <Filter>Resource Files\templates</Filter>
+    </None>
+    <None Include="resume.conf.template">
+      <Filter>Resource Files\templates</Filter>
+    </None>
+    <None Include="swapdb.conf.template">
+      <Filter>Resource Files\templates</Filter>
+    </None>
+    <None Include="fic.conf" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="LocalFic.template.h">
+      <Filter>Resource Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FicConf.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FicMain.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="global.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LocalFic.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="tasks\ClassifyTH.h">
+      <Filter>Source Files\tasks</Filter>
+    </ClInclude>
+    <ClInclude Include="tasks\ClusterTH.h">
+      <Filter>Source Files\tasks</Filter>
+    </ClInclude>
+    <ClInclude Include="tasks\DataGenTH.h">
+      <Filter>Source Files\tasks</Filter>
+    </ClInclude>
+    <ClInclude Include="tasks\DataTransformTH.h">
+      <Filter>Source Files\tasks</Filter>
+    </ClInclude>
+    <ClInclude Include="tasks\DissimilarityTH.h">
+      <Filter>Source Files\tasks</Filter>
+    </ClInclude>
+    <ClInclude Include="tasks\ExceptionalTH.h">
+      <Filter>Source Files\tasks</Filter>
+    </ClInclude>
+    <ClInclude Include="tasks\LESetsTH.h">
+      <Filter>Source Files\tasks</Filter>
+    </ClInclude>
+    <ClInclude Include="tasks\MainTH.h">
+      <Filter>Source Files\tasks</Filter>
+    </ClInclude>
+    <ClInclude Include="tasks\MineTH.h">
+      <Filter>Source Files\tasks</Filter>
+    </ClInclude>
+    <ClInclude Include="tasks\MissingValuesTH.h">
+      <Filter>Source Files\tasks</Filter>
+    </ClInclude>
+    <ClInclude Include="tasks\RecommendTH.h">
+      <Filter>Source Files\tasks</Filter>
+    </ClInclude>
+    <ClInclude Include="tasks\StreamTH.h">
+      <Filter>Source Files\tasks</Filter>
+    </ClInclude>
+    <ClInclude Include="tasks\TagGroupTH.h">
+      <Filter>Source Files\tasks</Filter>
+    </ClInclude>
+    <ClInclude Include="tasks\TaskHandler.h">
+      <Filter>Source Files\tasks</Filter>
+    </ClInclude>
+    <ClInclude Include="tasks\TestTH.h">
+      <Filter>Source Files\tasks</Filter>
+    </ClInclude>
+    <ClInclude Include="blocks\dgen\DGen.h">
+      <Filter>Source Files\blocks\dgen</Filter>
+    </ClInclude>
+    <ClInclude Include="blocks\dgen\DGSet.h">
+      <Filter>Source Files\blocks\dgen</Filter>
+    </ClInclude>
+    <ClInclude Include="blocks\dgen\cover\CTElemHMMDGen.h">
+      <Filter>Source Files\blocks\dgen\cover</Filter>
+    </ClInclude>
+    <ClInclude Include="blocks\dgen\cover\CTree.h">
+      <Filter>Source Files\blocks\dgen\cover</Filter>
+    </ClInclude>
+    <ClInclude Include="blocks\dgen\cover\CTreeDGen.h">
+      <Filter>Source Files\blocks\dgen\cover</Filter>
+    </ClInclude>
+    <ClInclude Include="blocks\dgen\cover\CTreeNode.h">
+      <Filter>Source Files\blocks\dgen\cover</Filter>
+    </ClInclude>
+    <ClInclude Include="blocks\dgen\cover\CTreeSet.h">
+      <Filter>Source Files\blocks\dgen\cover</Filter>
+    </ClInclude>
+    <ClInclude Include="blocks\dgen\ct\ColumnBasedDGen.h">
+      <Filter>Source Files\blocks\dgen\codetable</Filter>
+    </ClInclude>
+    <ClInclude Include="blocks\dgen\ct\CTFilteringDGen.h">
+      <Filter>Source Files\blocks\dgen\codetable</Filter>
+    </ClInclude>
+    <ClInclude Include="blocks\cluster\Clusterer.h">
+      <Filter>Source Files\blocks\cluster</Filter>
+    </ClInclude>
+    <ClInclude Include="blocks\cluster\Clusterer1G.h">
+      <Filter>Source Files\blocks\cluster</Filter>
+    </ClInclude>
+    <ClInclude Include="blocks\cluster\DBOntwarreraar.h">
+      <Filter>Source Files\blocks\cluster</Filter>
+    </ClInclude>
+    <ClInclude Include="blocks\cluster\Ontwar2Clusterer.h">
+      <Filter>Source Files\blocks\cluster</Filter>
+    </ClInclude>
+    <ClInclude Include="blocks\cluster\OntwarKClusterer.h">
+      <Filter>Source Files\blocks\cluster</Filter>
+    </ClInclude>
+    <ClInclude Include="blocks\classifier\Classifier.h">
+      <Filter>Source Files\blocks\classifier</Filter>
+    </ClInclude>
+    <ClInclude Include="blocks\classifier\CtAnalyser.h">
+      <Filter>Source Files\blocks\classifier</Filter>
+    </ClInclude>
+    <ClInclude Include="blocks\ptree\PTree.h">
+      <Filter>Source Files\blocks\ptree</Filter>
+    </ClInclude>
+    <ClInclude Include="blocks\ptree\PTreeNode.h">
+      <Filter>Source Files\blocks\ptree</Filter>
+    </ClInclude>
+    <ClInclude Include="blocks\ptree\PTreeSet.h">
+      <Filter>Source Files\blocks\ptree</Filter>
+    </ClInclude>
+    <ClInclude Include="blocks\stream\Histogram.h">
+      <Filter>Source Files\blocks\stream</Filter>
+    </ClInclude>
+    <ClInclude Include="blocks\stream\StreamAlgo.h">
+      <Filter>Source Files\blocks\stream</Filter>
+    </ClInclude>
+    <ClInclude Include="blocks\tile\OverlappingTilingMiner.h">
+      <Filter>Source Files\blocks\tile</Filter>
+    </ClInclude>
+    <ClInclude Include="blocks\tile\TilingMiner.h">
+      <Filter>Source Files\blocks\tile</Filter>
+    </ClInclude>
+    <ClInclude Include="blocks\tile\TilingOut.h">
+      <Filter>Source Files\blocks\tile</Filter>
+    </ClInclude>
+    <ClInclude Include="tasks\TagRecomTH.h">
+      <Filter>Source Files\tasks</Filter>
+    </ClInclude>
+    <ClInclude Include="blocks\krimp\Kramp.h">
+      <Filter>Source Files\blocks\krimp</Filter>
+    </ClInclude>
+    <ClInclude Include="blocks\krimp\Kromp.h">
+      <Filter>Source Files\blocks\krimp</Filter>
+    </ClInclude>
+    <ClInclude Include="blocks\krimp\Krump.h">
+      <Filter>Source Files\blocks\krimp</Filter>
+    </ClInclude>
+    <ClInclude Include="blocks\Blocks.h">
+      <Filter>Source Files\blocks</Filter>
+    </ClInclude>
+    <ClInclude Include="blocks\slim\SlimCS.h">
+      <Filter>Source Files\blocks\slim</Filter>
+    </ClInclude>
+    <ClInclude Include="blocks\slim\SlimPlus.h">
+      <Filter>Source Files\blocks\slim</Filter>
+    </ClInclude>
+    <ClInclude Include="blocks\slim\SlimStar.h">
+      <Filter>Source Files\blocks\slim</Filter>
+    </ClInclude>
+    <ClInclude Include="blocks\krimp\Krimp.h">
+      <Filter>Source Files\blocks\krimp</Filter>
+    </ClInclude>
+    <ClInclude Include="blocks\slim\SlimAlgo.h">
+      <Filter>Source Files\blocks\slim</Filter>
+    </ClInclude>
+    <ClInclude Include="tasks\SlimTH.h">
+      <Filter>Source Files\tasks</Filter>
+    </ClInclude>
+    <ClInclude Include="blocks\slim\Slim.h">
+      <Filter>Source Files\blocks\slim</Filter>
+    </ClInclude>
+    <ClInclude Include="blocks\slim\codetable\CPUOCodeTable.h">
+      <Filter>Source Files\blocks\slim\codetable</Filter>
+    </ClInclude>
+    <ClInclude Include="blocks\krimp\KrimpAlgo.h">
+      <Filter>Source Files\blocks\krimp</Filter>
+    </ClInclude>
+    <ClInclude Include="blocks\krimp\ParallelCoverFull.h">
+      <Filter>Source Files\blocks\krimp</Filter>
+    </ClInclude>
+    <ClInclude Include="blocks\krimp\CoverFullAlgo.h">
+      <Filter>Source Files\blocks\krimp</Filter>
+    </ClInclude>
+    <ClInclude Include="blocks\krimp\codetable\CodeTable.h">
+      <Filter>Source Files\blocks\krimp\codetable</Filter>
+    </ClInclude>
+    <ClInclude Include="blocks\krimp\codetable\CTFile.h">
+      <Filter>Source Files\blocks\krimp\codetable</Filter>
+    </ClInclude>
+    <ClInclude Include="blocks\krimp\codetable\CTISList.h">
+      <Filter>Source Files\blocks\krimp\codetable</Filter>
+    </ClInclude>
+    <ClInclude Include="blocks\krimp\codetable\CTLog.h">
+      <Filter>Source Files\blocks\krimp\codetable</Filter>
+    </ClInclude>
+    <ClInclude Include="blocks\krimp\codetable\StandardCodeTable.h">
+      <Filter>Source Files\blocks\krimp\codetable</Filter>
+    </ClInclude>
+    <ClInclude Include="blocks\krimp\codetable\coverfull\CFCodeTable.h">
+      <Filter>Source Files\blocks\krimp\codetable\coverfull</Filter>
+    </ClInclude>
+    <ClInclude Include="blocks\krimp\codetable\coverpartial\CCCPCodeTable.h">
+      <Filter>Source Files\blocks\krimp\codetable\coverpartial</Filter>
+    </ClInclude>
+    <ClInclude Include="blocks\krimp\codetable\coverpartial\CCPCodeTable.h">
+      <Filter>Source Files\blocks\krimp\codetable\coverpartial</Filter>
+    </ClInclude>
+    <ClInclude Include="blocks\krimp\codetable\coverpartial\CoverPartial.h">
+      <Filter>Source Files\blocks\krimp\codetable\coverpartial</Filter>
+    </ClInclude>
+    <ClInclude Include="blocks\krimp\codetable\coverpartial\CPACodeTable.h">
+      <Filter>Source Files\blocks\krimp\codetable\coverpartial</Filter>
+    </ClInclude>
+    <ClInclude Include="blocks\krimp\codetable\coverpartial\CPAOCodeTable.h">
+      <Filter>Source Files\blocks\krimp\codetable\coverpartial</Filter>
+    </ClInclude>
+    <ClInclude Include="blocks\krimp\codetable\coverpartial\CPCodeTable.h">
+      <Filter>Source Files\blocks\krimp\codetable\coverpartial</Filter>
+    </ClInclude>
+    <ClInclude Include="blocks\krimp\codetable\coverpartial\CPOCodeTable.h">
+      <Filter>Source Files\blocks\krimp\codetable\coverpartial</Filter>
+    </ClInclude>
+    <ClInclude Include="blocks\krimp\codetable\coverpartial\CPROCodeTable.h">
+      <Filter>Source Files\blocks\krimp\codetable\coverpartial</Filter>
+    </ClInclude>
+    <ClInclude Include="blocks\krimp\codetable\coverpartial\ParallelCoverPartial.h">
+      <Filter>Source Files\blocks\krimp\codetable\coverpartial</Filter>
+    </ClInclude>
+    <ClInclude Include="blocks\less\LESSAlgo.h">
+      <Filter>Source Files\blocks\less</Filter>
+    </ClInclude>
+    <ClInclude Include="blocks\less\leset\LESList.h">
+      <Filter>Source Files\blocks\less\leset</Filter>
+    </ClInclude>
+    <ClInclude Include="blocks\less\leset\LowEntropySet.h">
+      <Filter>Source Files\blocks\less\leset</Filter>
+    </ClInclude>
+    <ClInclude Include="blocks\less\leset\LowEntropySetInstantiation.h">
+      <Filter>Source Files\blocks\less\leset</Filter>
+    </ClInclude>
+    <ClInclude Include="blocks\less\lesc\LescFile.h">
+      <Filter>Source Files\blocks\less\lesc</Filter>
+    </ClInclude>
+    <ClInclude Include="blocks\less\lesc\LowEntropySetCollection.h">
+      <Filter>Source Files\blocks\less\lesc</Filter>
+    </ClInclude>
+    <ClInclude Include="blocks\less\codetable\LECFCodeTable.h">
+      <Filter>Source Files\blocks\less\codetable</Filter>
+    </ClInclude>
+    <ClInclude Include="blocks\less\codetable\LECFOptCodeTable.h">
+      <Filter>Source Files\blocks\less\codetable</Filter>
+    </ClInclude>
+    <ClInclude Include="blocks\less\codetable\LECodeTable.h">
+      <Filter>Source Files\blocks\less\codetable</Filter>
+    </ClInclude>
+    <ClInclude Include="blocks\less\codetable\LESOCodeTable.h">
+      <Filter>Source Files\blocks\less\codetable</Filter>
+    </ClInclude>
+    <ClInclude Include="blocks\slim\codetable\CCPUCodeTable.h">
+      <Filter>Source Files\blocks\slim\codetable</Filter>
+    </ClInclude>
+    <ClInclude Include="blocks\slim\codetable\CCCPUCodeTable.h">
+      <Filter>Source Files\blocks\slim\codetable</Filter>
+    </ClInclude>
+    <ClInclude Include="blocks\slim\SlimMJ.h">
+      <Filter>Source Files\blocks\slim</Filter>
+    </ClInclude>
+    <ClInclude Include="blocks\slim\structs\CandidateCTGain.h">
+      <Filter>Source Files\blocks\slim\structs</Filter>
+    </ClInclude>
+    <ClInclude Include="blocks\slim\structs\ItemSetSorted.h">
+      <Filter>Source Files\blocks\slim\structs</Filter>
+    </ClInclude>
+    <ClInclude Include="blocks\slim\structs\UsageClass.h">
+      <Filter>Source Files\blocks\slim\structs</Filter>
+    </ClInclude>
+    <ClInclude Include="blocks\occlassifier\OneClassClassifier.h">
+      <Filter>Source Files\blocks\occlassifier</Filter>
+    </ClInclude>
+    <ClInclude Include="tasks\OCClassifyTH.h">
+      <Filter>Source Files\tasks</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="FicConf.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FicMain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ficmkii.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="tasks\ClassifyTH.cpp">
+      <Filter>Source Files\tasks</Filter>
+    </ClCompile>
+    <ClCompile Include="tasks\ClusterTH.cpp">
+      <Filter>Source Files\tasks</Filter>
+    </ClCompile>
+    <ClCompile Include="tasks\DataGenTH.cpp">
+      <Filter>Source Files\tasks</Filter>
+    </ClCompile>
+    <ClCompile Include="tasks\DataTransformTH.cpp">
+      <Filter>Source Files\tasks</Filter>
+    </ClCompile>
+    <ClCompile Include="tasks\DissimilarityTH.cpp">
+      <Filter>Source Files\tasks</Filter>
+    </ClCompile>
+    <ClCompile Include="tasks\ExceptionalTH.cpp">
+      <Filter>Source Files\tasks</Filter>
+    </ClCompile>
+    <ClCompile Include="tasks\LESetsTH.cpp">
+      <Filter>Source Files\tasks</Filter>
+    </ClCompile>
+    <ClCompile Include="tasks\MainTH.cpp">
+      <Filter>Source Files\tasks</Filter>
+    </ClCompile>
+    <ClCompile Include="tasks\MineTH.cpp">
+      <Filter>Source Files\tasks</Filter>
+    </ClCompile>
+    <ClCompile Include="tasks\MissingValuesTH.cpp">
+      <Filter>Source Files\tasks</Filter>
+    </ClCompile>
+    <ClCompile Include="tasks\RecommendTH.cpp">
+      <Filter>Source Files\tasks</Filter>
+    </ClCompile>
+    <ClCompile Include="tasks\StreamTH.cpp">
+      <Filter>Source Files\tasks</Filter>
+    </ClCompile>
+    <ClCompile Include="tasks\TagGroupTH.cpp">
+      <Filter>Source Files\tasks</Filter>
+    </ClCompile>
+    <ClCompile Include="tasks\TaskHandler.cpp">
+      <Filter>Source Files\tasks</Filter>
+    </ClCompile>
+    <ClCompile Include="tasks\TestTH.cpp">
+      <Filter>Source Files\tasks</Filter>
+    </ClCompile>
+    <ClCompile Include="blocks\dgen\DGen.cpp">
+      <Filter>Source Files\blocks\dgen</Filter>
+    </ClCompile>
+    <ClCompile Include="blocks\dgen\DGSet.cpp">
+      <Filter>Source Files\blocks\dgen</Filter>
+    </ClCompile>
+    <ClCompile Include="blocks\dgen\cover\CTElemHMMDGen.cpp">
+      <Filter>Source Files\blocks\dgen\cover</Filter>
+    </ClCompile>
+    <ClCompile Include="blocks\dgen\cover\CTree.cpp">
+      <Filter>Source Files\blocks\dgen\cover</Filter>
+    </ClCompile>
+    <ClCompile Include="blocks\dgen\cover\CTreeDGen.cpp">
+      <Filter>Source Files\blocks\dgen\cover</Filter>
+    </ClCompile>
+    <ClCompile Include="blocks\dgen\cover\CTreeNode.cpp">
+      <Filter>Source Files\blocks\dgen\cover</Filter>
+    </ClCompile>
+    <ClCompile Include="blocks\dgen\cover\CTreeSet.cpp">
+      <Filter>Source Files\blocks\dgen\cover</Filter>
+    </ClCompile>
+    <ClCompile Include="blocks\dgen\ct\ColumnBasedDGen.cpp">
+      <Filter>Source Files\blocks\dgen\codetable</Filter>
+    </ClCompile>
+    <ClCompile Include="blocks\dgen\ct\CTFilteringDGen.cpp">
+      <Filter>Source Files\blocks\dgen\codetable</Filter>
+    </ClCompile>
+    <ClCompile Include="blocks\cluster\Clusterer.cpp">
+      <Filter>Source Files\blocks\cluster</Filter>
+    </ClCompile>
+    <ClCompile Include="blocks\cluster\Clusterer1G.cpp">
+      <Filter>Source Files\blocks\cluster</Filter>
+    </ClCompile>
+    <ClCompile Include="blocks\cluster\DBOntwarreraar.cpp">
+      <Filter>Source Files\blocks\cluster</Filter>
+    </ClCompile>
+    <ClCompile Include="blocks\cluster\Ontwar2Clusterer.cpp">
+      <Filter>Source Files\blocks\cluster</Filter>
+    </ClCompile>
+    <ClCompile Include="blocks\cluster\OntwarKClusterer.cpp">
+      <Filter>Source Files\blocks\cluster</Filter>
+    </ClCompile>
+    <ClCompile Include="blocks\classifier\Classifier.cpp">
+      <Filter>Source Files\blocks\classifier</Filter>
+    </ClCompile>
+    <ClCompile Include="blocks\classifier\CtAnalyser.cpp">
+      <Filter>Source Files\blocks\classifier</Filter>
+    </ClCompile>
+    <ClCompile Include="blocks\ptree\PTree.cpp">
+      <Filter>Source Files\blocks\ptree</Filter>
+    </ClCompile>
+    <ClCompile Include="blocks\ptree\PTreeNode.cpp">
+      <Filter>Source Files\blocks\ptree</Filter>
+    </ClCompile>
+    <ClCompile Include="blocks\ptree\PTreeSet.cpp">
+      <Filter>Source Files\blocks\ptree</Filter>
+    </ClCompile>
+    <ClCompile Include="blocks\stream\Histogram.cpp">
+      <Filter>Source Files\blocks\stream</Filter>
+    </ClCompile>
+    <ClCompile Include="blocks\stream\StreamAlgo.cpp">
+      <Filter>Source Files\blocks\stream</Filter>
+    </ClCompile>
+    <ClCompile Include="blocks\tile\OverlappingTilingMiner.cpp">
+      <Filter>Source Files\blocks\tile</Filter>
+    </ClCompile>
+    <ClCompile Include="blocks\tile\TilingMiner.cpp">
+      <Filter>Source Files\blocks\tile</Filter>
+    </ClCompile>
+    <ClCompile Include="blocks\tile\TilingOut.cpp">
+      <Filter>Source Files\blocks\tile</Filter>
+    </ClCompile>
+    <ClCompile Include="tasks\TagRecomTH.cpp">
+      <Filter>Source Files\tasks</Filter>
+    </ClCompile>
+    <ClCompile Include="blocks\krimp\Kramp.cpp">
+      <Filter>Source Files\blocks\krimp</Filter>
+    </ClCompile>
+    <ClCompile Include="blocks\krimp\Kromp.cpp">
+      <Filter>Source Files\blocks\krimp</Filter>
+    </ClCompile>
+    <ClCompile Include="blocks\krimp\Krump.cpp">
+      <Filter>Source Files\blocks\krimp</Filter>
+    </ClCompile>
+    <ClCompile Include="blocks\slim\SlimCS.cpp">
+      <Filter>Source Files\blocks\slim</Filter>
+    </ClCompile>
+    <ClCompile Include="blocks\slim\SlimPlus.cpp">
+      <Filter>Source Files\blocks\slim</Filter>
+    </ClCompile>
+    <ClCompile Include="blocks\slim\SlimStar.cpp">
+      <Filter>Source Files\blocks\slim</Filter>
+    </ClCompile>
+    <ClCompile Include="blocks\krimp\Krimp.cpp">
+      <Filter>Source Files\blocks\krimp</Filter>
+    </ClCompile>
+    <ClCompile Include="blocks\slim\SlimAlgo.cpp">
+      <Filter>Source Files\blocks\slim</Filter>
+    </ClCompile>
+    <ClCompile Include="tasks\SlimTH.cpp">
+      <Filter>Source Files\tasks</Filter>
+    </ClCompile>
+    <ClCompile Include="blocks\slim\Slim.cpp">
+      <Filter>Source Files\blocks\slim</Filter>
+    </ClCompile>
+    <ClCompile Include="blocks\slim\codetable\CPUOCodeTable.cpp">
+      <Filter>Source Files\blocks\slim\codetable</Filter>
+    </ClCompile>
+    <ClCompile Include="blocks\krimp\ParallelCoverFull.cpp">
+      <Filter>Source Files\blocks\krimp</Filter>
+    </ClCompile>
+    <ClCompile Include="blocks\krimp\CoverFullAlgo.cpp">
+      <Filter>Source Files\blocks\krimp</Filter>
+    </ClCompile>
+    <ClCompile Include="blocks\krimp\KrimpAlgo.cpp">
+      <Filter>Source Files\blocks\krimp</Filter>
+    </ClCompile>
+    <ClCompile Include="blocks\krimp\codetable\CodeTable.cpp">
+      <Filter>Source Files\blocks\krimp\codetable</Filter>
+    </ClCompile>
+    <ClCompile Include="blocks\krimp\codetable\CTFile.cpp">
+      <Filter>Source Files\blocks\krimp\codetable</Filter>
+    </ClCompile>
+    <ClCompile Include="blocks\krimp\codetable\CTISList.cpp">
+      <Filter>Source Files\blocks\krimp\codetable</Filter>
+    </ClCompile>
+    <ClCompile Include="blocks\krimp\codetable\CTLog.cpp">
+      <Filter>Source Files\blocks\krimp\codetable</Filter>
+    </ClCompile>
+    <ClCompile Include="blocks\krimp\codetable\StandardCodeTable.cpp">
+      <Filter>Source Files\blocks\krimp\codetable</Filter>
+    </ClCompile>
+    <ClCompile Include="blocks\krimp\codetable\coverfull\CFCodeTable.cpp">
+      <Filter>Source Files\blocks\krimp\codetable\coverfull</Filter>
+    </ClCompile>
+    <ClCompile Include="blocks\krimp\codetable\coverpartial\CCCPCodeTable.cpp">
+      <Filter>Source Files\blocks\krimp\codetable\coverpartial</Filter>
+    </ClCompile>
+    <ClCompile Include="blocks\krimp\codetable\coverpartial\CCPCodeTable.cpp">
+      <Filter>Source Files\blocks\krimp\codetable\coverpartial</Filter>
+    </ClCompile>
+    <ClCompile Include="blocks\krimp\codetable\coverpartial\CoverPartial.cpp">
+      <Filter>Source Files\blocks\krimp\codetable\coverpartial</Filter>
+    </ClCompile>
+    <ClCompile Include="blocks\krimp\codetable\coverpartial\CPACodeTable.cpp">
+      <Filter>Source Files\blocks\krimp\codetable\coverpartial</Filter>
+    </ClCompile>
+    <ClCompile Include="blocks\krimp\codetable\coverpartial\CPAOCodeTable.cpp">
+      <Filter>Source Files\blocks\krimp\codetable\coverpartial</Filter>
+    </ClCompile>
+    <ClCompile Include="blocks\krimp\codetable\coverpartial\CPCodeTable.cpp">
+      <Filter>Source Files\blocks\krimp\codetable\coverpartial</Filter>
+    </ClCompile>
+    <ClCompile Include="blocks\krimp\codetable\coverpartial\CPOCodeTable.cpp">
+      <Filter>Source Files\blocks\krimp\codetable\coverpartial</Filter>
+    </ClCompile>
+    <ClCompile Include="blocks\krimp\codetable\coverpartial\CPROCodeTable.cpp">
+      <Filter>Source Files\blocks\krimp\codetable\coverpartial</Filter>
+    </ClCompile>
+    <ClCompile Include="blocks\krimp\codetable\coverpartial\ParallelCoverPartial.cpp">
+      <Filter>Source Files\blocks\krimp\codetable\coverpartial</Filter>
+    </ClCompile>
+    <ClCompile Include="blocks\less\LESSAlgo.cpp">
+      <Filter>Source Files\blocks\less</Filter>
+    </ClCompile>
+    <ClCompile Include="blocks\less\leset\LESList.cpp">
+      <Filter>Source Files\blocks\less\leset</Filter>
+    </ClCompile>
+    <ClCompile Include="blocks\less\leset\LowEntropySet.cpp">
+      <Filter>Source Files\blocks\less\leset</Filter>
+    </ClCompile>
+    <ClCompile Include="blocks\less\leset\LowEntropySetInstantiation.cpp">
+      <Filter>Source Files\blocks\less\leset</Filter>
+    </ClCompile>
+    <ClCompile Include="blocks\less\lesc\LescFile.cpp">
+      <Filter>Source Files\blocks\less\lesc</Filter>
+    </ClCompile>
+    <ClCompile Include="blocks\less\lesc\LowEntropySetCollection.cpp">
+      <Filter>Source Files\blocks\less\lesc</Filter>
+    </ClCompile>
+    <ClCompile Include="blocks\less\codetable\LECFCodeTable.cpp">
+      <Filter>Source Files\blocks\less\codetable</Filter>
+    </ClCompile>
+    <ClCompile Include="blocks\less\codetable\LECFOptCodeTable.cpp">
+      <Filter>Source Files\blocks\less\codetable</Filter>
+    </ClCompile>
+    <ClCompile Include="blocks\less\codetable\LECodeTable.cpp">
+      <Filter>Source Files\blocks\less\codetable</Filter>
+    </ClCompile>
+    <ClCompile Include="blocks\less\codetable\LESOCodeTable.cpp">
+      <Filter>Source Files\blocks\less\codetable</Filter>
+    </ClCompile>
+    <ClCompile Include="blocks\slim\codetable\CCCPUCodeTable.cpp">
+      <Filter>Source Files\blocks\slim\codetable</Filter>
+    </ClCompile>
+    <ClCompile Include="blocks\slim\codetable\CCPUCodeTable.cpp">
+      <Filter>Source Files\blocks\slim\codetable</Filter>
+    </ClCompile>
+    <ClCompile Include="blocks\slim\SlimMJ.cpp">
+      <Filter>Source Files\blocks\slim</Filter>
+    </ClCompile>
+    <ClCompile Include="blocks\slim\structs\CandidateCTGain.cpp">
+      <Filter>Source Files\blocks\slim\structs</Filter>
+    </ClCompile>
+    <ClCompile Include="blocks\slim\structs\ItemSetSorted.cpp">
+      <Filter>Source Files\blocks\slim\structs</Filter>
+    </ClCompile>
+    <ClCompile Include="blocks\slim\structs\UsageClass.cpp">
+      <Filter>Source Files\blocks\slim\structs</Filter>
+    </ClCompile>
+    <ClCompile Include="blocks\occlassifier\OneClassClassifier.cpp">
+      <Filter>Source Files\blocks\occlassifier</Filter>
+    </ClCompile>
+    <ClCompile Include="tasks\OCClassifyTH.cpp">
+      <Filter>Source Files\tasks</Filter>
+    </ClCompile>
+    <ClCompile Include="blocks\slim\SlimMG.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="blocks\slim\SlimMG2.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
